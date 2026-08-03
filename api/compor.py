@@ -26,6 +26,7 @@ import hmac
 import io
 import json
 import os
+import re
 import sys
 import urllib.request
 from http.server import BaseHTTPRequestHandler
@@ -50,6 +51,18 @@ AJUSTAVEIS = {"zoom", "anchor_x", "anchor_y", "coluna_frac", "headline_y", "cta_
 # do que entregar uma arte fraca.
 MAX_LINHA_HEADLINE = 17
 
+# Layout `blocos`: acima de 5 linhas a pilha passa por cima do CTA, e acima de
+# 48 caracteres o item quebra em duas linhas e o checklist perde o ritmo.
+MAX_ITENS = 5
+MAX_LINHA_ITEM = 48
+
+# Os [SLOT] ainda não confirmados da oferta: duração, entregável e quem conduz.
+# O gerador tende a preencher sozinho — "60 minutos", "plano de ação em PDF" —
+# e no layout `blocos` cada linha do checklist vira claim publicado.
+SLOTS_ABERTOS = re.compile(
+    r"\b(\d+\s*(min|minutos?|h|horas?)|uma hora|meia hora|"
+    r"pdf|planilha|relatório|dossiê|plano de ação|material de apoio)\b", re.I)
+
 LIMITE_PLATE = 12 * 1024 * 1024
 
 
@@ -70,6 +83,27 @@ def validar_conceito(c, layout):
         for campo in ("titulo", "antes", "depois"):
             if not isinstance(c.get(campo), list) or not c[campo]:
                 raise ValueError(f"conceito.{campo} precisa ser uma lista não vazia")
+        return
+    if layout == "blocos":
+        for campo in ("topo", "chamada"):
+            if not isinstance(c.get(campo), str) or not c[campo].strip():
+                raise ValueError(f"conceito.{campo} precisa ser texto")
+        for campo in ("corpo", "itens"):
+            if not isinstance(c.get(campo), list) or not c[campo]:
+                raise ValueError(f"conceito.{campo} precisa ser uma lista não vazia")
+        if len(c["itens"]) > MAX_ITENS:
+            raise ValueError(f"checklist com {len(c['itens'])} linhas; o máximo é "
+                             f"{MAX_ITENS}, acima disso a pilha cobre o botão")
+        for item in c["itens"]:
+            if len(item) > MAX_LINHA_ITEM:
+                raise ValueError(f"item de checklist acima de {MAX_LINHA_ITEM} "
+                                 f"caracteres: {item!r} ({len(item)}). Encurte.")
+            achado = SLOTS_ABERTOS.search(item)
+            if achado:
+                raise ValueError(
+                    f"item de checklist afirma {achado.group(0)!r}, que ainda é "
+                    "[SLOT]: duração da sessão, entregável e quem conduz não "
+                    "foram confirmados. Use só fato já publicado.")
         return
     if layout == "oferta":
         for campo in ("tarja", "corpo", "por"):
@@ -97,7 +131,7 @@ def montar(corpo):
     if corpo.get("conceito"):
         conceito = dict(corpo["conceito"])
         layout = corpo.get("layout", "compor")
-        if layout not in ("compor", "oferta", "antes-depois"):
+        if layout not in ("compor", "oferta", "antes-depois", "blocos"):
             raise ValueError(f"layout desconhecido: {layout}")
         validar_conceito(conceito, layout)
 
@@ -117,6 +151,15 @@ def montar(corpo):
             conceito.setdefault("cta", "AGENDAR DIAGNÓSTICO")
             conceito["de"] = None
             return layouts.oferta(conceito, plate)  # aceita Image, ver oferta.py
+
+        if layout == "blocos":
+            conceito.setdefault("formato", "9:16")
+            conceito.setdefault("cta", "AGENDAR DIAGNÓSTICO")
+            # A pilha come os dois terços de baixo; sem zoom o assunto da foto
+            # fica pequeno demais na faixa que sobra.
+            conceito.setdefault("zoom", 1.3)
+            conceito.setdefault("anchor_y", 0.28)
+            return layouts.blocos(conceito, plate)
 
         formato = corpo.get("formato", "4:5")
         if formato not in compositor.FORMATOS:

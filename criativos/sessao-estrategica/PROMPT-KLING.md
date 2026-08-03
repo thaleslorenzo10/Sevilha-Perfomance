@@ -669,3 +669,64 @@ python3 oferta.py --peca antes-depois --out out/conceito-11-4x5.png
 - Principal: `Chega cedo, sai tarde, delega e a tarefa volta. Do outro lado dessa lista tem um escritório que anda.` (101)
 - Título: `Antes e depois da gestão` (24)
 - Descrição: `Diagnóstico gratuito` (20)
+
+# Conceitos 12 e 13 — referência F
+
+A ref F (`eugkallil`, "CAPTAÇÃO DE PACIENTES HIGH TICKET / PARA MÉDICOS") traz
+uma estrutura que nenhuma peça da pasta tinha: **o texto não mora num scrim
+único cobrindo meia peça, mora em blocos opacos separados**, cada um do tamanho
+do próprio texto, empilhados. Some o degradê, some a foto por baixo da letra, e
+a leitura vira uma lista de cima para baixo. É o layout `blocos` no `oferta.py`.
+
+Os três recursos que valem copiar:
+
+1. **Dois blocos de headline em cores diferentes.** Um chapéu pequeno que
+   qualifica, um bloco grande que grita para quem passa. Na ref são preto e
+   azul-marinho; aqui seriam `#08090F` e `#0B0D22`, que a essa distância é a
+   mesma cor — então inverti: chapéu no teal da marca, chamada no marinho.
+2. **Corpo em monoespaçada sobre branco.** É o contraste de textura que dá o ar
+   de "não é anúncio". Space Mono, também OFL, já no `fetch-fontes.sh`.
+3. **Checklist com ✅ verde.** É o que a ref usa no lugar de prova social.
+
+**O que eu não copiei: as linhas de entregável.** A ref lista "Metodologia
+validada em +200 clínicas e doutores" e mais três itens de entrega. A linha
+equivalente da Sevilha existe e é verdadeira (`+450 contabilidades`, `35+ anos`),
+mas duração da sessão, entregável e nome de quem conduz continuam `[SLOT]` — e
+`[SLOT]` não vira claim. O checklist ficou com quatro linhas conferíveis hoje.
+
+Isso está travado no serviço, não só aqui: `api/compor.py` recusa item de
+checklist que afirme duração ("60 minutos") ou entregável ("plano de ação",
+"PDF"), com o motivo, para o gerador reescrever em vez de publicar.
+
+O `✅` da ref é emoji — fonte de texto não tem o glifo e sai tofu, o mesmo erro
+que derrubou a primeira versão do formato nativo do WhatsApp. Aqui o marcador é
+desenhado em PIL.
+
+## Conceito 12 — Diagnóstico de gestão (até 10)
+
+```bash
+python3 oferta.py --peca blocos --plate plates/conceito-12-dono-9x16.png \
+  --out out/conceito-12-9x16.png
+```
+
+## Conceito 13 — Tudo passa por você (mais de 10)
+
+```bash
+python3 oferta.py --peca blocos-10mais --plate plates/conceito-13-openplan-9x16.png \
+  --out out/conceito-13-9x16.png
+```
+
+Nas duas o assunto da foto tem que estar no terço de cima: a pilha de blocos
+ocupa os dois terços de baixo. `zoom` e `anchor_y` são campos da peça.
+
+## Copy do Meta
+
+**Conceito 12**
+- Principal: `Você não quer mais um curso. Quer saber o que está travando o escritório — e o que fazer com isso na segunda-feira.` (115)
+- Título: `Diagnóstico de gestão` (21)
+- Descrição: `Sem custo` (9)
+
+**Conceito 13**
+- Principal: `Dez, quinze, vinte pessoas na equipe, e nenhuma decisão anda sem passar na sua mesa. O gargalo deixou de ser o time.` (116)
+- Título: `Mais de 10 colaboradores` (24)
+- Descrição: `Diagnóstico gratuito` (20)

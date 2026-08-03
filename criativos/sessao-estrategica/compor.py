@@ -90,6 +90,8 @@ FATOS = [
     "São 3 mentores. O destino é o formulário em form.respondi.app/gvz4UKQr.",
     "Não há venda no final e não existe preço já praticado — nada de âncora 'de/por'.",
     "Dois segmentos: escritórios com até 10 colaboradores e com mais de 10.",
+    "No checklist do layout `blocos` só entra fato já publicado: duração da sessão,"
+    " entregável e nome de quem conduz ainda não foram confirmados.",
     "Na conta, o que segura CPL abaixo de R$ 15 é nomear a dor operacional do dono;",
     "promessa genérica de transformação estoura o CPL para R$ 52-77.",
 ]
@@ -127,6 +129,8 @@ LAYOUTS = {
     "compor": "headline condensada à esquerda, objeto à direita — 4:5 ou 9:16",
     "oferta": "foto em quadro cheio, tarja de público e valor em destaque — 9:16",
     "antes-depois": "duas colunas comparando, sem foto — 4:5",
+    "blocos": "blocos opacos empilhados sobre a foto, corpo em monoespaçada e "
+              "checklist de entregáveis — 9:16",
     "nativo": "UI de app recriada (notas, whatsapp, lockscreen, busca) — 4:5",
 }
 

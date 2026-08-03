@@ -56,6 +56,10 @@ Agora são três mudanças que só funcionam juntas:
 **Eixos.** `EIXOS` no `compor.py` quebra a composição em enquadramento (6), luz
 (6) e meio (5). São 180 combinações onde havia uma.
 
+**Layouts.** São cinco no briefing (`compor`, `oferta`, `antes-depois`,
+`blocos`, `nativo`), não um. `blocos` entrou com a ref F e é o mais diferente
+dos outros: blocos opacos empilhados e corpo em monoespaçada, sem scrim.
+
 **Gerador.** Um nó do Claude escreve headline, subhead, layout e prompt de plate
 a cada execução, em vez de escolher de uma lista.
 
@@ -84,8 +88,12 @@ Ficam no serviço, não só no prompt, porque prompt se ignora:
   encolheria o corpo até a peça perder o soco, e a arte sairia "funcionando".
 - **Âncora de preço "de/por" é recusada sempre.** Não existe preço praticado
   para a Sessão Estratégica; anunciar um seria propaganda enganosa.
+- **Item de checklist que afirma duração ou entregável é recusado.** No layout
+  `blocos` cada linha do checklist é um claim publicado, e duração da sessão,
+  entregável e quem conduz ainda são `[SLOT]`. O gerador preenche esses buracos
+  sozinho se deixarem — "60 minutos", "plano de ação em PDF".
 
-Nos dois casos o serviço devolve 400 com o motivo, e o gerador pode reescrever.
+Nos três casos o serviço devolve 400 com o motivo, e o gerador pode reescrever.
 
 Os quatro formatos nativos pulam o Kling inteiro — a UI é desenhada, não gerada.
 São mais baratos e não têm o risco de texto embaralhado.
