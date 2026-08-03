@@ -311,6 +311,26 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
   </div>
 
   <div class="section">
+    <div class="section-title">🏢 Porte do escritório por formato de campanha</div>
+    <div class="section-note">
+      As mesmas duas faixas, abertas por formato. O custo por lead é o
+      <strong>investimento do formato dividido pelos leads daquele porte</strong> —
+      as faixas dividem o mesmo investimento, então as colunas de custo não se somam.
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Porte</th>
+          <th class="num">Form. · Leads</th><th class="num">Form. · Custo/lead</th>
+          <th class="num">LP · Leads</th><th class="num">LP · Custo/lead</th>
+          <th class="num">Total · Leads</th><th class="num">Total · Custo/lead</th>
+        </tr></thead>
+        <tbody id="tblPorteGeral"><tr><td colspan="7" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
     <div class="section-title">📈 Investimento e leads por dia</div>
     <div class="section-note">Fonte: Meta Ads. Cada linha é um formato de captação; os leads são os que o Meta atribui à campanha.</div>
     <div class="chart-wrap tall"><canvas id="chartGeralDia"></canvas></div>
@@ -826,8 +846,8 @@ function renderDistribuicao(tbodyId, entradas, total, rotulo) {
  * Custo por lead = investimento do formato ÷ leads daquele porte. É o custo
  * de conseguir um lead daquele porte — não uma divisão do investimento.
  */
-function renderPorte(planilha, spendForms, spendLP) {
-  const tbody = document.getElementById('tblPorte');
+function renderPorte(tbodyId, planilha, spendForms, spendLP) {
+  const tbody = document.getElementById(tbodyId);
   if (!tbody) return;
 
   const pf = planilha?.porte_por_formato;
@@ -1006,6 +1026,10 @@ function render({ meta, planilha, rd }) {
   setPorte('g-porte-maior', 'g-porte-maior-cpl', porte?.MAIOR_10 ?? 0);
   setPorte('g-porte-menor', 'g-porte-menor-cpl', porte?.MENOR_10 ?? 0);
 
+  // Mesma tabela da aba Formatos: os cards acima dão o consolidado, a tabela
+  // abre por formato de campanha.
+  renderPorte('tblPorteGeral', planilha, fForms.spend, fLP.spend);
+
   // As duas faixas dividem o mesmo investimento — dito na tela para ninguém
   // somar as duas colunas de custo achando que dá o total investido.
   const semResposta = porte?.INDEFINIDO ?? 0;
@@ -1063,7 +1087,7 @@ function render({ meta, planilha, rd }) {
     tblForm.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:20px;color:var(--gray)">Sem leads na planilha neste período</td></tr>';
   }
 
-  renderPorte(planilha, fForms.spend, fLP.spend);
+  renderPorte('tblPorte', planilha, fForms.spend, fLP.spend);
   renderDistribuicao('tblCargo', planilha?.qualificacao?.cargo || {}, planilha?.total || 0);
   renderDistribuicao('tblColab', planilha?.qualificacao?.colaboradores || {}, planilha?.total || 0);
 
