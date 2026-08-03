@@ -4,5 +4,8 @@
   "private": true,
   "engines": {
     "node": "20.x"
+  },
+  "dependencies": {
+    "@vercel/og": "^0.6.3"
   }
 }
