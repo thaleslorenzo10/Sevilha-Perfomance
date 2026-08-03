@@ -9,7 +9,8 @@ referências enviadas, com a paleta da marca.
 - **Oferta:** sessão de diagnóstico **gratuita**
 - **Destino:** https://form.respondi.app/gvz4UKQr
 - **Formato:** 4:5 (feed) + 9:16 (Reels/Stories)
-- **Peças prontas:** conceitos 1, 2, 4, 5, 6, 7, 8 e 9 em `out/` (4:5; o conceito 2 também em 9:16)
+- **Peças prontas:** conceitos 1, 2, 4, 5, 6, 7, 8 e 9 + 4 formatos nativos em `out/`
+  (4:5; o conceito 2 também em 9:16)
 
 ## Lacunas a preencher antes de gerar
 
@@ -359,6 +360,60 @@ python3 compor.py --plate plates/conceito-9-escala-3x4.png --peca conceito-9 \
 
 ---
 
+# Formatos nativos — UI de app em código
+
+Quatro peças que imitam uma tela de celular em vez de um anúncio. Servem como
+pattern interrupt: no feed elas não parecem publicidade, parecem um print. Gerados
+por `formatos.py`, não pelo Kling.
+
+**Por que não passam pelo Kling.** Modelo generativo escreve texto embaralhado em
+tela e em papel — foi o que reprovou a primeira versão do conceito 6. UI fake só
+convence se for construída. `formatos.py` desenha tudo em PIL com Inter (o
+substituto livre mais próximo do SF Pro da Apple).
+
+**WhatsApp no lugar de iMessage.** O formato circula lá fora com iMessage, mas no
+Brasil o dono de contabilidade vive no WhatsApp — o print de iMessage não desperta
+reconhecimento nenhum aqui.
+
+**A faixa da marca no rodapé é obrigatória.** Sem ela a peça é só um print: a marca
+não aparece no autoplay e o anúncio não se identifica como anúncio.
+
+| Peça | Superfície | Chamada |
+|---|---|---|
+| `nativo-notas` | Notas do iPhone, 23h47 | Se só você resolve, você não tem um time. Tem uma fila. |
+| `nativo-whatsapp` | Conversa com o time, domingo 21h34 | Isso não é dedicação do time — é falta de processo. |
+| `nativo-lockscreen` | Tela bloqueada, 47 notificações | Um escritório saudável não te procura no domingo à noite. |
+| `nativo-busca` | Autocomplete de busca | A resposta não está no Google. Está nos seus números. |
+
+```bash
+python3 formatos.py --peca notas      --out out/nativo-notas.png
+python3 formatos.py --peca whatsapp   --out out/nativo-whatsapp.png
+python3 formatos.py --peca lockscreen --out out/nativo-lockscreen.png
+python3 formatos.py --peca busca      --out out/nativo-busca.png
+```
+
+## Regras de honestidade destas peças
+
+São **dramatizações** — a conversa e a nota são roteiro, não registro real. Isso é
+recurso publicitário legítimo, desde que:
+
+- nenhum nome de cliente, colaborador ou mentor real apareça (o "Marcelo · Fiscal"
+  é personagem)
+- nada seja apresentado como depoimento ou print vazado de conversa real
+- todo dado citado seja verdadeiro da oferta
+- rodem **só como anúncio pago**, onde o selo "Patrocinado" faz a divulgação —
+  nunca postadas organicamente como se fossem print real
+- sejam marcadas como conteúdo gerado por IA / dramatização na subida
+
+## O que testar
+
+O ângulo destas quatro é o mesmo dos conceitos 1-6 (dor operacional do dono), então
+o teste limpo é **formato contra formato**, não ângulo contra ângulo: sobem contra
+o conceito 4, que hoje carrega o ângulo de menor CPL da conta. Se o nativo ganhar,
+a hipótese confirmada é a do formato, e aí vale portar os outros ângulos para ele.
+
+---
+
 ## Prompt negativo (todos os conceitos)
 
 ```
@@ -467,6 +522,28 @@ Limites: texto principal 125 caracteres visíveis · título 40 · descrição 3
 - Principal: `Você contratou mais gente e os problemas cresceram junto. Estruturar não é o mesmo que contratar.` (97)
 - Título: `Cresceu o time, e a margem?` (27)
 - Descrição: `Mais de 10 colaboradores` (24)
+
+### Formatos nativos
+
+**nativo-notas**
+- Principal: `A lista que você escreve às 23h nunca é sobre técnica. É sempre sobre o que só passa por você.` (94)
+- Título: `Só você resolve?` (16)
+- Descrição: `Diagnóstico gratuito` (20)
+
+**nativo-whatsapp**
+- Principal: `Se o seu time te procura no domingo, o problema não é o time. É a falta de processo.` (84)
+- Título: `Domingo, 21h34` (14)
+- Descrição: `Donos de contabilidade` (22)
+
+**nativo-lockscreen**
+- Principal: `47 notificações do escritório às 23h47. Um negócio estruturado não faz isso com o dono.` (87)
+- Título: `Seu escritório dorme?` (21)
+- Descrição: `Diagnóstico gratuito` (20)
+
+**nativo-busca**
+- Principal: `Você já pesquisou como sair da operação. O Google não conhece os seus números — a gente olha eles.` (98)
+- Título: `Já pesquisou isso?` (18)
+- Descrição: `Donos de contabilidade` (22)
 
 CTA do Meta: `Cadastre-se` ou `Saiba mais` · destino `https://form.respondi.app/gvz4UKQr`
 
