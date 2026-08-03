@@ -103,14 +103,18 @@ module.exports = async function handler(req, res) {
       h({ alignItems: 'center' }, [
         t({
           fontSize: 13, fontWeight: 700, color: '#fff', borderRadius: 5,
-          padding: '3px 0', width: 56, justifyContent: 'center', marginRight: 12,
-          background: a.formato === 'FORMS' ? AZUL : LARANJA,
-        }, a.formato === 'FORMS' ? 'FORM' : 'LP'),
-        t({ flex: 1, fontSize: 19, fontWeight: 600, color: TINTA }, nomeCurto(a.nome).slice(0, 40)),
+          padding: '3px 0', width: 66, justifyContent: 'center', marginRight: 12,
+          background: a.formato === 'MISTO' ? ROXO : a.formato === 'FORMS' ? AZUL : LARANJA,
+        }, a.formato === 'MISTO' ? 'FORM+LP' : a.formato === 'FORMS' ? 'FORM' : 'LP'),
+        t({ flex: 1, fontSize: 19, fontWeight: 600, color: TINTA }, nomeCurto(a.nome).slice(0, 38)),
         t({ fontSize: 19, fontWeight: 700, color: VERDE, width: 230, justifyContent: 'flex-end' },
           `${int(a.leads)} leads · ${brl(a.cpl)}`),
       ]),
-      a.link ? t({ fontSize: 14, color: AZUL, marginTop: 4, marginLeft: 68 }, a.link) : null,
+      // Público e nº de cópias somadas: sem isso a linha consolidada esconde
+      // que o mesmo criativo rodou em conjuntos diferentes.
+      (a.publico || a.copias > 1) ? t({ fontSize: 14, color: CINZA, marginTop: 3, marginLeft: 78 },
+        [a.publico, a.copias > 1 ? `${a.copias} cópias somadas` : null].filter(Boolean).join(' · ')) : null,
+      a.link ? t({ fontSize: 14, color: AZUL, marginTop: 2, marginLeft: 78 }, a.link) : null,
     ]));
 
     const imagem = h({
@@ -154,7 +158,8 @@ module.exports = async function handler(req, res) {
 
     // Altura somada por linha: anúncio com link ocupa mais que um sem link,
     // e assumir o mesmo para todos cortava a última linha.
-    const alturaAnuncios = anuncios.reduce((s, a) => s + (a.link ? 70 : 50), 0);
+    const alturaAnuncios = anuncios.reduce(
+      (s, a) => s + 48 + (a.publico || a.copias > 1 ? 20 : 0) + (a.link ? 20 : 0), 0);
     const altura = 345
       + (temLeads ? 215 : 0)
       + (anuncios.length ? 80 + alturaAnuncios : 0);
