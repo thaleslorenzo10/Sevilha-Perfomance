@@ -29,13 +29,13 @@ PECAS = {
     "conceito-2": {
         "headline": ["UMA CONVERSA", "OLHANDO OS", "SEUS NÚMEROS.", "OU MAIS UM ANO", "NO ACHISMO."],
         "accent_lines": [3, 4],   # índices das linhas em ACCENT
-        "subhead": "Diagnóstico gratuito com quem já acompanhou +450 contabilidades. Sem venda no final.",
+        "subhead": "Diagnóstico gratuito do seu escritório, com quem já acompanhou +450 contabilidades.",
         "cta": "AGENDAR DIAGNÓSTICO",
     },
     "conceito-1": {
         "headline": ["SEU ESCRITÓRIO", "NÃO PARA.", "QUEM NÃO PARA", "É VOCÊ."],
         "accent_lines": [2, 3],
-        "subhead": "Diagnóstico gratuito com quem já acompanhou +450 contabilidades. Sem venda no final.",
+        "subhead": "Diagnóstico gratuito do seu escritório, com quem já acompanhou +450 contabilidades.",
         "cta": "AGENDAR DIAGNÓSTICO",
     },
 }

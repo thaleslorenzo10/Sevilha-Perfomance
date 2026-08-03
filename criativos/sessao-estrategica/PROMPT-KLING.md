@@ -4,7 +4,7 @@ Anúncios da Sessão Estratégica da Sevilha Performance, no sistema visual das
 referências enviadas, com a paleta da marca.
 
 - **Público:** donos de contabilidade com até 10 colaboradores
-- **Oferta:** sessão de diagnóstico **gratuita**, sem pitch de venda no final
+- **Oferta:** sessão de diagnóstico **gratuita**
 - **Destino:** https://form.respondi.app/gvz4UKQr
 - **Formato:** 4:5 (feed) + 9:16 (Reels/Stories)
 - **Peças prontas:** `out/conceito-2-4x5.png` · `out/conceito-2-9x16.png`
@@ -21,7 +21,7 @@ Marcadas como `[SLOT]` nos prompts. Não inventar — cada uma vira claim no cri
 | `[PERGUNTAS_FORM]` | O que o formulário pergunta — define a promessa da peça |
 
 Fatos já confirmados e usáveis: `+450 contabilidades atendidas`, `35+ anos de mercado`,
-`3 mentores`, `até 10 colaboradores`, `gratuita`, `sem venda no final`.
+`3 mentores`, `até 10 colaboradores`, `gratuita`.
 
 ---
 
@@ -89,7 +89,7 @@ NÃO PARA.
 QUEM NÃO PARA
 É VOCÊ.            ← esta linha em ACCENT
 ```
-**Subhead:** `[DURACAO] com quem já acompanhou +450 contabilidades. Diagnóstico do seu escritório — sem venda no final.`
+**Subhead:** `[DURACAO] com quem já acompanhou +450 contabilidades. Diagnóstico do seu escritório contábil.`
 **CTA:** `AGENDAR DIAGNÓSTICO`
 
 ### Etapa 0 — plate a partir da foto do Vicente
@@ -140,7 +140,7 @@ SEUS NÚMEROS.
 OU MAIS UM ANO
 NO ACHISMO.       ← estas duas linhas em ACCENT
 ```
-**Subhead:** `Diagnóstico gratuito com quem já acompanhou +450 contabilidades. Sem venda no final.`
+**Subhead:** `Diagnóstico gratuito do seu escritório, com quem já acompanhou +450 contabilidades.`
 **CTA:** `AGENDAR DIAGNÓSTICO`
 
 Com a duração confirmada, a primeira linha vira `30 MINUTOS` / `45 MINUTOS` — é o
@@ -180,7 +180,7 @@ em tempo, não em preço — a sessão é gratuita e sem venda, então não há 
 
 **Banner topo:** `EXCLUSIVO PARA DONOS DE CONTABILIDADE` (faixa ACCENT, texto branco)
 **Headline:** `O RAIO-X QUE VOCÊ NUNCA FEZ NO PRÓPRIO ESCRITÓRIO`
-**Subhead:** `[ENTREGAVEL] em [DURACAO]. Sem custo, sem venda — só onde a sua margem está vazando.`
+**Subhead:** `[ENTREGAVEL] em [DURACAO]. Onde a sua margem está vazando.`
 **CTA:** `AGENDAR AGORA`
 
 ### Etapa 0 — plate
@@ -276,14 +276,14 @@ Limites: texto principal 125 caracteres visíveis · título 40 · descrição 3
 - Descrição: `Donos de contabilidade` (22)
 
 **Conceito 2**
-- Principal: `Uma sessão olhando seus números. Ou mais um ano decidindo no achismo. Sem custo e sem venda no final.` (101)
+- Principal: `Uma sessão olhando seus números. Ou mais um ano decidindo no achismo. O diagnóstico é gratuito.` (95)
 - Título: `Ou mais um ano no achismo` (25)
 - Descrição: `Agende sua sessão` (17)
 
 **Conceito 3**
 - Principal: `Onde sua margem está vazando? O diagnóstico é gratuito e feito por quem já viu +450 contabilidades.` (99)
 - Título: `+450 contabilidades atendidas` (29)
-- Descrição: `Sem custo, sem venda` (20)
+- Descrição: `Diagnóstico gratuito` (20)
 
 CTA do Meta: `Cadastre-se` ou `Saiba mais` · destino `https://form.respondi.app/gvz4UKQr`
 
