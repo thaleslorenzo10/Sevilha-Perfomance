@@ -289,11 +289,11 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 
   <div class="kpi-groups">
     <div class="kpi-group">
-      <div class="kpi-group-label">Meta Ads — conta inteira</div>
+      <div class="kpi-group-label">Meta Ads — investimento e entrega</div>
       <div class="kpi-card blue"><div class="kpi-label">Investido Total</div><div class="kpi-value skeleton kpi-skel" id="g-spend"></div><div class="kpi-sub" id="g-spend-sub"></div></div>
-      <div class="kpi-card"><div class="kpi-label">Leads Meta</div><div class="kpi-value skeleton kpi-skel" id="g-leads"></div><div class="kpi-sub" id="g-leads-sub"></div></div>
-      <div class="kpi-card orange"><div class="kpi-label">CPL Médio</div><div class="kpi-value skeleton kpi-skel" id="g-cpl"></div><div class="kpi-sub" id="g-cpl-sub"></div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Investido em captação</div><div class="kpi-value skeleton kpi-skel" id="g-spend-capt"></div><div class="kpi-sub" id="g-spend-capt-sub"></div></div>
       <div class="kpi-card"><div class="kpi-label">CTR</div><div class="kpi-value skeleton kpi-skel" id="g-ctr"></div><div class="kpi-sub" id="g-ctr-sub"></div></div>
+      <div class="kpi-card orange"><div class="kpi-label">CPM</div><div class="kpi-value skeleton kpi-skel" id="g-cpm"></div><div class="kpi-sub" id="g-cpm-sub"></div></div>
     </div>
 
     <div class="kpi-group kpi-group-real">
@@ -349,8 +349,8 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       <table>
         <thead><tr>
           <th>Campanha</th><th>Grupo</th><th>Formato</th>
-          <th class="num">Investido</th><th class="num">Leads</th>
-          <th class="num">CPL</th><th class="num">CTR</th><th class="num">CPM</th>
+          <th class="num">Investido</th><th class="num">Leads (Meta)</th>
+          <th class="num">CPL (Meta)</th><th class="num">CTR</th><th class="num">CPM</th>
         </tr></thead>
         <tbody id="tblCampanhas"><tr><td colspan="8" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
       </table>
@@ -508,8 +508,8 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
     <div class="table-wrap">
       <table>
         <thead><tr>
-          <th>Campanha</th><th>Formato</th><th class="num">Investido</th><th class="num">Leads</th>
-          <th class="num">CPL</th><th class="num">CTR</th><th class="num">CPM</th><th>Temperatura</th>
+          <th>Campanha</th><th>Formato</th><th class="num">Investido</th><th class="num">Leads (Meta)</th>
+          <th class="num">CPL (Meta)</th><th class="num">CTR</th><th class="num">CPM</th><th>Temperatura</th>
         </tr></thead>
         <tbody id="tblSe"><tr><td colspan="8" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
       </table>
@@ -546,8 +546,8 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
     <div class="table-wrap">
       <table>
         <thead><tr>
-          <th>Campanha</th><th>Formato</th><th class="num">Investido</th><th class="num">Leads</th>
-          <th class="num">CPL</th><th class="num">CTR</th><th class="num">CPM</th><th>Temperatura</th>
+          <th>Campanha</th><th>Formato</th><th class="num">Investido</th><th class="num">Leads (Meta)</th>
+          <th class="num">CPL (Meta)</th><th class="num">CTR</th><th class="num">CPM</th><th>Temperatura</th>
         </tr></thead>
         <tbody id="tblCp"><tr><td colspan="8" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
       </table>
@@ -1037,15 +1037,23 @@ function render({ meta, planilha, rd }) {
   else { fmtB.classList.remove('show'); }
 
   /* ── Visão Geral ── */
+  // Este grupo fala só de mídia: quanto foi investido e como foi entregue.
+  // O volume de leads e o CPL vivem no grupo da planilha, com o número real.
+  // O contador de leads do Meta saiu daqui: ele é atribuição modelada e vinha
+  // ~2,4x acima do que de fato entra na planilha, o que contradizia o card de
+  // baixo na mesma tela.
+  const spendCaptacao = se.spend + cp.spend;
+
   setKPI('g-spend', fmtR(conta.spend),
-    outros.spend > 0 ? `${fmtR(outros.spend)} fora de [CP]/[SE]` : 'Todas as campanhas da conta');
-  setKPI('g-leads', fmtN(conta.leads), 'Atribuídos pelo Meta');
-  setKPI('g-cpl', orDash(conta.cpl, fmtR), 'Investido ÷ leads do Meta');
+    outros.spend > 0 ? `${fmtR(outros.spend)} em campanhas de tráfego` : 'Todas as campanhas da conta');
+  setKPI('g-spend-capt', fmtR(spendCaptacao),
+    conta.spend > 0 ? `${fmtP((spendCaptacao / conta.spend) * 100)} do total · base do CPL real` : 'Campanhas [CP] e [SE]');
   setKPI('g-ctr', orDash(conta.ctr, fmtP), `${fmtN(conta.clicks)} cliques`);
+  setKPI('g-cpm', orDash(conta.cpm, fmtR), `${fmtN(conta.impressions)} impressões`);
 
   const coberturaTotal = planilha && (cobreOPeriodo(planilha.cobertura?.FORMS) || cobreOPeriodo(planilha.cobertura?.LP));
   const totalReal = coberturaTotal ? planilha.total : null;
-  const cplReal = (totalReal && totalReal > 0) ? (se.spend + cp.spend) / totalReal : null;
+  const cplReal = (totalReal && totalReal > 0) ? spendCaptacao / totalReal : null;
 
   setKPI('g-real', totalReal === null ? '—' : fmtN(totalReal),
     totalReal === null ? 'Planilha sem dados neste período' : 'Registros na planilha');
@@ -1055,9 +1063,7 @@ function render({ meta, planilha, rd }) {
   setKPI('g-real-lp',    totalReal === null ? '—' : fmtN(planilha.por_formato.LP));
 
   // ── Porte do escritório ──
-  // Base de custo: investimento de captação ([CP]+[SE]), o mesmo do CPL real.
-  // As campanhas de tráfego ([DISTRIBUIÇÃO]) ficam de fora — não captam lead.
-  const spendCaptacao = se.spend + cp.spend;
+  // Base de custo: o mesmo investimento em captação usado no CPL real.
   const porte = (totalReal !== null && planilha?.porte) ? planilha.porte : null;
 
   const setPorte = (idQtd, idCpl, qtd) => {
