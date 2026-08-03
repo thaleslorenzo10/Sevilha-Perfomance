@@ -106,5 +106,11 @@
         { "key": "Referrer-Policy",           "value": "strict-origin-when-cross-origin" }
       ]
     }
-  ]
+  ],
+  "functions": {
+    "api/compor.py": {
+      "includeFiles": "criativos/sessao-estrategica/**",
+      "maxDuration": 30
+    }
+  }
 }
