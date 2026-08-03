@@ -38,6 +38,24 @@ PECAS = {
         "subhead": "Diagnóstico gratuito do seu escritório, com quem já acompanhou +450 contabilidades.",
         "cta": "AGENDAR DIAGNÓSTICO",
     },
+    "conceito-4": {
+        "headline": ["VOCÊ NÃO TEM", "UM ESCRITÓRIO.", "VOCÊ TEM", "UM PLANTÃO."],
+        "accent_lines": [2, 3],
+        "subhead": "Diagnóstico gratuito do seu escritório, com quem já acompanhou +450 contabilidades.",
+        "cta": "AGENDAR DIAGNÓSTICO",
+    },
+    "conceito-5": {
+        "headline": ["TIRE UMA SEMANA", "DE FÉRIAS.", "VEJA O QUE", "PARA."],
+        "accent_lines": [2, 3],
+        "subhead": "Diagnóstico gratuito do seu escritório, com quem já acompanhou +450 contabilidades.",
+        "cta": "AGENDAR DIAGNÓSTICO",
+    },
+    "conceito-6": {
+        "headline": ["O FATURAMENTO", "SUBIU.", "A MARGEM NÃO", "SAIU DO LUGAR."],
+        "accent_lines": [2, 3],
+        "subhead": "Diagnóstico gratuito do seu escritório, com quem já acompanhou +450 contabilidades.",
+        "cta": "AGENDAR DIAGNÓSTICO",
+    },
 }
 
 
@@ -124,9 +142,18 @@ def botao(texto, fonte, padding=(52, 30), raio=14):
     return grad
 
 
-def marca(draw, x, y, fontes):
-    """Assinatura da marca em texto — o logo.png é navy sobre branco e não
+def marca(canvas, draw, x, y, fontes, logo=None, altura=None):
+    """Aplica o logo. Com --logo aponta para o PNG oficial (marca em gradiente +
+    wordmark branco, que já nasce pronto para fundo escuro). Sem ele, cai numa
+    assinatura em texto — o logo.png do repositório é navy sobre branco e não
     sobrevive ao fundo escuro sem retrabalho de vetor."""
+    if logo:
+        marca_img = Image.open(logo).convert("RGBA")
+        escala = altura / marca_img.height
+        marca_img = marca_img.resize(
+            (round(marca_img.width * escala), altura), Image.LANCZOS)
+        canvas.paste(marca_img, (x, y), marca_img)
+        return
     f = ImageFont.truetype(fontes["poppins_bold"], 26)
     draw.text((x, y), "SEVILHA", font=f, fill=INK)
     largura = f.getbbox("SEVILHA")[2]
@@ -135,7 +162,7 @@ def marca(draw, x, y, fontes):
 
 
 def compor(plate_path, peca, formato, dir_fontes, out, zoom=1.0, anchor_x=0.5,
-           coluna_frac=0.56, headline_y=0.215, cta_y=None):
+           coluna_frac=0.56, headline_y=0.215, cta_y=None, logo=None, leading=1.0):
     size = FORMATOS[formato]
     W, H = size
     margem = round(W * 0.068)
@@ -154,12 +181,15 @@ def compor(plate_path, peca, formato, dir_fontes, out, zoom=1.0, anchor_x=0.5,
     canvas.paste(scrim(size), (0, 0), scrim(size))
     draw = ImageDraw.Draw(canvas)
 
-    marca(draw, margem, round(H * 0.048), fontes)
+    marca(canvas, draw, margem, round(H * 0.048), fontes, logo, round(H * 0.040))
 
     # headline — Anton uppercase, leading apertado, uma frase-chave em ACCENT
     linhas = peca["headline"]
     f_head, corpo = autofit(linhas, fontes["anton"], coluna, round(H * 0.082))
-    avanco = round(corpo * 0.94)
+    # As referências usam leading ~0.85, mas elas são em inglês. Em PT-BR os
+    # acentos maiúsculos (Ê, Ã, Ó) sobem acima da caixa e batem na linha de
+    # cima — 1.0 é o mais apertado que ainda respira.
+    avanco = round(corpo * leading)
     y = round(H * headline_y)
     for i, linha in enumerate(linhas):
         cor = ACCENT if i in peca["accent_lines"] else INK
@@ -202,6 +232,8 @@ if __name__ == "__main__":
     p.add_argument("--coluna", type=float, default=0.56, help="largura da coluna de texto (fração)")
     p.add_argument("--headline-y", type=float, default=0.215, help="topo da headline (fração da altura)")
     p.add_argument("--cta-y", type=float, default=None, help="topo do CTA; padrão ancora na base")
+    p.add_argument("--logo", default=None, help="PNG do logo oficial; sem ele usa assinatura em texto")
+    p.add_argument("--leading", type=float, default=1.0, help="entrelinha da headline (múltiplo do corpo)")
     a = p.parse_args()
     compor(a.plate, PECAS[a.peca], a.formato, a.fontes, a.out, a.zoom, a.anchor_x,
-           a.coluna, a.headline_y, a.cta_y)
+           a.coluna, a.headline_y, a.cta_y, a.logo, a.leading)

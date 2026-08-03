@@ -7,7 +7,7 @@ referências enviadas, com a paleta da marca.
 - **Oferta:** sessão de diagnóstico **gratuita**
 - **Destino:** https://form.respondi.app/gvz4UKQr
 - **Formato:** 4:5 (feed) + 9:16 (Reels/Stories)
-- **Peças prontas:** `out/conceito-2-4x5.png` · `out/conceito-2-9x16.png`
+- **Peças prontas:** conceitos 2, 4, 5 e 6 em `out/` (4:5; o conceito 2 também em 9:16)
 
 ## Lacunas a preencher antes de gerar
 
@@ -213,6 +213,74 @@ change, no morphing, no added text.
 
 ---
 
+## Conceito 4 — Pilha de papel · "plantão"
+
+O ângulo de menor CPL da conta (`005 – Está consumido pela operação`), traduzido em
+objeto. Sem pessoa, então não depende de foto de ninguém.
+
+**Headline:**
+```
+VOCÊ NÃO TEM
+UM ESCRITÓRIO.
+VOCÊ TEM
+UM PLANTÃO.       ← estas duas linhas em ACCENT
+```
+
+Plate em `prompts/plates/conceito-4-pilha.txt` · peça em `out/conceito-4-4x5.png`
+
+```bash
+python3 compor.py --plate plates/conceito-4-pilha-3x4.png --peca conceito-4 \
+  --formato 4:5 --coluna 0.58 --out out/conceito-4-4x5.png
+```
+
+---
+
+## Conceito 5 — Cadeira vazia · "o que para sem você"
+
+Ancorado em `Quando você tira um dia de folga, algo quebra ou para` (landing page).
+
+**Headline:**
+```
+TIRE UMA SEMANA
+DE FÉRIAS.
+VEJA O QUE
+PARA.             ← estas duas linhas em ACCENT
+```
+
+Plate em `prompts/plates/conceito-5-cadeira.txt` · peça em `out/conceito-5-4x5.png`
+
+```bash
+python3 compor.py --plate plates/conceito-5-cadeira-3x4.png --peca conceito-5 \
+  --formato 4:5 --zoom 1.1 --anchor-x 0.0 --coluna 0.54 --out out/conceito-5-4x5.png
+```
+
+---
+
+## Conceito 6 — Funil · margem que vaza
+
+Ancorado em `O faturamento cresce, mas a margem não acompanha` (landing page).
+
+A primeira tentativa foi "pilha alta de notas ao lado de pilha baixa de moedas" — não
+funcionou: o modelo devolveu pilhas de altura parecida e o contraste não lia. O funil
+transbordando que pinga uma moeda só resolve, porque a desproporção é do próprio objeto.
+
+**Headline:**
+```
+O FATURAMENTO
+SUBIU.
+A MARGEM NÃO
+SAIU DO LUGAR.    ← estas duas linhas em ACCENT
+```
+
+Plate em `prompts/plates/conceito-6-margem.txt` · peça em `out/conceito-6-4x5.png`
+
+```bash
+python3 compor.py --plate plates/conceito-6-margem-3x4.png --peca conceito-6 \
+  --formato 4:5 --zoom 1.15 --anchor-x 0.0 --coluna 0.58 --out out/conceito-6-4x5.png
+```
+
+---
+
 ## Prompt negativo (todos os conceitos)
 
 ```
@@ -285,6 +353,21 @@ Limites: texto principal 125 caracteres visíveis · título 40 · descrição 3
 - Título: `+450 contabilidades atendidas` (29)
 - Descrição: `Diagnóstico gratuito` (20)
 
+**Conceito 4**
+- Principal: `Você chega cedo, sai tarde e ainda leva trabalho pra casa. Isso não é dedicação, é falta de gestão.` (99)
+- Título: `Diagnóstico gratuito` (20)
+- Descrição: `Donos de contabilidade` (22)
+
+**Conceito 5**
+- Principal: `Tire um dia de folga e algo quebra. Um escritório que depende de você não é um ativo, é um emprego.` (99)
+- Título: `O que para sem você?` (20)
+- Descrição: `Agende seu diagnóstico` (22)
+
+**Conceito 6**
+- Principal: `Faturamento subindo com margem parada é vazamento, não preço. Descubra onde está o seu.` (87)
+- Título: `Margem parada?` (14)
+- Descrição: `Diagnóstico gratuito` (20)
+
 CTA do Meta: `Cadastre-se` ou `Saiba mais` · destino `https://form.respondi.app/gvz4UKQr`
 
 ---
@@ -295,6 +378,7 @@ CTA do Meta: `Cadastre-se` ou `Saiba mais` · destino `https://form.respondi.app
 - [ ] Nenhuma mão fotorrealista entrando em quadro.
 - [ ] Plate saiu **sem nenhum texto** antes do overlay.
 - [ ] C1: o rosto do Vicente continua o rosto do Vicente nos 5 segundos inteiros.
+- [ ] Nenhum texto embaralhado sobrou no plate (o modelo insiste em escrever em papel e tela — foi o que reprovou a primeira versão do conceito 6).
 - [ ] Headline legível em velocidade normal, som desligado, na tela do celular.
 - [ ] Logo Sevilha visível no primeiro frame (autoplay sem som).
 - [ ] Rótulo de conteúdo gerado por IA marcado na subida (exigência de Meta e TikTok).
