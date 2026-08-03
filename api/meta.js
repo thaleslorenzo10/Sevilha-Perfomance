@@ -19,7 +19,7 @@ const {
   classifyCampaign,
   fetchCampaignInsights,
   fetchDailyInsights,
-} = require('./_lib/meta');
+} = require('../lib/meta');
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 

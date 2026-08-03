@@ -15,7 +15,7 @@
  * continua funcionando se alguém renomear ou adicionar uma aba.
  */
 
-const { readAllTabs } = require('./_lib/sheets');
+const { readAllTabs } = require('../lib/sheets');
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
