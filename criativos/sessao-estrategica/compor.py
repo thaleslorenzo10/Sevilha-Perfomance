@@ -80,6 +80,56 @@ PECAS = {
 }
 
 
+# ── matéria-prima para o gerador de conceitos ───────────────────────────────
+# Servida em GET /api/compor. O n8n entrega isto ao LLM toda semana, junto com
+# o histórico do que já foi gerado, e recebe de volta um conceito novo.
+
+FATOS = [
+    "A oferta é a Sessão Estratégica: diagnóstico individual e gratuito do escritório contábil.",
+    "Quem atende já acompanhou mais de 450 contabilidades ao longo de 35+ anos.",
+    "São 3 mentores. O destino é o formulário em form.respondi.app/gvz4UKQr.",
+    "Não há venda no final e não existe preço já praticado — nada de âncora 'de/por'.",
+    "Dois segmentos: escritórios com até 10 colaboradores e com mais de 10.",
+    "Na conta, o que segura CPL abaixo de R$ 15 é nomear a dor operacional do dono;",
+    "promessa genérica de transformação estoura o CPL para R$ 52-77.",
+]
+
+# Os nove primeiros plates repetiam a mesma fórmula — objeto à direita, spotlight
+# de cima, dois terços escuros à esquerda — trocando só o substantivo. Daí a
+# mesmice. Estes eixos existem para o gerador combinar em vez de repetir.
+EIXOS = {
+    "enquadramento": [
+        "macro extremo, o objeto preenchendo o quadro inteiro",
+        "plano aberto, o objeto pequeno perdido num ambiente grande",
+        "visto de cima, direto para baixo sobre a superfície",
+        "simetria central, objeto exatamente no meio",
+        "objeto encostado na borda inferior, muito espaço vazio acima",
+        "primeiro plano desfocado emoldurando o objeto ao fundo",
+    ],
+    "luz": [
+        "contraluz forte, o objeto quase em silhueta",
+        "luz de janela lateral, suave e realista",
+        "névoa densa atravessada por um feixe",
+        "luz dura de meio-dia, sombras curtas e recortadas",
+        "penumbra, quase nada iluminado além de um detalhe",
+        "luz fria de monitor batendo de baixo",
+    ],
+    "meio": [
+        "fotografia documental de escritório real",
+        "natureza-morta em fundo claro, quase de catálogo",
+        "still life escuro e cinematográfico",
+        "macro texturizado, foco milimétrico",
+        "cena com pessoa, sem rosto identificável",
+    ],
+}
+
+LAYOUTS = {
+    "compor": "headline condensada à esquerda, objeto à direita — 4:5 ou 9:16",
+    "oferta": "foto em quadro cheio, tarja de público e valor em destaque — 9:16",
+    "antes-depois": "duas colunas comparando, sem foto — 4:5",
+    "nativo": "UI de app recriada (notas, whatsapp, lockscreen, busca) — 4:5",
+}
+
 # Parâmetros de recorte descobertos peça a peça. Vivem aqui para o n8n não
 # precisar conhecê-los — a automação pede a peça, não a geometria.
 PRESETS = {

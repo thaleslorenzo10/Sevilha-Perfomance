@@ -609,3 +609,63 @@ python3 compor.py --plate plates/conceito-2-ampulheta-9x16.png --peca conceito-2
 O `--zoom` com `--anchor-x 0.0` amplia o plate e descarta o excedente pela direita,
 empurrando o objeto para fora da coluna de texto. Sem isso a headline atravessa a
 ampulheta — foi exatamente o que aconteceu na primeira composição.
+
+---
+
+# Conceitos 10 e 11 — referências D e E
+
+Duas referências novas, com estruturas que os conceitos anteriores não cobriam:
+âncora de valor sobre foto em quadro cheio, e comparação antes/depois em colunas.
+Ambas geradas por `oferta.py`.
+
+## Conceito 10 — Oferta sobre foto (ref E)
+
+9:16, foto em quadro cheio, tarja identificando o público, corpo curto e o valor
+em destaque. É o formato que a ref E usa para vender sessão estratégica.
+
+**O que eu não copiei: a âncora de preço.** A referência traz `DE R$ 997 POR
+0,00`. A Sessão Estratégica nunca custou R$ 997 — anunciar um "de" sobre valor
+que nunca foi praticado é propaganda enganosa, o Meta reprova e o CDC trata como
+publicidade enganosa. A peça mostra o `R$ 0,00` verdadeiro sem o riscado.
+
+O campo `de` já existe em `PECAS`, valendo `None`. **Se a sessão tiver preço real
+quando vendida avulsa, basta preencher** — o riscado em vermelho aparece sozinho.
+
+Plate em `prompts/plates/conceito-10-mentor-916.txt` (mesma ressalva do conceito
+1: a pessoa é sintética e não pode ser nomeada).
+
+```bash
+python3 oferta.py --peca oferta --plate plates/conceito-10-mentor-9x16.png \
+  --out out/conceito-10-9x16.png
+```
+
+## Conceito 11 — Antes & depois (ref D)
+
+4:5, duas colunas, marcadores vermelhos contra verdes. **Não passa pelo Kling** —
+é tipografia pura.
+
+**O que eu não copiei: os prints de painel.** A ref D compara screenshots reais
+do gerenciador com valores de campanha. Não existe esse dado para a Sessão
+Estratégica, e fabricar antes/depois de resultado de cliente seria inventar
+prova. A comparação usa as frases que a landing page já publica — a coluna
+ANTES sai de "Quantas dessas situações você vive hoje?", a coluna DEPOIS sai dos
+resultados prometidos em "O método".
+
+Se um dia houver caso real de cliente com número auditável e autorização de uso,
+o layout aceita: é trocar as listas em `PECAS`.
+
+```bash
+python3 oferta.py --peca antes-depois --out out/conceito-11-4x5.png
+```
+
+## Copy do Meta
+
+**Conceito 10**
+- Principal: `Diagnóstico individual do seu escritório contábil. O que travou em 2025 e o que muda em 2026.` (93)
+- Título: `Sessão Estratégica` (18)
+- Descrição: `Sem custo` (9)
+
+**Conceito 11**
+- Principal: `Chega cedo, sai tarde, delega e a tarefa volta. Do outro lado dessa lista tem um escritório que anda.` (101)
+- Título: `Antes e depois da gestão` (24)
+- Descrição: `Diagnóstico gratuito` (20)
