@@ -1,4 +1,9 @@
 .vercel
 .env*.local
+
+# dependências
+node_modules/
+
+# Python
 __pycache__/
 *.pyc

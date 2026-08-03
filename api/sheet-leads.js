@@ -201,6 +201,9 @@ function extractLP(rows, header) {
     origem:   columnIndex(head, off, ['utm source', 'utm_source']),
     colab:    columnIndex(head, off, ['numero de colaboradores', 'quantos colaboradores']),
     cargo:    columnIndex(head, off, ['cargo que ocupa', 'qual a sua posicao', 'qualificacao']),
+    // A LP grava o nome do anúncio no utm_content ({{ad.name}}), o que
+    // permite ranquear criativo por lead real também nesse formato.
+    anuncio:  columnIndex(head, off, ['utm content', 'utm_content']),
   };
 
   const out = [];
@@ -229,7 +232,7 @@ function extractLP(rows, header) {
       formulario: 'Formulário da Landing Page',
       campanha:   campanha || '[SE] [LEAD]',
       adset:      '',
-      anuncio:    '',
+      anuncio:    String(row[idx.anuncio] ?? '').trim(),
       plataforma: String(row[idx.origem] ?? '').trim(),
       colaboradores: String(row[idx.colab] ?? '').trim(),
       cargo:      String(row[idx.cargo] ?? '').trim(),
@@ -331,23 +334,12 @@ function coverage(items) {
   return { total: items.length, primeiro: datas[0], ultimo: datas[datas.length - 1] };
 }
 
-module.exports = async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Cache-Control', 's-maxage=120, stale-while-revalidate=300');
-
-  if (req.method === 'OPTIONS') return res.status(204).end();
-  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
-
-  const params = new URL(req.url, 'http://localhost').searchParams;
-  const since = params.get('since');
-  const until = params.get('until');
-
-  if (!DATE_RE.test(since || '') || !DATE_RE.test(until || '')) {
-    return res.status(400).json({ error: 'Informe since e until no formato YYYY-MM-DD' });
-  }
-
-  try {
+/**
+ * Monta os agregados da planilha para um período. Exportado à parte do handler
+ * para o resumo do WhatsApp usar exatamente os mesmos números do dashboard.
+ */
+async function montarLeads(since, until) {
+  {
     const tabs = await readAllTabs();
 
     const gidLP    = String(process.env.LEADS_SHEET_GID_LP    || '');
@@ -397,7 +389,7 @@ module.exports = async function handler(req, res) {
       INDEFINIDO: itens.filter(l => classificarPorte(l.colaboradores) === PORTE_INDEF).length,
     });
 
-    return res.status(200).json({
+    return {
       periodo: { since, until },
       total: noPeriodo.length,
       por_formato: { FORMS: forms.length, LP: lp.length },
@@ -405,7 +397,19 @@ module.exports = async function handler(req, res) {
       porte_por_formato: { FORMS: contarPorte(forms), LP: contarPorte(lp) },
       por_formulario: toSortedList(countBy(noPeriodo, l => l.formulario), 'formulario'),
       por_campanha:   toSortedList(countBy(noPeriodo, l => l.campanha),   'campanha'),
-      por_anuncio:    toSortedList(countBy(forms,     l => l.anuncio),    'anuncio').slice(0, 20),
+      // Cobre os dois formatos: o export do Meta traz ad_name e a LP traz o
+      // nome no utm_content. Antes só contava FORMS, o que subestimava
+      // qualquer criativo que também rodasse para a landing page.
+      por_anuncio: Object.entries(
+        noPeriodo.reduce((acc, l) => {
+          const nome = (l.anuncio || '').trim();
+          if (!nome) return acc;
+          acc[nome] = acc[nome] || { anuncio: nome, leads: 0, FORMS: 0, LP: 0 };
+          acc[nome].leads++;
+          acc[nome][l.fonte]++;
+          return acc;
+        }, {})
+      ).map(([, v]) => v).sort((a, b) => b.leads - a.leads).slice(0, 25),
       por_dia: Object.values(porDiaMap).sort((a, b) => a.data.localeCompare(b.data)),
       qualificacao: {
         cargo:         countBy(noPeriodo, l => labelCargo(l.cargo)),
@@ -419,10 +423,37 @@ module.exports = async function handler(req, res) {
         LP:    coverage(todos.filter(l => l.fonte === TAB_LP)),
       },
       gerado_em: new Date().toISOString(),
-    });
+    };
+  }
+}
 
+module.exports = async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Cache-Control', 's-maxage=120, stale-while-revalidate=300');
+
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+
+  const params = new URL(req.url, 'http://localhost').searchParams;
+  const since = params.get('since');
+  const until = params.get('until');
+
+  if (!DATE_RE.test(since || '') || !DATE_RE.test(until || '')) {
+    return res.status(400).json({ error: 'Informe since e until no formato YYYY-MM-DD' });
+  }
+
+  try {
+    return res.status(200).json(await montarLeads(since, until));
   } catch (err) {
     console.error('[api/sheet-leads]', err.message);
-    return res.status(502).json({ error: err.message });
+    return res.status(502).json({
+      error: err.message,
+      // Abra estas URLs no navegador: se baixarem o CSV, o problema é só de
+      // acesso sem login; se derem 404, o id ou o gid está errado.
+      ...(err.tentativas ? { urls_tentadas: err.tentativas } : {}),
+    });
   }
 };
+
+module.exports.montarLeads = montarLeads;

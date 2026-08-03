@@ -29,6 +29,10 @@
   --s4:     #f97316;  /* LP     */
   --forms:  #3D5AF1;
   --lp:     #f97316;
+  /* Porte usa cores próprias: azul e laranja já significam formato, e o mesmo
+     par não pode carregar dois significados na mesma tela. */
+  --p-maior: #7c3aed;
+  --p-menor: #0d9488;
 }
 :root[data-theme="dark"] {
   --bg:    #0F111A; --white: #1A1D24; --black: #E8E6F2;
@@ -37,6 +41,7 @@
   --s1:    #4361EE; --s2: #0d9488; --s3: #8257e5; --s4: #d97706;
   --forms: #4361EE; --lp: #d97706;
   --cp:    #8257e5; --se: #0d9488;
+  --p-maior: #8257e5; --p-menor: #0d9488;
 }
 * { box-sizing:border-box; margin:0; padding:0; }
 html { scroll-behavior:smooth; }
@@ -113,6 +118,10 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--black);
 .kpi-card.blue   { border-left-color:var(--accent); }
 .kpi-card.forms  { border-left-color:var(--forms); }
 .kpi-card.lp     { border-left-color:var(--lp); }
+.kpi-card.porte-maior { border-left-color:var(--p-maior); }
+.kpi-card.porte-menor { border-left-color:var(--p-menor); }
+.kpi-group-porte .kpi-group-label { color:var(--p-maior); border-color:var(--p-maior); }
+:root[data-theme="dark"] .kpi-group-porte .kpi-group-label { color:#c4b5fd; border-color:#c4b5fd; }
 .kpi-label { font-size:11px; color:var(--gray); font-weight:700; text-transform:uppercase; letter-spacing:.8px; }
 .kpi-value { font-size:28px; font-weight:800; margin-top:10px; color:var(--black); line-height:1; letter-spacing:-.5px; }
 .kpi-sub { font-size:11px; color:#9ca3af; margin-top:8px; font-weight:500; }
@@ -137,6 +146,9 @@ tbody tr:nth-child(even) { background:rgba(232,230,242,.25); }
 tbody tr:hover { background:rgba(232,230,242,.6); }
 tbody tr:last-child td { border-bottom:none; }
 .num { text-align:right; font-variant-numeric:tabular-nums; }
+/* Linha de fechamento: soma das faixas acima, não mais uma categoria. */
+tbody tr.linha-total td { border-top:2px solid var(--border); background:var(--light); font-weight:700; }
+:root[data-theme="dark"] tbody tr.linha-total td { background:#242835; border-top-color:#2D3748; }
 .swatch { display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:7px; vertical-align:middle; }
 
 /* ── Badge ── */
@@ -277,11 +289,11 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 
   <div class="kpi-groups">
     <div class="kpi-group">
-      <div class="kpi-group-label">Meta Ads — conta inteira</div>
+      <div class="kpi-group-label">Meta Ads — investimento e entrega</div>
       <div class="kpi-card blue"><div class="kpi-label">Investido Total</div><div class="kpi-value skeleton kpi-skel" id="g-spend"></div><div class="kpi-sub" id="g-spend-sub"></div></div>
-      <div class="kpi-card"><div class="kpi-label">Leads Meta</div><div class="kpi-value skeleton kpi-skel" id="g-leads"></div><div class="kpi-sub" id="g-leads-sub"></div></div>
-      <div class="kpi-card orange"><div class="kpi-label">CPL Médio</div><div class="kpi-value skeleton kpi-skel" id="g-cpl"></div><div class="kpi-sub" id="g-cpl-sub"></div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Investido em captação</div><div class="kpi-value skeleton kpi-skel" id="g-spend-capt"></div><div class="kpi-sub" id="g-spend-capt-sub"></div></div>
       <div class="kpi-card"><div class="kpi-label">CTR</div><div class="kpi-value skeleton kpi-skel" id="g-ctr"></div><div class="kpi-sub" id="g-ctr-sub"></div></div>
+      <div class="kpi-card orange"><div class="kpi-label">CPM</div><div class="kpi-value skeleton kpi-skel" id="g-cpm"></div><div class="kpi-sub" id="g-cpm-sub"></div></div>
     </div>
 
     <div class="kpi-group kpi-group-real">
@@ -291,11 +303,43 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       <div class="kpi-card teal"><div class="kpi-label">Formulário instantâneo</div><div class="kpi-value skeleton kpi-skel" id="g-real-forms"></div><div class="kpi-sub">Leads captados dentro do Meta</div></div>
       <div class="kpi-card orange"><div class="kpi-label">Landing Page</div><div class="kpi-value skeleton kpi-skel" id="g-real-lp"></div><div class="kpi-sub">Leads captados no site</div></div>
     </div>
+
+    <div class="kpi-group kpi-group-porte">
+      <div class="kpi-group-label">Porte do escritório <span id="g-porte-nota" style="font-weight:600;text-transform:none;letter-spacing:0;opacity:.75"></span></div>
+      <div class="kpi-card porte-maior"><div class="kpi-label">Leads 10+ colaboradores</div><div class="kpi-value skeleton kpi-skel" id="g-porte-maior"></div><div class="kpi-sub" id="g-porte-maior-sub"></div></div>
+      <div class="kpi-card porte-maior"><div class="kpi-label">Custo por lead 10+</div><div class="kpi-value skeleton kpi-skel" id="g-porte-maior-cpl"></div><div class="kpi-sub" id="g-porte-maior-cpl-sub"></div></div>
+      <div class="kpi-card porte-menor"><div class="kpi-label">Leads menos de 10</div><div class="kpi-value skeleton kpi-skel" id="g-porte-menor"></div><div class="kpi-sub" id="g-porte-menor-sub"></div></div>
+      <div class="kpi-card porte-menor"><div class="kpi-label">Custo por lead &lt; 10</div><div class="kpi-value skeleton kpi-skel" id="g-porte-menor-cpl"></div><div class="kpi-sub" id="g-porte-menor-cpl-sub"></div></div>
+    </div>
   </div>
 
   <div class="section">
-    <div class="section-title">📈 Investimento e leads por dia</div>
-    <div class="section-note">Fonte: Meta Ads. Cada linha é um formato de captação; os leads são os que o Meta atribui à campanha.</div>
+    <div class="section-title">🏢 Porte do escritório por formato de campanha</div>
+    <div class="section-note">
+      As mesmas duas faixas, abertas por formato. O custo por lead é o
+      <strong>investimento do formato dividido pelos leads daquele porte</strong> —
+      as faixas dividem o mesmo investimento, então as colunas de custo não se somam.
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Porte</th>
+          <th class="num">Form. · Leads</th><th class="num">Form. · Custo/lead</th>
+          <th class="num">LP · Leads</th><th class="num">LP · Custo/lead</th>
+          <th class="num">Total · Leads</th><th class="num">Total · Custo/lead</th>
+        </tr></thead>
+        <tbody id="tblPorteGeral"><tr><td colspan="7" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📈 Leads por dia — Meta × planilha</div>
+    <div class="section-note">
+      As duas linhas do Meta são o que ele atribui a cada formato. A linha escura são os
+      <strong>leads que de fato entraram na planilha</strong>. A distância entre elas é conversão
+      modelada pelo Meta — por isso o CPL real é maior que o CPL do Meta.
+    </div>
     <div class="chart-wrap tall"><canvas id="chartGeralDia"></canvas></div>
   </div>
 
@@ -305,8 +349,8 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       <table>
         <thead><tr>
           <th>Campanha</th><th>Grupo</th><th>Formato</th>
-          <th class="num">Investido</th><th class="num">Leads</th>
-          <th class="num">CPL</th><th class="num">CTR</th><th class="num">CPM</th>
+          <th class="num">Investido</th><th class="num">Leads (Meta)</th>
+          <th class="num">CPL (Meta)</th><th class="num">CTR</th><th class="num">CPM</th>
         </tr></thead>
         <tbody id="tblCampanhas"><tr><td colspan="8" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
       </table>
@@ -464,8 +508,8 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
     <div class="table-wrap">
       <table>
         <thead><tr>
-          <th>Campanha</th><th>Formato</th><th class="num">Investido</th><th class="num">Leads</th>
-          <th class="num">CPL</th><th class="num">CTR</th><th class="num">CPM</th><th>Temperatura</th>
+          <th>Campanha</th><th>Formato</th><th class="num">Investido</th><th class="num">Leads (Meta)</th>
+          <th class="num">CPL (Meta)</th><th class="num">CTR</th><th class="num">CPM</th><th>Temperatura</th>
         </tr></thead>
         <tbody id="tblSe"><tr><td colspan="8" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
       </table>
@@ -502,8 +546,8 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
     <div class="table-wrap">
       <table>
         <thead><tr>
-          <th>Campanha</th><th>Formato</th><th class="num">Investido</th><th class="num">Leads</th>
-          <th class="num">CPL</th><th class="num">CTR</th><th class="num">CPM</th><th>Temperatura</th>
+          <th>Campanha</th><th>Formato</th><th class="num">Investido</th><th class="num">Leads (Meta)</th>
+          <th class="num">CPL (Meta)</th><th class="num">CTR</th><th class="num">CPM</th><th>Temperatura</th>
         </tr></thead>
         <tbody id="tblCp"><tr><td colspan="8" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
       </table>
@@ -559,13 +603,25 @@ function switchTab(t) {
 }
 
 /* ── Datas ──────────────────────────────────────────────────────────── */
-function today() { return new Date().toISOString().slice(0,10); }
-function daysAgo(n) { const d = new Date(); d.setDate(d.getDate() - n); return d.toISOString().slice(0,10); }
+/**
+ * Datas SEMPRE em horário local.
+ *
+ * toISOString() converte para UTC: depois das 21h no Brasil já é o dia
+ * seguinte lá, e todo preset deslizava um dia — "Hoje" consultava amanhã e
+ * voltava vazio. No "Mês anterior" o erro compunha com a aritmética de mês e
+ * o intervalo saía errado nas duas pontas.
+ */
+function isoLocal(d) {
+  const p = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+function today() { return isoLocal(new Date()); }
+function daysAgo(n) { const d = new Date(); d.setDate(d.getDate() - n); return isoLocal(d); }
+function firstOfMonth() { const d = new Date(); d.setDate(1); return isoLocal(d); }
 function lastMonthRange() {
-  const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - 1);
-  const s = d.toISOString().slice(0,10);
-  d.setMonth(d.getMonth() + 1); d.setDate(0);
-  return [s, d.toISOString().slice(0,10)];
+  const ini = new Date(); ini.setDate(1); ini.setMonth(ini.getMonth() - 1);
+  const fim = new Date(); fim.setDate(1); fim.setDate(0); // dia 0 = último do mês anterior
+  return [isoLocal(ini), isoLocal(fim)];
 }
 function fmtDate(s) { if (!s) return ''; const [y,m,d] = s.split('-'); return `${d}/${m}/${y}`; }
 
@@ -576,6 +632,13 @@ function setPreset(p) {
 
   if (p === 'custom') {
     document.getElementById('customDates').classList.add('show');
+    // Parte do período atual em vez de dois campos vazios.
+    const ini = document.getElementById('dateSince');
+    const fim = document.getElementById('dateUntil');
+    if (!ini.value) ini.value = since;
+    if (!fim.value) fim.value = until;
+    fim.max = today();  // não deixa escolher período no futuro
+    ini.max = today();
     return;
   }
   document.getElementById('customDates').classList.remove('show');
@@ -586,7 +649,7 @@ function setPreset(p) {
     last_14d:   [daysAgo(13), today()],
     last_30d:   [daysAgo(29), today()],
     last_90d:   [daysAgo(89), today()],
-    this_month: [today().slice(0,7) + '-01', today()],
+    this_month: [firstOfMonth(), today()],
     last_month: lastMonthRange(),
   };
   const range = map[p] || map.last_30d;
@@ -710,6 +773,8 @@ function lineChart(canvasId, labels, series, { money = false } = {}) {
         borderColor: s.color,
         backgroundColor: s.fill || 'transparent',
         borderWidth: 2,
+        // Tracejado marca a série de referência sem depender de cor.
+        borderDash: s.dashed ? [5, 4] : [],
         tension: .35,
         fill: !!s.fill,
         pointRadius: 0,
@@ -786,7 +851,7 @@ function renderCampanhas(tbodyId, campanhas, colunas) {
   }).join('');
 }
 
-function renderDistribuicao(tbodyId, entradas, total, rotulo) {
+function renderDistribuicao(tbodyId, entradas, total) {
   const tbody = document.getElementById(tbodyId);
   if (!tbody) return;
   const linhas = Object.entries(entradas)
@@ -796,12 +861,22 @@ function renderDistribuicao(tbodyId, entradas, total, rotulo) {
     tbody.innerHTML = `<tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Sem dados no período</td></tr>`;
     return;
   }
-  tbody.innerHTML = linhas.map(([k,v]) => `
+
+  const linha = (rot, v, mudo = false) => `
     <tr>
-      <td>${esc(k)}</td>
-      <td class="num">${fmtN(v)}</td>
-      <td class="num">${total > 0 ? fmtP((v/total)*100) : '—'}</td>
-    </tr>`).join('');
+      <td${mudo ? ' style="color:var(--gray)"' : ''}>${esc(rot)}</td>
+      <td class="num"${mudo ? ' style="color:var(--gray)"' : ''}>${fmtN(v)}</td>
+      <td class="num"${mudo ? ' style="color:var(--gray)"' : ''}>${total > 0 ? fmtP((v/total)*100) : '—'}</td>
+    </tr>`;
+
+  // Quem não respondeu entra como linha própria. Sem isso as respostas eram
+  // descartadas em silêncio e os percentuais não fechavam em 100% — dava para
+  // ler "70% são donos" sem perceber que 20% dos leads nem responderam.
+  const respondidos = linhas.reduce((s, [, v]) => s + v, 0);
+  const semResposta = Math.max(total - respondidos, 0);
+
+  tbody.innerHTML = linhas.map(([k,v]) => linha(k, v)).join('')
+    + (semResposta > 0 ? linha('Sem resposta', semResposta, true) : '');
 }
 
 /**
@@ -809,8 +884,8 @@ function renderDistribuicao(tbodyId, entradas, total, rotulo) {
  * Custo por lead = investimento do formato ÷ leads daquele porte. É o custo
  * de conseguir um lead daquele porte — não uma divisão do investimento.
  */
-function renderPorte(planilha, spendForms, spendLP) {
-  const tbody = document.getElementById('tblPorte');
+function renderPorte(tbodyId, planilha, spendForms, spendLP) {
+  const tbody = document.getElementById(tbodyId);
   if (!tbody) return;
 
   const pf = planilha?.porte_por_formato;
@@ -820,32 +895,39 @@ function renderPorte(planilha, spendForms, spendLP) {
   }
 
   const spendTotal = spendForms + spendLP;
-  const linhas = [
-    { chave:'MAIOR_10',   rotulo:'10 ou mais colaboradores', cor:'var(--forms)' },
-    { chave:'MENOR_10',   rotulo:'Menos de 10 colaboradores', cor:'var(--lp)' },
-    { chave:'INDEFINIDO', rotulo:'Sem resposta',              cor:'var(--gray)' },
-  ];
 
   // Sem semáforo aqui: os limiares de cplClass são calibrados para CPL bruto e
   // pintariam de vermelho um custo por lead qualificado que pode estar ótimo.
   const custo = (spend, n) => n > 0 ? `<strong>${fmtR(spend / n)}</strong>` : '—';
 
-  tbody.innerHTML = linhas.map(l => {
-    const nF = pf.FORMS[l.chave] || 0;
-    const nL = pf.LP[l.chave] || 0;
+  const linha = (rotulo, cor, nF, nL, classe = '') => {
     const nT = nF + nL;
-    if (l.chave === 'INDEFINIDO' && nT === 0) return '';
-    const semCusto = l.chave === 'INDEFINIDO';
-    return `<tr>
-      <td><span class="swatch" style="background:${l.cor}"></span><strong>${l.rotulo}</strong></td>
+    return `<tr class="${classe}">
+      <td>${cor ? `<span class="swatch" style="background:${cor}"></span>` : ''}<strong>${rotulo}</strong></td>
       <td class="num">${fmtN(nF)}</td>
-      <td class="num">${semCusto ? '—' : custo(spendForms, nF)}</td>
+      <td class="num">${custo(spendForms, nF)}</td>
       <td class="num">${fmtN(nL)}</td>
-      <td class="num">${semCusto ? '—' : custo(spendLP, nL)}</td>
+      <td class="num">${custo(spendLP, nL)}</td>
       <td class="num"><strong>${fmtN(nT)}</strong></td>
-      <td class="num">${semCusto ? '—' : custo(spendTotal, nT)}</td>
+      <td class="num">${custo(spendTotal, nT)}</td>
     </tr>`;
-  }).join('');
+  };
+
+  const maiorF = pf.FORMS.MAIOR_10 || 0, maiorL = pf.LP.MAIOR_10 || 0;
+  const menorF = pf.FORMS.MENOR_10 || 0, menorL = pf.LP.MENOR_10 || 0;
+  const semResposta = (pf.FORMS.INDEFINIDO || 0) + (pf.LP.INDEFINIDO || 0);
+
+  // O total soma só as duas faixas. Quando há lead sem resposta ele não bate
+  // com o total de leads da planilha — dito na própria linha, senão alguém
+  // tenta reconciliar os dois números e conclui que há erro.
+  const rotuloTotal = semResposta > 0
+    ? `Total <span style="font-weight:500;color:var(--gray)">· ${fmtN(semResposta)} sem resposta fora</span>`
+    : 'Total';
+
+  tbody.innerHTML =
+      linha('10 ou mais colaboradores',  'var(--p-maior)', maiorF, maiorL)
+    + linha('Menos de 10 colaboradores', 'var(--p-menor)', menorF, menorL)
+    + linha(rotuloTotal, null, maiorF + menorF, maiorL + menorL, 'linha-total');
 }
 
 /* ── Frescor da planilha ────────────────────────────────────────────── */
@@ -932,6 +1014,9 @@ function render({ meta, planilha, rd }) {
   const C = {
     forms: cssVar('--forms'), lp: cssVar('--lp'),
     se: cssVar('--se'), cp: cssVar('--cp'), accent: cssVar('--accent'),
+    // Linha de referência, não uma terceira categoria: tinta neutra e
+    // tracejada. Verde reprovaria contra o laranja em protanopia (ΔE 4,8).
+    real: cssVar('--black'),
   };
 
   const labels = meta.serie.map(d => d.data);
@@ -952,15 +1037,23 @@ function render({ meta, planilha, rd }) {
   else { fmtB.classList.remove('show'); }
 
   /* ── Visão Geral ── */
+  // Este grupo fala só de mídia: quanto foi investido e como foi entregue.
+  // O volume de leads e o CPL vivem no grupo da planilha, com o número real.
+  // O contador de leads do Meta saiu daqui: ele é atribuição modelada e vinha
+  // ~2,4x acima do que de fato entra na planilha, o que contradizia o card de
+  // baixo na mesma tela.
+  const spendCaptacao = se.spend + cp.spend;
+
   setKPI('g-spend', fmtR(conta.spend),
-    outros.spend > 0 ? `${fmtR(outros.spend)} fora de [CP]/[SE]` : 'Todas as campanhas da conta');
-  setKPI('g-leads', fmtN(conta.leads), 'Atribuídos pelo Meta');
-  setKPI('g-cpl', orDash(conta.cpl, fmtR), 'Investido ÷ leads do Meta');
+    outros.spend > 0 ? `${fmtR(outros.spend)} em campanhas de tráfego` : 'Todas as campanhas da conta');
+  setKPI('g-spend-capt', fmtR(spendCaptacao),
+    conta.spend > 0 ? `${fmtP((spendCaptacao / conta.spend) * 100)} do total · base do CPL real` : 'Campanhas [CP] e [SE]');
   setKPI('g-ctr', orDash(conta.ctr, fmtP), `${fmtN(conta.clicks)} cliques`);
+  setKPI('g-cpm', orDash(conta.cpm, fmtR), `${fmtN(conta.impressions)} impressões`);
 
   const coberturaTotal = planilha && (cobreOPeriodo(planilha.cobertura?.FORMS) || cobreOPeriodo(planilha.cobertura?.LP));
   const totalReal = coberturaTotal ? planilha.total : null;
-  const cplReal = (totalReal && totalReal > 0) ? (se.spend + cp.spend) / totalReal : null;
+  const cplReal = (totalReal && totalReal > 0) ? spendCaptacao / totalReal : null;
 
   setKPI('g-real', totalReal === null ? '—' : fmtN(totalReal),
     totalReal === null ? 'Planilha sem dados neste período' : 'Registros na planilha');
@@ -969,10 +1062,51 @@ function render({ meta, planilha, rd }) {
   setKPI('g-real-forms', totalReal === null ? '—' : fmtN(planilha.por_formato.FORMS));
   setKPI('g-real-lp',    totalReal === null ? '—' : fmtN(planilha.por_formato.LP));
 
-  lineChart('chartGeralDia', labels, [
+  // ── Porte do escritório ──
+  // Base de custo: o mesmo investimento em captação usado no CPL real.
+  const porte = (totalReal !== null && planilha?.porte) ? planilha.porte : null;
+
+  const setPorte = (idQtd, idCpl, qtd) => {
+    if (porte === null) {
+      setKPI(idQtd, '—', 'Precisa dos leads da planilha');
+      setKPI(idCpl, '—', '');
+      return;
+    }
+    setKPI(idQtd, fmtN(qtd), planilha.total > 0 ? fmtP((qtd / planilha.total) * 100) + ' dos leads' : '');
+    setKPI(idCpl, qtd > 0 ? fmtR(spendCaptacao / qtd) : '—',
+      qtd > 0 ? 'Investimento em captação ÷ leads da faixa' : '');
+  };
+
+  setPorte('g-porte-maior', 'g-porte-maior-cpl', porte?.MAIOR_10 ?? 0);
+  setPorte('g-porte-menor', 'g-porte-menor-cpl', porte?.MENOR_10 ?? 0);
+
+  // Mesma tabela da aba Formatos: os cards acima dão o consolidado, a tabela
+  // abre por formato de campanha.
+  renderPorte('tblPorteGeral', planilha, fForms.spend, fLP.spend);
+
+  // As duas faixas dividem o mesmo investimento — dito na tela para ninguém
+  // somar as duas colunas de custo achando que dá o total investido.
+  const semResposta = porte?.INDEFINIDO ?? 0;
+  setText('g-porte-nota', (porte === null || !planilha?.total) ? ''
+    : `· as duas faixas dividem o mesmo investimento, os custos não se somam`
+      + (semResposta > 0 ? ` · ${fmtN(semResposta)} sem resposta` : ''));
+
+  // Leads reais por dia, alinhados ao eixo do Meta. Só entram se a planilha
+  // cobre o período — senão a linha cairia a zero e pareceria queda de volume.
+  const realPorDia = new Map((planilha?.por_dia || []).map(d => [d.data, d.total]));
+  const seriesGeral = [
     { label: 'Formulário', data: meta.serie.map(d => d.FORMS.leads), color: C.forms },
     { label: 'Landing Page', data: meta.serie.map(d => d.LP.leads), color: C.lp },
-  ]);
+  ];
+  if (totalReal !== null && realPorDia.size) {
+    seriesGeral.push({
+      label: 'Leads reais',
+      data: labels.map(l => realPorDia.get(l) ?? 0),
+      color: C.real,
+      dashed: true,
+    });
+  }
+  lineChart('chartGeralDia', labels, seriesGeral);
 
   renderCampanhas('tblCampanhas', meta.campanhas, 8);
 
@@ -1019,7 +1153,7 @@ function render({ meta, planilha, rd }) {
     tblForm.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:20px;color:var(--gray)">Sem leads na planilha neste período</td></tr>';
   }
 
-  renderPorte(planilha, fForms.spend, fLP.spend);
+  renderPorte('tblPorte', planilha, fForms.spend, fLP.spend);
   renderDistribuicao('tblCargo', planilha?.qualificacao?.cargo || {}, planilha?.total || 0);
   renderDistribuicao('tblColab', planilha?.qualificacao?.colaboradores || {}, planilha?.total || 0);
 
@@ -1048,11 +1182,15 @@ function render({ meta, planilha, rd }) {
     { label: 'Leads [SE]', data: meta.serie.map(d => d.SE.leads), color: C.se, fill: 'rgba(13,148,136,0.10)' },
   ]);
 
+  // Funil é magnitude que estreita, não categorias: rampa de um tom só.
+  // Reusar azul/laranja aqui faria as mesmas cores significarem formato num
+  // lugar e etapa do funil no outro.
+  const rampaFunil = ['#0D1F6E', '#1E3A9E', '#2F4FD0', '#3D5AF1'];
   renderFunnel('funnelSe', [
-    { label: 'Leads Meta',      val: Math.round(se.leads),                    color: C.se },
-    { label: 'Leads reais',     val: seReal || 0,                             color: C.forms },
-    { label: 'Novos Leads CRM', val: seStage['Novos Leads'] || 0,             color: C.cp },
-    { label: 'Em Negociação',   val: seStage['Em Negociação'] || 0,           color: C.lp },
+    { label: 'Leads Meta',      val: Math.round(se.leads),          color: rampaFunil[0] },
+    { label: 'Leads reais',     val: seReal || 0,                   color: rampaFunil[1] },
+    { label: 'Novos Leads CRM', val: seStage['Novos Leads'] || 0,   color: rampaFunil[2] },
+    { label: 'Em Negociação',   val: seStage['Em Negociação'] || 0, color: rampaFunil[3] },
   ]);
 
   renderCampanhas('tblSe', meta.campanhas.filter(c => c.grupo === 'SE'), 8);

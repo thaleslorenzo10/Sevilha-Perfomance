@@ -54,27 +54,26 @@ function round2(n) {
   return Math.round((n + Number.EPSILON) * 100) / 100;
 }
 
-module.exports = async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  // Cache curto na borda: segura rajadas de refresh sem deixar o dado velho.
-  res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
-
-  if (req.method === 'OPTIONS') return res.status(204).end();
-  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
-
-  const params = new URL(req.url, 'http://localhost').searchParams;
-  const since = params.get('since');
-  const until = params.get('until');
-
-  if (!DATE_RE.test(since || '') || !DATE_RE.test(until || '')) {
-    return res.status(400).json({ error: 'Informe since e until no formato YYYY-MM-DD' });
+/** Todos os dias do intervalo, inclusive. Em UTC, para não pular dia no horário de verão. */
+function eachDay(since, until) {
+  const dias = [];
+  const cur = new Date(`${since}T00:00:00Z`);
+  const fim = new Date(`${until}T00:00:00Z`);
+  // Teto de segurança: um intervalo absurdo não deve gerar série infinita.
+  for (let i = 0; cur <= fim && i < 400; i++) {
+    dias.push(cur.toISOString().slice(0, 10));
+    cur.setUTCDate(cur.getUTCDate() + 1);
   }
-  if (since > until) {
-    return res.status(400).json({ error: 'since não pode ser maior que until' });
-  }
+  return dias;
+}
 
-  try {
+/**
+ * Monta o payload do Meta para um período. Exportado à parte do handler para
+ * o resumo do WhatsApp usar exatamente os mesmos números do dashboard — se
+ * cada um calculasse por conta, os dois divergiriam com o tempo.
+ */
+async function montarMeta(since, until) {
+  {
     const [rows, dailyRows] = await Promise.all([
       fetchCampaignInsights(since, until),
       fetchDailyInsights(since, until),
@@ -118,21 +117,26 @@ module.exports = async function handler(req, res) {
 
     // ── Série diária ─────────────────────────────────────────────────────
     // Uma entrada por dia com investimento e leads por grupo e por formato.
+    // O intervalo é pré-preenchido: o Meta omite os dias sem entrega, e um dia
+    // ausente sumia do gráfico em vez de aparecer como zero — a linha ligava
+    // os dois vizinhos e escondia a interrupção.
+    const diaVazio = dia => ({
+      data:  dia,
+      spend: 0,
+      leads: 0,
+      CP:    { spend: 0, leads: 0 },
+      SE:    { spend: 0, leads: 0 },
+      FORMS: { spend: 0, leads: 0 },
+      LP:    { spend: 0, leads: 0 },
+    });
+
     const dias = {};
+    for (const dia of eachDay(since, until)) dias[dia] = diaVazio(dia);
+
     for (const r of dailyRows) {
       const dia = r.date_start;
       if (!dia) continue;
-      if (!dias[dia]) {
-        dias[dia] = {
-          data:  dia,
-          spend: 0,
-          leads: 0,
-          CP:    { spend: 0, leads: 0 },
-          SE:    { spend: 0, leads: 0 },
-          FORMS: { spend: 0, leads: 0 },
-          LP:    { spend: 0, leads: 0 },
-        };
-      }
+      if (!dias[dia]) dias[dia] = diaVazio(dia);
       const d = dias[dia];
       const { grupo, formato } = classifyCampaign(r.campaign_name);
       const spend = parseFloat(r.spend || 0);
@@ -159,7 +163,7 @@ module.exports = async function handler(req, res) {
         LP:    { spend: round2(d.LP.spend),    leads: d.LP.leads },
       }));
 
-    return res.status(200).json({
+    return {
       periodo: { since, until },
       conta:   withDerived(conta),
       grupos: {
@@ -174,11 +178,37 @@ module.exports = async function handler(req, res) {
       campanhas,
       serie,
       gerado_em: new Date().toISOString(),
-    });
+    };
+  }
+}
 
+module.exports = async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  // Cache curto na borda: segura rajadas de refresh sem deixar o dado velho.
+  res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
+
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+
+  const params = new URL(req.url, 'http://localhost').searchParams;
+  const since = params.get('since');
+  const until = params.get('until');
+
+  if (!DATE_RE.test(since || '') || !DATE_RE.test(until || '')) {
+    return res.status(400).json({ error: 'Informe since e until no formato YYYY-MM-DD' });
+  }
+  if (since > until) {
+    return res.status(400).json({ error: 'since não pode ser maior que until' });
+  }
+
+  try {
+    return res.status(200).json(await montarMeta(since, until));
   } catch (err) {
     console.error('[api/meta]', err.message);
     const status = /META_ACCESS_TOKEN/.test(err.message) ? 500 : 502;
     return res.status(status).json({ error: err.message, meta_code: err.metaCode ?? null });
   }
 };
+
+module.exports.montarMeta = montarMeta;
