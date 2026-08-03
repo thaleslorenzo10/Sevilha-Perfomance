@@ -67,27 +67,13 @@ function eachDay(since, until) {
   return dias;
 }
 
-module.exports = async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  // Cache curto na borda: segura rajadas de refresh sem deixar o dado velho.
-  res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
-
-  if (req.method === 'OPTIONS') return res.status(204).end();
-  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
-
-  const params = new URL(req.url, 'http://localhost').searchParams;
-  const since = params.get('since');
-  const until = params.get('until');
-
-  if (!DATE_RE.test(since || '') || !DATE_RE.test(until || '')) {
-    return res.status(400).json({ error: 'Informe since e until no formato YYYY-MM-DD' });
-  }
-  if (since > until) {
-    return res.status(400).json({ error: 'since não pode ser maior que until' });
-  }
-
-  try {
+/**
+ * Monta o payload do Meta para um período. Exportado à parte do handler para
+ * o resumo do WhatsApp usar exatamente os mesmos números do dashboard — se
+ * cada um calculasse por conta, os dois divergiriam com o tempo.
+ */
+async function montarMeta(since, until) {
+  {
     const [rows, dailyRows] = await Promise.all([
       fetchCampaignInsights(since, until),
       fetchDailyInsights(since, until),
@@ -177,7 +163,7 @@ module.exports = async function handler(req, res) {
         LP:    { spend: round2(d.LP.spend),    leads: d.LP.leads },
       }));
 
-    return res.status(200).json({
+    return {
       periodo: { since, until },
       conta:   withDerived(conta),
       grupos: {
@@ -192,11 +178,37 @@ module.exports = async function handler(req, res) {
       campanhas,
       serie,
       gerado_em: new Date().toISOString(),
-    });
+    };
+  }
+}
 
+module.exports = async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  // Cache curto na borda: segura rajadas de refresh sem deixar o dado velho.
+  res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
+
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+
+  const params = new URL(req.url, 'http://localhost').searchParams;
+  const since = params.get('since');
+  const until = params.get('until');
+
+  if (!DATE_RE.test(since || '') || !DATE_RE.test(until || '')) {
+    return res.status(400).json({ error: 'Informe since e until no formato YYYY-MM-DD' });
+  }
+  if (since > until) {
+    return res.status(400).json({ error: 'since não pode ser maior que until' });
+  }
+
+  try {
+    return res.status(200).json(await montarMeta(since, until));
   } catch (err) {
     console.error('[api/meta]', err.message);
     const status = /META_ACCESS_TOKEN/.test(err.message) ? 500 : 502;
     return res.status(status).json({ error: err.message, meta_code: err.metaCode ?? null });
   }
 };
+
+module.exports.montarMeta = montarMeta;

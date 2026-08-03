@@ -331,23 +331,12 @@ function coverage(items) {
   return { total: items.length, primeiro: datas[0], ultimo: datas[datas.length - 1] };
 }
 
-module.exports = async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Cache-Control', 's-maxage=120, stale-while-revalidate=300');
-
-  if (req.method === 'OPTIONS') return res.status(204).end();
-  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
-
-  const params = new URL(req.url, 'http://localhost').searchParams;
-  const since = params.get('since');
-  const until = params.get('until');
-
-  if (!DATE_RE.test(since || '') || !DATE_RE.test(until || '')) {
-    return res.status(400).json({ error: 'Informe since e until no formato YYYY-MM-DD' });
-  }
-
-  try {
+/**
+ * Monta os agregados da planilha para um período. Exportado à parte do handler
+ * para o resumo do WhatsApp usar exatamente os mesmos números do dashboard.
+ */
+async function montarLeads(since, until) {
+  {
     const tabs = await readAllTabs();
 
     const gidLP    = String(process.env.LEADS_SHEET_GID_LP    || '');
@@ -397,7 +386,7 @@ module.exports = async function handler(req, res) {
       INDEFINIDO: itens.filter(l => classificarPorte(l.colaboradores) === PORTE_INDEF).length,
     });
 
-    return res.status(200).json({
+    return {
       periodo: { since, until },
       total: noPeriodo.length,
       por_formato: { FORMS: forms.length, LP: lp.length },
@@ -419,8 +408,28 @@ module.exports = async function handler(req, res) {
         LP:    coverage(todos.filter(l => l.fonte === TAB_LP)),
       },
       gerado_em: new Date().toISOString(),
-    });
+    };
+  }
+}
 
+module.exports = async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.setHeader('Cache-Control', 's-maxage=120, stale-while-revalidate=300');
+
+  if (req.method === 'OPTIONS') return res.status(204).end();
+  if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+
+  const params = new URL(req.url, 'http://localhost').searchParams;
+  const since = params.get('since');
+  const until = params.get('until');
+
+  if (!DATE_RE.test(since || '') || !DATE_RE.test(until || '')) {
+    return res.status(400).json({ error: 'Informe since e until no formato YYYY-MM-DD' });
+  }
+
+  try {
+    return res.status(200).json(await montarLeads(since, until));
   } catch (err) {
     console.error('[api/sheet-leads]', err.message);
     return res.status(502).json({
@@ -431,3 +440,5 @@ module.exports = async function handler(req, res) {
     });
   }
 };
+
+module.exports.montarLeads = montarLeads;

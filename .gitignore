@@ -1,2 +1,5 @@
 .vercel
 .env*.local
+
+# dependências
+node_modules/
