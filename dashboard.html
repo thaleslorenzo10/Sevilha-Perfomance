@@ -146,6 +146,9 @@ tbody tr:nth-child(even) { background:rgba(232,230,242,.25); }
 tbody tr:hover { background:rgba(232,230,242,.6); }
 tbody tr:last-child td { border-bottom:none; }
 .num { text-align:right; font-variant-numeric:tabular-nums; }
+/* Linha de fechamento: soma das faixas acima, não mais uma categoria. */
+tbody tr.linha-total td { border-top:2px solid var(--border); background:var(--light); font-weight:700; }
+:root[data-theme="dark"] tbody tr.linha-total td { background:#242835; border-top-color:#2D3748; }
 .swatch { display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:7px; vertical-align:middle; }
 
 /* ── Badge ── */
@@ -857,32 +860,39 @@ function renderPorte(tbodyId, planilha, spendForms, spendLP) {
   }
 
   const spendTotal = spendForms + spendLP;
-  const linhas = [
-    { chave:'MAIOR_10',   rotulo:'10 ou mais colaboradores',  cor:'var(--p-maior)' },
-    { chave:'MENOR_10',   rotulo:'Menos de 10 colaboradores', cor:'var(--p-menor)' },
-    { chave:'INDEFINIDO', rotulo:'Sem resposta',              cor:'var(--gray)' },
-  ];
 
   // Sem semáforo aqui: os limiares de cplClass são calibrados para CPL bruto e
   // pintariam de vermelho um custo por lead qualificado que pode estar ótimo.
   const custo = (spend, n) => n > 0 ? `<strong>${fmtR(spend / n)}</strong>` : '—';
 
-  tbody.innerHTML = linhas.map(l => {
-    const nF = pf.FORMS[l.chave] || 0;
-    const nL = pf.LP[l.chave] || 0;
+  const linha = (rotulo, cor, nF, nL, classe = '') => {
     const nT = nF + nL;
-    if (l.chave === 'INDEFINIDO' && nT === 0) return '';
-    const semCusto = l.chave === 'INDEFINIDO';
-    return `<tr>
-      <td><span class="swatch" style="background:${l.cor}"></span><strong>${l.rotulo}</strong></td>
+    return `<tr class="${classe}">
+      <td>${cor ? `<span class="swatch" style="background:${cor}"></span>` : ''}<strong>${rotulo}</strong></td>
       <td class="num">${fmtN(nF)}</td>
-      <td class="num">${semCusto ? '—' : custo(spendForms, nF)}</td>
+      <td class="num">${custo(spendForms, nF)}</td>
       <td class="num">${fmtN(nL)}</td>
-      <td class="num">${semCusto ? '—' : custo(spendLP, nL)}</td>
+      <td class="num">${custo(spendLP, nL)}</td>
       <td class="num"><strong>${fmtN(nT)}</strong></td>
-      <td class="num">${semCusto ? '—' : custo(spendTotal, nT)}</td>
+      <td class="num">${custo(spendTotal, nT)}</td>
     </tr>`;
-  }).join('');
+  };
+
+  const maiorF = pf.FORMS.MAIOR_10 || 0, maiorL = pf.LP.MAIOR_10 || 0;
+  const menorF = pf.FORMS.MENOR_10 || 0, menorL = pf.LP.MENOR_10 || 0;
+  const semResposta = (pf.FORMS.INDEFINIDO || 0) + (pf.LP.INDEFINIDO || 0);
+
+  // O total soma só as duas faixas. Quando há lead sem resposta ele não bate
+  // com o total de leads da planilha — dito na própria linha, senão alguém
+  // tenta reconciliar os dois números e conclui que há erro.
+  const rotuloTotal = semResposta > 0
+    ? `Total <span style="font-weight:500;color:var(--gray)">· ${fmtN(semResposta)} sem resposta fora</span>`
+    : 'Total';
+
+  tbody.innerHTML =
+      linha('10 ou mais colaboradores',  'var(--p-maior)', maiorF, maiorL)
+    + linha('Menos de 10 colaboradores', 'var(--p-menor)', menorF, menorL)
+    + linha(rotuloTotal, null, maiorF + menorF, maiorL + menorL, 'linha-total');
 }
 
 /* ── Frescor da planilha ────────────────────────────────────────────── */
