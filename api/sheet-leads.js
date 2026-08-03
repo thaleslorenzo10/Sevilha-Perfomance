@@ -70,23 +70,52 @@ const TAB_FORMS = 'FORMS';
 const TAB_LP    = 'LP';
 
 /**
- * Cabeçalhos do formulário da landing page. Essas linhas não são
- * auto-identificáveis, então dependem mesmo do cabeçalho.
+ * Cabeçalhos das abas de lead da landing page. Ao contrário do export do Meta,
+ * essas linhas não são auto-identificáveis e dependem mesmo do cabeçalho.
+ *
+ * Dois formatos convivem na planilha:
+ *   "Eventos Geral" → Data | Funil | UTM Campaign | Número de Colaboradores
+ *   "Respondi"      → Qual seu nome? | Qual seu e-mail? | ... | DATA ENTRADA
  */
 function findLPHeaders(rows) {
   const found = [];
   rows.forEach((row, rowIdx) => {
-    row.map(norm).forEach((cell, colIdx) => {
-      if (cell.startsWith('qual seu nome')) found.push({ tipo: TAB_LP, rowIdx, offset: colIdx });
+    const cells = row.map(norm);
+
+    cells.forEach((cell, colIdx) => {
+      if (cell.startsWith('qual seu nome')) {
+        found.push({ tipo: TAB_LP, rowIdx, offset: colIdx });
+      }
     });
+
+    // Formato "Eventos Geral": só vale como cabeçalho se Data e Funil (ou uma
+    // coluna de UTM) estiverem na mesma linha — evita casar com qualquer
+    // célula solta escrita "data" numa aba de apoio.
+    const iData  = cells.findIndex(c => c === 'data');
+    const iFunil = cells.findIndex(c => c === 'funil');
+    const iUtm   = cells.findIndex(c => c === 'utm campaign' || c === 'utm_campaign');
+    if (iData >= 0 && (iFunil >= 0 || iUtm >= 0)) {
+      found.push({ tipo: TAB_LP, rowIdx, offset: 0 });
+    }
   });
   return found;
 }
 
+/**
+ * Localiza uma coluna pelo cabeçalho. Percorre `names` na ordem de prioridade
+ * e só depois aceita correspondência por prefixo — varrer as colunas primeiro
+ * faria "DATA STATUS" ser escolhida quando o alvo é "DATA ENTRADA".
+ */
 function columnIndex(headerRow, offset, names) {
-  for (let i = offset; i < headerRow.length; i++) {
-    const h = norm(headerRow[i]);
-    if (names.some(n => h === n || h.startsWith(n))) return i;
+  for (const n of names) {
+    for (let i = offset; i < headerRow.length; i++) {
+      if (norm(headerRow[i]) === n) return i;
+    }
+  }
+  for (const n of names) {
+    for (let i = offset; i < headerRow.length; i++) {
+      if (norm(headerRow[i]).startsWith(n)) return i;
+    }
   }
   return -1;
 }
@@ -164,13 +193,14 @@ function extractLP(rows, header) {
 
   const idx = {
     data:     columnIndex(head, off, ['data entrada', 'data']),
-    id:       columnIndex(head, off, ['id']),
+    id:       columnIndex(head, off, ['utm id', 'id']),
     email:    columnIndex(head, off, ['qual seu e-mail', 'qual seu email']),
-    campanha: columnIndex(head, off, ['utm_campaign']),
-    origem:   columnIndex(head, off, ['utm_source']),
-    colab:    columnIndex(head, off, ['quantos colaboradores']),
-    cargo:    columnIndex(head, off, ['cargo que ocupa', 'qual a sua posicao']),
-    status:   columnIndex(head, off, ['status']),
+    telefone: columnIndex(head, off, ['telefone', 'qual seu whatsapp']),
+    funil:    columnIndex(head, off, ['funil']),
+    campanha: columnIndex(head, off, ['utm campaign', 'utm_campaign']),
+    origem:   columnIndex(head, off, ['utm source', 'utm_source']),
+    colab:    columnIndex(head, off, ['numero de colaboradores', 'quantos colaboradores']),
+    cargo:    columnIndex(head, off, ['cargo que ocupa', 'qual a sua posicao', 'qualificacao']),
   };
 
   const out = [];
@@ -182,19 +212,27 @@ function extractLP(rows, header) {
     const data = toISODate(row[idx.data]);
     if (!data) continue;
 
-    const chave = String(row[idx.email] || row[idx.id] || '').trim();
+    const funil    = String(row[idx.funil]    ?? '').trim();
+    const campanha = String(row[idx.campanha] ?? '').trim();
+
+    // "Eventos Geral" é um log consolidado: também registra leads que vieram
+    // do formulário nativo do Meta. Esses já são contados pela aba de export
+    // do Meta — contá-los aqui de novo dobraria o volume de FORMS.
+    if (/\[FORMS\]|FORMS/i.test(funil) || /\[FORMS\]/i.test(campanha)) continue;
+
+    const chave = String(row[idx.email] || row[idx.telefone] || row[idx.id] || '').trim();
 
     out.push({
       fonte:      TAB_LP,
-      id:         chave || `lp:${r}:${data}`,
+      id:         chave || `lp:${header.rowIdx}:${r}:${data}`,
       data,
       formulario: 'Formulário da Landing Page',
-      campanha:   String(row[idx.campanha] || '').trim() || '[SE] [LEAD]',
+      campanha:   campanha || '[SE] [LEAD]',
       adset:      '',
       anuncio:    '',
-      plataforma: String(row[idx.origem] || '').trim(),
-      colaboradores: String(row[idx.colab] || '').trim(),
-      cargo:      String(row[idx.cargo] || '').trim(),
+      plataforma: String(row[idx.origem] ?? '').trim(),
+      colaboradores: String(row[idx.colab] ?? '').trim(),
+      cargo:      String(row[idx.cargo] ?? '').trim(),
     });
   }
   return out;
@@ -243,7 +281,8 @@ const PORTE_MENOR = 'MENOR_10';
 const PORTE_INDEF = 'INDEFINIDO';
 
 function classificarPorte(raw) {
-  const s = norm(raw);
+  // O formulário do site grava em slug ("de_0_a_4"); o do Meta, por extenso.
+  const s = norm(raw).replace(/_/g, ' ').replace(/\s+/g, ' ').trim();
   if (!s) return PORTE_INDEF;
 
   // Ruído de colunas desalinhadas (ex.: "1,20249E+17").
