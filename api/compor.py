@@ -37,12 +37,18 @@ sys.path.insert(0, CRIATIVOS)
 from PIL import Image  # noqa: E402
 import compor as compositor  # noqa: E402
 import formatos as nativos  # noqa: E402
+import oferta as layouts  # noqa: E402
 
 FONTES = os.path.join(CRIATIVOS, "fonts")
 LOGO = os.path.join(CRIATIVOS, "marca", "logo-marca.png")
 
 # Só estes podem ser sobrescritos pelo corpo da requisição.
 AJUSTAVEIS = {"zoom", "anchor_x", "anchor_y", "coluna_frac", "headline_y", "cta_y", "leading"}
+
+# Limite por linha da headline no layout `compor`. Acima disso o autofit encolhe
+# o corpo até a peça perder o soco — melhor recusar e deixar o gerador reescrever
+# do que entregar uma arte fraca.
+MAX_LINHA_HEADLINE = 17
 
 LIMITE_PLATE = 12 * 1024 * 1024
 
@@ -58,7 +64,68 @@ def baixar(url):
     return Image.open(io.BytesIO(dados)).convert("RGB")
 
 
+def validar_conceito(c, layout):
+    """Recusa conceito que renderizaria mal, com o motivo — o gerador reescreve."""
+    if layout == "antes-depois":
+        for campo in ("titulo", "antes", "depois"):
+            if not isinstance(c.get(campo), list) or not c[campo]:
+                raise ValueError(f"conceito.{campo} precisa ser uma lista não vazia")
+        return
+    if layout == "oferta":
+        for campo in ("tarja", "corpo", "por"):
+            if not isinstance(c.get(campo), str) or not c[campo].strip():
+                raise ValueError(f"conceito.{campo} precisa ser texto")
+        if c.get("de"):
+            raise ValueError("âncora 'de' recusada: não existe preço já praticado para a "
+                             "Sessão Estratégica, e anunciar um seria propaganda enganosa")
+        return
+    linhas = c.get("headline")
+    if not isinstance(linhas, list) or not 2 <= len(linhas) <= 6:
+        raise ValueError("conceito.headline precisa ser uma lista de 2 a 6 linhas")
+    longas = [l for l in linhas if len(l) > MAX_LINHA_HEADLINE]
+    if longas:
+        raise ValueError(f"linha de headline acima de {MAX_LINHA_HEADLINE} caracteres: "
+                         f"{longas[0]!r} ({len(longas[0])}). Reescreva mais curto.")
+    if not isinstance(c.get("subhead"), str):
+        raise ValueError("conceito.subhead precisa ser texto")
+    c.setdefault("accent_lines", [len(linhas) - 2, len(linhas) - 1])
+    c.setdefault("cta", "AGENDAR DIAGNÓSTICO")
+
+
 def montar(corpo):
+    # Conceito escrito na hora pelo gerador, em vez de peça de nome conhecido.
+    if corpo.get("conceito"):
+        conceito = dict(corpo["conceito"])
+        layout = corpo.get("layout", "compor")
+        if layout not in ("compor", "oferta", "antes-depois"):
+            raise ValueError(f"layout desconhecido: {layout}")
+        validar_conceito(conceito, layout)
+
+        if layout == "antes-depois":
+            conceito.setdefault("formato", "4:5")
+            conceito.setdefault("cta", "AGENDAR DIAGNÓSTICO")
+            conceito.setdefault("rodape", "")
+            return layouts.antes_depois(conceito)
+
+        if not corpo.get("plate_url"):
+            raise ValueError("layout com foto exige plate_url")
+        plate = baixar(corpo["plate_url"])
+
+        if layout == "oferta":
+            conceito.setdefault("formato", "9:16")
+            conceito.setdefault("rodape", "Sem custo e sem compromisso")
+            conceito.setdefault("cta", "AGENDAR DIAGNÓSTICO")
+            conceito["de"] = None
+            return layouts.oferta(conceito, plate)  # aceita Image, ver oferta.py
+
+        formato = corpo.get("formato", "4:5")
+        if formato not in compositor.FORMATOS:
+            raise ValueError(f"formato desconhecido: {formato}")
+        params = {k: v for k, v in corpo.items() if k in AJUSTAVEIS}
+        params.setdefault("coluna_frac", 0.56)
+        params["logo"] = LOGO
+        return compositor.renderizar(plate, conceito, formato, FONTES, **params)
+
     if corpo.get("nativo"):
         nome = corpo["nativo"]
         if nome not in nativos.PECAS:
@@ -106,7 +173,17 @@ def catalogo():
         if arquivo:
             with open(arquivo, encoding="utf-8") as fh:
                 com_plate.append({"peca": peca, "prompt": fh.read().strip()})
-    return {"com_plate": com_plate, "nativos": sorted(nativos.PECAS)}
+    return {
+        "com_plate": com_plate,
+        "nativos": sorted(nativos.PECAS),
+        # Matéria-prima do gerador de conceitos.
+        "briefing": {
+            "fatos": compositor.FATOS,
+            "eixos": compositor.EIXOS,
+            "layouts": compositor.LAYOUTS,
+            "limite_linha_headline": MAX_LINHA_HEADLINE,
+        },
+    }
 
 
 class handler(BaseHTTPRequestHandler):
