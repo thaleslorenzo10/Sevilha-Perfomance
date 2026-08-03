@@ -7,7 +7,7 @@ referências enviadas, com a paleta da marca.
 - **Oferta:** sessão de diagnóstico **gratuita**
 - **Destino:** https://form.respondi.app/gvz4UKQr
 - **Formato:** 4:5 (feed) + 9:16 (Reels/Stories)
-- **Peças prontas:** conceitos 2, 4, 5 e 6 em `out/` (4:5; o conceito 2 também em 9:16)
+- **Peças prontas:** conceitos 1, 2, 4, 5 e 6 em `out/` (4:5; o conceito 2 também em 9:16)
 
 ## Lacunas a preencher antes de gerar
 
@@ -78,42 +78,49 @@ garante headline nítida, acento na cor certa e CTA no gradiente da marca.
 
 ---
 
-## Conceito 1 — Vicente · "quem não para é você"
+## Conceito 1 — Mentor · "quem não para é você"
 
 Adapta a ref A (pessoa recortada à direita, rim light).
 
-**Headline (camada de tipografia, não vai no prompt):**
+> **A pessoa da peça é sintética.** Não é o Vicente, nem nenhum dos mentores. A
+> referência de rosto do Kling não preserva identidade: partindo do `Vicente.jpeg`
+> (281px, abaixo do mínimo da API mesmo com upscale), fidelidade 0.6, 0.8 e 0.95
+> devolveram três pessoas diferentes, nenhuma parecida com ele. A peça foi aprovada
+> pelo cliente nessa condição.
+>
+> Consequências práticas, para quem for subir ou reaproveitar:
+> - **nunca nomear a pessoa da imagem** na copy, na legenda ou no comentário
+> - marcar conteúdo gerado por IA na subida (exigência de Meta e TikTok)
+> - se um dia houver foto real do Vicente em fundo escuro e alta resolução, ela
+>   entra no lugar do plate sem mudar mais nada da composição
+
+**Headline:**
 ```
 SEU ESCRITÓRIO
 NÃO PARA.
 QUEM NÃO PARA
-É VOCÊ.            ← esta linha em ACCENT
-```
-**Subhead:** `[DURACAO] com quem já acompanhou +450 contabilidades. Diagnóstico do seu escritório contábil.`
-**CTA:** `AGENDAR DIAGNÓSTICO`
-
-### Etapa 0 — plate a partir da foto do Vicente
-
-A foto enviada é retrato corporativo em fundo branco. Precisa virar cena escura antes
-de animar. Prompt de edição (Nano Banana Pro, com a foto do Vicente como referência):
-
-```
-Relight this man for a dark cinematic stage scene, preserving his exact facial
-features, hair, and identity. Replace the white background with a deep near-black
-navy void (#0B0D22) with a soft radial vignette. Keep him in the same navy blazer and
-light blue open-collar shirt. Add a soft teal rim light (#2BBFA0) tracing the right
-edge of his head, shoulder and jaw, separating him from the background. Low-key key
-light from the front left, deep shadows. Reframe as a three-quarter body shot, subject
-positioned on the RIGHT side of a 4:5 vertical frame, cropped so his shoulder bleeds
-off the right edge, with the entire left half of the frame left as empty dark
-background. Photographic, sharp, editorial. No text, no logo, no graphics anywhere in
-the image.
+É VOCÊ.           ← estas duas linhas em ACCENT
 ```
 
-> A metade esquerda vazia é obrigatória — é onde a headline entra na etapa 2.
-> Uma foto real do Vicente em palco escuro bate qualquer edição. Se existir, usa.
+Plate em `prompts/plates/conceito-1-mentor.txt` · peça em `out/conceito-1-4x5.png`
 
-### Etapa 1 — prompt Kling (image2video)
+O prompt do plate descreve a pessoa por atributos (idade, cabelo, óculos, blazer) e
+usa `Vicente.jpeg` só como referência de tipo físico — o rosto é do modelo.
+
+```bash
+node kling.js image --prompt-file prompts/plates/conceito-1-mentor.txt \
+  --aspect-ratio 3:4 --n 4 --ref vicente-ref.jpg --ref-type face --fidelity 0.8 \
+  --out plates/mentor.png
+
+python3 compor.py --plate plates/conceito-1-mentor-3x4.png --peca conceito-1 \
+  --formato 4:5 --zoom 1.3 --anchor-x 0.0 --anchor-y 0.12 --coluna 0.52 \
+  --out out/conceito-1-4x5.png
+```
+
+O `--anchor-y 0.12` existe porque, com o zoom que o layout pede, o recorte centrado
+cortava a cabeça.
+
+### Etapa opcional — animar para vídeo (image2video)
 
 ```
 Subtle living motion of the existing elements only. The man breathes, blinks
@@ -352,6 +359,11 @@ Limites: texto principal 125 caracteres visíveis · título 40 · descrição 3
 - Principal: `Onde sua margem está vazando? O diagnóstico é gratuito e feito por quem já viu +450 contabilidades.` (99)
 - Título: `+450 contabilidades atendidas` (29)
 - Descrição: `Diagnóstico gratuito` (20)
+
+**Conceito 1**
+- Principal: `Seu escritório não trava por falta de técnica. Trava porque tudo passa por você.` (80)
+- Título: `Diagnóstico gratuito` (20)
+- Descrição: `Donos de contabilidade` (22)
 
 **Conceito 4**
 - Principal: `Você chega cedo, sai tarde e ainda leva trabalho pra casa. Isso não é dedicação, é falta de gestão.` (99)

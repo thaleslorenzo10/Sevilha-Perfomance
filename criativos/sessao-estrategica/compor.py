@@ -166,7 +166,8 @@ def marca(canvas, draw, x, y, fontes, logo=None, altura=None):
 
 
 def compor(plate_path, peca, formato, dir_fontes, out, zoom=1.0, anchor_x=0.5,
-           coluna_frac=0.56, headline_y=0.215, cta_y=None, logo=None, leading=1.0):
+           coluna_frac=0.56, headline_y=0.215, cta_y=None, logo=None, leading=1.0,
+           anchor_y=0.5):
     size = FORMATOS[formato]
     W, H = size
     margem = round(W * 0.068)
@@ -181,7 +182,7 @@ def compor(plate_path, peca, formato, dir_fontes, out, zoom=1.0, anchor_x=0.5,
         if not os.path.exists(caminho):
             raise SystemExit(f"Fonte ausente: {caminho} ({nome})")
 
-    canvas = cover(Image.open(plate_path).convert("RGB"), size, zoom, anchor_x)
+    canvas = cover(Image.open(plate_path).convert("RGB"), size, zoom, anchor_x, anchor_y)
     canvas.paste(scrim(size), (0, 0), scrim(size))
     draw = ImageDraw.Draw(canvas)
 
@@ -233,6 +234,8 @@ if __name__ == "__main__":
     p.add_argument("--zoom", type=float, default=1.0, help="amplia o plate antes do recorte")
     p.add_argument("--anchor-x", type=float, default=0.5,
                    help="0 mantém o lado esquerdo do plate (empurra o objeto para a direita)")
+    p.add_argument("--anchor-y", type=float, default=0.5,
+                   help="0 mantém o topo do plate — necessário quando o zoom cortaria a cabeça")
     p.add_argument("--coluna", type=float, default=0.56, help="largura da coluna de texto (fração)")
     p.add_argument("--headline-y", type=float, default=0.215, help="topo da headline (fração da altura)")
     p.add_argument("--cta-y", type=float, default=None, help="topo do CTA; padrão ancora na base")
@@ -242,4 +245,4 @@ if __name__ == "__main__":
     p.add_argument("--leading", type=float, default=1.0, help="entrelinha da headline (múltiplo do corpo)")
     a = p.parse_args()
     compor(a.plate, PECAS[a.peca], a.formato, a.fontes, a.out, a.zoom, a.anchor_x,
-           a.coluna, a.headline_y, a.cta_y, a.logo, a.leading)
+           a.coluna, a.headline_y, a.cta_y, a.logo, a.leading, a.anchor_y)
