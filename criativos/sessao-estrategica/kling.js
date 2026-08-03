@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 /**
- * Gera vídeos de anúncio na API do Kling.
+ * CLI da API do Kling — imagem e vídeo.
  *
- *   node kling.js image2video --image ./frame.png --prompt "..." --out ./out.mp4
- *   node kling.js text2video  --prompt "..." --aspect-ratio 9:16 --out ./out.mp4
+ *   node kling.js image        --prompt "..." --aspect-ratio 3:4 --out ./plate.png
+ *   node kling.js image2video  --image ./plate.png --prompt "..." --out ./out.mp4
+ *   node kling.js text2video   --prompt "..." --aspect-ratio 9:16 --out ./out.mp4
  *
- * Credenciais (painel do Kling → Developer → API keys):
- *   KLING_ACCESS_KEY, KLING_SECRET_KEY
+ * Credenciais — duas formas, nessa ordem de prioridade:
+ *   KLING_API_KEY                      chave única, enviada como Bearer
+ *   KLING_ACCESS_KEY + KLING_SECRET_KEY  par AK/SK, assinado em JWT HS256
  *
  * Opcional:
- *   KLING_BASE_URL  padrão https://api-singapore.klingai.com
+ *   KLING_BASE_URL   padrão https://api-singapore.klingai.com
  *
  * Sem dependências — Node 20+.
  */
@@ -20,49 +22,55 @@ const path = require('node:path');
 
 const BASE_URL = process.env.KLING_BASE_URL || 'https://api-singapore.klingai.com';
 
-// Prompt negativo padrão dos criativos da Sessão Estratégica. Não inclui "hands":
-// citar mãos no negativo faz o modelo inserir mãos fotorrealistas no quadro.
+// Prompt negativo dos criativos da Sessão Estratégica.
+//
+// `text` e `letters` entram de propósito: o plate tem que sair limpo, porque a
+// tipografia é composta depois (compor.py). Modelo generativo não renderiza a
+// headline condensada em PT-BR de forma confiável.
+//
+// `hands` NUNCA entra: citar mãos no negativo é armadilha de atenção e faz o
+// modelo inserir mãos fotorrealistas no quadro.
 const NEGATIVE_PROMPT = [
-  'extra text', 'new text', 'watermark', 'logo change', 'morphing', 'scene change',
-  'camera whip', 'face distortion', 'extra fingers', 'subtitles', 'letterboxing',
-  'style drift', 'photorealistic render of an illustrated frame', 'blurry', 'low quality',
+  'text', 'letters', 'words', 'watermark', 'logo', 'subtitles', 'extra text',
+  'morphing', 'scene change', 'camera whip', 'face distortion', 'extra fingers',
+  'letterboxing', 'style drift', 'blurry', 'low quality', 'cartoon', 'illustration',
 ].join(', ');
 
 const DEFAULTS = {
-  model_name: 'kling-v2-6',
-  mode: 'pro',
-  duration: '5',
-  cfg_scale: 0.5,
+  image: { model_name: 'kling-v2', n: 1, aspect_ratio: '3:4' },
+  video: { model_name: 'kling-v2-6', mode: 'pro', duration: '5', cfg_scale: 0.5 },
 };
 
+// Kling entrega 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9 — não tem 4:5.
+// Para feed do Meta: gere em 3:4 e recorte para 1080x1350 na composição.
+const ASPECT_RATIOS = ['16:9', '9:16', '1:1', '4:3', '3:4', '3:2', '2:3', '21:9'];
+
 // ── auth ────────────────────────────────────────────────────────────────────
-// O Kling autentica com JWT HS256 assinado com a secret key. O token vale 30 min;
-// como cada chamada gera um novo, não há cache a invalidar.
 function b64url(buf) {
   return Buffer.from(buf).toString('base64')
     .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
 
-function makeToken(accessKey, secretKey) {
+function authToken() {
+  if (process.env.KLING_API_KEY) return process.env.KLING_API_KEY;
+
+  const { KLING_ACCESS_KEY: ak, KLING_SECRET_KEY: sk } = process.env;
+  if (!ak || !sk) {
+    throw new Error('Defina KLING_API_KEY, ou KLING_ACCESS_KEY + KLING_SECRET_KEY.');
+  }
   const now = Math.floor(Date.now() / 1000);
   const header = b64url(JSON.stringify({ alg: 'HS256', typ: 'JWT' }));
-  const payload = b64url(JSON.stringify({ iss: accessKey, exp: now + 1800, nbf: now - 5 }));
-  const signature = b64url(
-    crypto.createHmac('sha256', secretKey).update(`${header}.${payload}`).digest()
-  );
-  return `${header}.${payload}.${signature}`;
+  const payload = b64url(JSON.stringify({ iss: ak, exp: now + 1800, nbf: now - 5 }));
+  const sig = b64url(crypto.createHmac('sha256', sk).update(`${header}.${payload}`).digest());
+  return `${header}.${payload}.${sig}`;
 }
 
 // ── http ────────────────────────────────────────────────────────────────────
 async function call(method, endpoint, body) {
-  const { KLING_ACCESS_KEY, KLING_SECRET_KEY } = process.env;
-  if (!KLING_ACCESS_KEY || !KLING_SECRET_KEY) {
-    throw new Error('Faltam KLING_ACCESS_KEY e KLING_SECRET_KEY no ambiente.');
-  }
   const res = await fetch(`${BASE_URL}${endpoint}`, {
     method,
     headers: {
-      Authorization: `Bearer ${makeToken(KLING_ACCESS_KEY, KLING_SECRET_KEY)}`,
+      Authorization: `Bearer ${authToken()}`,
       'Content-Type': 'application/json',
     },
     body: body ? JSON.stringify(body) : undefined,
@@ -82,26 +90,26 @@ async function call(method, endpoint, body) {
   return json;
 }
 
-// A imagem pode ir como URL pública ou base64 puro (sem o prefixo data:).
+// Imagem de referência: URL pública ou base64 puro (sem o prefixo data:).
 function readImage(ref) {
   if (/^https?:\/\//i.test(ref)) return ref;
   if (!fs.existsSync(ref)) throw new Error(`Imagem não encontrada: ${ref}`);
   return fs.readFileSync(ref).toString('base64');
 }
 
-async function poll(kind, taskId, { intervalMs = 10000, timeoutMs = 900000 } = {}) {
+async function poll(endpoint, taskId, { intervalMs = 8000, timeoutMs = 900000 } = {}) {
   const deadline = Date.now() + timeoutMs;
   let last = '';
   while (Date.now() < deadline) {
-    const { data } = await call('GET', `/v1/videos/${kind}/${taskId}`);
+    const { data } = await call('GET', `${endpoint}/${taskId}`);
     if (data.task_status !== last) {
       last = data.task_status;
       console.log(`  status: ${last}`);
     }
     if (data.task_status === 'succeed') {
-      const video = data.task_result?.videos?.[0];
-      if (!video?.url) throw new Error('Task concluída sem URL de vídeo.');
-      return video;
+      const assets = data.task_result?.images || data.task_result?.videos || [];
+      if (!assets.length) throw new Error('Task concluída sem asset no resultado.');
+      return assets;
     }
     if (data.task_status === 'failed') {
       throw new Error(`Geração falhou: ${data.task_status_msg || 'sem detalhe'}`);
@@ -119,27 +127,37 @@ async function download(url, dest) {
 }
 
 // ── cli ─────────────────────────────────────────────────────────────────────
+const USAGE = `Uso: node kling.js <image|image2video|text2video> [opções]
+
+  --prompt <texto>          prompt
+  --prompt-file <arquivo>   lê o prompt de um arquivo
+  --out <arquivo>           onde salvar (.png para image, .mp4 para vídeo)
+  --model <nome>            padrão kling-v2 (image) / kling-v2-6 (vídeo)
+  --aspect-ratio <r>        ${ASPECT_RATIOS.join(' | ')}
+
+  image:
+  --n <1-9>                 quantas variações gerar (padrão 1)
+  --ref <arquivo|url>       imagem de referência
+  --ref-type <subject|face> o que herdar da referência (padrão subject)
+  --fidelity <0-1>          aderência à referência (padrão 0.5)
+
+  image2video / text2video:
+  --image <arquivo|url>     frame inicial (obrigatório no image2video)
+  --mode <std|pro>          padrão pro
+  --duration <5|10>         padrão 5`;
+
 function parseArgs(argv) {
   const args = {};
   for (let i = 0; i < argv.length; i += 2) {
-    const key = argv[i].replace(/^--/, '').replace(/-/g, '_');
-    args[key] = argv[i + 1];
+    args[argv[i].replace(/^--/, '').replace(/-/g, '_')] = argv[i + 1];
   }
   return args;
 }
 
 async function main() {
   const [kind, ...rest] = process.argv.slice(2);
-  if (!['image2video', 'text2video'].includes(kind)) {
-    console.error('Uso: node kling.js <image2video|text2video> [opções]\n' +
-      '  --prompt <texto>        prompt de movimento\n' +
-      '  --prompt-file <arquivo> lê o prompt de um arquivo\n' +
-      '  --image <arquivo|url>   frame estático (só image2video)\n' +
-      '  --out <arquivo.mp4>     onde salvar\n' +
-      '  --model <nome>          padrão kling-v2-6\n' +
-      '  --mode <std|pro>        padrão pro\n' +
-      '  --duration <5|10>       padrão 5\n' +
-      '  --aspect-ratio <16:9|9:16|1:1>  só text2video');
+  if (!['image', 'image2video', 'text2video'].includes(kind)) {
+    console.error(USAGE);
     process.exit(1);
   }
 
@@ -147,33 +165,56 @@ async function main() {
   const prompt = args.prompt_file ? fs.readFileSync(args.prompt_file, 'utf8').trim() : args.prompt;
   if (!prompt) throw new Error('Informe --prompt ou --prompt-file.');
   if (prompt.length > 2500) throw new Error(`Prompt com ${prompt.length} caracteres (máx. 2500).`);
-
-  const body = {
-    model_name: args.model || DEFAULTS.model_name,
-    prompt,
-    negative_prompt: NEGATIVE_PROMPT,
-    mode: args.mode || DEFAULTS.mode,
-    duration: args.duration || DEFAULTS.duration,
-    cfg_scale: DEFAULTS.cfg_scale,
-  };
-
-  if (kind === 'image2video') {
-    if (!args.image) throw new Error('image2video exige --image.');
-    // A proporção do vídeo vem da imagem: gere o frame já em 4:5 (feed) ou 9:16 (Reels).
-    body.image = readImage(args.image);
-  } else {
-    body.aspect_ratio = args.aspect_ratio || '9:16';
+  if (args.aspect_ratio && !ASPECT_RATIOS.includes(args.aspect_ratio)) {
+    throw new Error(`aspect_ratio inválido: ${args.aspect_ratio}. Use ${ASPECT_RATIOS.join(', ')}.`);
   }
 
-  console.log(`Enviando task ${kind} (${body.model_name}, ${body.mode}, ${body.duration}s)…`);
-  const { data } = await call('POST', `/v1/videos/${kind}`, body);
+  const isImage = kind === 'image';
+  const endpoint = isImage ? '/v1/images/generations' : `/v1/videos/${kind}`;
+  const body = { prompt, negative_prompt: NEGATIVE_PROMPT };
+
+  if (isImage) {
+    Object.assign(body, DEFAULTS.image, {
+      model_name: args.model || DEFAULTS.image.model_name,
+      n: Number(args.n || DEFAULTS.image.n),
+      aspect_ratio: args.aspect_ratio || DEFAULTS.image.aspect_ratio,
+    });
+    if (args.ref) {
+      body.image = readImage(args.ref);
+      body.image_reference = args.ref_type || 'subject';
+      body.image_fidelity = Number(args.fidelity ?? 0.5);
+    }
+  } else {
+    Object.assign(body, DEFAULTS.video, {
+      model_name: args.model || DEFAULTS.video.model_name,
+      mode: args.mode || DEFAULTS.video.mode,
+      duration: args.duration || DEFAULTS.video.duration,
+    });
+    if (kind === 'image2video') {
+      if (!args.image) throw new Error('image2video exige --image.');
+      // A proporção do vídeo vem da imagem: gere o plate já no formato final.
+      body.image = readImage(args.image);
+    } else {
+      body.aspect_ratio = args.aspect_ratio || '9:16';
+    }
+  }
+
+  console.log(`Enviando task ${kind} (${body.model_name})…`);
+  const { data } = await call('POST', endpoint, body);
   console.log(`  task_id: ${data.task_id}`);
 
-  const video = await poll(kind, data.task_id);
-  const out = args.out || `./out/${kind}-${data.task_id}.mp4`;
-  await download(video.url, out);
-  console.log(`Pronto: ${out} (${video.duration}s)`);
-  console.log('QC obrigatório: assista os últimos 2 segundos antes de subir.');
+  const assets = await poll(endpoint, data.task_id);
+  const out = args.out || `./out/${kind}-${data.task_id}${isImage ? '.png' : '.mp4'}`;
+  const ext = path.extname(out);
+  const stem = out.slice(0, -ext.length);
+
+  for (const [i, asset] of assets.entries()) {
+    const dest = assets.length > 1 ? `${stem}-${i + 1}${ext}` : out;
+    await download(asset.url, dest);
+    console.log(`Pronto: ${dest}`);
+  }
+
+  if (!isImage) console.log('QC obrigatório: assista os últimos 2 segundos antes de subir.');
 }
 
 main().catch((err) => {

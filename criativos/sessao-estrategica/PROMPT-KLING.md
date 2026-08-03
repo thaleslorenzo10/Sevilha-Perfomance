@@ -1,4 +1,4 @@
-# Sessão Estratégica — criativos em vídeo (Kling)
+# Sessão Estratégica — criativos (Kling)
 
 Anúncios da Sessão Estratégica da Sevilha Performance, no sistema visual das
 referências enviadas, com a paleta da marca.
@@ -7,6 +7,7 @@ referências enviadas, com a paleta da marca.
 - **Oferta:** sessão de diagnóstico **gratuita**, sem pitch de venda no final
 - **Destino:** https://form.respondi.app/gvz4UKQr
 - **Formato:** 4:5 (feed) + 9:16 (Reels/Stories)
+- **Peças prontas:** `out/conceito-2-4x5.png` · `out/conceito-2-9x16.png`
 
 ## Lacunas a preencher antes de gerar
 
@@ -63,18 +64,17 @@ O Kling é modelo de vídeo: ele **deforma texto**. Essas peças são 70% tipogr
 Jogar o anúncio montado no `image2video` derrete a headline.
 
 ```
-   foto do Vicente / objeto
-            ↓  etapa 0: edição de imagem (Nano Banana Pro)
+   prompt de cena
+        ↓  etapa 1: Kling images/generations
    PLATE — cena escura, SEM NENHUM TEXTO
-            ↓  etapa 1: Kling image2video, 5s
-   plate animado (.mp4)
-            ↓  etapa 2: overlay ffmpeg
-   tipografia estática por cima (PNG com alpha, exportado do Figma/Canva)
-            ↓
-   criativo final 4:5 e 9:16
+        ↓
+        ├─ estático: compor.py desenha a tipografia vetorial  → .png 4:5 / 9:16
+        └─ vídeo:    Kling image2video anima o plate (5s)
+                     → overlay da mesma tipografia via ffmpeg → .mp4
 ```
 
-O Kling só anima o plate. O texto nunca passa pelo modelo e nunca deforma.
+O texto nunca passa pelo modelo generativo — nem na imagem, nem no vídeo. É o que
+garante headline nítida, acento na cor certa e CTA no gradiente da marca.
 
 ---
 
@@ -132,16 +132,19 @@ throughout. No camera whip, no scene change, no morphing, no added text.
 Adapta a ref B (objeto simbólico com spotlight). É a que mais performa como formato
 de agendamento — mecanismo de contraste de tempo, palavras próprias.
 
-**Headline:**
+**Headline** (fechada — não depende de nenhum slot):
 ```
-[DURACAO]
+UMA CONVERSA
 OLHANDO OS
 SEUS NÚMEROS.
 OU MAIS UM ANO
 NO ACHISMO.       ← estas duas linhas em ACCENT
 ```
-**Subhead:** `Diagnóstico gratuito do seu escritório contábil, com [QUEM_CONDUZ]. Sem venda no final.`
-**CTA:** `QUERO MEU DIAGNÓSTICO`
+**Subhead:** `Diagnóstico gratuito com quem já acompanhou +450 contabilidades. Sem venda no final.`
+**CTA:** `AGENDAR DIAGNÓSTICO`
+
+Com a duração confirmada, a primeira linha vira `30 MINUTOS` / `45 MINUTOS` — é o
+mecanismo original da ref B e fica mais forte. O texto vive em `PECAS` no `compor.py`.
 
 ### Etapa 0 — plate
 
@@ -234,9 +237,10 @@ modelo enfiar mãos fotorrealistas no quadro.
 | `cfg_scale` | `0.5` | Acima disso o movimento endurece. |
 | proporção | herdada do plate | Ver abaixo. |
 
-**Formato.** O Kling entrega 16:9, 9:16 e 1:1 — **não tem 4:5**. No `image2video` o
-vídeo sai na proporção da imagem, então gere o plate direto em 4:5. Para Reels, gere
-um plate **separado** em 9:16 (não corte o 4:5 — o enquadramento do sujeito quebra).
+**Formato.** O Kling entrega 16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3 e 21:9 — **não tem
+4:5** (a API rejeita com `code 1201`). Para o feed do Meta: gere o plate em **3:4** e
+recorte para 1080×1350 no `compor.py`. Para Reels, gere um plate **separado** em 9:16
+— não corte o 4:5, o enquadramento do objeto quebra.
 
 ---
 
@@ -300,12 +304,47 @@ CTA do Meta: `Cadastre-se` ou `Saiba mais` · destino `https://form.respondi.app
 
 ## Uso do script
 
-```bash
-export KLING_ACCESS_KEY=...
-export KLING_SECRET_KEY=...
+Autenticação: `KLING_API_KEY` sozinha (enviada como Bearer) ou o par
+`KLING_ACCESS_KEY` + `KLING_SECRET_KEY` (assinado em JWT). O script cobre as duas.
 
+```bash
+./criativos/sessao-estrategica/fetch-fontes.sh ./fonts
+pip install Pillow
+
+# 1. plate limpo, sem texto
+node criativos/sessao-estrategica/kling.js image \
+  --prompt-file criativos/sessao-estrategica/prompts/plates/conceito-2-ampulheta.txt \
+  --aspect-ratio 3:4 --n 4 --out plates/ampulheta.png
+
+# 2. tipografia por cima
+python3 criativos/sessao-estrategica/compor.py \
+  --plate plates/ampulheta-1.png --peca conceito-2 --formato 4:5 \
+  --zoom 1.4 --anchor-x 0.0 --coluna 0.58 \
+  --out out/conceito-2-4x5.png
+
+# 3. opcional: animar o mesmo plate para a versão em vídeo
 node criativos/sessao-estrategica/kling.js image2video \
-  --image ./plates/conceito-2-ampulheta-4x5.png \
-  --prompt-file ./criativos/sessao-estrategica/prompts/conceito-2.txt \
-  --out ./criativos/sessao-estrategica/out/conceito-2-plate.mp4
+  --image plates/ampulheta-1.png \
+  --prompt-file criativos/sessao-estrategica/prompts/conceito-2.txt \
+  --out out/conceito-2-plate.mp4
 ```
+
+### Comandos que geraram as peças em `out/`
+
+```bash
+# 4:5 — feed
+node kling.js image --prompt-file prompts/plates/conceito-2-ampulheta.txt \
+  --aspect-ratio 3:4 --n 4 --out plates/ampulheta.png
+python3 compor.py --plate plates/conceito-2-ampulheta-3x4.png --peca conceito-2 \
+  --formato 4:5 --zoom 1.4 --anchor-x 0.0 --coluna 0.58 --out out/conceito-2-4x5.png
+
+# 9:16 — Reels/Stories, plate próprio (recortar o 4:5 quebra o enquadramento)
+node kling.js image --prompt-file prompts/plates/conceito-2-ampulheta.txt \
+  --aspect-ratio 9:16 --n 3 --out plates/ampulheta-916.png
+python3 compor.py --plate plates/conceito-2-ampulheta-9x16.png --peca conceito-2 \
+  --formato 9:16 --coluna 0.55 --headline-y 0.115 --out out/conceito-2-9x16.png
+```
+
+O `--zoom` com `--anchor-x 0.0` amplia o plate e descarta o excedente pela direita,
+empurrando o objeto para fora da coluna de texto. Sem isso a headline atravessa a
+ampulheta — foi exatamente o que aconteceu na primeira composição.
