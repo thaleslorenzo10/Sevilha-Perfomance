@@ -423,6 +423,11 @@ module.exports = async function handler(req, res) {
 
   } catch (err) {
     console.error('[api/sheet-leads]', err.message);
-    return res.status(502).json({ error: err.message });
+    return res.status(502).json({
+      error: err.message,
+      // Abra estas URLs no navegador: se baixarem o CSV, o problema é só de
+      // acesso sem login; se derem 404, o id ou o gid está errado.
+      ...(err.tentativas ? { urls_tentadas: err.tentativas } : {}),
+    });
   }
 };
