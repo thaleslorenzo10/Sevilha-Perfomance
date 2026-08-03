@@ -11,7 +11,7 @@
  * O layout usa flex puro: o renderizador (Satori) não implementa grid.
  */
 
-const { montarResumo, brl, brl0, int, pct, nomeCurto } = require('../lib/resumo');
+const { montarResumo, URL_DASHBOARD, brl, brl0, int, pct, nomeCurto } = require('../lib/resumo');
 
 const NAVY    = '#0D1F6E';
 const AZUL    = '#3D5AF1';
@@ -108,7 +108,7 @@ module.exports = async function handler(req, res) {
         }, a.formato === 'MISTO' ? 'FORM+LP' : a.formato === 'FORMS' ? 'FORM' : 'LP'),
         t({ flex: 1, fontSize: 19, fontWeight: 600, color: TINTA }, nomeCurto(a.nome).slice(0, 38)),
         t({ fontSize: 19, fontWeight: 700, color: VERDE, width: 230, justifyContent: 'flex-end' },
-          `${int(a.leads)} leads · ${brl(a.cpl)}`),
+          a.cpl !== null ? `${int(a.leads)} leads · ${brl(a.cpl)}` : `${int(a.leads)} leads`),
       ]),
       // Público e nº de cópias somadas: sem isso a linha consolidada esconde
       // que o mesmo criativo rodou em conjuntos diferentes.
@@ -153,14 +153,16 @@ module.exports = async function handler(req, res) {
       ]) : null,
 
       // Melhores anúncios
-      linhasAnuncio.length ? Secao('Melhores anúncios do período (por leads)', linhasAnuncio, { flex: 1 }) : null,
+      linhasAnuncio.length ? Secao('Melhores anúncios (por leads reais da planilha)', linhasAnuncio, { flex: 1 }) : null,
+      t({ fontSize: 15, color: CINZA, marginTop: 4, justifyContent: 'center' },
+        `Dashboard completo: ${URL_DASHBOARD}`),
     ]);
 
     // Altura somada por linha: anúncio com link ocupa mais que um sem link,
     // e assumir o mesmo para todos cortava a última linha.
     const alturaAnuncios = anuncios.reduce(
       (s, a) => s + 48 + (a.publico || a.copias > 1 ? 20 : 0) + (a.link ? 20 : 0), 0);
-    const altura = 345
+    const altura = 375
       + (temLeads ? 215 : 0)
       + (anuncios.length ? 80 + alturaAnuncios : 0);
 
