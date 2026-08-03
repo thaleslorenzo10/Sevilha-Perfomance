@@ -19,9 +19,15 @@ que não eram o Vicente. Automação que publica sozinha subiria os quatro.
 ```
 Schedule (seg 8h)
    ↓
-GET /api/compor              catálogo: peças + prompt de plate de cada uma
+Acervo do Meta               copy de anúncios vizinhos (opcional — ver abaixo)
    ↓
-Code: sortear peça           rotação automática, sem lista para manter
+GET /api/compor              fatos da oferta + eixos visuais + layouts
+   ↓
+Data Table: histórico        as 12 últimas peças, com ângulo e eixos usados
+   ↓
+Code: montar briefing        junta as três fontes
+   ↓
+Claude: escrever conceito    headline, subhead, layout e prompt de plate INÉDITOS
    ↓
 Precisa de plate?
    ├─ sim  → Kling images/generations → espera 90s → consulta task
@@ -33,6 +39,53 @@ Drive: sobe na pasta de criativos
    ↓
 Evolution: manda a imagem no grupo com o checklist de revisão
 ```
+
+Data Table: registrar        para a próxima execução não repetir
+
+## Por que ele deixou de repetir
+
+A primeira versão sorteava entre 9 prompts fixos. Aleatório não é novo: era o
+mesmo anúncio com outra semente.
+
+Pior, os 9 prompts repetiam a mesma fórmula — objeto à direita, spotlight de
+cima, dois terços escuros à esquerda — trocando só o substantivo. Era essa a
+causa da mesmice visual, não o modelo.
+
+Agora são três mudanças que só funcionam juntas:
+
+**Eixos.** `EIXOS` no `compor.py` quebra a composição em enquadramento (6), luz
+(6) e meio (5). São 180 combinações onde havia uma.
+
+**Gerador.** Um nó do Claude escreve headline, subhead, layout e prompt de plate
+a cada execução, em vez de escolher de uma lista.
+
+**Memória.** A tabela `Sevilha — histórico de criativos` guarda ângulo e eixos de
+cada peça. O gerador recebe as 12 últimas e é instruído a não repetir nenhuma.
+Sem a memória, o gerador voltaria a convergir sozinho.
+
+## O Acervo do Meta é opcional de propósito
+
+O nó consulta `ads_archive` procurando anúncios de "sessão estratégica" no
+Brasil, para dar ao gerador ângulos de nichos vizinhos. **Esse endpoint pode
+recusar o token** — o acesso do Acervo a anúncios não-políticos é restrito.
+
+Por isso o nó está com `onError: continueRegularOutput` e o Code node trata a
+ausência. Se a API recusar, o fluxo segue com os fatos e o histórico, e a única
+perda é ângulo externo.
+
+Do Acervo vem **ângulo e estrutura de argumento, nunca frase literal nem claim
+de concorrente** — está escrito na regra 7 do prompt do gerador.
+
+## Travas contra o que a máquina inventa
+
+Ficam no serviço, não só no prompt, porque prompt se ignora:
+
+- **Headline acima de 17 caracteres por linha é recusada.** Sem isso o autofit
+  encolheria o corpo até a peça perder o soco, e a arte sairia "funcionando".
+- **Âncora de preço "de/por" é recusada sempre.** Não existe preço praticado
+  para a Sessão Estratégica; anunciar um seria propaganda enganosa.
+
+Nos dois casos o serviço devolve 400 com o motivo, e o gerador pode reescrever.
 
 Os quatro formatos nativos pulam o Kling inteiro — a UI é desenhada, não gerada.
 São mais baratos e não têm o risco de texto embaralhado.
@@ -76,7 +129,14 @@ salvar, é preciso redeploy — variável nova só vale para deploy feito depois
 | `Compor Sevilha (x-compor-token)` | Header Auth | Nome `x-compor-token`, valor = `COMPOR_TOKEN` |
 | `Kling API (Authorization Bearer)` | Header Auth | Nome `Authorization`, valor `Bearer <KLING_API_KEY>` |
 | `Evolution API (apikey)` | Header Auth | Nome `apikey`, valor da sua instância |
-| Google Drive | OAuth2 | Já foi atribuída automaticamente |
+| `Meta Graph (Authorization Bearer)` | Header Auth | Nome `Authorization`, valor `Bearer <META_ACCESS_TOKEN>` — só para o Acervo, opcional |
+| Anthropic | API key | Do nó `Claude`. Já estava na instância e foi religada sozinha |
+| Google Drive | OAuth2 | Selecionar no nó `Subir no Drive` |
+
+**Toda atualização do workflow pela API derruba as credenciais dos nós de HTTP.**
+Não é bug da instância: o SDK recria os nós e o auto-assign pula Header Auth de
+propósito, porque existem várias e ele não tem como adivinhar qual. Depois de
+qualquer mudança estrutural, são 9 cliques de reconexão.
 
 ### 3. URLs — já preenchidas
 
