@@ -21,6 +21,7 @@ passando zoom, anchor_x, anchor_y, coluna_frac, headline_y, cta_y ou leading
 no corpo.
 """
 
+import hashlib
 import hmac
 import io
 import json
@@ -84,6 +85,11 @@ def montar(corpo):
     )
 
 
+def digitais(valor):
+    """Oito primeiros hex do SHA-256 — compara dois segredos sem revelar nenhum."""
+    return hashlib.sha256(valor.encode()).hexdigest()[:8]
+
+
 def catalogo():
     """Peças disponíveis + o prompt de plate de cada uma.
 
@@ -112,15 +118,36 @@ class handler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(payload)
 
-    def _autorizado(self):
-        # Falha fechado: sem token configurado, o endpoint não atende.
+    def _checar_token(self):
+        """Devolve (status, mensagem) quando barra, ou None quando libera.
+
+        A mensagem distingue as três causas de 401 em vez de dizer só "token
+        inválido" — sem isso, descobrir de que lado está o erro vira tentativa
+        e erro entre dois painéis, com um deploy de 3 minutos a cada palpite.
+
+        A impressão digital é o começo do SHA-256, não o token: serve para
+        comparar os dois lados sem expor o valor de nenhum deles.
+        """
         esperado = os.environ.get("COMPOR_TOKEN", "")
         recebido = self.headers.get("x-compor-token", "")
-        return bool(esperado) and hmac.compare_digest(esperado, recebido)
+
+        if not esperado:
+            return 503, ("COMPOR_TOKEN não está definida neste deploy. Confira se a "
+                         "variável existe na Vercel, se está marcada para Production "
+                         "e se houve redeploy depois de salvá-la.")
+        if not recebido:
+            return 401, ("header x-compor-token ausente. No n8n, o campo Name da "
+                         "credencial Header Auth precisa ser exatamente x-compor-token.")
+        if not hmac.compare_digest(esperado, recebido):
+            return 401, (f"token não confere. Recebido: {len(recebido)} caracteres, "
+                         f"impressão {digitais(recebido)}. Esperado: {len(esperado)} "
+                         f"caracteres, impressão {digitais(esperado)}.")
+        return None
 
     def do_GET(self):
-        if not self._autorizado():
-            return self._erro(401, "token inválido")
+        barrado = self._checar_token()
+        if barrado:
+            return self._erro(*barrado)
         payload = json.dumps(catalogo(), ensure_ascii=False).encode()
         self.send_response(200)
         self.send_header("Content-Type", "application/json; charset=utf-8")
@@ -130,8 +157,9 @@ class handler(BaseHTTPRequestHandler):
         self.wfile.write(payload)
 
     def do_POST(self):
-        if not self._autorizado():
-            return self._erro(401, "token inválido")
+        barrado = self._checar_token()
+        if barrado:
+            return self._erro(*barrado)
 
         try:
             tamanho = int(self.headers.get("Content-Length") or 0)
