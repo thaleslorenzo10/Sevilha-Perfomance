@@ -201,6 +201,9 @@ function extractLP(rows, header) {
     origem:   columnIndex(head, off, ['utm source', 'utm_source']),
     colab:    columnIndex(head, off, ['numero de colaboradores', 'quantos colaboradores']),
     cargo:    columnIndex(head, off, ['cargo que ocupa', 'qual a sua posicao', 'qualificacao']),
+    // A LP grava o nome do anúncio no utm_content ({{ad.name}}), o que
+    // permite ranquear criativo por lead real também nesse formato.
+    anuncio:  columnIndex(head, off, ['utm content', 'utm_content']),
   };
 
   const out = [];
@@ -229,7 +232,7 @@ function extractLP(rows, header) {
       formulario: 'Formulário da Landing Page',
       campanha:   campanha || '[SE] [LEAD]',
       adset:      '',
-      anuncio:    '',
+      anuncio:    String(row[idx.anuncio] ?? '').trim(),
       plataforma: String(row[idx.origem] ?? '').trim(),
       colaboradores: String(row[idx.colab] ?? '').trim(),
       cargo:      String(row[idx.cargo] ?? '').trim(),
@@ -394,7 +397,19 @@ async function montarLeads(since, until) {
       porte_por_formato: { FORMS: contarPorte(forms), LP: contarPorte(lp) },
       por_formulario: toSortedList(countBy(noPeriodo, l => l.formulario), 'formulario'),
       por_campanha:   toSortedList(countBy(noPeriodo, l => l.campanha),   'campanha'),
-      por_anuncio:    toSortedList(countBy(forms,     l => l.anuncio),    'anuncio').slice(0, 20),
+      // Cobre os dois formatos: o export do Meta traz ad_name e a LP traz o
+      // nome no utm_content. Antes só contava FORMS, o que subestimava
+      // qualquer criativo que também rodasse para a landing page.
+      por_anuncio: Object.entries(
+        noPeriodo.reduce((acc, l) => {
+          const nome = (l.anuncio || '').trim();
+          if (!nome) return acc;
+          acc[nome] = acc[nome] || { anuncio: nome, leads: 0, FORMS: 0, LP: 0 };
+          acc[nome].leads++;
+          acc[nome][l.fonte]++;
+          return acc;
+        }, {})
+      ).map(([, v]) => v).sort((a, b) => b.leads - a.leads).slice(0, 25),
       por_dia: Object.values(porDiaMap).sort((a, b) => a.data.localeCompare(b.data)),
       qualificacao: {
         cargo:         countBy(noPeriodo, l => labelCargo(l.cargo)),
