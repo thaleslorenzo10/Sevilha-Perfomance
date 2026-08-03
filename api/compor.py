@@ -132,9 +132,15 @@ class handler(BaseHTTPRequestHandler):
         recebido = self.headers.get("x-compor-token", "")
 
         if not esperado:
+            # Nomes parecidos, nunca valores: se o nome foi digitado errado na
+            # Vercel, ele aparece aqui e o erro deixa de ser adivinhação.
+            parecidas = sorted(n for n in os.environ if "COMPOR" in n.upper())
+            pista = (f" Variáveis com COMPOR no nome que chegaram até a função: "
+                     f"{', '.join(parecidas)}." if parecidas else
+                     " Nenhuma variável com COMPOR no nome chegou até a função.")
             return 503, ("COMPOR_TOKEN não está definida neste deploy. Confira se a "
                          "variável existe na Vercel, se está marcada para Production "
-                         "e se houve redeploy depois de salvá-la.")
+                         "e se houve redeploy depois de salvá-la." + pista)
         if not recebido:
             return 401, ("header x-compor-token ausente. No n8n, o campo Name da "
                          "credencial Header Auth precisa ser exatamente x-compor-token.")
