@@ -29,6 +29,10 @@
   --s4:     #f97316;  /* LP     */
   --forms:  #3D5AF1;
   --lp:     #f97316;
+  /* Porte usa cores próprias: azul e laranja já significam formato, e o mesmo
+     par não pode carregar dois significados na mesma tela. */
+  --p-maior: #7c3aed;
+  --p-menor: #0d9488;
 }
 :root[data-theme="dark"] {
   --bg:    #0F111A; --white: #1A1D24; --black: #E8E6F2;
@@ -37,6 +41,7 @@
   --s1:    #4361EE; --s2: #0d9488; --s3: #8257e5; --s4: #d97706;
   --forms: #4361EE; --lp: #d97706;
   --cp:    #8257e5; --se: #0d9488;
+  --p-maior: #8257e5; --p-menor: #0d9488;
 }
 * { box-sizing:border-box; margin:0; padding:0; }
 html { scroll-behavior:smooth; }
@@ -113,6 +118,10 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--black);
 .kpi-card.blue   { border-left-color:var(--accent); }
 .kpi-card.forms  { border-left-color:var(--forms); }
 .kpi-card.lp     { border-left-color:var(--lp); }
+.kpi-card.porte-maior { border-left-color:var(--p-maior); }
+.kpi-card.porte-menor { border-left-color:var(--p-menor); }
+.kpi-group-porte .kpi-group-label { color:var(--p-maior); border-color:var(--p-maior); }
+:root[data-theme="dark"] .kpi-group-porte .kpi-group-label { color:#c4b5fd; border-color:#c4b5fd; }
 .kpi-label { font-size:11px; color:var(--gray); font-weight:700; text-transform:uppercase; letter-spacing:.8px; }
 .kpi-value { font-size:28px; font-weight:800; margin-top:10px; color:var(--black); line-height:1; letter-spacing:-.5px; }
 .kpi-sub { font-size:11px; color:#9ca3af; margin-top:8px; font-weight:500; }
@@ -290,6 +299,14 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       <div class="kpi-card green"><div class="kpi-label">CPL Real</div><div class="kpi-value skeleton kpi-skel" id="g-cpl-real"></div><div class="kpi-sub" id="g-cpl-real-sub"></div></div>
       <div class="kpi-card teal"><div class="kpi-label">Formulário instantâneo</div><div class="kpi-value skeleton kpi-skel" id="g-real-forms"></div><div class="kpi-sub">Leads captados dentro do Meta</div></div>
       <div class="kpi-card orange"><div class="kpi-label">Landing Page</div><div class="kpi-value skeleton kpi-skel" id="g-real-lp"></div><div class="kpi-sub">Leads captados no site</div></div>
+    </div>
+
+    <div class="kpi-group kpi-group-porte">
+      <div class="kpi-group-label">Porte do escritório <span id="g-porte-nota" style="font-weight:600;text-transform:none;letter-spacing:0;opacity:.75"></span></div>
+      <div class="kpi-card porte-maior"><div class="kpi-label">Leads 10+ colaboradores</div><div class="kpi-value skeleton kpi-skel" id="g-porte-maior"></div><div class="kpi-sub" id="g-porte-maior-sub"></div></div>
+      <div class="kpi-card porte-maior"><div class="kpi-label">Custo por lead 10+</div><div class="kpi-value skeleton kpi-skel" id="g-porte-maior-cpl"></div><div class="kpi-sub" id="g-porte-maior-cpl-sub"></div></div>
+      <div class="kpi-card porte-menor"><div class="kpi-label">Leads menos de 10</div><div class="kpi-value skeleton kpi-skel" id="g-porte-menor"></div><div class="kpi-sub" id="g-porte-menor-sub"></div></div>
+      <div class="kpi-card porte-menor"><div class="kpi-label">Custo por lead &lt; 10</div><div class="kpi-value skeleton kpi-skel" id="g-porte-menor-cpl"></div><div class="kpi-sub" id="g-porte-menor-cpl-sub"></div></div>
     </div>
   </div>
 
@@ -821,8 +838,8 @@ function renderPorte(planilha, spendForms, spendLP) {
 
   const spendTotal = spendForms + spendLP;
   const linhas = [
-    { chave:'MAIOR_10',   rotulo:'10 ou mais colaboradores', cor:'var(--forms)' },
-    { chave:'MENOR_10',   rotulo:'Menos de 10 colaboradores', cor:'var(--lp)' },
+    { chave:'MAIOR_10',   rotulo:'10 ou mais colaboradores',  cor:'var(--p-maior)' },
+    { chave:'MENOR_10',   rotulo:'Menos de 10 colaboradores', cor:'var(--p-menor)' },
     { chave:'INDEFINIDO', rotulo:'Sem resposta',              cor:'var(--gray)' },
   ];
 
@@ -968,6 +985,33 @@ function render({ meta, planilha, rd }) {
     cplReal === null ? 'Precisa dos leads da planilha' : 'Investido [CP]+[SE] ÷ leads reais');
   setKPI('g-real-forms', totalReal === null ? '—' : fmtN(planilha.por_formato.FORMS));
   setKPI('g-real-lp',    totalReal === null ? '—' : fmtN(planilha.por_formato.LP));
+
+  // ── Porte do escritório ──
+  // Base de custo: investimento de captação ([CP]+[SE]), o mesmo do CPL real.
+  // As campanhas de tráfego ([DISTRIBUIÇÃO]) ficam de fora — não captam lead.
+  const spendCaptacao = se.spend + cp.spend;
+  const porte = (totalReal !== null && planilha?.porte) ? planilha.porte : null;
+
+  const setPorte = (idQtd, idCpl, qtd) => {
+    if (porte === null) {
+      setKPI(idQtd, '—', 'Precisa dos leads da planilha');
+      setKPI(idCpl, '—', '');
+      return;
+    }
+    setKPI(idQtd, fmtN(qtd), planilha.total > 0 ? fmtP((qtd / planilha.total) * 100) + ' dos leads' : '');
+    setKPI(idCpl, qtd > 0 ? fmtR(spendCaptacao / qtd) : '—',
+      qtd > 0 ? 'Investimento em captação ÷ leads da faixa' : '');
+  };
+
+  setPorte('g-porte-maior', 'g-porte-maior-cpl', porte?.MAIOR_10 ?? 0);
+  setPorte('g-porte-menor', 'g-porte-menor-cpl', porte?.MENOR_10 ?? 0);
+
+  // As duas faixas dividem o mesmo investimento — dito na tela para ninguém
+  // somar as duas colunas de custo achando que dá o total investido.
+  const semResposta = porte?.INDEFINIDO ?? 0;
+  setText('g-porte-nota', (porte === null || !planilha?.total) ? ''
+    : `· as duas faixas dividem o mesmo investimento, os custos não se somam`
+      + (semResposta > 0 ? ` · ${fmtN(semResposta)} sem resposta` : ''));
 
   lineChart('chartGeralDia', labels, [
     { label: 'Formulário', data: meta.serie.map(d => d.FORMS.leads), color: C.forms },
