@@ -80,6 +80,21 @@ PECAS = {
 }
 
 
+# Parâmetros de recorte descobertos peça a peça. Vivem aqui para o n8n não
+# precisar conhecê-los — a automação pede a peça, não a geometria.
+PRESETS = {
+    ("conceito-1", "4:5"):  {"zoom": 1.3,  "anchor_x": 0.0, "anchor_y": 0.12, "coluna_frac": 0.52},
+    ("conceito-2", "4:5"):  {"zoom": 1.4,  "anchor_x": 0.0, "coluna_frac": 0.58},
+    ("conceito-2", "9:16"): {"coluna_frac": 0.55, "headline_y": 0.115},
+    ("conceito-4", "4:5"):  {"coluna_frac": 0.58},
+    ("conceito-5", "4:5"):  {"zoom": 1.1,  "anchor_x": 0.0, "coluna_frac": 0.54},
+    ("conceito-6", "4:5"):  {"zoom": 1.15, "anchor_x": 0.0, "coluna_frac": 0.58},
+    ("conceito-7", "4:5"):  {"zoom": 1.25, "anchor_x": 0.0, "coluna_frac": 0.56},
+    ("conceito-8", "4:5"):  {"zoom": 1.0,  "anchor_y": 0.0, "coluna_frac": 0.58},
+    ("conceito-9", "4:5"):  {"zoom": 1.2,  "anchor_x": 0.0, "coluna_frac": 0.56},
+}
+
+
 def cover(img, size, zoom=1.0, anchor_x=0.5, anchor_y=0.5):
     """Redimensiona preenchendo o quadro, recortando o excedente.
 
@@ -195,9 +210,19 @@ def marca(canvas, draw, x, y, fontes, logo=None, altura=None):
     draw.text((x, topo + round(corpo * 1.32)), "Performance", font=f2, fill=INK_SOFT)
 
 
-def compor(plate_path, peca, formato, dir_fontes, out, zoom=1.0, anchor_x=0.5,
-           coluna_frac=0.56, headline_y=0.215, cta_y=None, logo=None, leading=1.0,
-           anchor_y=0.5):
+def compor(plate_path, peca, formato, dir_fontes, out, **kwargs):
+    """Wrapper de linha de comando: renderiza e salva."""
+    canvas = renderizar(Image.open(plate_path).convert("RGB"), peca, formato, dir_fontes, **kwargs)
+    os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
+    canvas.save(out, "PNG")
+    print(f"Pronto: {out}  {canvas.width}x{canvas.height}")
+
+
+def renderizar(plate, peca, formato, dir_fontes, zoom=1.0, anchor_x=0.5,
+               coluna_frac=0.56, headline_y=0.215, cta_y=None, logo=None, leading=1.0,
+               anchor_y=0.5):
+    """Devolve a peça montada como imagem — usada tanto pelo CLI quanto pela
+    função serverless em api/compor.py, que não tem onde escrever arquivo."""
     size = FORMATOS[formato]
     W, H = size
     margem = round(W * 0.068)
@@ -212,7 +237,7 @@ def compor(plate_path, peca, formato, dir_fontes, out, zoom=1.0, anchor_x=0.5,
         if not os.path.exists(caminho):
             raise SystemExit(f"Fonte ausente: {caminho} ({nome})")
 
-    canvas = cover(Image.open(plate_path).convert("RGB"), size, zoom, anchor_x, anchor_y)
+    canvas = cover(plate, size, zoom, anchor_x, anchor_y)
     canvas.paste(scrim(size), (0, 0), scrim(size))
     draw = ImageDraw.Draw(canvas)
 
@@ -258,9 +283,7 @@ def compor(plate_path, peca, formato, dir_fontes, out, zoom=1.0, anchor_x=0.5,
     topo_cta = round(H * cta_y) if cta_y is not None else H - margem - b.height
     canvas.paste(b, (margem, topo_cta), b)
 
-    os.makedirs(os.path.dirname(out) or ".", exist_ok=True)
-    canvas.save(out, "PNG")
-    print(f"Pronto: {out}  {W}x{H}  headline {corpo}px")
+    return canvas
 
 
 if __name__ == "__main__":
@@ -283,5 +306,6 @@ if __name__ == "__main__":
                    help="PNG do símbolo da marca; sem ele o lockup fica só com o wordmark")
     p.add_argument("--leading", type=float, default=1.0, help="entrelinha da headline (múltiplo do corpo)")
     a = p.parse_args()
-    compor(a.plate, PECAS[a.peca], a.formato, a.fontes, a.out, a.zoom, a.anchor_x,
-           a.coluna, a.headline_y, a.cta_y, a.logo, a.leading, a.anchor_y)
+    compor(a.plate, PECAS[a.peca], a.formato, a.fontes, a.out, zoom=a.zoom,
+           anchor_x=a.anchor_x, coluna_frac=a.coluna, headline_y=a.headline_y,
+           cta_y=a.cta_y, logo=a.logo, leading=a.leading, anchor_y=a.anchor_y)
