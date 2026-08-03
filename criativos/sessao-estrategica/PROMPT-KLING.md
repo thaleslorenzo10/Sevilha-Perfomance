@@ -3,11 +3,13 @@
 Anúncios da Sessão Estratégica da Sevilha Performance, no sistema visual das
 referências enviadas, com a paleta da marca.
 
-- **Público:** donos de contabilidade com até 10 colaboradores
+- **Públicos:** dois segmentos, com criativos separados
+  - **até 10 colaboradores** — conceitos 1, 2, 4, 5, 6
+  - **mais de 10 colaboradores** — conceitos 7, 8, 9 (eyebrow qualifica o porte na peça)
 - **Oferta:** sessão de diagnóstico **gratuita**
 - **Destino:** https://form.respondi.app/gvz4UKQr
 - **Formato:** 4:5 (feed) + 9:16 (Reels/Stories)
-- **Peças prontas:** conceitos 1, 2, 4, 5 e 6 em `out/` (4:5; o conceito 2 também em 9:16)
+- **Peças prontas:** conceitos 1, 2, 4, 5, 6, 7, 8 e 9 em `out/` (4:5; o conceito 2 também em 9:16)
 
 ## Lacunas a preencher antes de gerar
 
@@ -288,6 +290,75 @@ python3 compor.py --plate plates/conceito-6-margem-3x4.png --peca conceito-6 \
 
 ---
 
+# Segmento: mais de 10 colaboradores
+
+A dor muda de natureza. Abaixo de 10 o dono faz tudo; acima de 10 ele **tem** time e
+mesmo assim tudo continua passando por ele. Os três conceitos abaixo atacam isso —
+gargalo de decisão, falta de padrão entre equipes e crescimento que não virou margem.
+
+**Eyebrow.** Essas peças levam `PARA ESCRITÓRIOS COM MAIS DE 10 COLABORADORES` acima
+da headline, em ACCENT com tracking largo — mesmo padrão do `.eyebrow` da landing page.
+Qualificar o porte na arte reduz clique de quem não é o público e barateia o lead.
+
+> **Conflito a resolver.** A landing page qualifica "escritório contábil com **até 10
+> colaboradores**" e coloca porte maior fora do perfil. Se a Sessão Estratégica atende
+> os dois portes, a LP precisa acompanhar; senão o lead qualificado pelo anúncio se
+> desqualifica sozinho ao chegar na página.
+
+## Conceito 7 — Gargalo · decisão represada
+
+Trocadilho visual que só funciona em português: o gargalo da garrafa entupido de papel.
+
+**Headline:**
+```
+SEU TIME NÃO
+ESTÁ PARADO.
+ESTÁ ESPERANDO
+VOCÊ DECIDIR.     ← estas duas linhas em ACCENT
+```
+
+```bash
+python3 compor.py --plate plates/conceito-7-gargalo-3x4.png --peca conceito-7 \
+  --formato 4:5 --zoom 1.25 --anchor-x 0.0 --coluna 0.56 --out out/conceito-7-4x5.png
+```
+
+## Conceito 8 — Caixas desiguais · falta de padrão
+
+**Headline:**
+```
+CINCO EQUIPES.
+CINCO JEITOS
+DE FAZER
+A MESMA COISA.    ← estas duas linhas em ACCENT
+```
+
+```bash
+python3 compor.py --plate plates/conceito-8-padrao-3x4.png --peca conceito-8 \
+  --formato 4:5 --zoom 1.0 --anchor-y 0.0 --coluna 0.58 --out out/conceito-8-4x5.png
+```
+
+O `--anchor-y 0.0` empurra as caixas para baixo do subhead. Com o recorte centrado
+elas subiam e atravessavam o texto.
+
+## Conceito 9 — Fileira de mesas · cresceu e não resolveu
+
+Literal da landing page: `Você contratou mais gente — e os problemas só aumentaram`.
+
+**Headline:**
+```
+VOCÊ CONTRATOU
+MAIS GENTE.
+E OS PROBLEMAS
+CRESCERAM JUNTO.  ← estas duas linhas em ACCENT
+```
+
+```bash
+python3 compor.py --plate plates/conceito-9-escala-3x4.png --peca conceito-9 \
+  --formato 4:5 --zoom 1.2 --anchor-x 0.0 --coluna 0.56 --out out/conceito-9-4x5.png
+```
+
+---
+
 ## Prompt negativo (todos os conceitos)
 
 ```
@@ -379,6 +450,23 @@ Limites: texto principal 125 caracteres visíveis · título 40 · descrição 3
 - Principal: `Faturamento subindo com margem parada é vazamento, não preço. Descubra onde está o seu.` (87)
 - Título: `Margem parada?` (14)
 - Descrição: `Diagnóstico gratuito` (20)
+
+### Segmento mais de 10 colaboradores
+
+**Conceito 7**
+- Principal: `Você tem time e mesmo assim tudo espera a sua decisão. Não é falta de gente, é falta de gestão.` (95)
+- Título: `Tudo passa por você?` (20)
+- Descrição: `Mais de 10 colaboradores` (24)
+
+**Conceito 8**
+- Principal: `Cada equipe do seu escritório faz do próprio jeito. E erra de um jeito diferente também.` (88)
+- Título: `Cada equipe faz de um jeito` (27)
+- Descrição: `Diagnóstico gratuito` (20)
+
+**Conceito 9**
+- Principal: `Você contratou mais gente e os problemas cresceram junto. Estruturar não é o mesmo que contratar.` (97)
+- Título: `Cresceu o time, e a margem?` (27)
+- Descrição: `Mais de 10 colaboradores` (24)
 
 CTA do Meta: `Cadastre-se` ou `Saiba mais` · destino `https://form.respondi.app/gvz4UKQr`
 

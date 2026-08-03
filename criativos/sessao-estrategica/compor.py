@@ -56,6 +56,27 @@ PECAS = {
         "subhead": "Diagnóstico gratuito do seu escritório, com quem já acompanhou +450 contabilidades.",
         "cta": "AGENDAR DIAGNÓSTICO",
     },
+    "conceito-7": {
+        "eyebrow": "Para escritórios com mais de 10 colaboradores",
+        "headline": ["SEU TIME NÃO", "ESTÁ PARADO.", "ESTÁ ESPERANDO", "VOCÊ DECIDIR."],
+        "accent_lines": [2, 3],
+        "subhead": "Diagnóstico gratuito do seu escritório, com quem já acompanhou +450 contabilidades.",
+        "cta": "AGENDAR DIAGNÓSTICO",
+    },
+    "conceito-8": {
+        "eyebrow": "Para escritórios com mais de 10 colaboradores",
+        "headline": ["CINCO EQUIPES.", "CINCO JEITOS", "DE FAZER", "A MESMA COISA."],
+        "accent_lines": [2, 3],
+        "subhead": "Diagnóstico gratuito do seu escritório, com quem já acompanhou +450 contabilidades.",
+        "cta": "AGENDAR DIAGNÓSTICO",
+    },
+    "conceito-9": {
+        "eyebrow": "Para escritórios com mais de 10 colaboradores",
+        "headline": ["VOCÊ CONTRATOU", "MAIS GENTE.", "E OS PROBLEMAS", "CRESCERAM JUNTO."],
+        "accent_lines": [2, 3],
+        "subhead": "Diagnóstico gratuito do seu escritório, com quem já acompanhou +450 contabilidades.",
+        "cta": "AGENDAR DIAGNÓSTICO",
+    },
 }
 
 
@@ -115,6 +136,15 @@ def quebrar(texto, fonte, largura_max):
                 linha = palavra
         saida.append(linha)
     return saida
+
+
+def letterspace(draw, xy, texto, fonte, fill, tracking):
+    """PIL não tem letter-spacing — desenha caractere a caractere."""
+    x, y = xy
+    for ch in texto:
+        draw.text((x, y), ch, font=fonte, fill=fill)
+        x += fonte.getlength(ch) + tracking
+    return x
 
 
 def botao(texto, fonte, padding=(52, 30), raio=14):
@@ -188,6 +218,15 @@ def compor(plate_path, peca, formato, dir_fontes, out, zoom=1.0, anchor_x=0.5,
 
     marca(canvas, draw, margem, round(H * 0.048), fontes, logo, round(H * 0.040))
 
+    # eyebrow — qualifica o porte do escritório antes do clique.
+    # Mesmo padrão do .eyebrow da landing page: Poppins 700, uppercase, tracking largo.
+    y_head = round(H * headline_y)
+    if peca.get("eyebrow"):
+        corpo_eb = round(W * 0.0165)
+        f_eb = ImageFont.truetype(fontes["poppins_bold"], corpo_eb)
+        letterspace(draw, (margem, y_head - round(corpo_eb * 2.6)),
+                    peca["eyebrow"].upper(), f_eb, ACCENT, corpo_eb * 0.16)
+
     # headline — Anton uppercase, leading apertado, uma frase-chave em ACCENT
     linhas = peca["headline"]
     f_head, corpo = autofit(linhas, fontes["anton"], coluna, round(H * 0.082))
@@ -195,7 +234,7 @@ def compor(plate_path, peca, formato, dir_fontes, out, zoom=1.0, anchor_x=0.5,
     # acentos maiúsculos (Ê, Ã, Ó) sobem acima da caixa e batem na linha de
     # cima — 1.0 é o mais apertado que ainda respira.
     avanco = round(corpo * leading)
-    y = round(H * headline_y)
+    y = y_head
     for i, linha in enumerate(linhas):
         cor = ACCENT if i in peca["accent_lines"] else INK
         draw.text((margem, y), linha, font=f_head, fill=cor)
