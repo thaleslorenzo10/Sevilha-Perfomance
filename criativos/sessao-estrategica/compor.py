@@ -143,22 +143,26 @@ def botao(texto, fonte, padding=(52, 30), raio=14):
 
 
 def marca(canvas, draw, x, y, fontes, logo=None, altura=None):
-    """Aplica o logo. Com --logo aponta para o PNG oficial (marca em gradiente +
-    wordmark branco, que já nasce pronto para fundo escuro). Sem ele, cai numa
-    assinatura em texto — o logo.png do repositório é navy sobre branco e não
-    sobrevive ao fundo escuro sem retrabalho de vetor."""
-    if logo:
-        marca_img = Image.open(logo).convert("RGBA")
-        escala = altura / marca_img.height
-        marca_img = marca_img.resize(
-            (round(marca_img.width * escala), altura), Image.LANCZOS)
-        canvas.paste(marca_img, (x, y), marca_img)
-        return
-    f = ImageFont.truetype(fontes["poppins_bold"], 26)
-    draw.text((x, y), "SEVILHA", font=f, fill=INK)
-    largura = f.getbbox("SEVILHA")[2]
-    f2 = ImageFont.truetype(fontes["poppins_medium"], 26)
-    draw.text((x + largura + 10, y), "PERFORMANCE", font=f2, fill=ACCENT)
+    """Lockup da marca: símbolo em gradiente + wordmark branco em duas linhas.
+
+    O símbolo vem de `marca/logo-marca.png`, renderizado do SVG que já vive em
+    clube-da-performance/app/components/Logo.tsx — mesmo gradiente da marca. O
+    logo.png da raiz é navy sobre branco e não sobrevive ao fundo escuro.
+    """
+    if logo and os.path.exists(logo):
+        simbolo = Image.open(logo).convert("RGBA")
+        escala = altura / simbolo.height
+        simbolo = simbolo.resize((round(simbolo.width * escala), altura), Image.LANCZOS)
+        canvas.paste(simbolo, (x, y), simbolo)
+        x += simbolo.width + round(altura * 0.32)
+
+    corpo = round(altura * 0.40)
+    f1 = ImageFont.truetype(fontes["poppins_bold"], corpo)
+    f2 = ImageFont.truetype(fontes["poppins_medium"], corpo)
+    bloco = round(corpo * 2.35)
+    topo = y + (altura - bloco) // 2
+    draw.text((x, topo), "Sevilha", font=f1, fill=INK)
+    draw.text((x, topo + round(corpo * 1.32)), "Performance", font=f2, fill=INK_SOFT)
 
 
 def compor(plate_path, peca, formato, dir_fontes, out, zoom=1.0, anchor_x=0.5,
@@ -232,7 +236,9 @@ if __name__ == "__main__":
     p.add_argument("--coluna", type=float, default=0.56, help="largura da coluna de texto (fração)")
     p.add_argument("--headline-y", type=float, default=0.215, help="topo da headline (fração da altura)")
     p.add_argument("--cta-y", type=float, default=None, help="topo do CTA; padrão ancora na base")
-    p.add_argument("--logo", default=None, help="PNG do logo oficial; sem ele usa assinatura em texto")
+    p.add_argument("--logo",
+                   default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "marca", "logo-marca.png"),
+                   help="PNG do símbolo da marca; sem ele o lockup fica só com o wordmark")
     p.add_argument("--leading", type=float, default=1.0, help="entrelinha da headline (múltiplo do corpo)")
     a = p.parse_args()
     compor(a.plate, PECAS[a.peca], a.formato, a.fontes, a.out, a.zoom, a.anchor_x,
