@@ -54,6 +54,19 @@ function round2(n) {
   return Math.round((n + Number.EPSILON) * 100) / 100;
 }
 
+/** Todos os dias do intervalo, inclusive. Em UTC, para não pular dia no horário de verão. */
+function eachDay(since, until) {
+  const dias = [];
+  const cur = new Date(`${since}T00:00:00Z`);
+  const fim = new Date(`${until}T00:00:00Z`);
+  // Teto de segurança: um intervalo absurdo não deve gerar série infinita.
+  for (let i = 0; cur <= fim && i < 400; i++) {
+    dias.push(cur.toISOString().slice(0, 10));
+    cur.setUTCDate(cur.getUTCDate() + 1);
+  }
+  return dias;
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -118,21 +131,26 @@ module.exports = async function handler(req, res) {
 
     // ── Série diária ─────────────────────────────────────────────────────
     // Uma entrada por dia com investimento e leads por grupo e por formato.
+    // O intervalo é pré-preenchido: o Meta omite os dias sem entrega, e um dia
+    // ausente sumia do gráfico em vez de aparecer como zero — a linha ligava
+    // os dois vizinhos e escondia a interrupção.
+    const diaVazio = dia => ({
+      data:  dia,
+      spend: 0,
+      leads: 0,
+      CP:    { spend: 0, leads: 0 },
+      SE:    { spend: 0, leads: 0 },
+      FORMS: { spend: 0, leads: 0 },
+      LP:    { spend: 0, leads: 0 },
+    });
+
     const dias = {};
+    for (const dia of eachDay(since, until)) dias[dia] = diaVazio(dia);
+
     for (const r of dailyRows) {
       const dia = r.date_start;
       if (!dia) continue;
-      if (!dias[dia]) {
-        dias[dia] = {
-          data:  dia,
-          spend: 0,
-          leads: 0,
-          CP:    { spend: 0, leads: 0 },
-          SE:    { spend: 0, leads: 0 },
-          FORMS: { spend: 0, leads: 0 },
-          LP:    { spend: 0, leads: 0 },
-        };
-      }
+      if (!dias[dia]) dias[dia] = diaVazio(dia);
       const d = dias[dia];
       const { grupo, formato } = classifyCampaign(r.campaign_name);
       const spend = parseFloat(r.spend || 0);

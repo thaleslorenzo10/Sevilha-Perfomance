@@ -334,8 +334,12 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
   </div>
 
   <div class="section">
-    <div class="section-title">📈 Investimento e leads por dia</div>
-    <div class="section-note">Fonte: Meta Ads. Cada linha é um formato de captação; os leads são os que o Meta atribui à campanha.</div>
+    <div class="section-title">📈 Leads por dia — Meta × planilha</div>
+    <div class="section-note">
+      As duas linhas do Meta são o que ele atribui a cada formato. A linha escura são os
+      <strong>leads que de fato entraram na planilha</strong>. A distância entre elas é conversão
+      modelada pelo Meta — por isso o CPL real é maior que o CPL do Meta.
+    </div>
     <div class="chart-wrap tall"><canvas id="chartGeralDia"></canvas></div>
   </div>
 
@@ -599,13 +603,25 @@ function switchTab(t) {
 }
 
 /* ── Datas ──────────────────────────────────────────────────────────── */
-function today() { return new Date().toISOString().slice(0,10); }
-function daysAgo(n) { const d = new Date(); d.setDate(d.getDate() - n); return d.toISOString().slice(0,10); }
+/**
+ * Datas SEMPRE em horário local.
+ *
+ * toISOString() converte para UTC: depois das 21h no Brasil já é o dia
+ * seguinte lá, e todo preset deslizava um dia — "Hoje" consultava amanhã e
+ * voltava vazio. No "Mês anterior" o erro compunha com a aritmética de mês e
+ * o intervalo saía errado nas duas pontas.
+ */
+function isoLocal(d) {
+  const p = n => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+function today() { return isoLocal(new Date()); }
+function daysAgo(n) { const d = new Date(); d.setDate(d.getDate() - n); return isoLocal(d); }
+function firstOfMonth() { const d = new Date(); d.setDate(1); return isoLocal(d); }
 function lastMonthRange() {
-  const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() - 1);
-  const s = d.toISOString().slice(0,10);
-  d.setMonth(d.getMonth() + 1); d.setDate(0);
-  return [s, d.toISOString().slice(0,10)];
+  const ini = new Date(); ini.setDate(1); ini.setMonth(ini.getMonth() - 1);
+  const fim = new Date(); fim.setDate(1); fim.setDate(0); // dia 0 = último do mês anterior
+  return [isoLocal(ini), isoLocal(fim)];
 }
 function fmtDate(s) { if (!s) return ''; const [y,m,d] = s.split('-'); return `${d}/${m}/${y}`; }
 
@@ -616,6 +632,13 @@ function setPreset(p) {
 
   if (p === 'custom') {
     document.getElementById('customDates').classList.add('show');
+    // Parte do período atual em vez de dois campos vazios.
+    const ini = document.getElementById('dateSince');
+    const fim = document.getElementById('dateUntil');
+    if (!ini.value) ini.value = since;
+    if (!fim.value) fim.value = until;
+    fim.max = today();  // não deixa escolher período no futuro
+    ini.max = today();
     return;
   }
   document.getElementById('customDates').classList.remove('show');
@@ -626,7 +649,7 @@ function setPreset(p) {
     last_14d:   [daysAgo(13), today()],
     last_30d:   [daysAgo(29), today()],
     last_90d:   [daysAgo(89), today()],
-    this_month: [today().slice(0,7) + '-01', today()],
+    this_month: [firstOfMonth(), today()],
     last_month: lastMonthRange(),
   };
   const range = map[p] || map.last_30d;
@@ -750,6 +773,8 @@ function lineChart(canvasId, labels, series, { money = false } = {}) {
         borderColor: s.color,
         backgroundColor: s.fill || 'transparent',
         borderWidth: 2,
+        // Tracejado marca a série de referência sem depender de cor.
+        borderDash: s.dashed ? [5, 4] : [],
         tension: .35,
         fill: !!s.fill,
         pointRadius: 0,
@@ -826,7 +851,7 @@ function renderCampanhas(tbodyId, campanhas, colunas) {
   }).join('');
 }
 
-function renderDistribuicao(tbodyId, entradas, total, rotulo) {
+function renderDistribuicao(tbodyId, entradas, total) {
   const tbody = document.getElementById(tbodyId);
   if (!tbody) return;
   const linhas = Object.entries(entradas)
@@ -836,12 +861,22 @@ function renderDistribuicao(tbodyId, entradas, total, rotulo) {
     tbody.innerHTML = `<tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Sem dados no período</td></tr>`;
     return;
   }
-  tbody.innerHTML = linhas.map(([k,v]) => `
+
+  const linha = (rot, v, mudo = false) => `
     <tr>
-      <td>${esc(k)}</td>
-      <td class="num">${fmtN(v)}</td>
-      <td class="num">${total > 0 ? fmtP((v/total)*100) : '—'}</td>
-    </tr>`).join('');
+      <td${mudo ? ' style="color:var(--gray)"' : ''}>${esc(rot)}</td>
+      <td class="num"${mudo ? ' style="color:var(--gray)"' : ''}>${fmtN(v)}</td>
+      <td class="num"${mudo ? ' style="color:var(--gray)"' : ''}>${total > 0 ? fmtP((v/total)*100) : '—'}</td>
+    </tr>`;
+
+  // Quem não respondeu entra como linha própria. Sem isso as respostas eram
+  // descartadas em silêncio e os percentuais não fechavam em 100% — dava para
+  // ler "70% são donos" sem perceber que 20% dos leads nem responderam.
+  const respondidos = linhas.reduce((s, [, v]) => s + v, 0);
+  const semResposta = Math.max(total - respondidos, 0);
+
+  tbody.innerHTML = linhas.map(([k,v]) => linha(k, v)).join('')
+    + (semResposta > 0 ? linha('Sem resposta', semResposta, true) : '');
 }
 
 /**
@@ -979,6 +1014,9 @@ function render({ meta, planilha, rd }) {
   const C = {
     forms: cssVar('--forms'), lp: cssVar('--lp'),
     se: cssVar('--se'), cp: cssVar('--cp'), accent: cssVar('--accent'),
+    // Linha de referência, não uma terceira categoria: tinta neutra e
+    // tracejada. Verde reprovaria contra o laranja em protanopia (ΔE 4,8).
+    real: cssVar('--black'),
   };
 
   const labels = meta.serie.map(d => d.data);
@@ -1047,10 +1085,22 @@ function render({ meta, planilha, rd }) {
     : `· as duas faixas dividem o mesmo investimento, os custos não se somam`
       + (semResposta > 0 ? ` · ${fmtN(semResposta)} sem resposta` : ''));
 
-  lineChart('chartGeralDia', labels, [
+  // Leads reais por dia, alinhados ao eixo do Meta. Só entram se a planilha
+  // cobre o período — senão a linha cairia a zero e pareceria queda de volume.
+  const realPorDia = new Map((planilha?.por_dia || []).map(d => [d.data, d.total]));
+  const seriesGeral = [
     { label: 'Formulário', data: meta.serie.map(d => d.FORMS.leads), color: C.forms },
     { label: 'Landing Page', data: meta.serie.map(d => d.LP.leads), color: C.lp },
-  ]);
+  ];
+  if (totalReal !== null && realPorDia.size) {
+    seriesGeral.push({
+      label: 'Leads reais',
+      data: labels.map(l => realPorDia.get(l) ?? 0),
+      color: C.real,
+      dashed: true,
+    });
+  }
+  lineChart('chartGeralDia', labels, seriesGeral);
 
   renderCampanhas('tblCampanhas', meta.campanhas, 8);
 
@@ -1126,11 +1176,15 @@ function render({ meta, planilha, rd }) {
     { label: 'Leads [SE]', data: meta.serie.map(d => d.SE.leads), color: C.se, fill: 'rgba(13,148,136,0.10)' },
   ]);
 
+  // Funil é magnitude que estreita, não categorias: rampa de um tom só.
+  // Reusar azul/laranja aqui faria as mesmas cores significarem formato num
+  // lugar e etapa do funil no outro.
+  const rampaFunil = ['#0D1F6E', '#1E3A9E', '#2F4FD0', '#3D5AF1'];
   renderFunnel('funnelSe', [
-    { label: 'Leads Meta',      val: Math.round(se.leads),                    color: C.se },
-    { label: 'Leads reais',     val: seReal || 0,                             color: C.forms },
-    { label: 'Novos Leads CRM', val: seStage['Novos Leads'] || 0,             color: C.cp },
-    { label: 'Em Negociação',   val: seStage['Em Negociação'] || 0,           color: C.lp },
+    { label: 'Leads Meta',      val: Math.round(se.leads),          color: rampaFunil[0] },
+    { label: 'Leads reais',     val: seReal || 0,                   color: rampaFunil[1] },
+    { label: 'Novos Leads CRM', val: seStage['Novos Leads'] || 0,   color: rampaFunil[2] },
+    { label: 'Em Negociação',   val: seStage['Em Negociação'] || 0, color: rampaFunil[3] },
   ]);
 
   renderCampanhas('tblSe', meta.campanhas.filter(c => c.grupo === 'SE'), 8);
