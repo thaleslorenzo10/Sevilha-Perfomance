@@ -730,3 +730,20 @@ ocupa os dois terços de baixo. `zoom` e `anchor_y` são campos da peça.
 - Principal: `Dez, quinze, vinte pessoas na equipe, e nenhuma decisão anda sem passar na sua mesa. O gargalo deixou de ser o time.` (116)
 - Título: `Mais de 10 colaboradores` (24)
 - Descrição: `Diagnóstico gratuito` (20)
+
+## O plate deste layout tem duas regras próprias
+
+Descobertas queimando um plate. A pilha de blocos ocupa os dois terços de baixo,
+então só o terço de cima da foto aparece — e é ali que o assunto tem que estar.
+
+**Fundo claro embaixo, não penumbra.** O primeiro plate pediu "the lower two
+thirds an uncluttered dimmer area" e voltou um borrão âmbar escuro. Não adianta
+reservar espaço escuro: o espaço já vai ser coberto. O que serve é fundo claro e
+liso, que dá respiro entre a foto e o primeiro bloco.
+
+**Nada na frente do assunto.** "Seen from a three-quarter rear angle" numa sala
+pequena fez o modelo enfiar batente de porta e móvel no primeiro plano.
+`nothing obstructing the foreground` resolve.
+
+As duas regras estão na descrição do layout em `LAYOUTS`, no `compor.py`, para o
+gerador escrever o prompt de plate já com elas.

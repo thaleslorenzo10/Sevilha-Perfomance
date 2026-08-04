@@ -98,7 +98,7 @@ PECAS = {
     "blocos": {
         "layout": "blocos",
         "formato": "9:16",
-        "zoom": 1.35, "anchor_y": 0.30,
+        "zoom": 1.45, "anchor_x": 0.55, "anchor_y": 0.06,
         "topo": "DIAGNÓSTICO DE **GESTÃO**",
         "chamada": "PARA CONTABILIDADES",
         "corpo": [

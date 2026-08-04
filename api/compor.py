@@ -156,9 +156,10 @@ def montar(corpo):
             conceito.setdefault("formato", "9:16")
             conceito.setdefault("cta", "AGENDAR DIAGNÓSTICO")
             # A pilha come os dois terços de baixo; sem zoom o assunto da foto
-            # fica pequeno demais na faixa que sobra.
-            conceito.setdefault("zoom", 1.3)
-            conceito.setdefault("anchor_y", 0.28)
+            # fica pequeno demais na faixa que sobra, e sem subir a âncora o
+            # Kling entrega o assunto no meio do quadro, bem onde os blocos vão.
+            conceito.setdefault("zoom", 1.4)
+            conceito.setdefault("anchor_y", 0.08)
             return layouts.blocos(conceito, plate)
 
         formato = corpo.get("formato", "4:5")

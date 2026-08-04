@@ -130,7 +130,9 @@ LAYOUTS = {
     "oferta": "foto em quadro cheio, tarja de público e valor em destaque — 9:16",
     "antes-depois": "duas colunas comparando, sem foto — 4:5",
     "blocos": "blocos opacos empilhados sobre a foto, corpo em monoespaçada e "
-              "checklist de entregáveis — 9:16",
+              "checklist de entregáveis — 9:16. O plate precisa do assunto no "
+              "terço de cima, fundo claro e liso embaixo (é onde os blocos "
+              "entram) e nada na frente do assunto",
     "nativo": "UI de app recriada (notas, whatsapp, lockscreen, busca) — 4:5",
 }
 

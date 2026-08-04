@@ -1,9 +1,19 @@
-documentary photograph inside a small Brazilian accounting firm, the owner of the
-office seen from a three-quarter rear angle sitting at a desk stacked with paper
-folders and a monitor, face not visible, late afternoon side window light, warm
-neutral palette, shallow depth of field, the person occupying the upper third of
-the vertical frame, the lower two thirds an uncluttered dimmer area of the room
-with empty floor and wall, realistic 35mm photography, no people facing camera
+editorial photograph of a Brazilian accounting office, over-the-shoulder view of
+a man in a light blue shirt at his desk reviewing a stack of printed documents,
+back of his head and shoulder in the frame, face not visible, bright even
+daylight from a window on the left, clean uncluttered modern office in grey and
+white, nothing obstructing the foreground, the man and desk in the upper 40
+percent of the vertical frame, the lower 60 percent an empty plain wall in soft
+focus, realistic 50mm photography
 
-# aspect-ratio 9:16 · eixos: plano aberto + luz de janela lateral + documental
-# a pilha de blocos come os dois terços de baixo, por isso o assunto vai pro topo
+# aspect-ratio 9:16 · eixos: por cima do ombro + luz de janela + documental
+#
+# Duas coisas que a primeira tentativa errou, e que valem para qualquer plate
+# deste layout:
+#
+# 1. "the lower two thirds an uncluttered dimmer area" devolveu um borrão âmbar
+#    escuro. A pilha de blocos já é o que ocupa esse espaço — o que o plate
+#    precisa ali é fundo CLARO e liso, não penumbra.
+# 2. "seen from a three-quarter rear angle" numa sala pequena fez o modelo
+#    enfiar batente de porta e móvel na frente do assunto. "nothing obstructing
+#    the foreground" resolve.
