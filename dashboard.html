@@ -482,11 +482,11 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       <div class="kpi-card teal"><div class="kpi-label">Dono / Sócio</div><div class="kpi-value skeleton kpi-skel" id="se-donos"></div><div class="kpi-sub" id="se-donos-sub"></div></div>
     </div>
     <div class="kpi-group kpi-group-crm">
-      <div class="kpi-group-label">RD Station CRM — Funil Padrão</div>
-      <div class="kpi-card purple"><div class="kpi-label">Novos Leads</div><div class="kpi-value skeleton kpi-skel" id="crm-se-nl"></div></div>
-      <div class="kpi-card purple"><div class="kpi-label">Agendamentos</div><div class="kpi-value skeleton kpi-skel" id="crm-se-ag"></div></div>
-      <div class="kpi-card purple"><div class="kpi-label">Em Negociação</div><div class="kpi-value skeleton kpi-skel" id="crm-se-en"></div></div>
-      <div class="kpi-card teal"><div class="kpi-label">Total Deals</div><div class="kpi-value skeleton kpi-skel" id="crm-se-total"></div></div>
+      <div class="kpi-group-label">RD Station CRM <span id="crm-se-nota" style="font-weight:600;text-transform:none;letter-spacing:0;opacity:.75"></span></div>
+      <div class="kpi-card purple"><div class="kpi-label">Deals no período</div><div class="kpi-value skeleton kpi-skel" id="crm-se-total"></div><div class="kpi-sub" id="crm-se-total-sub"></div></div>
+      <div class="kpi-card green"><div class="kpi-label">Ganhos</div><div class="kpi-value skeleton kpi-skel" id="crm-se-ganhos"></div><div class="kpi-sub" id="crm-se-ganhos-sub"></div></div>
+      <div class="kpi-card red"><div class="kpi-label">Perdidos</div><div class="kpi-value skeleton kpi-skel" id="crm-se-perdidos"></div><div class="kpi-sub" id="crm-se-perdidos-sub"></div></div>
+      <div class="kpi-card teal"><div class="kpi-label">Lead → Deal</div><div class="kpi-value skeleton kpi-skel" id="crm-se-conv"></div><div class="kpi-sub">deals ÷ leads reais</div></div>
     </div>
   </div>
 
@@ -500,6 +500,17 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       <div class="section-title">🔀 Funil [SE]</div>
       <div class="section-note">Do que o Meta reporta até o que virou negociação no CRM.</div>
       <div class="funnel" id="funnelSe"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🧭 Etapas do funil no RD CRM</div>
+    <div class="section-note">As etapas vêm do próprio RD, na ordem configurada lá — se alguém renomear ou criar uma etapa, ela aparece aqui sozinha.</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Etapa</th><th class="num">Deals</th><th class="num">% do funil</th></tr></thead>
+        <tbody id="tblEtapasSe"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
+      </table>
     </div>
   </div>
 
@@ -534,10 +545,10 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       <div class="kpi-card red"><div class="kpi-label">CPM</div><div class="kpi-value skeleton kpi-skel" id="cp-cpm"></div></div>
     </div>
     <div class="kpi-group kpi-group-crm">
-      <div class="kpi-group-label">RD Station CRM — Pipeline Clube da Performance</div>
-      <div class="kpi-card purple"><div class="kpi-label">Pré-inscritos</div><div class="kpi-value skeleton kpi-skel" id="crm-cp-pi"></div></div>
-      <div class="kpi-card purple"><div class="kpi-label">Contato Feito</div><div class="kpi-value skeleton kpi-skel" id="crm-cp-cf"></div></div>
-      <div class="kpi-card teal"><div class="kpi-label">Total Deals</div><div class="kpi-value skeleton kpi-skel" id="crm-cp-total"></div></div>
+      <div class="kpi-group-label">RD Station CRM — Clube da Performance</div>
+      <div class="kpi-card purple"><div class="kpi-label">Deals no período</div><div class="kpi-value skeleton kpi-skel" id="crm-cp-total"></div></div>
+      <div class="kpi-card green"><div class="kpi-label">Ganhos</div><div class="kpi-value skeleton kpi-skel" id="crm-cp-ganhos"></div></div>
+      <div class="kpi-card red"><div class="kpi-label">Perdidos</div><div class="kpi-value skeleton kpi-skel" id="crm-cp-perdidos"></div></div>
     </div>
   </div>
 
@@ -706,6 +717,26 @@ function grupoBadge(g) {
   if (g === 'SE') return '<span class="badge badge-teal">[SE]</span>';
   return '<span class="badge badge-gray">Outros</span>';
 }
+function norm(s) {
+  return String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+}
+
+/** Etapas do funil do CRM, na ordem que o RD devolve. */
+function renderEtapas(tbodyId, etapas, total) {
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+  if (!etapas.length) {
+    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">CRM indisponível ou sem deals no período</td></tr>';
+    return;
+  }
+  tbody.innerHTML = etapas.map(e => `
+    <tr>
+      <td>${esc(e.nome)}</td>
+      <td class="num">${fmtN(e.deals)}</td>
+      <td class="num">${total > 0 ? fmtP((e.deals / total) * 100) : '—'}</td>
+    </tr>`).join('');
+}
+
 function esc(s) {
   return String(s ?? '').replace(/[&<>"']/g, c =>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1172,11 +1203,22 @@ function render({ meta, planilha, rd }) {
   setKPI('se-donos', planilha && planilha.total ? fmtN(donos) : '—',
     planilha && planilha.total ? fmtP((donos / planilha.total) * 100) + ' dos leads' : '');
 
-  const seStage = rd?.rd_crm?.se?.by_stage || {};
-  setKPI('crm-se-nl', fmtN(seStage['Novos Leads'] || 0));
-  setKPI('crm-se-ag', fmtN(seStage['Solicitação de Agendamento'] || 0));
-  setKPI('crm-se-en', fmtN(seStage['Em Negociação'] || 0));
-  setKPI('crm-se-total', fmtN(rd?.rd_crm?.se?.total ?? 0));
+  // ── RD CRM [SE] ──
+  // As etapas vêm nomeadas pelo próprio RD; nada de nome fixo no código.
+  const funilSe = rd?.funis?.SE || null;
+  const seEtapas = funilSe?.etapas || [];
+  const etapaDe = nome => seEtapas.find(e => norm(e.nome).includes(norm(nome)))?.deals ?? 0;
+
+  setKPI('crm-se-total', funilSe ? fmtN(funilSe.total) : '—',
+    funilSe && funilSe.valor > 0 ? `${fmtR(funilSe.valor)} em negócios` : '');
+  setKPI('crm-se-ganhos', funilSe ? fmtN(funilSe.ganhos) : '—',
+    funilSe && funilSe.total > 0 ? fmtP((funilSe.ganhos / funilSe.total) * 100) + ' dos deals' : '');
+  setKPI('crm-se-perdidos', funilSe ? fmtN(funilSe.perdidos) : '—',
+    funilSe && funilSe.total > 0 ? fmtP((funilSe.perdidos / funilSe.total) * 100) + ' dos deals' : '');
+  setKPI('crm-se-conv', (funilSe && seReal > 0) ? fmtP((funilSe.total / seReal) * 100) : '—');
+  setText('crm-se-nota', rd?.acumulado ? '· acumulado, o RD não recortou por período' : '');
+
+  renderEtapas('tblEtapasSe', seEtapas, funilSe?.total ?? 0);
 
   lineChart('chartSeDia', labels, [
     { label: 'Leads [SE]', data: meta.serie.map(d => d.SE.leads), color: C.se, fill: 'rgba(13,148,136,0.10)' },
@@ -1189,8 +1231,8 @@ function render({ meta, planilha, rd }) {
   renderFunnel('funnelSe', [
     { label: 'Leads Meta',      val: Math.round(se.leads),          color: rampaFunil[0] },
     { label: 'Leads reais',     val: seReal || 0,                   color: rampaFunil[1] },
-    { label: 'Novos Leads CRM', val: seStage['Novos Leads'] || 0,   color: rampaFunil[2] },
-    { label: 'Em Negociação',   val: seStage['Em Negociação'] || 0, color: rampaFunil[3] },
+    { label: 'Deals no CRM',    val: funilSe?.total ?? 0,           color: rampaFunil[2] },
+    { label: 'Ganhos',          val: funilSe?.ganhos ?? 0,          color: rampaFunil[3] },
   ]);
 
   renderCampanhas('tblSe', meta.campanhas.filter(c => c.grupo === 'SE'), 8);
@@ -1202,10 +1244,10 @@ function render({ meta, planilha, rd }) {
   setKPI('cp-ctr', orDash(cp.ctr, fmtP));
   setKPI('cp-cpm', orDash(cp.cpm, fmtR));
 
-  const cpStage = rd?.rd_crm?.cp?.by_stage || {};
-  setKPI('crm-cp-pi', fmtN(cpStage['Pré-inscritos'] || 0));
-  setKPI('crm-cp-cf', fmtN(cpStage['Contato feito'] || 0));
-  setKPI('crm-cp-total', fmtN(rd?.rd_crm?.cp?.total ?? 0));
+  const funilCp = rd?.funis?.CP || null;
+  setKPI('crm-cp-total',    funilCp ? fmtN(funilCp.total)    : '—');
+  setKPI('crm-cp-ganhos',   funilCp ? fmtN(funilCp.ganhos)   : '—');
+  setKPI('crm-cp-perdidos', funilCp ? fmtN(funilCp.perdidos) : '—');
 
   renderCampanhas('tblCp', meta.campanhas.filter(c => c.grupo === 'CP'), 8);
 }
