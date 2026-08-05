@@ -72,7 +72,18 @@ module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
 
   const token = process.env.RD_CRM_TOKEN;
-  if (!token) return res.status(500).json({ error: 'RD_CRM_TOKEN não configurado no Vercel' });
+  if (!token) {
+    // Nomes parecidos, nunca valores: se o nome foi digitado errado no Vercel,
+    // isso mostra o erro na hora. Mesmo padrão do /api/compor.
+    const parecidas = Object.keys(process.env)
+      .filter(n => /RD|CRM/i.test(n))
+      .sort();
+    return res.status(500).json({
+      error: 'RD_CRM_TOKEN não chegou até a função. Confira o nome da variável no Vercel '
+           + 'e se o deploy é posterior a ela — variável nova só vale para deploy feito depois de salvá-la.',
+      variaveis_parecidas: parecidas.length ? parecidas : 'nenhuma variável com RD ou CRM no nome chegou até a função',
+    });
+  }
 
   const params = new URL(req.url, 'http://localhost').searchParams;
   const from = params.get('from');
