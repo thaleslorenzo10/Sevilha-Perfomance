@@ -52,17 +52,43 @@ async function fetchDeals(token, pipelineId, periodoQS, maxPaginas = 15) {
   return deals;
 }
 
-/** Etapas de cada funil, na ordem configurada no RD. */
+/**
+ * Etapas de cada funil, na ordem configurada no RD.
+ *
+ * A API v1 varia o envelope conforme o endpoint, então as formas conhecidas
+ * são todas aceitas. Quando nenhuma casa, o chamador cai na ordem de
+ * descoberta pelos deals — o que funciona, mas embaralha o funil e some com
+ * as etapas de zero deal. Por isso o resultado diz se veio do RD.
+ */
 async function fetchEtapas(token) {
   const json = await getJSON(`${CRM}/deal_pipelines?token=${token}`);
+
+  const lista = Array.isArray(json) ? json
+              : json.deal_pipelines || json.pipelines || json.data || [];
+
   const porFunil = {};
-  for (const p of json.deal_pipelines || json.pipelines || []) {
+  for (const p of lista) {
     const id = p._id || p.id;
-    porFunil[id] = (p.deal_stages || [])
-      .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
-      .map(s => s.name);
+    if (!id) continue;
+    const etapas = p.deal_stages || p.stages || p.deal_stage || [];
+    porFunil[id] = etapas
+      .slice()
+      .sort((a, b) => (a.order ?? a.position ?? 0) - (b.order ?? b.position ?? 0))
+      .map(s => s.name || s.nome)
+      .filter(Boolean);
   }
   return porFunil;
+}
+
+/** Busca as etapas de um segundo endpoint quando o de pipelines não entrega. */
+async function fetchEtapasFallback(token, pipelineId) {
+  const json = await getJSON(`${CRM}/deal_stages?token=${token}&deal_pipeline_id=${pipelineId}`);
+  const lista = Array.isArray(json) ? json : json.deal_stages || json.data || [];
+  return lista
+    .slice()
+    .sort((a, b) => (a.order ?? a.position ?? 0) - (b.order ?? b.position ?? 0))
+    .map(s => s.name || s.nome)
+    .filter(Boolean);
 }
 
 module.exports = async function handler(req, res) {
@@ -117,7 +143,14 @@ module.exports = async function handler(req, res) {
 
       // Ordem vem do RD; etapas com deal que não constam na configuração
       // entram no fim para nenhum deal sumir da soma.
-      const ordem = etapasPorFunil[f.id] || [];
+      let ordem = etapasPorFunil[f.id] || [];
+      if (!ordem.length) {
+        ordem = await fetchEtapasFallback(token, f.id).catch(e => {
+          console.warn(`[rd-stats] etapas do funil ${chave} indisponíveis:`, e.message);
+          return [];
+        });
+      }
+
       const extras = Object.keys(contagem).filter(n => !ordem.includes(n));
       const etapas = [...ordem, ...extras].map(nome => ({ nome, deals: contagem[nome] || 0 }));
 
@@ -125,6 +158,9 @@ module.exports = async function handler(req, res) {
         nome: f.nome,
         total: deals.length,
         etapas,
+        // Sem isto não dá para saber se o funil está na ordem certa ou na
+        // ordem em que os deals apareceram.
+        ordem_do_rd: ordem.length > 0,
         ganhos,
         perdidos,
         valor: Math.round(valor * 100) / 100,
