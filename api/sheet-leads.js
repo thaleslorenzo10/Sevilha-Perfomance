@@ -24,16 +24,10 @@
  */
 
 const { readAllTabs, readLPTabs } = require('../lib/sheets');
+const { norm } = require('../lib/texto');
+const { classificarPorte, PORTE_MAIOR, PORTE_MENOR, PORTE_INDEF } = require('../lib/porte');
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
-
-/* ── Normalização ────────────────────────────────────────────────────── */
-
-function norm(s) {
-  return String(s || '')
-    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase().trim();
-}
 
 /**
  * Aceita os três formatos que aparecem na planilha:
@@ -252,52 +246,6 @@ function labelColaboradores(v) {
   return s.replace(/\s+/g, ' ')
           .replace(/^de\s+/i, 'De ')
           .replace(/\bà\b/g, 'a');
-}
-
-/**
- * Porte do escritório: 10 ou mais colaboradores × menos de 10.
- *
- * A resposta chega em três formatos diferentes conforme o formulário:
- *   faixa do Meta   → "De 0 a 4", "De 10 a 19", "Mais de 50"
- *   faixa da LP     → "0 à 9", "10 à 19", "Acima de 30 colaboradores"
- *   número digitado → "12", "35"
- *
- * O corte usa o LIMITE INFERIOR da faixa: "De 5 a 9" é menor que 10;
- * "De 10 a 19" é 10+. Faixas que cruzam o corte (ex.: "0 à 9" não cruza,
- * mas uma futura "5 a 14" cruzaria) e respostas em branco caem em
- * INDEFINIDO em vez de serem chutadas para um dos lados.
- */
-const PORTE_MAIOR = 'MAIOR_10';
-const PORTE_MENOR = 'MENOR_10';
-const PORTE_INDEF = 'INDEFINIDO';
-
-function classificarPorte(raw) {
-  // O formulário do site grava em slug ("de_0_a_4"); o do Meta, por extenso.
-  const s = norm(raw).replace(/_/g, ' ').replace(/\s+/g, ' ').trim();
-  if (!s) return PORTE_INDEF;
-
-  // Ruído de colunas desalinhadas (ex.: "1,20249E+17").
-  if (/e\+\d+/.test(s)) return PORTE_INDEF;
-
-  // "mais de 50" / "acima de 30 colaboradores"
-  const acima = s.match(/(?:mais de|acima de)\s+(\d+)/);
-  if (acima) return parseInt(acima[1], 10) >= 10 ? PORTE_MAIOR : PORTE_MENOR;
-
-  // "de 10 a 19" / "10 a 19" / "0 a 9"
-  const faixa = s.match(/(\d+)\s*(?:a|à|-)\s*(\d+)/);
-  if (faixa) {
-    const min = parseInt(faixa[1], 10);
-    const max = parseInt(faixa[2], 10);
-    if (min >= 10) return PORTE_MAIOR;
-    if (max < 10)  return PORTE_MENOR;
-    return PORTE_INDEF; // faixa cruza o corte — não dá para atribuir
-  }
-
-  // Número digitado direto.
-  const n = s.match(/^(\d{1,5})$/);
-  if (n) return parseInt(n[1], 10) >= 10 ? PORTE_MAIOR : PORTE_MENOR;
-
-  return PORTE_INDEF;
 }
 
 function countBy(items, keyFn) {

@@ -17,44 +17,9 @@
 
 const crypto = require('crypto');
 
-const PIXEL_ID    = '657178423444244';
-const API_VERSION = 'v19.0';
-const CAPI_URL    = `https://graph.facebook.com/${API_VERSION}/${PIXEL_ID}/events`;
-
-/* ─────────────────────────────────────────────────────────
-   NORMALIZAÇÃO (conforme spec oficial do Meta)
-───────────────────────────────────────────────────────── */
-
-function h(value) {
-  if (!value) return null;
-  return crypto.createHash('sha256').update(String(value)).digest('hex');
-}
-
-function normalizeEmail(raw) {
-  if (!raw) return null;
-  return raw.trim().toLowerCase();
-}
-
-function normalizePhone(raw) {
-  if (!raw) return null;
-  const digits = raw.replace(/\D/g, '');
-  if (digits.startsWith('55') && digits.length >= 12) return digits;
-  if (digits.length === 11) return '55' + digits;
-  if (digits.length === 10) return '55' + digits;
-  return digits;
-}
-
-function normalizeName(raw) {
-  if (!raw) return null;
-  return raw
-    .trim()
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}\s]/gu, '');
-}
-
-function normalizeCountry(raw) {
-  return raw ? raw.trim().toLowerCase() : 'br';
-}
+// Normalização, hash e envio ao CAPI moram em lib/capi.js — o mesmo caminho que
+// o webhook do Respondi usa, para os dois eventos hasharem igual.
+const { enviarEvento, montarUserData, normalizarTelefone } = require('../lib/capi');
 
 /* ─────────────────────────────────────────────────────────
    HELPERS
@@ -211,7 +176,7 @@ async function sendToRDCRM(data) {
   const BASE = 'https://crm.rdstation.com/api/v1';
 
   // Telefone sempre normalizado (só dígitos, 55 + DDD + número)
-  const phoneNormalized = data.telefone ? normalizePhone(data.telefone) : null;
+  const phoneNormalized = data.telefone ? normalizarTelefone(data.telefone) : null;
 
   const contactInline = {
     name:   data.nome || data.email || 'Lead',
@@ -380,21 +345,11 @@ module.exports = async function handler(req, res) {
   await saveToSupabase(leadData);
 
   // ── 2-4. RD Marketing + RD CRM + Meta CAPI em paralelo ───────
-  const capiToken = process.env.META_CAPI_TOKEN;
-
-  const userData = { client_ip_address: ip, client_user_agent: ua };
-  if (email)    userData.em      = [h(normalizeEmail(email))];
-  if (telefone) userData.ph      = [h(normalizePhone(telefone))];
-  userData.country = [h(normalizeCountry('br'))];
-  if (nome) {
-    const parts = normalizeName(nome).split(/\s+/).filter(Boolean);
-    if (parts[0])         userData.fn = [h(parts[0])];
-    if (parts.length > 1) userData.ln = [h(parts[parts.length - 1])];
-  }
-  if (external_id) userData.external_id = [h(external_id)];
-  if (fbp)         userData.fbp = fbp;
-  if (fbc)         userData.fbc = fbc;
-  else if (fbclid) userData.fbc = `fb.1.${eventTime * 1000}.${fbclid}`;
+  const userData = montarUserData({
+    email, telefone, nome, pais: 'br',
+    externalId: external_id, fbp, fbc, fbclid,
+    ip, userAgent: ua, quandoMs: eventTime * 1000,
+  });
 
   const customData = {
     content_name: pagina, content_category: 'pre-inscricao', currency: 'BRL', value: 0,
@@ -406,28 +361,18 @@ module.exports = async function handler(req, res) {
   if (utm_content)  customData.utm_content  = utm_content;
   if (gclid)        customData.gclid        = gclid;
 
-  const capiPayload = {
-    data: [{
-      event_name: 'Lead', event_time: eventTime, event_id: finalEventId,
-      event_source_url: page_url || req.headers.referer || '',
-      action_source: 'website', user_data: userData, custom_data: customData,
-    }],
-  };
-
   const [, , capiResult] = await Promise.allSettled([
     sendToRDMarketing(leadData),
     sendToRDCRM(leadData),
-    capiToken
-      ? fetch(`${CAPI_URL}?access_token=${capiToken}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(capiPayload),
-        }).then(r => r.json()).then(d => {
-          if (d.error) console.error('[CAPI Error]', JSON.stringify(d));
-          else console.log(`[CAPI OK] event_id=${finalEventId} events_received=${d.events_received}`);
-          return d;
-        })
-      : Promise.resolve(null),
+    enviarEvento({
+      evento:       'Lead',
+      eventId:      finalEventId,
+      quando:       eventTime,
+      userData,
+      customData,
+      sourceUrl:    page_url || req.headers.referer || '',
+      actionSource: 'website',
+    }),
   ]);
 
   const capiData = capiResult.status === 'fulfilled' ? capiResult.value : {};
