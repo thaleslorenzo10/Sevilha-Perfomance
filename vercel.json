@@ -1,4 +1,7 @@
 {
+  "crons": [
+    { "path": "/api/forms-qualificados", "schedule": "0 9 * * *" }
+  ],
   "rewrites": [
     { "source": "/campanha", "destination": "/api/ab" },
     { "source": "/relatorio", "destination": "/relatorio.html" },

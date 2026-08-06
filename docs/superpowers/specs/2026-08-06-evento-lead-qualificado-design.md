@@ -108,11 +108,18 @@ seleciona os qualificados, ignora test leads (regra que já existe) e envia
   hasheados junto para elevar a correspondência.
 - **`action_source`** = `system_generated` (evento gerado por sistema, não por
   navegação).
-- **Estado em Supabase**: tabela `eventos_qualificados` com `event_id` único. A
-  janela de deduplicação do Meta é de 48h; sem controle próprio, qualquer atraso
-  no sync da planilha vira evento duplicado ou lead perdido em silêncio — o pior
+- **Estado em Supabase**: tabela `sevilha_eventos_enviados` (`event_id` como
+  chave primária), criada no projeto Lorenzo Media seguindo a convenção
+  `<cliente>_<dominio>` e com RLS ligado — só a service key escreve. A janela de
+  deduplicação do Meta é de 48h; sem controle próprio, qualquer atraso no sync
+  da planilha vira evento duplicado ou lead perdido em silêncio — o pior
   desfecho, pelo mesmo critério já adotado no resto do projeto.
-- **Cron**: entrada em `vercel.json`, uma vez por dia.
+- **Janela de 7 dias**: o CAPI recusa evento com mais de 7 dias, então a
+  varredura ignora leads mais antigos e devolve quantos ficaram de fora, em vez
+  de tentar e falhar calado. Consequência: o histórico (338 leads qualificados
+  desde dez/2025) não tem como ser recuperado por aqui — só passa a valer da
+  entrada em produção para a frente.
+- **Cron**: entrada em `vercel.json`, diária às 9h UTC (6h de Brasília).
 
 **Dependência não verificável daqui**: o envio com `lead_id` faz parte da
 integração de CRM do Meta e pode exigir configuração no Events Manager
