@@ -22,7 +22,7 @@ const crypto = require('crypto');
 
 const { norm } = require('../lib/texto');
 const { ehQualificado } = require('../lib/porte');
-const { enviarEvento, montarUserData, hash } = require('../lib/capi');
+const { enviarEvento, montarUserData, eventIdPorContato } = require('../lib/capi');
 
 const EVENTO = 'LeadQualificado';
 const FORM_URL = 'https://form.respondi.app/gvz4UKQr';
@@ -142,7 +142,7 @@ function acharIdSubmissao(payload) {
  */
 function eventIdDe(payload, email, telefone) {
   return acharIdSubmissao(payload)
-      || `respondi:${hash(norm(email || telefone)).slice(0, 32)}`;
+      || eventIdPorContato('respondi', email || telefone);
 }
 
 function acharQuandoMs(payload) {

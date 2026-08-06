@@ -1,6 +1,6 @@
 {
   "crons": [
-    { "path": "/api/forms-qualificados", "schedule": "0 9 * * *" }
+    { "path": "/api/eventos-qualificados", "schedule": "0 9 * * *" }
   ],
   "rewrites": [
     { "source": "/campanha", "destination": "/api/ab" },
