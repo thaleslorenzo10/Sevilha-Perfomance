@@ -1,21 +1,29 @@
 'use strict';
 
 /**
- * Sevilha Performance — Leads reais (planilha)
+ * Sevilha Performance — Leads reais (planilhas)
  * GET /api/sheet-leads?since=YYYY-MM-DD&until=YYYY-MM-DD
  *
- * Lê a planilha "Leads Sevilha Perfomance" no servidor e devolve APENAS
- * números agregados. Nome, e-mail e telefone não saem daqui.
+ * Lê as planilhas no servidor e devolve APENAS números agregados. Nome,
+ * e-mail e telefone não saem daqui.
  *
- * A planilha tem dois tipos de aba:
- *   • Formulário instantâneo do Meta (colunas form_id / form_name / created_time)
- *   • Formulário da landing page      (colunas "Data" / "Qual seu e-mail?")
+ * Cada formato de campanha tem a sua fonte:
+ *   • FORMS — formulário instantâneo do Meta, exportado para a planilha
+ *     [CENTRAL DE EVENTOS] (colunas form_id / form_name / created_time).
+ *   • LP — formulário da landing page, lido direto da planilha que a
+ *     integração nativa do Respondi preenche (colunas "Qual seu nome?" /
+ *     "Data" / utm_*). As cópias de LP que existem na Central são ignoradas:
+ *     a aba "base" morreu em set/2025 e o log "Eventos Geral" perdeu ~130
+ *     leads em panes de sincronização (13 dias parado na virada 2025→2026).
  *
- * As abas são identificadas pelo cabeçalho, não pelo nome — assim a função
- * continua funcionando se alguém renomear ou adicionar uma aba.
+ * Lead de LP só conta com e-mail ou telefone — o Respondi grava toda
+ * submissão, inclusive abandonos de formulário (~8% sem nenhum contato).
+ *
+ * As linhas são identificadas pelo conteúdo/cabeçalho, não pelo nome da aba —
+ * assim a função continua funcionando se alguém renomear ou adicionar abas.
  */
 
-const { readAllTabs } = require('../lib/sheets');
+const { readAllTabs, readLPTabs } = require('../lib/sheets');
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -70,33 +78,20 @@ const TAB_FORMS = 'FORMS';
 const TAB_LP    = 'LP';
 
 /**
- * Cabeçalhos das abas de lead da landing page. Ao contrário do export do Meta,
- * essas linhas não são auto-identificáveis e dependem mesmo do cabeçalho.
- *
- * Dois formatos convivem na planilha:
- *   "Eventos Geral" → Data | Funil | UTM Campaign | Número de Colaboradores
- *   "Respondi"      → Qual seu nome? | Qual seu e-mail? | ... | DATA ENTRADA
+ * Cabeçalho do formulário do Respondi ("Qual seu nome? | Qual seu e-mail? |
+ * ... | Data"). Ao contrário do export do Meta, essas linhas não são
+ * auto-identificáveis e dependem mesmo do cabeçalho. O formato "Eventos
+ * Geral" (Data | Funil | UTM Campaign), que já foi fonte de LP, saiu junto
+ * com a Central — era a cópia que perdia leads.
  */
 function findLPHeaders(rows) {
   const found = [];
   rows.forEach((row, rowIdx) => {
-    const cells = row.map(norm);
-
-    cells.forEach((cell, colIdx) => {
-      if (cell.startsWith('qual seu nome')) {
+    row.forEach((cell, colIdx) => {
+      if (norm(cell).startsWith('qual seu nome')) {
         found.push({ tipo: TAB_LP, rowIdx, offset: colIdx });
       }
     });
-
-    // Formato "Eventos Geral": só vale como cabeçalho se Data e Funil (ou uma
-    // coluna de UTM) estiverem na mesma linha — evita casar com qualquer
-    // célula solta escrita "data" numa aba de apoio.
-    const iData  = cells.findIndex(c => c === 'data');
-    const iFunil = cells.findIndex(c => c === 'funil');
-    const iUtm   = cells.findIndex(c => c === 'utm campaign' || c === 'utm_campaign');
-    if (iData >= 0 && (iFunil >= 0 || iUtm >= 0)) {
-      found.push({ tipo: TAB_LP, rowIdx, offset: 0 });
-    }
   });
   return found;
 }
@@ -181,11 +176,12 @@ function extractForms(rows) {
 }
 
 /**
- * Aba "Leads Respondi" — o formulário da landing page (campanhas [SE] [LEAD]).
+ * Formulário do Respondi — o formulário da landing page (campanhas [SE] [LEAD]).
  *
- * Além dos dados do lead, esta aba carrega a qualificação feita pelo time:
- * a coluna Status marca "Com Perfil" / "Sem Perfil". É o equivalente a MQL e
- * entra no dashboard como taxa de perfil e custo por lead com perfil.
+ * Só conta linha com e-mail ou telefone: o Respondi registra toda submissão,
+ * inclusive quem abandonou o formulário no meio, e sem contato não há lead
+ * para o time chamar. O contato também é a chave de deduplicação — quem
+ * reenvia o formulário (acontece em ~10% dos leads) conta uma vez só.
  */
 function extractLP(rows, header) {
   const head = rows[header.rowIdx];
@@ -193,10 +189,8 @@ function extractLP(rows, header) {
 
   const idx = {
     data:     columnIndex(head, off, ['data entrada', 'data']),
-    id:       columnIndex(head, off, ['utm id', 'id']),
     email:    columnIndex(head, off, ['qual seu e-mail', 'qual seu email']),
     telefone: columnIndex(head, off, ['telefone', 'qual seu whatsapp']),
-    funil:    columnIndex(head, off, ['funil']),
     campanha: columnIndex(head, off, ['utm campaign', 'utm_campaign']),
     origem:   columnIndex(head, off, ['utm source', 'utm_source']),
     colab:    columnIndex(head, off, ['numero de colaboradores', 'quantos colaboradores']),
@@ -215,22 +209,16 @@ function extractLP(rows, header) {
     const data = toISODate(row[idx.data]);
     if (!data) continue;
 
-    const funil    = String(row[idx.funil]    ?? '').trim();
-    const campanha = String(row[idx.campanha] ?? '').trim();
-
-    // "Eventos Geral" é um log consolidado: também registra leads que vieram
-    // do formulário nativo do Meta. Esses já são contados pela aba de export
-    // do Meta — contá-los aqui de novo dobraria o volume de FORMS.
-    if (/\[FORMS\]|FORMS/i.test(funil) || /\[FORMS\]/i.test(campanha)) continue;
-
-    const chave = String(row[idx.email] || row[idx.telefone] || row[idx.id] || '').trim();
+    const email    = String(row[idx.email]    ?? '').trim();
+    const telefone = String(row[idx.telefone] ?? '').trim();
+    if (!email && !telefone) continue;
 
     out.push({
       fonte:      TAB_LP,
-      id:         chave || `lp:${header.rowIdx}:${r}:${data}`,
+      id:         email || telefone,
       data,
       formulario: 'Formulário da Landing Page',
-      campanha:   campanha || '[SE] [LEAD]',
+      campanha:   String(row[idx.campanha] ?? '').trim() || '[SE] [LEAD]',
       adset:      '',
       anuncio:    String(row[idx.anuncio] ?? '').trim(),
       plataforma: String(row[idx.origem] ?? '').trim(),
@@ -340,27 +328,23 @@ function coverage(items) {
  */
 async function montarLeads(since, until) {
   {
-    const tabs = await readAllTabs();
+    // Cada fonte com o seu extrator, sem cruzar: a Central ainda guarda
+    // cópias antigas de LP (a aba "base" e o log "Eventos Geral") que
+    // voltariam a contar — em dobro — se ela passasse pelo extractLP.
+    const [tabsCentral, tabsLP] = await Promise.all([readAllTabs(), readLPTabs()]);
 
-    const gidLP    = String(process.env.LEADS_SHEET_GID_LP    || '');
-    const gidFORMS = String(process.env.LEADS_SHEET_GID_FORMS || '');
-
-    // Extrai os leads de cada aba. Quando o gid está configurado, usa o parser
-    // certo direto; senão, tenta os dois e o formato do conteúdo decide.
     let todos = [];
-    for (const { gid, rows } of tabs) {
-      const ehFORMS = gidFORMS && gid === gidFORMS;
-      const ehLP    = gidLP    && gid === gidLP;
-
-      if (!ehLP)    todos = todos.concat(extractForms(rows));
-      if (!ehFORMS) {
-        for (const header of findLPHeaders(rows)) {
-          todos = todos.concat(extractLP(rows, header));
-        }
+    for (const { rows } of tabsCentral) {
+      todos = todos.concat(extractForms(rows));
+    }
+    for (const { rows } of tabsLP) {
+      for (const header of findLPHeaders(rows)) {
+        todos = todos.concat(extractLP(rows, header));
       }
     }
 
-    // Deduplica: a mesma aba pode aparecer repetida em blocos colados.
+    // Deduplica: re-submissões do mesmo contato na LP e, no export do Meta,
+    // blocos colados repetidos na mesma aba.
     const vistos = new Set();
     todos = todos.filter(l => {
       const chave = `${l.fonte}|${l.id}`;
