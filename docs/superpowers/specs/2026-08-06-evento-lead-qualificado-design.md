@@ -55,7 +55,19 @@ O hash SHA-256, a normalização de e-mail/telefone/nome e o POST no Graph saem 
 `enviarEvento({ evento, eventId, quando, userData, customData, sourceUrl, actionSource })`.
 `api/leads.js` passa a usar o helper mantendo exatamente o payload de hoje.
 
-### Fase 1 — Respondi (`POST /api/respondi`)
+> **Revisão de 06/08/2026 (depois de investigar o n8n).** O Respondi aceita
+> **um webhook por formulário**, e o existente já é do workflow
+> `[SEVILHA PERFOMANCE] Respondi -> Sheets -> Pipedrive`, que alimenta a Central
+> e o Pipedrive. Disputar esse webhook exigiria ou reconstruir aquele workflow
+> (23 nodes em produção) ou encadear o nosso endpoint na frente dele — pondo o
+> Vercel no caminho crítico dos leads. Como este evento não serve para
+> otimização, tempo real não paga nenhum desses riscos: **os leads de LP passam
+> a ser enviados pela mesma varredura diária do FORMS**, lendo a planilha do
+> Respondi. `POST /api/respondi` continua no repositório, testado, para o caso
+> de um dia haver um webhook livre; os dois caminhos usam a mesma chave de
+> deduplicação, então rodar ambos não conta a conversão duas vezes.
+
+### Caminho alternativo — Respondi em tempo real (`POST /api/respondi`)
 
 O formulário do Respondi é externo (`form.respondi.app/gvz4UKQr`) e os anúncios
 apontam direto para ele, então não há como injetar JS na página. O caminho é o
@@ -69,9 +81,15 @@ envia `LeadQualificado` ao CAPI.
   configurar header). Comparação em tempo constante. Sem segredo válido → 401.
   O endpoint é público na internet: sem isso, qualquer um injeta conversão falsa
   no pixel.
-- **Extração resistente a formato**: o payload exato não está documentado
-  publicamente (`help.respondi.app` responde 403 a acesso automatizado), então a
-  leitura percorre o JSON inteiro e localiza cada campo pelo conteúdo — a mesma
+- **Formato do payload** (confirmado no workflow n8n que já recebe este webhook,
+  node `Code1`): as respostas ficam em `respondent.answers`, chaveadas pelo
+  texto da pergunta, e as UTMs em `respondent.respondent_utms`. **Não há id de
+  submissão**, então a chave de deduplicação é o hash do contato — sem ela, o
+  retry do Respondi viraria uma segunda conversão. Lead qualificado sem e-mail
+  nem telefone não gera evento: sem contato não há chave estável nem
+  correspondência, e o dashboard também não conta esse lead.
+- **Extração resistente a formato**: a leitura percorre o JSON inteiro e
+  localiza cada campo pelo conteúdo, em vez de fixar o caminho acima — a mesma
   tática que `extractForms` já usa para o export do Meta:
   - colaboradores: chave contendo "colaborador"
   - e-mail: valor com formato de e-mail
@@ -95,11 +113,19 @@ bruno@sevilhaperformance.com.br) precisa cadastrar a URL do webhook
 passo nada dispara. Depois do primeiro disparo real, conferir no log se a
 extração encontrou os campos e ajustar a fixture do teste se o formato divergir.
 
-### Fase 2 — Formulário nativo do Meta (`GET /api/forms-qualificados`, cron diário)
+### Caminho principal — varredura diária (`GET /api/eventos-qualificados`)
 
-Lê a aba de FORMS da planilha [CENTRAL DE EVENTOS] (reusa `readAllTabs`),
-seleciona os qualificados, ignora test leads (regra que já existe) e envia
-`LeadQualificado` para cada um.
+Lê as duas planilhas, seleciona os qualificados, ignora test leads (regra que já
+existe) e envia `LeadQualificado` para cada um.
+
+- **FORMS**: aba da [CENTRAL DE EVENTOS] (`readAllTabs`), correspondência pelo
+  `lead_id`, `action_source: system_generated`.
+- **LP**: planilha do Respondi (`readLPTabs`), correspondência por e-mail,
+  telefone e fbclid (presente em 90% dos leads), `action_source: website`.
+  Lead sem e-mail nem telefone não gera evento — mesma regra do dashboard, e
+  sem contato não haveria chave de deduplicação estável.
+
+Medido contra os dados reais: 338 qualificados no FORMS e 378 no LP.
 
 - **Identificador principal**: `user_data.lead_id` = o `id` do export sem o
   prefixo `l:` (ex.: `l:906827909019290` → `906827909019290`). É o identificador

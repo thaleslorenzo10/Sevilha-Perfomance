@@ -9,13 +9,16 @@ landing page) a partir da planilha **[CENTRAL DE EVENTOS] Sevilha Perfomance**
 (`1cedv5kfJhdwcySI1KcqQM4jS_LjIPnUhdYv1aU-SMxg`). A análise das duas planilhas
 completas mostrou que essa fonte é a menos confiável das duas:
 
-- A aba "Leads Respondi" (gid `1200600305`, hoje renomeada para "base"), que a
-  configuração documentada manda ler, **parou de receber leads em 15/09/2025**.
-- A aba viva ("Eventos Geral") é alimentada por uma automação intermediária que
-  **ficou 13 dias sem gravar nada** (24/dez/2025 → 06/jan/2026) e teve buracos de
-  4–5 dias em fev, mai e jun/2026 — ~130 leads perdidos vs. a fonte primária.
+- O gid configurado (`1200600305`) é a aba **"Eventos Geral"**, alimentada pelo
+  workflow n8n `[SEVILHA PERFOMANCE] Respondi -> Sheets -> Pipedrive`. Ela
+  **ficou 13 dias sem gravar nada** (24/dez/2025 → 06/jan/2026) e teve buracos
+  de 4–5 dias em fev, mai e jun/2026 — ~130 leads a menos que a fonte primária.
+  Os buracos são execuções falhas desse workflow.
 - "Eventos Geral" não tem e-mail, telefone (0%) nem cargo (0%), o que anula a
   deduplicação por contato e deixa o painel "Perfil — cargo" sem dados de LP.
+- A aba "base" (a antiga "Leads Respondi", outro gid) parou em 15/09/2025 e
+  carrega a qualificação manual "Com Perfil"/"Sem Perfil" — que o código nunca
+  leu. Não é, e nunca foi, a aba configurada.
 
 A planilha **Respondi | Formulário SEVILHA PERFORMANCE - CONSULTORIA**
 (`1_Y8o6WDFUSpThp8R519QC7t6A0nfh8fFER0oxacZVH0`, dono bruno@sevilhaperformance.com.br)

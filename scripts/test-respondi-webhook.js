@@ -75,6 +75,34 @@ const PAYLOAD_OBJETO = {
   },
 };
 
+/**
+ * Formato REAL, confirmado a partir do workflow n8n que já recebe este webhook
+ * hoje (`[SEVILHA PERFOMANCE] Respondi -> Sheets -> Pipedrive`, node Code1):
+ * as respostas ficam em `respondent.answers` chaveadas pelo texto da pergunta,
+ * e as UTMs em `respondent.respondent_utms`. Não há id de submissão na raiz —
+ * daí a chave de deduplicação precisar sair do contato.
+ */
+const PAYLOAD_REAL = {
+  form: { form_id: 'gvz4UKQr', form_name: 'SEVILHA PERFORMANCE - CONSULTORIA' },
+  respondent: {
+    answers: {
+      'Qual seu nome?':                              'Daniela Prado',
+      'Qual seu e-mail?':                            'daniela@exemplo.com.br',
+      'Qual seu Whatsapp?':                          '55 31 98888-7777',
+      'Qual o nome do Escritório de Contabilidade?': 'Prado Contabilidade',
+      'Qual a sua posição no escritório Contábil?':  'Dono/Sócio',
+      'Quantos colaboradores você tem?':             'De 20 a 29',
+    },
+    respondent_utms: {
+      utm_source:   'Instagram_Reels',
+      utm_medium:   'Warm',
+      utm_campaign: '[SE] [LEAD] [COLD] [FASE01] - Teste de Públicos',
+      utm_content:  'AD42',
+      fbclid:       'PAZXh0bgNhZW0BMABhZGlkAasoq',
+    },
+  },
+};
+
 // Formato B: respostas como lista de {question, answer}, outra chave de id.
 const PAYLOAD_LISTA = {
   submission_id: 'abc-123-def',
@@ -162,6 +190,45 @@ async function testes() {
     ok(chamadas.length === 1, 'respostas em lista de {question, answer} também são lidas', chamadas.length);
     ok(evento?.event_id === 'abc-123-def', 'id da submissão lido de submission_id', evento?.event_id);
     ok(evento?.user_data?.em?.[0] === sha('beto@exemplo.com'), 'e-mail extraído da lista', evento?.user_data?.em);
+  }
+
+  console.log('\n— payload real do Respondi —');
+  {
+    const { res, evento, chamadas } = await chamar({ body: PAYLOAD_REAL, headers: AUTORIZADO });
+    ok(chamadas.length === 1, 'lê respostas aninhadas em respondent.answers', chamadas.length);
+    ok(res.statusCode === 200, 'responde 200', res.statusCode);
+    ok(evento?.custom_data?.colaboradores === 'De 20 a 29', 'colaboradores lido do payload real',
+       evento?.custom_data?.colaboradores);
+    ok(evento?.custom_data?.utm_campaign === '[SE] [LEAD] [COLD] [FASE01] - Teste de Públicos',
+       'utm_campaign lido de respondent_utms', evento?.custom_data?.utm_campaign);
+    ok(evento?.user_data?.em?.[0] === sha('daniela@exemplo.com.br'), 'e-mail hasheado', evento?.user_data?.em);
+    ok(typeof evento?.user_data?.fbc === 'string' && evento.user_data.fbc.endsWith('.PAZXh0bgNhZW0BMABhZGlkAasoq'),
+       'fbc montado a partir do fbclid de respondent_utms', evento?.user_data?.fbc);
+  }
+
+  console.log('\n— retry do webhook não pode duplicar conversão —');
+  {
+    // O Respondi reenvia quando a resposta demora, e este payload não traz id
+    // de submissão. Sem event_id estável, cada retry vira uma conversão nova.
+    const a = await chamar({ body: PAYLOAD_REAL, headers: AUTORIZADO });
+    const b = await chamar({ body: PAYLOAD_REAL, headers: AUTORIZADO });
+    ok(a.evento?.event_id === b.evento?.event_id,
+       'duas entregas do mesmo lead geram o mesmo event_id',
+       { primeiro: a.evento?.event_id, segundo: b.evento?.event_id });
+    ok(!/\d{13}/.test(String(a.evento?.event_id)),
+       'o event_id não carrega timestamp (que mudaria a cada entrega)', a.evento?.event_id);
+    ok(!String(a.evento?.event_id).includes('daniela@exemplo'),
+       'o event_id não expõe o e-mail em claro — ele vai para o Meta sem hash', a.evento?.event_id);
+  }
+  {
+    const semContato = JSON.parse(JSON.stringify(PAYLOAD_REAL));
+    delete semContato.respondent.answers['Qual seu e-mail?'];
+    delete semContato.respondent.answers['Qual seu Whatsapp?'];
+    const { res, chamadas } = await chamar({ body: semContato, headers: AUTORIZADO });
+    ok(chamadas.length === 0 && res.statusCode === 200,
+       'qualificado sem e-mail nem telefone não dispara — sem contato não há chave de dedup ' +
+       'estável nem correspondência no Meta, e o dashboard também não conta esse lead',
+       { eventos: chamadas.length, status: res.statusCode });
   }
 
   console.log('\n— corpo entregue como string —');
