@@ -22,7 +22,7 @@ const crypto = require('crypto');
 
 const { norm } = require('../lib/texto');
 const { ehQualificado } = require('../lib/porte');
-const { enviarEvento, montarUserData } = require('../lib/capi');
+const { enviarEvento, montarUserData, hash } = require('../lib/capi');
 
 const EVENTO = 'LeadQualificado';
 const FORM_URL = 'https://form.respondi.app/gvz4UKQr';
@@ -110,16 +110,39 @@ function acharExato(pares, nome) {
   return acharPorChave(pares, c => c === nome);
 }
 
-/** O id da submissão vem da raiz: `form_id` e ids de anúncio não servem. */
+/**
+ * Id da submissão, quando existe. Procurado só na raiz e em `respondent`:
+ * dentro de `form` o que existe é o id do FORMULÁRIO, igual para todo lead —
+ * usá-lo por engano colapsaria todas as conversões em uma só.
+ */
 function acharIdSubmissao(payload) {
+  const escopos = [payload, payload.respondent, payload.body, payload.body && payload.body.respondent]
+    .filter(o => o && typeof o === 'object');
+
   for (const chave of ['id', 'submission_id', 'submissionid', 'response_id', 'responseid']) {
-    for (const k of Object.keys(payload)) {
-      if (norm(k) === chave && escalar(payload[k]) && String(payload[k]).trim()) {
-        return String(payload[k]).trim();
+    for (const escopo of escopos) {
+      for (const k of Object.keys(escopo)) {
+        if (norm(k) === chave && escalar(escopo[k]) && String(escopo[k]).trim()) {
+          return String(escopo[k]).trim();
+        }
       }
     }
   }
   return '';
+}
+
+/**
+ * Chave de deduplicação do evento.
+ *
+ * O payload de produção do Respondi não traz id de submissão (confirmado no
+ * workflow n8n que já recebe este webhook), e o Respondi reenvia a entrega
+ * quando a resposta demora. Sem chave estável, cada retry viraria uma conversão
+ * nova no relatório. O contato identifica a submissão de forma reproduzível, e
+ * vai hasheado porque o event_id chega ao Meta sem criptografia.
+ */
+function eventIdDe(payload, email, telefone) {
+  return acharIdSubmissao(payload)
+      || `respondi:${hash(norm(email || telefone)).slice(0, 32)}`;
 }
 
 function acharQuandoMs(payload) {
@@ -186,28 +209,38 @@ module.exports = async function handler(req, res) {
 
   const pares         = coletarPares(payload);
   const colaboradores = acharColaboradores(pares);
+  const email         = acharEmail(pares);
+  const telefone      = acharTelefone(pares);
   const qualificado   = ehQualificado(colaboradores);
 
   // Log sem PII: só o que foi encontrado, nunca o conteúdo.
   console.log('[respondi] recebido —',
     `colaboradores=${colaboradores || '(vazio)'}`,
     `qualificado=${qualificado}`,
-    `email=${acharEmail(pares) ? 'sim' : 'nao'}`,
-    `telefone=${acharTelefone(pares) ? 'sim' : 'nao'}`);
+    `email=${email ? 'sim' : 'nao'}`,
+    `telefone=${telefone ? 'sim' : 'nao'}`);
 
-  // Sempre 200 quando o payload é válido, inclusive para quem não qualifica:
+  // Sempre 200 quando o payload é válido, inclusive para quem não dispara:
   // webhook que recebe erro entra em retry e reenviaria o mesmo lead.
   if (!qualificado) return res.status(200).json({ ok: true, qualificado: false });
+
+  // Sem contato não há chave de deduplicação estável nem correspondência útil
+  // no Meta — e o dashboard também não conta esse lead, então mandar o evento
+  // faria os dois números discordarem.
+  if (!email && !telefone) {
+    console.warn('[respondi] qualificado sem e-mail nem telefone — evento não enviado');
+    return res.status(200).json({ ok: true, qualificado: true, enviado: false, motivo: 'sem contato' });
+  }
 
   const quandoMs = acharQuandoMs(payload);
 
   await enviarEvento({
     evento:  EVENTO,
-    eventId: acharIdSubmissao(payload) || `respondi:${quandoMs}`,
+    eventId: eventIdDe(payload, email, telefone),
     quando:  Math.floor(quandoMs / 1000),
     userData: montarUserData({
-      email:     acharEmail(pares),
-      telefone:  acharTelefone(pares),
+      email,
+      telefone,
       fbclid:    acharExato(pares, 'fbclid'),
       ip:        ipDoCliente(req),
       userAgent: req.headers?.['user-agent'] || '',

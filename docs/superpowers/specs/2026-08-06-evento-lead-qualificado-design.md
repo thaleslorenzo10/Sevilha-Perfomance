@@ -69,9 +69,15 @@ envia `LeadQualificado` ao CAPI.
   configurar header). Comparação em tempo constante. Sem segredo válido → 401.
   O endpoint é público na internet: sem isso, qualquer um injeta conversão falsa
   no pixel.
-- **Extração resistente a formato**: o payload exato não está documentado
-  publicamente (`help.respondi.app` responde 403 a acesso automatizado), então a
-  leitura percorre o JSON inteiro e localiza cada campo pelo conteúdo — a mesma
+- **Formato do payload** (confirmado no workflow n8n que já recebe este webhook,
+  node `Code1`): as respostas ficam em `respondent.answers`, chaveadas pelo
+  texto da pergunta, e as UTMs em `respondent.respondent_utms`. **Não há id de
+  submissão**, então a chave de deduplicação é o hash do contato — sem ela, o
+  retry do Respondi viraria uma segunda conversão. Lead qualificado sem e-mail
+  nem telefone não gera evento: sem contato não há chave estável nem
+  correspondência, e o dashboard também não conta esse lead.
+- **Extração resistente a formato**: a leitura percorre o JSON inteiro e
+  localiza cada campo pelo conteúdo, em vez de fixar o caminho acima — a mesma
   tática que `extractForms` já usa para o export do Meta:
   - colaboradores: chave contendo "colaborador"
   - e-mail: valor com formato de e-mail
