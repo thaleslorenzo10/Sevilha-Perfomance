@@ -85,6 +85,11 @@ function acharColaboradores(pares) {
   return acharPorChave(pares, c => c.includes('colaborador'));
 }
 
+/** O nome eleva a nota de correspondencia e vai hasheado, como o resto. */
+function acharNome(pares) {
+  return acharPorChave(pares, c => c.includes('seu nome') || c === 'nome' || c === 'name');
+}
+
 function acharEmail(pares) {
   for (const [, valor] of pares) {
     const v = valor.trim();
@@ -241,6 +246,8 @@ module.exports = async function handler(req, res) {
     userData: montarUserData({
       email,
       telefone,
+      nome:      acharNome(pares),
+      pais:      'br',
       fbclid:    acharExato(pares, 'fbclid'),
       ip:        ipDoCliente(req),
       userAgent: req.headers?.['user-agent'] || '',

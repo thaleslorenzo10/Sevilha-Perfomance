@@ -208,6 +208,8 @@ async function testes() {
     ok(evento?.user_data?.em?.[0] === sha('daniela@exemplo.com.br'), 'e-mail hasheado', evento?.user_data?.em);
     ok(typeof evento?.user_data?.fbc === 'string' && evento.user_data.fbc.endsWith('.PAZXh0bgNhZW0BMABhZGlkAasoq'),
        'fbc montado a partir do fbclid de respondent_utms', evento?.user_data?.fbc);
+    ok(evento?.user_data?.fn?.[0] === sha('daniela'), 'primeiro nome hasheado', evento?.user_data?.fn);
+    ok(evento?.user_data?.ln?.[0] === sha('prado'), 'ultimo sobrenome hasheado', evento?.user_data?.ln);
   }
 
   console.log('\n— retry do webhook não pode duplicar conversão —');

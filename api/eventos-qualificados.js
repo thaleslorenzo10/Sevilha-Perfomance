@@ -96,11 +96,17 @@ function extrairLeads(rows) {
 
       const respostas = rec.slice(12);
 
+      // No export, full_name vem imediatamente antes do email. A quantidade de
+      // perguntas muda conforme o formulário, então a posição fixa não serve —
+      // mas a ordem relativa desses dois campos é estável.
+      const iEmail = respostas.findIndex(v => RE_EMAIL.test(v));
+
       out.push({
         leadId:        m[1],
         quandoMs,
         colaboradores: respostas.find(v => RE_COLABORADORES.test(v)) || '',
-        email:         respostas.find(v => RE_EMAIL.test(v)) || '',
+        email:         iEmail >= 0 ? respostas[iEmail] : '',
+        nome:          iEmail > 0  ? respostas[iEmail - 1] : '',
         // O export prefixa o telefone com "p:" ("p:+5551999998888").
         telefone:      (respostas.find(v => /^p:\+?\d[\d\s()-]{8,}$/.test(v)) || '').replace(/^p:/, ''),
         campanha:      rec[7] || '',
@@ -123,7 +129,9 @@ function extrairLeads(rows) {
  * crítico dos leads.
  */
 const CAMPOS_LP = {
-  data:     ['data entrada', 'data'],
+  data:      ['data entrada', 'data'],
+  nome:      ['qual seu nome'],
+  submissao: ['id'],
   email:    ['qual seu e-mail', 'qual seu email'],
   telefone: ['qual seu whatsapp', 'telefone'],
   colab:    ['quantos colaboradores', 'numero de colaboradores'],
@@ -179,6 +187,8 @@ function extrairLP(rows) {
       colaboradores: cel(idx.colab),
       email,
       telefone,
+      nome:          cel(idx.nome),
+      submissao:     cel(idx.submissao),
       fbclid:        cel(idx.fbclid),
       campanha:      cel(idx.campanha),
       anuncio:       cel(idx.anuncio),
@@ -254,6 +264,11 @@ module.exports = async function handler(req, res) {
           leadId:   lead.leadId,
           email:    lead.email,
           telefone: lead.telefone,
+          nome:     lead.nome,
+          // Identificador proprio do lead: o id do Meta para FORMS, o id da
+          // submissao do Respondi para LP. Conta como parametro a mais na nota
+          // de correspondencia.
+          externalId: lead.leadId || lead.submissao,
           fbclid:   lead.fbclid,
           quandoMs: lead.quandoMs,
           pais:     'br',
