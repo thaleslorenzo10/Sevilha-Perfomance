@@ -36,8 +36,10 @@ const handler = require('../api/eventos-qualificados');
 const { eventIdPorContato } = require('../lib/capi');
 
 let chamadas = [];
+let respostaMeta = null;   // null = sucesso; objeto = resposta forcada
 global.fetch = async (url, opts) => {
   chamadas.push({ url: String(url), body: JSON.parse(opts.body) });
+  if (respostaMeta) return respostaMeta;
   return { ok: true, status: 200, json: async () => ({ events_received: 1 }) };
 };
 
@@ -70,6 +72,8 @@ function cenario(linhas, { jaEnviados = [], lp = null } = {}) {
   jaRegistrados = new Set(jaEnviados);
   marcados      = [];
   chamadas      = [];
+  respostaMeta  = null;
+  process.env.META_CAPI_TOKEN = 'token-de-teste';
 }
 
 function fakeRes() {
@@ -341,8 +345,50 @@ async function csvRealLP() {
               `— é o que dá correspondência no Meta além do e-mail)`);
 }
 
+/* ── O envio precisa ser verificado, nao presumido ───────────────────── */
+
+async function testesEnvioVerificado() {
+  console.log('\n— o que nao chegou ao Meta nao pode entrar na trava —');
+  {
+    // Sem token o CAPI nao e chamado. Se a trava registrasse assim mesmo, o
+    // lead nunca mais seria tentado — e o JSON diria "enviados" para algo que
+    // nunca saiu. Foi exatamente o que aconteceu em producao.
+    cenario([QUALIFICADO]);
+    delete process.env.META_CAPI_TOKEN;
+    const { res, eventos } = await rodar();
+    process.env.META_CAPI_TOKEN = 'token-de-teste';
+
+    ok(eventos.length === 0, 'sem META_CAPI_TOKEN nenhum evento e enviado', eventos.length);
+    ok(marcados.length === 0, 'e nada e gravado na trava de reenvio', marcados);
+    ok(res.statusCode === 502, 'a varredura falha alto, em vez de reportar sucesso', res.statusCode);
+    ok(/META_CAPI_TOKEN/.test(res.corpo?.error || ''),
+       'o erro diz qual variavel falta', res.corpo);
+  }
+  {
+    // Meta aceita a requisicao HTTP mas recusa o evento no corpo.
+    cenario([QUALIFICADO]);
+    respostaMeta = {
+      ok: true, status: 200,
+      json: async () => ({ error: { message: 'Invalid parameter', code: 100 } }),
+    };
+    const { res } = await rodar();
+
+    ok(marcados.length === 0, 'evento recusado pelo Meta nao entra na trava', marcados);
+    ok(res.corpo?.enviados === 0, 'e nao e contado como enviado', res.corpo);
+    ok(res.corpo?.falhas === 1, 'a resposta informa quantos falharam', res.corpo);
+  }
+  {
+    // O caminho feliz continua gravando.
+    cenario([QUALIFICADO]);
+    const { res } = await rodar();
+    ok(marcados.length === 1 && res.corpo?.enviados === 1 && !res.corpo?.falhas,
+       'evento aceito continua sendo gravado normalmente', { marcados, corpo: res.corpo });
+  }
+}
+
 testes()
   .then(testesLP)
+  .then(testesEnvioVerificado)
   .then(exportReal)
   .then(csvRealLP)
   .catch(err => { falhas++; console.error('  ✗ exceção:', err.stack); })

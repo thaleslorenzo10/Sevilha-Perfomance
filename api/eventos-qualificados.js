@@ -217,6 +217,12 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    // Sem token nada é enviado, e uma varredura que "conclui" sem enviar grava
+    // os leads na trava e nunca mais tenta. Melhor não começar.
+    if (!process.env.META_CAPI_TOKEN) {
+      throw new Error('META_CAPI_TOKEN não definido — nenhum evento seria enviado');
+    }
+
     const [tabsCentral, tabsLP] = await Promise.all([readAllTabs(), readLPTabs()]);
 
     // O lead do formulário nativo nasce dentro do Meta e é identificado pelo
@@ -238,8 +244,9 @@ module.exports = async function handler(req, res) {
     const pendentes = naJanela.filter(l => !enviadosAntes.has(l.eventId));
 
     const enviados = [];
+    const falhas   = [];
     for (const lead of pendentes) {
-      await enviarEvento({
+      const envio = await enviarEvento({
         evento:  EVENTO,
         eventId: lead.eventId,
         quando:  Math.floor(lead.quandoMs / 1000),
@@ -259,10 +266,13 @@ module.exports = async function handler(req, res) {
         },
         actionSource: lead.actionSource,
       });
-      enviados.push({ event_id: lead.eventId, evento: EVENTO, fonte: lead.fonte });
+
+      // Só entra na trava o que o Meta confirmou ter recebido. O que falhou
+      // fica de fora de propósito, para a execução de amanhã tentar de novo.
+      if (envio.ok) enviados.push({ event_id: lead.eventId, evento: EVENTO, fonte: lead.fonte });
+      else          falhas.push({ event_id: lead.eventId, erro: envio.erro });
     }
 
-    // Só registra depois do envio: se o CAPI falhar, o lead volta amanhã.
     await registro.marcarEnviados(enviados);
 
     const contarFonte = f => enviados.filter(e => e.fonte === f).length;
@@ -273,8 +283,10 @@ module.exports = async function handler(req, res) {
       fora_da_janela: foraDaJanela,
       ja_enviados:    enviadosAntes.size,
       enviados:       enviados.length,
+      falhas:         falhas.length,
       por_fonte:      { FORMS: contarFonte('FORMS'), LP: contarFonte('LP') },
     };
+    if (falhas.length) resumo.primeira_falha = falhas[0].erro;
     console.log('[eventos-qualificados]', JSON.stringify(resumo));
     return res.status(200).json(resumo);
 
