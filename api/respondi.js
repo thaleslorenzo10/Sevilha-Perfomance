@@ -85,6 +85,11 @@ function acharColaboradores(pares) {
   return acharPorChave(pares, c => c.includes('colaborador'));
 }
 
+/** O nome eleva a nota de correspondencia e vai hasheado, como o resto. */
+function acharNome(pares) {
+  return acharPorChave(pares, c => c.includes('seu nome') || c === 'nome' || c === 'name');
+}
+
 function acharEmail(pares) {
   for (const [, valor] of pares) {
     const v = valor.trim();
@@ -234,13 +239,15 @@ module.exports = async function handler(req, res) {
 
   const quandoMs = acharQuandoMs(payload);
 
-  await enviarEvento({
+  const envio = await enviarEvento({
     evento:  EVENTO,
     eventId: eventIdDe(payload, email, telefone),
     quando:  Math.floor(quandoMs / 1000),
     userData: montarUserData({
       email,
       telefone,
+      nome:      acharNome(pares),
+      pais:      'br',
       fbclid:    acharExato(pares, 'fbclid'),
       ip:        ipDoCliente(req),
       userAgent: req.headers?.['user-agent'] || '',
@@ -256,5 +263,12 @@ module.exports = async function handler(req, res) {
     actionSource: 'website',
   });
 
-  return res.status(200).json({ ok: true, qualificado: true });
+  // Se o Meta não aceitou, pedir retry é o certo — e é seguro, porque o
+  // event_id vem do contato: a reentrega manda o mesmo id e o Meta descarta o
+  // duplicado. Responder 200 aqui perderia a conversão em silêncio.
+  if (!envio.ok) {
+    return res.status(502).json({ error: envio.erro, qualificado: true, enviado: false });
+  }
+
+  return res.status(200).json({ ok: true, qualificado: true, enviado: true });
 };

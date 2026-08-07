@@ -96,11 +96,17 @@ function extrairLeads(rows) {
 
       const respostas = rec.slice(12);
 
+      // No export, full_name vem imediatamente antes do email. A quantidade de
+      // perguntas muda conforme o formulário, então a posição fixa não serve —
+      // mas a ordem relativa desses dois campos é estável.
+      const iEmail = respostas.findIndex(v => RE_EMAIL.test(v));
+
       out.push({
         leadId:        m[1],
         quandoMs,
         colaboradores: respostas.find(v => RE_COLABORADORES.test(v)) || '',
-        email:         respostas.find(v => RE_EMAIL.test(v)) || '',
+        email:         iEmail >= 0 ? respostas[iEmail] : '',
+        nome:          iEmail > 0  ? respostas[iEmail - 1] : '',
         // O export prefixa o telefone com "p:" ("p:+5551999998888").
         telefone:      (respostas.find(v => /^p:\+?\d[\d\s()-]{8,}$/.test(v)) || '').replace(/^p:/, ''),
         campanha:      rec[7] || '',
@@ -123,7 +129,9 @@ function extrairLeads(rows) {
  * crítico dos leads.
  */
 const CAMPOS_LP = {
-  data:     ['data entrada', 'data'],
+  data:      ['data entrada', 'data'],
+  nome:      ['qual seu nome'],
+  submissao: ['id'],
   email:    ['qual seu e-mail', 'qual seu email'],
   telefone: ['qual seu whatsapp', 'telefone'],
   colab:    ['quantos colaboradores', 'numero de colaboradores'],
@@ -179,6 +187,8 @@ function extrairLP(rows) {
       colaboradores: cel(idx.colab),
       email,
       telefone,
+      nome:          cel(idx.nome),
+      submissao:     cel(idx.submissao),
       fbclid:        cel(idx.fbclid),
       campanha:      cel(idx.campanha),
       anuncio:       cel(idx.anuncio),
@@ -217,6 +227,12 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    // Sem token nada é enviado, e uma varredura que "conclui" sem enviar grava
+    // os leads na trava e nunca mais tenta. Melhor não começar.
+    if (!process.env.META_CAPI_TOKEN) {
+      throw new Error('META_CAPI_TOKEN não definido — nenhum evento seria enviado');
+    }
+
     const [tabsCentral, tabsLP] = await Promise.all([readAllTabs(), readLPTabs()]);
 
     // O lead do formulário nativo nasce dentro do Meta e é identificado pelo
@@ -238,8 +254,9 @@ module.exports = async function handler(req, res) {
     const pendentes = naJanela.filter(l => !enviadosAntes.has(l.eventId));
 
     const enviados = [];
+    const falhas   = [];
     for (const lead of pendentes) {
-      await enviarEvento({
+      const envio = await enviarEvento({
         evento:  EVENTO,
         eventId: lead.eventId,
         quando:  Math.floor(lead.quandoMs / 1000),
@@ -247,6 +264,11 @@ module.exports = async function handler(req, res) {
           leadId:   lead.leadId,
           email:    lead.email,
           telefone: lead.telefone,
+          nome:     lead.nome,
+          // Identificador proprio do lead: o id do Meta para FORMS, o id da
+          // submissao do Respondi para LP. Conta como parametro a mais na nota
+          // de correspondencia.
+          externalId: lead.leadId || lead.submissao,
           fbclid:   lead.fbclid,
           quandoMs: lead.quandoMs,
           pais:     'br',
@@ -259,10 +281,13 @@ module.exports = async function handler(req, res) {
         },
         actionSource: lead.actionSource,
       });
-      enviados.push({ event_id: lead.eventId, evento: EVENTO, fonte: lead.fonte });
+
+      // Só entra na trava o que o Meta confirmou ter recebido. O que falhou
+      // fica de fora de propósito, para a execução de amanhã tentar de novo.
+      if (envio.ok) enviados.push({ event_id: lead.eventId, evento: EVENTO, fonte: lead.fonte });
+      else          falhas.push({ event_id: lead.eventId, erro: envio.erro });
     }
 
-    // Só registra depois do envio: se o CAPI falhar, o lead volta amanhã.
     await registro.marcarEnviados(enviados);
 
     const contarFonte = f => enviados.filter(e => e.fonte === f).length;
@@ -273,8 +298,10 @@ module.exports = async function handler(req, res) {
       fora_da_janela: foraDaJanela,
       ja_enviados:    enviadosAntes.size,
       enviados:       enviados.length,
+      falhas:         falhas.length,
       por_fonte:      { FORMS: contarFonte('FORMS'), LP: contarFonte('LP') },
     };
+    if (falhas.length) resumo.primeira_falha = falhas[0].erro;
     console.log('[eventos-qualificados]', JSON.stringify(resumo));
     return res.status(200).json(resumo);
 

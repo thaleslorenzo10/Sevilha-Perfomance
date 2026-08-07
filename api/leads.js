@@ -380,7 +380,7 @@ module.exports = async function handler(req, res) {
   try {
     return res.status(200).json({
       ok:              true,
-      events_received: capiData?.events_received ?? 0,
+      events_received: capiData?.recebidos ?? 0,
       fbtrace_id:      capiData?.fbtrace_id ?? '',
     });
 

@@ -24,8 +24,10 @@ const handler = require('../api/respondi');
 /* ── Dublês ──────────────────────────────────────────────────────────── */
 
 let chamadas = [];
+let respostaMeta = null;   // null = sucesso; objeto = resposta forcada
 global.fetch = async (url, opts) => {
   chamadas.push({ url: String(url), body: JSON.parse(opts.body) });
+  if (respostaMeta) return respostaMeta;
   return { ok: true, status: 200, json: async () => ({ events_received: 1 }) };
 };
 
@@ -44,6 +46,8 @@ function fakeReq({ method = 'POST', body, headers = {}, url = '/api/respondi' } 
 
 async function chamar(opts) {
   chamadas = [];
+  respostaMeta = null;
+  process.env.META_CAPI_TOKEN = 'token-de-teste';
   const res = fakeRes();
   await handler(fakeReq(opts), res);
   return { res, evento: chamadas[0]?.body?.data?.[0] || null, chamadas };
@@ -204,6 +208,8 @@ async function testes() {
     ok(evento?.user_data?.em?.[0] === sha('daniela@exemplo.com.br'), 'e-mail hasheado', evento?.user_data?.em);
     ok(typeof evento?.user_data?.fbc === 'string' && evento.user_data.fbc.endsWith('.PAZXh0bgNhZW0BMABhZGlkAasoq'),
        'fbc montado a partir do fbclid de respondent_utms', evento?.user_data?.fbc);
+    ok(evento?.user_data?.fn?.[0] === sha('daniela'), 'primeiro nome hasheado', evento?.user_data?.fn);
+    ok(evento?.user_data?.ln?.[0] === sha('prado'), 'ultimo sobrenome hasheado', evento?.user_data?.ln);
   }
 
   console.log('\n— retry do webhook não pode duplicar conversão —');
@@ -250,6 +256,29 @@ async function testes() {
     const naQuery = await chamar({ body: PAYLOAD_OBJETO, url: '/api/respondi?token=segredo-certo' });
     ok(naQuery.chamadas.length === 1,
        'segredo aceito na query (painel de webhook nem sempre deixa por header)', naQuery.chamadas.length);
+  }
+
+  console.log('\n— envio que falha nao pode ser dado como feito —');
+  {
+    // O event_id e derivado do contato, entao o reenvio do Respondi manda o
+    // mesmo id e o Meta descarta o duplicado. Isso torna seguro pedir retry.
+    const res = fakeRes();
+    chamadas = [];
+    respostaMeta = { ok: true, status: 200, json: async () => ({ error: { message: 'Invalid parameter' } }) };
+    process.env.META_CAPI_TOKEN = 'token-de-teste';
+    await handler(fakeReq({ body: PAYLOAD_REAL, headers: AUTORIZADO }), res);
+    ok(res.statusCode === 502,
+       'Meta recusou o evento → 502, para o Respondi reenviar', res.statusCode);
+  }
+  {
+    const res = fakeRes();
+    chamadas = [];
+    respostaMeta = null;
+    delete process.env.META_CAPI_TOKEN;
+    await handler(fakeReq({ body: PAYLOAD_REAL, headers: AUTORIZADO }), res);
+    process.env.META_CAPI_TOKEN = 'token-de-teste';
+    ok(res.statusCode === 502 && /META_CAPI_TOKEN/.test(res.corpo?.error || ''),
+       'sem token → 502 dizendo qual variavel falta', { status: res.statusCode, corpo: res.corpo });
   }
 
   console.log('\n— método e corpo inválido —');
