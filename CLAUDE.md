@@ -28,8 +28,11 @@ extrator está amarrado à sua fonte. Ver
 `docs/superpowers/specs/2026-08-06-lp-planilha-respondi-design.md`.
 
 Regra de contagem, igual nos dois lugares: linha sem e-mail e sem telefone não é
-lead (o Respondi grava até abandono de formulário), e o contato é a chave de
-deduplicação — re-submissão da mesma pessoa conta uma vez.
+lead (o Respondi grava até abandono de formulário), e lead de teste do Meta não
+conta. **Toda submissão conta, inclusive de quem já se inscreveu antes** — a
+chave de deduplicação é o id de submissão, não o contato. O que o id colapsa é a
+linha idêntica repetida na planilha, que a integração às vezes grava mais de uma
+vez: isso é a mesma submissão, não dois leads.
 
 ## A definição de lead qualificado mora num lugar só
 

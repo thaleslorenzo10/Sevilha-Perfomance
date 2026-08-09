@@ -146,8 +146,10 @@ function acharIdSubmissao(payload) {
  * vai hasheado porque o event_id chega ao Meta sem criptografia.
  */
 function eventIdDe(payload, email, telefone) {
-  return acharIdSubmissao(payload)
-      || eventIdPorContato('respondi', email || telefone);
+  const id = acharIdSubmissao(payload);
+  // Mesmo formato da varredura (`respondi:<id>`), para os dois caminhos nunca
+  // produzirem chaves diferentes para a mesma submissao.
+  return id ? `respondi:${id}` : eventIdPorContato('respondi', email || telefone);
 }
 
 function acharQuandoMs(payload) {

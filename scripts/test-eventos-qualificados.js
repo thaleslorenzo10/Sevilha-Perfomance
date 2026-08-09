@@ -142,14 +142,31 @@ async function testesLP() {
     ok(res.corpo?.enviados === 1, 'resposta contabiliza o envio', res.corpo);
   }
   {
-    // A chave precisa bater com a do webhook (api/respondi.js): se um dia os
-    // dois caminhos rodarem para o mesmo lead, o Meta descarta o segundo.
+    // Uma submissao, um evento: a chave e o id da submissao, no mesmo formato
+    // que o webhook produz. Assim o painel e o Meta contam a mesma coisa, e se
+    // os dois caminhos rodarem para a mesma submissao o Meta descarta o segundo.
     cenario([], { lp: [HDR_LP, LP_QUALIFICADO] });
     const { eventos } = await rodar();
-    const esperado = eventIdPorContato('respondi', 'daniela@exemplo.com.br');
-    ok(eventos[0]?.event_id === esperado,
-       'event_id de LP usa a mesma chave por contato do webhook',
-       { obtido: eventos[0]?.event_id, esperado });
+    ok(eventos[0]?.event_id === 'respondi:uuid-lp',
+       'event_id de LP e o id da submissao', eventos[0]?.event_id);
+  }
+  {
+    // Mesma pessoa preenchendo de novo: submissao nova, evento novo.
+    const outra = linhaLP({
+      colaboradores: 'De 10 a 19', quando: iso(2 * DIA).replace('T', ' ').slice(0, 19),
+      email: 'Daniela@Exemplo.com.BR', fone: '55 31 98888-7777', id: 'uuid-lp-2',
+    });
+    cenario([], { lp: [HDR_LP, LP_QUALIFICADO, outra] });
+    const { eventos } = await rodar();
+    ok(eventos.length === 2, 'quem ja se inscreveu antes conta de novo', eventos.length);
+    ok(new Set(eventos.map(e => e.event_id)).size === 2,
+       'cada submissao com o seu event_id', eventos.map(e => e.event_id));
+  }
+  {
+    // Linha identica repetida na planilha: mesma submissao, um evento so.
+    cenario([], { lp: [HDR_LP, LP_QUALIFICADO, LP_QUALIFICADO] });
+    const { eventos } = await rodar();
+    ok(eventos.length === 1, 'linha repetida com o mesmo id nao duplica evento', eventos.length);
   }
   {
     cenario([], { lp: [HDR_LP, linhaLP({ colaboradores: 'De 5 a 9', email: 'a@b.com',
@@ -338,8 +355,8 @@ async function csvRealLP() {
   ok(leads.length > 0, `extraiu ${leads.length} leads de LP com contato`, leads.length);
   ok(leads.every(l => l.email || l.telefone), 'todo lead extraído tem e-mail ou telefone');
   ok(leads.every(l => l.eventId.startsWith('respondi:')), 'todo event_id usa o prefixo do funil');
-  ok(new Set(leads.map(l => l.eventId)).size === new Set(leads.map(l => (l.email || l.telefone).toLowerCase())).size,
-     'um event_id por contato único — re-submissões colapsam, como no dashboard');
+  ok(new Set(leads.map(l => l.eventId)).size === new Set(leads.map(l => l.submissao)).size,
+     'um event_id por submissão — igual à contagem do dashboard');
   ok(leads.every(l => !Number.isNaN(l.quandoMs)), 'toda data foi interpretada');
   const comNome = leads.filter(l => l.nome).length;
   ok(Math.round((100 * comNome) / leads.length) >= 95,

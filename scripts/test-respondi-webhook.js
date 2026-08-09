@@ -141,7 +141,8 @@ async function testes() {
     const { res, evento, chamadas } = await chamar({ body: PAYLOAD_OBJETO, headers: AUTORIZADO });
     ok(chamadas.length === 1, 'dispara exatamente um evento', chamadas.length);
     ok(evento?.event_name === 'LeadQualificado', 'nome do evento é LeadQualificado', evento?.event_name);
-    ok(evento?.event_id === PAYLOAD_OBJETO.id, 'event_id é o id da submissão (dedup de retry)', evento?.event_id);
+    ok(evento?.event_id === `respondi:${PAYLOAD_OBJETO.id}`,
+       'event_id é o id da submissão, no mesmo formato da varredura', evento?.event_id);
     ok(res.statusCode === 200, 'responde 200', res.statusCode);
     ok(evento?.action_source === 'website', 'action_source website', evento?.action_source);
   }
@@ -192,7 +193,7 @@ async function testes() {
   {
     const { evento, chamadas } = await chamar({ body: PAYLOAD_LISTA, headers: AUTORIZADO });
     ok(chamadas.length === 1, 'respostas em lista de {question, answer} também são lidas', chamadas.length);
-    ok(evento?.event_id === 'abc-123-def', 'id da submissão lido de submission_id', evento?.event_id);
+    ok(evento?.event_id === 'respondi:abc-123-def', 'id da submissão lido de submission_id', evento?.event_id);
     ok(evento?.user_data?.em?.[0] === sha('beto@exemplo.com'), 'e-mail extraído da lista', evento?.user_data?.em);
   }
 

@@ -11,8 +11,8 @@
  *   1. LP vem da planilha do Respondi (integração direta), não da Central.
  *   2. Linha do Respondi sem e-mail E sem telefone (abandono de formulário)
  *      não conta como lead.
- *   3. Re-submissões do mesmo contato (mesmo e-mail, ou mesmo telefone quando
- *      não há e-mail) colapsam em um lead só.
+ *   3. Toda submissão conta, inclusive de quem já se inscreveu antes. O que
+ *      colapsa é a linha idêntica repetida na planilha (mesmo id de submissão).
  *   4. Abas da Central com formato de LP (ex.: a aba morta "base") não geram
  *      lead LP — senão o período abr–set/2025 contaria em dobro.
  *   5. FORMS continua sendo extraído da Central como sempre.
@@ -53,14 +53,18 @@ const ABA_RESPONDI = {
     // lead completo — conta
     linhaRespondi({ nome: 'Ana', email: 'ana@ex.com', fone: '55 11 91111-1111',
                     cargo: 'Dono/Sócio', colab: '10 à 19', data: '2026-08-01 10:00:00', id: 'uuid-1' }),
-    // re-submissão da Ana (mesmo e-mail) — colapsa com a anterior
+    // Ana volta e preenche de novo: submissão nova, id novo — conta como
+    // segundo lead. Quem já se inscreveu antes não deixa de contar.
     linhaRespondi({ nome: 'Ana', email: 'ana@ex.com', fone: '', data: '2026-08-01 10:05:00', id: 'uuid-2' }),
     // só e-mail — conta
     linhaRespondi({ nome: 'Beto', email: 'beto@ex.com', cargo: 'Cargo_Gerencial',
                     colab: '0 à 9', data: '2026-08-02 09:00:00', id: 'uuid-3' }),
     // só telefone — conta
     linhaRespondi({ nome: 'Carla', fone: '55 21 92222-2222', data: '2026-08-02 11:00:00', id: 'uuid-4' }),
-    // mesmo telefone da Carla, ainda sem e-mail — colapsa
+    // Carla também volta — outro id, outro lead.
+    linhaRespondi({ nome: 'Carla', fone: '55 21 92222-2222', data: '2026-08-02 11:03:00', id: 'uuid-5' }),
+    // Linha IDÊNTICA à anterior, mesmo id: a integração às vezes grava a mesma
+    // submissão duas vezes. Isso é o mesmo lead, não dois.
     linhaRespondi({ nome: 'Carla', fone: '55 21 92222-2222', data: '2026-08-02 11:03:00', id: 'uuid-5' }),
     // abandono: sem e-mail e sem telefone — NÃO conta
     linhaRespondi({ nome: 'Rodrigo', data: '2026-08-03 08:00:00', id: 'uuid-6' }),
@@ -118,15 +122,15 @@ async function fixtures() {
   console.log('— fixtures sintéticas —');
   const r = await montarLeads('2026-08-01', '2026-08-31');
 
-  ok(r.por_formato.LP === 3,
-     'LP conta só leads com e-mail ou telefone, sem re-submissões (3)', r.por_formato.LP);
-  ok(r.por_formato.FORMS === 1, 'FORMS continua vindo da Central (1)', r.por_formato.FORMS);
-  ok(r.total === 4,
-     'aba "base" da Central não gera lead LP (total = 3 LP + 1 FORMS)', r.total);
+  ok(r.por_formato.LP === 5,
+     'toda submissão com contato conta, inclusive de quem já se inscreveu (5)', r.por_formato.LP);
+  ok(r.total === 6, 'linha idêntica repetida na planilha conta uma vez só', r.total);
+  ok(r.por_formato.FORMS === 1,
+     'FORMS vem da Central, e a aba "base" não gera lead LP', r.por_formato.FORMS);
 
   const dias = Object.fromEntries(r.por_dia.map(d => [d.data, d.LP]));
-  ok(dias['2026-08-01'] === 1 && dias['2026-08-02'] === 2 && !dias['2026-08-03'],
-     'série diária LP reflete dedup e filtro de contato', r.por_dia);
+  ok(dias['2026-08-01'] === 2 && dias['2026-08-02'] === 3 && !dias['2026-08-03'],
+     'série diária LP conta cada submissão, e nada em dia sem lead contável', r.por_dia);
 
   ok(r.qualificacao.cargo['Dono / Sócio'] >= 1 && r.qualificacao.cargo['Cargo gerencial'] === 1,
      'cargo do formato Respondi alimenta a qualificação', r.qualificacao.cargo);
@@ -134,7 +138,7 @@ async function fixtures() {
      'porte por colaboradores (10 à 19 + FORMS → 2 maiores; 0 à 9 → 1 menor)', r.porte);
 
   const camp = r.por_campanha.find(c => c.campanha === '[SE] [LEAD] [HOT] [FASE01]');
-  ok(camp && camp.leads === 3, 'campanha [SE] [LEAD] agregada a partir do Respondi', r.por_campanha);
+  ok(camp && camp.leads === 5, 'campanha [SE] [LEAD] agregada a partir do Respondi', r.por_campanha);
   ok(r.cobertura.LP.ultimo === '2026-08-02',
      'cobertura LP considera só leads contáveis', r.cobertura.LP);
 }
@@ -160,19 +164,21 @@ async function csvReal() {
   // ignorando linhas sem contato e leads de teste (test@meta.com).
   const hdr = rows[0];
   const iE = hdr.indexOf('Qual seu e-mail?'), iF = hdr.indexOf('Qual seu Whatsapp?');
+  const iId = hdr.indexOf('ID');
   const chaves = new Set();
   for (const row of rows.slice(1)) {
     const email = String(row[iE] || '').trim();
     const fone  = String(row[iF] || '').trim();
     if (!email && !fone) continue;
     if (/test@meta\.com/i.test(row.join(' '))) continue;
-    chaves.add(email || fone);
+    chaves.add(String(row[iId] || '').trim() || email || fone);
   }
   ok(r.por_formato.LP === chaves.size,
-     `LP real = 1 lead por contato único (${chaves.size})`, r.por_formato.LP);
+     `LP real = 1 lead por submissão (${chaves.size})`, r.por_formato.LP);
   ok(r.por_formato.FORMS === 0, 'nada do Respondi vaza para FORMS', r.por_formato.FORMS);
-  ok(r.cobertura.LP.primeiro === '2025-04-28' && r.cobertura.LP.ultimo === '2026-08-04',
-     'cobertura real: 2025-04-28 → 2026-08-04', r.cobertura.LP);
+  // A data final nao pode ser fixa: a planilha recebe lead todo dia.
+  ok(r.cobertura.LP.primeiro === '2025-04-28' && r.cobertura.LP.ultimo >= '2026-08-09',
+     'cobertura real comeca em 2025-04-28 e alcanca o presente', r.cobertura.LP);
 }
 
 (async () => {

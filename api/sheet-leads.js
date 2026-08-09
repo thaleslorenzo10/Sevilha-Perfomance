@@ -174,8 +174,13 @@ function extractForms(rows) {
  *
  * Só conta linha com e-mail ou telefone: o Respondi registra toda submissão,
  * inclusive quem abandonou o formulário no meio, e sem contato não há lead
- * para o time chamar. O contato também é a chave de deduplicação — quem
- * reenvia o formulário (acontece em ~10% dos leads) conta uma vez só.
+ * para o time chamar.
+ *
+ * A deduplicação é por id de submissão, não por contato: cada preenchimento é
+ * um lead, mesmo de quem já se inscreveu antes. O que o id colapsa é a linha
+ * idêntica repetida na planilha (mesmo id, mesmo horário, mesmos dados), que a
+ * integração às vezes grava mais de uma vez — isso é a mesma submissão, não
+ * dois leads.
  */
 function extractLP(rows, header) {
   const head = rows[header.rowIdx];
@@ -183,6 +188,10 @@ function extractLP(rows, header) {
 
   const idx = {
     data:     columnIndex(head, off, ['data entrada', 'data']),
+    // Id da submissão no Respondi. É a chave de deduplicação: cada preenchimento
+    // é um lead, inclusive de quem já se inscreveu antes. Só colapsa linha
+    // idêntica repetida na planilha, que tem o mesmo id.
+    submissao: columnIndex(head, off, ['id']),
     email:    columnIndex(head, off, ['qual seu e-mail', 'qual seu email']),
     telefone: columnIndex(head, off, ['telefone', 'qual seu whatsapp']),
     campanha: columnIndex(head, off, ['utm campaign', 'utm_campaign']),
@@ -209,7 +218,7 @@ function extractLP(rows, header) {
 
     out.push({
       fonte:      TAB_LP,
-      id:         email || telefone,
+      id:         String(row[idx.submissao] ?? '').trim() || email || telefone,
       data,
       formulario: 'Formulário da Landing Page',
       campanha:   String(row[idx.campanha] ?? '').trim() || '[SE] [LEAD]',

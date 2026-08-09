@@ -179,16 +179,20 @@ function extrairLP(rows) {
     const telefone = cel(idx.telefone);
     if (!email && !telefone) continue;
 
+    // Uma submissao, um evento — igual ao painel, que conta cada preenchimento.
+    // Sem id (formato antigo da planilha) cai no hash do contato.
+    const submissao = cel(idx.submissao);
+
     out.push({
       fonte:         'LP',
-      eventId:       eventIdPorContato('respondi', email || telefone),
+      eventId:       submissao ? `respondi:${submissao}` : eventIdPorContato('respondi', email || telefone),
       actionSource:  'website',
       quandoMs,
       colaboradores: cel(idx.colab),
       email,
       telefone,
       nome:          cel(idx.nome),
-      submissao:     cel(idx.submissao),
+      submissao,
       fbclid:        cel(idx.fbclid),
       campanha:      cel(idx.campanha),
       anuncio:       cel(idx.anuncio),
@@ -242,7 +246,12 @@ module.exports = async function handler(req, res) {
       ...l, fonte: 'FORMS', eventId: `forms:${l.leadId}`, actionSource: 'system_generated',
     }));
     const lp = tabsLP.flatMap(t => extrairLP(t.rows || []));
-    const leads = [...forms, ...lp];
+
+    // Uma entrada por submissão. A planilha às vezes grava a mesma submissão em
+    // linhas idênticas repetidas — é o mesmo lead, e enviar duas vezes só
+    // gastaria chamada, já que o event_id seria o mesmo. Quem preencheu de novo
+    // tem outro id de submissão e continua contando à parte.
+    const leads = [...new Map([...forms, ...lp].map(l => [l.eventId, l])).values()];
 
     const limite = Date.now() - JANELA_DIAS * 86400000;
     const qualificados = leads.filter(l => ehQualificado(l.colaboradores));
