@@ -32,6 +32,13 @@
  * Por isso cada anúncio é medido na janela da planilha que registra os leads
  * dele — e as janelas saem dos próprios dados, não de constante no código.
  *
+ * ── Contato junto do lead ───────────────────────────────────────────────
+ *
+ * Cada lead sai daqui com `email` e `telefone`. Este relatório não usa nem
+ * imprime nenhum dos dois: eles existem para scripts/leads-crm.js, que precisa
+ * do contato para achar o mesmo lead dentro do RD Station. Quem consumir estas
+ * funções herda dado pessoal — não jogue a saída crua em log nem em CSV.
+ *
  * ── O que os números NÃO dizem ──────────────────────────────────────────
  *
  * O CPL 10+ aqui é um TETO para os criativos de FORMS: o export da Central
@@ -93,7 +100,10 @@ function columnIndex(head, names) {
  *
  *   0 id · 1 created_time · 2 ad_id · 3 ad_name · 4 adset_id · 5 adset_name
  *   6 campaign_id · 7 campaign_name · 8 form_id · 9 form_name
- *   10 is_organic · 11 platform · 12+ perguntas
+ *   10 is_organic · 11 platform · 12+ perguntas · email · phone_number
+ *
+ * As posições de e-mail e telefone variam com as perguntas do formulário, por
+ * isso saem do cabeçalho e não de índice fixo.
  */
 function extrairForms(tabs) {
   const vistos = new Set();
@@ -102,6 +112,8 @@ function extrairForms(tabs) {
   for (const { rows } of tabs) {
     const head = rows.find(r => r && norm(r[0]) === 'id' && norm(r[1] || '').startsWith('created'));
     const iColab = head ? columnIndex(head, ['quantos colaboradores voce tem?', 'quantos colaboradores']) : -1;
+    const iEmail = head ? columnIndex(head, ['email']) : -1;
+    const iFone  = head ? columnIndex(head, ['phone_number', 'phone']) : -1;
 
     for (const row of rows) {
       if (!row || !/^l:\d+$/.test(String(row[0] ?? '').trim())) continue;
@@ -123,6 +135,8 @@ function extrairForms(tabs) {
         campanha: g(7),
         colaboradores,
         porte: classificarPorte(colaboradores),
+        email: g(iEmail),
+        telefone: g(iFone),
       });
     }
   }
@@ -176,6 +190,8 @@ function extrairLP(tabs) {
         campanha: g('campanha'),
         colaboradores,
         porte: classificarPorte(colaboradores),
+        email: g('email'),
+        telefone: g('fone'),
       });
     }
   }
@@ -206,6 +222,18 @@ async function insightsPorAnuncio(since, until) {
     });
   }
   return mapa;
+}
+
+/**
+ * Período coberto por uma das planilhas, tirado dos próprios leads.
+ *
+ * É o que mantém o gasto comparável: o Meta responde por janela, e pedir a
+ * vida inteira da campanha para dividir pelos leads de um recorte menor
+ * inventa custo (ver o comentário do AD11 no topo).
+ */
+function janelaDaFonte(leads, fonte) {
+  const datas = leads.filter(l => l.fonte === fonte && l.data).map(l => l.data).sort();
+  return { since: datas[0], until: datas[datas.length - 1] };
 }
 
 /* ── cruzamento ──────────────────────────────────────────────────────── */
@@ -254,6 +282,14 @@ function criarResolvedorLP(ads) {
   };
 }
 
+/**
+ * Distribui os leads entre os anúncios.
+ *
+ * Além do agregado, carimba `adIdResolvido` em cada lead (null quando órfão).
+ * É de propósito: quem precisa cruzar o lead com outra base depois — o CRM em
+ * scripts/leads-crm.js — precisa saber de qual anúncio ele veio, e refazer a
+ * resolução do lado de fora significaria manter duas cópias da mesma regra.
+ */
 function atribuir(leads, ads) {
   const resolveLP = criarResolvedorLP(ads);
   const porAd = new Map();
@@ -264,6 +300,7 @@ function atribuir(leads, ads) {
     const adId = l.fonte === 'FORMS'
       ? (ads.has(l.adId) ? l.adId : null)
       : resolveLP(l);
+    l.adIdResolvido = adId;
 
     if (!adId) { orfaos[l.fonte].total++; if (q) orfaos[l.fonte].q++; continue; }
 
@@ -344,12 +381,8 @@ async function main() {
 
   // As janelas saem dos próprios dados: cada planilha cobre um período, e o
   // gasto precisa ser medido no mesmo intervalo dos leads que ela registra.
-  const janela = fonte => {
-    const datas = leads.filter(l => l.fonte === fonte && l.data).map(l => l.data).sort();
-    return { since: datas[0], until: datas[datas.length - 1] };
-  };
-  const jForms = janela('FORMS');
-  const jLP = janela('LP');
+  const jForms = janelaDaFonte(leads, 'FORMS');
+  const jLP = janelaDaFonte(leads, 'LP');
   console.log(`  FORMS ${jForms.since} → ${jForms.until}  ·  LP ${jLP.since} → ${jLP.until}`);
 
   console.log('Buscando insights no Meta…');
@@ -422,6 +455,6 @@ if (require.main === module) {
 }
 
 module.exports = {
-  toISODate, extrairForms, extrairLP, montarUniverso,
-  criarResolvedorLP, atribuir, agrupar,
+  toISODate, extrairForms, extrairLP, janelaDaFonte, insightsPorAnuncio,
+  montarUniverso, criarResolvedorLP, atribuir, agrupar,
 };
