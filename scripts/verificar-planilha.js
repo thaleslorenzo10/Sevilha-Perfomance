@@ -45,6 +45,13 @@ const gids  = String(process.env.LEADS_SHEET_GID_FORMS || '')
 let alertas = 0;
 const alerta = msg => { alertas++; console.log(`  ⚠  ${msg}`); };
 
+// lib/sheets avisa por console.warn quando cai para o plano B; capturar deixa
+// o relatório dizer qual caminho cada planilha usou de fato.
+const avisosSheets = [];
+const warnOriginal = console.warn;
+console.warn = (...a) => { avisosSheets.push(a.join(' ')); };
+process.on('exit', () => { console.warn = warnOriginal; });
+
 async function main() {
   console.log('CENTRAL DE EVENTOS — export do formulário instantâneo');
   console.log('─'.repeat(72));
@@ -113,13 +120,26 @@ async function main() {
 
   console.log('\n\nPLANILHA DO RESPONDI — landing page');
   console.log('─'.repeat(72));
-  console.log('  (sempre por CSV público; a Service Account não alcança esta planilha)');
+  const avisosAntes = avisosSheets.length;
   try {
-    const lp = extrairLP(await readLPTabs());
+    const abasLP = await readLPTabs();
+    const caiuParaCsv = avisosSheets.slice(avisosAntes).some(a => a.includes('Respondi (LP)'));
+    console.log(`  modo ................ ${temSA && !caiuParaCsv ? 'Service Account' : 'CSV público'}`);
+    console.log(`  abas lidas .......... ${abasLP.length}`);
+
+    if (temSA && caiuParaCsv) {
+      alerta('a conta de serviço não alcança a planilha do Respondi. Ela é do cliente '
+           + '(bruno@sevilhaperformance.com.br) e precisa ser compartilhada com '
+           + `${process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL} como leitor. Enquanto isso, `
+           + 'a leitura depende de a planilha continuar aberta a quem tem o link — '
+           + 'com nome, e-mail e telefone dos leads dentro.');
+    }
+
+    const lp = extrairLP(abasLP);
     const datas = lp.map(l => l.data).filter(Boolean).sort();
-    console.log(`  leads: ${lp.length}   ${datas[0]} → ${datas[datas.length - 1]}`);
+    console.log(`  leads ............... ${lp.length}   ${datas[0]} → ${datas[datas.length - 1]}`);
     const semUtm = lp.filter(l => !l.adsetId).length;
-    console.log(`  sem utm_term (não dá para atribuir ao público): ${semUtm}`);
+    console.log(`  sem utm_term ........ ${semUtm} (não dá para atribuir ao público)`);
   } catch (e) {
     console.log(`  ✗ não deu para ler: ${e.message}`);
     alertas++;

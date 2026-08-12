@@ -127,6 +127,34 @@ O script reclama sozinho dos dois enganos que importam: gid preenchido junto
 com a Service Account, e buraco grande de dias sem lead (que costuma ser aba
 que ninguém listou).
 
+## A planilha do Respondi (LP)
+
+Vale o mesmo caminho, com uma diferença que muda quem executa: a planilha é do
+cliente — dona é `bruno@sevilhaperformance.com.br`. Quem compartilha com a
+conta de serviço é ele, ou alguém com permissão de compartilhar.
+
+Aqui o motivo principal não é aba faltando (a integração do Respondi cria uma
+aba só). É que a leitura por CSV **exige que a planilha continue aberta a quem
+tem o link** — e dentro dela estão nome, e-mail e telefone de mais de mil
+leads. Qualquer pessoa com o endereço lê tudo. Compartilhar com a conta de
+serviço é o que permite fechar o acesso público sem parar o dashboard nem o
+LeadQualificado.
+
+O código tenta a conta de serviço primeiro e cai para o CSV se ela não
+alcançar, então dá para fazer na ordem confortável:
+
+1. compartilhar a planilha com o `client_email` como **Leitor**;
+2. conferir com `node scripts/verificar-planilha.js` — a seção do Respondi
+   passa a dizer `modo ... Service Account`;
+3. só então trocar o acesso geral da planilha de "qualquer pessoa com o link"
+   para "restrito".
+
+Enquanto o passo 1 não acontece, a leitura segue pelo CSV e o log avisa a cada
+execução. Se o passo 3 for feito antes do 1, a leitura de LP para.
+
+`LEADS_SHEET_LP_GID` também aceita lista de gids, para o caso de a planilha
+ganhar uma segunda aba algum dia.
+
 ## Enquanto não trocar
 
 O modo CSV continua funcionando, e desde a correção `LEADS_SHEET_GID_FORMS`
