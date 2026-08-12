@@ -161,6 +161,20 @@ async function main() {
   ok(erro !== null, 'falha em vez de devolver vazio');
   ok(erro && /respondi/i.test(erro.message), 'e o erro diz qual planilha era', erro && erro.message);
 
+  console.log('\n— o caminho usado fica marcado na aba —');
+  comSA(true); modoSA = 'ok'; instalarFetch();
+  abas = await readLPTabs();
+  ok(abas.every(a => a.modo === 'service-account'),
+     'lida pela API, a aba vem marcada como service-account', abas.map(a => a.modo).join(','));
+  comSA(false); instalarFetch();
+  abas = await readLPTabs();
+  ok(abas.every(a => a.modo === 'csv-publico'),
+     'lida por CSV, vem marcada como csv-publico', abas.map(a => a.modo).join(','));
+  comSA(true); modoSA = 'negado'; instalarFetch();
+  abas = await readLPTabs();
+  ok(abas.every(a => a.modo === 'csv-publico'),
+     'e na queda para o plano B a marca acompanha a realidade', abas.map(a => a.modo).join(','));
+
   console.warn = warnOriginal;
   console.log(falhas ? `\n${falhas} falha(s)\n` : '\nTudo certo\n');
   process.exit(falhas ? 1 : 0);

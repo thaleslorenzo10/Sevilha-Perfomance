@@ -354,6 +354,14 @@ async function montarLeads(since, until) {
         FORMS: coverage(todos.filter(l => l.fonte === TAB_FORMS)),
         LP:    coverage(todos.filter(l => l.fonte === TAB_LP)),
       },
+      // Por qual caminho cada planilha foi lida. "csv-publico" na LP significa
+      // que ela ainda depende de estar aberta a quem tem o link — o que expõe
+      // nome, e-mail e telefone dos leads. Sem isto aqui, a única forma de
+      // saber era abrir o log do Vercel.
+      fontes: {
+        FORMS: tabsCentral[0]?.modo || 'sem aba',
+        LP:    tabsLP[0]?.modo      || 'sem aba',
+      },
       gerado_em: new Date().toISOString(),
     };
   }
