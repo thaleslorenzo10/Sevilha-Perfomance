@@ -51,12 +51,19 @@ esperar('',        PORTE_INDEF);      // 256 (abandono de formulário)
 esperar(null,      PORTE_INDEF);
 esperar(undefined, PORTE_INDEF);
 
-console.log('\n— gaps conhecidos (não disparam evento, que é o desfecho certo) —');
-// "Até 5" (9 ocorrências) é claramente menor que 10, mas a função devolve
-// INDEFINIDO por não entender o "até". Para o evento dá no mesmo — nem MENOR
-// nem INDEFINIDO disparam — então fica documentado em vez de corrigido às
-// escondidas, o que mexeria nos números do dashboard sem ninguém pedir.
-esperar('Até 5', PORTE_INDEF, 'gap conhecido: deveria ser MENOR');
+console.log('\n— faixa com só o teto informado —');
+// "Até 5" (9 ocorrências na planilha) caía em INDEFINIDO por a função não
+// entender o "até". Nenhum lead muda de lado no corte de qualificado — nem
+// MENOR nem INDEFINIDO disparam evento —, só sai de "não sei" para "menor".
+esperar('Até 5',       PORTE_MENOR);
+esperar('no maximo 4', PORTE_MENOR);
+// "menos de"/"abaixo de" excluem o número, "até"/"no máximo" incluem: por isso
+// "menos de 10" é MENOR (chega a 9) e "até 10" cruza o corte.
+esperar('Menos de 10', PORTE_MENOR);
+esperar('Abaixo de 10', PORTE_MENOR);
+esperar('Até 10',      PORTE_INDEF, 'inclui o 10, então cruza o corte');
+esperar('Até 20',      PORTE_INDEF, 'cruza o corte');
+esperar('Menos de 30', PORTE_INDEF, 'cruza o corte');
 
 console.log('\n— ruído de coluna desalinhada —');
 esperar('1,20249E+17', PORTE_INDEF, 'notação científica de id vazado');
