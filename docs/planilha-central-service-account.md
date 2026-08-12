@@ -44,10 +44,26 @@ Dentro dele interessam dois campos:
 
 ```json
 {
+  "type": "service_account",
   "client_email": "leitor-planilhas@projeto.iam.gserviceaccount.com",
   "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEv...\n-----END PRIVATE KEY-----\n"
 }
 ```
+
+**Não procure por `GOOGLE_PRIVATE_KEY` no console do Google — não existe.** Esse
+é o nome da variável aqui no projeto; o valor dela é o conteúdo do campo
+`private_key` deste JSON. O mesmo vale para `GOOGLE_SERVICE_ACCOUNT_EMAIL`, que
+recebe o `client_email`.
+
+Para não errar no recorte:
+
+```
+node scripts/chave-service-account.js ~/Downloads/projeto-abc123.json
+```
+
+Ele imprime os dois valores prontos para colar e testa a chave antes — se ela
+não assinar aqui, também não assinaria no Vercel, e é melhor descobrir agora do
+que depois do deploy.
 
 **5. Compartilhar a planilha** — abra a
 [CENTRAL DE EVENTOS](https://docs.google.com/spreadsheets/d/1cedv5kfJhdwcySI1KcqQM4jS_LjIPnUhdYv1aU-SMxg)
