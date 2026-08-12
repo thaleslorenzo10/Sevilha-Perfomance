@@ -82,10 +82,18 @@ marcando Production, Preview e Development:
 | `GOOGLE_PRIVATE_KEY` | o `private_key` **inteiro**, com o `-----BEGIN` e o `-----END` |
 | `LEADS_SHEET_GID_FORMS` | **apague o valor** |
 
-Sobre a chave: o campo do JSON traz as quebras de linha escritas como `\n`.
-Pode colar assim mesmo — `lib/sheets.js` converte. Colar com quebras de linha
-de verdade também funciona. O que não funciona é colar só um pedaço, e é o
-engano mais comum; se acontecer, o erro diz qual dos dois problemas é.
+Sobre a chave: `lib/sheets.js` normaliza o recorte antes de usar, então todos
+estes chegam funcionando — com `\n` literais (o valor cru do JSON), com quebras
+de linha de verdade, com as aspas do JSON em volta, achatada numa linha só, com
+CRLF do Windows ou com espaço sobrando nas pontas.
+
+O que continua não funcionando é colar **só um pedaço** da chave. Se acontecer,
+o erro diz se o valor nem parece um PEM ou se está cortado no meio.
+
+> Se a produção devolver `error:1E08010C:DECODER routines::unsupported` sem mais
+> nada, é a versão antiga do código: ela só aceitava dois dos recortes acima.
+> Recolar a chave sem as aspas resolve na hora; publicar esta versão resolve de
+> vez.
 
 Sobre o gid: **precisa ficar vazio**. Com ele preenchido, a Service Account lê
 só as abas listadas e a descoberta por título não roda — ou seja, o problema
