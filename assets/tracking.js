@@ -248,5 +248,38 @@ var SP_CONFIG = {
     });
   };
 
+  /* ── Beacon de visita ─────────────────────────────────
+     As páginas do teste A/B recebem a visita no redirect /campanha. As que
+     ficam fora do rodízio são acessadas direto pelo anúncio e precisam
+     registrar a própria visita, senão não há denominador para a conversão.
+     A lista curta evita contar a mesma visita duas vezes. */
+  var PAGEVIEW_BEACON_PAGES = ['/mentoria'];
+
+  (function beacon() {
+    var pagina = window.location.pathname.replace(/\/$/, '') || '/';
+    if (PAGEVIEW_BEACON_PAGES.indexOf(pagina) === -1) return;
+
+    var corpo = JSON.stringify({
+      pagina: pagina,
+      query:  window.location.search.replace(/^\?/, ''),
+    });
+
+    // sendBeacon sobrevive à saída da página; fetch é o plano B.
+    try {
+      if (navigator.sendBeacon &&
+          navigator.sendBeacon('/api/pageview', new Blob([corpo], { type: 'application/json' }))) {
+        log('pageview beacon enviado', pagina);
+        return;
+      }
+    } catch (e) { /* cai no fetch */ }
+
+    fetch('/api/pageview', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    corpo,
+      keepalive: true,
+    }).catch(function () { /* métrica não pode quebrar a página */ });
+  })();
+
   log('tracking.js loaded ✓');
 })();

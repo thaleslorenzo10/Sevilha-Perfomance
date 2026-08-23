@@ -2,7 +2,7 @@
  * Sevilha Performance — Vercel Serverless Function
  * POST /api/leads
  *
- * 1. Salva lead no Supabase (tabela: leads_sevilhaperfomance)
+ * 1. Salva lead no Supabase (tabela: sevilha_leads)
  * 2. Envia para RD Station Marketing
  * 3. Envia para a Meta Conversions API (CAPI)
  *
@@ -20,6 +20,51 @@ const crypto = require('crypto');
 // Normalização, hash e envio ao CAPI moram em lib/capi.js — o mesmo caminho que
 // o webhook do Respondi usa, para os dois eventos hasharem igual.
 const { enviarEvento, montarUserData, normalizarTelefone } = require('../lib/capi');
+const { gravarLead } = require('../lib/sheets-write');
+const { TABELAS } = require('../lib/supabase');
+
+/* ─────────────────────────────────────────────────────────
+   OFERTAS
+
+   Duas ofertas dividem este endpoint. O Clube da Performance é mentoria para
+   escritórios de até 10 colaboradores; a Sessão Estratégica (/mentoria) é o
+   diagnóstico da consultoria, para escritórios acima de 10. Os leads entram no
+   mesmo funil do CRM, mas precisam ser distinguíveis depois — daí a marca no
+   nome do deal e o identificador de conversão próprio no RD Marketing.
+
+   As etapas e campanhas continuam configuráveis por ambiente: no dia em que a
+   Sessão Estratégica ganhar funil próprio, é variável, não deploy de código.
+───────────────────────────────────────────────────────── */
+
+const OFERTAS = {
+  '/mentoria': {
+    rotulo:      'Sessão Estratégica',
+    marca:       '[SE]',
+    conversao:   'sessao-estrategica-consultoria',
+    tags:        ['sessao-estrategica', 'consultoria'],
+    stageEnv:    'RD_CRM_STAGE_ID_SE',
+    campaignEnv: 'RD_CRM_CAMPAIGN_ID_SE',
+  },
+};
+
+const OFERTA_PADRAO = {
+  rotulo:      'Clube da Performance',
+  marca:       '',
+  conversao:   'pre-inscricao-clube-da-performance',
+  tags:        ['pre-inscricao', 'clube-da-performance'],
+  stageEnv:    'RD_CRM_STAGE_ID',
+  campaignEnv: 'RD_CRM_CAMPAIGN_ID',
+};
+
+function ofertaDe(pagina) {
+  return OFERTAS[pagina] || OFERTA_PADRAO;
+}
+
+/** Nome do deal marcado com a oferta, para separar os dois produtos no funil. */
+function nomeDoDeal(data, oferta) {
+  const base = data.nome || data.email || 'Lead';
+  return oferta.marca ? `${oferta.marca} ${base}` : base;
+}
 
 /* ─────────────────────────────────────────────────────────
    HELPERS
@@ -70,7 +115,7 @@ async function saveToSupabase(data) {
   };
 
   try {
-    const res = await fetch(`${supabaseUrl}/rest/v1/leads_sevilhaperfomance`, {
+    const res = await fetch(`${supabaseUrl}/rest/v1/${TABELAS.leads}`, {
       method:  'POST',
       headers: {
         'Content-Type':  'application/json',
@@ -97,7 +142,8 @@ async function saveToSupabase(data) {
 ───────────────────────────────────────────────────────── */
 
 async function sendToRDMarketing(data) {
-  const token = process.env.RD_MARKETING_TOKEN;
+  const oferta = ofertaDe(data.pagina);
+  const token  = process.env.RD_MARKETING_TOKEN;
   if (!token) {
     console.warn('[RD Marketing] RD_MARKETING_TOKEN não definido');
     return;
@@ -107,11 +153,11 @@ async function sendToRDMarketing(data) {
     event_type:   'CONVERSION',
     event_family: 'CDP',
     payload: {
-      conversion_identifier: 'pre-inscricao-clube-da-performance',
+      conversion_identifier: oferta.conversao,
       name:             data.nome     || undefined,
       email:            data.email    || undefined,
       mobile_phone:     data.telefone || undefined,
-      tags:             ['pre-inscricao', 'clube-da-performance'],
+      tags:             oferta.tags,
       traffic_source:   data.utm_source   || undefined,
       traffic_medium:   data.utm_medium   || undefined,
       traffic_campaign: data.utm_campaign || undefined,
@@ -167,7 +213,8 @@ async function sendToRDMarketing(data) {
 ───────────────────────────────────────────────────────── */
 
 async function sendToRDCRM(data) {
-  const token = process.env.RD_CRM_TOKEN;
+  const oferta = ofertaDe(data.pagina);
+  const token  = process.env.RD_CRM_TOKEN;
   if (!token) {
     console.warn('[RD CRM] RD_CRM_TOKEN não definido');
     return;
@@ -188,10 +235,12 @@ async function sendToRDCRM(data) {
   const GERALDO_USER_ID = '68e6e08c6c2ac10017538422';
 
   const deal = {
-    name:           data.nome || data.email || 'Lead',
-    deal_stage_id:  '69d52f54c0b8000015d2e7bb', // Pré-inscritos
-    deal_source_id: '68e5c150af14bb00013f8acb', // Busca Paga | Facebook Ads
-    campaign_id:    '69d52f437e5d76001a90e080', // [CP] Clube da Performance > CRM
+    name:           nomeDoDeal(data, oferta),
+    // Funil "Clube da Performance", etapa "Pré-inscritos" — as duas ofertas
+    // dividem o mesmo funil hoje. Sobrescrever pelo ambiente muda isso.
+    deal_stage_id:  process.env[oferta.stageEnv]    || '69d52f54c0b8000015d2e7bb',
+    deal_source_id: process.env.RD_CRM_SOURCE_ID    || '68e5c150af14bb00013f8acb', // Busca Paga | Facebook Ads
+    campaign_id:    process.env[oferta.campaignEnv] || '69d52f437e5d76001a90e080', // [CP] Clube da Performance > CRM
     user_id:        GERALDO_USER_ID,            // owner = Geraldo Tadeu (100% dos leads)
     deal_custom_fields: [
       { custom_field_id: '68e6668a5621790019a1ad6d', value: data.utm_source    || '' },
@@ -344,7 +393,7 @@ module.exports = async function handler(req, res) {
   // ── 1. Supabase primeiro — crítico, aguarda antes de tudo ─────
   await saveToSupabase(leadData);
 
-  // ── 2-4. RD Marketing + RD CRM + Meta CAPI em paralelo ───────
+  // ── 2-5. Planilha + RD Marketing + RD CRM + Meta CAPI em paralelo ──
   const userData = montarUserData({
     email, telefone, nome, pais: 'br',
     externalId: external_id, fbp, fbc, fbclid,
@@ -361,7 +410,8 @@ module.exports = async function handler(req, res) {
   if (utm_content)  customData.utm_content  = utm_content;
   if (gclid)        customData.gclid        = gclid;
 
-  const [, , capiResult] = await Promise.allSettled([
+  const [, , , capiResult] = await Promise.allSettled([
+    gravarLead(leadData),
     sendToRDMarketing(leadData),
     sendToRDCRM(leadData),
     enviarEvento({

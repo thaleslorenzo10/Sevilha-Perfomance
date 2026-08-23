@@ -481,6 +481,15 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       <div class="kpi-card green"><div class="kpi-label">CPL Real</div><div class="kpi-value skeleton kpi-skel" id="se-cpl-real"></div></div>
       <div class="kpi-card teal"><div class="kpi-label">Dono / Sócio</div><div class="kpi-value skeleton kpi-skel" id="se-donos"></div><div class="kpi-sub" id="se-donos-sub"></div></div>
     </div>
+    <div class="kpi-group kpi-group-real">
+      <div class="kpi-group-label">Landing page /mentoria <span id="lpm-nota" style="font-weight:600;text-transform:none;letter-spacing:0;opacity:.75"></span></div>
+      <div class="kpi-card green"><div class="kpi-label">Leads no site</div><div class="kpi-value skeleton kpi-skel" id="lpm-total"></div><div class="kpi-sub">Formulário da própria página</div></div>
+      <div class="kpi-card porte-maior"><div class="kpi-label">10+ colaboradores</div><div class="kpi-value skeleton kpi-skel" id="lpm-maior"></div><div class="kpi-sub" id="lpm-maior-sub"></div></div>
+      <div class="kpi-card porte-menor"><div class="kpi-label">Menos de 10</div><div class="kpi-value skeleton kpi-skel" id="lpm-menor"></div><div class="kpi-sub" id="lpm-menor-sub"></div></div>
+      <div class="kpi-card teal"><div class="kpi-label">Dono / Sócio</div><div class="kpi-value skeleton kpi-skel" id="lpm-donos"></div><div class="kpi-sub" id="lpm-donos-sub"></div></div>
+      <div class="kpi-card blue"><div class="kpi-label">Conversão da página</div><div class="kpi-value skeleton kpi-skel" id="lpm-conv"></div><div class="kpi-sub" id="lpm-conv-sub"></div></div>
+    </div>
+
     <div class="kpi-group kpi-group-crm">
       <div class="kpi-group-label">RD Station CRM <span id="crm-se-nota" style="font-weight:600;text-transform:none;letter-spacing:0;opacity:.75"></span></div>
       <div class="kpi-card purple"><div class="kpi-label">Deals no período</div><div class="kpi-value skeleton kpi-skel" id="crm-se-total"></div><div class="kpi-sub" id="crm-se-total-sub"></div></div>
@@ -510,6 +519,17 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       <table>
         <thead><tr><th>Etapa</th><th class="num">Deals</th><th class="num">% do funil</th></tr></thead>
         <tbody id="tblEtapasSe"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🎯 Origem dos leads da /mentoria</div>
+    <div class="section-note">Fonte: Supabase — o formulário da landing page grava direto, sem passar por planilha de terceiro.</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>utm_source</th><th class="num">Leads</th><th class="num">% do total</th></tr></thead>
+        <tbody id="tblLpmFonte"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -1013,13 +1033,14 @@ async function loadAll() {
 
   try {
     // O Meta é obrigatório; planilha e CRM degradam sem derrubar a tela.
-    const [meta, planilha, rd] = await Promise.all([
+    const [meta, planilha, rd, lpMentoria] = await Promise.all([
       getJSON(`/api/meta?${qs}`),
       getJSON(`/api/sheet-leads?${qs}`).catch(e => { console.warn('planilha:', e.message); return null; }),
       getJSON(`/api/rd-stats?from=${since}&to=${until}`).catch(e => { console.warn('rd:', e.message); return null; }),
+      getJSON(`/api/sessao-estrategica?${qs}`).catch(e => { console.warn('lp /mentoria:', e.message); return null; }),
     ]);
 
-    lastPayload = { meta, planilha, rd };
+    lastPayload = { meta, planilha, rd, lpMentoria };
     render(lastPayload);
 
     dot.className = 'status-dot';
@@ -1041,7 +1062,7 @@ async function loadAll() {
 }
 
 /* ── Render ─────────────────────────────────────────────────────────── */
-function render({ meta, planilha, rd }) {
+function render({ meta, planilha, rd, lpMentoria }) {
   const C = {
     forms: cssVar('--forms'), lp: cssVar('--lp'),
     se: cssVar('--se'), cp: cssVar('--cp'), accent: cssVar('--accent'),
@@ -1203,6 +1224,28 @@ function render({ meta, planilha, rd }) {
   setKPI('se-donos', planilha && planilha.total ? fmtN(donos) : '—',
     planilha && planilha.total ? fmtP((donos / planilha.total) * 100) + ' dos leads' : '');
 
+  /* ── Landing page /mentoria ──
+     Fonte diferente do resto da aba: aqui o lead nasce no nosso formulário e
+     vai para o Supabase, enquanto "leads reais" acima vem da planilha do
+     Respondi. Somar os dois números seria contar públicos diferentes juntos. */
+  const lpm = lpMentoria;
+  setKPI('lpm-total', lpm ? fmtN(lpm.total) : '—');
+  setKPI('lpm-maior', lpm ? fmtN(lpm.porte.maior) : '—',
+    lpm && lpm.total ? fmtP((lpm.porte.maior / lpm.total) * 100) + ' dos leads' : '');
+  setKPI('lpm-menor', lpm ? fmtN(lpm.porte.menor) : '—',
+    lpm && lpm.total ? fmtP((lpm.porte.menor / lpm.total) * 100) + ' dos leads' : '');
+
+  const lpmDonos = (lpm?.por_cargo || []).find(c => norm(c.chave).includes('dono'))?.total || 0;
+  setKPI('lpm-donos', lpm ? fmtN(lpmDonos) : '—',
+    lpm && lpm.total ? fmtP((lpmDonos / lpm.total) * 100) + ' dos leads' : '');
+  setKPI('lpm-conv', lpm?.conversao != null ? fmtP(lpm.conversao) : '—',
+    lpm?.visitas_medidas ? `${fmtN(lpm.visitas_medidas)} visitas medidas` : 'sem visitas no período');
+  setText('lpm-nota', lpm ? '' : '· endpoint indisponível');
+
+  renderDistribuicao('tblLpmFonte',
+    Object.fromEntries((lpm?.por_fonte || []).map(f => [f.chave, f.total])),
+    lpm?.total || 0);
+
   // ── RD CRM [SE] ──
   // As etapas vêm nomeadas pelo próprio RD; nada de nome fixo no código.
   const funilSe = rd?.funis?.SE || null;
@@ -1220,8 +1263,10 @@ function render({ meta, planilha, rd }) {
 
   renderEtapas('tblEtapasSe', seEtapas, funilSe?.total ?? 0);
 
+  const lpmPorDia = Object.fromEntries((lpm?.por_dia || []).map(d => [d.dia, d.total]));
   lineChart('chartSeDia', labels, [
     { label: 'Leads [SE]', data: meta.serie.map(d => d.SE.leads), color: C.se, fill: 'rgba(13,148,136,0.10)' },
+    { label: 'Leads /mentoria', data: labels.map(d => lpmPorDia[d] || 0), color: C.real, dashed: true },
   ]);
 
   // Funil é magnitude que estreita, não categorias: rampa de um tom só.

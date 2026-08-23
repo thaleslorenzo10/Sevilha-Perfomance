@@ -10,12 +10,11 @@
  * Registra cada visita na tabela page_views do Supabase.
  */
 
+const { registrarVisita, ehBot, ipDaRequisicao, parametrosDe } = require('../lib/pageviews');
+
 const VARIANTS = ['/', '/pre-inscricao-2', '/pre-inscricao-3'];
 const COOKIE_NAME = '_sp_variant';
 const COOKIE_TTL_DAYS = 30;
-
-// User-agents de bots conhecidos para não inflar as métricas
-const BOT_PATTERN = /bot|crawl|slurp|spider|mediapartners|google|baidu|bing|msn|teoma|yahoo|ask/i;
 
 module.exports = async function handler(req, res) {
   // ── 1. Lê cookie existente (sticky) ─────────────────────────────────────
@@ -47,31 +46,17 @@ module.exports = async function handler(req, res) {
   const redirectUrl  = queryString ? `${destination}?${queryString}` : destination;
 
   // ── 3. Extrai UTMs e click IDs da query string ───────────────────────────
-  const p = incomingUrl.searchParams;
   const pageViewPayload = {
     variant,
-    pagina:       destination,
-    utm_source:   p.get('utm_source')   || null,
-    utm_medium:   p.get('utm_medium')   || null,
-    utm_campaign: p.get('utm_campaign') || null,
-    utm_term:     p.get('utm_term')     || null,
-    utm_content:  p.get('utm_content')  || null,
-    fbclid:       p.get('fbclid')       || null,
-    gclid:        p.get('gclid')        || null,
-    ttclid:       p.get('ttclid')       || null,
-    msclkid:      p.get('msclkid')      || null,
-    user_agent:   req.headers['user-agent'] || null,
-    ip:           truncateIp(
-                    (req.headers['x-forwarded-for'] || '').split(',')[0].trim()
-                    || req.socket?.remoteAddress
-                    || ''
-                  ),
+    pagina:     destination,
+    ...parametrosDe(incomingUrl.searchParams),
+    user_agent: req.headers['user-agent'] || null,
+    ip:         ipDaRequisicao(req),
   };
 
   // ── 4. Salva pageview no Supabase (ignora bots) ──────────────────────────
-  const ua = req.headers['user-agent'] || '';
-  if (!BOT_PATTERN.test(ua)) {
-    await savePageView(pageViewPayload);
+  if (!ehBot(req.headers['user-agent'])) {
+    await registrarVisita(pageViewPayload);
   }
 
   // ── 5. Redireciona com cookie sticky ─────────────────────────────────────
@@ -81,44 +66,3 @@ module.exports = async function handler(req, res) {
   res.setHeader('Location',        redirectUrl);
   return res.status(302).end();
 };
-
-// ── Helpers ──────────────────────────────────────────────────────────────────
-
-/**
- * Trunca o último octeto do IP (LGPD): 1.2.3.4 → 1.2.3.0
- * Para IPv6 mantém como está.
- */
-function truncateIp(ip) {
-  if (!ip) return null;
-  // IPv4
-  if (/^\d{1,3}(\.\d{1,3}){3}$/.test(ip)) {
-    return ip.replace(/\.\d+$/, '.0');
-  }
-  return ip;
-}
-
-async function savePageView(data) {
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
-  if (!supabaseUrl || !supabaseKey) return;
-
-  try {
-    const res = await fetch(`${supabaseUrl}/rest/v1/page_views_sevilhaperfomance`, {
-      method: 'POST',
-      headers: {
-        'Content-Type':  'application/json',
-        'apikey':        supabaseKey,
-        'Authorization': `Bearer ${supabaseKey}`,
-        'Prefer':        'return=minimal',
-      },
-      body: JSON.stringify(data),
-    });
-    if (!res.ok) {
-      console.error('[AB pageview error]', res.status, await res.text());
-    } else {
-      console.log(`[AB OK] variant=${data.variant} pagina=${data.pagina}`);
-    }
-  } catch (e) {
-    console.error('[AB pageview exception]', e.message);
-  }
-}
