@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sessão Estratégica gratuita para escritórios de contabilidade com mais de 10 colaboradores: diagnóstico individual do que trava o crescimento e o que precisa mudar." />
+  <title>Sessão Estratégica — Sevilha Performance</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '657178423444244');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=657178423444244&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <script src="/assets/tracking.js" defer></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0b1b4d;
+      --navy2:   #13214f;
+      --bg:      #f0f2f5;
+      --surface: #ffffff;
+      --border:  #dfe3ea;
+      --green:   #3dd63a;
+      --green-d: #22b524;
+      --teal:    #0a7d68;
+      --teal-lt: #2bbfa0;
+      --text:    #0b1b4d;
+      --muted:   #5b6577;
+      --red:     #e04141;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Poppins', 'Inter', sans-serif; line-height: 1.15; }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .narrow    { max-width: 820px; margin: 0 auto; }
+
+    .mark {
+      background: var(--green);
+      color: #fff;
+      padding: 0 12px;
+      display: inline-block;
+      border-radius: 4px;
+    }
+
+    /* ── Header ─────────────────────────────────────────── */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--navy);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .hd {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 14px 0;
+    }
+    .hd-brand { display: flex; align-items: center; gap: 10px; }
+    .hd-brand img { height: 34px; width: auto; display: block; }
+    .hd-brand span {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      color: #fff; font-size: 1rem; letter-spacing: -.2px;
+    }
+    .hd-brand small { display: block; font-weight: 500; color: #c3ccdf; font-size: .78rem; }
+
+    /* ── Botões ─────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--green); color: #06210a;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem;
+      padding: 15px 28px; border: none; border-radius: 999px;
+      cursor: pointer; text-decoration: none;
+      transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+      box-shadow: 0 6px 16px rgba(11,27,77,.18);
+    }
+    .btn:hover { background: var(--green-d); transform: translateY(-2px); color: #fff; }
+    .btn-sm    { padding: 10px 20px; font-size: .88rem; box-shadow: none; }
+    .btn-full  { width: 100%; }
+    .btn-ghost {
+      background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.35);
+      box-shadow: none;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.1); color: #fff; }
+
+    /* ── Hero ───────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(180deg, var(--bg) 0%, #e7eaf1 100%);
+      padding: 64px 0 72px;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center;
+    }
+    .eyebrow {
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: .95rem; color: var(--navy); margin-bottom: 18px;
+    }
+    .hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -1px; }
+    .hero p.lead { margin-top: 22px; font-size: 1.06rem; color: var(--muted); max-width: 34em; }
+
+    .hero-list { list-style: none; margin: 26px 0 30px; display: grid; gap: 10px; }
+    .hero-list li { display: flex; gap: 10px; align-items: flex-start; font-size: .98rem; }
+    .hero-list li b { font-weight: 600; }
+    .tick {
+      flex: none; width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(61,214,58,.16); color: var(--green-d);
+      display: grid; place-items: center; font-size: .78rem; font-weight: 700; margin-top: 2px;
+    }
+    .hero-cta-note { font-size: .85rem; color: var(--muted); margin-top: 12px; }
+
+    .hero-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 20px; padding: 28px; box-shadow: 0 20px 50px rgba(11,27,77,.10);
+    }
+    .hero-card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .hero-card p  { font-size: .92rem; color: var(--muted); }
+    .hero-card ol { list-style: none; counter-reset: step; margin: 20px 0 0; display: grid; gap: 16px; }
+    .hero-card ol li { counter-increment: step; display: flex; gap: 12px; font-size: .93rem; }
+    .hero-card ol li::before {
+      content: counter(step); flex: none;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--navy); color: #fff;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .8rem;
+      display: grid; place-items: center;
+    }
+    .price-row {
+      margin-top: 22px; padding-top: 18px; border-top: 1px dashed var(--border);
+      display: flex; align-items: baseline; gap: 10px;
+    }
+    .price-row strong { font-family: 'Poppins', sans-serif; font-size: 1.9rem; color: var(--green-d); white-space: nowrap; }
+    .price-row span   { font-size: .86rem; color: var(--muted); }
+
+    /* ── Seções ─────────────────────────────────────────── */
+    section { padding: 72px 0; }
+    .sec-tag {
+      display: inline-block; font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: .8rem; letter-spacing: 1.4px; text-transform: uppercase;
+      color: var(--teal); margin-bottom: 12px;
+    }
+    .sec-title { font-size: clamp(1.7rem, 3.6vw, 2.4rem); font-weight: 800; letter-spacing: -.6px; }
+    .sec-sub   { margin-top: 14px; color: var(--muted); font-size: 1.02rem; }
+    .center    { text-align: center; }
+
+    .dark { background: var(--navy); color: #e8ecf6; }
+    .dark .sec-title { color: #fff; }
+    .dark .sec-sub   { color: #c3ccdf; }
+    .dark .sec-tag   { color: var(--teal-lt); }
+
+    /* ── Antes / Depois ─────────────────────────────────── */
+    .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    .ba-col {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 18px; padding: 28px;
+    }
+    .ba-col.after { border-color: rgba(34,181,36,.55); box-shadow: 0 12px 30px rgba(11,27,77,.10); }
+    .ba-col h3 { font-size: 1.05rem; margin-bottom: 18px; }
+    .ba-col ul { list-style: none; display: grid; gap: 12px; }
+    .ba-col li { display: flex; gap: 10px; font-size: .95rem; color: #263255; }
+    .sym { flex: none; font-weight: 700; }
+    .ba-col.before .sym { color: var(--red); }
+    .ba-col.after  .sym { color: var(--green-d); }
+
+    /* ── Pilares ────────────────────────────────────────── */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+    .card {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px; padding: 26px;
+    }
+    .card h3 { font-size: 1.05rem; color: #fff; margin-bottom: 10px; }
+    .card p  { font-size: .93rem; color: #c3ccdf; }
+    .card .ic { font-size: 1.5rem; margin-bottom: 12px; display: block; }
+
+    /* ── Mentores ───────────────────────────────────────── */
+    .people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
+    .person {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 18px; padding: 26px; text-align: center;
+    }
+    .person img {
+      width: 92px; height: 92px; border-radius: 50%; object-fit: cover;
+      margin: 0 auto 14px; display: block; border: 3px solid rgba(61,214,58,.35);
+    }
+    .person h3 { font-size: 1.05rem; }
+    .person p  { font-size: .9rem; color: var(--muted); margin-top: 8px; }
+
+    /* ── Para quem ──────────────────────────────────────── */
+    .fit { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    .fit-col { border-radius: 18px; padding: 28px; border: 1px solid var(--border); background: var(--surface); }
+    .fit-col h3 { font-size: 1.05rem; margin-bottom: 16px; }
+    .fit-col ul { list-style: none; display: grid; gap: 11px; }
+    .fit-col li { display: flex; gap: 10px; font-size: .95rem; color: #263255; }
+
+    /* ── Números ────────────────────────────────────────── */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; text-align: center; }
+    .stat strong { display: block; font-family: 'Poppins', sans-serif; font-size: 2.2rem; color: var(--green); }
+    .stat span   { font-size: .9rem; color: #c3ccdf; }
+
+    /* ── FAQ ────────────────────────────────────────────── */
+    .faq { margin-top: 36px; display: grid; gap: 12px; }
+    .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+      font-family: 'Poppins', sans-serif; font-weight: 600; font-size: .98rem; color: var(--text);
+      padding: 18px 22px; display: flex; justify-content: space-between; gap: 16px; align-items: center;
+    }
+    .faq-q span { color: var(--green-d); font-size: 1.2rem; line-height: 1; }
+    .faq-a { display: none; padding: 0 22px 20px; font-size: .95rem; color: var(--muted); }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── CTA final ──────────────────────────────────────── */
+    .final { background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%); text-align: center; }
+    .final h2 { color: #fff; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; }
+    .final p  { color: #c3ccdf; margin: 16px auto 30px; max-width: 40em; }
+
+    footer { background: #071238; color: #b6c1da; padding: 34px 0; font-size: .86rem; }
+    .ft { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+    /* ── Modal ──────────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(7,18,56,.72);
+      display: none; align-items: center; justify-content: center; padding: 20px; z-index: 100;
+      overflow-y: auto;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--surface); border-radius: 20px; padding: 32px;
+      width: 100%; max-width: 480px; position: relative; margin: auto;
+    }
+    .modal-close {
+      position: absolute; top: 14px; right: 16px; background: none; border: none;
+      font-size: 1.4rem; color: var(--muted); cursor: pointer; line-height: 1;
+    }
+    .modal-tag {
+      display: inline-block; background: rgba(61,214,58,.14); color: var(--green-d);
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .8rem;
+      letter-spacing: 1px; text-transform: uppercase; padding: 5px 12px; border-radius: 999px;
+    }
+    .modal h3 { font-size: 1.35rem; margin: 14px 0 6px; }
+    .modal-sub { font-size: .92rem; color: var(--muted); margin-bottom: 20px; }
+    .form-group { margin-bottom: 14px; }
+    .form-group label {
+      display: block; font-size: .85rem; font-weight: 600; margin-bottom: 6px; color: #37436a;
+    }
+    .form-group input, .form-group select {
+      width: 100%; padding: 12px 14px; border: 1px solid var(--border);
+      border-radius: 10px; font-family: inherit; font-size: .95rem; color: var(--text);
+      background: #fbfcfe;
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(61,214,58,.16);
+    }
+    .form-privacy { font-size: .82rem; color: var(--muted); text-align: center; margin-top: 12px; }
+    .form-success { display: none; text-align: center; }
+    .success-icon {
+      width: 56px; height: 56px; border-radius: 50%; background: rgba(61,214,58,.16);
+      color: var(--green-d); font-size: 1.6rem; display: grid; place-items: center; margin: 0 auto 16px;
+    }
+
+    /* ── Barra fixa mobile ──────────────────────────────── */
+    .sticky-cta {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+      background: rgba(255,255,255,.96); border-top: 1px solid var(--border);
+      padding: 10px 16px; display: none;
+      backdrop-filter: blur(8px);
+    }
+
+    /* ── Responsivo ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-grid, .ba, .fit { grid-template-columns: 1fr; }
+      .grid-3, .people, .stats { grid-template-columns: 1fr; }
+      .hd .btn { display: none; }
+      .sticky-cta { display: block; }
+      body { padding-bottom: 72px; }
+      section { padding: 56px 0; }
+      .hero { padding: 44px 0 56px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container hd">
+    <div class="hd-brand">
+      <img src="/assets/logo-sevilha.svg" alt="Sevilha Performance" />
+      <span>Sevilha Performance<small>Consultoria para contabilidades</small></span>
+    </div>
+    <a href="#agendar" class="btn btn-sm open-modal">Agendar diagnóstico</a>
+  </div>
+</header>
+
+<!-- ── HERO ─────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">Exclusivo para contabilidades com mais de 10 colaboradores</p>
+      <h1>O que trava o seu escritório <span class="mark">não é técnico</span>. É gestão.</h1>
+      <p class="lead">
+        Sessão Estratégica: um diagnóstico individual do seu escritório — o que travou o
+        crescimento até aqui e o que precisa mudar para o próximo ciclo ser diferente.
+      </p>
+
+      <ul class="hero-list">
+        <li><span class="tick">✓</span><span>Conversa individual com um consultor da Sevilha Performance</span></li>
+        <li><span class="tick">✓</span><span>Leitura da sua estrutura, processos, margem e time</span></li>
+        <li><span class="tick">✓</span><span>Saída com prioridades claras — <b>mesmo que você não contrate nada</b></span></li>
+        <li><span class="tick">✓</span><span>Conduzida por quem já acompanhou +450 contabilidades</span></li>
+      </ul>
+
+      <a href="#agendar" class="btn open-modal">Agendar diagnóstico gratuito →</a>
+      <p class="hero-cta-note">Sem custo e sem compromisso. Leva menos de 1 minuto para solicitar.</p>
+    </div>
+
+    <div class="hero-card">
+      <h3>Como funciona</h3>
+      <p>Três passos, do formulário até a sessão.</p>
+      <ol>
+        <li>Você preenche o formulário com os dados do escritório.</li>
+        <li>Nosso time entra em contato pelo WhatsApp para agendar a melhor data.</li>
+        <li>Você conversa com um consultor e recebe o diagnóstico do seu escritório.</li>
+      </ol>
+      <div class="price-row">
+        <strong>R$ 0,00</strong>
+        <span>Sessão Estratégica sem custo e sem compromisso</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ANTES / DEPOIS ───────────────────────────────────── -->
+<section>
+  <div class="container">
+    <div class="narrow center">
+      <span class="sec-tag">O diagnóstico</span>
+      <h2 class="sec-title">Se o escritório cresceu e a sua rotina só piorou, o gargalo é estrutural</h2>
+      <p class="sec-sub">
+        Escritório com mais de 10 colaboradores não quebra por falta de técnica contábil.
+        Quebra por estrutura que não acompanhou o crescimento.
+      </p>
+    </div>
+
+    <div class="ba">
+      <div class="ba-col before">
+        <h3>Como está hoje</h3>
+        <ul>
+          <li><span class="sym">✕</span>Você chega cedo e sai tarde</li>
+          <li><span class="sym">✕</span>Tira folga e algo quebra</li>
+          <li><span class="sym">✕</span>Delega e a tarefa volta</li>
+          <li><span class="sym">✕</span>Fatura mais, sobra o mesmo</li>
+          <li><span class="sym">✕</span>Contratou e piorou</li>
+        </ul>
+      </div>
+      <div class="ba-col after">
+        <h3>Depois de estruturar a gestão</h3>
+        <ul>
+          <li><span class="sym">✓</span>O escritório anda sem você no centro</li>
+          <li><span class="sym">✓</span>Processo documentado não depende de memória</li>
+          <li><span class="sym">✓</span>O time resolve antes de chegar em você</li>
+          <li><span class="sym">✓</span>Você sabe onde a margem vaza</li>
+          <li><span class="sym">✓</span>Contratar vira decisão, não socorro</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PILARES ──────────────────────────────────────────── -->
+<section class="dark">
+  <div class="container">
+    <div class="narrow center">
+      <span class="sec-tag">O trabalho</span>
+      <h2 class="sec-title">Alta performance operacional, não mais um curso</h2>
+      <p class="sec-sub">
+        A Sevilha Performance é uma consultoria de gestão para escritórios contábeis.
+        A Sessão Estratégica é o ponto de partida: ela mostra qual destas frentes está travando o seu.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card">
+        <span class="ic">🏗️</span>
+        <h3>Estrutura organizacional</h3>
+        <p>Papéis, responsabilidades e organograma que sustentam o time atual — e o próximo.</p>
+      </div>
+      <div class="card">
+        <span class="ic">⚙️</span>
+        <h3>Processos e custos</h3>
+        <p>Otimização das rotinas, redução de retrabalho e visibilidade de onde a margem vaza.</p>
+      </div>
+      <div class="card">
+        <span class="ic">🔗</span>
+        <h3>Tecnologia e automação</h3>
+        <p>Integração das ferramentas que você já paga, no lugar de comprar mais uma.</p>
+      </div>
+      <div class="card">
+        <span class="ic">📈</span>
+        <h3>Gestão de desempenho</h3>
+        <p>Rituais gerenciais e indicadores para acompanhar produtividade sem microgerenciar.</p>
+      </div>
+      <div class="card">
+        <span class="ic">👥</span>
+        <h3>Pessoas</h3>
+        <p>Desenvolvimento e alinhamento do time para crescer junto com o escritório.</p>
+      </div>
+      <div class="card">
+        <span class="ic">🧭</span>
+        <h3>Direção estratégica</h3>
+        <p>Metodologia exclusiva em ciclos de 12 meses, com acompanhamento contínuo.</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>+450</strong><span>Contabilidades acompanhadas</span></div>
+      <div class="stat"><strong>35+</strong><span>Anos de mercado contábil</span></div>
+      <div class="stat"><strong>10+</strong><span>Colaboradores: o perfil que atendemos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── QUEM CONDUZ ──────────────────────────────────────── -->
+<section>
+  <div class="container">
+    <div class="narrow center">
+      <span class="sec-tag">Quem conduz</span>
+      <h2 class="sec-title">Você conversa com quem já viveu o problema</h2>
+    </div>
+
+    <div class="people">
+      <div class="person">
+        <img src="/Vicente.jpeg" alt="Vicente Sevilha" loading="lazy" />
+        <h3>Vicente Sevilha</h3>
+        <p>Empresário contábil há mais de 35 anos, com visão estratégica e experiência prática.</p>
+      </div>
+      <div class="person">
+        <img src="/Bruno.jpeg" alt="Bruno Silvestre" loading="lazy" />
+        <h3>Bruno Silvestre</h3>
+        <p>Referência em performance e produtividade no setor contábil, com foco em entrega e margem.</p>
+      </div>
+      <div class="person">
+        <img src="/Rodrigo.jpeg" alt="Rodrigo Pires" loading="lazy" />
+        <h3>Rodrigo Pires</h3>
+        <p>Especialista em gestão organizacional e de pessoas, há 20 anos conectando estratégia, cultura e execução.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PARA QUEM ────────────────────────────────────────── -->
+<section>
+  <div class="container">
+    <div class="narrow center">
+      <span class="sec-tag">Perfil</span>
+      <h2 class="sec-title">A sessão é para o seu escritório?</h2>
+    </div>
+
+    <div class="fit">
+      <div class="fit-col">
+        <h3>Faz sentido se</h3>
+        <ul>
+          <li><span class="sym" style="color:var(--green-d)">✓</span>Seu escritório tem mais de 10 colaboradores</li>
+          <li><span class="sym" style="color:var(--green-d)">✓</span>Você é dono, sócio ou responsável pela gestão</li>
+          <li><span class="sym" style="color:var(--green-d)">✓</span>O escritório cresceu e a estrutura não acompanhou</li>
+          <li><span class="sym" style="color:var(--green-d)">✓</span>Você quer sair da operação sem perder o controle</li>
+        </ul>
+      </div>
+      <div class="fit-col">
+        <h3>Não faz sentido se</h3>
+        <ul>
+          <li><span class="sym" style="color:var(--red)">✕</span>Você procura fórmula mágica ou atalho</li>
+          <li><span class="sym" style="color:var(--red)">✕</span>Quer apenas mais conteúdo técnico contábil</li>
+          <li><span class="sym" style="color:var(--red)">✕</span>Não pretende mudar nada na gestão atual</li>
+          <li><span class="sym" style="color:var(--red)">✕</span>Não é quem decide no escritório</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ──────────────────────────────────────────────── -->
+<section>
+  <div class="container narrow">
+    <span class="sec-tag">Dúvidas</span>
+    <h2 class="sec-title">Perguntas frequentes</h2>
+
+    <div class="faq">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">A Sessão Estratégica custa alguma coisa? <span>+</span></button>
+        <div class="faq-a">Não. A sessão é gratuita e sem compromisso. Se fizer sentido seguir com a consultoria depois, isso é conversado à parte.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">É uma reunião de vendas disfarçada? <span>+</span></button>
+        <div class="faq-a">É um diagnóstico. Você sai com a leitura do seu escritório e as prioridades identificadas, independentemente de contratar algo.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Atende escritório com menos de 10 colaboradores? <span>+</span></button>
+        <div class="faq-a">A consultoria é desenhada para escritórios acima de 10 colaboradores. Abaixo disso, os gargalos são outros e o trabalho não entrega o mesmo resultado.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Como é feito o agendamento? <span>+</span></button>
+        <div class="faq-a">Depois do formulário, nosso time entra em contato pelo WhatsApp para combinar a data e o horário da sessão.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">A sessão é presencial ou online? <span>+</span></button>
+        <div class="faq-a">Online e ao vivo, com um consultor da Sevilha Performance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ────────────────────────────────────────── -->
+<section class="final" id="agendar">
+  <div class="container narrow">
+    <h2>Descubra o que trava o seu escritório</h2>
+    <p>
+      Um diagnóstico individual, sem custo, com quem acompanha contabilidades há mais de duas décadas.
+      Você decide o que fazer com ele.
+    </p>
+    <a href="#" class="btn open-modal">Agendar diagnóstico gratuito →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container ft">
+    <span>Sevilha Performance · Consultoria para escritórios de contabilidade</span>
+    <span>© 2026 · Todos os direitos reservados</span>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a href="#" class="btn btn-full open-modal">Agendar diagnóstico gratuito →</a>
+</div>
+
+<!-- ── MODAL ────────────────────────────────────────────── -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Fechar">✕</button>
+
+    <div id="form-wrapper">
+      <span class="modal-tag">Sessão Estratégica gratuita</span>
+      <h3 id="modal-title">Solicite seu diagnóstico</h3>
+      <p class="modal-sub">Preencha os dados abaixo. Nosso time entra em contato pelo WhatsApp para agendar a sessão.</p>
+
+      <form id="sessao-form" onsubmit="submitForm(event)">
+        <div class="form-group">
+          <label for="f-name">Nome completo</label>
+          <input type="text" id="f-name" name="nome" placeholder="Seu nome" required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="f-email">E-mail</label>
+          <input type="email" id="f-email" name="email" placeholder="seuemail@exemplo.com" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="f-phone">WhatsApp</label>
+          <input type="tel" id="f-phone" name="telefone" placeholder="(11) 99999-9999" required autocomplete="tel" />
+        </div>
+        <div class="form-group">
+          <label for="f-escritorio">Nome do Escritório de Contabilidade</label>
+          <input type="text" id="f-escritorio" name="escritorio" placeholder="Nome do seu escritório" required autocomplete="organization" />
+        </div>
+        <div class="form-group">
+          <label for="f-cargo">Posição no escritório</label>
+          <select id="f-cargo" name="cargo" required>
+            <option value="">Selecione sua posição</option>
+            <option value="Dono/Sócio">Dono/Sócio</option>
+            <option value="Cargo Gerencial">Cargo Gerencial (Líder / Gerente / Encarregado / Coordenador...)</option>
+            <option value="Cargo Operacional">Cargo Operacional (Assistente / Analista...)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="f-colab">Quantos colaboradores</label>
+          <select id="f-colab" name="colaboradores" required>
+            <option value="">Selecione o número</option>
+            <option value="De 0 a 4">De 0 a 4</option>
+            <option value="De 5 a 9">De 5 a 9</option>
+            <option value="De 10 a 19">De 10 a 19</option>
+            <option value="De 20 a 29">De 20 a 29</option>
+            <option value="De 30 a 49">De 30 a 49</option>
+            <option value="Mais de 50">Mais de 50</option>
+          </select>
+        </div>
+
+        <!-- Campos ocultos de tracking -->
+        <input type="hidden" name="utm_source"   />
+        <input type="hidden" name="utm_medium"   />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_term"     />
+        <input type="hidden" name="utm_content"  />
+        <input type="hidden" name="fbclid"       />
+        <input type="hidden" name="gclid"        />
+        <input type="hidden" name="ttclid"       />
+        <input type="hidden" name="msclkid"      />
+        <input type="hidden" name="fbp"          />
+        <input type="hidden" name="fbc"          />
+        <input type="hidden" name="external_id"  />
+        <input type="hidden" name="event_id"     />
+        <input type="hidden" name="page_url"     />
+        <input type="hidden" name="user_agent"   />
+        <input type="hidden" name="pagina" value="/mentoria" />
+
+        <button type="submit" class="btn btn-full" style="margin-top:6px;">Quero meu diagnóstico gratuito →</button>
+        <p class="form-privacy">🔒 Seus dados são usados apenas para o agendamento da sessão.</p>
+      </form>
+    </div>
+
+    <div class="form-success" id="form-success">
+      <div class="success-icon">✓</div>
+      <h3>Solicitação enviada.</h3>
+      <p class="modal-sub" style="margin-top:8px;">
+        Estamos te levando para o WhatsApp para agendar a sua Sessão Estratégica.
+      </p>
+      <a href="#" id="wa-link" class="btn btn-full" style="margin-top:12px;">Abrir o WhatsApp →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* Destino do agendamento — trocar o número aqui se mudar o atendimento. */
+  var WHATSAPP_URL = 'https://wa.me/5531999491532?text=' +
+    encodeURIComponent('Olá! Acabei de solicitar minha Sessão Estratégica pelo site e quero agendar a reunião.');
+
+  document.getElementById('wa-link').href = WHATSAPP_URL;
+
+  /* ── Modal ── */
+  function openModal() {
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    var f = document.getElementById('f-name');
+    if (f) f.focus();
+  }
+
+  function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.open-modal').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
+  });
+
+  document.getElementById('modal-overlay').addEventListener('click', function (e) {
+    if (e.target === this) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+  /* ── Form submit ── */
+  function submitForm(e) {
+    var form = document.getElementById('sessao-form');
+    SP_handleSubmit(e, form, showSuccess);
+  }
+
+  function showSuccess() {
+    document.getElementById('form-wrapper').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    setTimeout(function () { window.location.href = WHATSAPP_URL; }, 800);
+  }
+
+  /* ── FAQ ── */
+  function toggleFaq(btn) {
+    var item = btn.parentElement;
+    item.classList.toggle('open');
+    btn.querySelector('span').textContent = item.classList.contains('open') ? '−' : '+';
+  }
+</script>
+
+</body>
+</html>
