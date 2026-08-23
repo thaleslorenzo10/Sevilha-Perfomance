@@ -207,7 +207,13 @@ var SP_CONFIG = {
   })();
 
   /* ── Handler de submit unificado ─────────────────────── */
-  window.SP_handleSubmit = function (e, form, onSuccess) {
+  /**
+   * `onError` é opcional. Página que passa um handler assume a responsabilidade
+   * de mostrar a falha ao visitante; sem ele o comportamento continua o de
+   * antes — segue para o sucesso mesmo com o POST falhando —, para não deixar
+   * as landing pages antigas sem nenhuma saída na tela.
+   */
+  window.SP_handleSubmit = function (e, form, onSuccess, onError) {
     e.preventDefault();
 
     var btn = form.querySelector('button[type="submit"]');
@@ -230,7 +236,13 @@ var SP_CONFIG = {
     })
     .catch(function (err) {
       log('form error after retries', err);
-      // Dispara conversão mesmo se falhar — não bloqueia o usuário
+      if (typeof onError === 'function') {
+        // O lead ficou no localStorage e será reenviado no próximo carregamento.
+        // Não dispara conversão: não houve lead salvo para converter.
+        onError(err);
+        return;
+      }
+      // Sem handler de erro: mantém o comportamento antigo — não bloqueia o usuário.
       window.SP_fireLeadEvents(eventId, data);
       onSuccess();
     });
