@@ -52,8 +52,9 @@ function resFalso() {
 }
 
 const UA_REAL = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X)';
-const pageview = require('../api/pageview');
+// O beacon e o redirect dividem a mesma função (limite do plano Hobby).
 const ab = require('../api/ab');
+const pageview = (req, res) => ab({ ...req, method: 'POST' }, res);
 
 (async () => {
   /* Página da lista, visitante real ── grava */

@@ -59,7 +59,8 @@ global.fetch = async (url) => {
   return { ok: true, status: 200, json: async () => corpo, text: async () => JSON.stringify(corpo) };
 };
 
-const handler = require('../api/sessao-estrategica');
+// Servido por /api/stats?modo=sessao-estrategica; o teste chama a lib direto.
+const { responder: handler } = require('../lib/sessao-estrategica');
 
 function resFalso() {
   const r = { statusCode: null, corpo: null, headers: {} };

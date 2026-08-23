@@ -6,6 +6,8 @@
     { "source": "/campanha", "destination": "/api/ab" },
     { "source": "/relatorio", "destination": "/relatorio.html" },
     { "source": "/dashboard", "destination": "/dashboard.html" },
+    { "source": "/api/pageview",           "destination": "/api/ab" },
+    { "source": "/api/sessao-estrategica", "destination": "/api/stats?modo=sessao-estrategica" },
     { "source": "/api/resumo.png",  "destination": "/api/resumo-png" },
     { "source": "/api/resumo.json", "destination": "/api/resumo-txt" },
     { "source": "/api/(.*)", "destination": "/api/$1" }

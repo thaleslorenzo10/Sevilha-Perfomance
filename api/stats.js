@@ -9,6 +9,9 @@
  *   to    — data final   (ISO 8601, ex: 2026-04-09)
  */
 
+const { TABELAS } = require('../lib/supabase');
+const { responder: responderSessaoEstrategica } = require('../lib/sessao-estrategica');
+
 const PAGES = ['/', '/pre-inscricao-2', '/pre-inscricao-3'];
 
 module.exports = async function handler(req, res) {
@@ -16,6 +19,16 @@ module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
 
   if (req.method !== 'GET') return res.status(405).end();
+
+  // /api/sessao-estrategica chega aqui pelo rewrite: outro relatório, outra
+  // fonte (Supabase por página), mesma função — ver lib/sessao-estrategica.js.
+  // O caminho também é aceito como pista: se o rewrite deixar de repassar a
+  // query, o relatório certo continua respondendo em vez de devolver o do A/B.
+  const url  = new URL(req.url, 'http://localhost');
+  const modo = url.searchParams.get('modo');
+  if (modo === 'sessao-estrategica' || url.pathname.includes('sessao-estrategica')) {
+    return responderSessaoEstrategica(req, res);
+  }
 
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_KEY;

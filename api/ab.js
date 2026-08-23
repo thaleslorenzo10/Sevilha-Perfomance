@@ -8,15 +8,33 @@
  * O visitante fica na mesma variante via cookie _sp_variant (sticky 30 dias).
  * Repassa toda a query string (UTMs, fbclid, gclid…) para a página destino.
  * Registra cada visita na tabela page_views do Supabase.
+ *
+ * A mesma função atende POST /api/pageview (via rewrite): é o beacon das
+ * páginas fora do rodízio. As duas entradas gravam na mesma tabela, e o plano
+ * Hobby limita o deploy a 12 funções — separar custaria uma função por uma
+ * dúzia de linhas.
  */
 
-const { registrarVisita, ehBot, ipDaRequisicao, parametrosDe } = require('../lib/pageviews');
+const { registrarVisita, ehBot, ipDaRequisicao, parametrosDe, tratarBeacon } = require('../lib/pageviews');
 
 const VARIANTS = ['/', '/pre-inscricao-2', '/pre-inscricao-3'];
 const COOKIE_NAME = '_sp_variant';
 const COOKIE_TTL_DAYS = 30;
 
 module.exports = async function handler(req, res) {
+  // ── 0. Beacon das páginas fora do rodízio ───────────────────────────────
+  if (req.method === 'POST') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Cache-Control', 'no-store');
+    return tratarBeacon(req, res);
+  }
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    return res.status(204).end();
+  }
+
   // ── 1. Lê cookie existente (sticky) ─────────────────────────────────────
   const rawCookie = req.headers['cookie'] || '';
   const cookieMap = Object.fromEntries(
