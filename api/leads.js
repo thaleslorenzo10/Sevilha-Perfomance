@@ -3,8 +3,10 @@
  * POST /api/leads
  *
  * 1. Salva lead no Supabase (tabela: sevilha_leads)
- * 2. Envia para RD Station Marketing
- * 3. Envia para a Meta Conversions API (CAPI)
+ * 2. Grava a linha na planilha (páginas com formulário próprio)
+ * 3. Envia para RD Station Marketing e para o RD Station CRM
+ * 4. Envia Lead para a Meta Conversions API (CAPI) — e LeadQualificado quando
+ *    o escritório tem 10 ou mais colaboradores
  *
  * Variáveis de ambiente no Vercel:
  *   SUPABASE_URL          = https://hojcntkggnwrvbvmcwxe.supabase.co
@@ -19,7 +21,9 @@ const crypto = require('crypto');
 
 // Normalização, hash e envio ao CAPI moram em lib/capi.js — o mesmo caminho que
 // o webhook do Respondi usa, para os dois eventos hasharem igual.
-const { enviarEvento, montarUserData, normalizarTelefone } = require('../lib/capi');
+const { enviarEvento, montarUserData, normalizarTelefone, eventIdPorContato } = require('../lib/capi');
+const { ehQualificado } = require('../lib/porte');
+const registroDeEventos = require('../lib/eventos-enviados');
 const { gravarLead } = require('../lib/sheets-write');
 const { TABELAS } = require('../lib/supabase');
 
@@ -212,6 +216,21 @@ async function sendToRDMarketing(data) {
      (era o bug que deixava deals sem email/telefone no CRM).
 ───────────────────────────────────────────────────────── */
 
+/**
+ * O que a API devolve depois de criar o deal — funil, etapa, responsável e
+ * nome. Sem isso o log diz "criado" e ninguém sabe onde procurar quando o deal
+ * não aparece na tela que a pessoa está olhando.
+ */
+function ondeCaiu(d) {
+  if (!d || typeof d !== 'object') return 'sem resposta detalhada';
+  const etapa  = d.deal_stage?.name    || d.deal_stage_id    || '?';
+  const funil   = d.deal_stage?.deal_pipeline?.name
+               || d.deal_pipeline?.name || d.deal_pipeline_id || '?';
+  const dono    = d.user?.name || d.user?.nickname || d.user_id || '?';
+  const nome    = d.name || '?';
+  return `nome="${nome}" funil="${funil}" etapa="${etapa}" responsavel="${dono}"`;
+}
+
 async function sendToRDCRM(data) {
   const oferta = ofertaDe(data.pagina);
   const token  = process.env.RD_CRM_TOKEN;
@@ -297,6 +316,7 @@ async function sendToRDCRM(data) {
       }
       const d = await dRes.json();
       dealId = d._id || d.id;
+      console.log(`[RD CRM] deal ${dealId} ${ondeCaiu(d)}`);
 
       // Vincula deal ao contato via PUT /contacts com deal_ids mesclado
       try {
@@ -329,10 +349,81 @@ async function sendToRDCRM(data) {
       }
       const d = await dRes.json();
       dealId = d._id || d.id;
-      console.log(`[RD CRM OK] deal criado com contato inline — id=${dealId} email=${data.email}`);
+      console.log(`[RD CRM OK] deal criado com contato inline — id=${dealId} ${ondeCaiu(d)} email=${data.email}`);
     }
   } catch (err) {
     console.error('[RD CRM Exception]', err.message);
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────
+   LEADQUALIFICADO
+
+   O evento existe para o Meta aprender com quem tem o porte que a consultoria
+   atende. Os dois funis antigos não passam por servidor nosso no momento da
+   conversão, então /api/eventos-qualificados os varre das planilhas de 4 em 4
+   horas (workflow do n8n). O formulário desta landing page passa por aqui, e
+   esperar a varredura seria atrasar o evento sem motivo — além de não
+   funcionar, porque a varredura lê as planilhas do Respondi e do Meta, não a
+   aba que gravamos.
+
+   A trava de reenvio é a mesma tabela da varredura, e o event_id segue a mesma
+   convenção determinística: se um dia as duas fontes se cruzarem, o Meta não
+   conta a conversão duas vezes.
+─────────────────────────────────────────────────────────── */
+
+const EVENTO_QUALIFICADO = 'LeadQualificado';
+
+async function enviarLeadQualificado(data, { userData, eventTime, sourceUrl }) {
+  if (!ehQualificado(data.colaboradores)) return { enviado: false, motivo: 'fora do porte' };
+
+  const contato = data.email || data.telefone;
+  if (!contato) return { enviado: false, motivo: 'sem e-mail nem telefone' };
+
+  // Prefixo próprio: a varredura usa 'respondi' para os leads do formulário
+  // hospedado e 'forms:' para os do Meta. Este é um terceiro formulário, de
+  // outra oferta — colidir com o prefixo do Respondi faria quem preencheu os
+  // dois contar uma vez só.
+  const eventId = eventIdPorContato('sessao-estrategica', contato);
+
+  try {
+    const jaForam = await registroDeEventos.jaEnviados([eventId]);
+    if (jaForam.has(eventId)) {
+      console.log(`[LeadQualificado] já enviado antes — event_id=${eventId}`);
+      return { enviado: false, motivo: 'duplicado' };
+    }
+
+    const envio = await enviarEvento({
+      evento:  EVENTO_QUALIFICADO,
+      eventId,
+      quando:  eventTime,
+      userData,
+      customData: {
+        colaboradores: data.colaboradores,
+        cargo:         data.cargo,
+        utm_campaign:  data.utm_campaign || undefined,
+        utm_source:    data.utm_source   || undefined,
+        utm_content:   data.utm_content  || undefined,
+      },
+      sourceUrl,
+      actionSource: 'website',
+    });
+
+    if (!envio.ok) {
+      // Sem marcar na trava: a varredura das 4h tenta de novo.
+      console.error('[LeadQualificado] falhou —', envio.erro);
+      return { enviado: false, motivo: envio.erro };
+    }
+
+    await registroDeEventos.marcarEnviados([
+      { event_id: eventId, evento: EVENTO_QUALIFICADO, fonte: `api-leads:${data.pagina}` },
+    ]);
+    console.log(`[LeadQualificado OK] ${data.colaboradores} — event_id=${eventId} pagina=${data.pagina}`);
+    return { enviado: true, eventId };
+  } catch (e) {
+    console.error('[LeadQualificado] exceção —', e.message);
+    return { enviado: false, motivo: e.message };
   }
 }
 
@@ -410,7 +501,9 @@ module.exports = async function handler(req, res) {
   if (utm_content)  customData.utm_content  = utm_content;
   if (gclid)        customData.gclid        = gclid;
 
-  const [, , , capiResult] = await Promise.allSettled([
+  const sourceUrl = page_url || req.headers.referer || '';
+
+  const [, , , capiResult, qualificadoResult] = await Promise.allSettled([
     gravarLead(leadData),
     sendToRDMarketing(leadData),
     sendToRDCRM(leadData),
@@ -420,18 +513,22 @@ module.exports = async function handler(req, res) {
       quando:       eventTime,
       userData,
       customData,
-      sourceUrl:    page_url || req.headers.referer || '',
+      sourceUrl,
       actionSource: 'website',
     }),
+    enviarLeadQualificado(leadData, { userData, eventTime, sourceUrl }),
   ]);
 
   const capiData = capiResult.status === 'fulfilled' ? capiResult.value : {};
 
   try {
+    const qualificado = qualificadoResult.status === 'fulfilled' ? qualificadoResult.value : {};
+
     return res.status(200).json({
       ok:              true,
       events_received: capiData?.recebidos ?? 0,
       fbtrace_id:      capiData?.fbtrace_id ?? '',
+      lead_qualificado: Boolean(qualificado?.enviado),
     });
 
   } catch (err) {
