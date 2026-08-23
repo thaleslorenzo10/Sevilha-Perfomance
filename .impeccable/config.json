@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-08-23T15:11:16.297Z",
+        "reason": "Claude: Inter+Poppins é o par já usado em index.html e pre-inscricao-2/3; trocar a face só nesta LP quebraria consistência de marca entre variantes"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "0 0 0 3px rgba(61,214,58,.16)",
+        "createdAt": "2026-08-23T15:11:16.333Z",
+        "reason": "Claude: anel de foco de input (acessibilidade), não decoração; mesmo padrão das LPs existentes"
+      }
+    ]
+  }
+}
