@@ -253,6 +253,9 @@ var SP_CONFIG = {
      ficam fora do rodízio são acessadas direto pelo anúncio e precisam
      registrar a própria visita, senão não há denominador para a conversão.
      A lista curta evita contar a mesma visita duas vezes. */
+  // Ao mudar esta lista, subir o ?v= da tag <script> nas páginas. Este arquivo
+  // é servido com must-revalidate, mas quem visitou antes disso ainda carrega a
+  // versão immutable de um ano — e um beacon congelado não registra a página nova.
   var PAGEVIEW_BEACON_PAGES = ['/mentoria', '/mentoria-2'];
 
   (function beacon() {
