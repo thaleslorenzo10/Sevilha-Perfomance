@@ -5,7 +5,7 @@
  * Confere o webhook do RD CRM → Meta, sem rede real.
  *
  *   • token errado é recusado, e sem RD_CRM_WEBHOOK_SECRET nada passa
- *   • etapa que não é marco de funil não vira evento
+ *   • toda etapa vira evento, com nome derivado dela; sem etapa, nada sai
  *   • reunião agendada, realizada e negócio ganho viram eventos distintos
  *   • ganho leva valor e moeda
  *   • a mesma negociação não manda o mesmo evento duas vezes
@@ -119,11 +119,18 @@ function limpar() { eventos.length = 0; travados.length = 0; }
   assert.strictEqual(res.statusCode, 401, 'token errado é recusado');
   assert.strictEqual(eventos.length, 0);
 
-  /* Etapa comum não vira evento */
+  /* Etapa sem padrão conhecido vira evento nomeado pela etapa */
   limpar();
   res = resFalso();
   await tratarWebhook(req(dealBase('Pré-inscritos')), res);
-  assert.strictEqual(eventos.length, 0, 'etapa sem marco de funil não manda nada');
+  assert.strictEqual(eventos.length, 1, 'toda etapa vira evento');
+  assert.strictEqual(eventos[0].evento, 'CRMPreInscritos');
+
+  /* Negociação sem etapa nenhuma continua sem evento */
+  limpar();
+  res = resFalso();
+  await tratarWebhook(req({ id: 'sem-etapa', contacts: contatos }), res);
+  assert.strictEqual(eventos.length, 0, 'sem etapa não há o que nomear');
   assert.strictEqual(res.corpo.ignorado, true);
 
   /* Reunião agendada */
@@ -228,15 +235,15 @@ function limpar() { eventos.length = 0; travados.length = 0; }
   ];
 
   let resumo = await varrerCrm();
-  assert.strictEqual(resumo.enviados, 2, 'só a reunião agendada e o ganho — a etapa comum e o deal velho ficam fora');
+  assert.strictEqual(resumo.enviados, 3, 'todas as etapas viram evento; só o deal fora da janela fica de fora');
   const nomes = eventos.map(e => e.evento).sort();
-  assert.deepStrictEqual(nomes, ['Purchase', 'ReuniaoAgendada']);
+  assert.deepStrictEqual(nomes, ['CRMPreInscritos', 'Purchase', 'ReuniaoAgendada']);
   assert.strictEqual(eventos.find(e => e.evento === 'Purchase').customData.value, 9600);
   assert.ok(eventos.every(e => e.quando), 'o evento leva a data da mudança, não a de agora');
 
   // O inventário precisa mostrar a etapa que não virou evento — é ela que
   // revela um nome de funil que os padrões não conhecem.
-  assert.strictEqual(resumo.por_etapa['Pré-inscritos'].evento, null);
+  assert.strictEqual(resumo.por_etapa['Pré-inscritos'].evento, 'CRMPreInscritos');
   assert.strictEqual(resumo.por_etapa['Reunião agendada'].evento, 'ReuniaoAgendada');
   assert.strictEqual(resumo.por_etapa['Fechamento'].evento, 'Purchase');
 
@@ -245,7 +252,7 @@ function limpar() { eventos.length = 0; travados.length = 0; }
   limpar();
   resumo = await varrerCrm();
   assert.strictEqual(resumo.enviados, 0, 'a segunda varredura não duplica');
-  assert.strictEqual(resumo.ja_enviados, 2);
+  assert.strictEqual(resumo.ja_enviados, 3);
   jaNaTrava = new Set();
 
   /* Sem token do CRM a varredura não tenta nada */
