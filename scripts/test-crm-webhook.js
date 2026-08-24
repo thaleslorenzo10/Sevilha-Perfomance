@@ -234,6 +234,12 @@ function limpar() { eventos.length = 0; travados.length = 0; }
   assert.strictEqual(eventos.find(e => e.evento === 'Purchase').customData.value, 9600);
   assert.ok(eventos.every(e => e.quando), 'o evento leva a data da mudança, não a de agora');
 
+  // O inventário precisa mostrar a etapa que não virou evento — é ela que
+  // revela um nome de funil que os padrões não conhecem.
+  assert.strictEqual(resumo.por_etapa['Pré-inscritos'].evento, null);
+  assert.strictEqual(resumo.por_etapa['Reunião agendada'].evento, 'ReuniaoAgendada');
+  assert.strictEqual(resumo.por_etapa['Fechamento'].evento, 'Purchase');
+
   /* Rodar de novo não manda nada: a trava é a mesma do webhook */
   jaNaTrava = new Set(travados.map(t => t.event_id));
   limpar();
