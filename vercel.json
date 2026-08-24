@@ -39,6 +39,10 @@
       "destination": "/api/resumo-txt"
     },
     {
+      "source": "/api/crm-webhook",
+      "destination": "/api/eventos-qualificados"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     }
