@@ -312,6 +312,18 @@ module.exports = async function handler(req, res) {
       por_fonte:      { FORMS: contarFonte('FORMS'), LP: contarFonte('LP') },
     };
     if (falhas.length) resumo.primeira_falha = falhas[0].erro;
+
+    // Fundo de funil, na mesma execução: a varredura do CRM devolve ao Meta o
+    // que só o comercial sabe (reunião marcada, realizada, negócio ganho). Uma
+    // falha dela não pode derrubar o resultado da varredura das planilhas, que
+    // já foi feito e já gravou a trava.
+    try {
+      resumo.crm = await require('../lib/crm-eventos').varrerCrm();
+    } catch (e) {
+      console.error('[CRM varredura]', e.message);
+      resumo.crm = { ok: false, erro: e.message };
+    }
+
     console.log('[eventos-qualificados]', JSON.stringify(resumo));
     return res.status(200).json(resumo);
 

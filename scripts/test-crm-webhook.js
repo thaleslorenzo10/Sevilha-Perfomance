@@ -53,6 +53,11 @@ let crmResponde = true;
 const urlsCrm = [];
 global.fetch = async (u) => {
   const url = String(u);
+  if (url.includes('crm.rdstation.com/api/v1/deals?')) {
+    urlsCrm.push(url);
+    const page = Number(new URL(url).searchParams.get('page'));
+    return { ok: true, status: 200, json: async () => ({ deals: page === 1 ? dealsDoCrm : [] }) };
+  }
   if (url.includes('crm.rdstation.com')) {
     urlsCrm.push(url);
     if (!crmResponde) return { ok: false, status: 404, json: async () => ({}) };
@@ -71,7 +76,7 @@ global.fetch = async (u) => {
 };
 process.env.RD_CRM_TOKEN = 'token-crm';
 
-const { tratarWebhook, eventoDe } = require('../lib/crm-eventos');
+const { tratarWebhook, varrerCrm, eventoDe } = require('../lib/crm-eventos');
 Module._load = original;
 
 function resFalso() {
@@ -90,6 +95,11 @@ function req(deal, token = 'segredo-de-teste') {
     body: { deal },
   };
 }
+
+// Lista devolvida por GET /deals na varredura.
+const hoje    = new Date().toISOString();
+const antigo  = new Date(Date.now() - 30 * 86400_000).toISOString();
+let dealsDoCrm = [];
 
 const contatos = [{ name: 'Fulano de Tal', emails: [{ email: 'f@x.com' }], phones: [{ phone: '31988887777' }] }];
 const dealBase = (etapa, extra = {}) => ({
@@ -201,6 +211,45 @@ function limpar() { eventos.length = 0; travados.length = 0; }
   process.env.RD_CRM_EVENTOS = JSON.stringify({ 'Proposta enviada': 'PropostaEnviada' });
   assert.strictEqual(eventoDe({ etapa: 'Proposta enviada' }), 'PropostaEnviada');
   delete process.env.RD_CRM_EVENTOS;
+
+  /* ── Varredura: o caminho que não depende do plano do CRM ─────────── */
+  limpar();
+  urlsCrm.length = 0;
+  dealsDoCrm = [
+    { id: 'v1', name: '[SE] A', updated_at: hoje,   deal_stage: { name: 'Reunião agendada', deal_pipeline: { name: 'F' } },
+      contacts: [{ name: 'A', emails: [{ email: 'a@x.com' }] }] },
+    { id: 'v2', name: '[SE] B', updated_at: hoje,   deal_stage: { name: 'Pré-inscritos', deal_pipeline: { name: 'F' } },
+      contacts: [{ name: 'B', emails: [{ email: 'b@x.com' }] }] },
+    { id: 'v3', name: '[SE] C', updated_at: antigo, deal_stage: { name: 'Reunião realizada', deal_pipeline: { name: 'F' } },
+      contacts: [{ name: 'C', emails: [{ email: 'c@x.com' }] }] },
+    { id: 'v4', name: '[SE] D', updated_at: hoje, status: 'won', amount_total: 9600,
+      deal_stage: { name: 'Fechamento', deal_pipeline: { name: 'F' } },
+      contacts: [{ name: 'D', emails: [{ email: 'd@x.com' }] }] },
+  ];
+
+  let resumo = await varrerCrm();
+  assert.strictEqual(resumo.enviados, 2, 'só a reunião agendada e o ganho — a etapa comum e o deal velho ficam fora');
+  const nomes = eventos.map(e => e.evento).sort();
+  assert.deepStrictEqual(nomes, ['Purchase', 'ReuniaoAgendada']);
+  assert.strictEqual(eventos.find(e => e.evento === 'Purchase').customData.value, 9600);
+  assert.ok(eventos.every(e => e.quando), 'o evento leva a data da mudança, não a de agora');
+
+  /* Rodar de novo não manda nada: a trava é a mesma do webhook */
+  jaNaTrava = new Set(travados.map(t => t.event_id));
+  limpar();
+  resumo = await varrerCrm();
+  assert.strictEqual(resumo.enviados, 0, 'a segunda varredura não duplica');
+  assert.strictEqual(resumo.ja_enviados, 2);
+  jaNaTrava = new Set();
+
+  /* Sem token do CRM a varredura não tenta nada */
+  const tokenCrm = process.env.RD_CRM_TOKEN;
+  delete process.env.RD_CRM_TOKEN;
+  limpar();
+  resumo = await varrerCrm();
+  assert.strictEqual(resumo.ok, false);
+  assert.strictEqual(eventos.length, 0);
+  process.env.RD_CRM_TOKEN = tokenCrm;
 
   /* Sem segredo configurado, o endpoint recusa tudo */
   delete process.env.RD_CRM_WEBHOOK_SECRET;
