@@ -254,9 +254,22 @@ module.exports = async function handler(req, res) {
     const lp = tabsLP.flatMap(t => extrairLP(t.rows || []));
     const leads = [...forms, ...lp];
 
-    const limite = Date.now() - JANELA_DIAS * 86400000;
+    const agora  = Date.now();
+    const limite = agora - JANELA_DIAS * 86400000;
     const qualificados = leads.filter(l => ehQualificado(l.colaboradores));
-    const naJanela     = qualificados.filter(l => l.quandoMs >= limite);
+
+    // Data no futuro existe de verdade nesta planilha e o Meta recusa o evento
+    // ("Registro de data e hora do evento no futuro"). Sem esta guarda são 16
+    // chamadas desperdiçadas a cada execução, e o log de falhas fica com um
+    // erro que não diz de qual lead veio.
+    const noFuturo = qualificados.filter(l => l.quandoMs > agora);
+    if (noFuturo.length) {
+      console.warn(`[eventos-qualificados] ${noFuturo.length} lead(s) com data no futuro, fora do envio. ` +
+        'Exemplos: ' + noFuturo.slice(0, 3).map(l =>
+          `${l.eventId}=${new Date(l.quandoMs).toISOString()}`).join(', '));
+    }
+
+    const naJanela     = qualificados.filter(l => l.quandoMs >= limite && l.quandoMs <= agora);
     const foraDaJanela = qualificados.length - naJanela.length;
 
     // A trava é consultada em bloco: uma chamada em vez de uma por lead.
