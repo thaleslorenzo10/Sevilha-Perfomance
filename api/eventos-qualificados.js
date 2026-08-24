@@ -331,7 +331,8 @@ module.exports = async function handler(req, res) {
     // falha dela não pode derrubar o resultado da varredura das planilhas, que
     // já foi feito e já gravou a trava.
     try {
-      resumo.crm = await require('../lib/crm-eventos').varrerCrm();
+      const crmLib = require('../lib/crm-eventos');
+      resumo.crm = await crmLib.varrerCrm({ indiceLeadId: crmLib.indiceDeLeadIds(forms) });
     } catch (e) {
       console.error('[CRM varredura]', e.message);
       resumo.crm = { ok: false, erro: e.message };

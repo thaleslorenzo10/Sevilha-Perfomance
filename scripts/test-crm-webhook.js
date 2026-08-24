@@ -76,7 +76,7 @@ global.fetch = async (u) => {
 };
 process.env.RD_CRM_TOKEN = 'token-crm';
 
-const { tratarWebhook, varrerCrm, eventoDe } = require('../lib/crm-eventos');
+const { tratarWebhook, varrerCrm, indiceDeLeadIds, eventoDe } = require('../lib/crm-eventos');
 Module._load = original;
 
 function resFalso() {
@@ -143,6 +143,10 @@ function limpar() { eventos.length = 0; travados.length = 0; }
   assert.ok(eventos[0].userData.em, 'e-mail vai hasheado');
   assert.ok(eventos[0].userData.fbc, 'o fbclid do lead original entra como fbc');
   assert.strictEqual(eventos[0].customData.pagina, '/mentoria-2');
+  // O guia "Enviar um evento de CRM" exige os dois; sem eles o Meta aceita o
+  // evento mas não o trata como evento de CRM.
+  assert.strictEqual(eventos[0].customData.event_source, 'crm');
+  assert.strictEqual(eventos[0].customData.lead_event_source, 'RD Station CRM');
   assert.strictEqual(travados.length, 1);
 
   /* Mesma negociação, mesma etapa, de novo → trava segura */
@@ -246,6 +250,34 @@ function limpar() { eventos.length = 0; travados.length = 0; }
   assert.strictEqual(resumo.por_etapa['Pré-inscritos'].evento, 'CRMPreInscritos');
   assert.strictEqual(resumo.por_etapa['Reunião agendada'].evento, 'ReuniaoAgendada');
   assert.strictEqual(resumo.por_etapa['Fechamento'].evento, 'Purchase');
+
+  /* lead_id do formulário instantâneo entra quando o contato casa */
+  jaNaTrava = new Set();
+  limpar();
+  const indice = indiceDeLeadIds([
+    { leadId: '1234567890123456', email: 'A@X.com', telefone: '(31) 98888-7777' },
+  ]);
+  dealsDoCrm = [
+    { id: 'v9', updated_at: hoje, deal_stage: { name: 'Reunião agendada', deal_pipeline: { name: 'F' } },
+      contacts: [{ name: 'A', emails: [{ email: 'a@x.com' }] }] },
+  ];
+  await varrerCrm({ indiceLeadId: indice });
+  assert.strictEqual(eventos[0].userData.lead_id, '1234567890123456',
+    'o lead_id do Meta é a chave de correspondência de maior prioridade');
+
+  dealsDoCrm = [
+    { id: 'v1', name: '[SE] A', updated_at: hoje,   deal_stage: { name: 'Reunião agendada', deal_pipeline: { name: 'F' } },
+      contacts: [{ name: 'A', emails: [{ email: 'a@x.com' }] }] },
+    { id: 'v2', name: '[SE] B', updated_at: hoje,   deal_stage: { name: 'Pré-inscritos', deal_pipeline: { name: 'F' } },
+      contacts: [{ name: 'B', emails: [{ email: 'b@x.com' }] }] },
+    { id: 'v3', name: '[SE] C', updated_at: antigo, deal_stage: { name: 'Reunião realizada', deal_pipeline: { name: 'F' } },
+      contacts: [{ name: 'C', emails: [{ email: 'c@x.com' }] }] },
+    { id: 'v4', name: '[SE] D', updated_at: hoje, status: 'won', amount_total: 9600,
+      deal_stage: { name: 'Fechamento', deal_pipeline: { name: 'F' } },
+      contacts: [{ name: 'D', emails: [{ email: 'd@x.com' }] }] },
+  ];
+  limpar();
+  resumo = await varrerCrm();
 
   /* Rodar de novo não manda nada: a trava é a mesma do webhook */
   jaNaTrava = new Set(travados.map(t => t.event_id));
