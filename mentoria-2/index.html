@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sessão Estratégica: 45 minutos de diagnóstico gratuito do seu escritório contábil. Para escritórios com mais de 10 colaboradores." />
+  <title>Sessão Estratégica — Sevilha Performance</title>
+  <link rel="canonical" href="https://sevilha-perfomance.vercel.app/mentoria-2" />
+  <link rel="icon" href="/assets/logo-sevilha.svg" type="image/svg+xml" />
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Sessão Estratégica — diagnóstico gratuito do seu escritório contábil" />
+  <meta property="og:description" content="Para escritórios com mais de 10 colaboradores: 45 minutos de diagnóstico individual do que travou o crescimento e do que precisa mudar. Sem custo e sem compromisso." />
+  <meta property="og:image"       content="https://sevilha-perfomance.vercel.app/assets/og-mentoria.png" />
+  <meta property="og:url"         content="https://sevilha-perfomance.vercel.app/mentoria-2" />
+  <meta property="og:locale"      content="pt_BR" />
+  <meta name="twitter:card"       content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '657178423444244');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=657178423444244&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <script src="/assets/tracking.js" defer></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #0b1b4d;
+      --navy-2:    #142a6b;
+      --ground:    #e8ecf3;
+      --surface:   #ffffff;
+      --border:    #d8dee9;
+      --green:     #3dd63a;
+      --green-ink: #0f7a12;
+      --text:      #0b1b4d;
+      --muted:     #55607a;
+      --alert:     #c62828;
+
+      --r:      20px;
+      --gap:    16px;
+      --pad:    28px;
+      --shadow: 0 2px 4px rgba(11,27,77,.04), 0 12px 28px rgba(11,27,77,.07);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, system-ui, sans-serif;
+      background: var(--ground);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 { font-family: 'Poppins', sans-serif; line-height: 1.12; letter-spacing: -0.02em; }
+
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+    /* ── Topo ───────────────────────────────────────────── */
+    .top {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 20px 0 6px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand img { height: 32px; width: auto; display: block; }
+    .brand b {
+      font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700;
+      color: var(--navy); line-height: 1.2;
+    }
+    .brand span { display: block; font-weight: 500; font-size: .78rem; color: var(--muted); }
+
+    /* ── Botões ─────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem;
+      padding: 16px 28px; border: none; border-radius: 14px;
+      background: var(--navy); color: #fff; cursor: pointer; text-decoration: none;
+      transition: background .18s ease, transform .18s ease;
+    }
+    .btn:hover { background: var(--navy-2); transform: translateY(-1px); }
+    .btn-green { background: var(--green); color: var(--navy); }
+    .btn-green:hover { background: #35c132; }
+    .btn-sm   { padding: 11px 18px; font-size: .85rem; border-radius: 11px; }
+    .btn-full { width: 100%; }
+
+    /* ── A grade ────────────────────────────────────────────
+       Doze colunas, blocos de tamanhos diferentes. A variação de
+       tamanho é a hierarquia: o que decide a conversão ocupa mais
+       área, e não só uma fonte maior. */
+    .bento {
+      display: grid; grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap); padding: 10px 0 28px;
+    }
+    .cell {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: var(--pad);
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column; justify-content: flex-start;
+    }
+    .cell-navy  { background: var(--navy); border-color: var(--navy); color: #e9edf7; }
+    .cell-navy h2, .cell-navy h3 { color: #fff; }
+    .cell-green { background: var(--green); border-color: var(--green); color: var(--navy); }
+    .cell-flat  { background: transparent; border: none; box-shadow: none; padding: 8px 4px; }
+
+    .c12 { grid-column: span 12; }
+    .c8  { grid-column: span 8; }
+    .c7  { grid-column: span 7; }
+    .c6  { grid-column: span 6; }
+    .c5  { grid-column: span 5; }
+    .c4  { grid-column: span 4; }
+
+
+    /* ── Bloco 1: a tese ────────────────────────────────── */
+    .thesis { padding: 40px; justify-content: center; }
+    .thesis h1 { font-size: clamp(2.15rem, 4.1vw, 3.25rem); font-weight: 800; }
+    .thesis .mark {
+      background: var(--green); color: var(--navy);
+      padding: 2px 12px; border-radius: 8px; box-decoration-break: clone;
+    }
+    .thesis p {
+      margin-top: 20px; font-size: 1.06rem; color: var(--muted); max-width: 40ch;
+    }
+    .thesis .cta-row { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .thesis .cta-note { font-size: .85rem; color: var(--muted); }
+
+    /* ── Bloco 2: a oferta em números ───────────────────── */
+    .offer { justify-content: flex-start; gap: 24px; }
+    .offer .price {
+      font-family: 'Poppins', sans-serif; font-weight: 800;
+      font-size: clamp(2.4rem, 4vw, 3.2rem); line-height: 1; color: var(--navy);
+    }
+    .offer .price small { display: block; font-size: .95rem; font-weight: 600; color: rgba(11,27,77,.72); margin-top: 8px; }
+    .offer dl { display: grid; gap: 12px; margin-top: 4px; }
+    .offer .row {
+      display: flex; justify-content: space-between; gap: 12px; align-items: baseline;
+      padding-top: 12px; border-top: 1px solid rgba(11,27,77,.18); font-size: .95rem;
+    }
+    .offer .row dt { color: rgba(11,27,77,.75); }
+    .offer .row dd { font-family: 'Poppins', sans-serif; font-weight: 700; text-align: right; }
+
+    /* ── Bloco 3/4: antes e depois ──────────────────────── */
+    .list { list-style: none; display: grid; gap: 13px; margin-top: 4px; }
+    .list li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; font-size: .95rem; }
+    .list svg { width: 20px; height: 20px; margin-top: 2px; }
+    .before svg { color: var(--alert); }
+    .after  svg { color: var(--green-ink); }
+    .cell h2 { font-size: 1.6rem; margin-bottom: 6px; }
+    .cell .sub { font-size: .95rem; color: var(--muted); margin-bottom: 18px; }
+    .cell-navy .sub { color: #b9c4dd; }
+
+    /* ── Bloco 5: como funciona ─────────────────────────── */
+    .steps { list-style: none; counter-reset: s; display: grid; gap: 18px; }
+    .steps li { counter-increment: s; display: grid; grid-template-columns: 30px 1fr; gap: 14px; font-size: .95rem; }
+    .steps li::before {
+      content: counter(s); width: 30px; height: 30px; border-radius: 10px;
+      background: rgba(61,214,58,.16); color: var(--green-ink);
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .9rem;
+      display: grid; place-items: center;
+    }
+    .cell-navy .steps li::before { background: rgba(61,214,58,.22); color: #7ee87b; }
+
+    /* ── Bloco 6: quem conduz ───────────────────────────── */
+    .people { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 6px; }
+    .person { display: grid; gap: 12px; }
+    .person img {
+      width: 100%; aspect-ratio: 1 / 1; border-radius: 14px; object-fit: contain;
+      background: #f7f7f7; display: block;
+    }
+    .person h3 { font-size: 1.05rem; }
+    .person .role { display: block; font-size: .85rem; color: var(--green-ink); font-weight: 600; margin-top: 3px; }
+    .person p { font-size: .85rem; color: var(--muted); margin-top: 6px; }
+
+    /* ── Bloco 7: perfil ────────────────────────────────── */
+    .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .fit-grid h3 { font-size: 1.05rem; margin-bottom: 14px; }
+
+    /* ── Bloco 8: chamada final ─────────────────────────── */
+    .close { padding: 40px; text-align: center; align-items: center; }
+    .close h2 { font-size: clamp(1.7rem, 3.2vw, 2.4rem); font-weight: 800; }
+    .close p { margin: 14px auto 26px; max-width: 46ch; color: rgba(11,27,77,.78); }
+
+    footer { padding: 26px 0 40px; font-size: .85rem; color: var(--muted); }
+    .ft { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+
+    /* ── Barra fixa mobile ──────────────────────────────── */
+    .sticky {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; display: none;
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(232,236,243,.94); border-top: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    /* ── Modal ──────────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(7,18,56,.74);
+      display: none; align-items: center; justify-content: center;
+      padding: 20px; z-index: 100; overflow-y: auto;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--surface); border-radius: var(--r); width: 100%; max-width: 480px;
+      position: relative; margin: auto; max-height: calc(100dvh - 40px);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    #form-wrapper, #sessao-form { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
+    .modal-head { padding: 30px 30px 0; flex: none; }
+    .modal-body { padding: 0 30px; overflow-y: auto; flex: 1 1 auto; min-height: 0; }
+    .modal-foot { padding: 16px 30px 22px; border-top: 1px solid var(--border); flex: none; }
+    .modal-close {
+      position: absolute; top: 8px; right: 8px; width: 44px; height: 44px;
+      background: none; border: none; border-radius: 50%; cursor: pointer;
+      font-size: 1.3rem; color: var(--muted); display: grid; place-items: center;
+    }
+    .modal-close:hover { background: var(--ground); color: var(--text); }
+    .modal-tag {
+      display: inline-block; background: rgba(61,214,58,.14); color: var(--green-ink);
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .85rem;
+      letter-spacing: .06em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px;
+    }
+    .modal h2 { font-size: 1.4rem; margin: 14px 0 6px; }
+    .modal-sub { font-size: .95rem; color: var(--muted); margin-bottom: 18px; }
+
+    .trust {
+      display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .85rem; color: #37436a;
+      background: var(--ground); border-radius: 12px; padding: 12px 14px; margin-bottom: 16px;
+    }
+    .trust b { color: var(--green-ink); font-family: 'Poppins', sans-serif; }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: 6px; color: #37436a; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px;
+      font-family: inherit; font-size: .95rem; color: var(--text); background: #fbfcfe;
+    }
+    .form-group input:focus, .form-group select:focus {
+      outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(61,214,58,.18);
+    }
+    .form-privacy { font-size: .85rem; color: var(--muted); text-align: center; margin-top: 10px; }
+
+    .route, .form-error {
+      display: none; border-radius: 12px; padding: 15px; margin-bottom: 14px; font-size: .9rem;
+    }
+    .route.on, .form-error.on { display: block; }
+    .route { background: #fff8e8; border: 1px solid #e8d6a8; color: #4a3b18; }
+    .route strong { display: block; font-family: 'Poppins', sans-serif; margin-bottom: 5px; color: #3d2f10; }
+    .route a { color: var(--navy); font-weight: 600; }
+    .form-error { background: #fdecec; border: 1px solid #f2bcbc; color: #6d1f1f; }
+    .form-error strong { display: block; font-family: 'Poppins', sans-serif; margin-bottom: 5px; }
+    .form-error a { color: #6d1f1f; font-weight: 600; }
+
+    .form-success { display: none; text-align: center; padding: 34px 30px; }
+    .form-success .ok {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      font-size: 1.4rem; color: var(--green-ink);
+    }
+    .form-success .ok svg { width: 26px; height: 26px; flex: none; }
+
+    /* ── Movimento ──────────────────────────────────────────
+       Um único momento: os blocos entram uma vez, em cascata, na
+       ordem de leitura. Nada de efeito por hover espalhado. */
+    @keyframes sobe {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .bento .cell.entra { animation: sobe .5s cubic-bezier(.2,.7,.3,1) both; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .btn { transition: none; }
+    }
+
+    /* ── Responsivo ─────────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .c8, .c7, .c6, .c5, .c4 { grid-column: span 12; }
+      .people { grid-template-columns: 1fr; }
+      .thesis, .close { padding: 30px 24px; }
+    }
+    @media (max-width: 640px) {
+      :root { --pad: 22px; --gap: 12px; }
+      .person { grid-template-columns: 96px 1fr; align-items: center; }
+      .person img { width: 96px; }
+      .fit-grid { grid-template-columns: 1fr; gap: 20px; }
+      .sticky { display: block; }
+      body { padding-bottom: 78px; }
+      .top .btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+<!--
+  THESIS: uma grade de blocos onde o tamanho é o argumento — a página recusa a
+  pilha de sete seções iguais da v1, em que promessa, catálogo e prova pesavam o
+  mesmo. OWN-WORLD: chão cinza-azulado, cartões brancos de canto 20px, campos
+  sólidos em navy #0b1b4d e verde #3dd63a; Poppins para peso, Inter para leitura;
+  ícones desenhados em traço único, nunca emoji. STORY: o dono reconhece a
+  própria rotina no bloco "como está hoje", vê que o custo é zero e o tempo é 45
+  minutos, entende que o corte de porte é seleção e não recusa, e pede o
+  diagnóstico. FIRST VIEWPORT: bloco da tese ocupando 2/3 à esquerda com a
+  headline e o CTA; à direita, o bloco da oferta com R$ 0,00 em Poppins 800 e as
+  três linhas do que está incluído. FORM: bento grid, fixado pelo cliente na
+  rodada de decisão (sem sorteio de conceito). FINISH: unreviewed and
+  undocumented is unfinished; this build ends with the finish review, the
+  verdict, DESIGN.md, and every shipping raster carrying its provenance.
+-->
+
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <img src="/assets/logo-sevilha.svg" alt="Sevilha Performance" />
+      <b>Sevilha Performance<span>Consultoria para contabilidades</span></b>
+    </div>
+    <a href="#agendar" class="btn btn-sm open-modal">Agendar diagnóstico</a>
+  </header>
+
+  <main class="bento">
+
+    <!-- 1 · A tese -->
+    <section class="cell thesis c8">
+      <h1>O que trava o seu escritório <span class="mark">não é técnico</span>. É gestão.</h1>
+      <p>
+        A Sessão Estratégica é um diagnóstico individual do seu escritório: o que travou
+        o crescimento até aqui e o que precisa mudar para o próximo ciclo ser diferente.
+      </p>
+      <div class="cta-row">
+        <a href="#agendar" class="btn btn-green open-modal">Agendar diagnóstico gratuito</a>
+        <span class="cta-note">Leva menos de 1 minuto para solicitar.</span>
+      </div>
+    </section>
+
+    <!-- 2 · A oferta em números -->
+    <section class="cell cell-green offer c4" aria-label="O que está incluído">
+      <p class="price">R$ 0,00<small>Sessão Estratégica completa</small></p>
+      <dl>
+        <div class="row"><dt>Para escritórios com</dt><dd>10+ colaboradores</dd></div>
+        <div class="row"><dt>Duração</dt><dd>45 minutos</dd></div>
+        <div class="row"><dt>Formato</dt><dd>Online e ao vivo</dd></div>
+        <div class="row"><dt>Compromisso</dt><dd>Nenhum</dd></div>
+        <div class="row"><dt>Experiência</dt><dd>+450 contabilidades</dd></div>
+        <div class="row"><dt>Mercado</dt><dd>20+ anos</dd></div>
+      </dl>
+    </section>
+
+    <!-- 3 · Como está hoje -->
+    <section class="cell before c5">
+      <h2>Como está hoje</h2>
+      <p class="sub">Escritório que cresceu sem estrutura para acompanhar.</p>
+      <ul class="list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Você chega cedo e sai tarde</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Tira folga e algo quebra</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Delega e a tarefa volta</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Fatura mais, sobra o mesmo</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Contratou e piorou</span></li>
+      </ul>
+    </section>
+
+    <!-- 4 · Depois de estruturar -->
+    <section class="cell cell-navy after c7">
+      <h2>Depois de estruturar a gestão</h2>
+      <p class="sub">O que muda quando a estrutura acompanha o tamanho.</p>
+      <ul class="list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#7ee87b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>O escritório anda sem você no centro</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#7ee87b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Processo documentado não depende de memória</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#7ee87b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>O time resolve antes de chegar em você</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#7ee87b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Você sabe onde a margem vaza</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#7ee87b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Contratar vira decisão, não socorro</span></li>
+      </ul>
+    </section>
+
+    <!-- 5 · Como funciona -->
+    <section class="cell c4">
+      <h2>Como funciona</h2>
+      <p class="sub">Do formulário até a sessão.</p>
+      <ol class="steps">
+        <li><span>Você preenche o formulário com os dados do escritório.</span></li>
+        <li><span>Nosso time entra em contato pelo WhatsApp para combinar a data.</span></li>
+        <li><span>Você conversa 45 minutos com um consultor e recebe o diagnóstico.</span></li>
+      </ol>
+    </section>
+
+    <!-- 6 · Quem conduz -->
+    <section class="cell c8">
+      <h2>Você conversa com quem já viveu o problema</h2>
+      <p class="sub">Mais de 20 anos de mercado e +450 contabilidades acompanhadas.</p>
+      <div class="people">
+        <article class="person">
+          <img src="/Vicente.jpeg" alt="Vicente Sevilha" width="281" height="358" fetchpriority="low" />
+          <div>
+            <h3>Vicente Sevilha</h3>
+            <span class="role">Estratégia e finanças</span>
+            <p>Empresário contábil há mais de 35 anos.</p>
+          </div>
+        </article>
+        <article class="person">
+          <img src="/Bruno.jpeg" alt="Bruno Silvestre" width="281" height="358" fetchpriority="low" />
+          <div>
+            <h3>Bruno Silvestre</h3>
+            <span class="role">Processos e margem</span>
+            <p>Referência em performance no setor contábil.</p>
+          </div>
+        </article>
+        <article class="person">
+          <img src="/Rodrigo.jpeg" alt="Rodrigo Pires" width="281" height="358" fetchpriority="low" />
+          <div>
+            <h3>Rodrigo Pires</h3>
+            <span class="role">Time e estrutura</span>
+            <p>Gestão organizacional e de pessoas há 20 anos.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 7 · Para quem é e para quem não é -->
+    <section class="cell c12">
+      <h2>Antes de agendar</h2>
+      <p class="sub">A sessão é desenhada para um perfil específico.</p>
+      <div class="fit-grid">
+        <div class="after">
+          <h3>Faz sentido se</h3>
+          <ul class="list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Seu escritório tem mais de 10 colaboradores</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Você é dono, sócio ou responsável pela gestão</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg><span>Você quer sair da operação sem perder o controle</span></li>
+          </ul>
+        </div>
+        <div class="before">
+          <h3>Não faz sentido se</h3>
+          <ul class="list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Você procura fórmula mágica ou atalho</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Não pretende mudar nada na gestão atual</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Não é quem decide no escritório</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 · Fechamento -->
+    <section class="cell cell-green close c12" id="agendar">
+      <h2>Descubra o que trava o seu escritório</h2>
+      <p>45 minutos, sem custo, com quem acompanha contabilidades há mais de 20 anos. O que fazer com o diagnóstico é decisão sua.</p>
+      <a href="#" class="btn open-modal">Agendar diagnóstico gratuito</a>
+    </section>
+
+  </main>
+
+  <footer class="ft">
+    <span>Sevilha Performance · Consultoria para escritórios de contabilidade</span>
+    <span>© 2026 · Todos os direitos reservados</span>
+  </footer>
+</div>
+
+<aside class="sticky" aria-label="Agendar diagnóstico">
+  <a href="#agendar" class="btn btn-green btn-full open-modal">Agendar diagnóstico gratuito</a>
+</aside>
+
+<!-- ── Modal ────────────────────────────────────────────── -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Fechar">✕</button>
+
+    <div id="form-wrapper">
+      <div class="modal-head">
+        <span class="modal-tag">Sessão Estratégica gratuita</span>
+        <h2 id="modal-title">Solicite seu diagnóstico</h2>
+        <p class="modal-sub">Nosso time entra em contato pelo WhatsApp para agendar a sessão.</p>
+      </div>
+
+      <form id="sessao-form" onsubmit="submitForm(event)">
+       <div class="modal-body">
+        <div class="trust">
+          <span><b>R$ 0,00</b></span>
+          <span>45 minutos</span>
+          <span>Sem compromisso</span>
+          <span>Dados usados só para o agendamento (LGPD)</span>
+        </div>
+
+        <div class="form-error" id="form-error">
+          <strong>Não conseguimos enviar agora.</strong>
+          A conexão falhou. Tente de novo ou fale direto com a gente:
+          <a href="#" id="err-wa">abrir o WhatsApp</a>.
+        </div>
+
+        <div class="form-group">
+          <label for="f-name">Nome completo</label>
+          <input type="text" id="f-name" name="nome" placeholder="Seu nome" required autocomplete="name" />
+        </div>
+        <div class="form-group">
+          <label for="f-email">E-mail</label>
+          <input type="email" id="f-email" name="email" placeholder="seuemail@exemplo.com" required autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label for="f-phone">WhatsApp</label>
+          <input type="tel" id="f-phone" name="telefone" placeholder="(11) 99999-9999" required autocomplete="tel" />
+        </div>
+        <div class="form-group">
+          <label for="f-escritorio">Nome do Escritório de Contabilidade</label>
+          <input type="text" id="f-escritorio" name="escritorio" placeholder="Nome do seu escritório" required autocomplete="organization" />
+        </div>
+        <div class="form-group">
+          <label for="f-cargo">Posição no escritório</label>
+          <select id="f-cargo" name="cargo" required>
+            <option value="">Selecione sua posição</option>
+            <option value="Dono/Sócio">Dono/Sócio</option>
+            <option value="Cargo Gerencial">Cargo Gerencial (Líder / Gerente / Encarregado / Coordenador...)</option>
+            <option value="Cargo Operacional">Cargo Operacional (Assistente / Analista...)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="f-colab">Quantos colaboradores</label>
+          <select id="f-colab" name="colaboradores" required>
+            <option value="">Selecione o número</option>
+            <option value="De 0 a 4">De 0 a 4</option>
+            <option value="De 5 a 9">De 5 a 9</option>
+            <option value="De 10 a 19">De 10 a 19</option>
+            <option value="De 20 a 29">De 20 a 29</option>
+            <option value="De 30 a 49">De 30 a 49</option>
+            <option value="Mais de 50">Mais de 50</option>
+          </select>
+        </div>
+
+        <div class="route" id="route-porte">
+          <strong>Esse diagnóstico é desenhado para escritórios acima de 10 colaboradores.</strong>
+          Abaixo disso os gargalos são outros, e a consultoria não entrega o mesmo resultado.
+          O <a href="/campanha" id="route-link">Clube da Performance</a> foi feito exatamente para o seu porte.
+        </div>
+
+        <div class="route" id="route-cargo">
+          <strong>A sessão é conduzida com quem decide.</strong>
+          Você pode se inscrever, mas peça para o dono ou sócio participar — sem ele, o diagnóstico não vira decisão.
+        </div>
+
+        <!-- Campos ocultos de tracking — o name= de cada um é contrato com /api/leads -->
+        <input type="hidden" name="utm_source"   />
+        <input type="hidden" name="utm_medium"   />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_term"     />
+        <input type="hidden" name="utm_content"  />
+        <input type="hidden" name="fbclid"       />
+        <input type="hidden" name="gclid"        />
+        <input type="hidden" name="ttclid"       />
+        <input type="hidden" name="msclkid"      />
+        <input type="hidden" name="fbp"          />
+        <input type="hidden" name="fbc"          />
+        <input type="hidden" name="external_id"  />
+        <input type="hidden" name="event_id"     />
+        <input type="hidden" name="page_url"     />
+        <input type="hidden" name="user_agent"   />
+        <input type="hidden" name="pagina" value="/mentoria-2" />
+       </div>
+
+       <div class="modal-foot">
+        <button type="submit" id="submit-btn" class="btn btn-green btn-full">Quero meu diagnóstico</button>
+        <a href="/campanha" class="btn btn-full" id="route-btn" style="display:none;">Conhecer o Clube da Performance</a>
+        <p class="form-privacy" id="form-privacy">Leva menos de 1 minuto. Sem spam.</p>
+       </div>
+      </form>
+    </div>
+
+    <div class="form-success" id="form-success">
+      <h2 class="ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
+        Solicitação enviada.
+      </h2>
+      <p class="modal-sub" style="margin-top:8px;">
+        Em instantes abrimos o WhatsApp para você agendar a Sessão Estratégica. Se não abrir, use o botão abaixo.
+      </p>
+      <a href="#" id="wa-link" class="btn btn-green btn-full">Abrir o WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* Destino do agendamento — trocar o número aqui se mudar o atendimento. */
+  var WHATSAPP_URL = 'https://wa.me/5531999491532?text=' +
+    encodeURIComponent('Olá! Acabei de solicitar minha Sessão Estratégica pelo site e quero agendar a reunião.');
+
+  var overlay = document.getElementById('modal-overlay');
+  document.getElementById('wa-link').href = WHATSAPP_URL;
+  document.getElementById('err-wa').href  = WHATSAPP_URL;
+
+  /* Quem está fora do porte vale como lead do Clube da Performance, que atende
+     escritórios menores — /campanha é a entrada do teste A/B dele. A query
+     string vai junto para não perder a origem do anúncio. */
+  var CLUBE_URL = '/campanha' + window.location.search;
+  document.getElementById('route-link').href = CLUBE_URL;
+  document.getElementById('route-btn').href  = CLUBE_URL;
+
+  /* ── Modal ── */
+  var lastFocus = null;
+
+  function openModal() {
+    lastFocus = document.activeElement;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    // No touch o foco automático abre o teclado e come metade da tela.
+    if (window.matchMedia('(pointer: fine)').matches) {
+      var f = document.getElementById('f-name');
+      if (f) f.focus();
+    }
+  }
+
+  function closeModal() {
+    if (!overlay.classList.contains('open')) return;
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  document.querySelectorAll('.open-modal').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
+  });
+
+  overlay.addEventListener('click', function (e) { if (e.target === this) closeModal(); });
+
+  document.addEventListener('keydown', function (e) {
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape') { closeModal(); return; }
+    if (e.key !== 'Tab') return;
+
+    var f = overlay.querySelectorAll('a[href], button:not([disabled]), input, select, textarea');
+    f = Array.prototype.filter.call(f, function (el) { return el.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  /* ── Qualificação por porte e cargo ──
+     A página promete 10+ em três lugares; aceitar quem está abaixo gera lead
+     que será recusado por um humano e ensina o Meta a buscar mais gente fora do
+     perfil. Em vez de esconder as opções, a seleção roteia para a oferta certa. */
+  var FORA_DO_PORTE = ['De 0 a 4', 'De 5 a 9'];
+
+  var colab    = document.getElementById('f-colab');
+  var cargo    = document.getElementById('f-cargo');
+  var rPorte   = document.getElementById('route-porte');
+  var rCargo   = document.getElementById('route-cargo');
+  var btnSend  = document.getElementById('submit-btn');
+  var btnRoute = document.getElementById('route-btn');
+
+  function avaliarPerfil() {
+    var fora = FORA_DO_PORTE.indexOf(colab.value) > -1;
+    rPorte.classList.toggle('on', fora);
+    rCargo.classList.toggle('on', cargo.value === 'Cargo Operacional' && !fora);
+    btnSend.style.display  = fora ? 'none' : '';
+    btnRoute.style.display = fora ? '' : 'none';
+    document.getElementById('form-privacy').style.visibility = fora ? 'hidden' : '';
+  }
+
+  colab.addEventListener('change', avaliarPerfil);
+  cargo.addEventListener('change', avaliarPerfil);
+
+  /* ── Telefone: mostra o formato enquanto digita ── */
+  document.getElementById('f-phone').addEventListener('input', function () {
+    var d = this.value.replace(/\D/g, '').slice(0, 11);
+    if (d.length <= 2)       this.value = d;
+    else if (d.length <= 6)  this.value = '(' + d.slice(0,2) + ') ' + d.slice(2);
+    else if (d.length <= 10) this.value = '(' + d.slice(0,2) + ') ' + d.slice(2,6) + '-' + d.slice(6);
+    else                     this.value = '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7);
+  });
+
+  /* ── Envio ── */
+  function submitForm(e) {
+    document.getElementById('form-error').classList.remove('on');
+    SP_handleSubmit(e, document.getElementById('sessao-form'), showSuccess, showError);
+  }
+
+  function showSuccess() {
+    document.getElementById('form-wrapper').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+    setTimeout(function () { window.location.href = WHATSAPP_URL; }, 2500);
+  }
+
+  function showError() {
+    var err = document.getElementById('form-error');
+    err.classList.add('on');
+    btnSend.disabled = false;
+    btnSend.textContent = 'Tentar novamente';
+    err.scrollIntoView({ block: 'nearest' });
+  }
+
+  /* ── Entrada dos blocos ──
+     O movimento é adicionado ao que já está visível: a classe só dispara a
+     animação. Sem IntersectionObserver, com movimento reduzido ou com o JS
+     quebrado, a página fica exatamente como está — nunca em branco. */
+  (function entrada() {
+    if (!window.IntersectionObserver ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var obs = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (en, i) {
+        if (!en.isIntersecting) return;
+        en.target.style.animationDelay = (i * 70) + 'ms';
+        en.target.classList.add('entra');
+        obs.unobserve(en.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+
+    document.querySelectorAll('.bento .cell').forEach(function (c) { obs.observe(c); });
+  })();
+</script>
+
+</body>
+</html>

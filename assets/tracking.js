@@ -253,7 +253,7 @@ var SP_CONFIG = {
      ficam fora do rodízio são acessadas direto pelo anúncio e precisam
      registrar a própria visita, senão não há denominador para a conversão.
      A lista curta evita contar a mesma visita duas vezes. */
-  var PAGEVIEW_BEACON_PAGES = ['/mentoria'];
+  var PAGEVIEW_BEACON_PAGES = ['/mentoria', '/mentoria-2'];
 
   (function beacon() {
     var pagina = window.location.pathname.replace(/\/$/, '') || '/';

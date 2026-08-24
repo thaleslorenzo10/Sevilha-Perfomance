@@ -3,7 +3,8 @@
     { "path": "/api/eventos-qualificados", "schedule": "0 9 * * *" }
   ],
   "rewrites": [
-    { "source": "/campanha", "destination": "/api/ab" },
+    { "source": "/campanha",    "destination": "/api/ab" },
+    { "source": "/diagnostico", "destination": "/api/ab" },
     { "source": "/relatorio", "destination": "/relatorio.html" },
     { "source": "/dashboard", "destination": "/dashboard.html" },
     { "source": "/api/pageview",           "destination": "/api/ab" },
@@ -14,7 +15,7 @@
   ],
   "headers": [
     {
-      "source": "/campanha",
+      "source": "/(campanha|diagnostico)",
       "headers": [
         { "key": "Cache-Control", "value": "no-store, private" }
       ]

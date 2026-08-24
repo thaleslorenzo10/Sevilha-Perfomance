@@ -99,6 +99,47 @@ const pageview = (req, res) => ab({ ...req, method: 'POST' }, res);
   assert.strictEqual(res.statusCode, 400, 'página do rodízio A/B não usa beacon');
   assert.strictEqual(gravadas.length, 1);
 
+  /* A v2 também tem beacon — sem ela, o A/B fica sem denominador */
+  res = resFalso();
+  await pageview({
+    method: 'POST', headers: { 'user-agent': UA_REAL }, socket: {},
+    body: { pagina: '/mentoria-2', query: '' },
+  }, res);
+  assert.strictEqual(res.statusCode, 201, 'a v2 registra visita');
+  assert.strictEqual(gravadas[1].corpo.pagina, '/mentoria-2');
+
+  /* Sorteio da Sessão Estratégica: /diagnostico usa o cookie próprio */
+  res = resFalso();
+  await ab({
+    method: 'GET', url: '/diagnostico?utm_source=facebook',
+    headers: { 'user-agent': UA_REAL, cookie: '_sp_variant_se=1' }, socket: {},
+  }, res);
+  assert.strictEqual(res.headers.Location, '/mentoria-2?utm_source=facebook',
+    'o cookie da oferta manda para a variante certa');
+  assert.ok(String(res.headers['Set-Cookie']).startsWith('_sp_variant_se='),
+    'cada experimento tem o seu cookie');
+
+  /* O cookie do Clube da Performance não pode valer para a outra oferta */
+  res = resFalso();
+  await ab({
+    method: 'GET', url: '/diagnostico',
+    headers: { 'user-agent': UA_REAL, cookie: '_sp_variant=2' }, socket: {},
+  }, res);
+  assert.ok(['/mentoria', '/mentoria-2'].includes(res.headers.Location),
+    'cookie do outro experimento não vaza para este');
+
+  /* O redirect da Sessão Estratégica NÃO grava visita: as páginas dela têm
+     beacon próprio, e as duas fontes juntas contariam a mesma pessoa duas
+     vezes — cortando a taxa de conversão pela metade. */
+  const antes = gravadas.length;
+  res = resFalso();
+  await ab({
+    method: 'GET', url: '/diagnostico',
+    headers: { 'user-agent': UA_REAL }, socket: {},
+  }, res);
+  assert.strictEqual(res.statusCode, 302, 'o redirect acontece');
+  assert.strictEqual(gravadas.length, antes, 'mas sem gravar visita duplicada');
+
   /* A/B continua gravando a variante depois do refactor */
   res = resFalso();
   await ab({
@@ -111,10 +152,10 @@ const pageview = (req, res) => ab({ ...req, method: 'POST' }, res);
   assert.strictEqual(res.statusCode, 302);
   assert.strictEqual(res.headers.Location, '/pre-inscricao-2?utm_source=facebook',
     'cookie sticky mantém a variante e a query string');
-  assert.strictEqual(gravadas.length, 2, 'o redirect também registra visita');
-  assert.strictEqual(gravadas[1].corpo.variant, 1);
-  assert.strictEqual(gravadas[1].corpo.pagina, '/pre-inscricao-2');
-  assert.ok(gravadas[1].url.endsWith(`/rest/v1/${TABELAS.pageViews}`));
+  const ultima = gravadas[gravadas.length - 1];
+  assert.strictEqual(ultima.corpo.variant, 1);
+  assert.strictEqual(ultima.corpo.pagina, '/pre-inscricao-2');
+  assert.ok(ultima.url.endsWith(`/rest/v1/${TABELAS.pageViews}`));
 
   console.log('✓ beacon, A/B e nomes de tabela passaram');
 })();

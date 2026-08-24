@@ -31,7 +31,8 @@ const { TABELAS } = require('../lib/supabase');
    OFERTAS
 
    Duas ofertas dividem este endpoint. O Clube da Performance é mentoria para
-   escritórios de até 10 colaboradores; a Sessão Estratégica (/mentoria) é o
+   escritórios de até 10 colaboradores; a Sessão Estratégica (/mentoria e
+   /mentoria-2, em teste A/B) é o
    diagnóstico da consultoria, para escritórios acima de 10. Os leads entram no
    mesmo funil do CRM, mas precisam ser distinguíveis depois — daí a marca no
    nome do deal e o identificador de conversão próprio no RD Marketing.
@@ -40,15 +41,20 @@ const { TABELAS } = require('../lib/supabase');
    Sessão Estratégica ganhar funil próprio, é variável, não deploy de código.
 ───────────────────────────────────────────────────────── */
 
+const SESSAO_ESTRATEGICA = {
+  rotulo:      'Sessão Estratégica',
+  marca:       '[SE]',
+  conversao:   'sessao-estrategica-consultoria',
+  tags:        ['sessao-estrategica', 'consultoria'],
+  stageEnv:    'RD_CRM_STAGE_ID_SE',
+  campaignEnv: 'RD_CRM_CAMPAIGN_ID_SE',
+};
+
+// Toda página nova da Sessão Estratégica precisa entrar aqui. Fora do mapa, o
+// lead cai no padrão e entra no funil do Clube da Performance — silenciosamente.
 const OFERTAS = {
-  '/mentoria': {
-    rotulo:      'Sessão Estratégica',
-    marca:       '[SE]',
-    conversao:   'sessao-estrategica-consultoria',
-    tags:        ['sessao-estrategica', 'consultoria'],
-    stageEnv:    'RD_CRM_STAGE_ID_SE',
-    campaignEnv: 'RD_CRM_CAMPAIGN_ID_SE',
-  },
+  '/mentoria':   SESSAO_ESTRATEGICA,
+  '/mentoria-2': SESSAO_ESTRATEGICA,
 };
 
 const OFERTA_PADRAO = {

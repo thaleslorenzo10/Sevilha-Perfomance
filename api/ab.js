@@ -17,9 +17,38 @@
 
 const { registrarVisita, ehBot, ipDaRequisicao, parametrosDe, tratarBeacon } = require('../lib/pageviews');
 
-const VARIANTS = ['/', '/pre-inscricao-2', '/pre-inscricao-3'];
-const COOKIE_NAME = '_sp_variant';
+/**
+ * Dois experimentos, um mecanismo. Cada oferta tem a sua entrada, as suas
+ * páginas e o seu cookie — misturar os dois faria o visitante do Clube da
+ * Performance carregar a variante da Sessão Estratégica e vice-versa.
+ *
+ *   /campanha    → Clube da Performance (escritórios até 10 colaboradores)
+ *   /diagnostico → Sessão Estratégica  (escritórios acima de 10)
+ */
+const EXPERIMENTOS = {
+  cp: {
+    variantes: ['/', '/pre-inscricao-2', '/pre-inscricao-3'],
+    cookie:    '_sp_variant',
+    visitaNoRedirect: true,
+  },
+  se: {
+    variantes: (process.env.AB_PAGINAS_SE || '/mentoria,/mentoria-2')
+                 .split(',').map(s => s.trim()).filter(Boolean),
+    cookie:    '_sp_variant_se',
+    // Estas páginas têm beacon próprio (assets/tracking.js), porque também são
+    // acessadas direto pelo anúncio, sem passar por aqui. Registrar a visita no
+    // redirect TAMBÉM contaria a mesma pessoa duas vezes e cortaria a taxa de
+    // conversão pela metade. Uma fonte por página: aqui, o beacon.
+    visitaNoRedirect: false,
+  },
+};
+
 const COOKIE_TTL_DAYS = 30;
+
+/** O caminho decide o experimento; sem correspondência, o rodízio antigo. */
+function experimentoDe(url) {
+  return url.pathname.includes('diagnostico') ? EXPERIMENTOS.se : EXPERIMENTOS.cp;
+}
 
 module.exports = async function handler(req, res) {
   // ── 0. Beacon das páginas fora do rodízio ───────────────────────────────
@@ -49,17 +78,20 @@ module.exports = async function handler(req, res) {
       })
   );
 
+  const incomingUrl = new URL(req.url, 'http://localhost');
+  const experimento = experimentoDe(incomingUrl);
+  const total       = experimento.variantes.length;
+
   let variant;
-  const existing = parseInt(cookieMap[COOKIE_NAME], 10);
-  if (!isNaN(existing) && existing >= 0 && existing <= 2) {
+  const existing = parseInt(cookieMap[experimento.cookie], 10);
+  if (!isNaN(existing) && existing >= 0 && existing < total) {
     variant = existing; // visitante recorrente — mesma variante
   } else {
-    variant = Math.floor(Math.random() * 3); // novo visitante — aleatorizar
+    variant = Math.floor(Math.random() * total); // novo visitante — aleatorizar
   }
 
   // ── 2. Monta URL de destino com query string preservada ─────────────────
-  const destination = VARIANTS[variant];
-  const incomingUrl = new URL(req.url, 'http://localhost');
+  const destination = experimento.variantes[variant];
   const queryString  = incomingUrl.searchParams.toString();
   const redirectUrl  = queryString ? `${destination}?${queryString}` : destination;
 
@@ -73,13 +105,13 @@ module.exports = async function handler(req, res) {
   };
 
   // ── 4. Salva pageview no Supabase (ignora bots) ──────────────────────────
-  if (!ehBot(req.headers['user-agent'])) {
+  if (experimento.visitaNoRedirect && !ehBot(req.headers['user-agent'])) {
     await registrarVisita(pageViewPayload);
   }
 
   // ── 5. Redireciona com cookie sticky ─────────────────────────────────────
   const maxAge = COOKIE_TTL_DAYS * 24 * 60 * 60;
-  res.setHeader('Set-Cookie',      `${COOKIE_NAME}=${variant}; Max-Age=${maxAge}; Path=/; SameSite=Lax; HttpOnly`);
+  res.setHeader('Set-Cookie',      `${experimento.cookie}=${variant}; Max-Age=${maxAge}; Path=/; SameSite=Lax; HttpOnly`);
   res.setHeader('Cache-Control',   'no-store, private');
   res.setHeader('Location',        redirectUrl);
   return res.status(302).end();

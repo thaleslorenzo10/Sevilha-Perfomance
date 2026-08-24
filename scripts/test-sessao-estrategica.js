@@ -28,7 +28,8 @@ assert.strictEqual(linha.length, COLUNAS.length, 'linha e cabeçalho precisam te
 assert.strictEqual(linha[COLUNAS.indexOf('telefone')], '(31) 98888-7777', 'telefone vai como texto, sem reformatar');
 assert.strictEqual(linha[COLUNAS.indexOf('pagina')], '/mentoria');
 
-assert.deepStrictEqual(paginasQueGravam(), ['/mentoria'], 'padrão grava só a /mentoria');
+assert.deepStrictEqual(paginasQueGravam(), ['/mentoria', '/mentoria-2'],
+  'as duas páginas da oferta gravam na planilha');
 process.env.LEADS_SHEET_WRITE_PAGES = '/mentoria, /outra';
 assert.deepStrictEqual(paginasQueGravam(), ['/mentoria', '/outra'], 'a lista aceita mais de uma página');
 delete process.env.LEADS_SHEET_WRITE_PAGES;
@@ -43,10 +44,10 @@ assert.strictEqual(extrairId('1AbC-dEf_123'), '1AbC-dEf_123', 'aceita o id cru')
 /* ── api/sessao-estrategica ────────────────────────────────────────── */
 
 const LEADS = [
-  { created_at: '2026-08-20T10:00:00Z', cargo: 'Dono/Sócio',       colaboradores: 'De 20 a 29', utm_source: 'facebook', utm_campaign: 'c1' },
-  { created_at: '2026-08-20T14:00:00Z', cargo: 'Dono/Sócio',       colaboradores: 'De 10 a 19', utm_source: 'facebook', utm_campaign: 'c1' },
-  { created_at: '2026-08-21T09:00:00Z', cargo: 'Cargo Gerencial',  colaboradores: 'De 5 a 9',   utm_source: 'google',   utm_campaign: 'c2' },
-  { created_at: '2026-08-21T11:00:00Z', cargo: '',                 colaboradores: '',           utm_source: '',         utm_campaign: '' },
+  { created_at: '2026-08-20T10:00:00Z', pagina: '/mentoria',   cargo: 'Dono/Sócio',      colaboradores: 'De 20 a 29', utm_source: 'facebook', utm_campaign: 'c1' },
+  { created_at: '2026-08-20T14:00:00Z', pagina: '/mentoria-2', cargo: 'Dono/Sócio',      colaboradores: 'De 10 a 19', utm_source: 'facebook', utm_campaign: 'c1' },
+  { created_at: '2026-08-21T09:00:00Z', pagina: '/mentoria-2', cargo: 'Cargo Gerencial', colaboradores: 'De 5 a 9',   utm_source: 'google',   utm_campaign: 'c2' },
+  { created_at: '2026-08-21T11:00:00Z', pagina: '/mentoria',   cargo: '',                colaboradores: '',           utm_source: '',         utm_campaign: '' },
 ];
 
 process.env.SUPABASE_URL = 'https://exemplo.supabase.co';
@@ -95,7 +96,12 @@ function resFalso() {
   assert.ok(d.nota_visitas, 'sem pageviews, o payload avisa por quê');
 
   const urlLeads = chamadas.find(u => u.includes(TABELAS.leads));
-  assert.ok(urlLeads.includes('pagina=eq.%2Fmentoria'), 'filtra pela página da oferta');
+  assert.ok(urlLeads.includes('pagina=in.'), 'filtra pelas páginas da oferta');
+  assert.ok(decodeURIComponent(urlLeads).includes('"/mentoria","/mentoria-2"'), 'as duas variantes entram no filtro');
+
+  // O A/B precisa do recorte por página, senão não há como comparar layouts.
+  assert.strictEqual(d.por_pagina['/mentoria'].leads, 2);
+  assert.strictEqual(d.por_pagina['/mentoria-2'].leads, 2);
   assert.ok(urlLeads.includes('created_at=gte.2026-08-20T00:00:00'), 'aplica a data inicial');
   assert.ok(urlLeads.includes('created_at=lte.2026-08-21T23:59:59'), 'aplica a data final');
 
