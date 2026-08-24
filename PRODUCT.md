@@ -38,7 +38,7 @@ página fala com quem decide, sem hostilizar quem indica.
 
 - Sessão Estratégica: **45 minutos**, **R$ 0,00**, sem compromisso, online e ao vivo.
 - Perfil atendido: escritórios com **mais de 10 colaboradores**.
-- **+450 contabilidades** acompanhadas.
+- **+500 contabilidades** acompanhadas.
 - **Mais de 20 anos** de mercado (o número da empresa; as biografias individuais
   têm o tempo de cada consultor).
 - Consultores: Vicente Sevilha (estratégia e finanças), Bruno Silvestre
