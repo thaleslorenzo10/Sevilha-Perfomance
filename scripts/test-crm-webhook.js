@@ -48,12 +48,28 @@ Module._load = function (pedido, pai, isMain) {
   return original.call(this, pedido, pai, isMain);
 };
 
-// O único fetch que sobra é a busca do lead original no Supabase.
-global.fetch = async () => ({
-  ok: true,
-  status: 200,
-  json: async () => ([{ telefone: '31999998888', fbclid: 'abc123', pagina: '/mentoria-2', utm_campaign: '[SE] teste', colaboradores: 'De 20 a 29', created_at: '2026-08-20T10:00:00Z' }]),
-});
+// Dois destinos: a API do RD CRM (contatos do deal) e o Supabase (lead original).
+let crmResponde = true;
+const urlsCrm = [];
+global.fetch = async (u) => {
+  const url = String(u);
+  if (url.includes('crm.rdstation.com')) {
+    urlsCrm.push(url);
+    if (!crmResponde) return { ok: false, status: 404, json: async () => ({}) };
+    return {
+      ok: true, status: 200,
+      json: async () => ({
+        id: 'deal-1',
+        contacts: [{ name: 'Fulano de Tal', emails: [{ email: 'f@x.com' }], phones: [{ phone: '31988887777' }] }],
+      }),
+    };
+  }
+  return {
+    ok: true, status: 200,
+    json: async () => ([{ telefone: '31999998888', fbclid: 'abc123', pagina: '/mentoria-2', utm_campaign: '[SE] teste', colaboradores: 'De 20 a 29', created_at: '2026-08-20T10:00:00Z' }]),
+  };
+};
+process.env.RD_CRM_TOKEN = 'token-crm';
 
 const { tratarWebhook, eventoDe } = require('../lib/crm-eventos');
 Module._load = original;
@@ -135,12 +151,42 @@ function limpar() { eventos.length = 0; travados.length = 0; }
   assert.strictEqual(eventos[0].customData.value, 4800);
   assert.strictEqual(eventos[0].customData.currency, 'BRL');
 
-  /* Sem contato não há como casar com ninguém */
+  /* Payload real do RD não traz contato: tem que buscar na API do CRM */
+  limpar();
+  urlsCrm.length = 0;
+  res = resFalso();
+  await tratarWebhook({
+    method: 'POST',
+    url: '/api/crm-webhook?token=segredo-de-teste',
+    headers: {},
+    body: {
+      event_name: 'crm_deal_updated',
+      id: 'deal-9', name: '[SE] Fulano', status: 'ongoing',
+      deal_stage: { id: 's1', name: 'Reunião agendada' },
+      deal_pipeline: { id: 'p1', name: 'Mentoria - Clube da Performance' },
+    },
+  }, res);
+  assert.strictEqual(eventos.length, 1, 'o evento sai mesmo sem contato no payload');
+  assert.ok(urlsCrm.some(u => u.includes('/deals/deal-9')), 'foi buscar a negociação na API do CRM');
+  assert.ok(eventos[0].userData.em, 'o e-mail veio da API e foi hasheado');
+
+  /* Negociação excluída não vira evento */
   limpar();
   res = resFalso();
-  await tratarWebhook(req({ ...dealBase('Reunião agendada'), contacts: [] }), res);
+  await tratarWebhook({ method: 'POST', url: '/api/crm-webhook?token=segredo-de-teste', headers: {},
+    body: { event_name: 'crm_deal_deleted', id: 'deal-9' } }, res);
+  assert.strictEqual(eventos.length, 0, 'exclusão não manda evento');
+
+  /* CRM fora do ar: sem contato, nada é enviado — e nada é travado */
+  limpar();
+  crmResponde = false;
+  res = resFalso();
+  await tratarWebhook({ method: 'POST', url: '/api/crm-webhook?token=segredo-de-teste', headers: {},
+    body: { event_name: 'crm_deal_updated', id: 'deal-10', deal_stage: { name: 'Reunião agendada' } } }, res);
   assert.strictEqual(eventos.length, 0);
+  assert.strictEqual(travados.length, 0);
   assert.strictEqual(res.corpo.motivo, 'contato ausente');
+  crmResponde = true;
 
   /* Meta recusa → não trava, para o reenvio do CRM ter chance */
   limpar();
