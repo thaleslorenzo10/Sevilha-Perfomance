@@ -16,6 +16,7 @@ Duas ofertas dividem o mesmo repositório e a mesma stack, e é fácil confundi-
 |---|---|---|
 | O que é | Diagnóstico individual de 45 min, gratuito | Mentoria em grupo, encontros semanais |
 | Público | Escritórios com **mais de 10** colaboradores | Escritórios com **até 10** colaboradores |
+| Quem conduz | **Bruno Silvestre** | Time da Sevilha |
 | Páginas | `/mentoria`, `/mentoria-2` | `/`, `/pre-inscricao-2`, `/pre-inscricao-3` |
 | Destino | WhatsApp para agendar a reunião | Grupo de WhatsApp / fila de vagas |
 | Marca no CRM | deal prefixado `[SE]` | deal sem prefixo |
@@ -44,6 +45,13 @@ página fala com quem decide, sem hostilizar quem indica.
 - Consultores: Vicente Sevilha (estratégia e finanças), Bruno Silvestre
   (processos e margem), Rodrigo Pires (time e estrutura). Fotos reais em
   `/Vicente.jpeg`, `/Bruno.jpeg`, `/Rodrigo.jpeg`.
+- **Quem conduz a Sessão Estratégica é o Bruno Silvestre** (decisão dele,
+  23/08/2026). As páginas nomeiam só ele; se outro consultor passar a atender,
+  a página vira promessa falsa e precisa mudar junto.
+- **Não está confirmado que ele seja sócio** — não escrever isso.
+- O formulário aceita quem tem menos de 10 colaboradores: o aviso de porte
+  informa, mas não bloqueia mais o envio. Quem separa é o time, no CRM. O sinal
+  de perfil para o Meta continua vindo do LeadQualificado, que só dispara com 10+.
 - O antes e o depois publicados: "tira folga e algo quebra", "delega e a tarefa
   volta", "fatura mais, sobra o mesmo" → "o escritório anda sem você no centro",
   "você sabe onde a margem vaza".

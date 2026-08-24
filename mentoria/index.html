@@ -207,6 +207,26 @@
     .card .ic svg { width: 22px; height: 22px; }
 
     /* ── Mentores ───────────────────────────────────────── */
+    /* Um condutor só: o cartão dá lugar a um bloco horizontal, e o retrato
+       continua exibido inteiro pelo mesmo motivo do .person img. */
+    .condutor {
+      display: grid; grid-template-columns: 220px 1fr; gap: 30px; align-items: center;
+      max-width: 780px; margin: 0 auto;
+    }
+    .condutor img {
+      width: 220px; height: auto; aspect-ratio: 1 / 1; object-fit: contain;
+      border-radius: 18px; background: #f7f7f7; padding: 10px 10px 0; display: block;
+    }
+    .condutor h3 { font-size: 1.35rem; }
+    .condutor .role {
+      display: block; font-size: .9rem; font-weight: 600; color: var(--teal); margin-top: 5px;
+    }
+    .condutor p { font-size: .97rem; color: var(--muted); margin-top: 14px; }
+    @media (max-width: 640px) {
+      .condutor { grid-template-columns: 1fr; gap: 18px; }
+      .condutor img { width: 150px; }
+    }
+
     .people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
     .person {
       background: var(--surface); border: 1px solid var(--border);
@@ -393,7 +413,7 @@
       </p>
 
       <ul class="hero-list">
-        <li><span class="tick">✓</span><span><b>45 minutos</b> de conversa individual com um consultor da Sevilha Performance</span></li>
+        <li><span class="tick">✓</span><span><b>45 minutos</b> de conversa individual com o Bruno Silvestre, da Sevilha Performance</span></li>
         <li><span class="tick">✓</span><span>Leitura da sua estrutura, processos, margem e time</span></li>
         <li><span class="tick">✓</span><span>Saída com prioridades claras — <b>mesmo que você não contrate nada</b></span></li>
         <li><span class="tick">✓</span><span>Conduzida por quem já acompanhou +500 contabilidades</span></li>
@@ -409,7 +429,7 @@
       <ol>
         <li>Você preenche o formulário com os dados do escritório.</li>
         <li>Nosso time entra em contato pelo WhatsApp para agendar a melhor data.</li>
-        <li>Você conversa com um consultor por 45 minutos e recebe o diagnóstico do seu escritório.</li>
+        <li>Você conversa com o Bruno por 45 minutos e recebe o diagnóstico do seu escritório.</li>
       </ol>
       <div class="price-row">
         <strong>R$ 0,00</strong>
@@ -508,33 +528,20 @@
   <div class="container">
     <div class="narrow center">
       <span class="sec-tag">Quem conduz</span>
-      <h2 class="sec-title">Você conversa com quem já viveu o problema</h2>
+      <h2 class="sec-title">Quem conduz a sua sessão</h2>
     </div>
 
-    <div class="people">
-      <div class="person">
-        <img src="/Vicente.jpeg" alt="Vicente Sevilha" width="281" height="358" fetchpriority="low" />
-        <div class="who">
-          <h3>Vicente Sevilha</h3>
-          <span class="role">Leitura de estratégia e finanças</span>
-          <p>Empresário contábil há mais de 35 anos, com visão estratégica e experiência prática.</p>
-        </div>
-      </div>
-      <div class="person">
-        <img src="/Bruno.jpeg" alt="Bruno Silvestre" width="281" height="358" fetchpriority="low" />
-        <div class="who">
-          <h3>Bruno Silvestre</h3>
-          <span class="role">Leitura de processos e margem</span>
-          <p>Referência em performance e produtividade no setor contábil, com foco em entrega e margem.</p>
-        </div>
-      </div>
-      <div class="person">
-        <img src="/Rodrigo.jpeg" alt="Rodrigo Pires" width="281" height="358" fetchpriority="low" />
-        <div class="who">
-          <h3>Rodrigo Pires</h3>
-          <span class="role">Leitura de time e estrutura</span>
-          <p>Especialista em gestão organizacional e de pessoas, há 20 anos conectando estratégia, cultura e execução.</p>
-        </div>
+    <div class="condutor">
+      <img src="/Bruno.jpeg" alt="Bruno Silvestre" width="281" height="358" fetchpriority="low" />
+      <div class="who">
+        <h3>Bruno Silvestre</h3>
+        <span class="role">Processos e margem · Sevilha Performance</span>
+        <p>
+          Referência em performance e produtividade no setor contábil. É ele quem
+          conduz o diagnóstico dos escritórios acima de 10 colaboradores, apoiado
+          na experiência de mais de 20 anos da Sevilha e em +500 contabilidades
+          acompanhadas.
+        </p>
       </div>
     </div>
   </div>
@@ -588,7 +595,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false" onclick="toggleFaq(this)">Atende escritório com menos de 10 colaboradores? <span>+</span></button>
-        <div class="faq-a">A consultoria é desenhada para escritórios acima de 10 colaboradores. Abaixo disso, os gargalos são outros e o trabalho não entrega o mesmo resultado.</div>
+        <div class="faq-a">A consultoria é desenhada para escritórios acima de 10 colaboradores. Abaixo disso os gargalos são outros — você pode se inscrever mesmo assim, e o time indica o formato certo para o seu porte.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false" onclick="toggleFaq(this)">Como é feito o agendamento? <span>+</span></button>
@@ -596,7 +603,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false" onclick="toggleFaq(this)">A sessão é presencial ou online? <span>+</span></button>
-        <div class="faq-a">Online e ao vivo, com um consultor da Sevilha Performance. São 45 minutos — o suficiente para ler o escritório e sair com prioridades definidas.</div>
+        <div class="faq-a">Online e ao vivo, com o Bruno Silvestre. São 45 minutos — o suficiente para ler o escritório e sair com prioridades definidas.</div>
       </div>
     </div>
   </div>
@@ -692,9 +699,9 @@
         </div>
 
         <div class="route" id="route-porte">
-          <strong>Esse diagnóstico é desenhado para escritórios acima de 10 colaboradores.</strong>
-          Abaixo disso os gargalos são outros, e a consultoria não entrega o mesmo resultado.
-          O <a href="/campanha" id="route-link">Clube da Performance</a> foi feito exatamente para o seu porte.
+          <strong>Abaixo de 10 colaboradores o diagnóstico é outro.</strong>
+          Você pode se inscrever normalmente — nosso time vai te chamar no WhatsApp
+          e indicar o formato que faz sentido para o seu porte.
         </div>
 
         <div class="route" id="route-cargo">
@@ -724,7 +731,6 @@
 
        <div class="modal-foot">
         <button type="submit" id="submit-btn" class="btn btn-full">Quero meu diagnóstico →</button>
-        <a href="/campanha" class="btn btn-full" id="route-btn" style="display:none;">Conhecer o Clube da Performance →</a>
         <p class="form-privacy" id="form-privacy">Leva menos de 1 minuto. Sem spam.</p>
        </div>
       </form>
@@ -749,13 +755,6 @@
   var overlay = document.getElementById('modal-overlay');
   document.getElementById('wa-link').href = WHATSAPP_URL;
   document.getElementById('err-wa').href  = WHATSAPP_URL;
-
-  /* O visitante fora do perfil vale como lead do Clube da Performance, que
-     atende escritórios menores — /campanha é a entrada do teste A/B dele.
-     A query string vai junto para não perder a origem do anúncio. */
-  var CLUBE_URL = '/campanha' + window.location.search;
-  document.getElementById('route-link').href = CLUBE_URL;
-  document.getElementById('route-btn').href  = CLUBE_URL;
 
   /* ── Modal ── */
   var lastFocus = null;
@@ -798,11 +797,13 @@
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
 
-  /* ── Qualificação por porte e cargo ──
-     A página promete 10+ colaboradores em quatro lugares; aceitar quem está
-     abaixo disso gera um lead que será recusado por um humano e ainda ensina o
-     Meta a buscar mais gente fora do perfil. Em vez de esconder as opções, a
-     seleção roteia para a oferta certa. */
+  /* ── Aviso de porte e cargo ──
+     Quem está abaixo de 10 colaboradores entra como lead igual: o time decide o
+     destino no CRM. O aviso continua porque a expectativa precisa ser correta
+     antes do WhatsApp — mas ele não bloqueia mais o envio.
+
+     O sinal de perfil para o Meta não depende disto: quem dispara o
+     LeadQualificado é a resposta de porte, em /api/leads. */
   var FORA_DO_PORTE = ['De 0 a 4', 'De 5 a 9'];
 
   var colab   = document.getElementById('f-colab');
@@ -810,15 +811,11 @@
   var rPorte  = document.getElementById('route-porte');
   var rCargo  = document.getElementById('route-cargo');
   var btnSend = document.getElementById('submit-btn');
-  var btnRoute= document.getElementById('route-btn');
 
   function avaliarPerfil() {
     var fora = FORA_DO_PORTE.indexOf(colab.value) > -1;
     rPorte.classList.toggle('on', fora);
     rCargo.classList.toggle('on', cargo.value === 'Cargo Operacional' && !fora);
-    btnSend.style.display  = fora ? 'none' : '';
-    btnRoute.style.display = fora ? '' : 'none';
-    document.getElementById('form-privacy').style.visibility = fora ? 'hidden' : '';
   }
 
   colab.addEventListener('change', avaliarPerfil);
