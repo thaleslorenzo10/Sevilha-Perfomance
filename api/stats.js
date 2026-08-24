@@ -13,6 +13,11 @@ const { TABELAS } = require('../lib/supabase');
 const { responder: responderSessaoEstrategica } = require('../lib/sessao-estrategica');
 const { ehQualificado } = require('../lib/porte');
 
+// O banco grava em UTC e o dashboard pergunta em data de Brasília. Sem o
+// offset, um lead das 21h-24h cai no dia seguinte e some do período — foi
+// assim que o primeiro lead da /mentoria-2 não apareceu no relatório.
+const FUSO = '-03:00';
+
 const PAGES = ['/', '/pre-inscricao-2', '/pre-inscricao-3'];
 
 module.exports = async function handler(req, res) {
@@ -53,8 +58,8 @@ module.exports = async function handler(req, res) {
 
   function buildFilter(table, select) {
     let url = `${supabaseUrl}/rest/v1/${table}?select=${select}`;
-    if (from) url += `&created_at=gte.${from}T00:00:00`;
-    if (to)   url += `&created_at=lte.${to}T23:59:59`;
+    if (from) url += `&created_at=gte.${from}T00:00:00${FUSO}`;
+    if (to)   url += `&created_at=lte.${to}T23:59:59${FUSO}`;
     return url;
   }
 

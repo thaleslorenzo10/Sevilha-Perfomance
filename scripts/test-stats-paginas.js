@@ -48,7 +48,16 @@ function resFalso() {
 
 (async () => {
   const res = resFalso();
+  const urlsPedidas = [];
+  const fetchOriginal = global.fetch;
+  global.fetch = async (u) => { urlsPedidas.push(String(u)); return fetchOriginal(u); };
   await handler({ method: 'GET', url: '/api/stats?since=2026-08-01&until=2026-08-31' }, res);
+  global.fetch = fetchOriginal;
+
+  // Lead das 21h de Brasília é 00h do dia seguinte em UTC: sem o offset ele cai
+  // fora do período e o relatório mente sobre o último dia.
+  assert.ok(urlsPedidas.every(u => u.includes('T23:59:59-03:00')),
+    'o filtro de data precisa levar o fuso de Brasília');
 
   const por = Object.fromEntries((res.corpo.paginas || []).map(p => [p.pagina, p]));
 
