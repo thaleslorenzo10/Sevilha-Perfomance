@@ -168,6 +168,9 @@
     /* ── Bloco 5: como funciona ─────────────────────────── */
     .steps { list-style: none; counter-reset: s; display: grid; gap: 18px; }
     .steps li { counter-increment: s; display: grid; grid-template-columns: 30px 1fr; gap: 14px; font-size: .95rem; }
+    /* Três passos ao lado de três retratos: esticar o card curto até a altura
+       do vizinho deixaria um terço dele vazio. O card para onde o texto para. */
+    .steps-cell { align-self: start; }
     .steps li::before {
       content: counter(s); width: 30px; height: 30px; border-radius: 10px;
       background: rgba(61,214,58,.16); color: var(--green-ink);
@@ -180,7 +183,9 @@
     .people { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--gap); margin-top: 6px; }
     .person { display: grid; gap: 12px; }
     .person img {
-      width: 100%; aspect-ratio: 1 / 1; border-radius: 14px; object-fit: contain;
+      /* height:auto é obrigatório: sem ele o atributo height="358" do HTML vence
+         o aspect-ratio e o retrato vira uma faixa vazia de 358px no celular. */
+      width: 100%; height: auto; aspect-ratio: 1 / 1; border-radius: 14px; object-fit: contain;
       background: #f7f7f7; display: block;
     }
     .person h3 { font-size: 1.05rem; }
@@ -335,7 +340,7 @@
 
     <!-- 1 · A tese -->
     <section class="cell thesis c8">
-      <h1>O que trava o seu escritório <span class="mark">não é técnico</span>. É gestão.</h1>
+      <h1>O que trava o seu escritório <span class="mark">não é técnico.</span> É gestão.</h1>
       <p>
         A Sessão Estratégica é um diagnóstico individual do seu escritório: o que travou
         o crescimento até aqui e o que precisa mudar para o próximo ciclo ser diferente.
@@ -386,7 +391,7 @@
     </section>
 
     <!-- 5 · Como funciona -->
-    <section class="cell c4">
+    <section class="cell c4 steps-cell">
       <h2>Como funciona</h2>
       <p class="sub">Do formulário até a sessão.</p>
       <ol class="steps">
