@@ -334,6 +334,28 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
   </div>
 
   <div class="section">
+    <div class="section-title">🌐 Páginas de captura — acessos e conversão</div>
+    <div class="section-note">
+      Cada página de formulário do site, com o que ela recebeu e o que ela entregou.
+      <strong>Acesso</strong> é visita registrada pelo próprio site — quem preenche o
+      formulário instantâneo do Meta nunca passa por aqui, então essas linhas medem
+      só a captação por landing page. Página sem contagem de acesso aparece com
+      <strong>—</strong> na conversão: sem denominador não há taxa.
+      <strong>Lead 10+</strong> usa a mesma regra que dispara o LeadQualificado no Meta.
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>Página</th>
+          <th class="num">Acessos</th><th class="num">Leads</th><th class="num">Conversão</th>
+          <th class="num">Leads 10+</th><th class="num">% com perfil</th>
+        </tr></thead>
+        <tbody id="tblPaginas"><tr><td colspan="6" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section">
     <div class="section-title">📈 Leads por dia — Meta × planilha</div>
     <div class="section-note">
       As duas linhas do Meta são o que ele atribui a cada formato. A linha escura são os
@@ -931,6 +953,51 @@ function renderDistribuicao(tbodyId, entradas, total) {
 }
 
 /**
+ * Páginas de captura: acesso, lead, conversão e perfil, uma linha por página.
+ *
+ * A lista vem do banco, não daqui: página nova entra sozinha na tabela. Quem não
+ * tem acesso contado (formulário do Meta, ou página fora do beacon) mostra "—" na
+ * conversão — número inventado num relatório de captação vira decisão errada de verba.
+ */
+function renderPaginas(tbodyId, paginas) {
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+
+  const linhas = (paginas?.paginas || []).filter(p => p.visits || p.leads);
+  if (!linhas.length) {
+    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:20px;color:var(--gray)">Sem acessos nem leads no período</td></tr>';
+    return;
+  }
+
+  const total = linhas.reduce((acc, p) => ({
+    visits: acc.visits + p.visits,
+    leads:  acc.leads  + p.leads,
+    qual:   acc.qual   + p.leads_qualificados,
+  }), { visits: 0, leads: 0, qual: 0 });
+
+  const corpo = linhas.map(p => `<tr>
+      <td><strong>${esc(p.pagina)}</strong></td>
+      <td class="num">${p.visits ? fmtN(p.visits) : '—'}</td>
+      <td class="num">${fmtN(p.leads)}</td>
+      <td class="num">${p.conversion_rate === null ? '—' : `<strong>${fmtP(p.conversion_rate)}</strong>`}</td>
+      <td class="num">${fmtN(p.leads_qualificados)}</td>
+      <td class="num">${p.qualification_rate === null ? '—' : fmtP(p.qualification_rate)}</td>
+    </tr>`).join('');
+
+  const convTotal = total.visits > 0 ? fmtP(total.leads / total.visits * 100) : '—';
+  const qualTotal = total.leads  > 0 ? fmtP(total.qual  / total.leads  * 100) : '—';
+
+  tbody.innerHTML = corpo + `<tr class="linha-total">
+      <td><strong>Total</strong></td>
+      <td class="num"><strong>${total.visits ? fmtN(total.visits) : '—'}</strong></td>
+      <td class="num"><strong>${fmtN(total.leads)}</strong></td>
+      <td class="num"><strong>${convTotal}</strong></td>
+      <td class="num"><strong>${fmtN(total.qual)}</strong></td>
+      <td class="num"><strong>${qualTotal}</strong></td>
+    </tr>`;
+}
+
+/**
  * Porte do escritório × formato de campanha.
  * Custo por lead = investimento do formato ÷ leads daquele porte. É o custo
  * de conseguir um lead daquele porte — não uma divisão do investimento.
@@ -1033,14 +1100,15 @@ async function loadAll() {
 
   try {
     // O Meta é obrigatório; planilha e CRM degradam sem derrubar a tela.
-    const [meta, planilha, rd, lpMentoria] = await Promise.all([
+    const [meta, planilha, rd, lpMentoria, paginas] = await Promise.all([
       getJSON(`/api/meta?${qs}`),
       getJSON(`/api/sheet-leads?${qs}`).catch(e => { console.warn('planilha:', e.message); return null; }),
       getJSON(`/api/rd-stats?from=${since}&to=${until}`).catch(e => { console.warn('rd:', e.message); return null; }),
       getJSON(`/api/sessao-estrategica?${qs}`).catch(e => { console.warn('lp /mentoria:', e.message); return null; }),
+      getJSON(`/api/stats?${qs}`).catch(e => { console.warn('paginas:', e.message); return null; }),
     ]);
 
-    lastPayload = { meta, planilha, rd, lpMentoria };
+    lastPayload = { meta, planilha, rd, lpMentoria, paginas };
     render(lastPayload);
 
     dot.className = 'status-dot';
@@ -1062,7 +1130,7 @@ async function loadAll() {
 }
 
 /* ── Render ─────────────────────────────────────────────────────────── */
-function render({ meta, planilha, rd, lpMentoria }) {
+function render({ meta, planilha, rd, lpMentoria, paginas }) {
   const C = {
     forms: cssVar('--forms'), lp: cssVar('--lp'),
     se: cssVar('--se'), cp: cssVar('--cp'), accent: cssVar('--accent'),
@@ -1135,6 +1203,7 @@ function render({ meta, planilha, rd, lpMentoria }) {
   // Mesma tabela da aba Formatos: os cards acima dão o consolidado, a tabela
   // abre por formato de campanha.
   renderPorte('tblPorteGeral', planilha, fForms.spend, fLP.spend);
+  renderPaginas('tblPaginas', paginas);
 
   // As duas faixas dividem o mesmo investimento — dito na tela para ninguém
   // somar as duas colunas de custo achando que dá o total investido.
