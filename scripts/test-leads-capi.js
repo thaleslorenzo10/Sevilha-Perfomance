@@ -50,6 +50,9 @@ const LEAD = {
   event_id:      'ev_fixo_para_o_teste',
   pagina:        '/pre-inscricao',
   page_url:      'https://sevilhaperformance.com.br/pre-inscricao',
+  referrer:      'https://l.instagram.com/',
+  external_id:   'u_navegador_1',
+  escritorio:    'Contabilidade Exemplo',
 };
 
 let falhas = 0;
@@ -87,11 +90,21 @@ function ok(cond, msg, extra) {
   ok(ud.fbc === `fb.1.${evento.event_time * 1000}.fbclid123`, 'fbc derivado do fbclid', ud.fbc);
   ok(ud.client_ip_address === '198.51.100.9', 'IP do cliente', ud.client_ip_address);
   ok(ud.client_user_agent === 'Mozilla/5.0 (teste)', 'user agent', ud.client_user_agent);
+  // Dois external_id: o id do navegador e o e-mail. O CRM identifica a pessoa
+  // pelo e-mail — sem ele aqui, os dois eventos não caem sobre a mesma pessoa.
+  ok(Array.isArray(ud.external_id) && ud.external_id.length === 2
+     && ud.external_id[0] === sha('u_navegador_1')
+     && ud.external_id[1] === sha('maria@exemplo.com'),
+     'external_id leva o id do navegador e o e-mail, hasheados', ud.external_id);
 
   console.log('\n— contexto —');
   ok(cd.content_name === '/pre-inscricao', 'content_name é a página', cd.content_name);
   ok(cd.utm_campaign === LEAD.utm_campaign, 'utm_campaign no custom_data', cd.utm_campaign);
   ok(cd.utm_content === 'AD07', 'utm_content no custom_data', cd.utm_content);
+  ok(evento?.referrer_url === LEAD.referrer, 'referrer_url é de onde a visita veio', evento?.referrer_url);
+  ok(cd.colaboradores === LEAD.colaboradores, 'porte no custom_data', cd.colaboradores);
+  ok(cd.cargo === LEAD.cargo, 'cargo no custom_data', cd.cargo);
+  ok(cd.escritorio === LEAD.escritorio, 'escritório no custom_data', cd.escritorio);
 
   console.log('\n— nada de PII em claro —');
   const cru = JSON.stringify(capi.body);

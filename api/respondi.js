@@ -192,10 +192,22 @@ function corpoComoObjeto(body) {
   return null;
 }
 
-function ipDoCliente(req) {
+function ipDoCliente(req, pares) {
+  // O webhook chega do servidor do Respondi, não do navegador de quem
+  // preencheu: o IP da conexão é de datacenter e o Meta o trata como se fosse o
+  // do visitante. Quando o payload traz o IP do respondente, ele vence.
+  const doPayload = pares && acharPorChave(pares, c => c === 'ip' || c === 'ipaddress' || c === 'clientip' || c === 'remoteip');
+  if (doPayload) return doPayload;
+
   const encaminhado = req.headers?.['x-forwarded-for'];
   if (encaminhado) return String(encaminhado).split(',')[0].trim();
   return req.socket?.remoteAddress || '';
+}
+
+/** Mesma história do IP: o do payload é o do visitante; o do header, do Respondi. */
+function userAgentDoCliente(req, pares) {
+  return (pares && acharPorChave(pares, c => c === 'useragent' || c === 'browser' || c === 'navegador'))
+      || req.headers?.['user-agent'] || '';
 }
 
 /* ── Handler ─────────────────────────────────────────────────────────── */
@@ -248,9 +260,12 @@ module.exports = async function handler(req, res) {
       telefone,
       nome:      acharNome(pares),
       pais:      'br',
+      // O e-mail é o external_id que o CRM usa; o id da submissão é o desta
+      // origem. Os dois juntos ligam este evento aos do CRM.
+      externalId: [acharIdSubmissao(payload), email].filter(Boolean),
       fbclid:    acharExato(pares, 'fbclid'),
-      ip:        ipDoCliente(req),
-      userAgent: req.headers?.['user-agent'] || '',
+      ip:        ipDoCliente(req, pares),
+      userAgent: userAgentDoCliente(req, pares),
       quandoMs,
     }),
     customData: {
@@ -258,6 +273,8 @@ module.exports = async function handler(req, res) {
       utm_campaign: acharExato(pares, 'utm_campaign'),
       utm_source:   acharExato(pares, 'utm_source'),
       utm_content:  acharExato(pares, 'utm_content'),
+      utm_medium:   acharExato(pares, 'utm_medium'),
+      utm_term:     acharExato(pares, 'utm_term'),
     },
     sourceUrl:    FORM_URL,
     actionSource: 'website',

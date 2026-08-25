@@ -291,7 +291,7 @@ module.exports = async function handler(req, res) {
           // Identificador proprio do lead: o id do Meta para FORMS, o id da
           // submissao do Respondi para LP. Conta como parametro a mais na nota
           // de correspondencia.
-          externalId: lead.leadId || lead.submissao,
+          externalId: [lead.leadId || lead.submissao, lead.email].filter(Boolean),
           fbclid:   lead.fbclid,
           quandoMs: lead.quandoMs,
           pais:     'br',

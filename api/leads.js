@@ -381,7 +381,7 @@ async function sendToRDCRM(data) {
 
 const EVENTO_QUALIFICADO = 'LeadQualificado';
 
-async function enviarLeadQualificado(data, { userData, eventTime, sourceUrl }) {
+async function enviarLeadQualificado(data, { userData, eventTime, sourceUrl, referrerUrl }) {
   if (!ehQualificado(data.colaboradores)) return { enviado: false, motivo: 'fora do porte' };
 
   const contato = data.email || data.telefone;
@@ -411,8 +411,10 @@ async function enviarLeadQualificado(data, { userData, eventTime, sourceUrl }) {
         utm_campaign:  data.utm_campaign || undefined,
         utm_source:    data.utm_source   || undefined,
         utm_content:   data.utm_content  || undefined,
+        escritorio:    data.escritorio    || undefined,
       },
       sourceUrl,
+      referrerUrl,
       actionSource: 'website',
     });
 
@@ -467,6 +469,7 @@ module.exports = async function handler(req, res) {
     ttclid        = '',
     msclkid       = '',
     pagina        = '/',
+    referrer      = '',
     cargo         = '',
     colaboradores = '',
     escritorio    = '',
@@ -493,7 +496,11 @@ module.exports = async function handler(req, res) {
   // ── 2-5. Planilha + RD Marketing + RD CRM + Meta CAPI em paralelo ──
   const userData = montarUserData({
     email, telefone, nome, pais: 'br',
-    externalId: external_id, fbp, fbc, fbclid,
+    // O id do navegador e o e-mail: o CRM identifica a pessoa pelo e-mail, e
+    // sem ele aqui o Lead da landing page e o evento do CRM ficam sendo duas
+    // pessoas diferentes para o Meta.
+    externalId: [external_id, email],
+    fbp, fbc, fbclid,
     ip, userAgent: ua, quandoMs: eventTime * 1000,
   });
 
@@ -506,8 +513,14 @@ module.exports = async function handler(req, res) {
   if (utm_term)     customData.utm_term     = utm_term;
   if (utm_content)  customData.utm_content  = utm_content;
   if (gclid)        customData.gclid        = gclid;
+  if (cargo)         customData.cargo         = cargo;
+  if (colaboradores) customData.colaboradores = colaboradores;
+  if (escritorio)    customData.escritorio    = escritorio;
 
-  const sourceUrl = page_url || req.headers.referer || '';
+  const sourceUrl   = page_url || req.headers.referer || '';
+  // De onde veio a visita. `event_source_url` é a página do formulário; este é
+  // o passo anterior, e o Meta o usa como sinal próprio de atribuição.
+  const referrerUrl = referrer || '';
 
   const [, , , capiResult, qualificadoResult] = await Promise.allSettled([
     gravarLead(leadData),
@@ -520,9 +533,10 @@ module.exports = async function handler(req, res) {
       userData,
       customData,
       sourceUrl,
+      referrerUrl,
       actionSource: 'website',
     }),
-    enviarLeadQualificado(leadData, { userData, eventTime, sourceUrl }),
+    enviarLeadQualificado(leadData, { userData, eventTime, sourceUrl, referrerUrl }),
   ]);
 
   const capiData = capiResult.status === 'fulfilled' ? capiResult.value : {};

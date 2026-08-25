@@ -1,0 +1,1083 @@
+{
+  "log": {
+    "browser": {
+      "name": "Chrome",
+      "version": "152.0.7977.42"
+    },
+    "creator": {
+      "name": "agent-browser",
+      "version": "0.34.0"
+    },
+    "entries": [
+      {
+        "_resourceType": "Fetch",
+        "cache": {},
+        "request": {
+          "bodySize": 736,
+          "cookies": [],
+          "headers": [
+            {
+              "name": "Accept",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept-Language",
+              "value": "pt-BR,pt;q=0.9"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Referer",
+              "value": "http://localhost:8791/mentoria/?utm_source=teste&utm_campaign=camp1&fbclid=ABC123"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            }
+          ],
+          "headersSize": -1,
+          "httpVersion": "HTTP/1.1",
+          "method": "POST",
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"nome\":\"Ana Maria Souza\",\"email\":\"ANA@Exemplo.com\",\"telefone\":\"(11) 91111-1111\",\"escritorio\":\"Escritorio Teste\",\"cargo\":\"Cargo Operacional\",\"colaboradores\":\"Mais de 50\",\"utm_source\":\"teste\",\"utm_medium\":\"\",\"utm_campaign\":\"camp1\",\"utm_term\":\"\",\"utm_content\":\"\",\"fbclid\":\"ABC123\",\"gclid\":\"\",\"ttclid\":\"\",\"msclkid\":\"\",\"fbp\":\"fb.1.1787679744570.1044983280\",\"fbc\":\"fb.1.1787679788725.ABC123\",\"external_id\":\"u_1787679744574_g9a6xmz\",\"event_id\":\"ev_1787679789019_xsnjl2r\",\"page_url\":\"http://localhost:8791/mentoria/?utm_source=teste&utm_campaign=camp1&fbclid=ABC123\",\"user_agent\":\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36\",\"pagina\":\"/mentoria\",\"referrer\":\"\"}"
+          },
+          "queryString": [],
+          "url": "http://localhost:8791/api/leads"
+        },
+        "response": {
+          "bodySize": 28,
+          "content": {
+            "mimeType": "application/octet-stream",
+            "size": 28
+          },
+          "cookies": [],
+          "headers": [],
+          "headersSize": -1,
+          "httpVersion": "HTTP/1.1",
+          "redirectURL": "",
+          "status": 200,
+          "statusText": "OK"
+        },
+        "startedDateTime": "2026-08-25T17:43:09.020342016Z",
+        "time": 0.00100000761449337,
+        "timings": {
+          "receive": 0.00100000761449337,
+          "send": 0.0,
+          "wait": 0.0
+        }
+      },
+      {
+        "_resourceType": "Fetch",
+        "cache": {},
+        "request": {
+          "bodySize": 0,
+          "cookies": [],
+          "headers": [
+            {
+              "name": "Accept-Language",
+              "value": "pt-BR,pt;q=0.9"
+            },
+            {
+              "name": "Referer",
+              "value": "http://localhost:8791/"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            }
+          ],
+          "headersSize": -1,
+          "httpVersion": "HTTP/3.0",
+          "method": "GET",
+          "queryString": [
+            {
+              "name": "random",
+              "value": "1787679789038"
+            },
+            {
+              "name": "cv",
+              "value": "11"
+            },
+            {
+              "name": "fst",
+              "value": "1787679789038"
+            },
+            {
+              "name": "fmt",
+              "value": "7"
+            },
+            {
+              "name": "bg",
+              "value": "ffffff"
+            },
+            {
+              "name": "guid",
+              "value": "ON"
+            },
+            {
+              "name": "async",
+              "value": "1"
+            },
+            {
+              "name": "en",
+              "value": "conversion"
+            },
+            {
+              "name": "gtm",
+              "value": "45be68o0za200xec"
+            },
+            {
+              "name": "gcd",
+              "value": "13l3l3l3l1l1"
+            },
+            {
+              "name": "dma",
+              "value": "0"
+            },
+            {
+              "name": "tag_exp",
+              "value": "115938465~115938469~118897920~118897930~119367802~119367810~120385422~120420415"
+            },
+            {
+              "name": "u_w",
+              "value": "800"
+            },
+            {
+              "name": "u_h",
+              "value": "600"
+            },
+            {
+              "name": "url",
+              "value": "http://localhost:8791/mentoria/?utm_source=teste&utm_campaign=camp1&fbclid=ABC123"
+            },
+            {
+              "name": "rcb",
+              "value": "15"
+            },
+            {
+              "name": "label",
+              "value": "XXXXXXXXXXXXXXXXXXXXX"
+            },
+            {
+              "name": "gtm_ee",
+              "value": "1"
+            },
+            {
+              "name": "frm",
+              "value": "0"
+            },
+            {
+              "name": "tiba",
+              "value": "Sessão Estratégica — Sevilha Performance"
+            },
+            {
+              "name": "oid",
+              "value": "ev_1787679789019_xsnjl2r"
+            },
+            {
+              "name": "value",
+              "value": "0"
+            },
+            {
+              "name": "currency_code",
+              "value": "BRL"
+            },
+            {
+              "name": "hn",
+              "value": "www.googleadservices.com"
+            },
+            {
+              "name": "npa",
+              "value": "0"
+            },
+            {
+              "name": "pscdl",
+              "value": "noapi"
+            },
+            {
+              "name": "auid",
+              "value": "1849991610.1787679745"
+            },
+            {
+              "name": "uaa",
+              "value": "arm"
+            },
+            {
+              "name": "uab",
+              "value": "64"
+            },
+            {
+              "name": "uafvl",
+              "value": "Not%3FA_Brand;24.0.0.0|Chromium;152.0.7977.42"
+            },
+            {
+              "name": "uamb",
+              "value": "0"
+            },
+            {
+              "name": "uam",
+              "value": ""
+            },
+            {
+              "name": "uap",
+              "value": "macOS"
+            },
+            {
+              "name": "uapv",
+              "value": "26.6.1"
+            },
+            {
+              "name": "uaw",
+              "value": "0"
+            },
+            {
+              "name": "gcl_ctr",
+              "value": "2~0~0~0"
+            },
+            {
+              "name": "data",
+              "value": "event=conversion"
+            },
+            {
+              "name": "category",
+              "value": "acrcp_v1_512"
+            },
+            {
+              "name": "ept",
+              "value": "5"
+            }
+          ],
+          "url": "https://www.googleadservices.com/pagead/conversion/XXXXXXXXXX/?random=1787679789038&cv=11&fst=1787679789038&fmt=7&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be68o0za200xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938469~118897920~118897930~119367802~119367810~120385422~120420415&u_w=800&u_h=600&url=http%3A%2F%2Flocalhost%3A8791%2Fmentoria%2F%3Futm_source%3Dteste%26utm_campaign%3Dcamp1%26fbclid%3DABC123&rcb=15&label=XXXXXXXXXXXXXXXXXXXXX&gtm_ee=1&frm=0&tiba=Sess%C3%A3o%20Estrat%C3%A9gica%20%E2%80%94%20Sevilha%20Performance&oid=ev_1787679789019_xsnjl2r&value=0&currency_code=BRL&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1849991610.1787679745&uaa=arm&uab=64&uafvl=Not%253FA_Brand%3B24.0.0.0%7CChromium%3B152.0.7977.42&uamb=0&uam=&uap=macOS&uapv=26.6.1&uaw=0&gcl_ctr=2~0~0~0&data=event%3Dconversion&category=acrcp_v1_512&ept=5"
+        },
+        "response": {
+          "bodySize": 1152,
+          "content": {
+            "mimeType": "application/json",
+            "size": 1152,
+            "text": "event: message\ndata: {\"fetch\":[\"https://googleads.g.doubleclick.net/pagead/viewthroughconversion/XXXXXXXXXX/?random=1932989796&cv=11&fst=1787679789038&fmt=8&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be68o0za200xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938469~118897920~118897930~119367802~119367810~120385422~120420415&u_w=800&u_h=600&url=http%3A%2F%2Flocalhost%3A8791%2Fmentoria%2F%3Futm_source%3Dteste%26utm_campaign%3Dcamp1%26fbclid%3DABC123&rcb=15&label=XXXXXXXXXXXXXXXXXXXXX&gtm_ee=1&frm=0&tiba=Sess%C3%A3o%20Estrat%C3%A9gica%20%E2%80%94%20Sevilha%20Performance&value=0&currency_code=BRL&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1849991610.1787679745&uaa=arm&uab=64&uafvl=Not%253FA_Brand%3B24.0.0.0%7CChromium%3B152.0.7977.42&uamb=0&uam=&uap=macOS&uapv=26.6.1&uaw=0&gcl_ctr=2~0~0~0&data=event%3Dconversion&category=acrcp_v1_512&ept=5&ct_cookie_present=false&eoid=CkgKEQjw-rTUBhDjzoD-9YWT468BEjMAalvnGUa_UEGOvhr1yfvX0e5KaiqQkJRhs93WKxE4ybe8Hjda5eEO1Xh_qfyHx0ce9rzw_wcB&crd=CLTesQII8t-xAgit4bECCK_hsQIIobixAgixwbECCLDBsQIIscOxAgiKxbECCMLJsQII1-ixAgi0xrECCJPasQII29yxAgiH27ECCNPFsQII68yxAgjtzrECCNXPsQII9NqxAgiS67ECCMnjsQIIl9SxAgjJ27ECCM3msQIIseGxAgiz4bECCKbdsQIIgNuxAgjN4bEC&cerd=ChTr370tpqe-Lf-vvi2Dvr4ttdG-LQ&fsk=ChEI8Pq01AYQmc_87ISuztTcARIsAJMUtYW1v1Oh9_SDim_5HuXOQ17lxOmK3CNXuoVpc-q-oITb5O30CCmLKZgaAv1D&pscrd=IhMI1920lqq8lgMVI0zdAh2aLxa3OhZodHRwOi8vbG9jYWxob3N0Ojg3OTEvQlZDaEVJOFBxMDFBWVE1T0tVeHJucnZZV19BUklyQUY0S3hkcWc1TUNaMFZnSjJFNzZ1Smx5T1c0cVVQT0EtSUFrN2dTVThVeTAtbERZUzRUQzJKVTZwQXoMCAliCAgAEAAYACAA\"],\"options\":{\"fallback_url\":\"https://www.google.com/pagead/1p-conversion/XXXXXXXXXX/?random=1932989796&cv=11&fst=1787679789038&fmt=8&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be68o0za200xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938469~118897920~118897930~119367802~119367810~120385422~120420415&u_w=800&u_h=600&url=http%3A%2F%2Flocalhost%3A8791%2Fmentoria%2F%3Futm_source%3Dteste%26utm_campaign%3Dcamp1%26fbclid%3DABC123&rcb=15&label=XXXXXXXXXXXXXXXXXXXXX&gtm_ee=1&frm=0&tiba=Sess%C3%A3o%20Estrat%C3%A9gica%20%E2%80%94%20Sevilha%20Performance&value=0&currency_code=BRL&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1849991610.1787679745&uaa=arm&uab=64&uafvl=Not%253FA_Brand%3B24.0.0.0%7CChromium%3B152.0.7977.42&uamb=0&uam=&uap=macOS&uapv=26.6.1&uaw=0&gcl_ctr=2~0~0~0&data=event%3Dconversion&category=acrcp_v1_512&ept=5&ct_cookie_present=false&eoid=CkgKEQjw-rTUBhDjzoD-9YWT468BEjMAalvnGUa_UEGOvhr1yfvX0e5KaiqQkJRhs93WKxE4ybe8Hjda5eEO1Xh_qfyHx0ce9rzw_wcB&crd=CLTesQII8t-xAgit4bECCK_hsQIIobixAgixwbECCLDBsQIIscOxAgiKxbECCMLJsQII1-ixAgi0xrECCJPasQII29yxAgiH27ECCNPFsQII68yxAgjtzrECCNXPsQII9NqxAgiS67ECCMnjsQIIl9SxAgjJ27ECCM3msQIIseGxAgiz4bECCKbdsQIIgNuxAgjN4bEC&cerd=ChTr370tpqe-Lf-vvi2Dvr4ttdG-LQ&fsk=ChEI8Pq01AYQmc_87ISuztTcARIsAJMUtYW1v1Oh9_SDim_5HuXOQ17lxOmK3CNXuoVpc-q-oITb5O30CCmLKZgaAv1D&pscrd=IhMI1920lqq8lgMVI0zdAh2aLxa3OhZodHRwOi8vbG9jYWxob3N0Ojg3OTEvQlZDaEVJOFBxMDFBWVE1T0tVeHJucnZZV19BUklyQUY0S3hkcWc1TUNaMFZnSjJFNzZ1Smx5T1c0cVVQT0EtSUFrN2dTVThVeTAtbERZUzRUQzJKVTZwQXoMCAliCAgAEAAYACAA&gcp=3\",\"fallback_url_method\":\"fetch\"}}\n\n"
+          },
+          "cookies": [],
+          "headers": [
+            {
+              "name": "access-control-allow-credentials",
+              "value": "true"
+            },
+            {
+              "name": "access-control-allow-origin",
+              "value": "http://localhost:8791"
+            },
+            {
+              "name": "alt-svc",
+              "value": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000"
+            },
+            {
+              "name": "cache-control",
+              "value": "no-cache, must-revalidate"
+            },
+            {
+              "name": "content-disposition",
+              "value": "attachment; filename=\"f.txt\""
+            },
+            {
+              "name": "content-encoding",
+              "value": "br"
+            },
+            {
+              "name": "content-length",
+              "value": "1126"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json; charset=UTF-8"
+            },
+            {
+              "name": "cross-origin-resource-policy",
+              "value": "cross-origin"
+            },
+            {
+              "name": "date",
+              "value": "Tue, 25 Aug 2026 17:43:09 GMT"
+            },
+            {
+              "name": "expires",
+              "value": "Fri, 01 Jan 1990 00:00:00 GMT"
+            },
+            {
+              "name": "p3p",
+              "value": "policyref=\"https://www.googleadservices.com/pagead/p3p.xml\", CP=\"NOI DEV PSA PSD IVA IVD OTP OUR OTR IND OTC\""
+            },
+            {
+              "name": "pragma",
+              "value": "no-cache"
+            },
+            {
+              "name": "server",
+              "value": "cafe"
+            },
+            {
+              "name": "timing-allow-origin",
+              "value": "*"
+            },
+            {
+              "name": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "name": "x-xss-protection",
+              "value": "0"
+            }
+          ],
+          "headersSize": -1,
+          "httpVersion": "HTTP/3.0",
+          "redirectURL": "",
+          "status": 200,
+          "statusText": ""
+        },
+        "startedDateTime": "2026-08-25T17:43:09.039824128Z",
+        "time": 81.48699999489821,
+        "timings": {
+          "blocked": 0.172,
+          "receive": 4.046999994898215,
+          "send": 0.10300000000000004,
+          "wait": 77.16499999999999
+        }
+      },
+      {
+        "_resourceType": "Fetch",
+        "cache": {},
+        "request": {
+          "bodySize": 0,
+          "cookies": [],
+          "headers": [
+            {
+              "name": "Accept-Language",
+              "value": "pt-BR,pt;q=0.9"
+            },
+            {
+              "name": "Referer",
+              "value": "http://localhost:8791/"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36"
+            },
+            {
+              "name": "sec-ch-ua",
+              "value": "\"Not?A_Brand\";v=\"24\", \"Chromium\";v=\"152\""
+            },
+            {
+              "name": "sec-ch-ua-mobile",
+              "value": "?0"
+            },
+            {
+              "name": "sec-ch-ua-platform",
+              "value": "\"macOS\""
+            }
+          ],
+          "headersSize": -1,
+          "httpVersion": "HTTP/1.1",
+          "method": "POST",
+          "queryString": [
+            {
+              "name": "random",
+              "value": "1932989796"
+            },
+            {
+              "name": "cv",
+              "value": "11"
+            },
+            {
+              "name": "fst",
+              "value": "1787679789038"
+            },
+            {
+              "name": "fmt",
+              "value": "8"
+            },
+            {
+              "name": "bg",
+              "value": "ffffff"
+            },
+            {
+              "name": "guid",
+              "value": "ON"
+            },
+            {
+              "name": "async",
+              "value": "1"
+            },
+            {
+              "name": "en",
+              "value": "conversion"
+            },
+            {
+              "name": "gtm",
+              "value": "45be68o0za200xec"
+            },
+            {
+              "name": "gcd",
+              "value": "13l3l3l3l1l1"
+            },
+            {
+              "name": "dma",
+              "value": "0"
+            },
+            {
+              "name": "tag_exp",
+              "value": "115938465~115938469~118897920~118897930~119367802~119367810~120385422~120420415"
+            },
+            {
+              "name": "u_w",
+              "value": "800"
+            },
+            {
+              "name": "u_h",
+              "value": "600"
+            },
+            {
+              "name": "url",
+              "value": "http://localhost:8791/mentoria/?utm_source=teste&utm_campaign=camp1&fbclid=ABC123"
+            },
+            {
+              "name": "rcb",
+              "value": "15"
+            },
+            {
+              "name": "label",
+              "value": "XXXXXXXXXXXXXXXXXXXXX"
+            },
+            {
+              "name": "gtm_ee",
+              "value": "1"
+            },
+            {
+              "name": "frm",
+              "value": "0"
+            },
+            {
+              "name": "tiba",
+              "value": "Sessão Estratégica — Sevilha Performance"
+            },
+            {
+              "name": "value",
+              "value": "0"
+            },
+            {
+              "name": "currency_code",
+              "value": "BRL"
+            },
+            {
+              "name": "hn",
+              "value": "www.googleadservices.com"
+            },
+            {
+              "name": "npa",
+              "value": "0"
+            },
+            {
+              "name": "pscdl",
+              "value": "noapi"
+            },
+            {
+              "name": "auid",
+              "value": "1849991610.1787679745"
+            },
+            {
+              "name": "uaa",
+              "value": "arm"
+            },
+            {
+              "name": "uab",
+              "value": "64"
+            },
+            {
+              "name": "uafvl",
+              "value": "Not%3FA_Brand;24.0.0.0|Chromium;152.0.7977.42"
+            },
+            {
+              "name": "uamb",
+              "value": "0"
+            },
+            {
+              "name": "uam",
+              "value": ""
+            },
+            {
+              "name": "uap",
+              "value": "macOS"
+            },
+            {
+              "name": "uapv",
+              "value": "26.6.1"
+            },
+            {
+              "name": "uaw",
+              "value": "0"
+            },
+            {
+              "name": "gcl_ctr",
+              "value": "2~0~0~0"
+            },
+            {
+              "name": "data",
+              "value": "event=conversion"
+            },
+            {
+              "name": "category",
+              "value": "acrcp_v1_512"
+            },
+            {
+              "name": "ept",
+              "value": "5"
+            },
+            {
+              "name": "ct_cookie_present",
+              "value": "false"
+            },
+            {
+              "name": "eoid",
+              "value": "CkgKEQjw-rTUBhDjzoD-9YWT468BEjMAalvnGUa_UEGOvhr1yfvX0e5KaiqQkJRhs93WKxE4ybe8Hjda5eEO1Xh_qfyHx0ce9rzw_wcB"
+            },
+            {
+              "name": "crd",
+              "value": "CLTesQII8t-xAgit4bECCK_hsQIIobixAgixwbECCLDBsQIIscOxAgiKxbECCMLJsQII1-ixAgi0xrECCJPasQII29yxAgiH27ECCNPFsQII68yxAgjtzrECCNXPsQII9NqxAgiS67ECCMnjsQIIl9SxAgjJ27ECCM3msQIIseGxAgiz4bECCKbdsQIIgNuxAgjN4bEC"
+            },
+            {
+              "name": "cerd",
+              "value": "ChTr370tpqe-Lf-vvi2Dvr4ttdG-LQ"
+            },
+            {
+              "name": "fsk",
+              "value": "ChEI8Pq01AYQmc_87ISuztTcARIsAJMUtYW1v1Oh9_SDim_5HuXOQ17lxOmK3CNXuoVpc-q-oITb5O30CCmLKZgaAv1D"
+            },
+            {
+              "name": "pscrd",
+              "value": "IhMI1920lqq8lgMVI0zdAh2aLxa3OhZodHRwOi8vbG9jYWxob3N0Ojg3OTEvQlZDaEVJOFBxMDFBWVE1T0tVeHJucnZZV19BUklyQUY0S3hkcWc1TUNaMFZnSjJFNzZ1Smx5T1c0cVVQT0EtSUFrN2dTVThVeTAtbERZUzRUQzJKVTZwQXoMCAliCAgAEAAYACAA"
+            }
+          ],
+          "url": "https://googleads.g.doubleclick.net/pagead/viewthroughconversion/XXXXXXXXXX/?random=1932989796&cv=11&fst=1787679789038&fmt=8&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be68o0za200xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938469~118897920~118897930~119367802~119367810~120385422~120420415&u_w=800&u_h=600&url=http%3A%2F%2Flocalhost%3A8791%2Fmentoria%2F%3Futm_source%3Dteste%26utm_campaign%3Dcamp1%26fbclid%3DABC123&rcb=15&label=XXXXXXXXXXXXXXXXXXXXX&gtm_ee=1&frm=0&tiba=Sess%C3%A3o%20Estrat%C3%A9gica%20%E2%80%94%20Sevilha%20Performance&value=0&currency_code=BRL&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1849991610.1787679745&uaa=arm&uab=64&uafvl=Not%253FA_Brand%3B24.0.0.0%7CChromium%3B152.0.7977.42&uamb=0&uam=&uap=macOS&uapv=26.6.1&uaw=0&gcl_ctr=2~0~0~0&data=event%3Dconversion&category=acrcp_v1_512&ept=5&ct_cookie_present=false&eoid=CkgKEQjw-rTUBhDjzoD-9YWT468BEjMAalvnGUa_UEGOvhr1yfvX0e5KaiqQkJRhs93WKxE4ybe8Hjda5eEO1Xh_qfyHx0ce9rzw_wcB&crd=CLTesQII8t-xAgit4bECCK_hsQIIobixAgixwbECCLDBsQIIscOxAgiKxbECCMLJsQII1-ixAgi0xrECCJPasQII29yxAgiH27ECCNPFsQII68yxAgjtzrECCNXPsQII9NqxAgiS67ECCMnjsQIIl9SxAgjJ27ECCM3msQIIseGxAgiz4bECCKbdsQIIgNuxAgjN4bEC&cerd=ChTr370tpqe-Lf-vvi2Dvr4ttdG-LQ&fsk=ChEI8Pq01AYQmc_87ISuztTcARIsAJMUtYW1v1Oh9_SDim_5HuXOQ17lxOmK3CNXuoVpc-q-oITb5O30CCmLKZgaAv1D&pscrd=IhMI1920lqq8lgMVI0zdAh2aLxa3OhZodHRwOi8vbG9jYWxob3N0Ojg3OTEvQlZDaEVJOFBxMDFBWVE1T0tVeHJucnZZV19BUklyQUY0S3hkcWc1TUNaMFZnSjJFNzZ1Smx5T1c0cVVQT0EtSUFrN2dTVThVeTAtbERZUzRUQzJKVTZwQXoMCAliCAgAEAAYACAA"
+        },
+        "response": {
+          "bodySize": -1,
+          "content": {
+            "mimeType": "application/octet-stream",
+            "size": -1
+          },
+          "cookies": [],
+          "headers": [],
+          "headersSize": -1,
+          "httpVersion": "HTTP/1.1",
+          "redirectURL": "",
+          "status": 0,
+          "statusText": ""
+        },
+        "startedDateTime": "2026-08-25T17:43:09.121072128Z",
+        "time": 0.0,
+        "timings": {
+          "receive": 0,
+          "send": 0,
+          "wait": 0
+        }
+      },
+      {
+        "_resourceType": "Fetch",
+        "cache": {},
+        "request": {
+          "bodySize": 0,
+          "cookies": [],
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "http://localhost:8791/"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36"
+            }
+          ],
+          "headersSize": -1,
+          "httpVersion": "HTTP/1.1",
+          "method": "GET",
+          "queryString": [
+            {
+              "name": "random",
+              "value": "1932989796"
+            },
+            {
+              "name": "cv",
+              "value": "11"
+            },
+            {
+              "name": "fst",
+              "value": "1787679789038"
+            },
+            {
+              "name": "fmt",
+              "value": "8"
+            },
+            {
+              "name": "bg",
+              "value": "ffffff"
+            },
+            {
+              "name": "guid",
+              "value": "ON"
+            },
+            {
+              "name": "async",
+              "value": "1"
+            },
+            {
+              "name": "en",
+              "value": "conversion"
+            },
+            {
+              "name": "gtm",
+              "value": "45be68o0za200xec"
+            },
+            {
+              "name": "gcd",
+              "value": "13l3l3l3l1l1"
+            },
+            {
+              "name": "dma",
+              "value": "0"
+            },
+            {
+              "name": "tag_exp",
+              "value": "115938465~115938469~118897920~118897930~119367802~119367810~120385422~120420415"
+            },
+            {
+              "name": "u_w",
+              "value": "800"
+            },
+            {
+              "name": "u_h",
+              "value": "600"
+            },
+            {
+              "name": "url",
+              "value": "http://localhost:8791/mentoria/?utm_source=teste&utm_campaign=camp1&fbclid=ABC123"
+            },
+            {
+              "name": "rcb",
+              "value": "15"
+            },
+            {
+              "name": "label",
+              "value": "XXXXXXXXXXXXXXXXXXXXX"
+            },
+            {
+              "name": "gtm_ee",
+              "value": "1"
+            },
+            {
+              "name": "frm",
+              "value": "0"
+            },
+            {
+              "name": "tiba",
+              "value": "Sessão Estratégica — Sevilha Performance"
+            },
+            {
+              "name": "value",
+              "value": "0"
+            },
+            {
+              "name": "currency_code",
+              "value": "BRL"
+            },
+            {
+              "name": "hn",
+              "value": "www.googleadservices.com"
+            },
+            {
+              "name": "npa",
+              "value": "0"
+            },
+            {
+              "name": "pscdl",
+              "value": "noapi"
+            },
+            {
+              "name": "auid",
+              "value": "1849991610.1787679745"
+            },
+            {
+              "name": "uaa",
+              "value": "arm"
+            },
+            {
+              "name": "uab",
+              "value": "64"
+            },
+            {
+              "name": "uafvl",
+              "value": "Not%3FA_Brand;24.0.0.0|Chromium;152.0.7977.42"
+            },
+            {
+              "name": "uamb",
+              "value": "0"
+            },
+            {
+              "name": "uam",
+              "value": ""
+            },
+            {
+              "name": "uap",
+              "value": "macOS"
+            },
+            {
+              "name": "uapv",
+              "value": "26.6.1"
+            },
+            {
+              "name": "uaw",
+              "value": "0"
+            },
+            {
+              "name": "gcl_ctr",
+              "value": "2~0~0~0"
+            },
+            {
+              "name": "data",
+              "value": "event=conversion"
+            },
+            {
+              "name": "category",
+              "value": "acrcp_v1_512"
+            },
+            {
+              "name": "ept",
+              "value": "5"
+            },
+            {
+              "name": "ct_cookie_present",
+              "value": "false"
+            },
+            {
+              "name": "eoid",
+              "value": "CkgKEQjw-rTUBhDjzoD-9YWT468BEjMAalvnGUa_UEGOvhr1yfvX0e5KaiqQkJRhs93WKxE4ybe8Hjda5eEO1Xh_qfyHx0ce9rzw_wcB"
+            },
+            {
+              "name": "crd",
+              "value": "CLTesQII8t-xAgit4bECCK_hsQIIobixAgixwbECCLDBsQIIscOxAgiKxbECCMLJsQII1-ixAgi0xrECCJPasQII29yxAgiH27ECCNPFsQII68yxAgjtzrECCNXPsQII9NqxAgiS67ECCMnjsQIIl9SxAgjJ27ECCM3msQIIseGxAgiz4bECCKbdsQIIgNuxAgjN4bEC"
+            },
+            {
+              "name": "cerd",
+              "value": "ChTr370tpqe-Lf-vvi2Dvr4ttdG-LQ"
+            },
+            {
+              "name": "fsk",
+              "value": "ChEI8Pq01AYQmc_87ISuztTcARIsAJMUtYW1v1Oh9_SDim_5HuXOQ17lxOmK3CNXuoVpc-q-oITb5O30CCmLKZgaAv1D"
+            },
+            {
+              "name": "pscrd",
+              "value": "IhMI1920lqq8lgMVI0zdAh2aLxa3OhZodHRwOi8vbG9jYWxob3N0Ojg3OTEvQlZDaEVJOFBxMDFBWVE1T0tVeHJucnZZV19BUklyQUY0S3hkcWc1TUNaMFZnSjJFNzZ1Smx5T1c0cVVQT0EtSUFrN2dTVThVeTAtbERZUzRUQzJKVTZwQXoMCAliCAgAEAAYACAA"
+            },
+            {
+              "name": "is_vtc",
+              "value": "1"
+            },
+            {
+              "name": "cid",
+              "value": "CAQS4QEAQM4h3DrXIVnu-Ptp3CLqBhRk-pbGQowux-fsR23i0acYrIvAwum0UqpAPq3I8j-Bw26Op6FDLj6mbYb5Socy34njKGxt3EaF0DQ3RAtLxjxf4KRJcTcoEqr0WIfdobrDgjNhSDd1-lS9lKmDDDLVkthkWl_WtuZGj6LXPmpLcNj7nHyrzzRdgBBDPyZ6SDzgCfo7gjggIOaLP6RArpfyL6Ex0nc1R6hrHk2JjkZ8N8mlTJQO5KMnn_jB3wtldQRHV2RCSf6FsCy0X2M7Zp2itKFE537_GDAUZWoENQMI6dw"
+            },
+            {
+              "name": "random",
+              "value": "1131388614"
+            }
+          ],
+          "url": "https://www.google.com/pagead/1p-conversion/XXXXXXXXXX/?random=1932989796&cv=11&fst=1787679789038&fmt=8&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be68o0za200xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938469~118897920~118897930~119367802~119367810~120385422~120420415&u_w=800&u_h=600&url=http%3A%2F%2Flocalhost%3A8791%2Fmentoria%2F%3Futm_source%3Dteste%26utm_campaign%3Dcamp1%26fbclid%3DABC123&rcb=15&label=XXXXXXXXXXXXXXXXXXXXX&gtm_ee=1&frm=0&tiba=Sess%C3%A3o%20Estrat%C3%A9gica%20%E2%80%94%20Sevilha%20Performance&value=0&currency_code=BRL&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1849991610.1787679745&uaa=arm&uab=64&uafvl=Not%253FA_Brand%3B24.0.0.0%7CChromium%3B152.0.7977.42&uamb=0&uam=&uap=macOS&uapv=26.6.1&uaw=0&gcl_ctr=2~0~0~0&data=event%3Dconversion&category=acrcp_v1_512&ept=5&ct_cookie_present=false&eoid=CkgKEQjw-rTUBhDjzoD-9YWT468BEjMAalvnGUa_UEGOvhr1yfvX0e5KaiqQkJRhs93WKxE4ybe8Hjda5eEO1Xh_qfyHx0ce9rzw_wcB&crd=CLTesQII8t-xAgit4bECCK_hsQIIobixAgixwbECCLDBsQIIscOxAgiKxbECCMLJsQII1-ixAgi0xrECCJPasQII29yxAgiH27ECCNPFsQII68yxAgjtzrECCNXPsQII9NqxAgiS67ECCMnjsQIIl9SxAgjJ27ECCM3msQIIseGxAgiz4bECCKbdsQIIgNuxAgjN4bEC&cerd=ChTr370tpqe-Lf-vvi2Dvr4ttdG-LQ&fsk=ChEI8Pq01AYQmc_87ISuztTcARIsAJMUtYW1v1Oh9_SDim_5HuXOQ17lxOmK3CNXuoVpc-q-oITb5O30CCmLKZgaAv1D&pscrd=IhMI1920lqq8lgMVI0zdAh2aLxa3OhZodHRwOi8vbG9jYWxob3N0Ojg3OTEvQlZDaEVJOFBxMDFBWVE1T0tVeHJucnZZV19BUklyQUY0S3hkcWc1TUNaMFZnSjJFNzZ1Smx5T1c0cVVQT0EtSUFrN2dTVThVeTAtbERZUzRUQzJKVTZwQXoMCAliCAgAEAAYACAA&is_vtc=1&cid=CAQS4QEAQM4h3DrXIVnu-Ptp3CLqBhRk-pbGQowux-fsR23i0acYrIvAwum0UqpAPq3I8j-Bw26Op6FDLj6mbYb5Socy34njKGxt3EaF0DQ3RAtLxjxf4KRJcTcoEqr0WIfdobrDgjNhSDd1-lS9lKmDDDLVkthkWl_WtuZGj6LXPmpLcNj7nHyrzzRdgBBDPyZ6SDzgCfo7gjggIOaLP6RArpfyL6Ex0nc1R6hrHk2JjkZ8N8mlTJQO5KMnn_jB3wtldQRHV2RCSf6FsCy0X2M7Zp2itKFE537_GDAUZWoENQMI6dw&random=1131388614"
+        },
+        "response": {
+          "bodySize": -1,
+          "content": {
+            "mimeType": "application/octet-stream",
+            "size": -1
+          },
+          "cookies": [],
+          "headers": [],
+          "headersSize": -1,
+          "httpVersion": "HTTP/1.1",
+          "redirectURL": "",
+          "status": 0,
+          "statusText": ""
+        },
+        "startedDateTime": "2026-08-25T17:43:09.38356992Z",
+        "time": 0.0,
+        "timings": {
+          "receive": 0,
+          "send": 0,
+          "wait": 0
+        }
+      },
+      {
+        "_resourceType": "Fetch",
+        "cache": {},
+        "request": {
+          "bodySize": 0,
+          "cookies": [],
+          "headers": [
+            {
+              "name": "Referer",
+              "value": "http://localhost:8791/"
+            },
+            {
+              "name": "User-Agent",
+              "value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36"
+            }
+          ],
+          "headersSize": -1,
+          "httpVersion": "HTTP/3.0",
+          "method": "GET",
+          "queryString": [
+            {
+              "name": "random",
+              "value": "1932989796"
+            },
+            {
+              "name": "cv",
+              "value": "11"
+            },
+            {
+              "name": "fst",
+              "value": "1787679789038"
+            },
+            {
+              "name": "fmt",
+              "value": "8"
+            },
+            {
+              "name": "bg",
+              "value": "ffffff"
+            },
+            {
+              "name": "guid",
+              "value": "ON"
+            },
+            {
+              "name": "async",
+              "value": "1"
+            },
+            {
+              "name": "en",
+              "value": "conversion"
+            },
+            {
+              "name": "gtm",
+              "value": "45be68o0za200xec"
+            },
+            {
+              "name": "gcd",
+              "value": "13l3l3l3l1l1"
+            },
+            {
+              "name": "dma",
+              "value": "0"
+            },
+            {
+              "name": "tag_exp",
+              "value": "115938465~115938469~118897920~118897930~119367802~119367810~120385422~120420415"
+            },
+            {
+              "name": "u_w",
+              "value": "800"
+            },
+            {
+              "name": "u_h",
+              "value": "600"
+            },
+            {
+              "name": "url",
+              "value": "http://localhost:8791/mentoria/?utm_source=teste&utm_campaign=camp1&fbclid=ABC123"
+            },
+            {
+              "name": "rcb",
+              "value": "15"
+            },
+            {
+              "name": "label",
+              "value": "XXXXXXXXXXXXXXXXXXXXX"
+            },
+            {
+              "name": "gtm_ee",
+              "value": "1"
+            },
+            {
+              "name": "frm",
+              "value": "0"
+            },
+            {
+              "name": "tiba",
+              "value": "Sessão Estratégica — Sevilha Performance"
+            },
+            {
+              "name": "value",
+              "value": "0"
+            },
+            {
+              "name": "currency_code",
+              "value": "BRL"
+            },
+            {
+              "name": "hn",
+              "value": "www.googleadservices.com"
+            },
+            {
+              "name": "npa",
+              "value": "0"
+            },
+            {
+              "name": "pscdl",
+              "value": "noapi"
+            },
+            {
+              "name": "auid",
+              "value": "1849991610.1787679745"
+            },
+            {
+              "name": "uaa",
+              "value": "arm"
+            },
+            {
+              "name": "uab",
+              "value": "64"
+            },
+            {
+              "name": "uafvl",
+              "value": "Not%3FA_Brand;24.0.0.0|Chromium;152.0.7977.42"
+            },
+            {
+              "name": "uamb",
+              "value": "0"
+            },
+            {
+              "name": "uam",
+              "value": ""
+            },
+            {
+              "name": "uap",
+              "value": "macOS"
+            },
+            {
+              "name": "uapv",
+              "value": "26.6.1"
+            },
+            {
+              "name": "uaw",
+              "value": "0"
+            },
+            {
+              "name": "gcl_ctr",
+              "value": "2~0~0~0"
+            },
+            {
+              "name": "data",
+              "value": "event=conversion"
+            },
+            {
+              "name": "category",
+              "value": "acrcp_v1_512"
+            },
+            {
+              "name": "ept",
+              "value": "5"
+            },
+            {
+              "name": "ct_cookie_present",
+              "value": "false"
+            },
+            {
+              "name": "eoid",
+              "value": "CkgKEQjw-rTUBhDjzoD-9YWT468BEjMAalvnGUa_UEGOvhr1yfvX0e5KaiqQkJRhs93WKxE4ybe8Hjda5eEO1Xh_qfyHx0ce9rzw_wcB"
+            },
+            {
+              "name": "crd",
+              "value": "CLTesQII8t-xAgit4bECCK_hsQIIobixAgixwbECCLDBsQIIscOxAgiKxbECCMLJsQII1-ixAgi0xrECCJPasQII29yxAgiH27ECCNPFsQII68yxAgjtzrECCNXPsQII9NqxAgiS67ECCMnjsQIIl9SxAgjJ27ECCM3msQIIseGxAgiz4bECCKbdsQIIgNuxAgjN4bEC"
+            },
+            {
+              "name": "cerd",
+              "value": "ChTr370tpqe-Lf-vvi2Dvr4ttdG-LQ"
+            },
+            {
+              "name": "fsk",
+              "value": "ChEI8Pq01AYQmc_87ISuztTcARIsAJMUtYW1v1Oh9_SDim_5HuXOQ17lxOmK3CNXuoVpc-q-oITb5O30CCmLKZgaAv1D"
+            },
+            {
+              "name": "is_vtc",
+              "value": "1"
+            },
+            {
+              "name": "cid",
+              "value": "CAQS4QEAQM4h3DrXIVnu-Ptp3CLqBhRk-pbGQowux-fsR23i0acYrIvAwum0UqpAPq3I8j-Bw26Op6FDLj6mbYb5Socy34njKGxt3EaF0DQ3RAtLxjxf4KRJcTcoEqr0WIfdobrDgjNhSDd1-lS9lKmDDDLVkthkWl_WtuZGj6LXPmpLcNj7nHyrzzRdgBBDPyZ6SDzgCfo7gjggIOaLP6RArpfyL6Ex0nc1R6hrHk2JjkZ8N8mlTJQO5KMnn_jB3wtldQRHV2RCSf6FsCy0X2M7Zp2itKFE537_GDAUZWoENQMI6dw"
+            },
+            {
+              "name": "random",
+              "value": "1131388614"
+            },
+            {
+              "name": "ipr",
+              "value": "y"
+            },
+            {
+              "name": "pscrd",
+              "value": "IhMI1920lqq8lgMVI0zdAh2aLxa3OhZodHRwOi8vbG9jYWxob3N0Ojg3OTEvQlZDaEVJOFBxMDFBWVE1T0tVeHJucnZZV19BUklyQUY0S3hkcWc1TUNaMFZnSjJFNzZ1Smx5T1c0cVVQT0EtSUFrN2dTVThVeTAtbERZUzRUQzJKVTZwQXoMCAliCAgAEAAYACAAggEFcAGIAQE"
+            }
+          ],
+          "url": "https://www.google.com.br/pagead/1p-conversion/XXXXXXXXXX/?random=1932989796&cv=11&fst=1787679789038&fmt=8&bg=ffffff&guid=ON&async=1&en=conversion&gtm=45be68o0za200xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938469~118897920~118897930~119367802~119367810~120385422~120420415&u_w=800&u_h=600&url=http%3A%2F%2Flocalhost%3A8791%2Fmentoria%2F%3Futm_source%3Dteste%26utm_campaign%3Dcamp1%26fbclid%3DABC123&rcb=15&label=XXXXXXXXXXXXXXXXXXXXX&gtm_ee=1&frm=0&tiba=Sess%C3%A3o%20Estrat%C3%A9gica%20%E2%80%94%20Sevilha%20Performance&value=0&currency_code=BRL&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1849991610.1787679745&uaa=arm&uab=64&uafvl=Not%253FA_Brand%3B24.0.0.0%7CChromium%3B152.0.7977.42&uamb=0&uam=&uap=macOS&uapv=26.6.1&uaw=0&gcl_ctr=2~0~0~0&data=event%3Dconversion&category=acrcp_v1_512&ept=5&ct_cookie_present=false&eoid=CkgKEQjw-rTUBhDjzoD-9YWT468BEjMAalvnGUa_UEGOvhr1yfvX0e5KaiqQkJRhs93WKxE4ybe8Hjda5eEO1Xh_qfyHx0ce9rzw_wcB&crd=CLTesQII8t-xAgit4bECCK_hsQIIobixAgixwbECCLDBsQIIscOxAgiKxbECCMLJsQII1-ixAgi0xrECCJPasQII29yxAgiH27ECCNPFsQII68yxAgjtzrECCNXPsQII9NqxAgiS67ECCMnjsQIIl9SxAgjJ27ECCM3msQIIseGxAgiz4bECCKbdsQIIgNuxAgjN4bEC&cerd=ChTr370tpqe-Lf-vvi2Dvr4ttdG-LQ&fsk=ChEI8Pq01AYQmc_87ISuztTcARIsAJMUtYW1v1Oh9_SDim_5HuXOQ17lxOmK3CNXuoVpc-q-oITb5O30CCmLKZgaAv1D&is_vtc=1&cid=CAQS4QEAQM4h3DrXIVnu-Ptp3CLqBhRk-pbGQowux-fsR23i0acYrIvAwum0UqpAPq3I8j-Bw26Op6FDLj6mbYb5Socy34njKGxt3EaF0DQ3RAtLxjxf4KRJcTcoEqr0WIfdobrDgjNhSDd1-lS9lKmDDDLVkthkWl_WtuZGj6LXPmpLcNj7nHyrzzRdgBBDPyZ6SDzgCfo7gjggIOaLP6RArpfyL6Ex0nc1R6hrHk2JjkZ8N8mlTJQO5KMnn_jB3wtldQRHV2RCSf6FsCy0X2M7Zp2itKFE537_GDAUZWoENQMI6dw&random=1131388614&ipr=y&pscrd=IhMI1920lqq8lgMVI0zdAh2aLxa3OhZodHRwOi8vbG9jYWxob3N0Ojg3OTEvQlZDaEVJOFBxMDFBWVE1T0tVeHJucnZZV19BUklyQUY0S3hkcWc1TUNaMFZnSjJFNzZ1Smx5T1c0cVVQT0EtSUFrN2dTVThVeTAtbERZUzRUQzJKVTZwQXoMCAliCAgAEAAYACAAggEFcAGIAQE"
+        },
+        "response": {
+          "bodySize": 20,
+          "content": {
+            "mimeType": "text/html",
+            "size": 20
+          },
+          "cookies": [],
+          "headers": [],
+          "headersSize": -1,
+          "httpVersion": "HTTP/3.0",
+          "redirectURL": "",
+          "status": 200,
+          "statusText": ""
+        },
+        "startedDateTime": "2026-08-25T17:43:09.384030976Z",
+        "time": 87.25899998790958,
+        "timings": {
+          "blocked": 0.269,
+          "receive": 3.6179999879095703,
+          "send": 0.16399999999999998,
+          "wait": 83.208
+        }
+      }
+    ],
+    "version": "1.2"
+  }
+}

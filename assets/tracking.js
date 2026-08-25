@@ -43,11 +43,50 @@ var SP_CONFIG = {
     return id;
   }
 
+  /**
+   * O `_fbp` normalmente é criado pelo próprio Pixel. Quando ele é bloqueado
+   * (bloqueador de anúncio, ITP, submissão antes do script carregar) o campo
+   * some do evento e a correspondência cai. O formato é público e o Meta aceita
+   * o cookie gerado por nós: fb.1.<timestamp>.<aleatório>. Se o Pixel carregar
+   * depois, ele reaproveita este mesmo cookie — o id continua sendo um só.
+   */
+  function getOrCreateFbp() {
+    var fbp = getCookie('_fbp');
+    if (!fbp) {
+      fbp = 'fb.1.' + Date.now() + '.' + Math.floor(Math.random() * 1e10);
+      setCookie('_fbp', fbp, 90);
+      log('_fbp gerado localmente');
+    }
+    return fbp;
+  }
+
+  /**
+   * O `referrer_url` do evento é o referrer da página onde ele aconteceu. Mas
+   * navegar dentro do site zera essa informação, então guardamos também a
+   * entrada externa da sessão e usamos como plano B — de fora é que veio a
+   * visita, e é isso que o Meta usa como sinal de atribuição.
+   */
+  function firstReferrer() {
+    var atual = document.referrer || '';
+    var salvo = '';
+    try {
+      salvo = sessionStorage.getItem('_sp_referrer') || '';
+      if (atual && !salvo && atual.indexOf(window.location.origin) !== 0) {
+        sessionStorage.setItem('_sp_referrer', atual);
+        salvo = atual;
+      }
+    } catch (e) {}
+    return atual || salvo;
+  }
+
   function generateEventId() {
     return 'ev_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
   }
 
   /* ── Captura UTMs e Click IDs ─────────────────────────── */
+  getOrCreateFbp();
+  firstReferrer();
+
   (function captureParams() {
     var params = new URLSearchParams(window.location.search);
     var keys   = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content',
@@ -69,6 +108,11 @@ var SP_CONFIG = {
         // Tenta restaurar da sessionStorage (navegações entre páginas)
         var stored = sessionStorage.getItem(k);
         if (stored) log('restored from session', k, stored);
+        // Cookie de 90 dias pode ter sido apagado antes do fbclid da sessão.
+        if (k === 'fbclid' && stored && !getCookie('_fbc')) {
+          setCookie('_fbc', 'fb.1.' + Date.now() + '.' + stored, 90);
+          log('_fbc recriado do fbclid guardado');
+        }
       }
     });
   })();
@@ -107,7 +151,7 @@ var SP_CONFIG = {
 
     // Meta Pixel cookies
     var fbpEl = form.querySelector('[name="fbp"]');
-    if (fbpEl) fbpEl.value = getCookie('_fbp');
+    if (fbpEl) fbpEl.value = getOrCreateFbp();
 
     var fbcEl = form.querySelector('[name="fbc"]');
     if (fbcEl) fbcEl.value = getCookie('_fbc');
@@ -134,6 +178,12 @@ var SP_CONFIG = {
   window.SP_fireLeadEvents = function (eventId, formData) {
     // Meta Pixel Lead
     if (window.fbq) {
+      // Não adianta chamar fbq('init', ...) aqui com e-mail e telefone: o Meta
+      // só aceita correspondência avançada no código base do Pixel, e um
+      // segundo init do mesmo id é descartado com "Duplicate Pixel ID"
+      // (verificado no navegador). Quem carrega esses dados é o evento do CAPI,
+      // que sai com o mesmo event_id e é deduplicado contra este.
+
       fbq('track', 'Lead', {
         content_name: document.title,
         content_category: 'pre-inscricao',
@@ -225,6 +275,18 @@ var SP_CONFIG = {
     var data      = Object.fromEntries(new FormData(form));
     var eventId   = data.event_id || generateEventId();
     data.event_id = eventId;
+
+    // Rede de segurança: manda tudo que o CAPI usa mesmo na página que não tem
+    // o campo oculto correspondente. Sem isto, incluir um parâmetro novo no
+    // evento obriga a editar todas as landing pages — e a que ficar para trás
+    // manda evento pior sem avisar ninguém.
+    data.fbp         = data.fbp         || getCookie('_fbp') || getOrCreateFbp();
+    data.fbc         = data.fbc         || getCookie('_fbc');
+    data.external_id = data.external_id || getOrCreateExtId();
+    data.page_url    = data.page_url    || window.location.href;
+    data.user_agent  = data.user_agent  || navigator.userAgent;
+    data.pagina      = data.pagina      || (window.location.pathname.replace(/\/$/, '') || '/');
+    data.referrer    = firstReferrer();
 
     log('submitting to', SP_CONFIG.FORM_ENDPOINT, data);
 
