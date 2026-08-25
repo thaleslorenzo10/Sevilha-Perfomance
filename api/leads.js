@@ -23,6 +23,7 @@ const crypto = require('crypto');
 // o webhook do Respondi usa, para os dois eventos hasharem igual.
 const { enviarEvento, montarUserData, normalizarTelefone, eventIdPorContato } = require('../lib/capi');
 const { ehQualificado } = require('../lib/porte');
+const { localizarPorIp } = require('../lib/geo');
 const registroDeEventos = require('../lib/eventos-enviados');
 const { gravarLead } = require('../lib/sheets-write');
 const { TABELAS } = require('../lib/supabase');
@@ -122,6 +123,10 @@ async function saveToSupabase(data) {
     cargo:        data.cargo       || null,
     colaboradores: data.colaboradores || null,
     escritorio:   data.escritorio  || null,
+    geo_cidade:   data.geo_cidade   || null,
+    geo_estado:   data.geo_estado   || null,
+    geo_cep:      data.geo_cep      || null,
+    geo_raio_km:  data.geo_raio_km  ?? null,
   };
 
   try {
@@ -480,6 +485,11 @@ module.exports = async function handler(req, res) {
   const ua        = user_agent || req.headers['user-agent'] || '';
   const finalEventId = event_id || `ev_${eventTime}_${crypto.randomBytes(4).toString('hex')}`;
 
+  // Localização pelo IP antes de gravar: o valor vai junto na linha do lead e é
+  // o que os eventos de CRM — que saem depois, sem IP nenhum — reaproveitam.
+  // Falha aqui devolve null e o lead segue sem os campos.
+  const geo = await localizarPorIp(ip);
+
   const leadData = {
     nome, email, telefone, pagina,
     utm_source, utm_medium, utm_campaign, utm_term, utm_content,
@@ -488,6 +498,10 @@ module.exports = async function handler(req, res) {
     event_id: finalEventId,
     page_url, user_agent: ua,
     cargo, colaboradores, escritorio,
+    geo_cidade:  geo?.cidade || null,
+    geo_estado:  geo?.estado || null,
+    geo_cep:     geo?.cep    || null,
+    geo_raio_km: geo?.raioKm ?? null,
   };
 
   // ── 1. Supabase primeiro — crítico, aguarda antes de tudo ─────
@@ -496,6 +510,9 @@ module.exports = async function handler(req, res) {
   // ── 2-5. Planilha + RD Marketing + RD CRM + Meta CAPI em paralelo ──
   const userData = montarUserData({
     email, telefone, nome, pais: 'br',
+    // Palpite do IP, não dado declarado. Só entra quando a MaxMind respondeu
+    // dentro do raio de precisão aceito — ver lib/geo.js.
+    cidade: geo?.cidade, estado: geo?.estado, cep: geo?.cep,
     // O id do navegador e o e-mail: o CRM identifica a pessoa pelo e-mail, e
     // sem ele aqui o Lead da landing page e o evento do CRM ficam sendo duas
     // pessoas diferentes para o Meta.

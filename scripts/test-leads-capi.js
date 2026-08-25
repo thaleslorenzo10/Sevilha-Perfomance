@@ -22,6 +22,15 @@ const handler = require('../api/leads');
 
 let chamadas = [];
 global.fetch = async (url, opts) => {
+  if (String(url).includes('geoip.maxmind.com')) {
+    return { ok: true, status: 200, json: async () => ({
+      city:         { names: { 'pt-BR': 'Belo Horizonte' } },
+      subdivisions: [{ iso_code: 'MG' }],
+      postal:       { code: '30110' },
+      country:      { iso_code: 'BR' },
+      location:     { accuracy_radius: 20 },
+    }) };
+  }
   chamadas.push({ url: String(url), body: JSON.parse(opts.body) });
   return { ok: true, status: 200, json: async () => ({ events_received: 1, fbtrace_id: 'tr_1' }) };
 };
@@ -114,6 +123,29 @@ function ok(cond, msg, extra) {
 
   console.log('\n— resposta —');
   ok(res.statusCode === 200 && res.corpo?.ok === true, 'responde 200 ok', res.corpo);
+
+  // A localização por IP é opcional: sem credencial da MaxMind o evento acima
+  // saiu sem ct/st/zp, que é o comportamento padrão. Com credencial, ela entra.
+  console.log('\n— localização por IP (MaxMind configurada) —');
+  ok(ud.ct === undefined && ud.st === undefined && ud.zp === undefined,
+     'sem credencial da MaxMind o evento sai sem ct/st/zp', [ud.ct, ud.st, ud.zp]);
+
+  process.env.MAXMIND_ACCOUNT_ID  = '123456';
+  process.env.MAXMIND_LICENSE_KEY = 'chave-de-teste';
+  chamadas = [];
+  const res2 = fakeRes();
+  await handler({
+    method: 'POST',
+    body: { ...LEAD, event_id: 'ev_com_geo' },
+    headers: { 'user-agent': 'Mozilla/5.0 (teste)' },
+    socket: { remoteAddress: '200.150.10.20' },
+  }, res2);
+
+  const ud2 = chamadas.find(c => c.url.includes('graph.facebook.com'))?.body?.data?.[0]?.user_data || {};
+  ok(ud2.ct?.[0] === sha('belohorizonte'), 'cidade normalizada e hasheada', ud2.ct);
+  ok(ud2.st?.[0] === sha('mg'),            'estado hasheado', ud2.st);
+  ok(ud2.zp?.[0] === sha('30110'),         'CEP hasheado, 5 dígitos', ud2.zp);
+  ok(!JSON.stringify(chamadas).includes('Belo Horizonte'), 'cidade nunca em claro no payload');
 
   console.log(falhas ? `\n${falhas} falha(s)` : '\ntudo verde');
   process.exit(falhas ? 1 : 0);
