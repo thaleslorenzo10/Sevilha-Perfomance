@@ -30,7 +30,7 @@ const DIAS = Number(process.argv[2] || 30);
   const desde = new Date(Date.now() - DIAS * 864e5).toISOString();
   const res = await fetch(
     `${c.url}/rest/v1/${TABELAS.leads}` +
-    `?select=geo_cidade,geo_estado,geo_cep,geo_raio_km,created_at` +
+    `?select=geo_cidade,geo_estado,geo_cep,geo_raio_km,geo_asn,created_at` +
     `&created_at=gte.${desde}&order=created_at.desc&limit=5000`,
     { headers: c.headers }
   );
@@ -68,6 +68,22 @@ const DIAS = Number(process.argv[2] || 30);
   for (const [cidade, n] of ranking.slice(0, 10)) {
     const fatia = (n / comCidade.length) * 100;
     console.log(`${cidade.padEnd(34)} ${String(n).padStart(6)}  ${fatia.toFixed(1).padStart(5)}%`);
+  }
+
+  // Quem é o dono do IP decide se o palpite vale: banda larga fixa aponta para
+  // um bairro; operadora móvel aponta para o gateway dela, que costuma ficar na
+  // capital independentemente de onde a pessoa está.
+  const porAsn = new Map();
+  for (const l of comCidade) {
+    const a = l.geo_asn || '(sem ASN)';
+    porAsn.set(a, (porAsn.get(a) || 0) + 1);
+  }
+  const asns = [...porAsn.entries()].sort((a, b) => b[1] - a[1]);
+  if (asns.length) {
+    console.log('\nOperadora do IP                     leads   fatia');
+    for (const [asn, n] of asns.slice(0, 8)) {
+      console.log(`${asn.slice(0, 34).padEnd(34)} ${String(n).padStart(6)}  ${((n / comCidade.length) * 100).toFixed(1).padStart(5)}%`);
+    }
   }
 
   const maiorFatia = ranking.length ? (ranking[0][1] / comCidade.length) * 100 : 0;

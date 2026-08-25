@@ -127,6 +127,7 @@ async function saveToSupabase(data) {
     geo_estado:   data.geo_estado   || null,
     geo_cep:      data.geo_cep      || null,
     geo_raio_km:  data.geo_raio_km  ?? null,
+    geo_asn:      data.geo_asn      || null,
   };
 
   try {
@@ -502,6 +503,7 @@ module.exports = async function handler(req, res) {
     geo_estado:  geo?.estado || null,
     geo_cep:     geo?.cep    || null,
     geo_raio_km: geo?.raioKm ?? null,
+    geo_asn:     geo?.asn    || null,
   };
 
   // ── 1. Supabase primeiro — crítico, aguarda antes de tudo ─────

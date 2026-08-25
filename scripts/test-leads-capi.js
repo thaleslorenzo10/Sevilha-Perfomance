@@ -22,13 +22,14 @@ const handler = require('../api/leads');
 
 let chamadas = [];
 global.fetch = async (url, opts) => {
-  if (String(url).includes('geoip.maxmind.com')) {
+  if (String(url).includes('geolite.info')) {
     return { ok: true, status: 200, json: async () => ({
       city:         { names: { 'pt-BR': 'Belo Horizonte' } },
       subdivisions: [{ iso_code: 'MG' }],
       postal:       { code: '30110' },
       country:      { iso_code: 'BR' },
       location:     { accuracy_radius: 20 },
+      traits:       { autonomous_system_organization: 'Vivo Fibra' },
     }) };
   }
   chamadas.push({ url: String(url), body: JSON.parse(opts.body) });

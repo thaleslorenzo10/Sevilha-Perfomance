@@ -24,12 +24,15 @@ const RESPOSTA = {
   postal:       { code: '30110' },
   country:      { iso_code: 'BR' },
   location:     { accuracy_radius: 20 },
+  traits:       { autonomous_system_organization: 'Claro NXT Telecomunicacoes Ltda' },
 };
 
 let chamadas = 0;
 let proxima  = { ok: true, status: 200, corpo: RESPOSTA };
 
-global.fetch = async () => {
+let ultimaUrl = '';
+global.fetch = async (url) => {
+  ultimaUrl = String(url);
   chamadas++;
   if (proxima.lanca) throw Object.assign(new Error('abortado'), { name: 'TimeoutError' });
   return { ok: proxima.ok, status: proxima.status, json: async () => proxima.corpo };
@@ -53,6 +56,10 @@ const { localizarPorIp, ehPublico } = require('../lib/geo');
   ok(geo?.estado === 'MG',             'estado pela sigla ISO 3166-2', geo);
   ok(geo?.cep    === '30110',          'CEP lido', geo);
   ok(geo?.pais   === 'br',             'país em minúsculo, como o CAPI espera', geo);
+  ok(geo?.asn === 'Claro NXT Telecomunicacoes Ltda', 'operadora lida (não vai para a Meta)', geo);
+
+  ok(ultimaUrl.startsWith('https://geolite.info/geoip/v2.1/city/'),
+     'consulta vai ao host do GeoLite2, não ao do serviço pago', ultimaUrl);
 
   console.log('\n— cache —');
   const antes = chamadas;
