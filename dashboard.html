@@ -131,6 +131,12 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--black);
 .section-title { font-size:15px; font-weight:800; color:var(--navy); margin-bottom:18px; display:flex; align-items:center; gap:8px; padding-bottom:14px; border-bottom:1px solid var(--light); }
 .section-note { font-size:11.5px; font-weight:500; color:var(--gray); margin:-8px 0 16px; line-height:1.5; }
 .two-col { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:22px; }
+/* Sem min-width:0 a coluna do grid cresce até o conteúdo mais largo — uma
+   tabela com cabeçalho comprido empurra a página inteira e o corpo passa a
+   rolar na horizontal no celular, em vez de a tabela rolar dentro do próprio
+   quadro. Vale para as colunas e para o .table-wrap dentro delas. */
+.two-col > * { min-width:0; }
+.table-wrap { min-width:0; }
 @media(max-width:750px){.two-col{grid-template-columns:1fr}}
 
 /* ── Chart ── */
@@ -542,6 +548,65 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
         <thead><tr><th>Etapa</th><th class="num">Deals</th><th class="num">% do funil</th></tr></thead>
         <tbody id="tblEtapasSe"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
       </table>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">🔎 Funil da /mentoria</div>
+      <div class="section-note">Cada degrau conta <strong>visitantes distintos</strong>, não eventos — quem recarrega a página não vira dois. Fonte: beacon da própria página.</div>
+      <div class="funnel" id="funnelLpA"></div>
+    </div>
+    <div class="section">
+      <div class="section-title">🔎 Funil da /mentoria-2</div>
+      <div class="section-note">Mesmos degraus, para comparar os dois layouts do teste A/B antes de haver lead suficiente para decidir por conversão.</div>
+      <div class="funnel" id="funnelLpB"></div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">🚧 Onde a pessoa parou</div>
+      <div class="section-note">Campo que recebeu foco e nunca ficou preenchido. É o degrau que mais custa: cada linha aqui é alguém que quis se inscrever e desistiu no meio. <strong id="travou-nota"></strong></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Campo</th><th class="num">Visitantes</th><th class="num">% dos que travaram</th></tr></thead>
+          <tbody id="tblTravou"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">👥 Porte declarado no formulário</div>
+      <div class="section-note">Decide onde está o problema: se a maioria marca abaixo de 10, a oferta não serve para quem o anúncio traz — e nenhuma mudança de página conserta isso.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Colaboradores</th><th class="num">Visitantes</th><th class="num">% dos que abriram</th></tr></thead>
+          <tbody id="tblPorteDeclarado"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="section">
+      <div class="section-title">🖱️ Qual CTA leva ao formulário</div>
+      <div class="section-note">São cinco botões por página. Este é o único jeito de saber qual deles paga o próprio espaço.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Botão</th><th class="num">Visitantes</th><th class="num">% dos que clicaram</th></tr></thead>
+          <tbody id="tblCta"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section-title">❓ Perguntas abertas no FAQ</div>
+      <div class="section-note">Objeção declarada, não inferida. A pergunta mais aberta é a que a página deveria responder antes de alguém precisar procurar.</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Pergunta</th><th class="num">Visitantes</th><th class="num">% dos que abriram alguma</th></tr></thead>
+          <tbody id="tblFaq"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -1310,6 +1375,57 @@ function render({ meta, planilha, rd, lpMentoria, paginas }) {
   setKPI('lpm-conv', lpm?.conversao != null ? fmtP(lpm.conversao) : '—',
     lpm?.visitas_medidas ? `${fmtN(lpm.visitas_medidas)} visitas medidas` : 'sem visitas no período');
   setText('lpm-nota', lpm ? '' : '· endpoint indisponível');
+
+  /* ── Funil da landing page ──
+     Os degraus vêm da função `sevilha_funil` no banco, já contados por
+     visitante distinto. `funil` nulo significa NÃO MEDIDO (função indisponível
+     ou nada instrumentado ainda) — e isso é diferente de zero, que seria lido
+     como "ninguém clicou". Por isso a seção fica vazia em vez de mostrar 0. */
+  const funilLp = lpm?.funil || null;
+
+  function degraus(pagina) {
+    const p = funilLp?.por_pagina?.[pagina] || {};
+    const visitas = (lpm?.por_pagina?.[pagina]?.visitas) || 0;
+    const leads   = (lpm?.por_pagina?.[pagina]?.leads)   || 0;
+    return [
+      { label: 'Visitas',           val: visitas },
+      { label: 'Rolou 50%',         val: p.scroll_50   || 0 },
+      { label: 'Clicou no CTA',     val: p.cta_click   || 0 },
+      { label: 'Abriu formulário',  val: p.form_open   || 0 },
+      { label: 'Começou a digitar', val: p.form_start  || 0 },
+      { label: 'Enviou',            val: p.form_submit || 0 },
+      { label: 'Lead gravado',      val: leads },
+    ];
+  }
+
+  // Rampa de um tom só: funil é magnitude que estreita, não categorias.
+  const rampaLp = ['#0D1F6E','#1B3389','#2743A8','#3354C7','#3F65E0','#4B76F0','#5C87FF'];
+  ['/mentoria', '/mentoria-2'].forEach((pagina, i) => {
+    const alvo = i === 0 ? 'funnelLpA' : 'funnelLpB';
+    if (!funilLp) { renderFunnel(alvo, []); return; }
+    renderFunnel(alvo, degraus(pagina).map((d, j) => ({ ...d, color: rampaLp[j] })));
+  });
+
+  // Denominadores diferentes de propósito: "onde parou" e "porte" se medem
+  // contra quem ABRIU o formulário; CTA contra quem clicou; FAQ contra quem
+  // abriu alguma pergunta. Usar o total de visitas em todos daria percentuais
+  // minúsculos que escondem a diferença entre os degraus.
+  const abriram = ['/mentoria','/mentoria-2']
+    .reduce((t, pg) => t + ((funilLp?.por_pagina?.[pg]?.form_open) || 0), 0);
+  const somar = lista => (lista || []).reduce((t, x) => t + x.visitantes, 0);
+
+  const travouTotal = somar(funilLp?.travou_em);
+  renderDistribuicao('tblTravou',
+    Object.fromEntries((funilLp?.travou_em || []).map(x => [x.campo, x.visitantes])), travouTotal);
+  setText('travou-nota', funilLp
+    ? `${fmtN(travouTotal)} de ${fmtN(abriram)} que abriram o formulário travaram em algum campo`
+    : '· sem medição no período');
+  renderDistribuicao('tblPorteDeclarado',
+    Object.fromEntries((funilLp?.porte || []).map(x => [x.valor, x.visitantes])), abriram);
+  renderDistribuicao('tblCta',
+    Object.fromEntries((funilLp?.cta || []).map(x => [x.cta, x.visitantes])), somar(funilLp?.cta));
+  renderDistribuicao('tblFaq',
+    Object.fromEntries((funilLp?.faq || []).map(x => [x.pergunta, x.visitantes])), somar(funilLp?.faq));
 
   renderDistribuicao('tblLpmFonte',
     Object.fromEntries((lpm?.por_fonte || []).map(f => [f.chave, f.total])),

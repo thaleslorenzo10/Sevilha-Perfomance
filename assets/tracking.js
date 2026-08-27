@@ -346,5 +346,152 @@ var SP_CONFIG = {
     }).catch(function () { /* métrica não pode quebrar a página */ });
   })();
 
+
+  /* ── Micro-eventos do funil ───────────────────────────────────────────
+     Entre "chegou" e "converteu" existem seis passos, e sem eles uma
+     conversão baixa não tem culpado identificável — todos os degraus parecem
+     igualmente responsáveis. Estes eventos tornam o funil legível e, de
+     quebra, tornam o teste A/B decidível antes de haver lead suficiente.
+
+     Roda só nas páginas do beacon: o endpoint recusa as outras, e mandar
+     evento de página não instrumentada só gastaria requisição. */
+
+  (function funil() {
+    var pagina = window.location.pathname.replace(/\/$/, '') || '/';
+    if (PAGEVIEW_BEACON_PAGES.indexOf(pagina) === -1) return;
+
+    var form = document.getElementById('sessao-form');
+    if (!form) return;
+
+    // Cada par evento+valor conta uma vez por carregamento. Sem isso, rolagem
+    // e blur repetido enchem a tabela e distorcem qualquer contagem.
+    var jaFoi = {};
+
+    function marcar(evento, valor) {
+      var chave = evento + ':' + (valor == null ? '' : valor);
+      if (jaFoi[chave]) return;
+      jaFoi[chave] = true;
+
+      var corpo = JSON.stringify({
+        pagina:    pagina,
+        evento:    evento,
+        valor:     valor == null ? null : String(valor),
+        visitante: getOrCreateExtId(),
+      });
+
+      try {
+        if (navigator.sendBeacon &&
+            navigator.sendBeacon('/api/pageview', new Blob([corpo], { type: 'application/json' }))) {
+          log('evento', evento, valor); return;
+        }
+      } catch (e) { /* cai no fetch */ }
+
+      fetch('/api/pageview', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: corpo, keepalive: true,
+      }).catch(function () { /* métrica não pode quebrar a página */ });
+    }
+
+    /* Rolagem — diz se a pessoa chega a ver a oferta ou sai no primeiro terço. */
+    window.addEventListener('scroll', function () {
+      var alcance = document.body.scrollHeight - window.innerHeight;
+      if (alcance <= 0) return;
+      var pct = (window.scrollY / alcance) * 100;
+      [25, 50, 75, 100].forEach(function (marca) {
+        if (pct >= marca) marcar('scroll', marca);
+      });
+    }, { passive: true });
+
+    /* Qual CTA funciona. São cinco por página, e hoje não se sabe qual paga. */
+    Array.prototype.forEach.call(document.querySelectorAll('.open-modal'), function (el, i) {
+      el.addEventListener('click', function () {
+        marcar('cta_click', (i + 1) + ':' + el.textContent.trim().slice(0, 24));
+      });
+    });
+
+    /* O modal pode abrir por qualquer caminho; observar a classe pega todos. */
+    var overlay = document.getElementById('modal-overlay');
+    var estavaAberto = false;
+    if (overlay && window.MutationObserver) {
+      // O observador entrega as mudanças em LOTE. Ler só o estado atual no fim
+      // do lote perde a transição quando abre e fecha entre dois quadros — e o
+      // que se perde é justamente o form_abandon, o evento mais caro daqui.
+      // Por isso cada registro é avaliado pelo seu próprio antes/depois.
+      var temOpen = function (cls) { return /(^|\s)open(\s|$)/.test(cls || ''); };
+
+      new MutationObserver(function (registros) {
+        registros.forEach(function (r, i) {
+          var antes  = temOpen(r.oldValue);
+          var depois = i + 1 < registros.length
+            ? temOpen(registros[i + 1].oldValue)
+            : overlay.classList.contains('open');
+          if (antes === depois) return;
+          if (depois) marcar('form_open');
+          else if (algumCampoPreenchido() && !enviou) marcar('form_abandon', ultimoCampo || 'nenhum');
+        });
+        estavaAberto = overlay.classList.contains('open');
+      }).observe(overlay, { attributes: true, attributeFilter: ['class'], attributeOldValue: true });
+    }
+
+    var campos = ['f-name', 'f-email', 'f-phone', 'f-cargo', 'f-colab'];
+    var ultimoCampo = '';
+    var enviou = false;
+
+    function algumCampoPreenchido() {
+      return Array.prototype.some.call(form.elements, function (e) {
+        return e.type !== 'hidden' && e.tagName !== 'BUTTON' && e.value;
+      });
+    }
+
+    /* Primeiro campo tocado e último campo que ficou válido: juntos dizem
+       ONDE a pessoa parou, que é a pergunta que o funil precisa responder. */
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (el.type === 'hidden' || el.tagName === 'BUTTON') return;
+      var nome = el.name || el.id || '?';
+
+      el.addEventListener('focus', function () { marcar('form_start', nome); }, { once: true });
+      el.addEventListener('blur', function () {
+        if (!el.value) return;
+        ultimoCampo = nome;
+        marcar('campo_ok', nome);
+      });
+    });
+
+    /* O evento que decide se o problema é a página ou a segmentação do
+       anúncio: quantos que abrem o formulário estão abaixo do porte que a
+       oferta atende. */
+    var colab = document.getElementById('f-colab');
+    if (colab) colab.addEventListener('change', function () { marcar('porte', colab.value); });
+
+    var cargo = document.getElementById('f-cargo');
+    if (cargo) cargo.addEventListener('change', function () { marcar('cargo', cargo.value); });
+
+    /* Qual pergunta a pessoa abre é objeção declarada, não inferida. */
+    Array.prototype.forEach.call(document.querySelectorAll('.faq button, button[aria-expanded]'), function (b) {
+      b.addEventListener('click', function () {
+        marcar('faq_open', b.textContent.replace(/[+−-]\s*$/, '').trim().slice(0, 60));
+      });
+    });
+
+    form.addEventListener('submit', function () { marcar('form_submit'); });
+
+    /* Sucesso e erro são detectados pela tela que aparece, não por gancho no
+       código da página — assim as duas landing pages funcionam sem edição. */
+    ['form-success', 'form-error'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el || !window.MutationObserver) return;
+      new MutationObserver(function () {
+        var visivel = id === 'form-success'
+          ? getComputedStyle(el).display !== 'none'
+          : el.classList.contains('on');
+        if (!visivel) return;
+        if (id === 'form-success') { enviou = true; marcar('whatsapp'); }
+        else marcar('submit_error');
+      }).observe(el, { attributes: true, attributeFilter: ['style', 'class'] });
+    });
+
+    log('funil instrumentado', pagina);
+  })();
+
   log('tracking.js loaded ✓');
 })();
