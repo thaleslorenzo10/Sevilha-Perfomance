@@ -1,0 +1,244 @@
+<title>Raio-X Sevilha Ads</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f6f7fb; --paper:#ffffff; --ink:#0b1b4d; --ink-2:#2b3a6b; --muted:#5b6690; --line:#d9dded;
+  --navy:#0b1b4d; --green:#3dd63a; --green-ink:#1f8f1e; --green-soft:#e6f9e5;
+  --warn:#b45309; --warn-soft:#fff3e0; --bad:#b3261e; --bad-soft:#fde8e6; --good:#1f8f1e;
+  --chip:#eef0f8;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0a1230; --paper:#111b3f; --ink:#eef1fb; --ink-2:#c9d0ea; --muted:#9aa5cc; --line:#2a3661;
+    --navy:#eef1fb; --green:#3dd63a; --green-ink:#7ff07c; --green-soft:#16321b;
+    --warn:#f5b04d; --warn-soft:#3a2a10; --bad:#ff8a80; --bad-soft:#3d1a18; --good:#7ff07c; --chip:#1a2650;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0a1230; --paper:#111b3f; --ink:#eef1fb; --ink-2:#c9d0ea; --muted:#9aa5cc; --line:#2a3661;
+  --navy:#eef1fb; --green:#3dd63a; --green-ink:#7ff07c; --green-soft:#16321b;
+  --warn:#f5b04d; --warn-soft:#3a2a10; --bad:#ff8a80; --bad-soft:#3d1a18; --good:#7ff07c; --chip:#1a2650;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55}
+.wrap{max-width:900px;margin:0 auto;padding:40px 24px 80px}
+h1,h2,h3{font-family:Poppins,"IBM Plex Sans",system-ui,sans-serif;text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(28px,4.2vw,40px);font-weight:700}
+h2{font-size:22px;font-weight:600;margin-top:56px;padding-top:14px;border-top:2px solid var(--ink)}
+h3{font-size:17px;font-weight:600;margin-top:28px}
+p{max-width:68ch;margin:12px 0}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.mark{background:var(--green);color:#0b1b4d;padding:0 .18em;border-radius:2px}
+.lead{font-size:18px;color:var(--ink-2);max-width:62ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:18px;font-size:14px;color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+.verdict{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:28px 0 8px}
+@media (max-width:640px){.verdict{grid-template-columns:1fr}}
+.v{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--green);padding:16px 18px;border-radius:6px}
+.v.bad{border-left-color:var(--bad)}
+.v.warn{border-left-color:var(--warn)}
+.v .n{font-family:Poppins,sans-serif;font-size:30px;font-weight:700;line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.v .l{font-size:13px;color:var(--muted);margin-top:6px}
+.v .t{font-size:14px;margin-top:10px;color:var(--ink-2)}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:14px 0}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--chip)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tr.total td{font-weight:600;background:var(--chip)}
+.pill{display:inline-block;padding:2px 8px;border-radius:999px;font-size:12px;font-weight:600;white-space:nowrap}
+.pill.bad{background:var(--bad-soft);color:var(--bad)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.good{background:var(--green-soft);color:var(--green-ink)}
+.callout{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin:18px 0}
+.callout.bad{border-color:var(--bad);background:var(--bad-soft)}
+.callout.warn{border-color:var(--warn);background:var(--warn-soft)}
+.callout p{margin:6px 0}
+ul,ol{max-width:70ch;padding-left:22px}
+li{margin:6px 0}
+li b{font-weight:600}
+code{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;background:var(--chip);padding:1px 5px;border-radius:3px}
+.chart{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 12px 6px;margin:16px 0}
+.chart svg{width:100%;height:auto;display:block}
+.chart .cap{font-size:13px;color:var(--muted);padding:4px 6px 6px}
+.plan{counter-reset:step;list-style:none;padding:0;max-width:none}
+.plan li{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:14px 16px 14px 58px;position:relative;margin:10px 0}
+.plan li::before{counter-increment:step;content:counter(step);position:absolute;left:16px;top:12px;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--bg);font-family:Poppins,sans-serif;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
+.plan li h3{margin:0 0 4px;font-size:16px}
+.plan li p{margin:4px 0;font-size:14.5px;color:var(--ink-2)}
+.plan .why{color:var(--muted);font-size:13.5px}
+.small{font-size:13.5px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+a{color:var(--green-ink)}
+@media (prefers-reduced-motion:no-preference){.v{transition:transform .15s}}
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Sevilha Performance · conta Meta 1676714556216146 · 05/06 a 03/09/2026</div>
+  <h1 style="margin-top:10px">Raio-X da captação: onde nascem os leads de <span class="mark">10+ colaboradores</span> e onde o dinheiro escorre</h1>
+  <p class="lead">Cruzamento de três fontes: Meta Ads (campanhas, conjuntos, 200 anúncios, pixel), planilhas de leads (porte real respondido no formulário) e o Supabase da página nova. Números de leads são os reais, não os que o Meta reporta.</p>
+  <div class="meta">
+    <span>Investimento 90 dias <b>R$ 34.511</b></span>
+    <span>Leads reais <b>615</b></span>
+    <span>Leads 10+ <b>139</b> (23%)</span>
+    <span>Custo por lead 10+ <b>R$ 248</b></span>
+    <span>Ritmo <b>~46 leads 10+/mês</b></span>
+  </div>
+
+  <div class="verdict">
+    <div class="v bad"><div class="n">1,2%</div><div class="l">conversão da página nova (/mentoria e /mentoria-2)</div><div class="t">6 leads em 498 visitas desde 25/08, R$ 1.521 gastos. A LP antiga do Respondi converte entre 5% e 8%.</div></div>
+    <div class="v bad"><div class="n">1.838</div><div class="l">eventos <code>Lead</code> no pixel em 28 dias</div><div class="t">Contra ~200 leads reais. Uma fonte externa dispara Lead de hora em hora e três sites de outras empresas usam o mesmo pixel.</div></div>
+    <div class="v warn"><div class="n">1</div><div class="l">texto de anúncio para 200 anúncios</div><div class="t">Quase todo criativo usa “Equipe sobrecarregada?” e o mesmo texto genérico. Nenhum fala de porte, sócio ou margem.</div></div>
+    <div class="v warn"><div class="n">R$ 45</div><div class="l">custo por lead de formulário (jun–ago)</div><div class="t">Era R$ 14–19 entre dez/25 e fev/26. Conjuntos quentes com frequência 4,2 em 90 dias.</div></div>
+  </div>
+
+  <h2>1. Para onde foi o dinheiro</h2>
+  <p>Três funis dividem a conta. O formulário instantâneo é o único que entrega volume; a landing page antiga qualifica parecido e custa mais; a página nova ainda não provou nada; a distribuição compra visita de perfil.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Funil (90 dias)</th><th class="num">Gasto</th><th class="num">Leads reais</th><th class="num">Leads 10+</th><th class="num">% 10+</th><th class="num">R$ / lead</th><th class="num">R$ / lead 10+</th></tr></thead>
+    <tbody>
+      <tr><td>Formulário instantâneo <span class="small">[SE][FORMS]</span></td><td class="num">21.979</td><td class="num">491</td><td class="num">112</td><td class="num">23%</td><td class="num">45</td><td class="num">196</td></tr>
+      <tr><td>Landing page Respondi <span class="small">[SE][LEAD] e [LEAD-QL]</span></td><td class="num">7.073</td><td class="num">118</td><td class="num">25</td><td class="num">21%</td><td class="num">60</td><td class="num">283</td></tr>
+      <tr><td>Página nova <span class="small">[25/08][PÁGINA NOVA], desde 25/08</span></td><td class="num">1.521</td><td class="num">6</td><td class="num">2</td><td class="num">33%</td><td class="num">253</td><td class="num">760</td></tr>
+      <tr><td>Distribuição <span class="small">3 posts, visita ao perfil do Instagram</span></td><td class="num">3.938</td><td class="num">0</td><td class="num">0</td><td class="num">–</td><td class="num">13.323 visitas a R$ 0,30</td><td class="num">–</td></tr>
+      <tr class="total"><td>Conta</td><td class="num">34.511</td><td class="num">615</td><td class="num">139</td><td class="num">23%</td><td class="num">56</td><td class="num">248</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small">Leads reais: planilha [CENTRAL DE EVENTOS] para FORMS, planilha do Respondi para LP e Supabase para a página nova. O Meta reporta 2.130 “leads” no mesmo período por causa do pixel (seção 4).</p>
+
+  <h3>O custo do formulário triplicou em seis meses</h3>
+  <div class="chart">
+    <svg viewBox="0 0 860 300" role="img" aria-label="Custo por lead de formulário por mês, outubro de 2025 a agosto de 2026">
+      <g font-family="IBM Plex Sans, sans-serif" font-size="12" fill="var(--muted)">
+        <line x1="60" y1="240" x2="840" y2="240" stroke="var(--line)"/>
+        <line x1="60" y1="140" x2="840" y2="140" stroke="var(--line)"/>
+        <line x1="60" y1="40" x2="840" y2="40" stroke="var(--line)"/>
+        <text x="52" y="244" text-anchor="end">R$ 0</text>
+        <text x="52" y="144" text-anchor="end">R$ 25</text>
+        <text x="52" y="44" text-anchor="end">R$ 50</text>
+      </g>
+      <g fill="var(--navy)">
+        <rect x="75"  y="141.6" width="46" height="98.4"/>
+        <rect x="145" y="153.2" width="46" height="86.8"/>
+        <rect x="215" y="178.4" width="46" height="61.6"/>
+        <rect x="285" y="185.2" width="46" height="54.8"/>
+        <rect x="355" y="166"   width="46" height="74"/>
+        <rect x="425" y="138"   width="46" height="102"/>
+        <rect x="495" y="112"   width="46" height="128"/>
+      </g>
+      <g fill="var(--bad)">
+        <rect x="565" y="60"    width="46" height="180"/>
+        <rect x="635" y="52.8"  width="46" height="187.2"/>
+        <rect x="705" y="64.8"  width="46" height="175.2"/>
+        <rect x="775" y="61.2"  width="46" height="178.8"/>
+      </g>
+      <g font-family="IBM Plex Sans, sans-serif" font-size="12" fill="var(--ink)" text-anchor="middle" font-weight="600">
+        <text x="98" y="134">24,6</text><text x="168" y="146">21,7</text><text x="238" y="171">15,4</text><text x="308" y="178">13,7</text><text x="378" y="159">18,5</text><text x="448" y="131">25,5</text><text x="518" y="105">32,0</text><text x="588" y="53">45,0</text><text x="658" y="46">46,8</text><text x="728" y="58">43,8</text><text x="798" y="54">44,7</text>
+      </g>
+      <g font-family="IBM Plex Sans, sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">
+        <text x="98" y="262">out/25</text><text x="168" y="262">nov</text><text x="238" y="262">dez</text><text x="308" y="262">jan/26</text><text x="378" y="262">fev</text><text x="448" y="262">mar</text><text x="518" y="262">abr</text><text x="588" y="262">mai</text><text x="658" y="262">jun</text><text x="728" y="262">jul</text><text x="798" y="262">ago</text>
+      </g>
+      <text x="60" y="290" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="var(--muted)">Gasto das campanhas [SE][FORMS] ÷ formulários enviados (onsite_conversion.lead_grouped), por mês</text>
+    </svg>
+    <div class="cap">A virada acontece em março, quando as campanhas “Melhores Ads” e “Teste de Ads” passam a rodar os mesmos vídeos para os mesmos públicos quentes. Não houve criativo novo com peso até agosto (banners, R$ 400 cada teste).</div>
+  </div>
+
+  <h2>2. O que traz lead de 10+ colaboradores</h2>
+  <p>O porte só existe na resposta do formulário. Cruzando a planilha do Respondi (1.557 leads desde abr/25, todos com anúncio identificado pela UTM), aparece um padrão que a conta ignora: o ângulo de <b>margem</b> atrai escritório grande; o ângulo de <b>sobrecarga</b> atrai escritório pequeno.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Anúncio (landing page Respondi, vida toda)</th><th class="num">Leads</th><th class="num">Leads 10+</th><th class="num">% 10+</th><th>Leitura</th></tr></thead>
+    <tbody>
+      <tr><td>008 – Contabilidade Lucrativa: aumente sua margem</td><td class="num">111</td><td class="num">55</td><td class="num"><span class="pill good">50%</span></td><td>Melhor qualificador da conta. Está pausado.</td></tr>
+      <tr><td>AD21</td><td class="num">33</td><td class="num">14</td><td class="num"><span class="pill good">42%</span></td><td>Poucos leads, taxa alta. Vale escalar com cuidado.</td></tr>
+      <tr><td>007 – Seu escritório já chegou ao limite (Vicente)</td><td class="num">11</td><td class="num">4</td><td class="num">36%</td><td>Amostra pequena.</td></tr>
+      <tr><td>AD-08</td><td class="num">51</td><td class="num">17</td><td class="num">33%</td><td>Acima da média.</td></tr>
+      <tr><td>005 – Está consumido pela operação (Vicente)</td><td class="num">441</td><td class="num">100</td><td class="num">23%</td><td>Cavalo de batalha. Média da conta.</td></tr>
+      <tr><td>AD01 VIDEO – Transforme sua empresa com nossa metodologia</td><td class="num">472</td><td class="num">91</td><td class="num">19%</td><td>Maior volume, abaixo da média. CTA configurado como BOOK_TRAVEL.</td></tr>
+      <tr><td>AD16</td><td class="num">162</td><td class="num">28</td><td class="num"><span class="pill warn">17%</span></td><td>Traz gente pequena.</td></tr>
+      <tr><td>AD31</td><td class="num">40</td><td class="num">6</td><td class="num"><span class="pill warn">15%</span></td><td>Ativo em jun–ago nos quentes. Pior qualificador recente.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="small">No formulário instantâneo a planilha não é mais pública e o script local (<code>scripts/leads-10mais.js</code>) precisa de token e conta de serviço válidos, que não estão no <code>.env.local</code>. A taxa 10+ do FORMS por anúncio fica pendente; o agregado é 23% (90 dias) e 29% (30 dias).</p>
+
+  <div class="grid2">
+    <div class="callout"><b>Quem responde muda a taxa.</b><p>Dono/Sócio: 25% de 10+. Cargo gerencial: 43%. Cargo operacional: 30%. O gerente que preenche costuma vir de escritório maior, mas não decide; o formulário precisa capturar o sócio dele, não descartá-lo.</p></div>
+    <div class="callout"><b>Faixas de porte (90 dias, FORMS + LP).</b><p>0–4: 297 · 5–9: 161 · 10–19: 75 · 20–29: 23 · 30–49: 21 · 50+: 18. Três em cada quatro leads estão fora do perfil da Sessão Estratégica e hoje só o time separa isso no CRM.</p></div>
+  </div>
+
+  <h2>3. A página nova não está convertendo</h2>
+  <p>Desde 25/08 as campanhas [PÁGINA NOVA] mandam tráfego para /mentoria e /mentoria-2. O funil medido no Supabase mostra onde a visita morre:</p>
+  <div class="tw"><table>
+    <thead><tr><th>Degrau (25/08 a 03/09)</th><th class="num">/mentoria</th><th class="num">/mentoria-2</th></tr></thead>
+    <tbody>
+      <tr><td>Visitas</td><td class="num">256</td><td class="num">242</td></tr>
+      <tr><td>Rolou 25% da página</td><td class="num">24</td><td class="num">14</td></tr>
+      <tr><td>Clicou no CTA</td><td class="num">8</td><td class="num">6</td></tr>
+      <tr><td>Começou o formulário</td><td class="num">13</td><td class="num">12</td></tr>
+      <tr><td>Enviou</td><td class="num">5</td><td class="num">1</td></tr>
+      <tr class="total"><td>Conversão</td><td class="num">1,9%</td><td class="num">0,4%</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout bad">
+    <p><b>Só 38 de 498 visitantes chegaram a 25% da página.</b> Ou 92% saem antes de rolar, ou o beacon de scroll não dispara na maioria dos celulares. Em ambos os casos o teste A/B entre as duas versões não tem amostra (5 contra 1) e a otimização por <code>LeadQualificado</code> nessas campanhas está aprendendo com 2 eventos.</p>
+    <p><b>Domínio.</b> Os anúncios levam para <code>sevilha-perfomance.vercel.app</code> (com “perfomance” errado). <code>pg.sevilhaperformance.com.br</code> e <code>lp.sevilhaperformance.com.br</code> respondem 404. Para um sócio cético, o endereço já é um motivo para fechar a aba.</p>
+  </div>
+  <p>Comparação justa: a campanha [LEAD-QL][COLD] Teste de Públicos, que manda para a LP antiga do Respondi, gerou 25 leads reais em 30 dias (6 de 10+) com R$ 1.767, ou seja, R$ 71 por lead e 21% de 10+. A página nova custou R$ 253 por lead no mesmo período.</p>
+
+  <h2>4. Medição: o pixel está contando outra coisa</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Evento no pixel 657178423444244 (28 dias)</th><th class="num">Disparos</th><th>Qualidade (EMQ)</th><th>Leitura</th></tr></thead>
+    <tbody>
+      <tr><td><code>Lead</code></td><td class="num">1.838</td><td>2,2 · upload “hourly” · só e-mail e primeiro nome (42%)</td><td><span class="pill bad">inflado</span> Não é o formulário. É uma integração externa (provável RD Station ou n8n) mandando lote por hora. Pico de 390 em 26/08.</td></tr>
+      <tr><td><code>LeadQualificado</code></td><td class="num">62</td><td>7,5 · tempo real</td><td><span class="pill good">confiável</span> Enviado pelo repositório com lead_id, e-mail, telefone. Volume baixo para otimizar (Meta pede ~50/semana).</td></tr>
+      <tr><td><code>EndForm</code> / <code>RespondiConversion</code></td><td class="num">55 / 56</td><td>–</td><td>Batem com os leads da LP antiga. É o evento certo para as campanhas [LEAD].</td></tr>
+      <tr><td><code>PageView</code> + <code>Pageview</code></td><td class="num">3.962 + 1.154</td><td>4,4</td><td>Duas instalações com grafias diferentes. Uma delas não é deste site.</td></tr>
+      <tr><td>Eventos CRM* (8 etapas)</td><td class="num">~190</td><td>6,6–7,9</td><td>Funil do CRM chegando ao Meta. Base boa para “Conversion Leads”.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout warn">
+    <p><b>Um pixel para quatro empresas.</b> Nos últimos 7 dias o pixel recebeu PageView de <code>sevilha.com.br</code>, <code>sevilhaeducacao.com.br</code>, <code>conteudo.sevilha.com.br</code> e <code>sevilhaperformance.com.br</code>, além da página de captação. O público “[SITE] – Acessou site – 180D”, usado como inclusão nos conjuntos quentes e exclusão nos frios, mistura visitantes da contabilidade e da escola. O Meta aprende com todos eles.</p>
+    <p><b>14 anúncios bloqueados</b> nas campanhas [SE][LEAD][HOT] com o erro “Account does not have access to pixel 657178423444244”: o pixel não está compartilhado com a conta de anúncios no Gerenciador de Negócios. É provável que tenha sido isso que forçou as cópias [LEAD-QL] em agosto.</p>
+  </div>
+
+  <h2>5. Criativos: um roteiro, 200 anúncios</h2>
+  <p>Dos 40 criativos com mais gasto, 34 usam o título <b>“Equipe sobrecarregada?”</b> e o texto <i>“Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?”</i>. Os outros são posts do Instagram reaproveitados. O que está faltando é exatamente o que o Meta usa para achar o público certo:</p>
+  <ul>
+    <li><b>Nenhum gatilho de identidade.</b> Não aparece “escritório com mais de 10 colaboradores”, “sócio”, “equipe de 15 pessoas”. O texto serve para um MEI e para um escritório de 60.</li>
+    <li><b>Nenhuma oferta no texto.</b> “Sessão Estratégica de 45 minutos, gratuita, conduzida por Bruno Silvestre” está na página, não no anúncio.</li>
+    <li><b>Ângulo de margem parado.</b> O único criativo que qualificou 50% (“aumente sua margem”) está pausado desde o início do ano.</li>
+    <li><b>Formato.</b> O primeiro banner estático de agosto (“Banner 09”) fez CTR 8,3% e lead a R$ 31, contra 1,1% e R$ 44 dos vídeos. Foram R$ 300 de teste.</li>
+    <li><b>Detalhes que custam confiança:</b> CTA “BOOK_TRAVEL” no AD01 VIDEO (o maior volume da LP); vários anúncios com nome “{{product.name}}” e placement “{{placement}}” chegando na planilha.</li>
+  </ul>
+
+  <h2>6. Públicos, posicionamentos e idade</h2>
+  <div class="grid2">
+    <div class="callout"><b>Quente saturado.</b><p>“Teste de Ads” (HOT) tem frequência 4,3 e “Melhores Ads” (HOT) 4,2 em 90 dias, ambos sobre os mesmos 10 públicos empilhados (seguidores, envolvimento 60–365D, site 180D). O Meta avisa que o conjunto Warm da página nova tem 37 a 44 mil pessoas e o do FORMS quente está no piso de mil.</p></div>
+    <div class="callout"><b>Frio estreito.</b><p>Todo frio usa o interesse “Contabilidade financeira” ou cargo “Contador”, idade 25–60, sem Advantage+ (os únicos testes com Advantage+ gastaram R$ 23 a R$ 111). Não existe conjunto amplo rodando com criativo qualificador.</p></div>
+    <div class="callout"><b>Distribuição paga adolescente.</b><p>As três campanhas de visita ao perfil têm idade 18–65. Do gasto da conta em 18–24 anos (R$ 1.631 em 90 dias, 1 lead) praticamente tudo vem delas. É R$ 1.300 por mês comprando visita de quem nunca terá 10 colaboradores.</p></div>
+    <div class="callout"><b>Posicionamento.</b><p>Custo por formulário: Reels do Facebook R$ 41, feed do Instagram R$ 66, Stories R$ 84, Reels do Instagram R$ 123 (inflado pela distribuição). Idade: 45–54 é a faixa que mais converte (191 formulários), seguida de 35–44 (141) e 55–64 (98).</p></div>
+  </div>
+
+  <h2>7. Plano: primeiro parar a sangria, depois qualificar</h2>
+  <p>Ordem por impacto sobre leads 10+ por real gasto. Cada item diz o que muda e o que se espera ver.</p>
+  <ol class="plan">
+    <li><h3>Tirar a página nova do ar dos anúncios até ela provar 4%</h3><p>Apontar as duas campanhas [PÁGINA NOVA] para a LP do Respondi (ou pausar a COLD, que fez 1 lead qualificado com R$ 717) enquanto o funil de scroll é investigado num celular real em 4G. Depois, arrumar o domínio: um endereço próprio, sem “vercel” e sem “perfomance”.</p><p class="why">Esperado: R$ 1,5 mil por mês deixam de comprar visita a 1,2% e voltam a comprar lead a ~R$ 60–70.</p></li>
+    <li><h3>Cortar a fonte externa do evento <code>Lead</code> e separar o pixel</h3><p>No Events Manager, identificar quem envia o lote horário (RD Station Marketing ou n8n) e desligar ou renomear para um evento próprio. Tirar os sites da contabilidade e da escola deste pixel ou criar um pixel só para a captação. Compartilhar o pixel com a conta de anúncios para destravar os 14 anúncios.</p><p class="why">Esperado: relatório do Meta volta a bater com a planilha; públicos de site passam a ser só de captação; campanhas [LEAD] voltam a poder criar anúncio.</p></li>
+    <li><h3>Ligar “Conversion Leads” nas campanhas de formulário</h3><p>O repositório já devolve ao Meta o <code>LeadQualificado</code> com lead_id e as oito etapas do CRM. Trocar a otimização das campanhas FORMS de “leads” para “conversion leads” usando <code>LeadQualificado</code> (ou a etapa “ReuniaoAgendada”) como estágio de valor. Enquanto o volume não chega a 50 por semana, usar <code>LeadQualificado</code> como público semente para lookalike 1% e para exclusões.</p><p class="why">É a única alavanca que ensina o Meta a buscar o porte certo em vez de o mais barato. Efeito em 3 a 5 semanas.</p></li>
+    <li><h3>Reescrever o texto com porte e oferta, em volume</h3><p>Cinco a oito variações estáticas por semana, todas com gatilho de identidade (“escritório com 10, 20, 40 colaboradores”, “para o sócio que virou gargalo”) e a oferta explícita (Sessão Estratégica, 45 min, gratuita, com o Bruno). Reativar o ângulo de margem (o 008 fez 50% de 10+) e testar “fatura mais, sobra o mesmo”. Corrigir o CTA do AD01 para “Saiba mais” ou “Agendar”.</p><p class="why">Esperado: taxa de 10+ subindo de 23% para 30–35% sem mexer em público; CTR de estático já mostrou 2,6–8% contra 1,1% do vídeo.</p></li>
+    <li><h3>Formulário instantâneo que segmenta em vez de perder</h3><p>Pergunta de porte como primeira pergunta, tipo “maior intenção”, e lógica condicional: abaixo de 10 recebe a página do Clube da Performance na tela final; 10 ou mais recebe o WhatsApp do agendamento. Manter a pergunta de cargo e pedir o contato do sócio quando quem preenche é gerente.</p><p class="why">Esperado: os 75% de leads pequenos deixam de ocupar o time e viram fila do Clube; o 10+ chega ao Bruno no mesmo dia.</p></li>
+    <li><h3>Descansar os quentes e abrir um frio amplo</h3><p>Reduzir os conjuntos HOT a um terço do orçamento e limitar frequência; mover o resto para um conjunto frio amplo (só Brasil, 30–60 anos, Advantage+ ligado) com os criativos qualificadores do item 4 e exclusão de leads dos últimos 90 dias. Manter o interesse “Contabilidade” como conjunto de controle.</p><p class="why">Esperado: CPM dos quentes cai (hoje R$ 53–63 contra R$ 26 no frio) e o custo por formulário volta para a faixa de R$ 25–35.</p></li>
+    <li><h3>Distribuição: idade 30–60 ou desligar</h3><p>Se o objetivo é aquecer público para o quente, restringir a 30–60 anos e trocar o objetivo para envolvimento com o vídeo; senão, realocar os R$ 90 por dia para o frio de formulário.</p><p class="why">Esperado: R$ 1.300 por mês param de comprar visita de 18–24 anos.</p></li>
+  </ol>
+
+  <h3>O que dá para esperar em 60 dias</h3>
+  <p>Hoje a conta entrega cerca de 46 leads 10+ por mês a R$ 248 cada. Com os itens 1, 2 e 4 feitos na primeira semana e o item 3 aprendendo, a meta razoável é 60 a 80 leads 10+ por mês a menos de R$ 180, com o mesmo orçamento de R$ 11–13 mil. Se o Conversion Leads pegar, o custo pode cair abaixo de R$ 150.</p>
+
+  <h2>Limitações desta análise</h2>
+  <ul>
+    <li>Porte por anúncio no formulário instantâneo não foi calculado: a planilha da Central não é mais pública e o <code>.env.local</code> tem token do Meta e chave da conta de serviço inválidos.</li>
+    <li>O Meta não separou os disparos de <code>Lead</code> por origem (web ou servidor); a hipótese da integração externa vem da frequência “hourly” e das chaves de correspondência.</li>
+    <li>A pontuação de oportunidade do Meta não pôde ser consultada nesta sessão.</li>
+    <li>Números de gasto vêm do Meta; leads e porte vêm das planilhas e do Supabase. Onde os dois divergem, a planilha manda.</li>
+  </ul>
+</div>

@@ -1,17 +1,25 @@
 /**
  * Sevilha Performance — Tracking Centralizado
- * Meta Pixel + Conversions API (CAPI) + Google Ads
+ * Meta Pixel + Conversions API (CAPI)
  *
  * ─────────────────────────────────────────────────────────
  * CONFIGURAÇÃO — atualize apenas este bloco
  * ─────────────────────────────────────────────────────────
+ *
+ * NÃO existe mais Google Ads aqui. O gtag.js era carregado com o id de
+ * exemplo `AW-XXXXXXXXXX`: 149 KB baixados em toda visita, disputando banda
+ * com a fonte da headline, para disparar conversão num id que não existe (e
+ * mandar a URL da página para o Google no caminho). Medido em 03/09/2026:
+ * era o maior arquivo da página, à frente do próprio Pixel.
+ *
+ * Para religar quando houver conta de verdade: criar o gtag com o id real,
+ * carregá-lo DEPOIS do primeiro paint (como o Pixel abaixo) e disparar a
+ * conversão dentro de `SP_fireLeadEvents`, junto do `fbq('track','Lead')`.
  */
 var SP_CONFIG = {
-  META_PIXEL_ID:           '657178423444244',
-  GOOGLE_ADS_ID:           'AW-XXXXXXXXXX',           // preencher quando tiver o Google Ads ID
-  GOOGLE_CONVERSION_LABEL: 'XXXXXXXXXXXXXXXXXXXXX',   // preencher quando tiver o label
-  FORM_ENDPOINT:           '/api/leads',              // Vercel Serverless Function
-  DEBUG:                   false,
+  META_PIXEL_ID:  '657178423444244',
+  FORM_ENDPOINT:  '/api/leads',              // Vercel Serverless Function
+  DEBUG:          false,
 };
 /* ──────────────────────────────────────────────────────── */
 
@@ -41,6 +49,34 @@ var SP_CONFIG = {
       localStorage.setItem('_sp_ext_id', id);
     }
     return id;
+  }
+
+  /* ── Tráfego interno ──────────────────────────────────────────────────
+     Cliente, agência e agente de automação abrem a página para conferir, e
+     cada abertura entrava no denominador da conversão. Com 500 visitas no
+     período, uma dúzia de conferências é a diferença entre 1,2% e 1,4% —
+     e a taxa caía a cada revisão, o que é o oposto do que a métrica serve.
+
+     `?sp_interno=1` marca o navegador para sempre (localStorage);
+     `?sp_interno=0` desmarca. Marcado, esta visita não conta em lugar
+     nenhum: nem visita, nem micro-evento, nem PageView do Pixel (o guarda
+     do Pixel está inline no <head> de cada página, porque ele roda antes
+     deste arquivo). O formulário continua funcionando — teste interno que
+     não consegue enviar lead não testa nada. */
+  var INTERNO_KEY = '_sp_interno';
+
+  (function marcaInterno() {
+    var flag = new URLSearchParams(window.location.search).get('sp_interno');
+    if (flag === null) return;
+    try {
+      if (flag === '0') localStorage.removeItem(INTERNO_KEY);
+      else localStorage.setItem(INTERNO_KEY, '1');
+    } catch (e) { /* modo privado: segue como visita normal */ }
+  })();
+
+  function ehInterno() {
+    try { return localStorage.getItem(INTERNO_KEY) === '1'; }
+    catch (e) { return false; }
   }
 
   /**
@@ -123,22 +159,6 @@ var SP_CONFIG = {
     log('Meta Pixel advanced matching set (external_id)');
   }
 
-  /* ── Google Tag (gtag.js) ────────────────────────────── */
-  (function loadGtag() {
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + SP_CONFIG.GOOGLE_ADS_ID;
-    document.head.appendChild(s);
-
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { dataLayer.push(arguments); };
-    gtag('js', new Date());
-    gtag('config', SP_CONFIG.GOOGLE_ADS_ID, {
-      allow_enhanced_conversions: true,
-    });
-    log('Google Tag init');
-  })();
-
   /* ── Preenche campos ocultos do formulário ───────────── */
   window.SP_populateHiddenFields = function (form) {
     var utmKeys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content',
@@ -191,24 +211,6 @@ var SP_CONFIG = {
         currency: 'BRL',
       }, { eventID: eventId });
       log('Meta Lead fired', eventId);
-    }
-
-    // Google Ads Conversion
-    if (window.gtag) {
-      gtag('event', 'conversion', {
-        send_to: SP_CONFIG.GOOGLE_ADS_ID + '/' + SP_CONFIG.GOOGLE_CONVERSION_LABEL,
-        value: 0.0,
-        currency: 'BRL',
-        transaction_id: eventId,
-      });
-      // Enhanced Conversions (email/telefone hasheados são enviados via gtag)
-      if (formData && formData.email) {
-        gtag('set', 'user_data', {
-          email: formData.email,
-          phone_number: formData.telefone || '',
-        });
-      }
-      log('Google Ads conversion fired', eventId);
     }
   };
 
@@ -310,7 +312,7 @@ var SP_CONFIG = {
     });
   };
 
-  /* ── Beacon de visita ─────────────────────────────────
+  /* ── Páginas instrumentadas ───────────────────────────
      As páginas do teste A/B recebem a visita no redirect /campanha. As que
      ficam fora do rodízio são acessadas direto pelo anúncio e precisam
      registrar a própria visita, senão não há denominador para a conversão.
@@ -319,13 +321,62 @@ var SP_CONFIG = {
   // é servido com must-revalidate, mas quem visitou antes disso ainda carrega a
   // versão immutable de um ano — e um beacon congelado não registra a página nova.
   var PAGEVIEW_BEACON_PAGES = ['/mentoria', '/mentoria-2'];
+  var PAGINA_ATUAL = window.location.pathname.replace(/\/$/, '') || '/';
+  var INSTRUMENTADA = PAGEVIEW_BEACON_PAGES.indexOf(PAGINA_ATUAL) !== -1;
 
-  (function beacon() {
-    var pagina = window.location.pathname.replace(/\/$/, '') || '/';
-    if (PAGEVIEW_BEACON_PAGES.indexOf(pagina) === -1) return;
+  /* ── Micro-evento ─────────────────────────────────────────────────────
+     Cada par evento+valor conta uma vez por carregamento. Sem isso, rolagem
+     e blur repetido enchem a tabela e distorcem qualquer contagem.
+
+     Mora aqui, e não dentro do funil, porque o beacon de visita também usa:
+     a visita precisa de um evento com `visitante` para o relatório poder
+     contar PESSOA distinta em vez de carregamento. Sem isso, recarregar a
+     página inflava o denominador da conversão.
+
+     `window.SP_marcar` expõe a função para o formulário de dois passos
+     (assets/form-steps.js) registrar os próprios degraus. */
+  var jaFoi = {};
+
+  function marcar(evento, valor) {
+    if (!INSTRUMENTADA || ehInterno()) return;
+
+    var chave = evento + ':' + (valor == null ? '' : valor);
+    if (jaFoi[chave]) return;
+    jaFoi[chave] = true;
 
     var corpo = JSON.stringify({
-      pagina: pagina,
+      pagina:    PAGINA_ATUAL,
+      evento:    evento,
+      valor:     valor == null ? null : String(valor),
+      visitante: getOrCreateExtId(),
+    });
+
+    try {
+      if (navigator.sendBeacon &&
+          navigator.sendBeacon('/api/pageview', new Blob([corpo], { type: 'application/json' }))) {
+        log('evento', evento, valor); return;
+      }
+    } catch (e) { /* cai no fetch */ }
+
+    fetch('/api/pageview', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: corpo, keepalive: true,
+    }).catch(function () { /* métrica não pode quebrar a página */ });
+  }
+
+  window.SP_marcar = marcar;
+
+  /* ── Beacon de visita ────────────────────────────────── */
+  (function beacon() {
+    if (!INSTRUMENTADA || ehInterno()) return;
+
+    // Visitante distinto: é este evento que o relatório conta como "pessoa que
+    // chegou". A linha da tabela de visitas continua sendo gravada logo abaixo
+    // porque ela é quem guarda as UTMs da entrada.
+    marcar('pageview');
+
+    var corpo = JSON.stringify({
+      pagina: PAGINA_ATUAL,
       query:  window.location.search.replace(/^\?/, ''),
     });
 
@@ -333,7 +384,7 @@ var SP_CONFIG = {
     try {
       if (navigator.sendBeacon &&
           navigator.sendBeacon('/api/pageview', new Blob([corpo], { type: 'application/json' }))) {
-        log('pageview beacon enviado', pagina);
+        log('pageview beacon enviado', PAGINA_ATUAL);
         return;
       }
     } catch (e) { /* cai no fetch */ }
@@ -357,40 +408,10 @@ var SP_CONFIG = {
      evento de página não instrumentada só gastaria requisição. */
 
   (function funil() {
-    var pagina = window.location.pathname.replace(/\/$/, '') || '/';
-    if (PAGEVIEW_BEACON_PAGES.indexOf(pagina) === -1) return;
+    if (!INSTRUMENTADA) return;
 
     var form = document.getElementById('sessao-form');
     if (!form) return;
-
-    // Cada par evento+valor conta uma vez por carregamento. Sem isso, rolagem
-    // e blur repetido enchem a tabela e distorcem qualquer contagem.
-    var jaFoi = {};
-
-    function marcar(evento, valor) {
-      var chave = evento + ':' + (valor == null ? '' : valor);
-      if (jaFoi[chave]) return;
-      jaFoi[chave] = true;
-
-      var corpo = JSON.stringify({
-        pagina:    pagina,
-        evento:    evento,
-        valor:     valor == null ? null : String(valor),
-        visitante: getOrCreateExtId(),
-      });
-
-      try {
-        if (navigator.sendBeacon &&
-            navigator.sendBeacon('/api/pageview', new Blob([corpo], { type: 'application/json' }))) {
-          log('evento', evento, valor); return;
-        }
-      } catch (e) { /* cai no fetch */ }
-
-      fetch('/api/pageview', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: corpo, keepalive: true,
-      }).catch(function () { /* métrica não pode quebrar a página */ });
-    }
 
     /* Rolagem — diz se a pessoa chega a ver a oferta ou sai no primeiro terço. */
     window.addEventListener('scroll', function () {
@@ -433,13 +454,20 @@ var SP_CONFIG = {
       }).observe(overlay, { attributes: true, attributeFilter: ['class'], attributeOldValue: true });
     }
 
-    var campos = ['f-name', 'f-email', 'f-phone', 'f-cargo', 'f-colab'];
     var ultimoCampo = '';
     var enviou = false;
 
+    /* Pelo `name=`, não pelo tipo do campo: no formulário de dois passos porte
+       e cargo são respondidos em botão e guardados em input oculto. Varrer só
+       o que não é `hidden` deixaria de ver justamente a primeira resposta —
+       e quem escolhe o porte e fecha o modal é o abandono mais caro da
+       página, porque já disse que tem o perfil. */
+    var CAMPOS_DE_PESSOA = ['nome', 'email', 'telefone', 'escritorio', 'cargo', 'colaboradores'];
+
     function algumCampoPreenchido() {
-      return Array.prototype.some.call(form.elements, function (e) {
-        return e.type !== 'hidden' && e.tagName !== 'BUTTON' && e.value;
+      return CAMPOS_DE_PESSOA.some(function (nome) {
+        var el = form.elements[nome];
+        return el && el.value;
       });
     }
 
@@ -451,7 +479,11 @@ var SP_CONFIG = {
 
       el.addEventListener('focus', function () { marcar('form_start', nome); }, { once: true });
       el.addEventListener('blur', function () {
-        if (!el.value) return;
+        // Botão de rádio tem `value` sempre preenchido — o que diz se a pessoa
+        // respondeu é o `checked`. Sem esta distinção, passar o foco pelo grupo
+        // de porte já contava como resposta.
+        var respondeu = (el.type === 'radio' || el.type === 'checkbox') ? el.checked : !!el.value;
+        if (!respondeu) return;
         ultimoCampo = nome;
         marcar('campo_ok', nome);
       });
@@ -459,12 +491,16 @@ var SP_CONFIG = {
 
     /* O evento que decide se o problema é a página ou a segmentação do
        anúncio: quantos que abrem o formulário estão abaixo do porte que a
-       oferta atende. */
-    var colab = document.getElementById('f-colab');
-    if (colab) colab.addEventListener('change', function () { marcar('porte', colab.value); });
+       oferta atende.
 
-    var cargo = document.getElementById('f-cargo');
-    if (cargo) cargo.addEventListener('change', function () { marcar('cargo', cargo.value); });
+       Escuta no formulário e não no campo: porte e cargo são grupos de rádio
+       no formulário de dois passos e eram `select` antes. Pelo `name=` — que é
+       contrato com /api/leads — os dois formatos funcionam sem edição aqui. */
+    form.addEventListener('change', function (e) {
+      var campo = e.target && e.target.name;
+      if (campo === 'colaboradores') marcar('porte', e.target.value);
+      else if (campo === 'cargo')    marcar('cargo', e.target.value);
+    });
 
     /* Qual pergunta a pessoa abre é objeção declarada, não inferida. */
     Array.prototype.forEach.call(document.querySelectorAll('.faq button, button[aria-expanded]'), function (b) {
@@ -490,7 +526,7 @@ var SP_CONFIG = {
       }).observe(el, { attributes: true, attributeFilter: ['style', 'class'] });
     });
 
-    log('funil instrumentado', pagina);
+    log('funil instrumentado', PAGINA_ATUAL);
   })();
 
   log('tracking.js loaded ✓');
