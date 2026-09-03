@@ -1,0 +1,46 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.12/schema.json",
+  "formatter": {
+    "enabled": false
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "none",
+      "suspicious": {
+        "noDoubleEquals": "error",
+        "noSelfCompare": "error",
+        "noDuplicateObjectKeys": "error"
+      },
+      "correctness": {
+        "noUnusedImports": "warn"
+      },
+      "performance": {
+        "noDelete": "warn"
+      },
+      "a11y": {
+        "useAltText": "warn",
+        "useButtonType": "warn",
+        "useKeyWithClickEvents": "off"
+      }
+    }
+  },
+  "files": {
+    "includes": [
+      "**",
+      "!node_modules/**",
+      "!.next/**",
+      "!dist/**",
+      "!build/**",
+      "!out/**",
+      "!coverage/**",
+      "!graphify-out/**",
+      "!.claude/**",
+      "!.agents/**",
+      "!.chrome-profile/**",
+      "!**/*.min.js",
+      "!**/*.css",
+      "!**/*.html"
+    ]
+  }
+}

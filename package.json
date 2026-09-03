@@ -7,5 +7,16 @@
   },
   "dependencies": {
     "@vercel/og": "^0.6.3"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:biome": "biome lint ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.12",
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "globals": "^17.12.0"
   }
 }
