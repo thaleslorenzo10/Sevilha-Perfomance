@@ -14,6 +14,12 @@
         "value": "0 0 0 3px rgba(61,214,58,.16)",
         "createdAt": "2026-08-23T15:11:16.333Z",
         "reason": "Claude: anel de foco de input (acessibilidade), não decoração; mesmo padrão das LPs existentes"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "#0b1b4d",
+        "createdAt": "2026-09-03T14:07:39.088Z",
+        "reason": "Sombra de elevacao navy da marca, herdada do arquivo original e do token --shadow da v2 (DESIGN.md): tem deslocamento vertical (0 10px 28px) e a pagina tem fundo claro #f0f2f5 -- nao e halo de raio zero nem fundo escuro"
       }
     ]
   }

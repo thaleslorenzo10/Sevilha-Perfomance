@@ -3,40 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sessão Estratégica gratuita para escritórios de contabilidade com mais de 10 colaboradores: diagnóstico individual do que trava o crescimento e o que precisa mudar." />
+  <meta name="description" content="Sessão Estratégica gratuita para escritórios de contabilidade com mais de 10 colaboradores: 45 minutos de diagnóstico individual de onde a margem vaza e do que trava o crescimento." />
   <title>Sessão Estratégica — Sevilha Performance</title>
   <link rel="canonical" href="https://sevilha-perfomance.vercel.app/mentoria" />
   <link rel="icon" href="/assets/logo-sevilha.svg" type="image/svg+xml" />
 
   <meta property="og:type"        content="website" />
   <meta property="og:title"       content="Sessão Estratégica — diagnóstico gratuito do seu escritório contábil" />
-  <meta property="og:description" content="Para escritórios com mais de 10 colaboradores: 45 minutos de diagnóstico individual do que travou o crescimento e do que precisa mudar. Sem custo e sem compromisso." />
+  <meta property="og:description" content="Para escritórios com mais de 10 colaboradores: 45 minutos de diagnóstico individual de onde a margem vaza e do que travou o crescimento. Sem custo e sem compromisso." />
   <meta property="og:image"       content="https://sevilha-perfomance.vercel.app/assets/og-mentoria.png" />
   <meta property="og:url"         content="https://sevilha-perfomance.vercel.app/mentoria" />
   <meta property="og:locale"      content="pt_BR" />
   <meta name="twitter:card"       content="summary_large_image" />
 
+  <!-- Poppins em dois pesos, não quatro: cada peso é um arquivo woff2 à parte
+       (~8 KB) baixado no caminho crítico, e 500/600 não apareciam em nada que
+       a headline precisasse. Quem precisa de peso intermediário usa Inter, que
+       é fonte variável e vem num arquivo só. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code
+       O fbevents.js tem 141 KB e ficava no caminho crítico, disputando banda
+       com a fonte da headline (LCP de 5,3 s em 4G simulado, medido em
+       03/09/2026). A fila do `fbq` guarda init e PageView, então o script pode
+       entrar depois do primeiro paint sem perder nenhum evento — o teto de
+       1,5 s existe para a visita curta ainda ser registrada.
+
+       O guarda `spInterno` mora aqui, e não no tracking.js, porque este trecho
+       roda antes: sem ele, cada conferência interna virava um PageView e
+       entrava nos públicos de remarketing do site. -->
   <script>
-  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  !function(f,b,e,n){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-  document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '657178423444244');
-  fbq('track', 'PageView');
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window,document,'script');
+
+  (function () {
+    var interno = false;
+    try {
+      interno = localStorage.getItem('_sp_interno') === '1' ||
+                /[?&]sp_interno=1(&|$)/.test(window.location.search);
+    } catch (e) {}
+    if (interno) return;
+
+    fbq('init', '657178423444244');
+    fbq('track', 'PageView');
+
+    var carregado = false;
+    function carrega() {
+      if (carregado) return;
+      carregado = true;
+      var t = document.createElement('script');
+      t.async = true;
+      t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      document.head.appendChild(t);
+    }
+    var teto = setTimeout(carrega, 1500);
+    window.addEventListener('load', function () { clearTimeout(teto); carrega(); }, { once: true });
+  })();
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=657178423444244&ev=PageView&noscript=1"/></noscript>
   <!-- End Meta Pixel Code -->
 
-  <script src="/assets/tracking.js?v=4" defer></script>
+  <script src="/assets/tracking.js?v=5" defer></script>
+  <script src="/assets/form-steps.js?v=1" defer></script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -96,7 +130,12 @@
       font-family: 'Poppins', sans-serif; font-weight: 700;
       color: #fff; font-size: 1rem; letter-spacing: -.2px;
     }
-    .hd-brand small { display: block; font-weight: 500; color: #c3ccdf; font-size: .78rem; }
+    /* Inter e não Poppins: peso 500 em Poppins seria um arquivo de fonte só
+       para este subtítulo. Inter é variável — já está baixada. */
+    .hd-brand small {
+      display: block; font-family: 'Inter', sans-serif; font-weight: 500;
+      color: #c3ccdf; font-size: .78rem;
+    }
 
     /* ── Botões ─────────────────────────────────────────── */
     .btn {
@@ -111,61 +150,88 @@
     .btn:hover { background: var(--green-d); transform: translateY(-2px); color: #06210a; }
     .btn-sm    { padding: 10px 20px; font-size: .88rem; box-shadow: none; }
     .btn-full  { width: 100%; }
-    .btn-ghost {
-      background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.35);
-      box-shadow: none;
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,.1); color: #fff; }
 
     /* ── Hero ───────────────────────────────────────────── */
     .hero {
       background: linear-gradient(180deg, var(--bg) 0%, #e7eaf1 100%);
-      padding: 64px 0 72px;
+      padding: 52px 0 60px;
     }
     .hero-grid {
-      display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: start;
-    }
-    .eyebrow {
-      font-family: 'Poppins', sans-serif; font-weight: 700;
-      font-size: .95rem; color: var(--navy); margin-bottom: 18px;
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 44px; align-items: start;
     }
     .hero h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.02em; }
-    .hero p.lead { margin-top: 22px; font-size: 1.06rem; color: var(--muted); max-width: 34em; }
+    .hero p.lead { margin-top: 20px; font-size: 1.06rem; color: var(--muted); max-width: 34em; }
 
-    .hero-list { list-style: none; margin: 26px 0 30px; display: grid; gap: 10px; }
-    .hero-list li { display: flex; gap: 10px; align-items: flex-start; font-size: .98rem; }
-    .hero-list li b { font-weight: 600; }
-    .tick {
-      flex: none; width: 22px; height: 22px; border-radius: 50%;
-      background: rgba(61,214,58,.16); color: var(--green-ink);
-      display: grid; place-items: center; font-size: .78rem; font-weight: 700; margin-top: 2px;
+    /* ── A pergunta ─────────────────────────────────────────
+       A primeira interação da página é a pergunta que qualifica, não um botão
+       que abre um paredão de campos: de 185 carregamentos vindos de anúncio,
+       8 chegavam a abrir o formulário antigo. */
+    .ask {
+      margin-top: 28px; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 18px; padding: 22px 22px 18px;
+      box-shadow: 0 10px 28px rgba(11,27,77,.08);
     }
-    .hero-cta-note { font-size: .85rem; color: var(--muted); margin-top: 12px; }
+    .ask-q {
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.05rem;
+      margin-bottom: 14px;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      font-family: 'Inter', sans-serif; font-size: .95rem; font-weight: 600;
+      min-height: 44px; padding: 10px 16px;
+      background: var(--bg); color: var(--text);
+      border: 1.5px solid var(--border); border-radius: 999px;
+      cursor: pointer; transition: background .14s ease, border-color .14s ease;
+    }
+    .chip:hover { border-color: var(--green); background: #fff; }
+    .ask-note { margin-top: 14px; font-size: .85rem; color: var(--muted); }
+
+    /* ── Quem conduz, no primeiro terço ─────────────────────
+       O retrato subiu para cá: no desenho anterior ele ficava a 4.315 px do
+       topo, ou seja, a prova de que existe uma pessoa por trás chegava depois
+       de cinco telas. */
+    .who-mini {
+      margin-top: 26px; display: grid; grid-template-columns: 88px 1fr;
+      gap: 16px; align-items: center;
+    }
+    /* height:auto é obrigatório: sem ele o atributo height="358" do HTML vence
+       o aspect-ratio e o retrato vira uma faixa vazia no celular. */
+    .who-mini img {
+      width: 88px; height: auto; aspect-ratio: 281 / 358; object-fit: contain;
+      border-radius: 14px; background: #f7f7f7; display: block;
+    }
+    .who-mini p { font-size: .93rem; color: var(--muted); }
+    .who-mini b { color: var(--text); }
 
     .hero-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 20px; padding: 28px; box-shadow: 0 20px 50px rgba(11,27,77,.10);
+      border-radius: 20px; padding: 26px; box-shadow: 0 20px 50px rgba(11,27,77,.10);
     }
-    .hero-card h2 { font-size: 1.15rem; margin-bottom: 6px; }
-    .hero-card p  { font-size: .92rem; color: var(--muted); }
-    .hero-card ol { list-style: none; counter-reset: step; margin: 20px 0 0; display: grid; gap: 16px; }
-    .hero-card ol li { counter-increment: step; display: flex; gap: 12px; font-size: .93rem; }
+    .hero-card h2 { font-size: 1.1rem; margin-bottom: 16px; }
+    .spec { display: grid; gap: 0; }
+    .spec div {
+      display: flex; justify-content: space-between; gap: 12px; align-items: baseline;
+      padding: 10px 0; border-bottom: 1px solid var(--border); font-size: .93rem;
+    }
+    .spec div:last-child { border-bottom: none; }
+    .spec dt { color: var(--muted); }
+    .spec dd { font-family: 'Poppins', sans-serif; font-weight: 700; text-align: right; }
+    .spec .free { color: var(--green-ink); font-size: 1.15rem; }
+    .hero-card ol {
+      list-style: none; counter-reset: step; margin: 18px 0 0; display: grid; gap: 12px;
+      padding-top: 16px; border-top: 1px dashed var(--border);
+    }
+    .hero-card ol li { counter-increment: step; display: flex; gap: 12px; font-size: .9rem; }
     .hero-card ol li::before {
       content: counter(step); flex: none;
-      width: 26px; height: 26px; border-radius: 50%;
+      width: 24px; height: 24px; border-radius: 50%;
       background: var(--navy); color: #fff;
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .8rem;
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .78rem;
       display: grid; place-items: center;
     }
-    .price-row {
-      margin-top: 22px; padding-top: 18px; border-top: 1px dashed var(--border);
-      display: flex; align-items: baseline; gap: 10px;
-    }
-    .price-row strong { font-family: 'Poppins', sans-serif; font-size: 1.9rem; color: var(--green-ink); white-space: nowrap; }
-    .price-row span   { font-size: .86rem; color: var(--muted); }
 
     /* ── Seções ─────────────────────────────────────────── */
-    section { padding: 72px 0; }
+    section { padding: 60px 0; }
     .sec-tag {
       display: inline-block; font-family: 'Poppins', sans-serif; font-weight: 700;
       font-size: .8rem; letter-spacing: 1.4px; text-transform: uppercase;
@@ -181,90 +247,43 @@
     .dark .sec-tag   { color: var(--teal-lt); }
 
     /* ── Antes / Depois ─────────────────────────────────── */
-    .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 36px; }
     .ba-col {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 18px; padding: 28px;
+      border-radius: 18px; padding: 26px;
     }
     .ba-col.after { border-color: rgba(34,181,36,.55); box-shadow: 0 12px 30px rgba(11,27,77,.10); }
-    .ba-col h3 { font-size: 1.05rem; margin-bottom: 18px; }
-    .ba-col ul { list-style: none; display: grid; gap: 12px; }
+    .ba-col h3 { font-size: 1.05rem; margin-bottom: 16px; }
+    .ba-col ul { list-style: none; display: grid; gap: 11px; }
     .ba-col li { display: flex; gap: 10px; font-size: .95rem; color: #263255; }
     .sym { flex: none; font-weight: 700; }
     .ba-col.before .sym { color: #c62828; }
     .ba-col.after  .sym { color: var(--green-ink); }
 
-    /* ── Pilares ────────────────────────────────────────── */
-    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
-    .card {
-      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12);
-      border-radius: 16px; padding: 26px;
+    /* ── Frentes ────────────────────────────────────────────
+       Eram seis cartões com ícone e parágrafo, ~600 px de altura só nisto. O
+       que a pessoa precisa saber é o escopo, e escopo cabe em uma linha. */
+    .frentes {
+      list-style: none; margin-top: 32px;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 28px;
     }
-    .card h3 { font-size: 1.05rem; color: #fff; margin-bottom: 10px; }
-    .card p  { font-size: .93rem; color: #c3ccdf; }
-    .card h3 { display: flex; align-items: center; gap: 10px; }
-    .card .ic { flex: none; color: var(--green); display: inline-flex; }
-    .card .ic svg { width: 22px; height: 22px; }
+    .frentes li {
+      display: flex; gap: 10px; font-size: .96rem; color: #dbe2f2;
+      padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .frentes li b { color: #fff; font-weight: 600; }
+    .frentes .n { flex: none; color: var(--green); font-family: 'Poppins', sans-serif; font-weight: 700; }
 
-    /* ── Mentores ───────────────────────────────────────── */
-    /* Um condutor só: o cartão dá lugar a um bloco horizontal, e o retrato
-       continua exibido inteiro pelo mesmo motivo do .person img. */
-    .condutor {
-      display: grid; grid-template-columns: 220px 1fr; gap: 30px; align-items: center;
-      max-width: 780px; margin: 0 auto;
-    }
-    .condutor img {
-      width: 220px; height: auto; aspect-ratio: 1 / 1; object-fit: contain;
-      border-radius: 18px; background: #f7f7f7; padding: 10px 10px 0; display: block;
-    }
-    .condutor h3 { font-size: 1.35rem; }
-    .condutor .role {
-      display: block; font-size: .9rem; font-weight: 600; color: var(--teal); margin-top: 5px;
-    }
-    .condutor p { font-size: .97rem; color: var(--muted); margin-top: 14px; }
-    @media (max-width: 640px) {
-      .condutor { grid-template-columns: 1fr; gap: 18px; }
-      .condutor img { width: 150px; }
-    }
-
-    .people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 40px; }
-    .person {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 18px; overflow: hidden; display: flex; flex-direction: column;
-    }
-    /* Os retratos são a única prova humana da página: valem o tamanho.
-       O recorte já vem com placa verde e margem branca próprias, então ele é
-       exibido inteiro (contain) — cortar a placa deixa uma faixa branca solta
-       acima da cabeça, que passa da placa por desenho do próprio asset. */
-    .person img {
-      width: 100%; aspect-ratio: 1 / 1; object-fit: contain;
-      display: block; background: #f7f7f7; padding: 10px 10px 0;  /* mesmo off-white do recorte */
-    }
-    .person .who { padding: 22px 24px 24px; }
-    .person h3 { font-size: 1.05rem; }
-    .person .role {
-      display: block; font-size: .86rem; font-weight: 600; color: var(--teal); margin-top: 4px;
-    }
-    .person p  { font-size: .9rem; color: var(--muted); margin-top: 10px; }
-
-    /* ── Para quem ──────────────────────────────────────── */
-    .fit { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
-    .fit-col { border-radius: 18px; padding: 28px; border: 1px solid var(--border); background: var(--surface); }
-    .fit-col h3 { font-size: 1.05rem; margin-bottom: 16px; }
-    .fit-col ul { list-style: none; display: grid; gap: 11px; }
-    .fit-col li { display: flex; gap: 10px; font-size: .95rem; color: #263255; }
-
-    /* ── Números ────────────────────────────────────────── */
-    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; text-align: center; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 34px; text-align: center; }
     .stat strong { display: block; font-family: 'Poppins', sans-serif; font-size: 2.2rem; color: var(--green); }
     .stat span   { font-size: .9rem; color: #c3ccdf; }
 
     /* ── FAQ ────────────────────────────────────────────── */
-    .faq { margin-top: 36px; display: grid; gap: 12px; }
+    .faq { margin-top: 32px; display: grid; gap: 12px; }
     .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
     .faq-q {
       width: 100%; text-align: left; background: none; border: none; cursor: pointer;
-      font-family: 'Poppins', sans-serif; font-weight: 600; font-size: .98rem; color: var(--text);
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .98rem; color: var(--text);
       padding: 18px 22px; display: flex; justify-content: space-between; gap: 16px; align-items: center;
     }
     .faq-q span { color: var(--green-ink); font-size: 1.2rem; line-height: 1; }
@@ -274,9 +293,9 @@
     /* ── CTA final ──────────────────────────────────────── */
     .final { background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%); text-align: center; }
     .final h2 { color: #fff; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; }
-    .final p  { color: #c3ccdf; margin: 16px auto 30px; max-width: 40em; }
+    .final p  { color: #c3ccdf; margin: 16px auto 28px; max-width: 40em; }
 
-    footer { background: #071238; color: #b6c1da; padding: 34px 0; font-size: .86rem; }
+    footer { background: #071238; color: #b6c1da; padding: 30px 0; font-size: .86rem; }
     .ft { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 
     /* ── Modal ──────────────────────────────────────────── */
@@ -292,12 +311,15 @@
       max-height: calc(100dvh - 40px);
       display: flex; flex-direction: column; overflow: hidden;
     }
+    /* O container recebe o foco na abertura (tabindex="-1") para prender o
+       teclado no diálogo; ele não é interativo, então não mostra anel. */
+    .modal:focus { outline: none; }
     /* A cadeia inteira precisa ser flex com min-height:0, senão o corpo não
        encolhe e o rodapé com o botão sai da tela. */
     #form-wrapper, #sessao-form {
       display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0;
     }
-    .modal-head { padding: 32px 32px 0; flex: none; }
+    .modal-head { padding: 30px 32px 0; flex: none; }
     .modal-body { padding: 0 32px; overflow-y: auto; flex: 1 1 auto; min-height: 0; }
     .modal-foot {
       padding: 16px 32px 24px; border-top: 1px solid var(--border);
@@ -307,9 +329,16 @@
       position: absolute; top: 8px; right: 8px; background: none; border: none;
       width: 44px; height: 44px; border-radius: 50%;
       font-size: 1.4rem; color: var(--muted); cursor: pointer; line-height: 1;
-      display: grid; place-items: center;
+      display: grid; place-items: center; z-index: 2;
     }
     .modal-close:hover { background: var(--bg); color: var(--text); }
+
+    .passo-rotulo {
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: .78rem;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--teal);
+    }
+    .modal h3 { font-size: 1.35rem; margin: 10px 0 6px; }
+    .modal-sub { font-size: .92rem; color: var(--muted); margin-bottom: 18px; }
 
     /* Faixa de confiança — precisa estar acima dos campos, não no rodapé */
     .trust {
@@ -320,14 +349,48 @@
     .trust span { display: flex; align-items: center; gap: 6px; }
     .trust b { color: var(--green-ink); font-family: 'Poppins', sans-serif; }
 
+    /* ── Grupos de resposta em um toque ─────────────────────
+       Rádio invisível com rótulo em pílula: um toque no lugar de abrir a
+       roleta do iOS, rolar e confirmar. O `name=` continua sendo o mesmo dos
+       <select> anteriores, que é contrato com /api/leads. */
+    .grupo { border: none; margin-bottom: 20px; }
+    .grupo legend {
+      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem;
+      margin-bottom: 12px; padding: 0;
+    }
+    .grupo .dica { font-size: .84rem; color: var(--muted); margin: -6px 0 12px; }
+    .opcoes { display: flex; flex-wrap: wrap; gap: 8px; }
+    .opcoes input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .opcoes label {
+      display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px;
+      font-size: .95rem; font-weight: 600;
+      background: #fbfcfe; color: var(--text);
+      border: 1.5px solid var(--border); border-radius: 999px; cursor: pointer;
+      transition: background .14s ease, border-color .14s ease, color .14s ease;
+    }
+    .opcoes label:hover { border-color: var(--green); }
+    .opcoes input:checked + label {
+      background: var(--navy); color: #fff; border-color: var(--navy);
+    }
+    /* `outline` e não `box-shadow`: foco é indicação funcional, e o outline
+       acompanha o raio da pílula sem virar halo colorido. */
+    .opcoes input:focus-visible + label { outline: 3px solid var(--green-ink); outline-offset: 2px; }
+    .opcoes .larga { width: 100%; justify-content: flex-start; }
+
     /* Roteamento de quem está fora do perfil */
     .route {
       display: none; background: #fff8e8; border: 1px solid #e8d6a8;
-      border-radius: 12px; padding: 16px; margin-bottom: 14px; font-size: .9rem; color: #4a3b18;
+      border-radius: 12px; padding: 16px; margin-bottom: 16px; font-size: .9rem; color: #4a3b18;
     }
     .route.on { display: block; }
     .route strong { display: block; font-family: 'Poppins', sans-serif; margin-bottom: 6px; color: #3d2f10; }
-    .route a { color: #0b1b4d; font-weight: 600; }
+    .route-acoes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .route-acoes a {
+      display: inline-flex; align-items: center; min-height: 44px; padding: 10px 18px;
+      border-radius: 999px; font-weight: 600; font-size: .9rem; text-decoration: none;
+      background: var(--navy); color: #fff;
+    }
+    .route-acoes a.secundario { background: transparent; color: #4a3b18; text-decoration: underline; }
 
     .form-error {
       display: none; background: #fdecec; border: 1px solid #f2bcbc;
@@ -336,24 +399,24 @@
     .form-error.on { display: block; }
     .form-error strong { display: block; font-family: 'Poppins', sans-serif; margin-bottom: 6px; }
     .form-error a { color: #6d1f1f; font-weight: 600; }
-    .modal-tag {
-      display: inline-block; background: rgba(61,214,58,.14); color: var(--green-ink);
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: .8rem;
-      letter-spacing: 1px; text-transform: uppercase; padding: 5px 12px; border-radius: 999px;
-    }
-    .modal h3 { font-size: 1.35rem; margin: 14px 0 6px; }
-    .modal-sub { font-size: .92rem; color: var(--muted); margin-bottom: 20px; }
+
     .form-group { margin-bottom: 14px; }
     .form-group label {
       display: block; font-size: .85rem; font-weight: 600; margin-bottom: 6px; color: #37436a;
     }
-    .form-group input, .form-group select {
-      width: 100%; padding: 12px 14px; border: 1px solid var(--border);
-      border-radius: 10px; font-family: inherit; font-size: .95rem; color: var(--text);
+    .form-group label .opc { font-weight: 400; color: var(--muted); }
+    .form-group input {
+      width: 100%; padding: 13px 14px; border: 1px solid var(--border);
+      border-radius: 10px; font-family: inherit; font-size: 1rem; color: var(--text);
       background: #fbfcfe;
     }
-    .form-group input:focus, .form-group select:focus {
-      outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(61,214,58,.16);
+    .form-group input:focus-visible {
+      outline: 2px solid var(--green-ink); outline-offset: 1px; border-color: var(--green);
+    }
+    .voltar {
+      background: none; border: none; padding: 6px 0; margin-bottom: 6px;
+      font-family: inherit; font-size: .88rem; font-weight: 600; color: var(--muted);
+      cursor: pointer; text-decoration: underline;
     }
     .form-privacy { font-size: .8rem; color: var(--muted); text-align: center; margin-top: 10px; }
     .form-success { display: none; text-align: center; padding: 32px; }
@@ -366,24 +429,32 @@
     .sticky-cta {
       position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
       background: rgba(255,255,255,.96); border-top: 1px solid var(--border);
-      padding: 10px 16px; display: none;
-      backdrop-filter: blur(8px);
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      display: none; backdrop-filter: blur(8px);
     }
 
     /* ── Responsivo ─────────────────────────────────────── */
     @media (max-width: 900px) {
-      .hero-grid, .ba, .fit { grid-template-columns: 1fr; }
-      .grid-3, .people, .stats { grid-template-columns: 1fr; }
+      .hero-grid, .ba { grid-template-columns: 1fr; }
+      .frentes { grid-template-columns: 1fr; }
+      /* Os três números continuam lado a lado no celular: empilhados custavam
+         340 px de rolagem para dizer o que cabe em uma linha. */
+      .stats { gap: 10px; margin-top: 28px; }
+      .stat strong { font-size: 1.7rem; }
+      .stat span { font-size: .78rem; }
       .hd .btn { display: none; }
       .sticky-cta { display: block; }
-      body { padding-bottom: 72px; }
-      section { padding: 56px 0; }
-      .hero { padding: 44px 0 56px; }
+      body { padding-bottom: 76px; }
+      section { padding: 40px 0; }
+      .hero { padding: 30px 0 40px; }
+      .modal-head { padding: 26px 22px 0; }
+      .modal-body { padding: 0 22px; }
+      .modal-foot { padding: 14px 22px 20px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .btn { transition: none; }
+      .btn, .chip, .opcoes label { transition: none; }
     }
   </style>
 </head>
@@ -405,36 +476,47 @@
 <div class="hero">
   <div class="container hero-grid">
     <div>
-      <p class="eyebrow">Exclusivo para contabilidades com mais de 10 colaboradores</p>
-      <h1>O que trava o seu escritório <span class="mark">não é técnico</span>. É gestão.</h1>
+      <h1>Fatura mais e <span class="mark">sobra o mesmo?</span></h1>
       <p class="lead">
-        Sessão Estratégica: um diagnóstico individual do seu escritório — o que travou o
-        crescimento até aqui e o que precisa mudar para o próximo ciclo ser diferente.
+        Em escritório com mais de 10 colaboradores, o gargalo quase nunca é técnico.
+        A Sessão Estratégica mostra onde ele está — 45 minutos, sem custo.
       </p>
 
-      <ul class="hero-list">
-        <li><span class="tick">✓</span><span><b>45 minutos</b> de conversa individual com o Bruno Silvestre, da Sevilha Performance</span></li>
-        <li><span class="tick">✓</span><span>Leitura da sua estrutura, processos, margem e time</span></li>
-        <li><span class="tick">✓</span><span>Saída com prioridades claras — <b>mesmo que você não contrate nada</b></span></li>
-        <li><span class="tick">✓</span><span>Conduzida por quem já acompanhou +500 contabilidades</span></li>
-      </ul>
+      <div class="ask">
+        <p class="ask-q" id="ask-q">Quantos colaboradores tem o seu escritório?</p>
+        <div class="chips" role="group" aria-labelledby="ask-q">
+          <button type="button" class="chip porte-chip" data-porte="De 0 a 4">0 a 4</button>
+          <button type="button" class="chip porte-chip" data-porte="De 5 a 9">5 a 9</button>
+          <button type="button" class="chip porte-chip" data-porte="De 10 a 19">10 a 19</button>
+          <button type="button" class="chip porte-chip" data-porte="De 20 a 29">20 a 29</button>
+          <button type="button" class="chip porte-chip" data-porte="De 30 a 49">30 a 49</button>
+          <button type="button" class="chip porte-chip" data-porte="Mais de 50">50+</button>
+        </div>
+        <p class="ask-note">Depois só o seu nome e o WhatsApp. Leva menos de 1 minuto.</p>
+      </div>
 
-      <a href="#agendar" class="btn open-modal">Agendar diagnóstico gratuito →</a>
-      <p class="hero-cta-note">Sem custo e sem compromisso. Leva menos de 1 minuto para solicitar.</p>
+      <div class="who-mini">
+        <img src="/Bruno.jpeg" alt="Bruno Silvestre" width="281" height="358" decoding="async" />
+        <p>
+          <b>Bruno Silvestre</b> conduz a sessão. Processos e margem na Sevilha
+          Performance, +500 contabilidades acompanhadas em 20+ anos de mercado.
+        </p>
+      </div>
     </div>
 
     <div class="hero-card">
-      <h2>Como funciona</h2>
-      <p>Três passos, do formulário até a sessão.</p>
+      <h2>A Sessão Estratégica</h2>
+      <dl class="spec">
+        <div><dt>Custo</dt><dd class="free">R$ 0,00</dd></div>
+        <div><dt>Duração</dt><dd>45 minutos</dd></div>
+        <div><dt>Formato</dt><dd>Online e ao vivo</dd></div>
+        <div><dt>Para escritórios com</dt><dd>10+ colaboradores</dd></div>
+      </dl>
       <ol>
-        <li>Você preenche o formulário com os dados do escritório.</li>
-        <li>Nosso time entra em contato pelo WhatsApp para agendar a melhor data.</li>
-        <li>Você conversa com o Bruno por 45 minutos e recebe o diagnóstico do seu escritório.</li>
+        <li>Você responde duas perguntas e deixa o contato.</li>
+        <li>Nosso time chama no WhatsApp para combinar a data.</li>
+        <li>Você conversa 45 minutos com o Bruno e recebe o diagnóstico.</li>
       </ol>
-      <div class="price-row">
-        <strong>R$ 0,00</strong>
-        <span>45 minutos, sem custo e sem compromisso</span>
-      </div>
     </div>
   </div>
 </div>
@@ -476,7 +558,7 @@
   </div>
 </section>
 
-<!-- ── PILARES ──────────────────────────────────────────── -->
+<!-- ── O TRABALHO ───────────────────────────────────────── -->
 <section class="dark">
   <div class="container">
     <div class="narrow center">
@@ -484,96 +566,23 @@
       <h2 class="sec-title">Alta performance operacional, não mais um curso</h2>
       <p class="sec-sub">
         A Sevilha Performance é uma consultoria de gestão para escritórios contábeis.
-        A Sessão Estratégica é o ponto de partida: ela mostra qual destas frentes está travando o seu.
+        A sessão mostra qual destas seis frentes está travando o seu.
       </p>
     </div>
 
-    <div class="grid-3">
-      <div class="card">
-        <h3><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-4 7 4v13M9 21v-5h6v5M9 11h6"/></svg></span>Estrutura organizacional</h3>
-        <p>Papéis, responsabilidades e organograma que sustentam o time atual — e o próximo.</p>
-      </div>
-      <div class="card">
-        <h3><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 12h3M11 12h9M4 17h7M15 17h5"/><circle cx="16" cy="7" r="2"/><circle cx="9" cy="12" r="2"/><circle cx="13" cy="17" r="2"/></svg></span>Processos e custos</h3>
-        <p>Otimização das rotinas, redução de retrabalho e visibilidade de onde a margem vaza.</p>
-      </div>
-      <div class="card">
-        <h3><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a4 4 0 0 0 5.7.4l3-3a4 4 0 0 0-5.7-5.7L11.6 6"/><path d="M14 11a4 4 0 0 0-5.7-.4l-3 3a4 4 0 0 0 5.7 5.7L12.4 18"/></svg></span>Tecnologia e automação</h3>
-        <p>Integração das ferramentas que você já paga, no lugar de comprar mais uma.</p>
-      </div>
-      <div class="card">
-        <h3><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 20V9M11 20V5M16 20v-7M21 20v-4"/></svg></span>Gestão de desempenho</h3>
-        <p>Rituais gerenciais e indicadores para acompanhar produtividade sem microgerenciar.</p>
-      </div>
-      <div class="card">
-        <h3><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 5.5a3 3 0 0 1 0 5M17 14.5a6 6 0 0 1 4 5.5"/></svg></span>Pessoas</h3>
-        <p>Desenvolvimento e alinhamento do time para crescer junto com o escritório.</p>
-      </div>
-      <div class="card">
-        <h3><span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 13.5 13.5 8.5 15.5 10.5 10.5z"/></svg></span>Direção estratégica</h3>
-        <p>Metodologia exclusiva em ciclos de 12 meses, com acompanhamento contínuo.</p>
-      </div>
-    </div>
+    <ul class="frentes">
+      <li><span class="n">01</span><span><b>Estrutura organizacional</b> — papéis e organograma que sustentam o time atual e o próximo</span></li>
+      <li><span class="n">02</span><span><b>Processos e custos</b> — menos retrabalho e visibilidade de onde a margem vaza</span></li>
+      <li><span class="n">03</span><span><b>Tecnologia e automação</b> — integrar o que você já paga, no lugar de comprar mais uma</span></li>
+      <li><span class="n">04</span><span><b>Gestão de desempenho</b> — rituais e indicadores sem microgerenciar</span></li>
+      <li><span class="n">05</span><span><b>Pessoas</b> — desenvolver o time para crescer junto com o escritório</span></li>
+      <li><span class="n">06</span><span><b>Direção estratégica</b> — metodologia em ciclos de 12 meses, com acompanhamento</span></li>
+    </ul>
 
     <div class="stats">
       <div class="stat"><strong>+500</strong><span>Contabilidades acompanhadas</span></div>
       <div class="stat"><strong>20+</strong><span>Anos de mercado contábil</span></div>
-      <div class="stat"><strong>10+</strong><span>Colaboradores: o perfil que atendemos</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ── QUEM CONDUZ ──────────────────────────────────────── -->
-<section>
-  <div class="container">
-    <div class="narrow center">
-      <span class="sec-tag">Quem conduz</span>
-      <h2 class="sec-title">Quem conduz a sua sessão</h2>
-    </div>
-
-    <div class="condutor">
-      <img src="/Bruno.jpeg" alt="Bruno Silvestre" width="281" height="358" fetchpriority="low" />
-      <div class="who">
-        <h3>Bruno Silvestre</h3>
-        <span class="role">Processos e margem · Sevilha Performance</span>
-        <p>
-          Referência em performance e produtividade no setor contábil. É ele quem
-          conduz o diagnóstico dos escritórios acima de 10 colaboradores, apoiado
-          na experiência de mais de 20 anos da Sevilha e em +500 contabilidades
-          acompanhadas.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── PARA QUEM ────────────────────────────────────────── -->
-<section>
-  <div class="container">
-    <div class="narrow center">
-      <span class="sec-tag">Perfil</span>
-      <h2 class="sec-title">A sessão é para o seu escritório?</h2>
-    </div>
-
-    <div class="fit">
-      <div class="fit-col">
-        <h3>Faz sentido se</h3>
-        <ul>
-          <li><span class="sym" style="color:var(--green-ink)">✓</span>Seu escritório tem mais de 10 colaboradores</li>
-          <li><span class="sym" style="color:var(--green-ink)">✓</span>Você é dono, sócio ou responsável pela gestão</li>
-          <li><span class="sym" style="color:var(--green-ink)">✓</span>O escritório cresceu e a estrutura não acompanhou</li>
-          <li><span class="sym" style="color:var(--green-ink)">✓</span>Você quer sair da operação sem perder o controle</li>
-        </ul>
-      </div>
-      <div class="fit-col">
-        <h3>Não faz sentido se</h3>
-        <ul>
-          <li><span class="sym" style="color:#c62828">✕</span>Você procura fórmula mágica ou atalho</li>
-          <li><span class="sym" style="color:#c62828">✕</span>Quer apenas mais conteúdo técnico contábil</li>
-          <li><span class="sym" style="color:#c62828">✕</span>Não pretende mudar nada na gestão atual</li>
-          <li><span class="sym" style="color:#c62828">✕</span>Não é quem decide no escritório</li>
-        </ul>
-      </div>
+      <div class="stat"><strong>45</strong><span>Minutos de diagnóstico, sem custo</span></div>
     </div>
   </div>
 </section>
@@ -595,7 +604,7 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false" onclick="toggleFaq(this)">Atende escritório com menos de 10 colaboradores? <span>+</span></button>
-        <div class="faq-a">A consultoria é desenhada para escritórios acima de 10 colaboradores. Abaixo disso os gargalos são outros — você pode se inscrever mesmo assim, e o time indica o formato certo para o seu porte.</div>
+        <div class="faq-a">A consultoria é desenhada para escritórios acima de 10 colaboradores. Abaixo disso os gargalos são outros, e o formato certo é o Clube da Performance — a página indica o caminho quando você responde o porte.</div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button" aria-expanded="false" onclick="toggleFaq(this)">Como é feito o agendamento? <span>+</span></button>
@@ -612,7 +621,7 @@
 <!-- ── CTA FINAL ────────────────────────────────────────── -->
 <section class="final" id="agendar">
   <div class="container narrow">
-    <h2>Descubra o que trava o seu escritório</h2>
+    <h2>Descubra onde a margem está vazando</h2>
     <p>
       Um diagnóstico individual, sem custo, com quem acompanha contabilidades há mais de 20 anos.
       Você decide o que fazer com ele.
@@ -633,83 +642,114 @@
   </div>
 </footer>
 
-<!-- ── MODAL ────────────────────────────────────────────── -->
+<!-- ── MODAL ────────────────────────────────────────────────
+     Dois passos. O primeiro qualifica em dois toques; o segundo pede contato.
+     O comportamento está em /assets/form-steps.js, compartilhado com a
+     /mentoria-2 — formulário idêntico é pré-requisito do teste A/B. -->
 <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-  <div class="modal">
+  <div class="modal" tabindex="-1">
     <button class="modal-close" onclick="closeModal()" aria-label="Fechar">✕</button>
 
     <div id="form-wrapper">
       <div class="modal-head">
-        <span class="modal-tag">Sessão Estratégica gratuita</span>
-        <h3 id="modal-title">Solicite seu diagnóstico</h3>
-        <p class="modal-sub">Nosso time entra em contato pelo WhatsApp para agendar a sessão.</p>
+        <span class="passo-rotulo" id="passo-rotulo">Passo 1 de 2</span>
+        <h3 id="modal-title">Duas perguntas rápidas</h3>
+        <p class="modal-sub" id="modal-sub">Elas definem se a Sessão Estratégica é o formato certo para o seu escritório.</p>
       </div>
 
       <form id="sessao-form" onsubmit="submitForm(event)">
        <div class="modal-body">
-        <div class="trust">
-          <span><b>R$ 0,00</b></span>
-          <span>45 minutos</span>
-          <span>Sem compromisso</span>
-          <span>🔒 Dados usados só para o agendamento (LGPD)</span>
+
+        <!-- ── Passo 1: perfil ── -->
+        <div id="passo-1">
+          <fieldset class="grupo" id="grupo-porte">
+            <legend>Quantos colaboradores tem o escritório?</legend>
+            <div class="opcoes">
+              <input type="radio" id="colab-1" name="colaboradores" value="De 0 a 4" />
+              <label for="colab-1">0 a 4</label>
+              <input type="radio" id="colab-2" name="colaboradores" value="De 5 a 9" />
+              <label for="colab-2">5 a 9</label>
+              <input type="radio" id="colab-3" name="colaboradores" value="De 10 a 19" />
+              <label for="colab-3">10 a 19</label>
+              <input type="radio" id="colab-4" name="colaboradores" value="De 20 a 29" />
+              <label for="colab-4">20 a 29</label>
+              <input type="radio" id="colab-5" name="colaboradores" value="De 30 a 49" />
+              <label for="colab-5">30 a 49</label>
+              <input type="radio" id="colab-6" name="colaboradores" value="Mais de 50" />
+              <label for="colab-6">Mais de 50</label>
+            </div>
+          </fieldset>
+
+          <div class="route" id="route-porte">
+            <strong>Abaixo de 10 colaboradores o diagnóstico é outro.</strong>
+            A Sessão Estratégica trabalha gargalos de estrutura que aparecem depois
+            dos 10. Para o seu porte, o formato é o Clube da Performance.
+            <div class="route-acoes">
+              <a href="/campanha" id="clube-link">Ver o Clube da Performance</a>
+              <a href="#" id="route-continuar" class="secundario">Continuar mesmo assim</a>
+            </div>
+          </div>
+
+          <fieldset class="grupo" id="grupo-cargo">
+            <legend>Qual a sua posição no escritório?</legend>
+            <p class="dica">A sessão só vira decisão com quem decide.</p>
+            <div class="opcoes">
+              <input type="radio" id="cargo-1" name="cargo" value="Dono/Sócio" />
+              <label for="cargo-1" class="larga">Dono ou sócio</label>
+              <input type="radio" id="cargo-2" name="cargo" value="Cargo Gerencial" />
+              <label for="cargo-2" class="larga">Cargo gerencial (líder, gerente, coordenador…)</label>
+              <input type="radio" id="cargo-3" name="cargo" value="Cargo Operacional" />
+              <label for="cargo-3" class="larga">Cargo operacional (assistente, analista…)</label>
+            </div>
+          </fieldset>
+
+          <div class="route" id="route-cargo">
+            <strong>A sessão é conduzida com quem decide.</strong>
+            Você pode se inscrever, mas peça para o dono ou sócio participar — sem ele, o diagnóstico não vira decisão.
+          </div>
         </div>
 
-        <div class="form-error" id="form-error">
-          <strong>Não conseguimos enviar agora.</strong>
-          A conexão falhou. Tente de novo ou fale direto com a gente:
-          <a href="#" id="err-wa">abrir o WhatsApp</a>.
+        <!-- ── Passo 2: contato ── -->
+        <div id="passo-2" hidden>
+          <button type="button" class="voltar" id="voltar-passo-1">← Mudar as respostas</button>
+
+          <div class="trust">
+            <span><b>R$ 0,00</b></span>
+            <span>45 minutos</span>
+            <span>Sem compromisso</span>
+            <span>🔒 Dados usados só para o agendamento (LGPD)</span>
+          </div>
+
+          <div class="form-error" id="form-error">
+            <strong>Não conseguimos enviar agora.</strong>
+            A conexão falhou. Tente de novo ou fale direto com a gente:
+            <a href="#" id="err-wa">abrir o WhatsApp</a>.
+          </div>
+
+          <div class="form-group">
+            <label for="f-name">Nome completo</label>
+            <input type="text" id="f-name" name="nome" placeholder="Seu nome" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="f-phone">WhatsApp</label>
+            <input type="tel" id="f-phone" name="telefone" placeholder="(11) 99999-9999" required
+                   autocomplete="tel" inputmode="numeric" />
+          </div>
+          <div class="form-group">
+            <label for="f-email">E-mail</label>
+            <input type="email" id="f-email" name="email" placeholder="seuemail@exemplo.com" required
+                   autocomplete="email" inputmode="email" />
+          </div>
+          <!-- Opcional de propósito: o nome do escritório não muda o
+               atendimento e o time pergunta no WhatsApp. Era o quarto campo
+               obrigatório de uma sequência de seis. -->
+          <div class="form-group">
+            <label for="f-escritorio">Nome do escritório <span class="opc">(opcional)</span></label>
+            <input type="text" id="f-escritorio" name="escritorio" placeholder="Nome do seu escritório" autocomplete="organization" />
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="f-name">Nome completo</label>
-          <input type="text" id="f-name" name="nome" placeholder="Seu nome" required autocomplete="name" />
-        </div>
-        <div class="form-group">
-          <label for="f-email">E-mail</label>
-          <input type="email" id="f-email" name="email" placeholder="seuemail@exemplo.com" required autocomplete="email" />
-        </div>
-        <div class="form-group">
-          <label for="f-phone">WhatsApp</label>
-          <input type="tel" id="f-phone" name="telefone" placeholder="(11) 99999-9999" required autocomplete="tel" />
-        </div>
-        <div class="form-group">
-          <label for="f-escritorio">Nome do Escritório de Contabilidade</label>
-          <input type="text" id="f-escritorio" name="escritorio" placeholder="Nome do seu escritório" required autocomplete="organization" />
-        </div>
-        <div class="form-group">
-          <label for="f-cargo">Posição no escritório</label>
-          <select id="f-cargo" name="cargo" required>
-            <option value="">Selecione sua posição</option>
-            <option value="Dono/Sócio">Dono/Sócio</option>
-            <option value="Cargo Gerencial">Cargo Gerencial (Líder / Gerente / Encarregado / Coordenador...)</option>
-            <option value="Cargo Operacional">Cargo Operacional (Assistente / Analista...)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="f-colab">Quantos colaboradores</label>
-          <select id="f-colab" name="colaboradores" required>
-            <option value="">Selecione o número</option>
-            <option value="De 0 a 4">De 0 a 4</option>
-            <option value="De 5 a 9">De 5 a 9</option>
-            <option value="De 10 a 19">De 10 a 19</option>
-            <option value="De 20 a 29">De 20 a 29</option>
-            <option value="De 30 a 49">De 30 a 49</option>
-            <option value="Mais de 50">Mais de 50</option>
-          </select>
-        </div>
-
-        <div class="route" id="route-porte">
-          <strong>Abaixo de 10 colaboradores o diagnóstico é outro.</strong>
-          Você pode se inscrever normalmente — nosso time vai te chamar no WhatsApp
-          e indicar o formato que faz sentido para o seu porte.
-        </div>
-
-        <div class="route" id="route-cargo">
-          <strong>A sessão é conduzida com quem decide.</strong>
-          Você pode se inscrever, mas peça para o dono ou sócio participar — sem ele, o diagnóstico não vira decisão.
-        </div>
-
-        <!-- Campos ocultos de tracking -->
+        <!-- Campos ocultos de tracking — o name= de cada um é contrato com /api/leads -->
         <input type="hidden" name="utm_source"   />
         <input type="hidden" name="utm_medium"   />
         <input type="hidden" name="utm_campaign" />
@@ -729,9 +769,9 @@
 
        </div>
 
-       <div class="modal-foot">
+       <div class="modal-foot" id="modal-foot" hidden>
         <button type="submit" id="submit-btn" class="btn btn-full">Quero meu diagnóstico →</button>
-        <p class="form-privacy" id="form-privacy">Leva menos de 1 minuto. Sem spam.</p>
+        <p class="form-privacy">Sem spam. Só o contato do agendamento.</p>
        </div>
       </form>
     </div>
@@ -746,119 +786,6 @@
     </div>
   </div>
 </div>
-
-<script>
-  /* Destino do agendamento — trocar o número aqui se mudar o atendimento. */
-  var WHATSAPP_URL = 'https://wa.me/5531999491532?text=' +
-    encodeURIComponent('Olá! Acabei de solicitar minha Sessão Estratégica pelo site e quero agendar a reunião.');
-
-  var overlay = document.getElementById('modal-overlay');
-  document.getElementById('wa-link').href = WHATSAPP_URL;
-  document.getElementById('err-wa').href  = WHATSAPP_URL;
-
-  /* ── Modal ── */
-  var lastFocus = null;
-
-  function openModal() {
-    lastFocus = document.activeElement;
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    // No touch o foco automático abre o teclado e come metade da tela.
-    if (window.matchMedia('(pointer: fine)').matches) {
-      var f = document.getElementById('f-name');
-      if (f) f.focus();
-    }
-  }
-
-  function closeModal() {
-    if (!overlay.classList.contains('open')) return;
-    overlay.classList.remove('open');
-    document.body.style.overflow = '';
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-
-  document.querySelectorAll('.open-modal').forEach(function (el) {
-    el.addEventListener('click', function (e) { e.preventDefault(); openModal(); });
-  });
-
-  overlay.addEventListener('click', function (e) { if (e.target === this) closeModal(); });
-
-  document.addEventListener('keydown', function (e) {
-    if (!overlay.classList.contains('open')) return;
-    if (e.key === 'Escape') { closeModal(); return; }
-    if (e.key !== 'Tab') return;
-
-    // Prende o foco dentro do diálogo enquanto ele estiver aberto.
-    var f = overlay.querySelectorAll('a[href], button:not([disabled]), input, select, textarea');
-    f = Array.prototype.filter.call(f, function (el) { return el.offsetParent !== null; });
-    if (!f.length) return;
-    var first = f[0], last = f[f.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-  });
-
-  /* ── Aviso de porte e cargo ──
-     Quem está abaixo de 10 colaboradores entra como lead igual: o time decide o
-     destino no CRM. O aviso continua porque a expectativa precisa ser correta
-     antes do WhatsApp — mas ele não bloqueia mais o envio.
-
-     O sinal de perfil para o Meta não depende disto: quem dispara o
-     LeadQualificado é a resposta de porte, em /api/leads. */
-  var FORA_DO_PORTE = ['De 0 a 4', 'De 5 a 9'];
-
-  var colab   = document.getElementById('f-colab');
-  var cargo   = document.getElementById('f-cargo');
-  var rPorte  = document.getElementById('route-porte');
-  var rCargo  = document.getElementById('route-cargo');
-  var btnSend = document.getElementById('submit-btn');
-
-  function avaliarPerfil() {
-    var fora = FORA_DO_PORTE.indexOf(colab.value) > -1;
-    rPorte.classList.toggle('on', fora);
-    rCargo.classList.toggle('on', cargo.value === 'Cargo Operacional' && !fora);
-  }
-
-  colab.addEventListener('change', avaliarPerfil);
-  cargo.addEventListener('change', avaliarPerfil);
-
-  /* ── Form submit ── */
-  function submitForm(e) {
-    document.getElementById('form-error').classList.remove('on');
-    var form = document.getElementById('sessao-form');
-    SP_handleSubmit(e, form, showSuccess, showError);
-  }
-
-  function showSuccess() {
-    document.getElementById('form-wrapper').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
-    setTimeout(function () { window.location.href = WHATSAPP_URL; }, 2500);
-  }
-
-  function showError() {
-    var err = document.getElementById('form-error');
-    err.classList.add('on');
-    btnSend.disabled = false;
-    btnSend.textContent = 'Tentar novamente →';
-    err.scrollIntoView({ block: 'nearest' });
-  }
-
-  /* ── Telefone: o campo mostra o formato enquanto a pessoa digita ── */
-  document.getElementById('f-phone').addEventListener('input', function () {
-    var d = this.value.replace(/\D/g, '').slice(0, 11);
-    if (d.length <= 2)       this.value = d;
-    else if (d.length <= 6)  this.value = '(' + d.slice(0,2) + ') ' + d.slice(2);
-    else if (d.length <= 10) this.value = '(' + d.slice(0,2) + ') ' + d.slice(2,6) + '-' + d.slice(6);
-    else                     this.value = '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7);
-  });
-
-  /* ── FAQ ── */
-  function toggleFaq(btn) {
-    var item = btn.parentElement;
-    var open = item.classList.toggle('open');
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    btn.querySelector('span').textContent = open ? '−' : '+';
-  }
-</script>
 
 </body>
 </html>

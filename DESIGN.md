@@ -12,6 +12,12 @@ página e documento discordarem, a página vence e este arquivo se atualiza.
 
 As duas rodam em teste A/B por `/diagnostico`, com cookie `_sp_variant_se`.
 
+**A variável do teste é a grade, e só ela.** Headline, oferta, ordem do
+argumento e formulário são iguais nas duas — o formulário literalmente, em
+`assets/form-steps.js`. Enquanto cada página tinha a própria cópia do código do
+modal, uma correção feita numa e esquecida na outra passaria a ser o que o
+teste mede.
+
 ## Tokens
 
 ```
@@ -50,10 +56,46 @@ dentro de `@media (prefers-reduced-motion: no-preference)`. Nunca `opacity: 0`
 esperando JS — na v2 isso deixou quatro blocos invisíveis e gerou 41 falsos
 positivos de contraste no axe.
 
+## A pergunta é a primeira interação
+
+O topo das duas páginas não abre com um botão: abre com **"Quantos
+colaboradores tem o seu escritório?"** e seis pílulas. Um toque responde o
+porte e já abre o modal no passo certo.
+
+O motivo está medido (25/08–03/09/2026): de 185 carregamentos vindos de
+anúncio, 8 chegaram a abrir o formulário — mas 5 dos 8 que abriram
+converteram. O gargalo nunca foi preencher, era abrir. Botão que promete um
+paredão de seis campos é um custo que a pessoa recusa antes de pagar; pergunta
+de um toque, não.
+
+O modal tem dois passos: perfil (porte e cargo, um toque cada) e contato
+(nome, WhatsApp, e-mail; escritório opcional). Quem responde menos de 10
+colaboradores recebe o caminho do Clube da Performance **antes** de digitar
+qualquer coisa — e continua podendo se inscrever, porque quem separa perfil é
+o time no CRM, não a página.
+
+Porte e cargo são grupos de `<input type="radio">` com rótulo em pílula, nunca
+`<select>`: no iOS o select abre roleta, rola e confirma — três gestos para
+uma resposta de um. O `name=` dos grupos é o mesmo dos selects que eles
+substituíram, porque esse nome é contrato com `/api/leads`.
+
 ## Regras que já custaram caro
 
 - **Eyebrow/kicker acima de heading é proibido.** Qualificador de público vai
-  para dentro da tabela da oferta, onde é lido como critério.
+  para dentro da tabela da oferta, onde é lido como critério. A v1 tinha
+  "Exclusivo para contabilidades com mais de 10 colaboradores" como primeira
+  linha da página: das visitas que o anúncio manda, 3 em cada 4 estão abaixo
+  de 10, então a primeira coisa que a página fazia era mandar a maioria
+  embora. O corte agora é a pergunta do formulário, que roteia em vez de
+  dispensar.
+- **Foco se marca com `outline`, não com `box-shadow`.** O halo colorido de
+  raio zero é o visual genérico de interface gerada, e o outline acompanha o
+  raio da pílula sozinho. A sombra colorida continua valendo para elevação —
+  aquela tem deslocamento vertical.
+- **O botão de enviar não existe no passo 1.** Com ele na tela, o navegador
+  tenta validar campo obrigatório escondido e trava o envio sem conseguir
+  mostrar onde ("invalid form control is not focusable"). Pelo mesmo motivo
+  nenhum rádio é `required`: quem garante a resposta é a máquina de passos.
 - **Nada de caixa alta em texto de corpo.** Só na tag do modal.
 - Imagem com atributo `height` precisa de `height: auto` no CSS, senão o
   atributo vence o `aspect-ratio` e o retrato vira faixa vazia no celular.
