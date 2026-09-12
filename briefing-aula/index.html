@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="referrer" content="same-origin">
+  <title>Briefing da aula | Sevilha Performance</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/briefing-aula/briefing.css">
+  <script src="/briefing-aula/briefing.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#briefing">Ir para o formulário</a>
+  <header class="site-header"><img src="/assets/logo-sevilha.svg" width="172" height="60" alt="Sevilha Performance"><span>Planejamento da aula</span></header>
+  <main>
+    <div class="intro">
+      <p class="greeting">Bruno, vamos dar forma à sua aula.</p>
+      <h1>Uma boa página começa<br>com uma aula bem definida.</h1>
+      <p>Conte o que você quer ensinar, para quem e como será a experiência. Suas respostas serão a base da página de vendas.</p>
+      <div class="context"><strong>Nosso ponto de partida</strong><p>A primeira aula está prevista ao vivo. O preço de R$ 17 e os 15 dias de divulgação foram sugestões: confirme ou ajuste abaixo.</p></div>
+    </div>
+    <div class="workspace">
+      <aside>
+        <p class="time">Reserve 15–20 minutos</p>
+        <nav aria-label="Seções do briefing"><a href="#publico-section">Público e resultado</a><a href="#conteudo-section">Conteúdo da aula</a><a href="#oferta-section">Oferta e realização</a><a href="#materiais-section">Professor e materiais</a></nav>
+        <p class="aside-note">Pode responder em tópicos. Se algo ainda estiver em aberto, escreva “a definir”.</p>
+        <p class="aside-note">Os campos com <span aria-hidden="true">*</span> são obrigatórios.</p>
+      </aside>
+      <form id="briefing" method="post" action="/api/briefing-aula">
+        <noscript><p class="notice">Ative o JavaScript para salvar e enviar suas respostas neste formulário.</p></noscript>
+        <p id="draft-status" class="draft-status" role="status">Suas respostas ficam em rascunho neste navegador até você enviar.</p>
+        <div class="honeypot" aria-hidden="true"><label for="website">Deixe este campo vazio</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
+        <fieldset id="publico-section"><legend>Público e resultado</legend><p class="section-description">A página começa por quem vai participar e pelo que a aula entrega.</p>
+          <div class="field"><label for="publico">Quem queremos atrair para essa aula? <span class="required" aria-hidden="true">*</span></label><p id="publico-help" class="field-help">Descreva o perfil, o momento profissional e o nível de conhecimento.</p><textarea id="publico" name="publico" rows="3" maxlength="3000" aria-describedby="publico-help" required></textarea></div>
+          <div class="field"><label for="problema">Qual problema essa pessoa enfrenta hoje? <span class="required" aria-hidden="true">*</span></label><p id="problema-help" class="field-help">Conte como esse problema aparece na rotina dela.</p><textarea id="problema" name="problema" rows="3" maxlength="3000" aria-describedby="problema-help" required></textarea></div>
+          <div class="field"><label for="resultado">O que o participante conseguirá fazer depois da aula? <span class="required" aria-hidden="true">*</span></label><p id="resultado-help" class="field-help">Separe o aprendizado da aula dos resultados que dependem de aplicação posterior.</p><textarea id="resultado" name="resultado" rows="3" maxlength="3000" aria-describedby="resultado-help" required></textarea></div>
+        </fieldset>
+        <fieldset id="conteudo-section"><legend>Conteúdo da aula</legend><p class="section-description">Especificidade aqui ajuda a mostrar por que vale participar.</p>
+          <div class="field"><label for="tema">Qual será o tema central? <span class="required" aria-hidden="true">*</span></label><p id="tema-help" class="field-help">Inclua um título provisório, se já tiver um em mente.</p><textarea id="tema" name="tema" rows="3" maxlength="3000" aria-describedby="tema-help" required></textarea></div>
+          <div class="field"><label for="conteudo">Quais são os 3 a 5 tópicos que serão ensinados? <span class="required" aria-hidden="true">*</span></label><p id="conteudo-help" class="field-help">Prefira ações e exemplos concretos. Pode responder em uma lista.</p><textarea id="conteudo" name="conteudo" rows="3" maxlength="3000" aria-describedby="conteudo-help" required></textarea></div>
+          <div class="field"><label for="pratica">Haverá exercício, demonstração ou estudo de caso?</label><p id="pratica-help" class="field-help">Descreva o que será mostrado ou feito durante a aula.</p><textarea id="pratica" name="pratica" rows="3" maxlength="3000" aria-describedby="pratica-help"></textarea></div>
+          <div class="field"><label for="materiais">O participante receberá algum material?</label><p id="materiais-help" class="field-help">Por exemplo: checklist, modelo ou planilha. Se não houver, escreva “não”.</p><textarea id="materiais" name="materiais" rows="3" maxlength="3000" aria-describedby="materiais-help"></textarea></div>
+        </fieldset>
+        <fieldset id="oferta-section"><legend>Oferta e realização</legend><p class="section-description">Confirme o que já está decidido e sinalize o que ainda está em aberto.</p>
+          <div class="field"><label for="agenda">Qual data, horário e duração você propõe?</label><p id="agenda-help" class="field-help">Inclua o fuso, se haverá perguntas e se uma janela de 15 dias de divulgação faz sentido.</p><textarea id="agenda" name="agenda" rows="3" maxlength="3000" aria-describedby="agenda-help"></textarea></div>
+          <div class="field"><label for="preco">O valor sugerido de R$ 17 está aprovado?</label><p id="preco-help" class="field-help">Confirme ou informe outro valor. Essa foi uma proposta, ainda não uma definição.</p><textarea id="preco" name="preco" rows="3" maxlength="3000" aria-describedby="preco-help"></textarea></div>
+          <div class="field"><label for="acesso">Onde acontecerá a aula ao vivo e como será o acesso?</label><p id="acesso-help" class="field-help">Informe a plataforma da aula e como o comprador receberá as instruções.</p><textarea id="acesso" name="acesso" rows="3" maxlength="3000" aria-describedby="acesso-help"></textarea></div>
+          <div class="field"><label for="gravacao">Quem comprar poderá assistir à gravação?</label><p id="gravacao-help" class="field-help">Informe por quanto tempo. Inclua limites reais de vagas ou prazo de inscrição, se existirem.</p><textarea id="gravacao" name="gravacao" rows="3" maxlength="3000" aria-describedby="gravacao-help"></textarea></div>
+          <div class="field"><label for="checkout">Qual plataforma será usada para vender a aula?</label><p id="checkout-help" class="field-help">Se o produto ou checkout já existir, envie o link. Não envie senhas ou tokens.</p><textarea id="checkout" name="checkout" rows="3" maxlength="3000" aria-describedby="checkout-help"></textarea></div>
+          <div class="field"><label for="proxima_oferta">Qual será o próximo passo comercial após a aula?</label><p id="proxima_oferta-help" class="field-help">Se houver apresentação de consultoria ou mentoria, diga qual oferta e como o interessado deve avançar.</p><textarea id="proxima_oferta" name="proxima_oferta" rows="3" maxlength="3000" aria-describedby="proxima_oferta-help"></textarea></div>
+        </fieldset>
+        <fieldset id="materiais-section"><legend>Professor, provas e materiais</legend><p class="section-description">Reúna o que podemos usar para apresentar a aula com confiança.</p>
+          <div class="field"><label for="professor">Quem ministrará a aula? <span class="required" aria-hidden="true">*</span></label><p id="professor-help" class="field-help">Envie uma apresentação curta com experiência, credenciais e resultados relevantes para o tema.</p><textarea id="professor" name="professor" rows="3" maxlength="3000" aria-describedby="professor-help" required></textarea></div>
+          <div class="field"><label for="provas">Quais casos ou depoimentos podemos divulgar?</label><p id="provas-help" class="field-help">Cole os links e indique se temos autorização para usar nomes, imagens e resultados.</p><textarea id="provas" name="provas" rows="3" maxlength="3000" aria-describedby="provas-help"></textarea></div>
+          <div class="field"><label for="links">Quais materiais já estão disponíveis e quem aprova a página?</label><p id="links-help" class="field-help">Cole links de foto do professor, identidade visual, vídeos ou referências. Verifique o acesso dos links.</p><textarea id="links" name="links" rows="3" maxlength="3000" aria-describedby="links-help"></textarea></div>
+        </fieldset>
+        <div class="submit-area">
+          <h2>Pronto para construir a página?</h2>
+          <p>Ao enviar, suas respostas serão gravadas para a equipe preparar a página de vendas.</p>
+          <button type="submit" id="submit-button" disabled>Enviar briefing</button>
+          <p id="submit-status" class="submit-status" role="status" tabindex="-1"></p>
+        </div>
+      </form>
+    </div>
+  </main>
+  <footer>Sevilha Performance <span>Briefing da aula</span></footer>
+</body>
+</html>
