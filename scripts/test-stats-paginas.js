@@ -31,6 +31,7 @@ const LEADS = [
 const EVENTOS = [
   { pagina: '/mentoria', visitante: 'v1' }, { pagina: '/mentoria', visitante: 'v1' }, { pagina: '/mentoria', visitante: 'v2' },
   { pagina: '/mentoria-2', visitante: 'v3' },
+  { pagina: '/so-visitantes', visitante: 'v9' }, { pagina: '/so-visitantes', visitante: 'v9' },
 ];
 global.fetch = async (url) => {
   const u = String(url);
@@ -88,6 +89,13 @@ function resFalso() {
   assert.strictEqual(por['/pagina-sem-beacon'].visitantes, 0);
   assert.strictEqual(por['/pagina-sem-beacon'].conversao_visitantes, null);
   assert.ok(urlsPedidas.some(u => u.includes('eventos_pagina') && u.includes('evento=eq.pageview') && u.includes('criado_em=gte.')));
+  assert.ok(urlsPedidas.some(u => u.includes('eventos_pagina') && u.includes('order=criado_em.asc')));
+
+  assert.ok(por['/so-visitantes'], 'página só com evento pageview entra na lista');
+  assert.strictEqual(por['/so-visitantes'].visits, 0);
+  assert.strictEqual(por['/so-visitantes'].leads, 0);
+  assert.strictEqual(por['/so-visitantes'].visitantes, 1, 'v9 carregou duas vezes e conta uma');
+  assert.strictEqual(por['/so-visitantes'].conversao_visitantes, 0, '0 leads em 1 visitante é 0%, não desconhecido');
 
   console.log('✓ comparação por página passou');
 })();
