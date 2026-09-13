@@ -316,7 +316,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 
 /* ── Funil ── */
 .admin-dashboard .fn-bar-wrap { border-radius: var(--radius-sm); background: var(--chart-highlight); }
-.admin-dashboard .fn-bar-fill { border-radius: var(--radius-sm); font-size: var(--type-label-size); font-weight: var(--fw-semibold); }
+.admin-dashboard .fn-bar-fill { border-radius: var(--radius-sm); font-size: var(--type-label-size); font-weight: var(--fw-semibold); background: var(--chart-series-1); }
 .admin-dashboard .fn-label { color: var(--text-display); font-size: var(--type-body-sm-size); font-weight: var(--fw-medium); }
 .admin-dashboard .fn-count { color: var(--text-muted); font-size: var(--type-body-sm-size); }
 
@@ -407,7 +407,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 .admin-dashboard .alertas { display: none; margin: var(--space-6) var(--gutter-x) 0; padding: var(--space-5) var(--space-6); border: 1px solid var(--lm-warning); border-radius: var(--radius-md); background: var(--lm-warning-bg); color: var(--status-warning-text); font-size: var(--type-body-sm-size); }
 .admin-dashboard .alertas.show { display: block; }
 .admin-dashboard .alertas ul { margin: 0; padding-left: var(--space-7); }
-.admin-dashboard .badge { display: inline-block; padding: 2px 8px; border-radius: var(--radius-pill); font-size: var(--type-caption-size); font-weight: var(--fw-semibold); letter-spacing: .02em; background: var(--surface-sunken); color: var(--text-body); }
+.admin-dashboard .badge { display: inline-block; letter-spacing: .02em; background: var(--surface-sunken); color: var(--text-body); }
 .admin-dashboard .badge-se { background: var(--lm-teal-100); color: var(--lm-teal-700); }
 .admin-dashboard .badge-cafe { background: var(--lm-amber-50); color: var(--status-warning-text); }
 .admin-dashboard .badge-cp { background: var(--lm-indigo-100); color: var(--lm-indigo-600); }
@@ -421,7 +421,6 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 .admin-dashboard td.vazio { text-align: center; padding: var(--space-7); color: var(--text-muted); }
 .admin-dashboard .chart-falha { display: flex; align-items: center; justify-content: center; height: 100%; color: var(--text-muted); font-size: var(--type-body-sm-size); text-align: center; }
 .admin-dashboard .fn-count small { display: block; font-size: var(--type-caption-size); color: var(--text-muted); }
-.admin-dashboard .fn-bar-fill { background: var(--chart-series-1); }
 .admin-dashboard .funis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--grid-gap); }
 .admin-dashboard .funil-titulo { font-size: var(--type-label-size); font-weight: var(--fw-semibold); text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted); margin-bottom: var(--space-4); }
 .admin-dashboard .section-tools { display: flex; align-items: center; gap: var(--space-4); margin-left: auto; }
