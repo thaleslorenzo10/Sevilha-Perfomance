@@ -47,6 +47,10 @@
       "destination": "/briefing-aula/index.html"
     },
     {
+      "source": "/api/leads-unificados",
+      "destination": "/api/sheet-leads?modo=unificados"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     }

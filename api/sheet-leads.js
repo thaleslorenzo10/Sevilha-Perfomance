@@ -28,6 +28,7 @@ const { classificarPorte, PORTE_MAIOR, PORTE_MENOR, PORTE_INDEF } = require('../
 const {
   TAB_FORMS, TAB_LP, findLPHeaders, extractForms, extractLP, labelCargo, labelColaboradores,
 } = require('../lib/planilha-leads');
+const { responderUnificados } = require('../lib/leads-fontes');
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -159,6 +160,12 @@ module.exports = async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
+
+  // /api/leads-unificados chega aqui por rewrite (limite de 12 funções do plano).
+  const url = new URL(req.url, 'http://localhost');
+  if (url.searchParams.get('modo') === 'unificados' || url.pathname.includes('leads-unificados')) {
+    return responderUnificados(req, res);
+  }
 
   const params = new URL(req.url, 'http://localhost').searchParams;
   const since = params.get('since');
