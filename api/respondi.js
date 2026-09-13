@@ -23,6 +23,7 @@ const crypto = require('crypto');
 const { norm } = require('../lib/texto');
 const { ehQualificado } = require('../lib/porte');
 const { enviarEvento, montarUserData, eventIdPorContato } = require('../lib/capi');
+const { responder: responderRdWebhook } = require('../lib/rd-webhook');
 
 const EVENTO = 'LeadQualificado';
 const FORM_URL = 'https://form.respondi.app/gvz4UKQr';
@@ -213,6 +214,10 @@ function userAgentDoCliente(req, pares) {
 /* ── Handler ─────────────────────────────────────────────────────────── */
 
 module.exports = async function handler(req, res) {
+  // Webhook do RD Marketing (Café com Sevilha) divide esta função — ver lib/rd-webhook.js.
+  const fonte = new URL(req.url || '/', 'http://localhost').searchParams.get('fonte');
+  if (fonte === 'rd-marketing') return responderRdWebhook(req, res);
+
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST')    return res.status(405).json({ error: 'Method not allowed' });
 
