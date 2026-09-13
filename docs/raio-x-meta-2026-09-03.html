@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Raio-X Sevilha Ads</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -73,8 +78,11 @@ code{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;fon
 a{color:var(--green-ink)}
 @media (prefers-reduced-motion:no-preference){.v{transition:transform .15s}}
 </style>
+<link rel="stylesheet" href="../assets/css/admin-audit.css">
+</head>
+<body class="admin-audit">
 
-<div class="wrap">
+<div class="wrap" role="main">
   <div class="eyebrow">Sevilha Performance · conta Meta 1676714556216146 · 05/06 a 03/09/2026</div>
   <h1 style="margin-top:10px">Raio-X da captação: onde nascem os leads de <span class="mark">10+ colaboradores</span> e onde o dinheiro escorre</h1>
   <p class="lead">Cruzamento de três fontes: Meta Ads (campanhas, conjuntos, 200 anúncios, pixel), planilhas de leads (porte real respondido no formulário) e o Supabase da página nova. Números de leads são os reais, não os que o Meta reporta.</p>
@@ -95,7 +103,7 @@ a{color:var(--green-ink)}
 
   <h2>1. Para onde foi o dinheiro</h2>
   <p>Três funis dividem a conta. O formulário instantâneo é o único que entrega volume; a landing page antiga qualifica parecido e custa mais; a página nova ainda não provou nada; a distribuição compra visita de perfil.</p>
-  <div class="tw"><table>
+  <div class="tw" role="region" aria-label="Tabela da análise 1" tabindex="0"><table>
     <thead><tr><th>Funil (90 dias)</th><th class="num">Gasto</th><th class="num">Leads reais</th><th class="num">Leads 10+</th><th class="num">% 10+</th><th class="num">R$ / lead</th><th class="num">R$ / lead 10+</th></tr></thead>
     <tbody>
       <tr><td>Formulário instantâneo <span class="small">[SE][FORMS]</span></td><td class="num">21.979</td><td class="num">491</td><td class="num">112</td><td class="num">23%</td><td class="num">45</td><td class="num">196</td></tr>
@@ -146,7 +154,7 @@ a{color:var(--green-ink)}
 
   <h2>2. O que traz lead de 10+ colaboradores</h2>
   <p>O porte só existe na resposta do formulário. Cruzando a planilha do Respondi (1.557 leads desde abr/25, todos com anúncio identificado pela UTM), aparece um padrão que a conta ignora: o ângulo de <b>margem</b> atrai escritório grande; o ângulo de <b>sobrecarga</b> atrai escritório pequeno.</p>
-  <div class="tw"><table>
+  <div class="tw" role="region" aria-label="Tabela da análise 2" tabindex="0"><table>
     <thead><tr><th>Anúncio (landing page Respondi, vida toda)</th><th class="num">Leads</th><th class="num">Leads 10+</th><th class="num">% 10+</th><th>Leitura</th></tr></thead>
     <tbody>
       <tr><td>008 – Contabilidade Lucrativa: aumente sua margem</td><td class="num">111</td><td class="num">55</td><td class="num"><span class="pill good">50%</span></td><td>Melhor qualificador da conta. Está pausado.</td></tr>
@@ -168,7 +176,7 @@ a{color:var(--green-ink)}
 
   <h2>3. A página nova não está convertendo</h2>
   <p>Desde 25/08 as campanhas [PÁGINA NOVA] mandam tráfego para /mentoria e /mentoria-2. O funil medido no Supabase mostra onde a visita morre:</p>
-  <div class="tw"><table>
+  <div class="tw" role="region" aria-label="Tabela da análise 3" tabindex="0"><table>
     <thead><tr><th>Degrau (25/08 a 03/09)</th><th class="num">/mentoria</th><th class="num">/mentoria-2</th></tr></thead>
     <tbody>
       <tr><td>Visitas</td><td class="num">256</td><td class="num">242</td></tr>
@@ -186,7 +194,7 @@ a{color:var(--green-ink)}
   <p>Comparação justa: a campanha [LEAD-QL][COLD] Teste de Públicos, que manda para a LP antiga do Respondi, gerou 25 leads reais em 30 dias (6 de 10+) com R$ 1.767, ou seja, R$ 71 por lead e 21% de 10+. A página nova custou R$ 253 por lead no mesmo período.</p>
 
   <h2>4. Medição: o pixel está contando outra coisa</h2>
-  <div class="tw"><table>
+  <div class="tw" role="region" aria-label="Tabela da análise 4" tabindex="0"><table>
     <thead><tr><th>Evento no pixel 657178423444244 (28 dias)</th><th class="num">Disparos</th><th>Qualidade (EMQ)</th><th>Leitura</th></tr></thead>
     <tbody>
       <tr><td><code>Lead</code></td><td class="num">1.838</td><td>2,2 · upload “hourly” · só e-mail e primeiro nome (42%)</td><td><span class="pill bad">inflado</span> Não é o formulário. É uma integração externa (provável RD Station ou n8n) mandando lote por hora. Pico de 390 em 26/08.</td></tr>
@@ -242,3 +250,6 @@ a{color:var(--green-ink)}
     <li>Números de gasto vêm do Meta; leads e porte vêm das planilhas e do Supabase. Onde os dois divergem, a planilha manda.</li>
   </ul>
 </div>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+@font-face { font-family: Figtree; src: url('../fonts/figtree.woff2') format('woff2'); font-weight: 300 900; font-display: swap; }
+.admin-audit { --bg: #f4f6f9; --paper: #fff; --ink: #101c35; --ink-2: #33425d; --muted: #5d6675; --line: #e2e7ef; --navy: #101c35; --chip: #edf1f7; font-family: Figtree, Arial, sans-serif; font-variant-numeric: tabular-nums; }
+.admin-audit .wrap { max-width: 1100px; padding: 36px 28px 64px; }
+.admin-audit :is(h1,h2,h3) { font-family: inherit; letter-spacing: -.5px; }
+.admin-audit h1 { font-size: clamp(30px, 3.4vw, 44px); font-weight: 500; }
+.admin-audit h2 { font-size: 23px; border-top: 1px solid var(--line); padding-top: 28px; }
+.admin-audit .eyebrow { color: var(--muted); font-size: 13px; text-transform: none; letter-spacing: 0; }
+.admin-audit .v, .admin-audit .tw, .admin-audit .callout, .admin-audit .chart, .admin-audit .plan li { border-radius: 16px; }
+.admin-audit .v { padding: 24px; border-left-width: 3px; }
+.admin-audit .v .n { font-family: inherit; font-size: 36px; font-weight: 500; letter-spacing: -1px; }
+.admin-audit .grid2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.admin-audit th { font-size: 13px; font-weight: 500; text-transform: none; letter-spacing: 0; }
+.admin-audit :is(th,td) { padding: 13px 14px; }
+.admin-audit a:focus-visible { outline: 3px solid #365cff; outline-offset: 4px; }
+.admin-audit .tw:focus-visible { outline: 3px solid #365cff; outline-offset: 4px; }
+.admin-audit .pill.good { color: #176443; background: #e6f5ee; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .admin-audit { --bg: #101827; --paper: #18253b; --ink: #eef3ff; --ink-2: #c7d2e8; --muted: #b7c3d9; --line: #35445e; --navy: #eef3ff; --chip: #22324c; }
+}
+:root[data-theme='dark'] .admin-audit { --bg: #101827; --paper: #18253b; --ink: #eef3ff; --ink-2: #c7d2e8; --muted: #b7c3d9; --line: #35445e; --navy: #eef3ff; --chip: #22324c; }
+@media (max-width: 640px) {
+  .admin-audit .wrap { padding: 26px 16px 40px; }
+  .admin-audit .v { padding: 20px; }
+}

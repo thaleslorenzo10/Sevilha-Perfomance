@@ -313,9 +313,10 @@
       .filter-bar { flex-direction: column; align-items: flex-start; }
     }
   </style>
+<link rel="stylesheet" href="assets/css/admin-report.css">
 </head>
-<body>
-  <div class="container">
+<body class="admin-report">
+  <div class="container" role="main">
 
     <!-- Header -->
     <div class="header">
@@ -327,9 +328,9 @@
 
     <!-- Filtro de data -->
     <div class="filter-bar">
-      <label>Período</label>
+      <label for="input-from">Período</label>
       <input type="date" id="input-from" />
-      <span class="filter-sep">até</span>
+      <label class="filter-sep" for="input-to">até</label>
       <input type="date" id="input-to" />
       <button class="btn-filter" onclick="applyFilter()">Filtrar</button>
       <button class="btn-clear"  onclick="clearFilter()">Limpar</button>

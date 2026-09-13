@@ -232,11 +232,12 @@ tbody tr.linha-total td { border-top:2px solid var(--border); background:var(--l
 }
 footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; line-height:1.7; }
 </style>
+<link rel="stylesheet" href="assets/css/admin-dashboard.css">
 </head>
-<body>
+<body class="admin-dashboard">
 
 <!-- ═══ HEADER ═══ -->
-<div class="header">
+<div class="header" role="banner">
   <div class="header-top">
     <div class="header-logo">
       <img src="logo.png" alt="Lorenzo Media" style="height:32px;opacity:.95">
@@ -247,7 +248,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       </div>
     </div>
     <div style="display:flex;gap:8px;">
-      <button class="btn-hdr" onclick="toggleDark()" id="btnTheme">🌙</button>
+      <button class="btn-hdr" onclick="toggleDark()" id="btnTheme" aria-label="Alternar tema claro e escuro">🌙</button>
       <button class="btn-hdr" id="btnRefresh" onclick="loadAll()">⟳ Atualizar</button>
     </div>
   </div>
@@ -259,7 +260,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 </div>
 
 <!-- ═══ FILTER BAR ═══ -->
-<div class="filter-bar">
+<div class="filter-bar" role="region" aria-label="Filtros de período">
   <span class="filter-label">Período:</span>
   <button class="preset-btn" id="btn-today" onclick="setPreset('today')">Hoje</button>
   <button class="preset-btn" id="btn-last_7d" onclick="setPreset('last_7d')">7 dias</button>
@@ -271,16 +272,16 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
   <div class="filter-sep"></div>
   <button class="preset-btn" id="btn-custom" onclick="setPreset('custom')">Personalizado</button>
   <div class="custom-dates" id="customDates">
-    <label style="font-size:12px;color:var(--gray);font-weight:600;">De</label>
+    <label for="dateSince" style="font-size:12px;color:var(--gray);font-weight:600;">De</label>
     <input type="date" class="date-input" id="dateSince">
-    <label style="font-size:12px;color:var(--gray);font-weight:600;">até</label>
+    <label for="dateUntil" style="font-size:12px;color:var(--gray);font-weight:600;">até</label>
     <input type="date" class="date-input" id="dateUntil">
     <button class="btn-apply" onclick="applyCustom()">Aplicar</button>
   </div>
 </div>
 
 <!-- ═══ TAB NAV ═══ -->
-<div class="tab-nav">
+<div class="tab-nav" role="navigation" aria-label="Visões do painel">
   <button class="tab-btn active" onclick="switchTab('geral')">📊 Visão Geral</button>
   <button class="tab-btn tab-fmt" onclick="switchTab('formatos')">⚔️ Formatos de Campanha</button>
   <button class="tab-btn tab-se" onclick="switchTab('se')">💼 [SE] Sessão Estratégica</button>
@@ -288,6 +289,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 </div>
 
 <!-- ═══════════ TAB: VISÃO GERAL ═══════════ -->
+<main>
 <div class="tab-panel active" id="tab-geral">
 <div class="container">
   <div class="banner banner-error" id="errorBanner"></div>
@@ -326,7 +328,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       <strong>investimento do formato dividido pelos leads daquele porte</strong> —
       as faixas dividem o mesmo investimento, então as colunas de custo não se somam.
     </div>
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Tabela de resultados 1" tabindex="0">
       <table>
         <thead><tr>
           <th>Porte</th>
@@ -349,7 +351,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       <strong>—</strong> na conversão: sem denominador não há taxa.
       <strong>Lead 10+</strong> usa a mesma regra que dispara o LeadQualificado no Meta.
     </div>
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Tabela de resultados 2" tabindex="0">
       <table>
         <thead><tr>
           <th>Página</th>
@@ -373,7 +375,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 
   <div class="section">
     <div class="section-title">📋 Campanhas no período</div>
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Tabela de resultados 3" tabindex="0">
       <table>
         <thead><tr>
           <th>Campanha</th><th>Grupo</th><th>Formato</th>
@@ -438,7 +440,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
   <div class="section">
     <div class="section-title">🧾 Leads reais por formulário</div>
     <div class="section-note">Fonte: planilha. Cada formulário instantâneo é uma variação testada dentro das campanhas [FORMS]; a Landing Page aparece como um formulário único.</div>
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Tabela de resultados 4" tabindex="0">
       <table>
         <thead><tr><th>Formulário</th><th>Formato</th><th class="num">Leads</th><th class="num">Participação</th></tr></thead>
         <tbody id="tblFormularios"><tr><td colspan="4" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
@@ -453,7 +455,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
       O custo por lead é o <strong>investimento do formato dividido pelos leads daquele porte</strong> —
       os dois portes dividem o mesmo investimento, então as colunas de custo não se somam.
     </div>
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Tabela de resultados 5" tabindex="0">
       <table>
         <thead><tr>
           <th>Porte</th>
@@ -470,7 +472,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
     <div class="section">
       <div class="section-title">👤 Perfil — cargo</div>
       <div class="section-note">Fonte: planilha, respostas do formulário.</div>
-      <div class="table-wrap">
+      <div class="table-wrap" role="region" aria-label="Tabela de resultados 6" tabindex="0">
         <table>
           <thead><tr><th>Cargo</th><th class="num">Leads</th><th class="num">%</th></tr></thead>
           <tbody id="tblCargo"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">—</td></tr></tbody>
@@ -480,7 +482,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
     <div class="section">
       <div class="section-title">🏢 Perfil — nº de colaboradores</div>
       <div class="section-note">Fonte: planilha, respostas do formulário.</div>
-      <div class="table-wrap">
+      <div class="table-wrap" role="region" aria-label="Tabela de resultados 7" tabindex="0">
         <table>
           <thead><tr><th>Faixa</th><th class="num">Leads</th><th class="num">%</th></tr></thead>
           <tbody id="tblColab"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">—</td></tr></tbody>
@@ -543,7 +545,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
   <div class="section">
     <div class="section-title">🧭 Etapas do funil no RD CRM</div>
     <div class="section-note">As etapas vêm do próprio RD, na ordem configurada lá — se alguém renomear ou criar uma etapa, ela aparece aqui sozinha.</div>
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Tabela de resultados 8" tabindex="0">
       <table>
         <thead><tr><th>Etapa</th><th class="num">Deals</th><th class="num">% do funil</th></tr></thead>
         <tbody id="tblEtapasSe"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
@@ -568,7 +570,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
     <div class="section">
       <div class="section-title">🚧 Onde a pessoa parou</div>
       <div class="section-note">Campo que recebeu foco e nunca ficou preenchido. É o degrau que mais custa: cada linha aqui é alguém que quis se inscrever e desistiu no meio. <strong id="travou-nota"></strong></div>
-      <div class="table-wrap">
+      <div class="table-wrap" role="region" aria-label="Tabela de resultados 9" tabindex="0">
         <table>
           <thead><tr><th>Campo</th><th class="num">Visitantes</th><th class="num">% dos que travaram</th></tr></thead>
           <tbody id="tblTravou"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
@@ -578,7 +580,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
     <div class="section">
       <div class="section-title">👥 Porte declarado no formulário</div>
       <div class="section-note">Decide onde está o problema: se a maioria marca abaixo de 10, a oferta não serve para quem o anúncio traz — e nenhuma mudança de página conserta isso.</div>
-      <div class="table-wrap">
+      <div class="table-wrap" role="region" aria-label="Tabela de resultados 10" tabindex="0">
         <table>
           <thead><tr><th>Colaboradores</th><th class="num">Visitantes</th><th class="num">% dos que abriram</th></tr></thead>
           <tbody id="tblPorteDeclarado"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
@@ -591,7 +593,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
     <div class="section">
       <div class="section-title">🖱️ Qual CTA leva ao formulário</div>
       <div class="section-note">São cinco botões por página. Este é o único jeito de saber qual deles paga o próprio espaço.</div>
-      <div class="table-wrap">
+      <div class="table-wrap" role="region" aria-label="Tabela de resultados 11" tabindex="0">
         <table>
           <thead><tr><th>Botão</th><th class="num">Visitantes</th><th class="num">% dos que clicaram</th></tr></thead>
           <tbody id="tblCta"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
@@ -601,7 +603,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
     <div class="section">
       <div class="section-title">❓ Perguntas abertas no FAQ</div>
       <div class="section-note">Objeção declarada, não inferida. A pergunta mais aberta é a que a página deveria responder antes de alguém precisar procurar.</div>
-      <div class="table-wrap">
+      <div class="table-wrap" role="region" aria-label="Tabela de resultados 12" tabindex="0">
         <table>
           <thead><tr><th>Pergunta</th><th class="num">Visitantes</th><th class="num">% dos que abriram alguma</th></tr></thead>
           <tbody id="tblFaq"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
@@ -613,7 +615,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
   <div class="section">
     <div class="section-title">🎯 Origem dos leads da /mentoria</div>
     <div class="section-note">Fonte: Supabase — o formulário da landing page grava direto, sem passar por planilha de terceiro.</div>
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Tabela de resultados 13" tabindex="0">
       <table>
         <thead><tr><th>utm_source</th><th class="num">Leads</th><th class="num">% do total</th></tr></thead>
         <tbody id="tblLpmFonte"><tr><td colspan="3" style="text-align:center;padding:20px;color:var(--gray)">Carregando...</td></tr></tbody>
@@ -623,7 +625,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 
   <div class="section">
     <div class="section-title">📋 Campanhas [SE]</div>
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Tabela de resultados 14" tabindex="0">
       <table>
         <thead><tr>
           <th>Campanha</th><th>Formato</th><th class="num">Investido</th><th class="num">Leads (Meta)</th>
@@ -661,7 +663,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 
   <div class="section">
     <div class="section-title">📋 Campanhas [CP]</div>
-    <div class="table-wrap">
+    <div class="table-wrap" role="region" aria-label="Tabela de resultados 15" tabindex="0">
       <table>
         <thead><tr>
           <th>Campanha</th><th>Formato</th><th class="num">Investido</th><th class="num">Leads (Meta)</th>
@@ -674,6 +676,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 </div>
 </div>
 
+</main>
 <footer>
   Sevilha Performance · Dashboard interno · Atualização automática a cada 60s<br>
   Investimento e entrega: Meta Ads · Volume real de leads: planilha · Pipeline: RD Station CRM

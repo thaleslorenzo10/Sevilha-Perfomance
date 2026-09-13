@@ -1,0 +1,41 @@
+/* Relatório interno. Nenhum documento do funil importa esta folha. */
+@font-face { font-family: Figtree; src: url('../fonts/figtree.woff2') format('woff2'); font-weight: 300 900; font-display: swap; }
+.admin-report { --navy: #101c35; --muted: #5d6675; --border: #e2e7ef; --bg: #f4f6f9; padding: 0 0 40px; font: 400 14px/1.5 Figtree, Arial, sans-serif; font-variant-numeric: tabular-nums; }
+.admin-report .container { max-width: 1464px; padding: 0 32px; }
+.admin-report .header { background: #101c35; color: #fff; padding: 42px 32px; margin: 0 -32px 28px; min-height: 176px; align-items: center; border-radius: 0 0 20px 20px; }
+.admin-report .header-left h1 { font: 500 34px/1.15 Figtree, Arial, sans-serif; letter-spacing: -.8px; }
+.admin-report .header-left p { color: #c2cde0; font-size: 14px; margin-top: 12px; }
+.admin-report .grad-text { color: #9abaff; background: none; -webkit-text-fill-color: currentColor; }
+.admin-report :is(button,input) { font: inherit; min-height: 44px; }
+.admin-report :is(a,button,input):focus-visible { outline: 3px solid #365cff; outline-offset: 4px; }
+.admin-report .filter-bar { border-radius: 12px; gap: 12px; padding: 16px 20px; }
+.admin-report .filter-bar label { font-size: 13px; text-transform: none; letter-spacing: 0; font-weight: 500; }
+.admin-report .filter-bar input[type='date'] { font: inherit; min-height: 44px; border-color: #858fa1; background: #fff; padding: 9px 12px; }
+.admin-report .btn-filter { background: #365cff; color: #fff; border-radius: 8px; padding: 10px 20px; font-weight: 500; }
+.admin-report .btn-clear { border-radius: 8px; padding: 10px 20px; background: #fff; font-weight: 500; }
+.admin-report .total-card, .admin-report .card { background: #fff; color: #101c35; border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: 0 2px 3px #101c3503; }
+.admin-report .total-card::before, .admin-report .card::before { display: none; }
+.admin-report .total-label, .admin-report .card-eyebrow { color: var(--muted); font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.admin-report .total-value { color: #101c35; font: 500 36px/1.1 Figtree, Arial, sans-serif; letter-spacing: -1px; }
+.admin-report .total-value.grad, .admin-report .metric-value.highlight { background: none; -webkit-text-fill-color: #365cff; color: #365cff; }
+.admin-report .total-sub { font-size: 13px; color: var(--muted); margin-top: 8px; }
+.admin-report .section-title { color: #101c35; font: 600 17px/1.4 Figtree, Arial, sans-serif; text-transform: none; letter-spacing: -.2px; }
+.admin-report .card-title { font-family: inherit; font-size: 22px; font-weight: 500; }
+.admin-report .card-badge { font-size: 12px; }
+.admin-report .badge { background: #e6f5ee; color: #176443; }
+.admin-report .url-hint, .admin-report .metric-label, .admin-report .status-bar { font-size: 13px; color: var(--muted); }
+.admin-report .metric-value { font-family: inherit; font-weight: 500; }
+.admin-report .cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.admin-report .skeleton .total-value { background: #e8edf5 !important; }
+@media (max-width: 640px) {
+  .admin-report .container { padding: 0 16px; }
+  .admin-report .header { margin-inline: -16px; padding: 28px 20px; min-height: 180px; border-radius: 0; }
+  .admin-report .header-left h1 { font-size: 29px; }
+  .admin-report .filter-bar { display: grid; grid-template-columns: auto minmax(0, 1fr); padding: 16px; gap: 12px; }
+  .admin-report .filter-bar input[type='date'] { font-size: 16px; min-width: 0; width: 100%; }
+  .admin-report .btn-filter, .admin-report .btn-clear { grid-column: 1 / -1; width: 100%; }
+  .admin-report .total-card, .admin-report .card { padding: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .admin-report *, .admin-report *::before, .admin-report *::after { animation: none !important; transition: none !important; }
+}
