@@ -53,6 +53,8 @@ assert.equal(r.por_fonte.find(f => f.fonte === 'instagram:geral').leads, 1, 'col
 assert.equal(r.por_pagina.find(p => p.pagina === '/mentoria').leads, 1);
 assert.deepEqual(r.porte, { MAIOR_10: 3, MENOR_10: 1, INDEFINIDO: 0 });
 assert.equal(r.qualificacao.cargo['Dono / Sócio'], 2);
+assert.equal(r.qualificacao.colaboradores['De 10 a 19'], 2, 'faixa do export e slug do site viram o mesmo rótulo');
+assert.equal(r.qualificacao.colaboradores['de_10_a_19'], undefined);
 
 const fForms = r.fontes.find(f => f.nome === 'FORMS');
 assert.equal(fForms.total_no_periodo, 2);
