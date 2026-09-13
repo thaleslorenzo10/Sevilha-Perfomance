@@ -37,9 +37,8 @@
   --chart-series-1: var(--lm-pulse-blue); --chart-series-2: var(--lm-amber-gold);
   --chart-series-3: var(--lm-teal-500); --chart-series-4: var(--lm-indigo-500);
   --chart-grid: var(--lm-gray-200); --chart-highlight: var(--lm-gray-100);
-  /* Navegação escura (tokens resgatados do template admin) */
-  --nav-active-bg: rgb(0 128 255 / .16); --nav-active-text: #61B4FF; --nav-hover-bg: rgb(255 255 255 / .06);
-  --nav-text: rgb(255 255 255 / .86); --nav-muted: rgb(255 255 255 / .5);
+  /* Geometria do painel (mesma da Ambiental Pro) */
+  --lm-sidebar-width: 256px;
   --action-primary-gradient: linear-gradient(96deg, var(--lm-blue-600), var(--lm-blue-700));
   /* Tipografia */
   --font-sans: "Mona Sans", "Mona Sans Fallback", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -85,51 +84,54 @@
 }
 @media (prefers-reduced-motion: reduce) { :root { --dur-fast: 0ms; --dur-base: 0ms; --press-scale: 1; --lift-y: 0; } }
 
-/* ── Menu lateral (compartilhado por dashboard, relatório e raio-x) ── */
-.lm-menu { box-sizing: border-box; display: flex; flex-direction: column; padding: 0; gap: 0; color: var(--nav-text); background: var(--surface-inverse); border-right: 1px solid var(--border-inverse); font: var(--fw-regular) 14px/1.5 var(--font-sans); }
+/* ── Menu lateral (compartilhado por dashboard, relatório e raio-x) ──
+   Mesma composição do painel da Ambiental Pro: ink navy, logo do cliente no topo,
+   Lorenzo em selo branco no bloco do cliente, item ativo em blue-700. */
+.lm-menu { box-sizing: border-box; display: flex; flex-direction: column; min-width: 0; padding: 0; gap: 0; color: var(--text-on-inverse); background: var(--lm-ink-navy); font: var(--fw-regular) 14px/var(--type-body-lh) var(--font-sans); }
 .lm-menu *, .lm-menu *::before, .lm-menu *::after { box-sizing: border-box; }
 .lm-menu > *, .lm-menu-content > * { flex-shrink: 0; }
-.lm-menu .lm-menu-brand { min-height: var(--nav-h); padding: var(--space-7) var(--space-7) var(--space-6); display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); }
-.lm-menu .lm-menu-logo { width: 168px; max-width: 100%; height: auto; display: block; }
+.lm-menu .lm-menu-brand { min-height: calc(var(--nav-h) + var(--space-8)); padding: var(--space-8); display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); }
+.lm-menu .lm-menu-client-logo { width: 100%; max-width: calc(var(--space-8) * 7); height: auto; min-width: 0; display: block; object-fit: contain; }
 .lm-menu .lm-menu-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
-.lm-menu .lm-menu-client { margin: 0 var(--space-6); padding: var(--space-6) var(--space-5); display: flex; flex-direction: column; align-items: center; gap: var(--space-4); text-align: center; border-top: 1px solid var(--border-inverse); border-bottom: 1px solid var(--border-inverse); }
-.lm-menu .lm-menu-client-logo { width: 148px; max-width: 100%; height: auto; display: block; }
-.lm-menu .lm-menu-client strong { font-size: var(--type-body-sm-size); font-weight: var(--fw-semibold); color: var(--lm-white); }
-.lm-menu .lm-menu-client small { display: block; font-size: var(--type-label-size); color: var(--nav-muted); }
-.lm-menu .lm-menu-nav { display: grid; gap: var(--space-2); padding: var(--space-6) var(--space-5); margin: 0; width: 100%; overflow: visible; }
-.lm-menu .lm-menu-group { display: grid; gap: var(--space-2); padding: 0; margin: 0; background: transparent; border: 0; box-shadow: none; position: static; }
-.lm-menu .lm-menu-label { margin: var(--space-5) var(--space-5) var(--space-2); font-size: var(--type-caption-size); font-weight: var(--fw-semibold); letter-spacing: var(--type-caption-ls); text-transform: uppercase; color: var(--nav-muted); }
-.lm-menu .lm-menu-item { width: 100%; display: grid; grid-template-columns: 20px minmax(0, 1fr) 16px; align-items: center; gap: var(--space-5); min-height: 56px; margin: 0; padding: var(--space-4) var(--space-5); border: 0; border-radius: var(--radius-md); background: transparent; color: var(--nav-text); font: inherit; text-align: left; text-decoration: none; white-space: normal; overflow-wrap: anywhere; cursor: pointer; transition: var(--t-hover); }
-.lm-menu .lm-menu-item > svg { width: 20px; height: 20px; color: var(--nav-muted); transition: var(--t-hover); }
+.lm-menu .lm-menu-client { margin: 0 var(--space-8); padding: var(--space-7) 0 var(--space-8); display: flex; flex-direction: column; border-bottom: 1px solid var(--border-inverse); }
+.lm-menu .lm-menu-client small { display: block; font-size: var(--type-body-sm-size); color: var(--lm-blue-200); }
+.lm-menu .lm-menu-logo { display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; max-width: 100%; margin-top: var(--space-4); padding: var(--space-3) var(--space-5); border-radius: var(--radius-md); background: var(--lm-white); } /* selo sempre branco: o logo é escuro e o tema escuro troca --surface-card */
+.lm-menu .lm-menu-logo img { display: block; width: 132px; max-width: 100%; height: auto; object-fit: contain; }
+.lm-menu .lm-menu-nav { display: grid; gap: var(--space-3); padding: var(--space-8) var(--space-5); margin: 0; width: 100%; overflow: visible; }
+.lm-menu .lm-menu-group { display: grid; gap: var(--space-3); padding: 0; margin: 0; background: transparent; border: 0; box-shadow: none; position: static; }
+.lm-menu .lm-menu-label { margin: var(--space-5) var(--space-5) var(--space-2); font-size: var(--type-caption-size); font-weight: var(--fw-semibold); letter-spacing: var(--type-caption-ls); text-transform: uppercase; color: var(--lm-blue-200); }
+.lm-menu .lm-menu-item { width: 100%; display: grid; grid-template-columns: 20px minmax(0, 1fr) 16px; align-items: center; gap: var(--space-5); min-height: var(--nav-h); margin: 0; padding: var(--space-5); border: 1px solid transparent; border-radius: var(--radius-md); background: transparent; color: var(--text-on-inverse); font: inherit; text-align: left; text-decoration: none; white-space: normal; overflow-wrap: anywhere; cursor: pointer; transition: var(--t-hover); }
+.lm-menu .lm-menu-item > svg { width: 20px; height: 20px; color: var(--lm-blue-200); transition: var(--t-hover); }
 .lm-menu .lm-menu-item > span { min-width: 0; width: auto; text-align: left; }
-.lm-menu .lm-menu-item strong { display: block; font-size: 14px; line-height: 1.4; font-weight: var(--fw-medium); color: inherit; }
-.lm-menu .lm-menu-item small { display: block; margin-top: 2px; font-size: var(--type-label-size); line-height: 1.4; font-weight: var(--fw-regular); color: var(--nav-muted); }
-.lm-menu .lm-menu-item:hover { color: var(--lm-white); background: var(--nav-hover-bg); }
-.lm-menu .lm-menu-item:is([aria-current="page"], .active) { color: var(--nav-active-text); background: var(--nav-active-bg); box-shadow: none; }
-.lm-menu .lm-menu-item:is([aria-current="page"], .active) strong { font-weight: var(--fw-semibold); }
-.lm-menu .lm-menu-item:is([aria-current="page"], .active) > svg { color: var(--nav-active-text); }
+.lm-menu .lm-menu-item strong { display: block; font-size: 14px; line-height: var(--type-body-lh); font-weight: var(--fw-medium); color: inherit; }
+.lm-menu .lm-menu-item small { display: block; margin-top: 2px; font-size: var(--type-label-size); line-height: var(--type-body-lh); font-weight: var(--fw-regular); color: var(--lm-blue-200); }
+.lm-menu .lm-menu-item:hover { background: var(--border-inverse); }
+.lm-menu .lm-menu-item:is([aria-current="page"], .active) { color: var(--text-on-accent); background: var(--lm-blue-700); box-shadow: none; }
+.lm-menu .lm-menu-item:is([aria-current="page"], .active) :is(small, svg) { color: var(--text-on-accent); }
 .lm-menu .lm-menu-item > .lm-menu-chevron { width: 14px; height: 14px; opacity: 0; transition: opacity var(--dur-fast) var(--ease-in-out); }
 .lm-menu .lm-menu-item:is(:hover, [aria-current="page"], .active) > .lm-menu-chevron { opacity: 1; }
-.lm-menu :is(a, button):focus-visible { outline: var(--focus-w) solid var(--lm-blue-300); outline-offset: var(--focus-offset); }
-.lm-menu .lm-menu-toggle { display: none; min-height: var(--tap-target); padding: var(--space-4) var(--space-5); border: 1px solid var(--border-inverse); border-radius: var(--radius-sm); color: var(--lm-white); background: var(--nav-hover-bg); font: inherit; font-weight: var(--fw-medium); cursor: pointer; }
-.lm-menu .lm-menu-footer { margin-top: auto; padding-top: var(--space-5); }
-.lm-menu .lm-menu-actions { margin: 0 var(--space-5); padding: var(--space-5) var(--space-4) 0; border-top: 1px solid var(--border-inverse); }
-.lm-menu .lm-menu-actions :is(button, a) { display: inline-flex; align-items: center; gap: var(--space-4); min-height: var(--tap-target); padding: var(--space-2) 0; border: 0; box-shadow: none; background: transparent; color: var(--nav-text); font: var(--fw-semibold) 13px/1.5 var(--font-sans); text-decoration: none; cursor: pointer; }
-.lm-menu .lm-menu-note { display: flex; align-items: flex-start; gap: var(--space-5); margin: var(--space-3) var(--space-5) var(--space-6); padding: var(--space-5); border: 1px solid var(--border-inverse); border-radius: var(--radius-lg); background: rgb(255 255 255 / .04); }
-.lm-menu .lm-menu-note > svg { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; color: var(--nav-active-text); }
+.lm-menu :is(a, button):focus-visible { outline: var(--focus-w) solid var(--lm-blue-200); outline-offset: var(--focus-offset); }
+.lm-menu .lm-menu-toggle { display: none; flex-shrink: 0; min-height: var(--tap-target); padding: var(--space-4) var(--space-5); border: 1px solid var(--lm-blue-300); border-radius: var(--radius-md); color: var(--text-on-inverse); background: transparent; font: inherit; cursor: pointer; }
+.lm-menu .lm-menu-footer { margin-top: auto; padding: var(--space-8); }
+.lm-menu .lm-menu-actions { margin: 0; padding: var(--space-5) 0 0; border-top: 1px solid var(--border-inverse); }
+.lm-menu .lm-menu-actions :is(button, a) { display: inline-flex; align-items: center; gap: var(--space-4); min-height: var(--tap-target); padding: var(--space-2) 0; border: 0; box-shadow: none; background: transparent; color: var(--text-on-inverse); font: var(--fw-semibold) 13px/1.5 var(--font-sans); text-decoration: none; cursor: pointer; }
+.lm-menu .lm-menu-note { display: flex; align-items: flex-start; gap: var(--space-5); margin: 0; padding: var(--space-7) 0 0; border: 0; border-top: 1px solid var(--border-inverse); border-radius: 0; background: transparent; }
+.lm-menu .lm-menu-note > svg { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; color: var(--lm-blue-200); }
 .lm-menu .lm-menu-note p { margin: 0; }
-.lm-menu .lm-menu-note strong { display: block; color: var(--lm-white); font-size: var(--type-body-sm-size); font-weight: var(--fw-semibold); }
-.lm-menu .lm-menu-note span { display: block; margin-top: 3px; color: var(--nav-muted); font-size: var(--type-label-size); line-height: 1.5; }
+.lm-menu .lm-menu-note strong { display: block; color: var(--text-on-inverse); font-size: var(--type-body-sm-size); font-weight: var(--fw-medium); }
+.lm-menu .lm-menu-note span { display: block; margin-top: var(--space-2); color: var(--lm-blue-200); font-size: var(--type-label-size); line-height: var(--type-body-lh); }
 @media (min-width: 1024px) {
-  .lm-menu { position: fixed; inset: 0 auto 0 0; z-index: 40; width: 248px; height: 100dvh; overflow-y: auto; }
-  .admin-side-layout { padding-left: 248px; }
+  .lm-menu { position: fixed; inset: 0 auto 0 0; z-index: 40; width: var(--lm-sidebar-width); height: 100dvh; overflow-y: auto; }
+  .admin-side-layout { padding-left: var(--lm-sidebar-width); }
 }
 @media (max-width: 1023px) {
-  .lm-menu { position: relative; width: 100%; height: auto; border-right: 0; border-bottom: 1px solid var(--border-inverse); }
-  .lm-menu .lm-menu-brand { padding: var(--space-6); min-height: 72px; }
-  .lm-menu .lm-menu-logo { width: 150px; }
-  .lm-menu .lm-menu-toggle { display: block; flex-shrink: 0; }
+  .lm-menu { position: relative; width: 100%; height: auto; }
+  .lm-menu .lm-menu-brand { padding: var(--space-6); min-height: var(--nav-h); }
+  .lm-menu .lm-menu-client-logo { max-width: calc(var(--space-8) * 6); }
+  .lm-menu .lm-menu-toggle { display: inline-flex; align-items: center; }
   .lm-menu .lm-menu-content { display: none; }
   .lm-menu:has(.lm-menu-toggle[aria-expanded="true"]) .lm-menu-content { display: flex; }
+  .lm-menu .lm-menu-nav { padding-block: var(--space-6); }
+  .lm-menu .lm-menu-footer { display: none; }
 }
 @media print { .lm-menu { display: none; } }
