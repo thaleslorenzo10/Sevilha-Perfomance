@@ -39,6 +39,16 @@ global.fetch = async (url, opts = {}) => {
   assert.equal(res.statusCode, 401);
 
   res = resFalso();
+  await responder({ method: 'POST', url: '/api/respondi?fonte=rd-marketing&token=segredo', body: '{nao é json' }, res);
+  assert.equal(res.statusCode, 400, 'corpo que não é JSON responde 400');
+  res = resFalso();
+  await responder({ method: 'POST', url: '/api/respondi?fonte=rd-marketing&token=segredo', body: 'texto' }, res);
+  assert.equal(res.statusCode, 400);
+  res = resFalso();
+  await responder({ method: 'GET', url: '/api/respondi?fonte=rd-marketing&token=segredo' }, res);
+  assert.equal(res.statusCode, 405, 'só POST');
+
+  res = resFalso();
   await responder({ method: 'POST', url: '/api/respondi?fonte=rd-marketing&token=segredo', body: JSON.stringify({ leads: [contato] }) }, res);
   assert.equal(res.statusCode, 200);
   assert.deepEqual(res.corpo, { ok: true, recebidos: 1, gravados: 1, ignorados: 0 });
