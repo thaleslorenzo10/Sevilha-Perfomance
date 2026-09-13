@@ -12,6 +12,7 @@
  * significam bug e não "dado ruim". Sai com código 1 nesse caso.
  */
 
+const { norm } = require('../lib/texto');
 const args = process.argv.slice(2);
 const arg = (nome, padrao) => { const i = args.indexOf(`--${nome}`); return i >= 0 ? args[i + 1] : padrao; };
 const BASE  = arg('base', 'https://sevilha-perfomance.vercel.app');
@@ -19,7 +20,7 @@ const hoje  = new Date(Date.now() - 3 * 3600e3).toISOString().slice(0, 10);
 const UNTIL = arg('until', hoje);
 const SINCE = arg('since', new Date(new Date(`${UNTIL}T00:00:00Z`) - 13 * 864e5).toISOString().slice(0, 10));
 
-const chave = s => String(s ?? '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/\s+/g, ' ').trim();
+const chave = s => norm(s).replace(/\s+/g, ' ');
 const num = (v, casas = 0) => (v === null || v === undefined) ? '—' : Number(v).toLocaleString('pt-BR', { minimumFractionDigits: casas, maximumFractionDigits: casas });
 const pad = (v, n) => String(v).padStart(n);
 const linha = cols => console.log(cols.map(([v, n]) => pad(v, n)).join('  '));
@@ -65,8 +66,15 @@ const invariante = (cond, msg) => { console.log(`${cond ? '  ok  ' : ' FALHA'} $
       [r.leads ? num(c.spend / r.leads, 2) : '—', 8], [r.mql ? num(c.spend / r.mql, 2) : '—', 8], [num(dealsPorCamp.get(k) || 0), 6]]);
   }
   for (const c of leads.por_campanha) {
-    if (vistas.has(chave(c.campanha))) continue;
-    linha([[`(sem gasto no Meta) ${c.campanha}`.slice(0, 52), 52], ['—', 10], ['—', 6], [num(c.leads), 6], [num(c.mql), 5], ['—', 8], ['—', 8], [num(dealsPorCamp.get(chave(c.campanha)) || 0), 6]]);
+    const k = chave(c.campanha);
+    if (vistas.has(k)) continue;
+    vistas.add(k);
+    linha([[`(sem gasto no Meta) ${c.campanha}`.slice(0, 52), 52], ['—', 10], ['—', 6], [num(c.leads), 6], [num(c.mql), 5], ['—', 8], ['—', 8], [num(dealsPorCamp.get(k) || 0), 6]]);
+  }
+  for (const c of rd.por_campanha || []) {
+    const k = chave(c.campanha);
+    if (vistas.has(k)) continue;
+    linha([[`(só no RD) ${c.campanha}`.slice(0, 52), 52], ['—', 10], ['—', 6], ['—', 6], ['—', 5], ['—', 8], ['—', 8], [num(c.deals), 6]]);
   }
 
   console.log('\n— fontes —');
@@ -78,7 +86,7 @@ const invariante = (cond, msg) => { console.log(`${cond ? '  ok  ' : ' FALHA'} $
   invariante(soma(leads.por_dia, 'mql') === leads.total.mql, 'soma de por_dia = total (mql)');
   invariante(soma(Object.values(leads.por_grupo), 'leads') === leads.total.leads, 'soma de por_grupo = total');
   invariante(soma(leads.por_campanha, 'leads') === leads.total.leads, 'soma de por_campanha = total');
-  invariante(Math.abs(soma(meta.campanhas, 'spend') - meta.conta.spend) < 0.05, 'soma das campanhas do Meta = conta');
+  invariante(Math.abs(soma(meta.campanhas, 'spend') - meta.conta.spend) <= 0.01 * meta.campanhas.length + 0.05, 'soma das campanhas do Meta ≈ conta (tolerância de 1 centavo por campanha)');
   invariante(leads.por_dia.every(d => d.dia >= SINCE && d.dia <= UNTIL), 'nenhum dia fora do período');
   invariante(meta.serie.length === leads.por_dia.length, 'Meta e leads têm o mesmo número de dias');
   invariante(leads.fontes.every(f => !f.erro), 'nenhuma fonte com erro');
