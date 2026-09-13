@@ -41,6 +41,7 @@ const { norm } = require('../lib/texto');
 const { ehQualificado } = require('../lib/porte');
 const { enviarEvento, montarUserData, eventIdPorContato } = require('../lib/capi');
 const registro = require('../lib/eventos-enviados');
+const { ehLeadDeTeste } = require('../lib/planilha-leads');
 
 const EVENTO = 'LeadQualificado';
 
@@ -61,11 +62,6 @@ const RE_EMAIL   = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Mesma assinatura de resposta que a leitura do dashboard usa para achar a
 // pergunta de colaboradores dentro do registro.
 const RE_COLABORADORES = /^(de\s+\d+\s+a\s+\d+|\d+\s*(a|à)\s*\d+|mais de\s+\d+|acima de\s+\d+.*)$/i;
-
-function ehLeadDeTeste(celulas) {
-  const blob = celulas.join(' ').toLowerCase();
-  return blob.includes('<test lead') || blob.includes('test@meta.com');
-}
 
 /**
  * Localiza os registros pelo próprio id ("l:123…"), como a leitura do
