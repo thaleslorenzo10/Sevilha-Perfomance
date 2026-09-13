@@ -33,6 +33,12 @@
           else button.removeAttribute('aria-current');
         });
       }
+      if (hash?.startsWith('#')) {
+        menu.querySelectorAll('a[href^="#"]').forEach((item) => {
+          if (item === control) item.setAttribute('aria-current', 'page');
+          else item.removeAttribute('aria-current');
+        });
+      }
       if (target) {
         target.setAttribute('tabindex', '-1');
         target.focus({ preventScroll: true });

@@ -1,0 +1,45 @@
+/* Lorenzo Admin1.2 — menu aprovado da Sevilha. Importar apenas em dashboards. */
+.lm-menu { box-sizing: border-box; color: #fff; background: #101c35; font: 400 14px/1.5 Figtree, Arial, sans-serif; border-right: 1px solid #ffffff20; display: flex; flex-direction: column; padding: 0; gap: 0; }
+.lm-menu *, .lm-menu *::before, .lm-menu *::after { box-sizing: border-box; }
+.lm-menu > *, .lm-menu-content > * { flex-shrink: 0; }
+.lm-menu .lm-menu-brand { min-height: 88px; padding: 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #ffffff20; }
+.lm-menu .lm-menu-logo { width: 184px; max-width: 100%; height: auto; display: block; padding: 6px 10px; border-radius: 8px; background: #fff; }
+.lm-menu .lm-menu-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.lm-menu .lm-menu-client { min-height: 96px; margin: 14px 16px 0; padding: 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+.lm-menu .lm-menu-client strong { font-size: 14px; font-weight: 600; color: #fff; }
+.lm-menu .lm-menu-client small { display: block; margin-top: 3px; font-size: 12px; color: #b6c3d9; }
+.lm-menu .lm-menu-nav { display: grid; gap: 6px; padding: 20px 12px; margin: 0; width: 100%; overflow: visible; }
+.lm-menu .lm-menu-group { display: grid; gap: 6px; padding: 0; margin: 0; background: transparent; border: 0; box-shadow: none; position: static; }
+.lm-menu .lm-menu-label { font-size: 12px; color: #b6c3d9; margin: 10px 12px 2px; }
+.lm-menu .lm-menu-item { width: 100%; display: grid; grid-template-columns: 20px minmax(0, 1fr) 16px; align-items: center; gap: 12px; min-height: 64px; padding: 10px 12px; border: 1px solid transparent; border-radius: 9px; background: transparent; color: #c9d3e6; font: inherit; text-align: left; text-decoration: none; white-space: normal; overflow-wrap: anywhere; cursor: pointer; margin: 0; }
+.lm-menu .lm-menu-item > svg { width: 20px; height: 20px; color: #aebee1; }
+.lm-menu .lm-menu-item > span { min-width: 0; width: auto; text-align: left; }
+.lm-menu .lm-menu-item strong { display: block; font-size: 14px; line-height: 1.5; font-weight: 600; color: inherit; }
+.lm-menu .lm-menu-item small { display: block; margin-top: 3px; font-size: 12px; line-height: 1.5; font-weight: 400; color: #b6c3d9; }
+.lm-menu .lm-menu-item:hover { color: #fff; background: #ffffff0d; }
+.lm-menu .lm-menu-item:is([aria-current="page"],.active) { color: #fff; background: #ffffff18; box-shadow: none; }
+.lm-menu .lm-menu-item[aria-current="page"] > svg { color: #fff; }
+.lm-menu .lm-menu-item > .lm-menu-chevron { width: 14px; height: 14px; opacity: 0; }
+.lm-menu .lm-menu-item:is(:hover,[aria-current="page"],.active) > .lm-menu-chevron { opacity: 1; }
+.lm-menu :is(a,button):focus-visible { outline: 3px solid #bdd5ff; outline-offset: -3px; }
+.lm-menu .lm-menu-toggle { display: none; min-height: 44px; border: 1px solid #52617b; border-radius: 8px; padding: 8px 12px; color: #fff; background: #23324d; font: inherit; cursor: pointer; }
+.lm-menu .lm-menu-footer { margin-top: auto; padding-top: 12px; }
+.lm-menu .lm-menu-actions { border-top: 1px solid #ffffff20; margin: 0 12px; padding: 12px 8px 0; }
+.lm-menu .lm-menu-actions :is(button,a) { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; background: transparent; color: #c9d3e6; font: 600 13px/1.5 Figtree, Arial, sans-serif; border: 0; box-shadow: none; padding: 4px 0; cursor: pointer; text-decoration: none; }
+.lm-menu .lm-menu-note { display: flex; align-items: flex-start; gap: 12px; margin: 6px 12px 16px; padding: 12px; border: 1px solid #31435f; border-radius: 11px; background: #182942; }
+.lm-menu .lm-menu-note > svg { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; color: #b6c3d9; }
+.lm-menu .lm-menu-note p { margin: 0; }
+.lm-menu .lm-menu-note strong { display: block; color: #fff; font-size: 13px; font-weight: 600; }
+.lm-menu .lm-menu-note span { display: block; margin-top: 3px; color: #b6c3d9; font-size: 12px; line-height: 1.5; }
+@media (min-width: 1024px) {
+  .lm-menu { position: fixed; inset: 0 auto 0 0; z-index: 40; width: 232px; height: 100dvh; overflow-y: auto; }
+}
+@media (max-width: 1023px) {
+  .lm-menu { position: relative; width: 100%; height: auto; border-bottom: 1px solid #ffffff20; }
+  .lm-menu .lm-menu-brand { padding: 16px; min-height: 76px; }
+  .lm-menu .lm-menu-logo { width: 164px; }
+  .lm-menu .lm-menu-toggle { display: block; flex-shrink: 0; }
+  .lm-menu .lm-menu-content { display: none; }
+  .lm-menu:has(.lm-menu-toggle[aria-expanded="true"]) .lm-menu-content { display: flex; }
+}
+@media print { .lm-menu { display: none; } }
