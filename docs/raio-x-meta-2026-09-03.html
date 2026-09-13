@@ -79,8 +79,19 @@ a{color:var(--green-ink)}
 @media (prefers-reduced-motion:no-preference){.v{transition:transform .15s}}
 </style>
 <link rel="stylesheet" href="../assets/css/admin-audit.css">
+<link rel="stylesheet" href="../assets/css/admin-sidebar.css">
+<script src="../assets/admin-sidebar.js" defer></script>
 </head>
-<body class="admin-audit">
+<body class="admin-audit admin-side-layout">
+<aside class="admin-sidebar" data-admin-sidebar aria-label="Navegação principal">
+  <div class="admin-sidebar-brand"><img src="/logo.png" alt="Lorenzo Media" width="156" height="67"><strong>Sevilha Performance</strong></div>
+  <button class="admin-menu-toggle" type="button" aria-expanded="false" aria-controls="admin-sidebar-menu">Abrir menu</button>
+  <nav id="admin-sidebar-menu" class="admin-sidebar-menu" aria-label="Áreas do painel">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/relatorio">Comparativo A/B</a>
+    <a href="/docs/raio-x-meta-2026-09-03.html" aria-current="page">Raio-X de campanhas</a>
+  </nav>
+</aside>
 
 <div class="wrap" role="main">
   <div class="eyebrow">Sevilha Performance · conta Meta 1676714556216146 · 05/06 a 03/09/2026</div>

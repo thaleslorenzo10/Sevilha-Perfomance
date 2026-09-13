@@ -314,8 +314,19 @@
     }
   </style>
 <link rel="stylesheet" href="assets/css/admin-report.css">
+<link rel="stylesheet" href="assets/css/admin-sidebar.css">
+<script src="assets/admin-sidebar.js" defer></script>
 </head>
-<body class="admin-report">
+<body class="admin-report admin-side-layout">
+<aside class="admin-sidebar" data-admin-sidebar aria-label="Navegação principal">
+  <div class="admin-sidebar-brand"><img src="/logo.png" alt="Lorenzo Media" width="156" height="67"><strong>Sevilha Performance</strong></div>
+  <button class="admin-menu-toggle" type="button" aria-expanded="false" aria-controls="admin-sidebar-menu">Abrir menu</button>
+  <nav id="admin-sidebar-menu" class="admin-sidebar-menu" aria-label="Áreas do painel">
+    <a href="/dashboard">Dashboard</a>
+    <a href="/relatorio" aria-current="page">Comparativo A/B</a>
+    <a href="/docs/raio-x-meta-2026-09-03.html">Raio-X de campanhas</a>
+  </nav>
+</aside>
   <div class="container" role="main">
 
     <!-- Header -->

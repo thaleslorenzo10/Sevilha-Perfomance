@@ -233,8 +233,25 @@ tbody tr.linha-total td { border-top:2px solid var(--border); background:var(--l
 footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; line-height:1.7; }
 </style>
 <link rel="stylesheet" href="assets/css/admin-dashboard.css">
+<link rel="stylesheet" href="assets/css/admin-sidebar.css">
+<script src="assets/admin-sidebar.js" defer></script>
 </head>
-<body class="admin-dashboard">
+<body class="admin-dashboard admin-side-layout">
+<aside class="admin-sidebar" data-admin-sidebar aria-label="Navegação principal">
+  <div class="admin-sidebar-brand"><img src="/logo.png" alt="Lorenzo Media" width="156" height="67"><strong>Sevilha Performance</strong></div>
+  <button class="admin-menu-toggle" type="button" aria-expanded="false" aria-controls="admin-sidebar-menu">Abrir menu</button>
+  <nav id="admin-sidebar-menu" class="admin-sidebar-menu" aria-label="Áreas do painel">
+<div class="tab-nav">
+  <button class="tab-btn active" aria-current="page" onclick="switchTab('geral')">📊 Visão Geral</button>
+  <button class="tab-btn tab-fmt" onclick="switchTab('formatos')">⚔️ Formatos de Campanha</button>
+  <button class="tab-btn tab-se" onclick="switchTab('se')">💼 [SE] Sessão Estratégica</button>
+  <button class="tab-btn tab-cp" onclick="switchTab('cp')">🎯 [CP] Clube da Performance</button>
+</div>
+    <p class="admin-sidebar-label">Relatórios</p>
+    <a href="/relatorio">Comparativo A/B</a>
+    <a href="/docs/raio-x-meta-2026-09-03.html">Raio-X de campanhas</a>
+  </nav>
+</aside>
 
 <!-- ═══ HEADER ═══ -->
 <div class="header" role="banner">
@@ -281,12 +298,7 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
 </div>
 
 <!-- ═══ TAB NAV ═══ -->
-<div class="tab-nav" role="navigation" aria-label="Visões do painel">
-  <button class="tab-btn active" onclick="switchTab('geral')">📊 Visão Geral</button>
-  <button class="tab-btn tab-fmt" onclick="switchTab('formatos')">⚔️ Formatos de Campanha</button>
-  <button class="tab-btn tab-se" onclick="switchTab('se')">💼 [SE] Sessão Estratégica</button>
-  <button class="tab-btn tab-cp" onclick="switchTab('cp')">🎯 [CP] Clube da Performance</button>
-</div>
+
 
 <!-- ═══════════ TAB: VISÃO GERAL ═══════════ -->
 <main>
