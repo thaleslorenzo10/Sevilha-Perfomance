@@ -8,8 +8,9 @@
  * Graph API. O access token fica só no servidor (env META_ACCESS_TOKEN).
  *
  * Devolve:
- *   totais da conta, por grupo ([CP]/[SE]/OUTROS), por formato (FORMS/LP),
- *   lista de campanhas e a série diária.
+ *   totais da conta, por grupo ([CP]/[SE]/[CAFÉ]/OUTROS), por formato
+ *   (FORMS/LP), lista de campanhas, conjuntos de anúncios, anúncios,
+ *   posicionamentos e a série diária.
  */
 
 const {

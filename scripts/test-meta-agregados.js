@@ -23,6 +23,23 @@ global.fetch = async (url) => {
 };
 
 const { montarMeta } = require('../api/meta');
+
+/** Chamada de conjunto/posicionamento falhando não pode derrubar o payload:
+ * `opcional()` em api/meta.js deve segurar o erro e devolver lista vazia. */
+async function verificaResiliencia(fetchOk) {
+  global.fetch = async (url) => {
+    const u = String(url);
+    if (u.includes('level=adset') || u.includes('breakdowns=')) throw new Error('Graph 500');
+    return fetchOk(url);
+  };
+  const m2 = await montarMeta('2026-09-10', '2026-09-12');
+  assert.deepEqual(m2.conjuntos, [], 'conjuntos vazio quando a chamada falha');
+  assert.deepEqual(m2.posicionamentos, [], 'posicionamentos vazio quando a chamada falha');
+  assert.equal(m2.anuncios.length, 1, 'anúncios continuam');
+  assert.equal(m2.grupos.CAFE.spend, 50, 'campanhas e série continuam');
+  global.fetch = fetchOk;
+}
+
 (async () => {
   const m = await montarMeta('2026-09-10', '2026-09-12');
   assert.equal(m.grupos.CAFE.spend, 50);
@@ -36,5 +53,8 @@ const { montarMeta } = require('../api/meta');
   const st = m.posicionamentos.find(p => p.nome === 'instagram:stories');
   assert.equal(st.spend, 80, 'duas campanhas somadas no mesmo posicionamento');
   assert.equal(m.posicionamentos.find(p => p.nome === 'facebook:feed').spend, 40);
+
+  await verificaResiliencia(global.fetch);
+
   console.log('✓ meta-agregados');
 })();
