@@ -10,6 +10,8 @@ assert.equal(chaveDoMacro('Facebook_Desktop_Feed'), 'facebook:feed');
 assert.equal(chaveDoMacro('ig'), 'instagram:geral');
 assert.equal(chaveDoMacro('fb'), 'facebook:geral');
 assert.equal(chaveDoMacro(''), null);
+assert.equal(chaveDoMacro('Audience_Network_Classic'), 'audience_network:classic');
+assert.equal(chaveDoMacro('Audience_Network_Classic'), chavePosicionamento('audience_network', 'an_classic'), 'lado do lead e lado do gasto dão a mesma chave');
 // Lado do gasto: breakdown publisher_platform + platform_position.
 assert.equal(chavePosicionamento('instagram', 'instagram_stories'), 'instagram:stories');
 assert.equal(chavePosicionamento('instagram', 'feed'), 'instagram:feed');
