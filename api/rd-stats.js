@@ -91,6 +91,33 @@ async function fetchEtapasFallback(token, pipelineId) {
     .filter(Boolean);
 }
 
+// Campo custom do deal que api/leads.js preenche com utm_campaign. É o que
+// permite dizer "esta campanha virou N deals" sem depender de e-mail.
+const CF_UTM_CAMPAIGN = process.env.RD_CRM_CF_UTM_CAMPAIGN || '68e6669152f4a7001f8d9f8f';
+const SEM_CAMPANHA = 'Sem campanha';
+
+function campanhaDoDeal(d) {
+  const cfs = d.deal_custom_fields || d.custom_fields || [];
+  const cf = cfs.find(c => (c.custom_field_id || c.custom_field?._id || c.custom_field?.id) === CF_UTM_CAMPAIGN);
+  const v = cf ? cf.value : null;
+  return typeof v === 'string' && v.trim() ? v.trim() : SEM_CAMPANHA;
+}
+
+function agruparPorCampanha(deals) {
+  const mapa = {};
+  for (const d of deals) {
+    const k = campanhaDoDeal(d);
+    const m = mapa[k] || (mapa[k] = { campanha: k, deals: 0, ganhos: 0, perdidos: 0, valor: 0 });
+    m.deals++;
+    if (d.win === true)  m.ganhos++;
+    if (d.win === false) m.perdidos++;
+    m.valor += parseFloat(d.amount_total || d.amount_unique || 0) || 0;
+  }
+  return Object.values(mapa)
+    .map(m => ({ ...m, valor: Math.round(m.valor * 100) / 100 }))
+    .sort((a, b) => b.deals - a.deals);
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -128,8 +155,10 @@ module.exports = async function handler(req, res) {
     });
 
     const funis = {};
+    const todosDeals = [];
     await Promise.all(Object.entries(FUNIS).map(async ([chave, f]) => {
       const deals = await fetchDeals(token, f.id, periodoQS);
+      todosDeals.push(...deals);
 
       const contagem = {};
       let ganhos = 0, perdidos = 0, valor = 0;
@@ -171,6 +200,8 @@ module.exports = async function handler(req, res) {
       periodo: temPeriodo ? { from, to } : null,
       acumulado: !temPeriodo,
       funis,
+      total_deals: todosDeals.length,
+      por_campanha: agruparPorCampanha(todosDeals),
       gerado_em: new Date().toISOString(),
     });
 
@@ -179,3 +210,5 @@ module.exports = async function handler(req, res) {
     return res.status(502).json({ error: err.message });
   }
 };
+
+module.exports.agruparPorCampanha = agruparPorCampanha;
