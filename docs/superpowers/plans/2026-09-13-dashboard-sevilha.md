@@ -58,9 +58,9 @@
 ## Ondas de execução (para dispatch paralelo)
 
 - **Onda 1 (independentes):** T1 fuso · T2 posicionamento · T3 planilha-leads · T7 rd-stats · T8 rd-webhook · T11 front puro (formato + cruzamento)
-- **Onda 2:** T4 leads-unificados (puro) · T6 meta · T9 stats
-- **Onda 3:** T5 leads-fontes + modo + rewrite · T10 conferir-dados (linha de base)
-- **Onda 4:** T12 CSS + api/graficos/tabelas · depois T13 HTML + main + executivo + geral · depois T14 formatos + grupo · T15 origem + ab + relatorio
+- **Onda 2:** T4 leads-unificados (puro, inclui CAFE em lib/meta.js) · T10 conferir-dados · T12 CSS + api/graficos/tabelas
+- **Onda 3:** T5 leads-fontes + modo + rewrite + lerTudo · T6 meta (depois de T4: mesmo arquivo lib/meta.js) · T13 HTML + main + executivo + geral
+- **Onda 4:** T9 stats (usa lerTudo de T5) · T14 formatos + grupo · T15 origem + ab + relatorio
 - **Onda 5:** T16 validação e deploy
 
 ---
@@ -424,7 +424,7 @@ const respondi = [
 ];
 const supabase = [
   { id: 10, created_at: '2026-09-13T02:30:00+00:00', pagina: '/mentoria', email: 'c@x.com', telefone: '11999990000', utm_source: 'Instagram_Stories', utm_medium: 'HOT', utm_campaign: '[25/08] [SE] [PÁGINA NOVA] [LEAD-QL] [HOT]', utm_content: 'AD 09', colaboradores: 'de_10_a_19', cargo: 'socio' },
-  { id: 11, created_at: '2026-09-11T12:00:00+00:00', pagina: '/mentoria-2', email: '', telefone: '+55 (11) 99999-0000', utm_source: '{{placement}}', utm_medium: '{{adset.name}}', utm_campaign: '{{campaign.name}}', utm_content: '', colaboradores: 'de_0_a_4', cargo: '' },
+  { id: 11, created_at: '2026-09-13T12:00:00+00:00', pagina: '/mentoria-2', email: '', telefone: '+55 (11) 99999-0000', utm_source: '{{placement}}', utm_medium: '{{adset.name}}', utm_campaign: '{{campaign.name}}', utm_content: '', colaboradores: 'de_0_a_4', cargo: '' },
   { id: 12, created_at: '2026-09-11T15:00:00+00:00', pagina: 'rd:cafe-com-sevilha', email: 'd@x.com', telefone: '', utm_source: '', utm_medium: '', utm_campaign: '', utm_content: '', colaboradores: 'De 30 a 49', cargo: '' },
   { id: 13, created_at: '2026-09-11T16:00:00+00:00', pagina: 'rd:cafe-com-sevilha', email: 'antigo@x.com', telefone: '', utm_source: '', utm_medium: '', utm_campaign: '', utm_content: '', colaboradores: '', cargo: '' },
 ];
@@ -440,9 +440,9 @@ assert.equal(r.periodo.fuso, '-03:00');
 
 const dia12 = r.por_dia.find(d => d.dia === '2026-09-12');
 assert.equal(r.por_dia.length, 4, 'um item por dia do período, mesmo sem lead');
-assert.equal(dia12.leads, 0, 'o Respondi do dia 12 era repetição');
+assert.equal(dia12.leads, 1, 'c@x.com; o Respondi do dia 12 era repetição de a@x.com');
 const dia13 = r.por_dia.find(d => d.dia === '2026-09-13');
-assert.equal(dia13.leads, 0, '02:30 UTC do dia 13 é dia 12 em Brasília');
+assert.equal(dia13.leads, 0, 'o lead 10 (02:30 UTC do dia 13) é dia 12 em Brasília; o lead 11 repete o telefone dele');
 const dia10 = r.por_dia.find(d => d.dia === '2026-09-10');
 assert.equal(dia10.fontes.FORMS, 1);
 
@@ -469,7 +469,7 @@ assert.equal(fForms.dias_sem_lead, 2);
 assert.equal(r.fontes.find(f => f.nome === 'RESPONDI').total_no_periodo, 0);
 
 // Etiqueta quebrada quando o único registro é o quebrado.
-const q = U.unificar({ forms: [], respondi: [], supabase: [supabase[1]] }, '2026-09-11', '2026-09-11');
+const q = U.unificar({ forms: [], respondi: [], supabase: [supabase[1]] }, '2026-09-13', '2026-09-13');
 assert.equal(q.por_campanha[0].campanha, U.ETIQUETA_QUEBRADA);
 assert.equal(q.por_campanha[0].grupo, 'SE', 'sem campanha legível, a página /mentoria-2 diz o grupo');
 assert.equal(q.por_fonte[0].fonte, U.ETIQUETA_QUEBRADA);
