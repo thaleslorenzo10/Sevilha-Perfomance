@@ -118,6 +118,63 @@ function agruparPorCampanha(deals) {
     .sort((a, b) => b.deals - a.deals);
 }
 
+/**
+ * Extrai e valida parâmetros de período da requisição.
+ */
+function parseParametros(req) {
+  const params = new URL(req.url, 'http://localhost').searchParams;
+  const from = params.get('from');
+  const to = params.get('to');
+  const temPeriodo = DATE_RE.test(from || '') && DATE_RE.test(to || '');
+  const periodoQS = temPeriodo
+    ? `&created_at_period=true&start_date=${from}&end_date=${to}`
+    : '';
+  return { temPeriodo, periodoQS, from, to };
+}
+
+/**
+ * Monta os dados de um funil: busca deals, conta por etapa, calcula ganhos/perdidos/valor.
+ * Retorna { chave, deals, funil } para que o handler possa preencher funis e todosDeals.
+ */
+async function montarFunil({ token, chave, f, periodoQS, etapasPorFunil }) {
+  const deals = await fetchDeals(token, f.id, periodoQS);
+
+  const contagem = {};
+  let ganhos = 0, perdidos = 0, valor = 0;
+  for (const d of deals) {
+    const etapa = d.deal_stage?.name || 'Sem etapa';
+    contagem[etapa] = (contagem[etapa] || 0) + 1;
+    if (d.win === true)  ganhos++;
+    if (d.win === false) perdidos++;
+    valor += parseFloat(d.amount_total || d.amount_unique || 0) || 0;
+  }
+
+  // Ordem vem do RD; etapas com deal que não constam na configuração
+  // entram no fim para nenhum deal sumir da soma.
+  let ordem = etapasPorFunil[f.id] || [];
+  if (!ordem.length) {
+    ordem = await fetchEtapasFallback(token, f.id).catch(e => {
+      console.warn(`[rd-stats] etapas do funil ${chave} indisponíveis:`, e.message);
+      return [];
+    });
+  }
+
+  const extras = Object.keys(contagem).filter(n => !ordem.includes(n));
+  const etapas = [...ordem, ...extras].map(nome => ({ nome, deals: contagem[nome] || 0 }));
+
+  const funil = {
+    nome: f.nome,
+    total: deals.length,
+    etapas,
+    ordem_do_rd: ordem.length > 0,
+    ganhos,
+    perdidos,
+    valor: Math.round(valor * 100) / 100,
+  };
+
+  return { chave, deals, funil };
+}
+
 module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
@@ -138,15 +195,7 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  const params = new URL(req.url, 'http://localhost').searchParams;
-  const from = params.get('from');
-  const to   = params.get('to');
-  const temPeriodo = DATE_RE.test(from || '') && DATE_RE.test(to || '');
-
-  // Recorte por data de criação do deal (parâmetros da API v1 do RD CRM).
-  const periodoQS = temPeriodo
-    ? `&created_at_period=true&start_date=${from}&end_date=${to}`
-    : '';
+  const { temPeriodo, periodoQS, from, to } = parseParametros(req);
 
   try {
     const etapasPorFunil = await fetchEtapas(token).catch(e => {
@@ -156,45 +205,14 @@ module.exports = async function handler(req, res) {
 
     const funis = {};
     const todosDeals = [];
-    await Promise.all(Object.entries(FUNIS).map(async ([chave, f]) => {
-      const deals = await fetchDeals(token, f.id, periodoQS);
+    const resultados = await Promise.all(
+      Object.entries(FUNIS).map(([chave, f]) => montarFunil({ token, chave, f, periodoQS, etapasPorFunil }))
+    );
+
+    for (const { chave, deals, funil } of resultados) {
+      funis[chave] = funil;
       todosDeals.push(...deals);
-
-      const contagem = {};
-      let ganhos = 0, perdidos = 0, valor = 0;
-      for (const d of deals) {
-        const etapa = d.deal_stage?.name || 'Sem etapa';
-        contagem[etapa] = (contagem[etapa] || 0) + 1;
-        if (d.win === true)  ganhos++;
-        if (d.win === false) perdidos++;
-        valor += parseFloat(d.amount_total || d.amount_unique || 0) || 0;
-      }
-
-      // Ordem vem do RD; etapas com deal que não constam na configuração
-      // entram no fim para nenhum deal sumir da soma.
-      let ordem = etapasPorFunil[f.id] || [];
-      if (!ordem.length) {
-        ordem = await fetchEtapasFallback(token, f.id).catch(e => {
-          console.warn(`[rd-stats] etapas do funil ${chave} indisponíveis:`, e.message);
-          return [];
-        });
-      }
-
-      const extras = Object.keys(contagem).filter(n => !ordem.includes(n));
-      const etapas = [...ordem, ...extras].map(nome => ({ nome, deals: contagem[nome] || 0 }));
-
-      funis[chave] = {
-        nome: f.nome,
-        total: deals.length,
-        etapas,
-        // Sem isto não dá para saber se o funil está na ordem certa ou na
-        // ordem em que os deals apareceram.
-        ordem_do_rd: ordem.length > 0,
-        ganhos,
-        perdidos,
-        valor: Math.round(valor * 100) / 100,
-      };
-    }));
+    }
 
     return res.status(200).json({
       periodo: temPeriodo ? { from, to } : null,
