@@ -7,6 +7,7 @@
   // Divisão por zero e dado ausente são "—", nunca "0%": zero e não-sei são respostas diferentes.
   D.orDash = (v, fn) => (v === null || v === undefined || Number.isNaN(v)) ? '—' : fn(v);
   D.esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  // Gasto zero com lead significa 'sem gasto atribuído', não custo zero: mostra — em vez de R$ 0,00.
   D.razao = (num, den) => (num > 0 && den > 0 ? num / den : null);
   D.pct = (num, den) => (den > 0 ? (num / den) * 100 : null);
   D.fmtDia = s => { if (!s) return ''; const [y, m, d] = s.split('-'); return `${d}/${m}/${y}`; };
