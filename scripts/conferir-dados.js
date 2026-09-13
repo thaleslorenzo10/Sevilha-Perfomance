@@ -35,14 +35,7 @@ async function get(p) {
 const falhas = [];
 const invariante = (cond, msg) => { console.log(`${cond ? '  ok  ' : ' FALHA'} ${msg}`); if (!cond) falhas.push(msg); };
 
-(async () => {
-  const qs = `since=${SINCE}&until=${UNTIL}`;
-  console.log(`\nConferência ${SINCE} → ${UNTIL} em ${BASE}\n`);
-  const [meta, leads, stats, rd] = await Promise.all([
-    get(`/api/meta?${qs}`), get(`/api/leads-unificados?${qs}`), get(`/api/stats?${qs}`),
-    get(`/api/rd-stats?from=${SINCE}&to=${UNTIL}`),
-  ]);
-
+function imprimirPorDia(meta, leads) {
   console.log('— por dia —');
   linha([['dia', 10], ['gasto', 10], ['meta', 6], ['onsite', 6], ['pixel', 6], ['real', 6], ['mql', 5], ['diverg.', 8]]);
   const realPorDia = new Map(leads.por_dia.map(d => [d.dia, d]));
@@ -53,33 +46,51 @@ const invariante = (cond, msg) => { console.log(`${cond ? '  ok  ' : ' FALHA'} $
   }
   for (const c of meta.campanhas) { onsite += c.leads_onsite; pixel += c.leads_pixel; }
   console.log(`\nconta: gasto ${num(meta.conta.spend, 2)} · Meta reporta ${num(meta.conta.leads)} (onsite ${num(onsite)}, pixel ${num(pixel)}) · real ${num(leads.total.leads)} · MQL ${num(leads.total.mql)}\n`);
+}
 
-  console.log('— por campanha —');
-  linha([['campanha', 52], ['gasto', 10], ['meta', 6], ['real', 6], ['mql', 5], ['cpl', 8], ['cpmql', 8], ['deals', 6]]);
-  const realPorCamp = new Map(leads.por_campanha.map(c => [chave(c.campanha), c]));
-  const dealsPorCamp = new Map((rd.por_campanha || []).map(c => [chave(c.campanha), c.deals]));
-  const vistas = new Set();
+function imprimirCampanhasDoMeta(meta, realPorCamp, dealsPorCamp, vistas) {
   for (const c of meta.campanhas) {
     const k = chave(c.nome); vistas.add(k);
     const r = realPorCamp.get(k) || { leads: 0, mql: 0 };
     linha([[c.nome.slice(0, 52), 52], [num(c.spend, 2), 10], [num(c.leads), 6], [num(r.leads), 6], [num(r.mql), 5],
       [r.leads ? num(c.spend / r.leads, 2) : '—', 8], [r.mql ? num(c.spend / r.mql, 2) : '—', 8], [num(dealsPorCamp.get(k) || 0), 6]]);
   }
+}
+
+function imprimirCampanhasSoLead(leads, dealsPorCamp, vistas) {
   for (const c of leads.por_campanha) {
     const k = chave(c.campanha);
     if (vistas.has(k)) continue;
     vistas.add(k);
     linha([[`(sem gasto no Meta) ${c.campanha}`.slice(0, 52), 52], ['—', 10], ['—', 6], [num(c.leads), 6], [num(c.mql), 5], ['—', 8], ['—', 8], [num(dealsPorCamp.get(k) || 0), 6]]);
   }
+}
+
+function imprimirCampanhasSoRd(rd, vistas) {
   for (const c of rd.por_campanha || []) {
     const k = chave(c.campanha);
     if (vistas.has(k)) continue;
     linha([[`(só no RD) ${c.campanha}`.slice(0, 52), 52], ['—', 10], ['—', 6], ['—', 6], ['—', 5], ['—', 8], ['—', 8], [num(c.deals), 6]]);
   }
+}
 
+function imprimirPorCampanha({ meta, leads, rd }) {
+  console.log('— por campanha —');
+  linha([['campanha', 52], ['gasto', 10], ['meta', 6], ['real', 6], ['mql', 5], ['cpl', 8], ['cpmql', 8], ['deals', 6]]);
+  const realPorCamp = new Map(leads.por_campanha.map(c => [chave(c.campanha), c]));
+  const dealsPorCamp = new Map((rd.por_campanha || []).map(c => [chave(c.campanha), c.deals]));
+  const vistas = new Set();
+  imprimirCampanhasDoMeta(meta, realPorCamp, dealsPorCamp, vistas);
+  imprimirCampanhasSoLead(leads, dealsPorCamp, vistas);
+  imprimirCampanhasSoRd(rd, vistas);
+}
+
+function imprimirFontes(leads) {
   console.log('\n— fontes —');
   for (const f of leads.fontes) console.log(`  ${f.nome.padEnd(9)} ${f.modo || '-'}  período=${f.total_no_periodo}  último=${f.ultimo_lead || '—'}  sem lead há ${f.dias_sem_lead ?? '—'} dias${f.erro ? `  ERRO: ${f.erro}` : ''}`);
+}
 
+function checarInvariantes({ meta, leads, rd, stats }) {
   console.log('\n— invariantes —');
   const soma = (xs, k) => xs.reduce((s, x) => s + (x[k] || 0), 0);
   invariante(soma(leads.por_dia, 'leads') === leads.total.leads, 'soma de por_dia = total (leads)');
@@ -92,6 +103,20 @@ const invariante = (cond, msg) => { console.log(`${cond ? '  ok  ' : ' FALHA'} $
   invariante(leads.fontes.every(f => !f.erro), 'nenhuma fonte com erro');
   invariante(rd.acumulado === false, 'RD respondeu o período, não o acumulado');
   invariante(Array.isArray(stats.paginas), 'stats devolveu páginas');
+}
+
+(async () => {
+  const qs = `since=${SINCE}&until=${UNTIL}`;
+  console.log(`\nConferência ${SINCE} → ${UNTIL} em ${BASE}\n`);
+  const [meta, leads, stats, rd] = await Promise.all([
+    get(`/api/meta?${qs}`), get(`/api/leads-unificados?${qs}`), get(`/api/stats?${qs}`),
+    get(`/api/rd-stats?from=${SINCE}&to=${UNTIL}`),
+  ]);
+
+  imprimirPorDia(meta, leads);
+  imprimirPorCampanha({ meta, leads, rd });
+  imprimirFontes(leads);
+  checarInvariantes({ meta, leads, rd, stats });
 
   console.log(falhas.length ? `\n${falhas.length} invariante(s) quebrada(s)` : '\ntudo consistente');
   process.exit(falhas.length ? 1 : 0);

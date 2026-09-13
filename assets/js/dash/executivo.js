@@ -29,21 +29,30 @@
     }
   };
 
-  D.renderAlertas = function ({ meta, leads }) {
+  // O Respondi parou de propósito em 27/08/2026 (a página nova substituiu a LP antiga): não é alerta.
+  const avisosDasFontes = fontes => {
     const avisos = [];
-    if (!leads) avisos.push('Leads unificados indisponíveis: leads, MQL, CPL e cruzamentos ficam sem número.');
-    for (const f of (leads && leads.fontes) || []) {
+    for (const f of fontes || []) {
       if (f.erro) avisos.push(`Fonte <strong>${D.esc(f.nome)}</strong> falhou: ${D.esc(f.erro)}`);
-      // O Respondi parou de propósito em 27/08/2026 (a página nova substituiu a LP antiga): não é alerta.
       else if (f.nome !== 'RESPONDI' && f.dias_sem_lead !== null && f.dias_sem_lead > 3) {
         avisos.push(`Fonte <strong>${D.esc(f.nome)}</strong> sem lead há ${f.dias_sem_lead} dias (último em ${D.fmtDia(f.ultimo_lead)}).`);
       }
     }
+    return avisos;
+  };
+
+  const avisoCafe = (meta, leads) => (meta && meta.grupos.CAFE && meta.grupos.CAFE.spend > 0 && leads && leads.por_grupo.CAFE.leads === 0)
+    ? 'Café com Sevilha tem gasto no Meta e nenhum lead real: o webhook do RD Marketing não está ativo ou não recebeu conversão no período.'
+    : null;
+
+  D.renderAlertas = function ({ meta, leads }) {
+    const avisos = [];
+    if (!leads) avisos.push('Leads unificados indisponíveis: leads, MQL, CPL e cruzamentos ficam sem número.');
+    avisos.push(...avisosDasFontes(leads && leads.fontes));
     const quebradas = leads ? (leads.por_campanha.find(c => c.campanha === 'Etiqueta quebrada') || { leads: 0 }).leads : 0;
     if (quebradas) avisos.push(`${quebradas} lead(s) com <strong>etiqueta quebrada</strong>: macro de UTM gravada literal — conferir a URL do anúncio.`);
-    if (meta && meta.grupos.CAFE && meta.grupos.CAFE.spend > 0 && leads && leads.por_grupo.CAFE.leads === 0) {
-      avisos.push('Café com Sevilha tem gasto no Meta e nenhum lead real: o webhook do RD Marketing não está ativo ou não recebeu conversão no período.');
-    }
+    const cafe = avisoCafe(meta, leads);
+    if (cafe) avisos.push(cafe);
     D.banner('alertas', avisos.length ? '<ul>' + avisos.map(a => `<li>${a}</li>`).join('') + '</ul>' : '');
   };
 })(window.SPD = window.SPD || {});

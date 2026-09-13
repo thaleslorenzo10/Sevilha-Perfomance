@@ -213,10 +213,32 @@ function userAgentDoCliente(req, pares) {
 
 /* ── Handler ─────────────────────────────────────────────────────────── */
 
+/** Webhook do RD Marketing (Café com Sevilha) divide esta função — ver lib/rd-webhook.js. */
+function ehWebhookRd(req) {
+  return new URL(req.url || '/', 'http://localhost').searchParams.get('fonte') === 'rd-marketing';
+}
+
+/**
+ * Sem contato não há chave de deduplicação estável nem correspondência útil
+ * no Meta — e o dashboard também não conta esse lead, então mandar o evento
+ * faria os dois números discordarem.
+ */
+function semContato(res) {
+  console.warn('[respondi] qualificado sem e-mail nem telefone — evento não enviado');
+  return res.status(200).json({ ok: true, qualificado: true, enviado: false, motivo: 'sem contato' });
+}
+
+/** Log sem PII: só o que foi encontrado, nunca o conteúdo. */
+function logRecebido(colaboradores, qualificado, email, telefone) {
+  console.log('[respondi] recebido —',
+    `colaboradores=${colaboradores || '(vazio)'}`,
+    `qualificado=${qualificado}`,
+    `email=${email ? 'sim' : 'nao'}`,
+    `telefone=${telefone ? 'sim' : 'nao'}`);
+}
+
 module.exports = async function handler(req, res) {
-  // Webhook do RD Marketing (Café com Sevilha) divide esta função — ver lib/rd-webhook.js.
-  const fonte = new URL(req.url || '/', 'http://localhost').searchParams.get('fonte');
-  if (fonte === 'rd-marketing') return responderRdWebhook(req, res);
+  if (ehWebhookRd(req)) return responderRdWebhook(req, res);
 
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST')    return res.status(405).json({ error: 'Method not allowed' });
@@ -235,24 +257,13 @@ module.exports = async function handler(req, res) {
   const telefone      = acharTelefone(pares);
   const qualificado   = ehQualificado(colaboradores);
 
-  // Log sem PII: só o que foi encontrado, nunca o conteúdo.
-  console.log('[respondi] recebido —',
-    `colaboradores=${colaboradores || '(vazio)'}`,
-    `qualificado=${qualificado}`,
-    `email=${email ? 'sim' : 'nao'}`,
-    `telefone=${telefone ? 'sim' : 'nao'}`);
+  logRecebido(colaboradores, qualificado, email, telefone);
 
   // Sempre 200 quando o payload é válido, inclusive para quem não dispara:
   // webhook que recebe erro entra em retry e reenviaria o mesmo lead.
   if (!qualificado) return res.status(200).json({ ok: true, qualificado: false });
 
-  // Sem contato não há chave de deduplicação estável nem correspondência útil
-  // no Meta — e o dashboard também não conta esse lead, então mandar o evento
-  // faria os dois números discordarem.
-  if (!email && !telefone) {
-    console.warn('[respondi] qualificado sem e-mail nem telefone — evento não enviado');
-    return res.status(200).json({ ok: true, qualificado: true, enviado: false, motivo: 'sem contato' });
-  }
+  if (!email && !telefone) return semContato(res);
 
   const quandoMs = acharQuandoMs(payload);
 

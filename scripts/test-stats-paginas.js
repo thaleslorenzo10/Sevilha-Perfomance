@@ -50,21 +50,26 @@ function resFalso() {
   return r;
 }
 
-(async () => {
+async function pedirRelatorio() {
   const res = resFalso();
   const urlsPedidas = [];
   const fetchOriginal = global.fetch;
   global.fetch = async (u) => { urlsPedidas.push(String(u)); return fetchOriginal(u); };
   await handler({ method: 'GET', url: '/api/stats?since=2026-08-01&until=2026-08-31' }, res);
   global.fetch = fetchOriginal;
+  return { res, urlsPedidas };
+}
 
+function checarUrls(urlsPedidas) {
   // Lead das 21h de Brasília é 00h do dia seguinte em UTC: sem o offset ele cai
   // fora do período e o relatório mente sobre o último dia.
   assert.ok(urlsPedidas.every(u => u.includes('T23:59:59-03:00')),
     'o filtro de data precisa levar o fuso de Brasília');
+  assert.ok(urlsPedidas.some(u => u.includes('eventos_pagina') && u.includes('evento=eq.pageview') && u.includes('criado_em=gte.')));
+  assert.ok(urlsPedidas.some(u => u.includes('eventos_pagina') && u.includes('order=criado_em.asc')));
+}
 
-  const por = Object.fromEntries((res.corpo.paginas || []).map(p => [p.pagina, p]));
-
+function checarPaginas(por) {
   assert.ok(por['/mentoria-2'], 'página nova entra sem estar em lista fixa');
   assert.ok(por['/pagina-sem-beacon'], 'página desconhecida também entra');
 
@@ -81,21 +86,33 @@ function resFalso() {
   assert.strictEqual(por['/pagina-sem-beacon'].conversion_rate, null,
     'sem acesso contado a conversão é desconhecida, não zero');
 
-  // O relatório antigo do A/B continua respondendo igual.
-  assert.ok(Array.isArray(res.corpo.variants) && res.corpo.variants.length === 3);
-
   assert.strictEqual(por['/mentoria'].visitantes, 2, 'v1 carregou duas vezes e conta uma');
   assert.strictEqual(por['/mentoria'].conversao_visitantes, 100, '2 leads em 2 visitantes');
   assert.strictEqual(por['/pagina-sem-beacon'].visitantes, 0);
   assert.strictEqual(por['/pagina-sem-beacon'].conversao_visitantes, null);
-  assert.ok(urlsPedidas.some(u => u.includes('eventos_pagina') && u.includes('evento=eq.pageview') && u.includes('criado_em=gte.')));
-  assert.ok(urlsPedidas.some(u => u.includes('eventos_pagina') && u.includes('order=criado_em.asc')));
+}
 
+function checarSoVisitantes(por) {
   assert.ok(por['/so-visitantes'], 'página só com evento pageview entra na lista');
   assert.strictEqual(por['/so-visitantes'].visits, 0);
   assert.strictEqual(por['/so-visitantes'].leads, 0);
   assert.strictEqual(por['/so-visitantes'].visitantes, 1, 'v9 carregou duas vezes e conta uma');
   assert.strictEqual(por['/so-visitantes'].conversao_visitantes, 0, '0 leads em 1 visitante é 0%, não desconhecido');
+}
+
+function checarVariants(res) {
+  // O relatório antigo do A/B continua respondendo igual.
+  assert.ok(Array.isArray(res.corpo.variants) && res.corpo.variants.length === 3);
+}
+
+(async () => {
+  const { res, urlsPedidas } = await pedirRelatorio();
+  checarUrls(urlsPedidas);
+
+  const por = Object.fromEntries((res.corpo.paginas || []).map(p => [p.pagina, p]));
+  checarPaginas(por);
+  checarVariants(res);
+  checarSoVisitantes(por);
 
   console.log('✓ comparação por página passou');
 })();

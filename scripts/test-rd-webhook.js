@@ -33,7 +33,7 @@ global.fetch = async (url, opts = {}) => {
   return { ok: true, status: 201, text: async () => '' };
 };
 
-(async () => {
+async function cenarioAuth() {
   let res = resFalso();
   await responder({ method: 'POST', url: '/api/respondi?fonte=rd-marketing&token=errado', body: { leads: [contato] } }, res);
   assert.equal(res.statusCode, 401);
@@ -47,17 +47,28 @@ global.fetch = async (url, opts = {}) => {
   res = resFalso();
   await responder({ method: 'GET', url: '/api/respondi?fonte=rd-marketing&token=segredo' }, res);
   assert.equal(res.statusCode, 405, 'só POST');
+}
 
-  res = resFalso();
+async function cenarioGravacao() {
+  const res = resFalso();
   await responder({ method: 'POST', url: '/api/respondi?fonte=rd-marketing&token=segredo', body: JSON.stringify({ leads: [contato] }) }, res);
   assert.equal(res.statusCode, 200);
   assert.deepEqual(res.corpo, { ok: true, recebidos: 1, gravados: 1, ignorados: 0 });
   assert.equal(chamadas.filter(c => c.metodo === 'POST').length, 1);
   assert.ok(chamadas[0].url.includes('event_id=eq.rd%3Aabc-123'));
   assert.equal(JSON.parse(chamadas[1].corpo).pagina, 'rd:cafe-com-sevilha');
+}
 
-  existente = true; res = resFalso();
+async function cenarioReenvio() {
+  existente = true;
+  const res = resFalso();
   await responder({ method: 'POST', url: '/api/respondi?fonte=rd-marketing&token=segredo', body: { leads: [contato] } }, res);
   assert.deepEqual(res.corpo, { ok: true, recebidos: 1, gravados: 0, ignorados: 1 }, 'reenvio do RD não duplica');
+}
+
+(async () => {
+  await cenarioAuth();
+  await cenarioGravacao();
+  await cenarioReenvio();
   console.log('✓ rd-webhook');
 })();

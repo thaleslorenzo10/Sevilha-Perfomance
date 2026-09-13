@@ -15,19 +15,24 @@
    * metaRows: itens de meta.campanhas/conjuntos/anuncios/posicionamentos (campo `nome`).
    * rd: itens de rd.por_campanha (só faz sentido quando a dimensão é campanha).
    */
-  D.cruzar = function (leadsRows, metaRows, campoLead, { rd = [], filtroGrupo = null } = {}) {
+  const absorverMeta = (linha, m) => {
+    const l = linha(m.nome);
+    l.spend += m.spend || 0; l.meta_reporta += m.leads || 0;
+    l.grupo = l.grupo || m.grupo || null; l.campanha = l.campanha || m.campanha || null;
+  };
+  const absorverLead = (linha, r, campoLead) => {
+    const l = linha(r[campoLead]);
+    l.leads += r.leads || 0; l.mql += r.mql || 0;
+    l.grupo = l.grupo || r.grupo || null; l.campanha = l.campanha || r.campanha || null;
+  };
+  const opcoesDe = o => ({ rd: (o && o.rd) || [], filtroGrupo: (o && o.filtroGrupo) || null });
+
+  D.cruzar = function (leadsRows, metaRows, campoLead, opcoes) {
+    const { rd, filtroGrupo } = opcoesDe(opcoes);
     const mapa = new Map();
     const linha = nome => { const k = D.nomeChave(nome); if (!mapa.has(k)) mapa.set(k, nova(nome)); return mapa.get(k); };
-    for (const m of metaRows || []) {
-      const l = linha(m.nome);
-      l.spend += m.spend || 0; l.meta_reporta += m.leads || 0;
-      l.grupo = l.grupo || m.grupo || null; l.campanha = l.campanha || m.campanha || null;
-    }
-    for (const r of leadsRows || []) {
-      const l = linha(r[campoLead]);
-      l.leads += r.leads || 0; l.mql += r.mql || 0;
-      l.grupo = l.grupo || r.grupo || null; l.campanha = l.campanha || r.campanha || null;
-    }
+    for (const m of metaRows || []) absorverMeta(linha, m);
+    for (const r of leadsRows || []) absorverLead(linha, r, campoLead);
     for (const d of rd || []) { const k = D.nomeChave(d.campanha); if (mapa.has(k)) mapa.get(k).deals += d.deals || 0; }
     let rows = [...mapa.values()].map(derivar);
     if (filtroGrupo) rows = rows.filter(r => r.grupo === filtroGrupo);
