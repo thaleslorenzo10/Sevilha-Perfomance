@@ -28,12 +28,15 @@ const LEADS = [
   { pagina: '/pagina-sem-beacon', colaboradores: 'Mais de 50' }, // sem acesso contado
 ];
 
-global.fetch = async (url) => ({
-  ok: true,
-  status: 200,
-  json: async () => (String(url).includes('page_views') ? VIEWS : LEADS),
-  text: async () => '',
-});
+const EVENTOS = [
+  { pagina: '/mentoria', visitante: 'v1' }, { pagina: '/mentoria', visitante: 'v1' }, { pagina: '/mentoria', visitante: 'v2' },
+  { pagina: '/mentoria-2', visitante: 'v3' },
+];
+global.fetch = async (url) => {
+  const u = String(url);
+  const dados = u.includes('eventos_pagina') ? EVENTOS : u.includes('page_views') ? VIEWS : LEADS;
+  return { ok: true, status: 200, json: async () => dados, text: async () => '' };
+};
 
 const handler = require('../api/stats');
 
@@ -79,6 +82,12 @@ function resFalso() {
 
   // O relatório antigo do A/B continua respondendo igual.
   assert.ok(Array.isArray(res.corpo.variants) && res.corpo.variants.length === 3);
+
+  assert.strictEqual(por['/mentoria'].visitantes, 2, 'v1 carregou duas vezes e conta uma');
+  assert.strictEqual(por['/mentoria'].conversao_visitantes, 100, '2 leads em 2 visitantes');
+  assert.strictEqual(por['/pagina-sem-beacon'].visitantes, 0);
+  assert.strictEqual(por['/pagina-sem-beacon'].conversao_visitantes, null);
+  assert.ok(urlsPedidas.some(u => u.includes('eventos_pagina') && u.includes('evento=eq.pageview') && u.includes('criado_em=gte.')));
 
   console.log('✓ comparação por página passou');
 })();

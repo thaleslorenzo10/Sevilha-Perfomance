@@ -9,14 +9,10 @@
  *   to    — data final   (ISO 8601, ex: 2026-04-09)
  */
 
-const { TABELAS } = require('../lib/supabase');
+const { TABELAS, lerTudo } = require('../lib/supabase');
+const { inicioDoDia, fimDoDia } = require('../lib/fuso');
 const { responder: responderSessaoEstrategica } = require('../lib/sessao-estrategica');
 const { ehQualificado } = require('../lib/porte');
-
-// O banco grava em UTC e o dashboard pergunta em data de Brasília. Sem o
-// offset, um lead das 21h-24h cai no dia seguinte e some do período — foi
-// assim que o primeiro lead da /mentoria-2 não apareceu no relatório.
-const FUSO = '-03:00';
 
 const PAGES = ['/', '/pre-inscricao-2', '/pre-inscricao-3'];
 
@@ -43,12 +39,6 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Supabase não configurado' });
   }
 
-  const headers = {
-    'apikey':        supabaseKey,
-    'Authorization': `Bearer ${supabaseKey}`,
-    'Content-Type':  'application/json',
-  };
-
   // Filtro de data via query params
   const params = new URL(req.url, 'http://localhost').searchParams;
   // O dashboard fala since/until; o A/B, from/to. Aceitar os dois evita que uma
@@ -56,21 +46,26 @@ module.exports = async function handler(req, res) {
   const from   = params.get('from') || params.get('since'); // ex: "2026-04-01"
   const to     = params.get('to')   || params.get('until'); // ex: "2026-04-09"
 
-  function buildFilter(table, select) {
-    let url = `${supabaseUrl}/rest/v1/${table}?select=${select}`;
-    if (from) url += `&created_at=gte.${from}T00:00:00${FUSO}`;
-    if (to)   url += `&created_at=lte.${to}T23:59:59${FUSO}`;
+  function buildFilter(table, select, colunaData = 'created_at') {
+    let url = `${supabaseUrl}/rest/v1/${table}?select=${select}&order=${colunaData}.asc`;
+    if (from) url += `&${colunaData}=gte.${inicioDoDia(from)}`;
+    if (to)   url += `&${colunaData}=lte.${fimDoDia(to)}`;
     return url;
   }
 
   try {
-    const [viewsData, leadsData] = await Promise.all([
-      fetchAll(buildFilter(TABELAS.pageViews, 'pagina'), headers),
-      fetchAll(buildFilter(TABELAS.leads,     'pagina,colaboradores'), headers),
+    const [viewsData, leadsData, eventosData] = await Promise.all([
+      lerTudo(buildFilter(TABELAS.pageViews, 'pagina')),
+      lerTudo(buildFilter(TABELAS.leads,     'pagina,colaboradores')),
+      // Visitante distinto: o beacon grava uma linha por carregamento, e recarga
+      // dividia a conversão. Falha aqui não derruba o A/B — vira lista vazia.
+      lerTudo(`${buildFilter(TABELAS.eventosPagina, 'pagina,visitante', 'criado_em')}&evento=eq.pageview`)
+        .catch(e => { console.warn('[stats] visitantes indisponíveis:', e.message); return []; }),
     ]);
 
     const visits = countBy(viewsData, 'pagina');
     const leads  = countBy(leadsData, 'pagina');
+    const visitantesPor = contarVisitantes(eventosData);
 
     const variants = PAGES.map((pagina, index) => {
       const v = visits[pagina] || 0;
@@ -88,11 +83,12 @@ module.exports = async function handler(req, res) {
     // de existir no banco e faltar no relatório. Qualificado = 10+ colaboradores,
     // a mesma regra que dispara o LeadQualificado no Meta (lib/porte.js).
     const qualificados = countBy(leadsData.filter(l => ehQualificado(l.colaboradores)), 'pagina');
-    const paginas = [...new Set([...Object.keys(visits), ...Object.keys(leads)])]
+    const paginas = [...new Set([...Object.keys(visits), ...Object.keys(leads), ...Object.keys(visitantesPor)])]
       .map(pagina => {
         const v = visits[pagina] || 0;
         const l = leads[pagina]  || 0;
         const q = qualificados[pagina] || 0;
+        const visitantes = visitantesPor[pagina] ? visitantesPor[pagina].size : 0;
         return {
           pagina,
           visits:            v,
@@ -100,6 +96,8 @@ module.exports = async function handler(req, res) {
           leads_qualificados: q,
           conversion_rate:   v > 0 ? parseFloat(((l / v) * 100).toFixed(2)) : null,
           qualification_rate: l > 0 ? parseFloat(((q / l) * 100).toFixed(2)) : null,
+          visitantes,
+          conversao_visitantes: visitantes > 0 ? parseFloat(((l / visitantes) * 100).toFixed(2)) : null,
         };
       })
       .sort((a, b) => b.leads - a.leads || b.visits - a.visits);
@@ -123,10 +121,15 @@ module.exports = async function handler(req, res) {
   }
 };
 
-async function fetchAll(url, headers) {
-  const res = await fetch(url, { headers });
-  if (!res.ok) throw new Error(`Supabase ${res.status}: ${await res.text()}`);
-  return res.json();
+// Visitante distinto por página, a partir dos eventos de pageview. Extraído
+// da função principal para não empurrar `handler` acima do teto de statements.
+function contarVisitantes(eventosData) {
+  const visitantesPor = {};
+  for (const e of eventosData) {
+    if (!e.pagina || !e.visitante) continue;
+    (visitantesPor[e.pagina] || (visitantesPor[e.pagina] = new Set())).add(e.visitante);
+  }
+  return visitantesPor;
 }
 
 function countBy(rows, key) {
