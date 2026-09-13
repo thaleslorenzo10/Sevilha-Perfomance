@@ -268,3 +268,11 @@ bate", antes e depois da mudança, e fica para uso.
    a linha de base.
 7. Front: módulos, faixa executiva, abas, gráficos, Origem, A/B, CSV.
 8. Validação no navegador, lint, conferência final, deploy.
+
+## Emendas (13/09/2026, ao escrever o plano)
+
+1. O plano Hobby do Vercel limita o deploy a 12 funções e `api/` já tem 12. `/api/leads-unificados` é rewrite para `/api/sheet-leads?modo=unificados`; o webhook do RD Marketing é `POST /api/respondi?fonte=rd-marketing&token=…`.
+2. Sem migração SQL: o webhook consulta `event_id = rd:<uuid>` antes de inserir. Índice único em `event_id` afetaria o caminho vivo de `api/leads.js`.
+3. `csv.js` não existe; a exportação vive em `tabelas.js`.
+4. O micro-funil da página /mentoria (`/api/sessao-estrategica`: travou_em, cta, faq) sai do dashboard. O endpoint continua respondendo.
+5. `api/stats.js` passa a contar visitantes distintos por página, e é esse o denominador da conversão na aba Geral.
