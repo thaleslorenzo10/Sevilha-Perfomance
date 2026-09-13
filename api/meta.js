@@ -19,7 +19,12 @@ const {
   classifyCampaign,
   fetchCampaignInsights,
   fetchDailyInsights,
+  fetchAdInsights,
+  fetchAdsetInsights,
+  fetchPlacementInsights,
 } = require('../lib/meta');
+const { cadaDia } = require('../lib/fuso');
+const { chavePosicionamento } = require('../lib/posicionamento');
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -54,18 +59,23 @@ function round2(n) {
   return Math.round((n + Number.EPSILON) * 100) / 100;
 }
 
-/** Todos os dias do intervalo, inclusive. Em UTC, para não pular dia no horário de verão. */
-function eachDay(since, until) {
-  const dias = [];
-  const cur = new Date(`${since}T00:00:00Z`);
-  const fim = new Date(`${until}T00:00:00Z`);
-  // Teto de segurança: um intervalo absurdo não deve gerar série infinita.
-  for (let i = 0; cur <= fim && i < 400; i++) {
-    dias.push(cur.toISOString().slice(0, 10));
-    cur.setUTCDate(cur.getUTCDate() + 1);
-  }
-  return dias;
+/** Uma linha de insights (campanha, conjunto, anúncio) no formato que o painel consome. */
+function linha(r, nome, extras) {
+  const spend = parseFloat(r.spend || 0);
+  const leads = extractLeads(r);
+  const impressions = parseFloat(r.impressions || 0);
+  const clicks = parseFloat(r.clicks || 0);
+  return {
+    nome, ...extras,
+    spend: round2(spend), leads,
+    leads_onsite: extractOnsiteLeads(r), leads_pixel: extractPixelLeads(r),
+    impressions, clicks,
+    cpl: leads > 0       ? round2(spend / leads)                : null,
+    ctr: impressions > 0 ? round2((clicks / impressions) * 100) : null,
+    cpm: impressions > 0 ? round2((spend / impressions) * 1000) : null,
+  };
 }
+const porGasto = (a, b) => b.spend - a.spend;
 
 /**
  * Monta o payload do Meta para um período. Exportado à parte do handler para
@@ -74,38 +84,39 @@ function eachDay(since, until) {
  */
 async function montarMeta(since, until) {
   {
-    const [rows, dailyRows] = await Promise.all([
+    const opcional = (p, rotulo) => p.catch(e => { console.warn(`[meta] ${rotulo} indisponível:`, e.message); return []; });
+    const [rows, dailyRows, adsetRows, adRows, placementRows] = await Promise.all([
       fetchCampaignInsights(since, until),
       fetchDailyInsights(since, until),
+      opcional(fetchAdsetInsights(since, until), 'conjuntos'),
+      opcional(fetchAdInsights(since, until), 'anúncios'),
+      opcional(fetchPlacementInsights(since, until), 'posicionamentos'),
     ]);
 
-    // ── Campanhas ────────────────────────────────────────────────────────
-    const campanhas = rows.map(r => {
-      const meta = classifyCampaign(r.campaign_name);
-      const spend = parseFloat(r.spend || 0);
-      const leads = extractLeads(r);
-      const impressions = parseFloat(r.impressions || 0);
-      const clicks = parseFloat(r.clicks || 0);
-      return {
-        id:           r.campaign_id,
-        nome:         r.campaign_name,
-        ...meta,
-        spend:        round2(spend),
-        leads,
-        leads_onsite: extractOnsiteLeads(r),
-        leads_pixel:  extractPixelLeads(r),
-        impressions,
-        clicks,
-        cpl: leads > 0       ? round2(spend / leads)                : null,
-        ctr: impressions > 0 ? round2((clicks / impressions) * 100) : null,
-        cpm: impressions > 0 ? round2((spend / impressions) * 1000) : null,
-      };
-    }).sort((a, b) => b.spend - a.spend);
+    // ── Campanhas, conjuntos, anúncios ──────────────────────────────────
+    const campanhas = rows
+      .map(r => linha(r, r.campaign_name, { id: r.campaign_id, ...classifyCampaign(r.campaign_name) }))
+      .sort(porGasto);
+    const conjuntos = adsetRows
+      .map(r => linha(r, r.adset_name, { id: r.adset_id, campanha: r.campaign_name, ...classifyCampaign(r.campaign_name) }))
+      .sort(porGasto);
+    const anuncios = adRows
+      .map(r => linha(r, r.ad_name, { id: r.ad_id, conjunto: r.adset_name, campanha: r.campaign_name, grupo: classifyCampaign(r.campaign_name).grupo }))
+      .sort(porGasto);
+
+    // ── Posicionamento ───────────────────────────────────────────────────
+    const porPos = {};
+    for (const r of placementRows) {
+      const k = chavePosicionamento(r.publisher_platform, r.platform_position);
+      addToBucket(porPos[k] || (porPos[k] = emptyBucket()), r);
+    }
+    const posicionamentos = Object.entries(porPos)
+      .map(([nome, b]) => ({ nome, ...withDerived(b) })).sort(porGasto);
 
     // ── Agregados ────────────────────────────────────────────────────────
     const conta    = emptyBucket();
-    const grupos   = { CP: emptyBucket(), SE: emptyBucket(), OUTROS: emptyBucket() };
-    // Formato só faz sentido dentro das campanhas de captação ([CP]/[SE]).
+    const grupos   = { CP: emptyBucket(), SE: emptyBucket(), CAFE: emptyBucket(), OUTROS: emptyBucket() };
+    // Formato só faz sentido dentro das campanhas de captação ([CP]/[SE]/[CAFÉ]).
     const formatos = { FORMS: emptyBucket(), LP: emptyBucket() };
 
     for (const r of rows) {
@@ -119,19 +130,21 @@ async function montarMeta(since, until) {
     // Uma entrada por dia com investimento e leads por grupo e por formato.
     // O intervalo é pré-preenchido: o Meta omite os dias sem entrega, e um dia
     // ausente sumia do gráfico em vez de aparecer como zero — a linha ligava
-    // os dois vizinhos e escondia a interrupção.
+    // os dois vizinhos e escondia a interrupção. O eixo usa o fuso do painel
+    // (lib/fuso), não UTC puro.
     const diaVazio = dia => ({
       data:  dia,
       spend: 0,
       leads: 0,
       CP:    { spend: 0, leads: 0 },
       SE:    { spend: 0, leads: 0 },
+      CAFE:  { spend: 0, leads: 0 },
       FORMS: { spend: 0, leads: 0 },
       LP:    { spend: 0, leads: 0 },
     });
 
     const dias = {};
-    for (const dia of eachDay(since, until)) dias[dia] = diaVazio(dia);
+    for (const dia of cadaDia(since, until)) dias[dia] = diaVazio(dia);
 
     for (const r of dailyRows) {
       const dia = r.date_start;
@@ -144,7 +157,7 @@ async function montarMeta(since, until) {
 
       d.spend += spend;
       d.leads += leads;
-      if (grupo === 'CP' || grupo === 'SE') {
+      if (grupo !== 'OUTROS') {
         d[grupo].spend += spend;
         d[grupo].leads += leads;
         d[formato].spend += spend;
@@ -159,6 +172,7 @@ async function montarMeta(since, until) {
         spend: round2(d.spend),
         CP:    { spend: round2(d.CP.spend),    leads: d.CP.leads },
         SE:    { spend: round2(d.SE.spend),    leads: d.SE.leads },
+        CAFE:  { spend: round2(d.CAFE.spend),  leads: d.CAFE.leads },
         FORMS: { spend: round2(d.FORMS.spend), leads: d.FORMS.leads },
         LP:    { spend: round2(d.LP.spend),    leads: d.LP.leads },
       }));
@@ -169,6 +183,7 @@ async function montarMeta(since, until) {
       grupos: {
         CP:     withDerived(grupos.CP),
         SE:     withDerived(grupos.SE),
+        CAFE:   withDerived(grupos.CAFE),
         OUTROS: withDerived(grupos.OUTROS),
       },
       formatos: {
@@ -176,6 +191,9 @@ async function montarMeta(since, until) {
         LP:    withDerived(formatos.LP),
       },
       campanhas,
+      conjuntos,
+      anuncios,
+      posicionamentos,
       serie,
       gerado_em: new Date().toISOString(),
     };
