@@ -1,40 +1,59 @@
-/* Relatório interno. Nenhum documento do funil importa esta folha. */
-@font-face { font-family: Figtree; src: url('../fonts/figtree.woff2') format('woff2'); font-weight: 300 900; font-display: swap; }
-.admin-report { --navy: #101c35; --muted: #5d6675; --border: #e2e7ef; --bg: #f4f6f9; padding: 0 0 40px; font: 400 14px/1.5 Figtree, Arial, sans-serif; font-variant-numeric: tabular-nums; }
-.admin-report .container { max-width: 1464px; padding: 0 32px; }
-.admin-report .header { background: #101c35; color: #fff; padding: 42px 32px; margin: 0 -32px 28px; min-height: 176px; align-items: center; border-radius: 0 0 20px 20px; }
-.admin-report .header-left h1 { font: 500 34px/1.15 Figtree, Arial, sans-serif; letter-spacing: -.8px; }
-.admin-report .header-left p { color: #c2cde0; font-size: 14px; margin-top: 12px; }
-.admin-report .grad-text { color: #9abaff; background: none; -webkit-text-fill-color: currentColor; }
-.admin-report :is(button,input) { font: inherit; min-height: 44px; }
-.admin-report :is(a,button,input):focus-visible { outline: 3px solid #365cff; outline-offset: 4px; }
-.admin-report .filter-bar { border-radius: 12px; gap: 12px; padding: 16px 20px; }
-.admin-report .filter-bar label { font-size: 13px; text-transform: none; letter-spacing: 0; font-weight: 500; }
-.admin-report .filter-bar input[type='date'] { font: inherit; min-height: 44px; border-color: #858fa1; background: #fff; padding: 9px 12px; }
-.admin-report .btn-filter { background: #365cff; color: #fff; border-radius: 8px; padding: 10px 20px; font-weight: 500; }
-.admin-report .btn-clear { border-radius: 8px; padding: 10px 20px; background: #fff; font-weight: 500; }
-.admin-report .total-card, .admin-report .card { background: #fff; color: #101c35; border: 1px solid var(--border); border-radius: 16px; padding: 24px; box-shadow: 0 2px 3px #101c3503; }
-.admin-report .total-card::before, .admin-report .card::before { display: none; }
-.admin-report .total-label, .admin-report .card-eyebrow { color: var(--muted); font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; }
-.admin-report .total-value { color: #101c35; font: 500 36px/1.1 Figtree, Arial, sans-serif; letter-spacing: -1px; }
-.admin-report .total-value.grad, .admin-report .metric-value.highlight { background: none; -webkit-text-fill-color: #365cff; color: #365cff; }
-.admin-report .total-sub { font-size: 13px; color: var(--muted); margin-top: 8px; }
-.admin-report .section-title { color: #101c35; font: 600 17px/1.4 Figtree, Arial, sans-serif; text-transform: none; letter-spacing: -.2px; }
-.admin-report .card-title { font-family: inherit; font-size: 22px; font-weight: 500; }
-.admin-report .card-badge { font-size: 12px; }
-.admin-report .badge { background: #e6f5ee; color: #176443; }
-.admin-report .url-hint, .admin-report .metric-label, .admin-report .status-bar { font-size: 13px; color: var(--muted); }
-.admin-report .metric-value { font-family: inherit; font-weight: 500; }
+/* Relatório interno (relatorio.html). Sobrescreve o <style> inline com os tokens do DS Lorenzo Media (lm-ds.css).
+   Nenhum documento do funil importa esta folha. */
+.admin-report {
+  --navy: var(--text-display); --muted: var(--text-muted); --border: var(--border-hairline); --bg: var(--surface-page);
+  --g1: var(--lm-success); --g2: var(--lm-success); --g3: var(--lm-pulse-blue);
+  padding: 0 0 var(--space-10); background: var(--surface-page); color: var(--text-body);
+  font: var(--fw-regular) var(--type-body-size)/var(--type-body-lh) var(--font-sans); font-variant-numeric: tabular-nums;
+}
+.admin-report .container { max-width: var(--content-max); padding: 0 var(--space-9); }
+
+/* Cabeçalho escuro, contínuo com o menu lateral */
+.admin-report .header { background: var(--surface-inverse); color: var(--text-on-inverse); padding: var(--space-10) var(--space-9); margin: 0 calc(-1 * var(--space-9)) var(--space-8); min-height: 176px; align-items: center; border-radius: 0 0 var(--radius-2xl) var(--radius-2xl); }
+.admin-report .header-left h1 { font-family: var(--font-sans); font-size: var(--type-h1-size); font-weight: var(--fw-semibold); line-height: var(--type-h1-lh); letter-spacing: var(--type-h1-ls); }
+.admin-report .header-left p { color: var(--text-on-inverse-muted); font-size: var(--type-body-size); margin-top: var(--space-5); }
+.admin-report .grad-text { color: var(--lm-blue-300); background: none; -webkit-text-fill-color: currentColor; }
+
+/* Controles */
+.admin-report :is(button, input) { font: inherit; min-height: var(--control-h); }
+.admin-report :is(a, button, input):focus-visible { outline: var(--focus-w) solid var(--border-field-focus); outline-offset: var(--focus-offset); }
+.admin-report .filter-bar { background: var(--surface-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-xl); box-shadow: var(--shadow-card); gap: var(--space-5); padding: var(--space-6) var(--space-7); }
+.admin-report .filter-bar label { font-size: var(--type-body-sm-size); font-weight: var(--fw-medium); color: var(--text-muted); text-transform: none; letter-spacing: 0; }
+.admin-report .filter-bar input[type='date'] { min-height: var(--control-h); padding: var(--space-4) var(--space-5); color: var(--text-display); background: var(--surface-card); border: 1px solid var(--border-field); border-radius: var(--radius-md); font-size: var(--type-body-sm-size); }
+.admin-report .filter-bar input[type='date']:focus { border-color: var(--border-field-focus); }
+.admin-report .btn-filter { background: var(--action-primary-gradient); color: var(--text-on-accent); border-radius: var(--radius-pill); padding: 0 var(--space-7); font-size: var(--type-body-sm-size); font-weight: var(--fw-semibold); }
+.admin-report .btn-clear { background: var(--surface-card); color: var(--text-body); border: 1px solid var(--border-field); border-radius: var(--radius-pill); padding: 0 var(--space-7); font-size: var(--type-body-sm-size); font-weight: var(--fw-medium); }
+
+/* Cartões */
+.admin-report :is(.total-card, .card) { background: var(--surface-card); color: var(--text-body); border: 1px solid var(--border-hairline); border-radius: var(--radius-xl); padding: var(--card-padding-lg); box-shadow: var(--shadow-card); }
+.admin-report :is(.total-card, .card)::before { display: none; }
+.admin-report .card.winner { border-color: var(--lm-success); }
+.admin-report .totals, .admin-report .cards { gap: var(--grid-gap); }
 .admin-report .cards { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
-.admin-report .skeleton .total-value { background: #e8edf5 !important; }
+.admin-report .divider { width: 100%; height: 1px; background: var(--border-hairline); margin-bottom: var(--space-6); }
+
+/* Títulos, rótulos e números */
+.admin-report .section-title { font-family: var(--font-sans); font-size: var(--type-title-size); font-weight: var(--fw-semibold); line-height: var(--type-title-lh); letter-spacing: var(--type-title-ls); color: var(--text-display); text-transform: none; margin-bottom: var(--space-5); }
+.admin-report .card-title { font-family: var(--font-sans); font-size: var(--type-h3-size); font-weight: var(--fw-semibold); line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); color: var(--text-display); }
+.admin-report :is(.total-label, .card-eyebrow, .metric-label, .url-hint, .status-bar) { font-size: var(--type-body-sm-size); font-weight: var(--fw-medium); color: var(--text-muted); text-transform: none; letter-spacing: 0; }
+.admin-report .url-hint { font-family: var(--font-sans); background: var(--surface-sunken); border-radius: var(--radius-xs); }
+.admin-report .total-sub { font-size: var(--type-body-sm-size); color: var(--text-muted); margin-top: var(--space-4); }
+.admin-report :is(.total-value, .metric-value) { font-family: var(--font-display); font-size: var(--type-metric-size); font-weight: var(--fw-regular); line-height: var(--type-metric-lh); letter-spacing: .01em; color: var(--text-display); }
+.admin-report .total-value { font-size: var(--type-metric-lg-size); }
+.admin-report :is(.total-value.grad, .metric-value.highlight) { background: none; color: var(--lm-pulse-blue); -webkit-text-fill-color: currentColor; }
+.admin-report .badge { background: var(--lm-success-bg); color: var(--status-success-text); border-radius: var(--radius-pill); padding: var(--space-2) var(--space-4); font-size: var(--type-label-size); font-weight: var(--fw-semibold); text-transform: none; letter-spacing: 0; }
+.admin-report .error-msg { color: var(--status-danger-text); }
+/* O inline já usa !important no skeleton; precisa do mesmo peso para trocar a cor. */
+.admin-report .skeleton :is(.total-value, .metric-value) { background: var(--surface-sunken) !important; }
+
 @media (max-width: 640px) {
-  .admin-report .container { padding: 0 16px; }
-  .admin-report .header { margin-inline: -16px; padding: 28px 20px; min-height: 180px; border-radius: 0; }
-  .admin-report .header-left h1 { font-size: 29px; }
-  .admin-report .filter-bar { display: grid; grid-template-columns: auto minmax(0, 1fr); padding: 16px; gap: 12px; }
-  .admin-report .filter-bar input[type='date'] { font-size: 16px; min-width: 0; width: 100%; }
-  .admin-report .btn-filter, .admin-report .btn-clear { grid-column: 1 / -1; width: 100%; }
-  .admin-report .total-card, .admin-report .card { padding: 20px; }
+  .admin-report .container { padding: 0 var(--gutter-mobile); }
+  .admin-report .header { margin-inline: calc(-1 * var(--gutter-mobile)); padding: var(--space-8) var(--space-7); border-radius: 0; }
+  .admin-report .header-left h1 { font-size: var(--type-h2-size); }
+  .admin-report .filter-bar { display: grid; grid-template-columns: auto minmax(0, 1fr); padding: var(--space-6); }
+  .admin-report .filter-bar input[type='date'] { font-size: 16px; min-width: 0; width: 100%; } /* abaixo de 16px o iOS dá zoom no foco */
+  .admin-report :is(.btn-filter, .btn-clear) { grid-column: 1 / -1; width: 100%; }
+  .admin-report :is(.total-card, .card) { padding: var(--card-padding); }
 }
 @media (prefers-reduced-motion: reduce) {
   .admin-report *, .admin-report *::before, .admin-report *::after { animation: none !important; transition: none !important; }

@@ -20,6 +20,12 @@
         "value": "#0b1b4d",
         "createdAt": "2026-09-03T14:07:39.088Z",
         "reason": "Sombra de elevacao navy da marca, herdada do arquivo original e do token --shadow da v2 (DESIGN.md): tem deslocamento vertical (0 10px 28px) e a pagina tem fundo claro #f0f2f5 -- nao e halo de raio zero nem fundo escuro"
+      },
+      {
+        "rule": "overused-font",
+        "value": "mona sans",
+        "createdAt": "2026-09-13T20:13:35.164Z",
+        "reason": "Design system Lorenzo Media (Lorenzo-Media/DESIGN.md, tokens/typography.css) fixa Mona Sans como única fonte de UI; contrato visual da agência, não escolha desta página"
       }
     ]
   }

@@ -1,24 +1,64 @@
-@font-face { font-family: Figtree; src: url('../fonts/figtree.woff2') format('woff2'); font-weight: 300 900; font-display: swap; }
-.admin-audit { --bg: #f4f6f9; --paper: #fff; --ink: #101c35; --ink-2: #33425d; --muted: #5d6675; --line: #e2e7ef; --navy: #101c35; --chip: #edf1f7; font-family: Figtree, Arial, sans-serif; font-variant-numeric: tabular-nums; }
-.admin-audit .wrap { max-width: 1100px; padding: 36px 28px 64px; }
-.admin-audit :is(h1,h2,h3) { font-family: inherit; letter-spacing: -.5px; }
-.admin-audit h1 { font-size: clamp(30px, 3.4vw, 44px); font-weight: 500; }
-.admin-audit h2 { font-size: 23px; border-top: 1px solid var(--line); padding-top: 28px; }
-.admin-audit .eyebrow { color: var(--muted); font-size: 13px; text-transform: none; letter-spacing: 0; }
-.admin-audit .v, .admin-audit .tw, .admin-audit .callout, .admin-audit .chart, .admin-audit .plan li { border-radius: 16px; }
-.admin-audit .v { padding: 24px; border-left-width: 3px; }
-.admin-audit .v .n { font-family: inherit; font-size: 36px; font-weight: 500; letter-spacing: -1px; }
-.admin-audit .grid2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
-.admin-audit th { font-size: 13px; font-weight: 500; text-transform: none; letter-spacing: 0; }
-.admin-audit :is(th,td) { padding: 13px 14px; }
-.admin-audit a:focus-visible { outline: 3px solid #365cff; outline-offset: 4px; }
-.admin-audit .tw:focus-visible { outline: 3px solid #365cff; outline-offset: 4px; }
-.admin-audit .pill.good { color: #176443; background: #e6f5ee; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .admin-audit { --bg: #101827; --paper: #18253b; --ink: #eef3ff; --ink-2: #c7d2e8; --muted: #b7c3d9; --line: #35445e; --navy: #eef3ff; --chip: #22324c; }
+/* Raio-X (docs/raio-x-*.html). Sobrescreve o <style> inline com os tokens do DS Lorenzo Media (lm-ds.css).
+   As variáveis da página (--bg, --ink, --chip…) são a camada de indireção: aqui apontam para os tokens semânticos
+   e, nos blocos escuros, para os primitivos — lm-ds.css só inverte o tema em [data-theme="dark"] e nada carimba
+   esse atributo, então o escuro real desta página vem de prefers-color-scheme. Por isso as regras abaixo usam as
+   variáveis da página, não os semânticos do DS: é o que faz o escuro seguir junto. */
+.admin-audit {
+  --bg: var(--surface-page); --paper: var(--surface-card); --ink: var(--text-display); --ink-2: var(--text-body);
+  --muted: var(--text-muted); --line: var(--border-hairline); --navy: var(--lm-blue-700); --chip: var(--surface-sunken); --link: var(--text-link);
+  --green: var(--lm-success); --green-ink: var(--status-success-text); --green-soft: var(--lm-success-bg); --good: var(--status-success-text);
+  --warn: var(--status-warning-text); --warn-soft: var(--lm-warning-bg); --bad: var(--status-danger-text); --bad-soft: var(--lm-danger-bg);
+  font-family: var(--font-sans); font-size: var(--type-body-size); line-height: var(--type-body-lh); font-variant-numeric: tabular-nums;
 }
-:root[data-theme='dark'] .admin-audit { --bg: #101827; --paper: #18253b; --ink: #eef3ff; --ink-2: #c7d2e8; --muted: #b7c3d9; --line: #35445e; --navy: #eef3ff; --chip: #22324c; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .admin-audit {
+    --bg: var(--lm-obsidian); --paper: var(--lm-gray-900); --ink: var(--lm-white); --ink-2: var(--lm-gray-150); --muted: var(--lm-gray-300);
+    --line: var(--lm-gray-700); --navy: var(--lm-blue-200); --chip: var(--lm-gray-700); --link: var(--lm-blue-200);
+    /* Estados: os --status-*-text escuros do DS não têm primitivo; fundo preto é o que dá contraste AA com os primitivos saturados. */
+    --green-ink: var(--lm-success); --good: var(--lm-success); --warn: var(--lm-amber-200); --bad: var(--lm-danger);
+    --green-soft: var(--lm-black); --warn-soft: var(--lm-black); --bad-soft: var(--lm-black);
+  }
+}
+/* Com data-theme="dark" o lm-ds.css já inverte os semânticos de estado; só as variáveis de página precisam trocar. */
+:root[data-theme='dark'] .admin-audit {
+  --bg: var(--lm-obsidian); --paper: var(--lm-gray-900); --ink: var(--lm-white); --ink-2: var(--lm-gray-150); --muted: var(--lm-gray-300);
+  --line: var(--lm-gray-700); --navy: var(--lm-blue-200); --chip: var(--lm-gray-700); --link: var(--lm-blue-200);
+}
+
+.admin-audit .wrap { max-width: 1100px; padding: var(--space-9) var(--space-8) var(--space-12); }
+.admin-audit :is(h1, h2, h3) { font-family: var(--font-sans); font-weight: var(--fw-semibold); }
+.admin-audit h1 { font-size: clamp(30px, 3.4vw, 44px); line-height: var(--type-h1-lh); letter-spacing: var(--type-h1-ls); }
+.admin-audit h2 { font-size: var(--type-h2-size); line-height: var(--type-h2-lh); letter-spacing: var(--type-h2-ls); border-top: 1px solid var(--line); padding-top: var(--space-8); }
+.admin-audit h3 { font-size: var(--type-h3-size); line-height: var(--type-h3-lh); letter-spacing: var(--type-h3-ls); }
+.admin-audit .eyebrow { font-size: var(--type-body-sm-size); font-weight: var(--fw-medium); color: var(--muted); text-transform: none; letter-spacing: 0; }
+.admin-audit .mark { background: var(--lm-amber-200); color: var(--lm-gray-900); }
+.admin-audit a { color: var(--link); }
+.admin-audit code { font-family: var(--font-mono); }
+.admin-audit .chart svg text { font-family: var(--font-sans); }
+
+/* Cartões — só raio e sombra: borda e fundo já vêm do inline via --line/--paper, e .v.bad/.callout.bad dependem disso. */
+.admin-audit :is(.v, .tw, .callout, .chart), .admin-audit .plan li { border-radius: var(--radius-xl); box-shadow: var(--shadow-card); }
+.admin-audit .v { padding: var(--card-padding-lg); border-left-width: 1px; }
+/* Estado do cartão vira um ponto antes do rótulo; a borda lateral grossa do inline sai. */
+.admin-audit .v .l::before { content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 var(--space-4) 1px 0; border-radius: var(--radius-pill); background: var(--good); }
+.admin-audit .v.bad .l::before { background: var(--bad); }
+.admin-audit .v.warn .l::before { background: var(--warn); }
+.admin-audit .callout { padding: var(--card-padding-lg); }
+.admin-audit .v .n { font-family: var(--font-display); font-size: var(--type-metric-size); font-weight: var(--fw-regular); line-height: var(--type-metric-lh); letter-spacing: .01em; color: var(--ink); }
+.admin-audit .v .l { font-size: var(--type-body-sm-size); font-weight: var(--fw-medium); color: var(--muted); }
+.admin-audit .verdict, .admin-audit .grid2 { gap: var(--grid-gap); }
+.admin-audit .grid2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+.admin-audit .plan li::before { font-family: var(--font-sans); font-weight: var(--fw-semibold); }
+
+/* Tabelas e pílulas */
+.admin-audit th { font-size: var(--type-label-size); font-weight: var(--fw-medium); color: var(--muted); background: var(--chip); text-transform: none; letter-spacing: 0; }
+.admin-audit :is(th, td) { padding: var(--space-5) var(--space-6); }
+.admin-audit tbody tr:hover td { background: var(--chip); }
+.admin-audit .pill { font-size: var(--type-label-size); font-weight: var(--fw-semibold); padding: var(--space-2) var(--space-4); }
+
+.admin-audit :is(a, .tw):focus-visible { outline: var(--focus-w) solid var(--border-field-focus); outline-offset: var(--focus-offset); }
+
 @media (max-width: 640px) {
-  .admin-audit .wrap { padding: 26px 16px 40px; }
-  .admin-audit .v { padding: 20px; }
+  .admin-audit .wrap { padding: var(--space-8) var(--gutter-mobile) var(--space-10); }
+  .admin-audit :is(.v, .callout) { padding: var(--card-padding); }
 }
