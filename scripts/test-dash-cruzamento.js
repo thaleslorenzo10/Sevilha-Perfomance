@@ -42,7 +42,7 @@ assert.deepEqual([t.nome, t.spend, t.leads, t.mql, t.meta_reporta], ['Total', 15
 const r = D.resumo({
   meta: { conta: { spend: 150 } },
   leads: { total: { leads: 8, mql: 3 } },
-  rd: { por_campanha: [{ campanha: 'Sem campanha', deals: 50 }, { campanha: '[SE] X', deals: 2 }] },
+  rd: { por_campanha: [{ campanha: 'Sem campanha', deals: 50 }, { campanha: 'Etiqueta quebrada', deals: 500 }, { campanha: '[SE] X', deals: 2 }] },
 });
 assert.deepStrictEqual(JSON.parse(JSON.stringify(r)), { spend: 150, leads: 8, mql: 3, mql_pct: 37.5, cpl: 18.75, cpmql: 50, deals: 2 });
 assert.equal(D.resumo({ meta: null, leads: null, rd: null }).cpl, null);

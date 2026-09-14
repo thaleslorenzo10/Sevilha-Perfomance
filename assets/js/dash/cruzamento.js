@@ -64,7 +64,8 @@
     const spend = meta ? meta.conta.spend : null;
     const L = leads ? leads.total.leads : null;
     const M = leads ? leads.total.mql : null;
-    const deals = rd ? (rd.por_campanha || []).filter(c => c.campanha !== 'Sem campanha').reduce((s, c) => s + c.deals, 0) : null;
+    const semCampanha = c => c.campanha === 'Sem campanha' || c.campanha === 'Etiqueta quebrada';
+    const deals = rd ? (rd.por_campanha || []).filter(c => !semCampanha(c)).reduce((s, c) => s + c.deals, 0) : null;
     return {
       spend, leads: L, mql: M,
       mql_pct: L === null ? null : D.pct(M, L),
