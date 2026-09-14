@@ -37,6 +37,7 @@ async function verificaResiliencia(fetchOk) {
   assert.deepEqual(m2.posicionamentos, [], 'posicionamentos vazio quando a chamada falha');
   assert.equal(m2.anuncios.length, 1, 'anúncios continuam');
   assert.equal(m2.grupos.CAFE.spend, 50, 'campanhas e série continuam');
+  assert.deepEqual(m2.degradado, ['conjuntos', 'posicionamentos'], 'reporta quais chamadas opcionais falharam');
   global.fetch = fetchOk;
 }
 
@@ -53,6 +54,7 @@ async function verificaResiliencia(fetchOk) {
   const st = m.posicionamentos.find(p => p.nome === 'instagram:stories');
   assert.equal(st.spend, 80, 'duas campanhas somadas no mesmo posicionamento');
   assert.equal(m.posicionamentos.find(p => p.nome === 'facebook:feed').spend, 40);
+  assert.deepEqual(m.degradado, [], 'nada degradado quando tudo responde');
 
   await verificaResiliencia(global.fetch);
 

@@ -48,10 +48,11 @@
 
   function renderTabelas(g, d, rows) {
     const { meta, leads } = d;
+    const grupoPorCampanha = D.mapaGrupoPorCampanha(d);
     D.graficoCusto('chartCusto' + g, rows);
     D.tabela('tblCamp' + g, rows, [...D.COLUNAS_CRUZAMENTO, 'deals', 'lead_deal']);
-    D.tabela('tblConj' + g, D.cruzar(leads ? leads.por_conjunto : [], meta.conjuntos || [], 'conjunto', { filtroGrupo: g }), D.COLUNAS_CRUZAMENTO);
-    D.tabela('tblAnun' + g, D.cruzar(leads ? leads.por_anuncio : [], meta.anuncios || [], 'anuncio', { filtroGrupo: g }), D.COLUNAS_CRUZAMENTO);
+    D.tabela('tblConj' + g, D.cruzar(leads ? leads.por_conjunto : [], meta.conjuntos || [], 'conjunto', { filtroGrupo: g, grupoPorCampanha }), D.COLUNAS_CRUZAMENTO);
+    D.tabela('tblAnun' + g, D.cruzar(leads ? leads.por_anuncio : [], meta.anuncios || [], 'anuncio', { filtroGrupo: g, grupoPorCampanha }), D.COLUNAS_CRUZAMENTO);
   }
 
   function renderRd(g, rd) {

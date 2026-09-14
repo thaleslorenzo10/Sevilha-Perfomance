@@ -97,7 +97,8 @@ const CF_UTM_CAMPAIGN = process.env.RD_CRM_CF_UTM_CAMPAIGN || '68e6669152f4a7001
 const SEM_CAMPANHA = 'Sem campanha';
 
 function campanhaDoDeal(d) {
-  const cfs = d.deal_custom_fields || d.custom_fields || [];
+  const cfsRaw = d.deal_custom_fields || d.custom_fields || [];
+  const cfs = Array.isArray(cfsRaw) ? cfsRaw : [];
   const cf = cfs.find(c => (c.custom_field_id || c.custom_field?._id || c.custom_field?.id) === CF_UTM_CAMPAIGN);
   const v = cf ? cf.value : null;
   return typeof v === 'string' && v.trim() ? v.trim() : SEM_CAMPANHA;

@@ -105,6 +105,20 @@ function checarVariants(res) {
   assert.ok(Array.isArray(res.corpo.variants) && res.corpo.variants.length === 3);
 }
 
+// `pagina=eq.x` gravado dentro de `since` (macro de UTM ou parâmetro quebrado
+// chegando colado) precisa ser rejeitado antes de qualquer fetch — não vazar
+// para dentro do filtro do PostgREST como se fosse data.
+async function checarInjecaoNaData() {
+  const res = resFalso();
+  let fetchChamado = false;
+  const fetchOriginal = global.fetch;
+  global.fetch = async (u) => { fetchChamado = true; return fetchOriginal(u); };
+  await handler({ method: 'GET', url: '/api/stats?since=2026-08-01%26pagina=eq.x' }, res);
+  global.fetch = fetchOriginal;
+  assert.strictEqual(res.statusCode, 400, 'data fora do formato YYYY-MM-DD deve ser rejeitada');
+  assert.strictEqual(fetchChamado, false, 'não deve tocar o Supabase com uma data inválida');
+}
+
 (async () => {
   const { res, urlsPedidas } = await pedirRelatorio();
   checarUrls(urlsPedidas);
@@ -113,6 +127,7 @@ function checarVariants(res) {
   checarPaginas(por);
   checarVariants(res);
   checarSoVisitantes(por);
+  await checarInjecaoNaData();
 
   console.log('✓ comparação por página passou');
 })();

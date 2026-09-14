@@ -37,12 +37,12 @@ const invariante = (cond, msg) => { console.log(`${cond ? '  ok  ' : ' FALHA'} $
 
 function imprimirPorDia(meta, leads) {
   console.log('— por dia —');
-  linha([['dia', 10], ['gasto', 10], ['meta', 6], ['onsite', 6], ['pixel', 6], ['real', 6], ['mql', 5], ['diverg.', 8]]);
+  linha([['dia', 10], ['gasto', 10], ['meta', 6], ['real', 6], ['mql', 5], ['diverg.', 8]]);
   const realPorDia = new Map(leads.por_dia.map(d => [d.dia, d]));
   let onsite = 0, pixel = 0;
   for (const d of meta.serie) {
     const r = realPorDia.get(d.data) || { leads: 0, mql: 0 };
-    linha([[d.data, 10], [num(d.spend, 2), 10], [num(d.leads), 6], ['', 6], ['', 6], [num(r.leads), 6], [num(r.mql), 5], [num(d.leads - r.leads), 8]]);
+    linha([[d.data, 10], [num(d.spend, 2), 10], [num(d.leads), 6], [num(r.leads), 6], [num(r.mql), 5], [num(d.leads - r.leads), 8]]);
   }
   for (const c of meta.campanhas) { onsite += c.leads_onsite; pixel += c.leads_pixel; }
   console.log(`\nconta: gasto ${num(meta.conta.spend, 2)} · Meta reporta ${num(meta.conta.leads)} (onsite ${num(onsite)}, pixel ${num(pixel)}) · real ${num(leads.total.leads)} · MQL ${num(leads.total.mql)}\n`);

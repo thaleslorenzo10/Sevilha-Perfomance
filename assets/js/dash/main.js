@@ -1,7 +1,7 @@
 'use strict';
 /* Estado, período, abas, tema e o ciclo carregar → render → auto-refresh. */
 (function (D) {
-  const estado = { since: '', until: '', preset: 'last_30d', dados: null, anterior: null, timer: null };
+  const estado = { since: '', until: '', preset: 'last_30d', dados: null, anterior: null, anteriorChave: null, timer: null };
   const p2 = n => String(n).padStart(2, '0');
   // Datas sempre em horário local: toISOString() é UTC e, depois das 21h, "hoje" já seria amanhã.
   const isoLocal = d => `${d.getFullYear()}-${p2(d.getMonth() + 1)}-${p2(d.getDate())}`;
@@ -61,16 +61,32 @@
     seExiste(D.renderAb, d);
   }
 
+  // Período anterior não muda com o refresh automático de 60s: só rebusca
+  // quando o período em tela mudou (ou ainda não tinha base nenhuma).
+  async function buscarAnterior(since, until) {
+    const ant = D.periodoAnterior(since, until);
+    const chaveAnt = `${ant.since}|${ant.until}`;
+    const precisaAnterior = estado.anterior === null || chaveAnt !== estado.anteriorChave;
+    const anterior = precisaAnterior ? await D.carregarResumo(ant.since, ant.until) : estado.anterior;
+    return { anterior, chaveAnt };
+  }
+
+  function marcarAtualizado(dados) {
+    status('', dados.leads ? 'Dados atualizados' : 'Meta ok · leads unificados indisponíveis');
+    document.getElementById('lastUpdate').textContent = '🕐 ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  }
+
   async function carregar() {
     const btn = document.getElementById('btnRefresh');
     btn.disabled = true; status('loading', 'Carregando…'); D.banner('errorBanner', '');
     try {
-      const ant = D.periodoAnterior(estado.since, estado.until);
-      const [dados, anterior] = await Promise.all([D.carregarTudo(estado.since, estado.until), D.carregarResumo(ant.since, ant.until)]);
-      estado.dados = dados; estado.anterior = anterior;
+      const [dados, { anterior, chaveAnt }] = await Promise.all([
+        D.carregarTudo(estado.since, estado.until),
+        buscarAnterior(estado.since, estado.until),
+      ]);
+      estado.dados = dados; estado.anterior = anterior; estado.anteriorChave = chaveAnt;
       render();
-      status('', dados.leads ? 'Dados atualizados' : 'Meta ok · leads unificados indisponíveis');
-      document.getElementById('lastUpdate').textContent = '🕐 ' + new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      marcarAtualizado(dados);
     } catch (e) {
       console.error(e);
       status('error', 'Erro ao carregar');

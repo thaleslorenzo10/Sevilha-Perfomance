@@ -32,6 +32,7 @@
     const el = base(id); if (!el) return;
     const c = D.cores();
     charts[id] = new Chart(el.getContext('2d'), {
+      type: 'bar',
       data: { labels: dias.map(D.diaCurto), datasets: [
         { type: 'bar', label: 'MQL (10+)', data: mql, backgroundColor: c.s1, stack: 'leads', borderRadius: 3 },
         { type: 'bar', label: 'Demais leads', data: outros, backgroundColor: c.s3, stack: 'leads', borderRadius: 3 },

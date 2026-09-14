@@ -25,18 +25,34 @@
     l.leads += r.leads || 0; l.mql += r.mql || 0;
     l.grupo = l.grupo || r.grupo || null; l.campanha = l.campanha || r.campanha || null;
   };
-  const opcoesDe = o => ({ rd: (o && o.rd) || [], filtroGrupo: (o && o.filtroGrupo) || null });
+  const opcoesDe = o => ({ rd: (o && o.rd) || [], filtroGrupo: (o && o.filtroGrupo) || null, grupoPorCampanha: (o && o.grupoPorCampanha) || null });
+
+  // Preenche o grupo pela campanha quando a linha (conjunto/anúncio) não trouxe
+  // grupo próprio — acontece quando o meta não tem uma linha com aquele nome
+  // (ex.: público sem gasto no período) mas o lead real sabe de qual campanha veio.
+  const comGrupoDaCampanha = (rows, grupoPorCampanha) => rows.map(r => (r.grupo == null && r.campanha)
+    ? { ...r, grupo: grupoPorCampanha.get(D.nomeChave(r.campanha)) ?? null }
+    : r);
 
   D.cruzar = function (leadsRows, metaRows, campoLead, opcoes) {
-    const { rd, filtroGrupo } = opcoesDe(opcoes);
+    const { rd, filtroGrupo, grupoPorCampanha } = opcoesDe(opcoes);
     const mapa = new Map();
     const linha = nome => { const k = D.nomeChave(nome); if (!mapa.has(k)) mapa.set(k, nova(nome)); return mapa.get(k); };
     for (const m of metaRows || []) absorverMeta(linha, m);
     for (const r of leadsRows || []) absorverLead(linha, r, campoLead);
     for (const d of rd || []) { const k = D.nomeChave(d.campanha); if (mapa.has(k)) mapa.get(k).deals += d.deals || 0; }
     let rows = [...mapa.values()].map(derivar);
+    if (grupoPorCampanha) rows = comGrupoDaCampanha(rows, grupoPorCampanha);
     if (filtroGrupo) rows = rows.filter(r => r.grupo === filtroGrupo);
     return rows.sort((a, b) => b.spend - a.spend || b.leads - a.leads);
+  };
+
+  /** Mapa nomeChave(campanha) → grupo, para D.cruzar preencher o grupo de conjuntos/anúncios sem linha própria no Meta. */
+  D.mapaGrupoPorCampanha = function (d) {
+    const mapa = new Map();
+    for (const c of (d.meta && d.meta.campanhas) || []) mapa.set(D.nomeChave(c.nome), c.grupo);
+    if (d.leads) for (const c of d.leads.por_campanha || []) mapa.set(D.nomeChave(c.campanha), c.grupo);
+    return mapa;
   };
 
   D.totalizar = rows => derivar(rows.reduce((t, r) => {

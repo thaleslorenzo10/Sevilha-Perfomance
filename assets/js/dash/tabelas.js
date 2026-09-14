@@ -2,7 +2,7 @@
 /* Tabela ordenável a partir de linhas cruzadas (D.cruzar) e exportação CSV. */
 (function (D) {
   // Faixas de CPMQL: abaixo de R$ 150 está no patamar histórico do FORMS; acima de R$ 250 pede ação.
-  D.faixaCusto = v => (v === null ? '' : v <= 150 ? 'custo-bom' : v <= 250 ? 'custo-ok' : 'custo-ruim');
+  D.faixaCusto = v => (v == null ? '' : v <= 150 ? 'custo-bom' : v <= 250 ? 'custo-ok' : 'custo-ruim');
   const NOMES_GRUPO = { SE: 'Sessão Estratégica', CAFE: 'Café com Sevilha', CP: 'Clube', OUTROS: 'Outros' };
   D.badgeGrupo = g => (g ? `<span class="badge badge-${g.toLowerCase()}">${NOMES_GRUPO[g] || g}</span>` : '');
 
@@ -54,7 +54,11 @@
   /** CSV com ; e BOM: o Excel em português abre direto, com decimal em vírgula. */
   D.csvDe = function (rows, colunas) {
     const cel = v => (v === null || v === undefined ? '' : typeof v === 'number' ? String(Math.round(v * 100) / 100).replace('.', ',') : String(v));
-    const linhas = rows.map(r => colunas.map(c => `"${cel(r[c]).replace(/"/g, '""')}"`).join(';'));
+    // Injeção de fórmula: célula que começa com =, +, - ou @ é fórmula para o
+    // Excel/Sheets ao abrir o CSV. Um apóstrofo na frente neutraliza sem mudar
+    // o valor visível.
+    const segura = s => (/^[=+\-@]/.test(s) ? `'${s}` : s);
+    const linhas = rows.map(r => colunas.map(c => `"${segura(cel(r[c])).replace(/"/g, '""')}"`).join(';'));
     return '﻿' + [colunas.map(c => COLS[c].titulo).join(';'), ...linhas].join('\r\n');
   };
   D.baixarCsv = function (tableId, nomeArquivo) {

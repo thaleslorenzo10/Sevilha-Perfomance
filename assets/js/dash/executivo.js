@@ -53,6 +53,10 @@
     if (quebradas) avisos.push(`${quebradas} lead(s) com <strong>etiqueta quebrada</strong>: macro de UTM gravada literal — conferir a URL do anúncio.`);
     const cafe = avisoCafe(meta, leads);
     if (cafe) avisos.push(cafe);
+    if (meta && meta.degradado && meta.degradado.length) {
+      const lista = D.esc(meta.degradado.join(', '));
+      avisos.push(`Meta sem dados de <strong>${lista}</strong> no período: as tabelas de públicos/anúncios/posicionamento podem estar vazias por falha na API, não por ausência de gasto.`);
+    }
     D.banner('alertas', avisos.length ? '<ul>' + avisos.map(a => `<li>${a}</li>`).join('') + '</ul>' : '');
   };
 })(window.SPD = window.SPD || {});

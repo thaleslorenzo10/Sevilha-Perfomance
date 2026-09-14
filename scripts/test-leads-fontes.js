@@ -29,7 +29,7 @@ const { montarUnificados } = require('../lib/leads-fontes');
   const r = await montarUnificados('2026-09-10', '2026-09-13');
   assert.equal(r.total.leads, 1002, '1 FORMS + 1001 Supabase');
   assert.equal(pedidos.length, 2, 'duas páginas de 1000');
-  assert.ok(pedidos[0].url.includes('created_at=gte.2026-09-10T00:00:00-03:00'));
+  assert.ok(pedidos[0].url.includes('created_at=gte.2026-03-14T00:00:00-03:00'), 'lookback de 180 dias a partir do since');
   assert.ok(pedidos[0].url.includes('order=created_at.asc'));
   assert.equal(pedidos[1].range, '1000-1999');
   const resp = r.fontes.find(f => f.nome === 'RESPONDI');

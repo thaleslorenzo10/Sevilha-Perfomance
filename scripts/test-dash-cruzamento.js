@@ -7,7 +7,7 @@ const path = require('node:path');
 // Os módulos do painel são scripts de navegador: aqui rodam num contexto com `window` falso.
 const ctx = { window: {}, console };
 vm.createContext(ctx);
-for (const m of ['formato', 'cruzamento']) {
+for (const m of ['formato', 'cruzamento', 'tabelas']) {
   vm.runInContext(readFileSync(path.join(__dirname, `../assets/js/dash/${m}.js`), 'utf8'), ctx, { filename: m });
 }
 const D = ctx.window.SPD;
@@ -46,4 +46,19 @@ const r = D.resumo({
 });
 assert.deepStrictEqual(JSON.parse(JSON.stringify(r)), { spend: 150, leads: 8, mql: 3, mql_pct: 37.5, cpl: 18.75, cpmql: 50, deals: 2 });
 assert.equal(D.resumo({ meta: null, leads: null, rd: null }).cpl, null);
+
+// Conjunto/anúncio sem linha própria no Meta (sem gasto no período) herda o
+// grupo pela campanha do lead, via D.mapaGrupoPorCampanha.
+const leadsConjunto = [{ conjunto: 'HOT', campanha: '[SE] X', leads: 2, mql: 1 }];
+const grupoPorCampanha = new Map([['[se] x', 'SE']]);
+const linhasConjunto = D.cruzar(leadsConjunto, [], 'conjunto', { grupoPorCampanha, filtroGrupo: 'SE' });
+assert.equal(linhasConjunto.length, 1);
+assert.equal(linhasConjunto[0].grupo, 'SE');
+
+// CSV: célula que começa com =, +, - ou @ vira fórmula ao abrir no Excel/Sheets
+// — um apóstrofo na frente neutraliza sem mudar o gasto formatado.
+const csv = D.csvDe([{ nome: '=HYPERLINK("x")', spend: 1.5 }], ['nome', 'spend']);
+assert.ok(csv.includes('"\'=HYPERLINK(""x"")"'), 'fórmula prefixada com apóstrofo e aspas escapadas');
+assert.ok(csv.includes('"1,5"'), 'número seguro passa intacto, com vírgula decimal');
+
 console.log('✓ dash cruzamento');

@@ -23,11 +23,12 @@
     const grupo = document.getElementById('filtroGrupo').value || null;
     const { meta, leads } = d;
     const L = k => (leads ? leads[k] : []);
+    const grupoPorCampanha = D.mapaGrupoPorCampanha(d);
     const camp = D.linhasCampanha(d, grupo);
     D.graficoMetaVsReal('chartMetaVsReal', camp);
     D.tabela('tblOrigCamp', camp, [...D.COLUNAS_CRUZAMENTO, 'deals', 'lead_deal']);
-    D.tabela('tblOrigConj', D.cruzar(L('por_conjunto'), meta.conjuntos || [], 'conjunto', { filtroGrupo: grupo }), ['nome', 'campanha', ...D.COLUNAS_CRUZAMENTO.slice(1)]);
-    D.tabela('tblOrigAnun', D.cruzar(L('por_anuncio'), meta.anuncios || [], 'anuncio', { filtroGrupo: grupo }), ['nome', 'campanha', ...D.COLUNAS_CRUZAMENTO.slice(1)]);
+    D.tabela('tblOrigConj', D.cruzar(L('por_conjunto'), meta.conjuntos || [], 'conjunto', { filtroGrupo: grupo, grupoPorCampanha }), ['nome', 'campanha', ...D.COLUNAS_CRUZAMENTO.slice(1)]);
+    D.tabela('tblOrigAnun', D.cruzar(L('por_anuncio'), meta.anuncios || [], 'anuncio', { filtroGrupo: grupo, grupoPorCampanha }), ['nome', 'campanha', ...D.COLUNAS_CRUZAMENTO.slice(1)]);
     // Posicionamento não tem grupo no lado do gasto (breakdown por conta): sem filtro.
     D.tabela('tblOrigFonte', D.cruzar(L('por_fonte'), meta.posicionamentos || [], 'fonte'), D.COLUNAS_CRUZAMENTO);
   };

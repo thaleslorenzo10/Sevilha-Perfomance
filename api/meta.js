@@ -85,7 +85,8 @@ const porGasto = (a, b) => b.spend - a.spend;
  */
 async function montarMeta(since, until) {
   {
-    const opcional = (p, rotulo) => p.catch(e => { console.warn(`[meta] ${rotulo} indisponível:`, e.message); return []; });
+    const degradado = [];
+    const opcional = (p, rotulo) => p.catch(e => { console.warn(`[meta] ${rotulo} indisponível:`, e.message); degradado.push(rotulo); return []; });
     const [rows, dailyRows, adsetRows, adRows, placementRows] = await Promise.all([
       fetchCampaignInsights(since, until),
       fetchDailyInsights(since, until),
@@ -131,8 +132,9 @@ async function montarMeta(since, until) {
     // Uma entrada por dia com investimento e leads por grupo e por formato.
     // O intervalo é pré-preenchido: o Meta omite os dias sem entrega, e um dia
     // ausente sumia do gráfico em vez de aparecer como zero — a linha ligava
-    // os dois vizinhos e escondia a interrupção. O eixo usa o fuso do painel
-    // (lib/fuso), não UTC puro.
+    // os dois vizinhos e escondia a interrupção.
+    // Eixo pré-preenchido com todos os dias do intervalo (lib/fuso.cadaDia);
+    // date_start vem no fuso da conta.
     const diaVazio = dia => ({
       data:  dia,
       spend: 0,
@@ -196,6 +198,7 @@ async function montarMeta(since, until) {
       anuncios,
       posicionamentos,
       serie,
+      degradado,
       gerado_em: new Date().toISOString(),
     };
   }

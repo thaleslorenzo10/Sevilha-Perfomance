@@ -191,8 +191,8 @@ footer { text-align:center; font-size:11px; color:var(--gray); padding:20px; lin
    Tokens vêm de /assets/css/lm-ds.css (carrega depois; custom property resolve por herança,
    então var(--lm-*) funciona daqui). Escopo .admin-dashboard vence o <style> inline por especificidade. */
 
-/* ── Variáveis antigas → tokens do DS. O JS lê --forms/--lp/--se/--cp/--black em :root
-   (getComputedStyle(documentElement)), por isso o mapa mora em :root e não em .admin-dashboard. */
+/* Aliases mantidos para o CSS legado; o JS dos gráficos lê só --chart-series-*
+   e --chart-grid (assets/js/dash/graficos.js). */
 :root {
   --navy: var(--lm-blue-700); --navy2: var(--lm-blue-800); --navy3: var(--lm-ink-navy); --accent: var(--lm-blue-700);
   --bg: var(--surface-page); --white: var(--surface-card); --light: var(--surface-sunken);

@@ -23,6 +23,18 @@ assert.equal(lead.colaboradores, 'De 10 a 19');
 assert.equal(lead.cargo, 'Sócio');
 assert.equal(lead.telefone, '+55 11 99999-0000');
 assert.equal(leadDe({ email: 'x@x.com', last_conversion: { content: { identificador: 'a' } } }).event_id.startsWith('rd:'), true, 'sem uuid deriva do e-mail');
+assert.equal(lead.created_at, undefined, 'sem timestamp de conversão, created_at fica de fora (default do banco)');
+
+// `cf_posição` (com acento) precisa casar com "posicao" — achar() compara por
+// texto normalizado (lib/texto.norm), não só lowercase.
+assert.equal(leadDe({ last_conversion: { content: { identificador: 'b', cf_posição: 'Gerente' } } }).cargo, 'Gerente');
+
+// Timestamp real da conversão no RD vira created_at do lead, em vez do default do banco.
+const comData = leadDe({
+  uuid: 'def-456', email: 'joao@x.com',
+  last_conversion: { created_at: '2026-09-11T10:00:00-03:00', content: { identificador: 'c' } },
+});
+assert.equal(comData.created_at, '2026-09-11T10:00:00-03:00');
 
 function resFalso() { const r = { statusCode: null, corpo: null }; r.status = c => { r.statusCode = c; return r; }; r.json = b => { r.corpo = b; return r; }; r.end = () => r; return r; }
 const chamadas = [];
