@@ -183,25 +183,36 @@
      Quem está abaixo de 10 recebe o Clube ANTES de digitar qualquer coisa.
      O aviso de cargo operacional aparece junto, porque a sessão só vira
      decisão com quem decide — mas nenhum dos dois bloqueia o envio. */
+  // Fica true quando quem está fora do porte escolhe #route-continuar mesmo
+  // assim: sem isso, o próprio change do cargo (disparado ao escolher a
+  // opção liberada pelo botão) chama avaliarPasso1() de novo, que reesconde
+  // grupoCargo e nunca chega no irParaPasso(2) — a pessoa fica travada.
+  var continuarLiberado = false;
+
   function avaliarPasso1() {
     var porte = valorDe('colaboradores');
     var cargo = valorDe('cargo');
     if (!porte) return;
 
     var fora = FORA_DO_PORTE.indexOf(porte) > -1;
+    var bloqueado = fora && !continuarLiberado;
     if (rPorte) rPorte.classList.toggle('on', fora);
-    if (rCargo) rCargo.classList.toggle('on', !fora && cargo === 'Cargo Operacional');
+    if (rCargo) rCargo.classList.toggle('on', !bloqueado && cargo === 'Cargo Operacional');
 
     // Fora do porte: a pessoa escolhe o caminho. Perguntar o cargo de quem já
-    // não é do perfil só adiciona um toque antes da decisão que importa.
-    if (grupoCargo) grupoCargo.hidden = fora;
-    if (fora) return;
+    // não é do perfil só adiciona um toque antes da decisão que importa —
+    // a menos que ela já tenha escolhido continuar mesmo assim.
+    if (grupoCargo) grupoCargo.hidden = bloqueado;
+    if (bloqueado) return;
 
     if (cargo) irParaPasso(2);
   }
 
   form.addEventListener('change', function (e) {
     var campo = e.target && e.target.name;
+    // Trocar a resposta de porte reabre a decisão: a liberação anterior não
+    // vale mais para um porte diferente.
+    if (campo === 'colaboradores') continuarLiberado = false;
     if (campo === 'colaboradores' || campo === 'cargo') avaliarPasso1();
   });
 
@@ -238,6 +249,7 @@
   var continuar = document.getElementById('route-continuar');
   if (continuar) continuar.addEventListener('click', function (e) {
     e.preventDefault();
+    continuarLiberado = true;
     if (grupoCargo) grupoCargo.hidden = false;
     if (valorDe('cargo')) irParaPasso(2);
   });

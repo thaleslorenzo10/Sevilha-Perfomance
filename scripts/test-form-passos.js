@@ -230,6 +230,13 @@ ok(/SP_handleSubmit\(e, form, (\w+), DESTINO === 'kiwify' \? \1 : mostrarErro\)/
 ok(!/DESTINO === 'kiwify' \? mostrarSucesso : mostrarErro/.test(js),
    'onError do destino kiwify não é o mostrarSucesso bruto (event_id ficaria da leitura antiga)');
 
+// Fora do porte + #route-continuar: sem a flag de liberação, o change do
+// cargo (disparado ao escolher a opção liberada) reesconde grupoCargo e
+// trava a pessoa no passo 1 — precisa existir nos dois lugares.
+ok(/var continuarLiberado/.test(js), 'declara a flag continuarLiberado');
+ok(/continuarLiberado = true/.test(js), '#route-continuar libera continuarLiberado');
+ok(/fora && !continuarLiberado/.test(js), 'avaliarPasso1 só bloqueia quando fora do porte E não liberado');
+
 console.log('\nassets/tracking.js — beacon');
 const tr = fs.readFileSync(path.join(RAIZ, 'assets/tracking.js'), 'utf8');
 ok(/PAGEVIEW_BEACON_PAGES = \[[^\]]*'\/aula-gestao-operacional'/.test(tr), 'página da aula no beacon');
