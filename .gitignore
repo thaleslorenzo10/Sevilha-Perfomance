@@ -8,3 +8,7 @@ node_modules/
 __pycache__/
 *.pyc
 .env*
+
+# grafo de código (gerado por graphify)
+graphify-out/
+.superpowers/

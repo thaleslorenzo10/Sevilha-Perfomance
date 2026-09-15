@@ -106,6 +106,40 @@ Seções, na ordem:
    da Consultoria Performance).
 10. **Fechamento roxo** — oferta + botão.
 
+### Layout (decidido em mockups no visual companion, 15/09)
+
+Mundo visual: **ingresso / credencial de evento**. Roxo `#150C43` é o palco
+(hero, bloco do Bruno, fechamento); as seções de leitura são claras
+(`#f3f1fa` de fundo, cartões brancos com borda `#e2def2`); verde `#50DC00` só
+na marca da headline, no botão principal e nos números de destaque. Nenhum
+gradiente roxo/rosa, nenhuma borda lateral colorida em cartão, nenhum ícone
+decorativo; números com `font-variant-numeric: tabular-nums`.
+
+Regras de `DESIGN.md` que valem aqui: **sem tag/eyebrow acima do H1**
+(qualificador de público vai dentro da tabela da oferta, onde é lido como
+critério); sem caixa alta em corpo; foco com `outline`, não `box-shadow`.
+
+- **Hero (opção "Ingresso")** — H1 com marca verde, uma linha de apoio e um
+  cartão branco picotado (linha tracejada `2px dashed` separando corpo e
+  canhoto). Corpo em grade 2×2: Data · Horário · Onde (Zoom, ao vivo) ·
+  Perfil (Escritórios 10+). Canhoto: `R$ 47` grande + "gravação por 7 dias
+  inclusa" + botão "Garantir vaga". A data vem de `window.AULA`.
+- **As 5 etapas (opção "Programação")** — linha do tempo vertical pontilhada;
+  cada parada tem círculo roxo com número em verde, título da etapa, uma frase
+  do que acontece e o caso real em caixa branca rotulada "Caso real,
+  anonimizado".
+- **O que você leva** — dois cartões lado a lado (empilhados no celular):
+  "Garantido na aula" (pílula verde) e "Depende de aplicação depois" (pílula
+  cinza), com o conteúdo do campo `resultado` + as 5 planilhas + gravação.
+- **Quem conduz (opção "Faixa com a voz dele")** — bloco roxo com foto redonda
+  (borda verde 3px), nome e cargo, a frase do briefing em destaque ("Não é uma
+  palestra sobre o problema. É o projeto inteiro, aberto.") e três fatos em
+  cartões de contorno fino: ~20 anos em gestão (Falconi) · desde 2019 só setor
+  contábil · +500 projetos pelo grupo.
+- Demais seções (problema, por que contratar não resolveu, para quem é, como
+  funciona, FAQ, fechamento) seguem a mesma linguagem: cartão branco em fundo
+  claro, fechamento roxo repetindo o canhoto do ingresso.
+
 `<title>`, description e OG próprios (`assets/og-aula.png`). `noindex` enquanto
 `AULA.data` estiver vazia. Página de obrigado estática em
 `/aula-gestao-operacional/obrigado` ("o link chega por e-mail e WhatsApp"),
