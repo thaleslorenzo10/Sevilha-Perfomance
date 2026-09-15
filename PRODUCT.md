@@ -28,8 +28,19 @@ compra na Kiwify, `Purchase` pelo webhook. O convite do fim da aula é a Sessão
 Estratégica — a página nunca vende a sessão. Spec em
 `docs/superpowers/specs/2026-09-15-aula-gestao-operacional-design.md`.
 
-Confundir as duas é o erro mais caro do projeto: manda o público errado para a
-oferta errada e ensina o Meta a buscar mais gente fora do perfil.
+Quarta oferta, também desde 15/09/2026: **Café com Sevilha** — encontro
+presencial de um dia, 6/10/2026, na sede da Sevilha Contabilidade (SP), para
+donos e sócios de escritórios com **mais de 10** colaboradores, conduzido por
+Vicente Sevilha, Bruno Silvestre e Rodrigo Pires. Página `/cafe-com-sevilha`,
+sem checkout: quem se interessa preenche o formulário e o time entra em
+contato depois (sem WhatsApp automático). Deal marcado `[CAFÉ]` no CRM. Quem
+tem menos de 10 colaboradores é roteado para a aula paga
+(`/aula-gestao-operacional`), não para o Clube — decisão do cliente em
+15/09/2026. Spec em
+`docs/superpowers/specs/2026-09-15-cafe-com-sevilha-design.md`.
+
+Confundir as ofertas é o erro mais caro do projeto: manda o público errado para
+a oferta errada e ensina o Meta a buscar mais gente fora do perfil.
 
 ## Quem decide
 

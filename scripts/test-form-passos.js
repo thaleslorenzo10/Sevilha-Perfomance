@@ -28,7 +28,7 @@ const { EVENTOS_ACEITOS } = require('../lib/pageviews');
 
 const RAIZ = path.join(__dirname, '..');
 
-const PAGINAS = ['mentoria/index.html', 'mentoria-2/index.html', 'aula-gestao-operacional/index.html'];
+const PAGINAS = ['mentoria/index.html', 'mentoria-2/index.html', 'aula-gestao-operacional/index.html', 'cafe-com-sevilha/index.html'];
 
 /** Ids que o assets/form-steps.js procura por getElementById. */
 const IDS_OBRIGATORIOS = [

@@ -10,6 +10,7 @@ página e documento discordarem, a página vence e este arquivo se atualiza.
 | `/mentoria` (v1) | Persuade | Pilha vertical de seções |
 | `/mentoria-2` (v2) | Persuade | Bento grid de 12 colunas |
 | `/aula-gestao-operacional` | Persuade | Pilha vertical, mundo "ingresso" — tokens próprios em `aula-gestao-operacional/aula.css` (`--roxo #150C43`, `--neon #50DC00`, fundo `#f3f1fa`); mesmo modal de `assets/form-steps.js` com `data-destino="kiwify"` |
+| `/cafe-com-sevilha` | Persuade | Réplica da LP do RD: navy/teal/creme, Georgia nos títulos, modal de dois passos por `data-destino="inline"` |
 
 As duas rodam em teste A/B por `/diagnostico`, com cookie `_sp_variant_se`.
 
@@ -32,6 +33,9 @@ teste mede.
 
 Vermelho de erro e de item negativo: `#c62828`. Cantos: 20px nos cartões, 14px em
 imagem, 8px na marca da headline.
+
+O Café tem paleta própria (ver `cafe-com-sevilha/cafe.css`): navy `#0a2033`,
+teal `#20a2a8`, creme `#f2ebdd` — é a identidade do evento, não a do site.
 
 ## Tipografia
 
