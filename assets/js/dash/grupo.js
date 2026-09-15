@@ -25,9 +25,9 @@
     const { meta, leads } = d;
     if (g === 'CP' && meta.grupos.CP.spend === 0) return '⏸️ Campanhas [CP] sem investimento no período (pausadas). O funil do CRM continua recebendo deals de outras origens.';
     if (g === 'CAFE') {
-      const cafe = leads && leads.por_pagina.filter(p => String(p.pagina).startsWith('rd:'));
-      if (!leads || !cafe.length) return '☕ Leads reais do Café dependem do webhook do RD Marketing (Integrações → Webhooks → Conversão). Sem ele, só o número que o Meta reporta aparece.';
-      return `☕ Leads reais do Café chegam pelo webhook do RD Marketing (${cafe.map(p => D.esc(p.pagina.slice(3))).join(', ')}). Leads anteriores à ativação do webhook não entram.`;
+      const pagina = leads && leads.por_pagina.find(p => p.pagina === '/cafe-com-sevilha');
+      if (!leads || !pagina) return '☕ Leads do Café nascem em /cafe-com-sevilha (formulário do site, desde 15/09/2026). Antes disso a página era do RD e o webhook nunca entregou lead nenhum.';
+      return `☕ Leads do Café vêm do formulário do site (/cafe-com-sevilha): ${D.fmtN(pagina.leads)} no período. Antes de 15/09/2026 a página era do RD e não entrava no painel.`;
     }
     return '';
   }
