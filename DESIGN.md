@@ -79,6 +79,14 @@ colaboradores recebe o caminho do Clube da Performance **antes** de digitar
 qualquer coisa — e continua podendo se inscrever, porque quem separa perfil é
 o time no CRM, não a página.
 
+Esse destino não é fixo: é parametrizado por `data-rota` no `<form>` (padrão
+`/campanha`, o Clube). **No Café é `/aula-gestao-operacional`** — decisão do
+cliente em 15/09/2026, porque o Café é só para +10 e a aula paga é o caminho
+certo para quem tem menos. O link leva as UTMs junto via `SP_comUtms`
+(`tracking.js` lê `utm_*`, `fbclid` e `gclid` da `sessionStorage` e os anexa na
+URL) — sem isso o clique viraria visita orgânica na outra página e some do
+painel.
+
 Porte e cargo são grupos de `<input type="radio">` com rótulo em pílula, nunca
 `<select>`: no iOS o select abre roleta, rola e confirma — três gestos para
 uma resposta de um. O `name=` dos grupos é o mesmo dos selects que eles
