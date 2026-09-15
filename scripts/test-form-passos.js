@@ -28,7 +28,7 @@ const { EVENTOS_ACEITOS } = require('../lib/pageviews');
 
 const RAIZ = path.join(__dirname, '..');
 
-const PAGINAS = ['mentoria/index.html', 'mentoria-2/index.html'];
+const PAGINAS = ['mentoria/index.html', 'mentoria-2/index.html', 'aula-gestao-operacional/index.html'];
 
 /** Ids que o assets/form-steps.js procura por getElementById. */
 const IDS_OBRIGATORIOS = [
@@ -94,16 +94,25 @@ for (const pagina of PAGINAS) {
   const chips  = [...html.matchAll(/class="chip porte-chip" data-porte="([^"]+)"/g)].map(m => m[1]);
   const radios = valoresDeRadio(html, 'colaboradores');
 
-  ok(chips.length > 0, 'a página tem atalhos de porte no topo');
   ok(radios.length > 0, 'o modal tem o grupo de rádio de porte');
 
-  const orfaos = chips.filter(c => !radios.includes(c));
-  ok(orfaos.length === 0, 'todo atalho do topo casa com um rádio do modal',
-     orfaos.length ? `sem rádio correspondente: ${orfaos.join(' | ')}` : '');
+  /* Página com data-destino (aula paga) abre o modal por botão, sem atalhos
+     de porte no topo — os chips só valem para as páginas da Sessão. */
+  const comDestino = /<form id="sessao-form"[^>]*data-destino="/.test(html);
+  if (comDestino) {
+    ok(chips.length === 0, 'página com data-destino não tem atalhos de porte');
+    ok(/class="btn open-modal"/.test(html), 'página com data-destino abre o modal por botão .open-modal');
+  } else {
+    ok(chips.length > 0, 'a página tem atalhos de porte no topo');
 
-  ok(chips.length === radios.length,
-     'atalhos e rádios oferecem as mesmas faixas',
-     `atalhos: ${chips.length}, rádios: ${radios.length}`);
+    const orfaos = chips.filter(c => !radios.includes(c));
+    ok(orfaos.length === 0, 'todo atalho do topo casa com um rádio do modal',
+       orfaos.length ? `sem rádio correspondente: ${orfaos.join(' | ')}` : '');
+
+    ok(chips.length === radios.length,
+       'atalhos e rádios oferecem as mesmas faixas',
+       `atalhos: ${chips.length}, rádios: ${radios.length}`);
+  }
 
   const cargos = valoresDeRadio(html, 'cargo');
   ok(cargos.length === 3, 'o grupo de cargo tem as três posições', `achou ${cargos.length}`);
@@ -156,10 +165,12 @@ console.log('\nporte: página × lib/porte.js');
 
   /* Se as duas páginas oferecessem faixas diferentes, o teste A/B compararia
      ofertas diferentes, não layouts. */
-  const outras = valoresDeRadio(ler(PAGINAS[1]), 'colaboradores');
-  ok(JSON.stringify(faixas) === JSON.stringify(outras),
-     'as duas variantes oferecem exatamente as mesmas faixas',
-     `v1: ${faixas.join('|')}\n      v2: ${outras.join('|')}`);
+  for (const outra of PAGINAS.slice(1)) {
+    const outras = valoresDeRadio(ler(outra), 'colaboradores');
+    ok(JSON.stringify(faixas) === JSON.stringify(outras),
+       `${outra} oferece exatamente as mesmas faixas`,
+       `v1: ${faixas.join('|')}\n      ${outra}: ${outras.join('|')}`);
+  }
 }
 
 /* ── 3. Eventos novos aceitos pelo endpoint ───────────────────────────── */

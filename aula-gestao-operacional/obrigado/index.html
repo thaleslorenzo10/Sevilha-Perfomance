@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscrição confirmada — Sevilha Performance</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/assets/logo-sevilha.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/aula-gestao-operacional/aula.css?v=1">
+
+  <!-- Meta Pixel Code — mesmo snippet da página da aula, só PageView. -->
+  <script>
+  !function(f,b,e,n){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window,document,'script');
+
+  (function () {
+    var interno = false;
+    try {
+      interno = localStorage.getItem('_sp_interno') === '1' ||
+                /[?&]sp_interno=1(&|$)/.test(window.location.search);
+    } catch (e) {}
+    if (interno) return;
+
+    fbq('init', '657178423444244');
+    fbq('track', 'PageView');
+
+    var carregado = false;
+    function carrega() {
+      if (carregado) return;
+      carregado = true;
+      var t = document.createElement('script');
+      t.async = true;
+      t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      document.head.appendChild(t);
+    }
+    var teto = setTimeout(carrega, 1500);
+    window.addEventListener('load', function () { clearTimeout(teto); carrega(); }, { once: true });
+  })();
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=657178423444244&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+<main><section class="palco fecho"><div class="wrap">
+  <h1>Sua vaga está <mark>garantida</mark></h1>
+  <p class="lead">O link do Zoom chega no seu e-mail em alguns minutos. Nos dias da aula você recebe lembretes no WhatsApp: na véspera, na manhã do dia e 30 minutos antes.</p>
+  <p class="lead">Não achou o e-mail? Confira a caixa de promoções ou spam e salve o remetente.</p>
+</div></section></main>
+<script src="/assets/tracking.js?v=6" defer></script>
+</body>
+</html>

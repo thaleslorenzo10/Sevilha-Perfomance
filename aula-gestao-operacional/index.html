@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aula ao vivo: o projeto de gestão operacional de um escritório contábil — Sevilha Performance</title>
+  <meta name="description" content="2h10 ao vivo com o método completo da Sevilha e as 5 planilhas usadas em cliente. Para donos de escritório contábil com 10+ colaboradores. R$ 47.">
+  <meta name="robots" content="noindex, nofollow" id="meta-robots">
+  <link rel="canonical" href="https://sevilha-perfomance.vercel.app/aula-gestao-operacional">
+  <link rel="icon" href="/assets/logo-sevilha.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="O projeto que transforma a operação de um escritório contábil">
+  <meta property="og:description" content="Aula ao vivo, 2h10, com as 5 planilhas do método. Escritórios 10+. R$ 47.">
+  <meta property="og:image" content="https://sevilha-perfomance.vercel.app/assets/og-aula.png">
+  <meta property="og:url" content="https://sevilha-perfomance.vercel.app/aula-gestao-operacional">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/aula-gestao-operacional/aula.css?v=1">
+  <script>
+    window.AULA = {
+      data: '',                       // ISO 'AAAA-MM-DD'; vazia = noindex e "próxima turma"
+      hora: '19:30',
+      checkoutUrl: '',                // https://pay.kiwify.com.br/...
+      precoCentavos: 4700,
+    };
+  </script>
+
+  <!-- Meta Pixel Code — mesmo snippet de mentoria-2, com o guarda spInterno:
+       sem ele cada conferência interna vira PageView e entra no remarketing. -->
+  <script>
+  !function(f,b,e,n){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window,document,'script');
+
+  (function () {
+    var interno = false;
+    try {
+      interno = localStorage.getItem('_sp_interno') === '1' ||
+                /[?&]sp_interno=1(&|$)/.test(window.location.search);
+    } catch (e) {}
+    if (interno) return;
+
+    fbq('init', '657178423444244');
+    fbq('track', 'PageView');
+
+    var carregado = false;
+    function carrega() {
+      if (carregado) return;
+      carregado = true;
+      var t = document.createElement('script');
+      t.async = true;
+      t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      document.head.appendChild(t);
+    }
+    var teto = setTimeout(carrega, 1500);
+    window.addEventListener('load', function () { clearTimeout(teto); carrega(); }, { once: true });
+  })();
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=657178423444244&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+<body>
+<header class="wrap topo"><img src="/assets/logo-sevilha.svg" alt="Sevilha Performance" width="140" height="28"></header>
+
+<main>
+<section class="hero palco"><div class="wrap">
+  <div>
+    <h1>O projeto que transforma a <mark>operação</mark> de um escritório contábil — do mapeamento à margem</h1>
+    <p class="lead">Uma aula ao vivo de 2h10 com o método completo da Sevilha, aberto etapa por etapa, e as 5 planilhas que usamos em cliente.</p>
+  </div>
+  <div class="ingresso">
+    <div class="corpo">
+      <div><small>Data</small><b class="num" id="aula-data">Próxima turma</b></div>
+      <div><small>Horário</small><b class="num" id="aula-hora">19h30 (Brasília)</b></div>
+      <div><small>Onde</small><b>Zoom, ao vivo</b></div>
+      <div><small>Perfil</small><b>Escritórios com 10+ colaboradores</b></div>
+    </div>
+    <div class="canhoto">
+      <span class="preco num">R$ 47<small>gravação por 7 dias inclusa</small></span>
+      <button type="button" class="btn open-modal">Garantir vaga</button>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Você entrega no prazo, com qualidade — e a margem não aparece</h2>
+  <div class="cartao"><ul>
+    <li>Não sabe quanto custa cada área do escritório nem quanto cada uma devolve de receita.</li>
+    <li>A equipe se declara sobrecarregada e você não tem parâmetro objetivo para confirmar ou contestar.</li>
+    <li>Contratou e não sobrou tempo. Trocou de sistema e não melhorou. Ficou mais caro nos dois casos.</li>
+    <li>A operação é reativa: o time decide de manhã o que vai fazer e tudo vira urgência.</li>
+    <li>Um cliente difícil justifica o desempenho do time inteiro. A exceção pauta a carteira.</li>
+  </ul></div>
+  <p style="margin-top:1.25rem">Você domina a técnica contábil e conhece o resultado do cliente melhor do que ele. O que falta não é esforço: é número sobre a própria operação.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>O que você vai ver nas <mark>2h10</mark></h2>
+  <p>O projeto inteiro, na ordem em que a Sevilha aplica em cliente. Cada etapa com a planilha sendo preenchida ao vivo.</p>
+  <div class="prog">
+    <div class="etapa"><i class="num">1</i><h3>Classificação da carteira por complexidade real</h3><p>Volume, prazo e risco — não dificuldade técnica.</p>
+      <div class="cartao caso"><small>Caso real, anonimizado</small>O cliente "problemático" que consumia 8% do tempo de todo o fiscal.</div></div>
+    <div class="etapa"><i class="num">2</i><h3>Mapeamento de entregas e tempo por atividade</h3><p>Quanto cada entrega custa em horas, por pessoa e por cliente.</p>
+      <div class="cartao caso"><small>Caso real, anonimizado</small>O time que consumia 25% do dia em e-mail.</div></div>
+    <div class="etapa"><i class="num">3</i><h3>Capacidade produtiva e meta operacional</h3><p>Quantas horas o time tem de fato e quanto cabe nelas.</p>
+      <div class="cartao caso"><small>Caso real, anonimizado</small>O escritório que contratou mais um colaborador e não gerou capacidade.</div></div>
+    <div class="etapa"><i class="num">4</i><h3>Acompanhamento diário: previsto × realizado</h3><p>Leitura dos desvios antes de virarem urgência.</p>
+      <div class="cartao caso"><small>Caso real, anonimizado</small>O cliente que ia automatizar o que representava 1,5% do tempo, enquanto o DAS consumia 20%.</div></div>
+    <div class="etapa"><i class="num">5</i><h3>Da meta ao resultado</h3><p>Faturamento recorrente × custo com pessoal e priorização de ações por impacto.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>O que você <mark>leva</mark></h2>
+  <div class="leva">
+    <div class="cartao"><span class="pilula">Garantido na aula</span><ul>
+      <li>O método completo de gestão operacional da Sevilha, etapa por etapa</li>
+      <li>5 planilhas: classificação de clientes, entregas e tempos, capacidade e meta operacional, acompanhamento diário, meta financeira e banco de oportunidades</li>
+      <li>A capacidade produtiva teórica do seu time calculada ao vivo e confrontada com o tempo mapeado</li>
+      <li>Separar o que é problema estrutural do que é percepção do time</li>
+      <li>Gravação por 7 dias</li></ul></div>
+    <div class="cartao"><span class="pilula dep">Depende de aplicação depois</span><ul>
+      <li>Sanear as bases</li><li>Sustentar a agenda diária</li><li>Manter o ciclo de acompanhamento vivo</li>
+      <li>Ganho de margem e produtividade — execução ao longo de meses</li></ul></div>
+  </div>
+</div></section>
+
+<section class="palco"><div class="wrap faixa">
+  <h2>Quem <mark>conduz</mark> a aula</h2>
+  <div class="quem"><img class="foto" src="/Bruno.jpeg" alt="Bruno Silvestre" width="88" height="88"><div><b>Bruno Silvestre</b><br><span>Cofundador e diretor comercial da Sevilha Performance</span></div></div>
+  <q>Não é uma palestra sobre o problema. É o projeto inteiro, aberto.</q>
+  <div class="fatos">
+    <div><b>~20 anos</b>em gestão, com formação na metodologia Falconi</div>
+    <div><b>desde 2019</b>dedicação exclusiva ao setor contábil</div>
+    <div><b>+500</b>projetos realizados pelo grupo em empresas contábeis</div>
+  </div>
+  <p>Responsável pela construção da metodologia de gestão operacional da empresa.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Para quem é</h2>
+  <div class="leva">
+    <div class="cartao"><h3>É para você se</h3><ul>
+      <li>É dono ou sócio de escritório contábil com equipe estruturada, a partir de 10 colaboradores</li>
+      <li>O escritório cresceu em carteira e em time, e a margem não acompanhou</li>
+      <li>Já tentou contratar, treinar tecnicamente e trocar de sistema — e nenhum dos três resolveu</li></ul></div>
+    <div class="cartao"><h3>Não é para</h3><ul class="lista-nao">
+      <li>Contador autônomo</li><li>Escritório de 1 a 3 pessoas</li><li>Estudante</li><li>Funcionário operacional</li></ul>
+      <p style="margin-top:1rem">Tem menos de 10 colaboradores? O formato para o seu porte é o <a href="/campanha">Clube da Performance</a>.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Como funciona</h2>
+  <div class="cartao"><ul>
+    <li>Ao vivo no Zoom, com sala controlada e chat moderado</li>
+    <li>2h10 de conteúdo mais 15 minutos de perguntas</li>
+    <li>Link por e-mail logo após a compra, e lembretes no WhatsApp na véspera, na manhã do dia e 30 minutos antes</li>
+    <li>Inscrições encerram 2 horas antes do início</li>
+    <li>Gravação disponível por 7 dias</li></ul></div>
+</div></section>
+
+<section><div class="wrap faq">
+  <h2>Perguntas frequentes</h2>
+  <details><summary>Preciso assistir ao vivo?</summary><p>É o ideal: as planilhas são preenchidas ao vivo e você tira dúvida na hora. Quem não puder tem a gravação por 7 dias.</p></details>
+  <details><summary>Meu escritório tem menos de 10 colaboradores. Vale?</summary><p>A aula foi desenhada para equipes estruturadas. Para o seu porte, o Clube da Performance entrega mais — e você pode se inscrever mesmo assim.</p></details>
+  <details><summary>O que acontece depois da aula?</summary><p>Você sai com o método e as planilhas para aplicar. Quem quiser conversar sobre o próprio escritório recebe o convite no fim da aula.</p></details>
+  <details><summary>E se eu quiser reembolso?</summary><p>Garantia de 7 dias pela Kiwify, sem perguntas.</p></details>
+  <details><summary>É a mentoria da Sevilha?</summary><p>Não. É o método da Consultoria Performance — o projeto que a Sevilha executa em escritórios de 10+ — aberto em uma aula.</p></details>
+</div></section>
+
+<section class="palco"><div class="wrap">
+  <h2>Garanta sua <mark>vaga</mark></h2>
+  <div class="ingresso">
+    <div class="corpo">
+      <div><small>Data</small><b class="num" data-aula-data>Próxima turma</b></div>
+      <div><small>Horário</small><b class="num">19h30 (Brasília)</b></div>
+      <div><small>Onde</small><b>Zoom, ao vivo</b></div>
+      <div><small>Perfil</small><b>Escritórios com 10+ colaboradores</b></div>
+    </div>
+    <div class="canhoto"><span class="preco num">R$ 47<small>gravação por 7 dias inclusa</small></span><button type="button" class="btn open-modal">Garantir vaga</button></div>
+  </div>
+</div></section>
+
+</main>
+<footer class="wrap rodape">Sevilha Performance · consultoria de gestão para escritórios contábeis</footer>
+
+<!-- Modal copiado de mentoria-2/index.html. Ids e name= são contrato com
+     assets/form-steps.js e /api/leads; só os textos da oferta mudam. -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal" tabindex="-1">
+    <button class="modal-close" onclick="closeModal()" aria-label="Fechar">✕</button>
+
+    <div id="form-wrapper">
+      <div class="modal-head">
+        <span class="passo-rotulo" id="passo-rotulo">Passo 1 de 2</span>
+        <h2 id="modal-title">Antes do pagamento, duas perguntas</h2>
+        <p class="modal-sub" id="modal-sub">A aula foi desenhada para escritórios com equipe estruturada. Isso ajuda a gente a preparar o material.</p>
+      </div>
+
+      <form id="sessao-form" onsubmit="submitForm(event)" data-destino="kiwify" data-textos="aula">
+       <div class="modal-body">
+
+        <!-- ── Passo 1: perfil ── -->
+        <div id="passo-1">
+          <fieldset class="grupo" id="grupo-porte">
+            <legend>Quantos colaboradores tem o escritório?</legend>
+            <div class="opcoes">
+              <input type="radio" id="colab-1" name="colaboradores" value="De 0 a 4" />
+              <label for="colab-1">0 a 4</label>
+              <input type="radio" id="colab-2" name="colaboradores" value="De 5 a 9" />
+              <label for="colab-2">5 a 9</label>
+              <input type="radio" id="colab-3" name="colaboradores" value="De 10 a 19" />
+              <label for="colab-3">10 a 19</label>
+              <input type="radio" id="colab-4" name="colaboradores" value="De 20 a 29" />
+              <label for="colab-4">20 a 29</label>
+              <input type="radio" id="colab-5" name="colaboradores" value="De 30 a 49" />
+              <label for="colab-5">30 a 49</label>
+              <input type="radio" id="colab-6" name="colaboradores" value="Mais de 50" />
+              <label for="colab-6">Mais de 50</label>
+            </div>
+          </fieldset>
+
+          <div class="route" id="route-porte">
+            <strong>A aula foi feita para escritórios com 10+ colaboradores.</strong>
+            Para o seu porte, o Clube da Performance entrega mais.
+            <div class="route-acoes">
+              <a href="/campanha" id="clube-link">Ver o Clube da Performance</a>
+              <a href="#" id="route-continuar" class="secundario">Continuar mesmo assim</a>
+            </div>
+          </div>
+
+          <fieldset class="grupo" id="grupo-cargo">
+            <legend>Qual a sua posição no escritório?</legend>
+            <p class="dica">A aula rende mais para quem decide.</p>
+            <div class="opcoes">
+              <input type="radio" id="cargo-1" name="cargo" value="Dono/Sócio" />
+              <label for="cargo-1" class="larga">Dono ou sócio</label>
+              <input type="radio" id="cargo-2" name="cargo" value="Cargo Gerencial" />
+              <label for="cargo-2" class="larga">Cargo gerencial (líder, gerente, coordenador…)</label>
+              <input type="radio" id="cargo-3" name="cargo" value="Cargo Operacional" />
+              <label for="cargo-3" class="larga">Cargo operacional (assistente, analista…)</label>
+            </div>
+          </fieldset>
+
+          <div class="route" id="route-cargo">
+            <strong>A aula é feita para quem decide.</strong>
+            Você pode se inscrever, mas o material rende mais com o dono ou sócio na sala.
+          </div>
+        </div>
+
+        <!-- ── Passo 2: contato ── -->
+        <div id="passo-2" hidden>
+          <button type="button" class="voltar" id="voltar-passo-1">← Mudar as respostas</button>
+
+          <div class="trust">
+            <span><b>R$ 47</b></span>
+            <span>2h10 ao vivo</span>
+            <span>Gravação por 7 dias</span>
+            <span>Dados usados só para o acesso (LGPD)</span>
+          </div>
+
+          <div class="form-error" id="form-error">
+            <strong>Não conseguimos enviar agora.</strong>
+            A conexão falhou. Tente de novo ou fale direto com a gente:
+            <a href="#" id="err-wa">abrir o WhatsApp</a>.
+          </div>
+
+          <div class="form-group">
+            <label for="f-name">Nome completo</label>
+            <input type="text" id="f-name" name="nome" placeholder="Seu nome" required autocomplete="name" />
+          </div>
+          <div class="form-group">
+            <label for="f-phone">WhatsApp</label>
+            <input type="tel" id="f-phone" name="telefone" placeholder="(11) 99999-9999" required
+                   autocomplete="tel" inputmode="numeric" />
+          </div>
+          <div class="form-group">
+            <label for="f-email">E-mail</label>
+            <input type="email" id="f-email" name="email" placeholder="seuemail@exemplo.com" required
+                   autocomplete="email" inputmode="email" />
+          </div>
+          <div class="form-group">
+            <label for="f-escritorio">Nome do escritório <span class="opc">(opcional)</span></label>
+            <input type="text" id="f-escritorio" name="escritorio" placeholder="Nome do seu escritório" autocomplete="organization" />
+          </div>
+        </div>
+
+        <!-- Campos ocultos de tracking — o name= de cada um é contrato com /api/leads -->
+        <input type="hidden" name="utm_source"   />
+        <input type="hidden" name="utm_medium"   />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_term"     />
+        <input type="hidden" name="utm_content"  />
+        <input type="hidden" name="fbclid"       />
+        <input type="hidden" name="gclid"        />
+        <input type="hidden" name="ttclid"       />
+        <input type="hidden" name="msclkid"      />
+        <input type="hidden" name="fbp"          />
+        <input type="hidden" name="fbc"          />
+        <input type="hidden" name="external_id"  />
+        <input type="hidden" name="event_id"     />
+        <input type="hidden" name="page_url"     />
+        <input type="hidden" name="user_agent"   />
+        <input type="hidden" name="pagina" value="/aula-gestao-operacional" />
+       </div>
+
+       <div class="modal-foot" id="modal-foot" hidden>
+        <button type="submit" id="submit-btn" class="btn btn-green btn-full">Ir para o pagamento</button>
+        <p class="form-privacy">Sem spam. Só o contato do acesso à aula.</p>
+       </div>
+      </form>
+    </div>
+
+    <div class="form-success" id="form-success">
+      <h2 class="ok">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
+        Inscrição registrada.
+      </h2>
+      <p class="modal-sub">Abrindo o pagamento…</p>
+      <a id="wa-link" href="#" hidden>Abrir o WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Data e noindex a partir de window.AULA — troca de turma sem tocar copy.
+  (function () {
+    var a = window.AULA || {};
+    if (!a.data) return;
+    var d = new Date(a.data + 'T12:00:00-03:00');
+    var txt = d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' }) + ' · ' + (a.hora || '19:30').replace(':', 'h');
+    document.querySelectorAll('#aula-data, [data-aula-data]').forEach(function (el) { el.textContent = txt; });
+    var r = document.getElementById('meta-robots'); if (r) r.setAttribute('content', 'index, follow');
+  })();
+</script>
+<script src="/assets/tracking.js?v=6" defer></script>
+<script src="/assets/form-steps.js?v=2" defer></script>
+</body>
+</html>
