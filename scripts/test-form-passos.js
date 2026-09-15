@@ -186,6 +186,37 @@ console.log('\neventos do funil');
   ok(usados.has('pageview'), 'o beacon marca "pageview" (base do visitante distinto)');
 }
 
+/* ── Parametrização por data-* (aula paga) ─────────────────────────── */
+console.log('\nassets/form-steps.js — data-destino');
+const js = fs.readFileSync(path.join(RAIZ, 'assets/form-steps.js'), 'utf8');
+ok(js.includes("form.dataset.destino"), 'lê data-destino do form');
+ok(js.includes("form.dataset.textos"), 'lê data-textos do form');
+ok(/InitiateCheckout/.test(js), 'dispara InitiateCheckout quando o destino é o checkout');
+ok(/'ic:' \+/.test(js), 'InitiateCheckout usa o event_id do lead com prefixo ic:');
+ok(js.includes('window.SP_urlCheckout'), 'expõe SP_urlCheckout');
+
+// Monta a URL sem navegador: avalia só a função.
+const trecho = js.match(/window\.SP_urlCheckout = function[\s\S]*?\n {2}};\n/);
+ok(!!trecho, 'SP_urlCheckout isolável para teste');
+if (trecho) {
+  const sandbox = { window: { AULA: { checkoutUrl: 'https://pay.kiwify.com.br/abc' } }, sessionStorage: { getItem: k => ({ utm_source: 'ig', fbclid: 'f1' })[k] || null } };
+  const fn = new Function('window', 'sessionStorage', trecho[0] + ' return window.SP_urlCheckout;')(sandbox.window, sandbox.sessionStorage);
+  const url = new URL(fn({ nome: 'Ana Teste', email: 'a@x.com', telefone: '(31) 99999-0000', event_id: 'ev_9' }));
+  ok(url.origin + url.pathname === 'https://pay.kiwify.com.br/abc', 'base do checkout');
+  ok(url.searchParams.get('name') === 'Ana Teste' && url.searchParams.get('email') === 'a@x.com', 'nome e e-mail pré-preenchidos');
+  ok(url.searchParams.get('phone') === '31999990000', 'telefone só dígitos');
+  ok(url.searchParams.get('sck') === 'ev_9', 'sck = event_id do lead');
+  ok(url.searchParams.get('utm_source') === 'ig' && url.searchParams.get('fbclid') === 'f1', 'UTMs e fbclid repassados');
+}
+
+console.log('\nassets/tracking.js — beacon');
+const tr = fs.readFileSync(path.join(RAIZ, 'assets/tracking.js'), 'utf8');
+ok(/PAGEVIEW_BEACON_PAGES = \[[^\]]*'\/aula-gestao-operacional'/.test(tr), 'página da aula no beacon');
+for (const p of PAGINAS) {
+  const html = fs.readFileSync(path.join(RAIZ, p), 'utf8');
+  ok(/tracking\.js\?v=6/.test(html) && /form-steps\.js\?v=2/.test(html), `${p} com ?v= novo dos assets`);
+}
+
 console.log(falhas === 0
   ? '\nOK — contrato do formulário de dois passos íntegro.'
   : `\n${falhas} falha(s).`);

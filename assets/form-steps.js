@@ -59,6 +59,11 @@
   var form    = document.getElementById('sessao-form');
   if (!overlay || !form) return;
 
+  /* Parametrização por data-* no <form>. Sem atributo, tudo se comporta como
+     em /mentoria: WhatsApp no sucesso, textos da Sessão Estratégica. */
+  var DESTINO = form.dataset.destino || 'whatsapp';   // 'whatsapp' | 'kiwify'
+  var TEXTOS_ID = form.dataset.textos || 'sessao';
+
   var passo1     = document.getElementById('passo-1');
   var passo2     = document.getElementById('passo-2');
   var rotulo     = document.getElementById('passo-rotulo');
@@ -86,18 +91,21 @@
     return campo ? campo.value : '';
   }
 
-  var TEXTOS = {
-    1: {
-      rotulo: 'Passo 1 de 2',
-      titulo: 'Duas perguntas rápidas',
-      sub:    'Elas definem se a Sessão Estratégica é o formato certo para o seu escritório.',
+  var TEXTOS_POR_OFERTA = {
+    sessao: {
+      1: { rotulo: 'Passo 1 de 2', titulo: 'Duas perguntas rápidas',
+           sub: 'Elas definem se a Sessão Estratégica é o formato certo para o seu escritório.' },
+      2: { rotulo: 'Passo 2 de 2', titulo: 'Onde falamos com você',
+           sub: 'Nosso time chama no WhatsApp para combinar a data da sessão.' },
     },
-    2: {
-      rotulo: 'Passo 2 de 2',
-      titulo: 'Onde falamos com você',
-      sub:    'Nosso time chama no WhatsApp para combinar a data da sessão.',
+    aula: {
+      1: { rotulo: 'Passo 1 de 2', titulo: 'Antes do pagamento, duas perguntas',
+           sub: 'A aula foi desenhada para escritórios com equipe estruturada. Isso ajuda a gente a preparar o material.' },
+      2: { rotulo: 'Passo 2 de 2', titulo: 'Onde enviamos o link da aula',
+           sub: 'Você segue para o pagamento em seguida. O acesso chega por e-mail e WhatsApp.' },
     },
   };
+  var TEXTOS = TEXTOS_POR_OFERTA[TEXTOS_ID] || TEXTOS_POR_OFERTA.sessao;
 
   var passoAtual = 1;
 
@@ -245,9 +253,34 @@
   });
 
   /* ── Envio ───────────────────────────────────────────── */
+
+  /* URL do checkout da Kiwify com pré-preenchimento, UTMs, fbclid e o sck
+     (event_id do lead) — é o sck que o webhook usa para casar compra e lead. */
+  window.SP_urlCheckout = function (dados) {
+    var base = (window.AULA && window.AULA.checkoutUrl) || '';
+    var url = new URL(base);
+    var p = url.searchParams;
+    if (dados.nome)     p.set('name', dados.nome);
+    if (dados.email)    p.set('email', dados.email);
+    if (dados.telefone) p.set('phone', String(dados.telefone).replace(/\D/g, ''));
+    if (dados.event_id) p.set('sck', dados.event_id);
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'fbclid'].forEach(function (k) {
+      var v = dados[k] || sessionStorage.getItem(k);
+      if (v) p.set(k, v);
+    });
+    return url.toString();
+  };
+
+  var ultimoEnvio = null;
+
   window.submitForm = function (e) {
     if (erro) erro.classList.remove('on');
-    window.SP_handleSubmit(e, form, mostrarSucesso, mostrarErro);
+    ultimoEnvio = Object.fromEntries(new FormData(form));
+    window.SP_handleSubmit(e, form, function () {
+      // O SP_handleSubmit preenche event_id nos campos ocultos antes de enviar.
+      ultimoEnvio = Object.fromEntries(new FormData(form));
+      mostrarSucesso();
+    }, DESTINO === 'kiwify' ? mostrarSucesso : mostrarErro);
   };
 
   function mostrarSucesso() {
@@ -255,6 +288,17 @@
     var sucesso = document.getElementById('form-success');
     if (wrapper) wrapper.style.display = 'none';
     if (sucesso) sucesso.style.display = 'block';
+    if (DESTINO === 'kiwify') {
+      var dados = ultimoEnvio || {};
+      if (window.fbq && window.AULA) {
+        window.fbq('track', 'InitiateCheckout',
+          { content_name: 'Aula Gestão Operacional', currency: 'BRL', value: (window.AULA.precoCentavos || 0) / 100 },
+          { eventID: 'ic:' + (dados.event_id || '') });
+      }
+      marcar('checkout');
+      setTimeout(function () { window.location.href = window.SP_urlCheckout(dados); }, 1200);
+      return;
+    }
     setTimeout(function () { window.location.href = WHATSAPP_URL; }, 2500);
   }
 
