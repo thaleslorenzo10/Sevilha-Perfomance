@@ -217,6 +217,11 @@ bloqueia. Quando `ofertaDe(pagina) === AULA`: `Lead` CAPI com
   `content_ids [order_id]`. Dedupe por `sevilha_eventos_enviados`
   (`jaEnviados`/`marcarEnviados`). Responde 200 mesmo com CAPI fora; a falha
   vai em `capi_status` e no log.
+- Depois do `Purchase`, avança o deal `[AULA]` do contato no RD CRM para o
+  stage `RD_CRM_STAGE_ID_AULA_PAGO` (busca o deal pelo `deal_id` gravado no
+  lead quando o `sck` casa; fallback por e-mail). Sem a env ou sem deal, só
+  loga — a compra já está gravada. É isso que separa "inscreveu" de "pagou"
+  no CRM sem planilha manual.
 - Nunca com `META_TEST_EVENT_CODE` ativo em produção (skill `meta-capi`).
 
 ### Tabela — `sql/compras-aula.sql`
@@ -246,7 +251,7 @@ repassa do checkout.
 ### Envs (`.env.example`, com comentário de onde buscar)
 
 `KIWIFY_WEBHOOK_TOKEN` (Kiwify → Apps → Webhooks → token),
-`RD_CRM_STAGE_ID_AULA`, `RD_CRM_CAMPAIGN_ID_AULA`, `RD_CRM_PIPELINE_ID_AULA`;
+`RD_CRM_STAGE_ID_AULA`, `RD_CRM_STAGE_ID_AULA_PAGO`, `RD_CRM_CAMPAIGN_ID_AULA`, `RD_CRM_PIPELINE_ID_AULA`;
 acrescentar `/aula-gestao-operacional` em `PAGEVIEW_BEACON_PAGES`,
 `LEADS_SHEET_WRITE_PAGES` e `SESSAO_ESTRATEGICA_PAGINAS`. Em produção via
 Vercel; segredo nunca no chat.
