@@ -144,9 +144,13 @@ for (const pagina of PAGINAS) {
   ok(html.includes("localStorage.getItem('_sp_interno')"),
      'o Pixel respeita a marca de tráfego interno');
 
-  /* Poppins em dois pesos: cada peso a mais é um woff2 no caminho crítico. */
-  const fonte = (html.match(/family=Poppins:wght@([\d;]+)/) || [])[1] || '';
-  ok(fonte === '700;800', 'Poppins pedida em dois pesos', `pediu: ${fonte || '(nada)'}`);
+  /* Poppins em dois pesos: cada peso a mais é um woff2 no caminho crítico.
+     O Café não usa Poppins (título em Georgia, do sistema) — só as páginas
+     que a pedem são policiadas. */
+  if (html.includes('family=Poppins')) {
+    const fonte = (html.match(/family=Poppins:wght@([\d;]+)/) || [])[1] || '';
+    ok(fonte === '700;800', 'Poppins pedida em dois pesos', `pediu: ${fonte || '(nada)'}`);
+  }
 }
 
 /* ── 2. A página e o lib/porte.js concordam sobre o corte de 10 ───────── */
@@ -244,9 +248,21 @@ ok(/var continuarLiberado/.test(js), 'declara a flag continuarLiberado');
 ok(/continuarLiberado = true/.test(js), '#route-continuar libera continuarLiberado');
 ok(/fora && !continuarLiberado/.test(js), 'avaliarPasso1 só bloqueia quando fora do porte E não liberado');
 
+/* ── Destino inline (Café): sucesso na tela, sem redirecionar ─────────── */
+console.log('\nassets/form-steps.js — destino inline');
+ok(/DESTINO === 'inline'/.test(js), "trata o destino 'inline'");
+ok(/if \(DESTINO === 'inline'\) return;\n\s*setTimeout\(function \(\) \{ window\.location\.href = WHATSAPP_URL; \}/.test(js),
+   "no destino inline, mostrarSucesso retorna ANTES do redirecionamento para o WhatsApp");
+ok(/cafe: \{\n\s*1: \{/.test(js), 'TEXTOS_POR_OFERTA tem a entrada cafe');
+ok(/form\.dataset\.whatsapp/.test(js), 'lê data-whatsapp do form (o link de erro e o de sucesso deixam de ser só da Sessão)');
+ok(/form\.dataset\.rota/.test(js), 'lê data-rota do form (destino de quem está abaixo do porte)');
+ok(/clube\.href = comUtms\(ROTA_URL\)/.test(js), 'o link de rota passa por comUtms');
+
 console.log('\nassets/tracking.js — beacon');
 const tr = fs.readFileSync(path.join(RAIZ, 'assets/tracking.js'), 'utf8');
 ok(/PAGEVIEW_BEACON_PAGES = \[[^\]]*'\/aula-gestao-operacional'/.test(tr), 'página da aula no beacon');
+ok(/PAGEVIEW_BEACON_PAGES = \[[^\]]*'\/cafe-com-sevilha'/.test(tr), 'página do Café no beacon');
+ok(/window\.SP_comUtms = function/.test(tr), 'tracking.js expõe SP_comUtms (UTMs da sessão na URL de rota)');
 
 // Data e horário vêm de window.AULA e caem em células separadas, nos dois cards.
 const htmlAula = fs.readFileSync(path.join(RAIZ, 'aula-gestao-operacional/index.html'), 'utf8');
@@ -255,7 +271,7 @@ ok(/querySelectorAll\('#aula-hora, \[data-aula-hora\]'\)/.test(htmlAula), 'confi
 ok(!/btn-green/.test(htmlAula), 'submit sem a classe inerte btn-green');
 for (const p of PAGINAS) {
   const html = fs.readFileSync(path.join(RAIZ, p), 'utf8');
-  ok(/tracking\.js\?v=6/.test(html) && /form-steps\.js\?v=2/.test(html), `${p} com ?v= novo dos assets`);
+  ok(/tracking\.js\?v=7/.test(html) && /form-steps\.js\?v=3/.test(html), `${p} com ?v= novo dos assets`);
 }
 
 console.log(falhas === 0
