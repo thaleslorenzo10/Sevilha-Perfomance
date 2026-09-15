@@ -83,11 +83,12 @@ window.AULA = {
 
 Seções, na ordem:
 
-1. **Hero** — tag "Aula ao vivo · Zoom · {data} às 19h30". H1 "O projeto que
+1. **Hero** — sem tag acima do título. H1 "O projeto que
    transforma a **operação** de um escritório contábil — do mapeamento à
    margem" (marca verde na palavra). Sub: "2h10 de método aberto, com as 5
    planilhas que a Sevilha usa em cliente. Para dono de escritório com 10+
-   colaboradores." Preço `R$ 47`, botão "Garantir minha vaga" (`.open-modal`).
+   colaboradores." Cartão-ingresso com data, horário, Zoom, perfil 10+, `R$ 47` e
+   botão "Garantir vaga" (`.open-modal`) — ver Layout.
 2. **Reconhece o problema** — lista com as 6 frases do campo `problema`.
 3. **Por que contratar mais gente não resolveu** — técnica dominada, gestão
    sem número; ponte para o método.
