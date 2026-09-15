@@ -15,8 +15,10 @@ sheets.readLPTabs = async () => { throw new Error('planilha do Respondi indispon
 const linha = i => ({ id: i, created_at: '2026-09-11T12:00:00+00:00', pagina: '/mentoria', email: `u${i}@x.com`,
   telefone: '', utm_source: 'Instagram_Feed', utm_medium: 'HOT', utm_campaign: '[SE] [PÁGINA NOVA]', utm_content: 'AD 1',
   colaboradores: 'de_0_a_4', cargo: '' });
+// Compras da aula: a tabela ainda não existe (404) — não pode derrubar o payload.
 const pedidos = [];
 global.fetch = async (url, opts = {}) => {
+  if (String(url).includes('sevilha_compras_aula')) return { ok: false, status: 404, text: async () => 'relation does not exist' };
   pedidos.push({ url: String(url), range: opts.headers && opts.headers.Range });
   const ini = Number((opts.headers.Range || '0-').split('-')[0]);
   const lote = ini === 0 ? Array.from({ length: 1000 }, (_, i) => linha(i)) : [linha(1000)];
@@ -35,6 +37,7 @@ const { montarUnificados } = require('../lib/leads-fontes');
   const resp = r.fontes.find(f => f.nome === 'RESPONDI');
   assert.equal(resp.erro, 'planilha do Respondi indisponível', 'fonte que falha vira erro na resposta, não 502');
   assert.equal(r.fontes.find(f => f.nome === 'FORMS').modo, 'stub');
+  assert.equal(r.compras, null, 'compras indisponíveis viram null, sem perder os leads');
   assert.ok(r.gerado_em);
   console.log('✓ leads-fontes');
 })();

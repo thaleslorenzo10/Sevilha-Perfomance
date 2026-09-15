@@ -46,9 +46,11 @@ function corpo(extra = {}) {
     approved_date: '2026-10-01 20:00', ...extra,
   });
 }
+// Caminho de produção: @vercel/node já parseou o body; a assinatura é sobre JSON.stringify(body).
 function req(raw, sig) {
-  const s = sig ?? crypto.createHmac('sha1', 'tok').update(raw).digest('hex');
-  return { method: 'POST', url: `/api/kiwify-webhook?signature=${s}`, rawBody: raw, body: JSON.parse(raw), headers: {} };
+  const body = JSON.parse(raw);
+  const s = sig ?? crypto.createHmac('sha1', 'tok').update(JSON.stringify(body)).digest('hex');
+  return { method: 'POST', url: `/api/kiwify-webhook?signature=${s}`, body, headers: {} };
 }
 function res() { const r = {}; r.status = c => { r.code = c; return r; }; r.json = j => { r.dado = j; return r; }; r.end = () => r; return r; }
 const capi = () => chamadas.filter(c => c.u.includes('graph.facebook.com')).map(c => c.body.data[0]);
@@ -87,6 +89,11 @@ const upserts = () => chamadas.filter(c => c.u.includes('sevilha_compras_aula') 
   ok(r.code === 200, 'ainda responde 200');
   const u = chamadas.filter(c => c.u.includes('sevilha_compras_aula') && c.method === 'PATCH').pop();
   ok(u && /^erro:/.test(u.body.capi_status), 'capi_status gravado com o erro');
+
+  console.log('\napproved_date inesperada');
+  chamadas.length = 0; r = res(); await tratarKiwify(req(corpo({ order_id: 'o3', approved_date: 'lixo' })), r);
+  ok(r.code === 200, 'responde 200, não 500');
+  ok(upserts()[0] && Number.isFinite(Date.parse(upserts()[0].body.pago_em)), 'pago_em gravado (agora)');
 
   console.log('\nevento desconhecido');
   chamadas.length = 0; r = res(); await tratarKiwify(req(corpo({ webhook_event_type: 'pix_created', order_status: 'waiting_payment' })), r);

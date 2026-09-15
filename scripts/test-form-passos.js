@@ -218,7 +218,14 @@ if (trecho) {
   ok(url.searchParams.get('phone') === '31999990000', 'telefone só dígitos');
   ok(url.searchParams.get('sck') === 'ev_9', 'sck = event_id do lead');
   ok(url.searchParams.get('utm_source') === 'ig' && url.searchParams.get('fbclid') === 'f1', 'UTMs e fbclid repassados');
+
+  // checkoutUrl vazio (como a página é publicada) ou inválido: não lança, vai para o obrigado.
+  const semUrl = (aula) => new Function('window', 'sessionStorage', 'console', trecho[0] + ' return window.SP_urlCheckout;')(
+    { AULA: aula }, sandbox.sessionStorage, { warn() {} })({ event_id: 'ev_9' });
+  ok(semUrl({ checkoutUrl: '' }) === '/aula-gestao-operacional/obrigado', 'checkoutUrl vazio → obrigado, sem lançar');
+  ok(semUrl({ checkoutUrl: 'não é url' }) === '/aula-gestao-operacional/obrigado', 'checkoutUrl inválida → obrigado, sem lançar');
 }
+ok(/window\.AULA\.checkoutUrl\) \{\n\s*window\.fbq\('track', 'InitiateCheckout'/.test(js), 'InitiateCheckout só dispara com checkoutUrl');
 
 // No destino Kiwify, a falha de rede leva ao MESMO redirecionamento do
 // sucesso (o lead ficou no localStorage), então o callback de erro precisa
@@ -240,6 +247,12 @@ ok(/fora && !continuarLiberado/.test(js), 'avaliarPasso1 só bloqueia quando for
 console.log('\nassets/tracking.js — beacon');
 const tr = fs.readFileSync(path.join(RAIZ, 'assets/tracking.js'), 'utf8');
 ok(/PAGEVIEW_BEACON_PAGES = \[[^\]]*'\/aula-gestao-operacional'/.test(tr), 'página da aula no beacon');
+
+// Data e horário vêm de window.AULA e caem em células separadas, nos dois cards.
+const htmlAula = fs.readFileSync(path.join(RAIZ, 'aula-gestao-operacional/index.html'), 'utf8');
+ok(htmlAula.includes('id="aula-hora"') && htmlAula.includes('data-aula-hora'), 'células de horário (#aula-hora e [data-aula-hora]) existem');
+ok(/querySelectorAll\('#aula-hora, \[data-aula-hora\]'\)/.test(htmlAula), 'config escreve AULA.hora nas células de horário');
+ok(!/btn-green/.test(htmlAula), 'submit sem a classe inerte btn-green');
 for (const p of PAGINAS) {
   const html = fs.readFileSync(path.join(RAIZ, p), 'utf8');
   ok(/tracking\.js\?v=6/.test(html) && /form-steps\.js\?v=2/.test(html), `${p} com ?v= novo dos assets`);

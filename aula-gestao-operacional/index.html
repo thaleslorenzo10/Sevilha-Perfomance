@@ -177,7 +177,7 @@
   <div class="ingresso">
     <div class="corpo">
       <div><small>Data</small><b class="num" data-aula-data>Próxima turma</b></div>
-      <div><small>Horário</small><b class="num">19h30 (Brasília)</b></div>
+      <div><small>Horário</small><b class="num" data-aula-hora>19h30 (Brasília)</b></div>
       <div><small>Onde</small><b>Zoom, ao vivo</b></div>
       <div><small>Perfil</small><b>Escritórios com 10+ colaboradores</b></div>
     </div>
@@ -309,7 +309,7 @@
        </div>
 
        <div class="modal-foot" id="modal-foot" hidden>
-        <button type="submit" id="submit-btn" class="btn btn-green btn-full">Ir para o pagamento</button>
+        <button type="submit" id="submit-btn" class="btn btn-full">Ir para o pagamento</button>
         <p class="form-privacy">Sem spam. Só o contato do acesso à aula.</p>
        </div>
       </form>
@@ -327,13 +327,15 @@
 </div>
 
 <script>
-  // Data e noindex a partir de window.AULA — troca de turma sem tocar copy.
+  // Data, horário e noindex a partir de window.AULA — troca de turma sem tocar copy.
   (function () {
     var a = window.AULA || {};
     if (!a.data) return;
     var d = new Date(a.data + 'T12:00:00-03:00');
-    var txt = d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' }) + ' · ' + (a.hora || '19:30').replace(':', 'h');
+    var txt = d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
+    var hora = (a.hora || '19:30').replace(':', 'h') + ' (Brasília)';
     document.querySelectorAll('#aula-data, [data-aula-data]').forEach(function (el) { el.textContent = txt; });
+    document.querySelectorAll('#aula-hora, [data-aula-hora]').forEach(function (el) { el.textContent = hora; });
     var r = document.getElementById('meta-robots'); if (r) r.setAttribute('content', 'index, follow');
   })();
 </script>

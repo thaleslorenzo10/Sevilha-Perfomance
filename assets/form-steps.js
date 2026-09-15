@@ -267,10 +267,15 @@
   /* ── Envio ───────────────────────────────────────────── */
 
   /* URL do checkout da Kiwify com pré-preenchimento, UTMs, fbclid e o sck
-     (event_id do lead) — é o sck que o webhook usa para casar compra e lead. */
+     (event_id do lead) — é o sck que o webhook usa para casar compra e lead.
+     Sem checkoutUrl (ou com URL inválida) o lead já está salvo: segue para o
+     obrigado em vez de deixar a pessoa presa no modal. */
   window.SP_urlCheckout = function (dados) {
     var base = (window.AULA && window.AULA.checkoutUrl) || '';
-    var url = new URL(base);
+    var semCheckout = '/aula-gestao-operacional/obrigado';
+    var url;
+    if (!base) { console.warn('[aula] AULA.checkoutUrl vazio; indo para o obrigado'); return semCheckout; }
+    try { url = new URL(base); } catch (e) { console.warn('[aula] AULA.checkoutUrl inválida:', base, e.message); return semCheckout; }
     var p = url.searchParams;
     if (dados.nome)     p.set('name', dados.nome);
     if (dados.email)    p.set('email', dados.email);
@@ -306,7 +311,7 @@
     if (sucesso) sucesso.style.display = 'block';
     if (DESTINO === 'kiwify') {
       var dados = ultimoEnvio || {};
-      if (window.fbq && window.AULA) {
+      if (window.fbq && window.AULA && window.AULA.checkoutUrl) {
         window.fbq('track', 'InitiateCheckout',
           { content_name: 'Aula Gestão Operacional', currency: 'BRL', value: (window.AULA.precoCentavos || 0) / 100 },
           { eventID: 'ic:' + (dados.event_id || '') });
