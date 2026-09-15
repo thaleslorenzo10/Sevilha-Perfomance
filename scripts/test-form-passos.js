@@ -253,6 +253,7 @@ console.log('\nassets/form-steps.js — destino inline');
 ok(/DESTINO === 'inline'/.test(js), "trata o destino 'inline'");
 ok(/if \(DESTINO === 'inline'\) return;\n\s*setTimeout\(function \(\) \{ window\.location\.href = WHATSAPP_URL; \}/.test(js),
    "no destino inline, mostrarSucesso retorna ANTES do redirecionamento para o WhatsApp");
+ok(/DESTINO === 'inline' && sucesso\) \{ sucesso\.setAttribute\('tabindex', '-1'\); sucesso\.focus\(\); \}/.test(js), 'no destino inline o foco vai para #form-success');
 ok(/cafe: \{\n\s*1: \{/.test(js), 'TEXTOS_POR_OFERTA tem a entrada cafe');
 ok(/form\.dataset\.whatsapp/.test(js), 'lê data-whatsapp do form (o link de erro e o de sucesso deixam de ser só da Sessão)');
 ok(/form\.dataset\.rota/.test(js), 'lê data-rota do form (destino de quem está abaixo do porte)');

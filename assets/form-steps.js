@@ -13,11 +13,11 @@
  *   • quem abria convertia bem (5 de 8), então o gargalo era ABRIR;
  *   • 3 em cada 4 leads que o anúncio traz têm menos de 10 colaboradores, e
  *     só descobriam que a oferta não era para eles depois de digitar tudo.
- * Daí o desenho: o primeiro passo são duas perguntas de um toque cada (porte
- * e cargo), e o segundo pede contato. Quem está abaixo de 10 colaboradores
- * recebe o caminho do Clube da Performance no primeiro passo — e continua
- * podendo se inscrever, porque quem separa perfil é o time no CRM, não a
- * página (ver PRODUCT.md).
+ * Daí o desenho: o primeiro passo são duas perguntas de um toque cada (porte e cargo),
+ * e o segundo pede contato. Quem está abaixo de 10 colaboradores recebe, no primeiro
+ * passo, o caminho da oferta certa para o porte (o Clube por padrão; data-rota troca o
+ * destino — no Café é a aula paga) — e continua podendo se inscrever, porque quem
+ * separa perfil é o time no CRM, não a página (ver PRODUCT.md).
  * ── Contrato com o HTML ─────────────────────────────────────────────────
  * Ids esperados na página (ausentes = o trecho correspondente não roda):
  *   #modal-overlay #form-wrapper #sessao-form #modal-foot
@@ -308,6 +308,8 @@
     var sucesso = document.getElementById('form-success');
     if (wrapper) wrapper.style.display = 'none';
     if (sucesso) sucesso.style.display = 'block';
+    // Café: a confirmação fica na tela, então o foco vai para ela — o botão de enviar sumiu e o leitor de tela ficaria no <body>.
+    if (DESTINO === 'inline' && sucesso) { sucesso.setAttribute('tabindex', '-1'); sucesso.focus(); }
     if (DESTINO === 'kiwify') {
       var dados = ultimoEnvio || {};
       if (window.fbq && window.AULA && window.AULA.checkoutUrl) {

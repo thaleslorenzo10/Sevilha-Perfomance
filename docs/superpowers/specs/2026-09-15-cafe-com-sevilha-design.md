@@ -73,7 +73,7 @@ precisa de rewrite). CSS inline como as irmãs.
 --navy-deep  #07182b   fundo do formulário / rodapé
 --navy-card  #0b2239   cartões sobre navy
 --teal       #20a2a8   botões, kickers, filetes
---teal-ink   #167f85   teal legível sobre claro/creme (o #20a2a8 não passa 4.5:1 sobre branco)
+--teal-ink   #136f75   teal legível sobre claro/creme (#167f85 dava 4,02:1 sobre o creme; este dá 4,98:1)
 --teal-soft  #75d2d3   apoio sobre navy
 --cream      #f2ebdd   seção "Por que participar"
 --light      #eef5f6   seção "Uma mesa pequena"
