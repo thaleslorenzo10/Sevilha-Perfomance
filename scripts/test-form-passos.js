@@ -209,6 +209,16 @@ if (trecho) {
   ok(url.searchParams.get('utm_source') === 'ig' && url.searchParams.get('fbclid') === 'f1', 'UTMs e fbclid repassados');
 }
 
+// No destino Kiwify, a falha de rede leva ao MESMO redirecionamento do
+// sucesso (o lead ficou no localStorage), então o callback de erro precisa
+// ser o mesmo que releu o FormData depois do SP_populateHiddenFields — nunca
+// o `mostrarSucesso` bruto, que usaria o `ultimoEnvio` capturado ANTES do
+// event_id existir (checkout sem `sck`, Pixel com `eventID: 'ic:'` vazio).
+ok(/SP_handleSubmit\(e, form, (\w+), DESTINO === 'kiwify' \? \1 : mostrarErro\)/.test(js),
+   'no destino kiwify, onSuccess e onError chamam o MESMO callback (releitura do FormData)');
+ok(!/DESTINO === 'kiwify' \? mostrarSucesso : mostrarErro/.test(js),
+   'onError do destino kiwify não é o mostrarSucesso bruto (event_id ficaria da leitura antiga)');
+
 console.log('\nassets/tracking.js — beacon');
 const tr = fs.readFileSync(path.join(RAIZ, 'assets/tracking.js'), 'utf8');
 ok(/PAGEVIEW_BEACON_PAGES = \[[^\]]*'\/aula-gestao-operacional'/.test(tr), 'página da aula no beacon');

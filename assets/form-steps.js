@@ -276,11 +276,15 @@
   window.submitForm = function (e) {
     if (erro) erro.classList.remove('on');
     ultimoEnvio = Object.fromEntries(new FormData(form));
-    window.SP_handleSubmit(e, form, function () {
-      // O SP_handleSubmit preenche event_id nos campos ocultos antes de enviar.
+    // O SP_handleSubmit preenche event_id nos campos ocultos antes de chamar
+    // o callback de sucesso — mas no destino Kiwify o de erro também precisa
+    // reler o form, porque a falha de rede leva ao mesmo redirecionamento
+    // (o lead ficou no localStorage) e sem isso o checkout sairia sem sck.
+    var concluir = function () {
       ultimoEnvio = Object.fromEntries(new FormData(form));
       mostrarSucesso();
-    }, DESTINO === 'kiwify' ? mostrarSucesso : mostrarErro);
+    };
+    window.SP_handleSubmit(e, form, concluir, DESTINO === 'kiwify' ? concluir : mostrarErro);
   };
 
   function mostrarSucesso() {
