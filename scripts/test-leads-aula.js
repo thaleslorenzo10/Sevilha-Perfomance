@@ -38,12 +38,16 @@ function res() {
   return r;
 }
 const eventosCapi = () => chamadas.filter(c => c.url.includes('graph.facebook.com')).map(c => c.body.data[0]);
+async function enviar(body) {
+  chamadas.length = 0;
+  await handler(req(body), res());
+  return eventosCapi();
+}
+const valorDo = (ev, nome) => ev.find(e => e.event_name === nome).custom_data.value;
 
 (async () => {
   console.log('\n/aula-gestao-operacional');
-  chamadas.length = 0;
-  await handler(req({ nome: 'Teste', email: 't@x.com', telefone: '31999990000', pagina: '/aula-gestao-operacional', colaboradores: 'De 10 a 19', cargo: 'Dono/Sócio', event_id: 'ev_1' }), res());
-  const ev = eventosCapi();
+  const ev = await enviar({ nome: 'Teste', email: 't@x.com', telefone: '31999990000', pagina: '/aula-gestao-operacional', colaboradores: 'De 10 a 19', cargo: 'Dono/Sócio', event_id: 'ev_1' });
   const lead = ev.find(e => e.event_name === 'Lead');
   const ic   = ev.find(e => e.event_name === 'InitiateCheckout');
   ok(lead && lead.event_id === 'ev_1', 'Lead com o event_id do formulário');
@@ -52,11 +56,14 @@ const eventosCapi = () => chamadas.filter(c => c.url.includes('graph.facebook.co
   ok(ic && ic.custom_data.currency === 'BRL' && ic.custom_data.value === 47, 'InitiateCheckout com valor da aula');
   ok(ev.some(e => e.event_name === 'LeadQualificado'), 'LeadQualificado continua para 10+');
 
+  const ev3 = await enviar({ nome: 'Teste', email: 't3@x.com', telefone: '31999990002', pagina: '/aula-gestao-operacional', colaboradores: 'De 5 a 9', cargo: 'Dono/Sócio', event_id: 'ev_3', valor_centavos: '2700' });
+  ok(valorDo(ev3, 'Lead') === 27 && valorDo(ev3, 'InitiateCheckout') === 27, 'Lead e InitiateCheckout com value 27 (lote)');
+  const ev4 = await enviar({ nome: 'Teste', email: 't4@x.com', telefone: '31999990003', pagina: '/aula-gestao-operacional', colaboradores: 'De 10 a 19', cargo: 'Dono/Sócio', event_id: 'ev_4', valor_centavos: 'abc' });
+  ok(valorDo(ev4, 'Lead') === 47, 'valor_centavos inválido → 47 fixo da oferta');
+
   console.log('\n/mentoria (sem regressão)');
-  chamadas.length = 0;
-  await handler(req({ nome: 'Teste', email: 't2@x.com', telefone: '31999990001', pagina: '/mentoria', colaboradores: 'De 5 a 9', cargo: 'Dono/Sócio', event_id: 'ev_2' }), res());
-  const ev2 = eventosCapi();
-  ok(!ev2.some(e => e.event_name === 'InitiateCheckout'), 'sem InitiateCheckout fora da aula');
+  const ev2 = await enviar({ nome: 'Teste', email: 't2@x.com', telefone: '31999990001', pagina: '/mentoria', colaboradores: 'De 5 a 9', cargo: 'Dono/Sócio', event_id: 'ev_2', valor_centavos: '2700' });
+  ok(!ev2.some(e => e.event_name === 'InitiateCheckout') && valorDo(ev2, 'Lead') === 0, 'sem InitiateCheckout nem valor_centavos fora da aula');
   ok(ev2.find(e => e.event_name === 'Lead').custom_data.content_category === 'pre-inscricao', 'content_category antigo preservado');
 
   console.log(falhas ? `\n${falhas} falha(s)` : '\nTudo certo');

@@ -250,12 +250,38 @@ ok(/PAGEVIEW_BEACON_PAGES = \[[^\]]*'\/aula-gestao-operacional'/.test(tr), 'pág
 
 // Data e horário vêm de window.AULA e caem em células separadas, nos dois cards.
 const htmlAula = fs.readFileSync(path.join(RAIZ, 'aula-gestao-operacional/index.html'), 'utf8');
+const jsAula   = fs.readFileSync(path.join(RAIZ, 'aula-gestao-operacional/aula.js'), 'utf8');
 ok(htmlAula.includes('id="aula-hora"') && htmlAula.includes('data-aula-hora'), 'células de horário (#aula-hora e [data-aula-hora]) existem');
-ok(/querySelectorAll\('#aula-hora, \[data-aula-hora\]'\)/.test(htmlAula), 'config escreve AULA.hora nas células de horário');
+ok(/'#aula-hora, \[data-aula-hora\]'/.test(jsAula), 'aula.js escreve AULA.hora nas células de horário');
 ok(!/btn-green/.test(htmlAula), 'submit sem a classe inerte btn-green');
+
+// Lote: o preço sai só de AULA.lote.precoCentavos (o precoCentavos do topo
+// morreu) e a barra nunca inventa número — vendidosFora + Kiwify sobre ingressos.
+console.log('\naula — lote e porte livre');
+ok(/lote: \{/.test(htmlAula) && (htmlAula.match(/precoCentavos:/g) || []).length === 1, 'config tem AULA.lote e um único precoCentavos (dentro do lote)');
+ok(!/proximoPrecoCentavos|próximo lote/.test(htmlAula + jsAula), 'sem preço do próximo lote na página');
+ok((htmlAula.match(/role="progressbar"/g) || []).length === 2, 'barra do lote nos dois cartões (hero e fechamento)');
+ok((htmlAula.match(/data-preco/g) || []).length === 3, 'preço lido do lote nos dois cartões e no .trust do modal');
+ok(/name="valor_centavos"/.test(htmlAula) && /valor_centavos/.test(jsAula), 'hidden valor_centavos preenchido pelo aula.js');
+ok(/\(lote\.vendidosFora \|\| 0\) \+ vendidosKiwify/.test(jsAula), 'vendidos = vendidosFora + Kiwify');
+ok(/fetch\('\/api\/stats\?modo=aula', \{ cache: 'no-store' \}\)/.test(jsAula), 'contador busca /api/stats?modo=aula sem cache');
+ok(/\.catch\(function \(\) \{\}\)/.test(jsAula), 'falha do endpoint é silenciosa');
+ok(/esgotado/.test(jsAula) && !/agora R\$/.test(jsAula), 'esgotado troca só o rótulo, sem "agora R$"');
+// A gravação virou order bump no checkout da Kiwify: a página só a cita na FAQ.
+const semFaq = htmlAula.replace(/<details><summary>Preciso assistir ao vivo\?<\/summary>.*?<\/details>/s, '');
+ok(!/grava[çc][aã]o/i.test(semFaq), 'nenhuma menção a gravação fora da FAQ "Preciso assistir ao vivo?"');
+ok(/pode adicionar a gravação no checkout/.test(htmlAula), 'FAQ aponta a gravação para o checkout');
+ok(/<form id="sessao-form"[^>]*data-porte="livre"/.test(htmlAula), 'form da aula com data-porte="livre"');
+ok(/id="route-continuar"[^>]*\bhidden\b/.test(htmlAula), '"continuar mesmo assim" escondido na aula (não bloqueia)');
+ok(/fora && !continuarLiberado && form\.dataset\.porte !== 'livre'/.test(js), 'data-porte="livre" nunca bloqueia o cargo');
+ok(/\(window\.AULA\.lote \|\| \{\}\)\.precoCentavos/.test(js), 'InitiateCheckout lê o preço do lote');
+ok(!/AULA\.precoCentavos/.test(js), 'form-steps.js não lê mais AULA.precoCentavos');
+for (const p of ['mentoria/index.html', 'mentoria-2/index.html']) {
+  ok(!/data-porte="livre"/.test(fs.readFileSync(path.join(RAIZ, p), 'utf8')), `${p} continua bloqueando abaixo de 10 (sem data-porte)`);
+}
 for (const p of PAGINAS) {
   const html = fs.readFileSync(path.join(RAIZ, p), 'utf8');
-  ok(/tracking\.js\?v=6/.test(html) && /form-steps\.js\?v=2/.test(html), `${p} com ?v= novo dos assets`);
+  ok(/tracking\.js\?v=6/.test(html) && /form-steps\.js\?v=3/.test(html), `${p} com ?v= novo dos assets`);
 }
 
 console.log(falhas === 0

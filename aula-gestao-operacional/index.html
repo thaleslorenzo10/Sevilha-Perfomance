@@ -4,26 +4,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Aula ao vivo: o projeto de gestão operacional de um escritório contábil — Sevilha Performance</title>
-  <meta name="description" content="2h10 ao vivo com o método completo da Sevilha e as 5 planilhas usadas em cliente. Para donos de escritório contábil com 10+ colaboradores. R$ 47.">
+  <meta name="description" content="2h10 ao vivo com o método completo da Sevilha e as 5 planilhas usadas em cliente. Para donos de escritório contábil com 10+ colaboradores.">
   <meta name="robots" content="noindex, nofollow" id="meta-robots">
   <link rel="canonical" href="https://sevilha-perfomance.vercel.app/aula-gestao-operacional">
   <link rel="icon" href="/assets/logo-sevilha.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:title" content="O projeto que transforma a operação de um escritório contábil">
-  <meta property="og:description" content="Aula ao vivo, 2h10, com as 5 planilhas do método. Escritórios 10+. R$ 47.">
+  <meta property="og:description" content="Aula ao vivo, 2h10, com as 5 planilhas do método. Escritórios 10+.">
   <meta property="og:image" content="https://sevilha-perfomance.vercel.app/assets/og-aula.png">
   <meta property="og:url" content="https://sevilha-perfomance.vercel.app/aula-gestao-operacional">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/aula-gestao-operacional/aula.css?v=1">
+  <link rel="stylesheet" href="/aula-gestao-operacional/aula.css?v=2">
   <script>
     window.AULA = {
       data: '',                       // ISO 'AAAA-MM-DD'; vazia = noindex e "próxima turma"
       hora: '19:30',
-      checkoutUrl: '',                // https://pay.kiwify.com.br/...
-      precoCentavos: 4700,
+      checkoutUrl: '',                // checkout da OFERTA do lote atual na Kiwify
+      lote: {
+        nome: 'Lote 1',
+        precoCentavos: 2700,
+        ingressos: 100,               // tamanho do lote
+        vendidosFora: 73,             // vendas fechadas fora da Kiwify (Pix direto) — atualizar à mão
+        parcelas: 0,                  // >0 mostra "ou Nx de R$ X,XX"; 0 mostra só à vista
+      },
     };
   </script>
 
@@ -79,8 +85,11 @@
       <div><small>Perfil</small><b>Escritórios com 10+ colaboradores</b></div>
     </div>
     <div class="canhoto">
-      <span class="preco num">R$ 47<small>gravação por 7 dias inclusa</small></span>
+      <div class="oferta"><span class="preco num" data-preco>R$ 27</span><small>à vista no Pix ou cartão</small><small class="num" data-parcelas hidden></small></div>
       <button type="button" class="btn open-modal">Garantir vaga</button>
+      <div class="lote" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="73" aria-label="Lote 1: 73% vendido, 27 ingressos restantes">
+        <div class="lote-txt"><span class="num" data-lote-rotulo>Lote 1 · 73% vendido</span><span class="num" data-lote-restantes>27 ingressos</span></div><div class="trilha"><i data-lote-barra style="width:73%"></i></div>
+      </div>
     </div>
   </div>
 </div></section>
@@ -120,8 +129,7 @@
       <li>O método completo de gestão operacional da Sevilha, etapa por etapa</li>
       <li>5 planilhas: classificação de clientes, entregas e tempos, capacidade e meta operacional, acompanhamento diário, meta financeira e banco de oportunidades</li>
       <li>A capacidade produtiva teórica do seu time calculada ao vivo e confrontada com o tempo mapeado</li>
-      <li>Separar o que é problema estrutural do que é percepção do time</li>
-      <li>Gravação por 7 dias</li></ul></div>
+      <li>Separar o que é problema estrutural do que é percepção do time</li></ul></div>
     <div class="cartao"><span class="pilula dep">Depende de aplicação depois</span><ul>
       <li>Sanear as bases</li><li>Sustentar a agenda diária</li><li>Manter o ciclo de acompanhamento vivo</li>
       <li>Ganho de margem e produtividade — execução ao longo de meses</li></ul></div>
@@ -147,9 +155,9 @@
       <li>É dono ou sócio de escritório contábil com equipe estruturada, a partir de 10 colaboradores</li>
       <li>O escritório cresceu em carteira e em time, e a margem não acompanhou</li>
       <li>Já tentou contratar, treinar tecnicamente e trocar de sistema — e nenhum dos três resolveu</li></ul></div>
-    <div class="cartao"><h3>Não é para</h3><ul class="lista-nao">
-      <li>Contador autônomo</li><li>Escritório de 1 a 3 pessoas</li><li>Estudante</li><li>Funcionário operacional</li></ul>
-      <p style="margin-top:1rem">Tem menos de 10 colaboradores? O formato para o seu porte é o <a href="/campanha">Clube da Performance</a>.</p></div>
+    <div class="cartao"><h3>Menos de 10 colaboradores?</h3>
+      <p>A aula vale como método. Para a continuidade no seu porte, o caminho é o <a href="/campanha">Clube da Performance</a>.</p>
+      <p class="lista-nao">Não é para estudante nem para funcionário operacional.</p></div>
   </div>
 </div></section>
 
@@ -159,14 +167,13 @@
     <li>Ao vivo no Zoom, com sala controlada e chat moderado</li>
     <li>2h10 de conteúdo mais 15 minutos de perguntas</li>
     <li>Link por e-mail logo após a compra, e lembretes no WhatsApp na véspera, na manhã do dia e 30 minutos antes</li>
-    <li>Inscrições encerram 2 horas antes do início</li>
-    <li>Gravação disponível por 7 dias</li></ul></div>
+    <li>Inscrições encerram 2 horas antes do início</li></ul></div>
 </div></section>
 
 <section><div class="wrap faq">
   <h2>Perguntas frequentes</h2>
-  <details><summary>Preciso assistir ao vivo?</summary><p>É o ideal: as planilhas são preenchidas ao vivo e você tira dúvida na hora. Quem não puder tem a gravação por 7 dias.</p></details>
-  <details><summary>Meu escritório tem menos de 10 colaboradores. Vale?</summary><p>A aula foi desenhada para equipes estruturadas. Para o seu porte, o Clube da Performance entrega mais — e você pode se inscrever mesmo assim.</p></details>
+  <details><summary>Preciso assistir ao vivo?</summary><p>Sim — a aula acontece ao vivo, com as planilhas preenchidas na hora e perguntas no fim. Quem quiser rever depois pode adicionar a gravação no checkout.</p></details>
+  <details><summary>Meu escritório tem menos de 10 colaboradores. Vale?</summary><p>Vale: você sai com o método e as planilhas. Para a continuidade no seu porte, o caminho é o Clube da Performance.</p></details>
   <details><summary>O que acontece depois da aula?</summary><p>Você sai com o método e as planilhas para aplicar. Quem quiser conversar sobre o próprio escritório recebe o convite no fim da aula.</p></details>
   <details><summary>E se eu quiser reembolso?</summary><p>Garantia de 7 dias pela Kiwify, sem perguntas.</p></details>
   <details><summary>É a mentoria da Sevilha?</summary><p>Não. É o método da Consultoria Performance — o projeto que a Sevilha executa em escritórios de 10+ — aberto em uma aula.</p></details>
@@ -181,7 +188,13 @@
       <div><small>Onde</small><b>Zoom, ao vivo</b></div>
       <div><small>Perfil</small><b>Escritórios com 10+ colaboradores</b></div>
     </div>
-    <div class="canhoto"><span class="preco num">R$ 47<small>gravação por 7 dias inclusa</small></span><button type="button" class="btn open-modal">Garantir vaga</button></div>
+    <div class="canhoto">
+      <div class="oferta"><span class="preco num" data-preco>R$ 27</span><small>à vista no Pix ou cartão</small><small class="num" data-parcelas hidden></small></div>
+      <button type="button" class="btn open-modal">Garantir vaga</button>
+      <div class="lote" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="73" aria-label="Lote 1: 73% vendido, 27 ingressos restantes">
+        <div class="lote-txt"><span class="num" data-lote-rotulo>Lote 1 · 73% vendido</span><span class="num" data-lote-restantes>27 ingressos</span></div><div class="trilha"><i data-lote-barra style="width:73%"></i></div>
+      </div>
+    </div>
   </div>
 </div></section>
 
@@ -201,7 +214,7 @@
         <p class="modal-sub" id="modal-sub">A aula foi desenhada para escritórios com equipe estruturada. Isso ajuda a gente a preparar o material.</p>
       </div>
 
-      <form id="sessao-form" onsubmit="submitForm(event)" data-destino="kiwify" data-textos="aula">
+      <form id="sessao-form" onsubmit="submitForm(event)" data-destino="kiwify" data-textos="aula" data-porte="livre">
        <div class="modal-body">
 
         <!-- ── Passo 1: perfil ── -->
@@ -225,11 +238,11 @@
           </fieldset>
 
           <div class="route" id="route-porte">
-            <strong>A aula foi feita para escritórios com 10+ colaboradores.</strong>
-            Para o seu porte, o Clube da Performance entrega mais.
+            <strong>Menos de 10 colaboradores?</strong>
+            A aula é o método; para o dia a dia do seu porte, o Clube da Performance é a continuidade.
             <div class="route-acoes">
               <a href="/campanha" id="clube-link">Ver o Clube da Performance</a>
-              <a href="#" id="route-continuar" class="secundario">Continuar mesmo assim</a>
+              <a href="#" id="route-continuar" class="secundario" hidden>Continuar mesmo assim</a>
             </div>
           </div>
 
@@ -257,9 +270,9 @@
           <button type="button" class="voltar" id="voltar-passo-1">← Mudar as respostas</button>
 
           <div class="trust">
-            <span><b>R$ 47</b></span>
+            <span><b class="num" data-preco>R$ 27</b></span>
             <span>2h10 ao vivo</span>
-            <span>Gravação por 7 dias</span>
+            <span>Zoom, ao vivo</span>
             <span>Dados usados só para o acesso (LGPD)</span>
           </div>
 
@@ -306,6 +319,7 @@
         <input type="hidden" name="page_url"     />
         <input type="hidden" name="user_agent"   />
         <input type="hidden" name="pagina" value="/aula-gestao-operacional" />
+        <input type="hidden" name="valor_centavos" value="" />
        </div>
 
        <div class="modal-foot" id="modal-foot" hidden>
@@ -326,20 +340,8 @@
   </div>
 </div>
 
-<script>
-  // Data, horário e noindex a partir de window.AULA — troca de turma sem tocar copy.
-  (function () {
-    var a = window.AULA || {};
-    if (!a.data) return;
-    var d = new Date(a.data + 'T12:00:00-03:00');
-    var txt = d.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long' });
-    var hora = (a.hora || '19:30').replace(':', 'h') + ' (Brasília)';
-    document.querySelectorAll('#aula-data, [data-aula-data]').forEach(function (el) { el.textContent = txt; });
-    document.querySelectorAll('#aula-hora, [data-aula-hora]').forEach(function (el) { el.textContent = hora; });
-    var r = document.getElementById('meta-robots'); if (r) r.setAttribute('content', 'index, follow');
-  })();
-</script>
+<script src="/aula-gestao-operacional/aula.js?v=1" defer></script>
 <script src="/assets/tracking.js?v=6" defer></script>
-<script src="/assets/form-steps.js?v=2" defer></script>
+<script src="/assets/form-steps.js?v=3" defer></script>
 </body>
 </html>
