@@ -9,6 +9,7 @@ página e documento discordarem, a página vence e este arquivo se atualiza.
 |---|---|---|
 | `/mentoria` (v1) | Persuade | Pilha vertical de seções |
 | `/mentoria-2` (v2) | Persuade | Bento grid de 12 colunas |
+| `/aula-gestao-operacional` | Persuade | Pilha vertical, mundo "ingresso" — tokens próprios em `aula-gestao-operacional/aula.css` (`--roxo #150C43`, `--neon #50DC00`, fundo `#f3f1fa`); mesmo modal de `assets/form-steps.js` com `data-destino="kiwify"` |
 
 As duas rodam em teste A/B por `/diagnostico`, com cookie `_sp_variant_se`.
 

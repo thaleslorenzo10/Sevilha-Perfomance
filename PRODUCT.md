@@ -21,6 +21,13 @@ Duas ofertas dividem o mesmo repositório e a mesma stack, e é fácil confundi-
 | Destino | WhatsApp para agendar a reunião | Grupo de WhatsApp / fila de vagas |
 | Marca no CRM | deal prefixado `[SE]` | deal sem prefixo |
 
+Terceira oferta, desde 15/09/2026: **Aula paga "Gestão Operacional"** — aula ao
+vivo de 2h10 no Zoom, R$ 47, conduzida pelo Bruno, para escritórios 10+. Página
+`/aula-gestao-operacional`, lead capturado antes do checkout (deal `[AULA]`),
+compra na Kiwify, `Purchase` pelo webhook. O convite do fim da aula é a Sessão
+Estratégica — a página nunca vende a sessão. Spec em
+`docs/superpowers/specs/2026-09-15-aula-gestao-operacional-design.md`.
+
 Confundir as duas é o erro mais caro do projeto: manda o público errado para a
 oferta errada e ensina o Meta a buscar mais gente fora do perfil.
 
@@ -74,7 +81,9 @@ página fala com quem decide, sem hostilizar quem indica.
 ## Restrições técnicas que moldam a página
 
 - HTML estático numa conta **Vercel Hobby**: no máximo **12 serverless
-  functions** por deploy, e o projeto usa 11. Endpoint novo derruba o deploy.
+  functions** por deploy, e o projeto usa **12** (o teto). Endpoint novo derruba o
+  deploy — rota nova entra por rewrite numa function existente (padrão de
+  `/api/crm-webhook` e `/api/kiwify-webhook` em `api/eventos-qualificados.js`).
 - O formulário posta em `/api/leads`, que grava no Supabase, na planilha, no RD
   Marketing, no RD CRM e dispara `Lead` e `LeadQualificado` na CAPI do Meta. Os
   campos e o `name=` de cada um são contrato: mudar quebra a integração.
