@@ -28,6 +28,11 @@ if (typeof lu.agregarCompras === 'function') {
   ok(r.por_dia.find(d => d.dia === '2026-10-01').compras === 1, 'pago_em convertido para o dia no fuso do painel');
   ok(r.por_campanha[0].campanha === '[AULA] T' && r.por_campanha[0].compras === 1, 'por_campanha pela utm_campaign');
   ok(r.compradores_com_sessao === 1, 'comprador com deal [SE] depois da compra conta');
+
+  // Compra paga no período mesmo sem nenhum lead AULA criado no período (lead
+  // antigo, compra tardia): agregarCompras não depende de `leads` para achar a compra.
+  const semLeadNoPeriodo = lu.agregarCompras({ compras, leads: [], deals: [], since: '2026-10-01', until: '2026-10-31' });
+  ok(semLeadNoPeriodo.total === 1, 'compra no período conta mesmo sem lead AULA no período');
 }
 
 console.log(falhas ? `\n${falhas} falha(s)` : '\nTudo certo');
