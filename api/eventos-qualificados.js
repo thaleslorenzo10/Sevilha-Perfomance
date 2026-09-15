@@ -215,21 +215,10 @@ function segredoConfere(req) {
 module.exports = async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
 
-  // O webhook do RD CRM entra pela mesma função (o plano Hobby limita o deploy
-  // a 12 funções e o projeto está em 11). Autenticação própria: o segredo do
-  // cron não vai numa configuração feita dentro de ferramenta de terceiro.
+  // Webhooks do RD CRM e da Kiwify entram pela mesma função (Hobby limita a 12).
   const caminho = String(req.url || '');
-
-  // Webhook da Kiwify (aula paga) — mesma função pelo mesmo motivo do CRM.
-  if (req.method === 'POST' && caminho.includes('kiwify-webhook')) {
-    const { tratarKiwify } = require('../lib/kiwify');
-    return tratarKiwify(req, res);
-  }
-
-  if (req.method === 'POST' && (caminho.includes('crm-webhook') || caminho.includes('fonte=crm'))) {
-    const { tratarWebhook } = require('../lib/crm-eventos');
-    return tratarWebhook(req, res);
-  }
+  if (req.method === 'POST' && caminho.includes('kiwify-webhook')) return require('../lib/kiwify').tratarKiwify(req, res);
+  if (req.method === 'POST' && (caminho.includes('crm-webhook') || caminho.includes('fonte=crm'))) return require('../lib/crm-eventos').tratarWebhook(req, res);
 
   if (req.method !== 'GET' && req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
