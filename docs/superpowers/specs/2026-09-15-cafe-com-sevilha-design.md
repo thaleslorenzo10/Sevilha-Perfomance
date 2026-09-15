@@ -127,7 +127,8 @@ mesmo mecanismo que a aula paga já usa — atributos `data-*` no `<form>`, não
 cópia do arquivo:
 
 ```html
-<form id="sessao-form" onsubmit="submitForm(event)" data-destino="inline" data-textos="cafe">
+<form id="sessao-form" onsubmit="submitForm(event)" data-destino="inline" data-textos="cafe"
+      data-whatsapp="https://wa.me/5531999491532?text=…">
 ```
 
 Em `assets/form-steps.js`:
@@ -138,8 +139,12 @@ Em `assets/form-steps.js`:
   "Nossa equipe entra em contato com as próximas informações do encontro."
 - `DESTINO` aceita um terceiro valor, `'inline'`: `mostrarSucesso()` mostra o
   `#form-success` e **não agenda redirecionamento** nenhum (nem WhatsApp nem
-  checkout). Sem atributo, o comportamento é o de hoje — `/mentoria`,
-  `/mentoria-2` e a aula não mudam.
+  checkout).
+- `data-whatsapp` troca a URL que `#err-wa` e `#wa-link` recebem — sem isso os
+  dois links do Café abririam o WhatsApp com a mensagem da Sessão Estratégica.
+
+Sem atributo, o comportamento é o de hoje — `/mentoria`, `/mentoria-2` e a
+aula não mudam.
 
 ### HTML do modal na página do Café
 
@@ -224,10 +229,10 @@ página mapear.
 
 `PAGEVIEW_BEACON_PAGES` ganha `'/cafe-com-sevilha'`. É lista hardcoded no
 cliente, servida como `immutable` por um ano — então o `?v=` do `tracking.js`
-sobe de 6 para 7 nas seis páginas que o carregam (`index.html`, `mentoria`,
-`mentoria-2`, `pre-inscricao-2`, `pre-inscricao-3`, `aula-gestao-operacional`)
-e na nova; o do `form-steps.js` sobe de 2 para 3 nas três que o carregam
-(`mentoria`, `mentoria-2`, `aula-gestao-operacional`) e na nova.
+sobe de 6 para 7 nas páginas do beacon (`mentoria`, `mentoria-2`,
+`aula-gestao-operacional`) e na nova, e o do `form-steps.js` sobe de 2 para 3
+nas mesmas. `index.html` e `pre-inscricao-*` ficam em `?v=4`, como a aula os
+deixou: não estão no beacon, a lista não muda nada para eles.
 
 ### Ambiente
 
