@@ -21,7 +21,8 @@ const supabase = [
   { id: 13, created_at: '2026-09-11T16:00:00+00:00', pagina: 'rd:cafe-com-sevilha', email: 'antigo@x.com', telefone: '', utm_source: '', utm_medium: '', utm_campaign: '', utm_content: '', colaboradores: '', cargo: '' },
 ];
 
-const r = U.unificar({ forms, respondi, supabase }, '2026-09-10', '2026-09-13');
+(async () => {
+const r = await U.unificar({ forms, respondi, supabase }, '2026-09-10', '2026-09-13');
 
 // a@x.com aparece no FORMS (dia 10) e no Respondi (dia 12, e-mail com caixa e espaço): conta uma vez, na primeira data.
 // telefone 11999990000 aparece no lead 10 (e-mail c@x.com) e no 11 (só telefone): lead 11 é repetição.
@@ -63,8 +64,9 @@ assert.equal(fForms.dias_sem_lead, 2);
 assert.equal(r.fontes.find(f => f.nome === 'RESPONDI').total_no_periodo, 0);
 
 // Etiqueta quebrada quando o único registro é o quebrado.
-const q = U.unificar({ forms: [], respondi: [], supabase: [supabase[1]] }, '2026-09-13', '2026-09-13');
+const q = await U.unificar({ forms: [], respondi: [], supabase: [supabase[1]] }, '2026-09-13', '2026-09-13');
 assert.equal(q.por_campanha[0].campanha, U.ETIQUETA_QUEBRADA);
 assert.equal(q.por_campanha[0].grupo, 'SE', 'sem campanha legível, a página /mentoria-2 diz o grupo');
 assert.equal(q.por_fonte[0].fonte, U.ETIQUETA_QUEBRADA);
 console.log('✓ leads-unificados');
+})();

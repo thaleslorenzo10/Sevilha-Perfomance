@@ -23,6 +23,7 @@ const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 const FUNIS = {
   SE: { id: '68d152fa949ae20022df32cb', nome: 'Sessão Estratégica' },
   CP: { id: '69d52f54c0b8000015d2e7b9', nome: 'Clube da Performance' },
+  ...(process.env.RD_CRM_PIPELINE_ID_AULA ? { AULA: { id: process.env.RD_CRM_PIPELINE_ID_AULA, nome: 'Aula paga' } } : {}),
 };
 
 async function getJSON(url) {

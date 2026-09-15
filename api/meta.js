@@ -117,7 +117,7 @@ async function montarMeta(since, until) {
 
     // ── Agregados ────────────────────────────────────────────────────────
     const conta    = emptyBucket();
-    const grupos   = { CP: emptyBucket(), SE: emptyBucket(), CAFE: emptyBucket(), OUTROS: emptyBucket() };
+    const grupos   = { CP: emptyBucket(), SE: emptyBucket(), CAFE: emptyBucket(), AULA: emptyBucket(), OUTROS: emptyBucket() };
     // Formato só faz sentido dentro das campanhas de captação ([CP]/[SE]/[CAFÉ]).
     const formatos = { FORMS: emptyBucket(), LP: emptyBucket() };
 
@@ -142,6 +142,7 @@ async function montarMeta(since, until) {
       CP:    { spend: 0, leads: 0 },
       SE:    { spend: 0, leads: 0 },
       CAFE:  { spend: 0, leads: 0 },
+      AULA:  { spend: 0, leads: 0 },
       FORMS: { spend: 0, leads: 0 },
       LP:    { spend: 0, leads: 0 },
     });
@@ -176,6 +177,7 @@ async function montarMeta(since, until) {
         CP:    { spend: round2(d.CP.spend),    leads: d.CP.leads },
         SE:    { spend: round2(d.SE.spend),    leads: d.SE.leads },
         CAFE:  { spend: round2(d.CAFE.spend),  leads: d.CAFE.leads },
+        AULA:  { spend: round2(d.AULA.spend),  leads: d.AULA.leads },
         FORMS: { spend: round2(d.FORMS.spend), leads: d.FORMS.leads },
         LP:    { spend: round2(d.LP.spend),    leads: d.LP.leads },
       }));
@@ -187,6 +189,7 @@ async function montarMeta(since, until) {
         CP:     withDerived(grupos.CP),
         SE:     withDerived(grupos.SE),
         CAFE:   withDerived(grupos.CAFE),
+        AULA:   withDerived(grupos.AULA),
         OUTROS: withDerived(grupos.OUTROS),
       },
       formatos: {
