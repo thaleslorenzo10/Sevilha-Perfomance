@@ -261,7 +261,9 @@ Expected: `0 errors`; contagem de avisos igual à que `npm run lint` mostrava an
 - Modify: `scripts/test-form-passos.js:147-149` (Poppins condicional) e bloco final (checagens novas)
 
 **Interfaces:**
-- Produces: `<form id="sessao-form" data-destino="inline" data-textos="cafe" data-whatsapp="<url>">` → modal mostra `#form-success` sem redirecionar; textos do Café nos dois passos; `#wa-link` e `#err-wa` apontam para `data-whatsapp`. Sem atributos, comportamento idêntico ao de hoje.
+- Produces: `<form id="sessao-form" data-destino="inline" data-textos="cafe" data-whatsapp="<url>" data-rota="<url>">` → modal mostra `#form-success` sem redirecionar; textos do Café nos dois passos; `#wa-link` e `#err-wa` apontam para `data-whatsapp`; `#clube-link` aponta para `data-rota` (padrão `/campanha`) **com as UTMs da `sessionStorage` anexadas** (helper `comUtms`, refeito no click). Sem atributos, comportamento idêntico ao de hoje — exceto que o link de rota das irmãs passa a carregar UTM.
+
+> **Emenda 15/09 (decisão do cliente, durante a onda 1):** quem tem menos de 10 vai para a aula paga, sempre com UTM. Entrou por mensagem ao implementador: `var ROTA_URL = form.dataset.rota || CLUBE_URL;`, helper `comUtms(url)` que anexa `utm_source utm_medium utm_campaign utm_term utm_content fbclid gclid` lidos da `sessionStorage`, `clube.href = comUtms(ROTA_URL)` na carga e no click; teste ganha `ok(/form\.dataset\.rota/.test(js), …)` e `ok(/function comUtms\(/.test(js) && /clube\.href = comUtms\(ROTA_URL\)/.test(js), …)`.
 - Produces: `PAGEVIEW_BEACON_PAGES` inclui `'/cafe-com-sevilha'` → `SP_marcar` e o beacon de visita funcionam na página nova.
 
 - [ ] **Step 1: Checagens novas no teste (falham primeiro)**
@@ -553,7 +555,7 @@ Cole o modal de `aula-gestao-operacional/index.html` (linhas 191-322, do coment�
 
 1. `<form id="sessao-form" onsubmit="submitForm(event)" data-destino="kiwify" data-textos="aula">` → `<form id="sessao-form" onsubmit="submitForm(event)" data-destino="inline" data-textos="cafe" data-whatsapp="https://wa.me/5531999491532?text=Ol%C3%A1!%20Quero%20manifestar%20interesse%20no%20Caf%C3%A9%20com%20Sevilha.">`
 2. `#modal-title` inicial: "Duas perguntas rápidas"; `#modal-sub` inicial: "Elas definem se o Café com Sevilha é o formato certo para o seu escritório."
-3. `#route-porte`: `<strong>O Café é para escritórios com mais de 10 colaboradores.</strong> Para o seu porte, o Clube da Performance é o caminho certo.` — links: "Conhecer o Clube da Performance" (`#clube-link`) e "Continuar mesmo assim" (`#route-continuar`).
+3. `#route-porte`: `<strong>O Café é para escritórios com mais de 10 colaboradores.</strong> Para o seu porte, a aula de Gestão Operacional é o caminho certo.` — links: `<a href="/aula-gestao-operacional" id="clube-link">Conhecer a aula</a>` e "Continuar mesmo assim" (`#route-continuar`). **Emenda 15/09:** o form ganha `data-rota="/aula-gestao-operacional"`; o `form-steps.js` anexa as UTMs sozinho.
 4. `.dica` do cargo: "O Café é pensado para quem decide."
 5. `#route-cargo`: `<strong>O Café é pensado para quem decide.</strong> Se o dono ou sócio for participar, cadastre em nome dele.`
 6. Remova o `<div class="trust">…</div>` inteiro (era preço/gravação da aula).
