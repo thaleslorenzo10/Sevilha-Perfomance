@@ -51,11 +51,23 @@ const SESSAO_ESTRATEGICA = {
   campaignEnv: 'RD_CRM_CAMPAIGN_ID_SE',
 };
 
+// Aula paga: o lead nasce aqui e a compra fecha na Kiwify (lib/kiwify.js).
+const AULA = {
+  rotulo:      'Aula Gestão Operacional',
+  marca:       '[AULA]',
+  conversao:   'aula-gestao-operacional',
+  tags:        ['aula', 'gestao-operacional'],
+  stageEnv:    'RD_CRM_STAGE_ID_AULA',
+  campaignEnv: 'RD_CRM_CAMPAIGN_ID_AULA',
+  valor:       47,
+};
+
 // Toda página nova da Sessão Estratégica precisa entrar aqui. Fora do mapa, o
 // lead cai no padrão e entra no funil do Clube da Performance — silenciosamente.
 const OFERTAS = {
   '/mentoria':   SESSAO_ESTRATEGICA,
   '/mentoria-2': SESSAO_ESTRATEGICA,
+  '/aula-gestao-operacional': AULA,
 };
 
 const OFERTA_PADRAO = {
@@ -264,6 +276,10 @@ async function sendToRDCRM(data) {
 
   // TODOS os novos deals vão pro Geraldo Tadeu (100% dos leads)
   const GERALDO_USER_ID = '68e6e08c6c2ac10017538422';
+
+  if (oferta.stageEnv && !process.env[oferta.stageEnv]) {
+    console.warn(`[RD CRM] ${oferta.stageEnv} não definido — deal ${oferta.marca} cai no stage padrão`);
+  }
 
   const deal = {
     name:           nomeDoDeal(data, oferta),
@@ -523,8 +539,12 @@ module.exports = async function handler(req, res) {
     ip, userAgent: ua, quandoMs: eventTime * 1000,
   });
 
+  const oferta = ofertaDe(pagina);
   const customData = {
-    content_name: pagina, content_category: 'pre-inscricao', currency: 'BRL', value: 0,
+    content_name: pagina,
+    content_category: oferta.valor ? 'aula' : 'pre-inscricao',
+    currency: 'BRL',
+    value: oferta.valor || 0,
   };
   if (utm_source)   customData.utm_source   = utm_source;
   if (utm_medium)   customData.utm_medium   = utm_medium;
@@ -556,6 +576,16 @@ module.exports = async function handler(req, res) {
       actionSource: 'website',
     }),
     enviarLeadQualificado(leadData, { userData, eventTime, sourceUrl, referrerUrl }),
+    oferta.valor ? enviarEvento({
+      evento:       'InitiateCheckout',
+      eventId:      `ic:${finalEventId}`,
+      quando:       eventTime,
+      userData,
+      customData:   { content_name: oferta.rotulo, currency: 'BRL', value: oferta.valor },
+      sourceUrl,
+      referrerUrl,
+      actionSource: 'website',
+    }) : Promise.resolve(null),
   ]);
 
   const capiData = capiResult.status === 'fulfilled' ? capiResult.value : {};
