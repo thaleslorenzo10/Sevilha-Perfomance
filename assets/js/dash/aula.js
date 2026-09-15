@@ -17,7 +17,8 @@
   </div></div>
   <div class="section"><div class="section-title">🎟️ Funil da aula</div><div id="funilAULA"></div></div>
   <div class="section"><div class="section-title">📈 Compras por dia</div><div class="chart-wrap" style="height:240px"><canvas id="chartAulaDia"></canvas></div></div>
-  <div class="section"><div class="section-title">🎯 Compras por campanha</div><div class="table-wrap"><table id="tblComprasAULA"></table></div></div>`;
+  <div class="section"><div class="section-title">🎯 Compras por campanha <div class="section-tools"><button class="btn-csv" type="button" data-csv="tblComprasAULA">Exportar CSV</button></div></div><div class="table-wrap"><table id="tblComprasAULA"></table></div></div>`;
+  const COLUNAS_COMPRAS = ['campanha', 'compras', 'receita', 'custo_compra', 'roas'];
 
   let chart;
   function graficoAulaDia(dias, compras) {
@@ -44,16 +45,6 @@
     });
   }
 
-  function tabelaCompras(rows) {
-    const table = document.getElementById('tblComprasAULA');
-    if (!table) return;
-    const th = '<tr><th>Campanha</th><th class="num">Compras</th><th class="num">Receita</th><th class="num">Custo/compra</th><th class="num">ROAS</th></tr>';
-    const tr = r => `<tr><td>${D.esc(r.campanha)}</td><td class="num">${D.fmtN(r.compras)}</td><td class="num">${D.fmtR(r.receita)}</td>`
-      + `<td class="num">${D.orDash(r.custo_compra, D.fmtR)}</td><td class="num">${r.roas === null ? '—' : r.roas.toFixed(2) + 'x'}</td></tr>`;
-    const corpo = rows.length ? rows.map(tr).join('') : '<tr><td colspan="5" class="vazio">Sem compras no período</td></tr>';
-    table.innerHTML = `<thead>${th}</thead><tbody>${corpo}</tbody>`;
-  }
-
   function kpis(d, c, spend, pg) {
     const sessoesSE = d.rd && d.rd.funis && d.rd.funis.SE ? d.rd.funis.SE.total : null;
     D.setK('AULA-compras', D.fmtN(c.total));
@@ -71,12 +62,14 @@
 
   function linhasCompras(d, c) {
     return c.por_campanha.map(r => {
-      const m = (d.meta.campanhas || []).find(x => x.nome === r.campanha);
+      const chave = D.nomeChave(r.campanha);
+      const m = (d.meta.campanhas || []).find(x => D.nomeChave(x.nome) === chave);
       const gasto = m ? m.spend : 0;
+      const receita = r.receita_centavos / 100;
       return {
-        campanha: r.campanha, compras: r.compras, receita: r.receita_centavos / 100,
-        custo_compra: r.compras ? gasto / r.compras : null,
-        roas: gasto ? (r.receita_centavos / 100) / gasto : null,
+        campanha: r.campanha, compras: r.compras, receita,
+        custo_compra: D.razao(gasto, r.compras),
+        roas: D.razao(receita, gasto),
       };
     });
   }
@@ -98,6 +91,6 @@
       { rotulo: 'Sessão agendada', valor: c.compradores_com_sessao },
     ]);
     graficoAulaDia(c.por_dia.map(x => x.dia), c.por_dia.map(x => x.compras));
-    tabelaCompras(linhasCompras(d, c));
+    D.tabela('tblComprasAULA', linhasCompras(d, c), COLUNAS_COMPRAS, { total: false, vazio: 'Sem compras no período' });
   };
 })(window.SPD = window.SPD || {});

@@ -19,6 +19,10 @@
     meta_reporta: { titulo: 'Meta reporta', fmt: r => D.fmtN(r.meta_reporta), num: true },
     deals:        { titulo: 'Deals',        fmt: r => D.fmtN(r.deals), num: true },
     lead_deal:    { titulo: 'Lead → Deal',  fmt: r => D.orDash(r.lead_deal, D.fmtP), num: true },
+    compras:      { titulo: 'Compras',      fmt: r => D.fmtN(r.compras), num: true },
+    receita:      { titulo: 'Receita',      fmt: r => D.fmtR(r.receita), num: true },
+    custo_compra: { titulo: 'Custo/compra', fmt: r => D.orDash(r.custo_compra, D.fmtR), num: true },
+    roas:         { titulo: 'ROAS',         fmt: r => D.orDash(r.roas, v => v.toFixed(2) + 'x'), num: true },
   };
   D.COLUNAS_CRUZAMENTO = ['nome', 'spend', 'leads', 'mql', 'mql_pct', 'cpl', 'cpmql', 'meta_reporta'];
 
