@@ -56,7 +56,7 @@
     D.renderAlertas(d);
     D.renderGeral(d);
     seExiste(D.renderFormatos, d);
-    for (const g of ['SE', 'CAFE', 'CP']) seExiste(D.renderGrupo, g, d);
+    for (const g of ['SE', 'CAFE', 'CP', 'AULA']) seExiste(D.renderGrupo, g, d);
     seExiste(D.renderOrigem, d);
     seExiste(D.renderAb, d);
   }

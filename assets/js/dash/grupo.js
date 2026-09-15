@@ -1,8 +1,8 @@
 'use strict';
 /* Abas [SE], [CAFÉ] e [CP]: mesma composição, filtrada pelo grupo. */
 (function (D) {
-  const NOME = { SE: 'Sessão Estratégica', CAFE: 'Café com Sevilha', CP: 'Clube da Performance' };
-  const FUNIL_RD = { SE: 'SE', CP: 'CP' }; // chave em rd.funis; o Café não tem funil próprio no CRM
+  const NOME = { SE: 'Sessão Estratégica', CAFE: 'Café com Sevilha', CP: 'Clube da Performance', AULA: 'Aula paga' };
+  const FUNIL_RD = { SE: 'SE', CP: 'CP', AULA: 'AULA' }; // chave em rd.funis; o Café não tem funil próprio no CRM
 
   const markup = g => `
   <div class="banner banner-warn" id="aviso${g}"></div>
@@ -74,5 +74,6 @@
     renderKpis(g, d, t);
     renderTabelas(g, d, rows);
     renderRd(g, d.rd);
+    if (g === 'AULA' && typeof D.renderAula === 'function') D.renderAula(d);
   };
 })(window.SPD = window.SPD || {});

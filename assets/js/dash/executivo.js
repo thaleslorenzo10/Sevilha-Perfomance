@@ -14,6 +14,16 @@
     { id: 'ex-deals',   chave: 'deals',   fmt: D.fmtN },
   ];
 
+  function renderReceitaAula(dados) {
+    const compras = dados.leads && dados.leads.compras;
+    const card = document.getElementById('ex-receita-aula');
+    if (!card) return;
+    card.hidden = !(compras && compras.total > 0);
+    if (!compras || !compras.total) return;
+    D.setK('ex-receita-aula-valor', D.fmtR(compras.receita_centavos / 100));
+    document.getElementById('ex-receita-aula-sub').textContent = `${D.fmtN(compras.total)} compras`;
+  }
+
   D.renderExecutivo = function (dados, anterior) {
     const atual = D.resumo(dados);
     const ant = anterior ? D.resumo(anterior) : {};
@@ -27,6 +37,7 @@
       sub.className = 'kpi-sub ' + (c.neutro ? 'delta-neutro' : bom ? 'delta-bom' : 'delta-ruim');
       sub.textContent = `${dl >= 0 ? '▲' : '▼'} ${D.fmtP(Math.abs(dl))} vs. anterior (${D.orDash(ant[c.chave], c.fmt)})`;
     }
+    renderReceitaAula(dados);
   };
 
   // O Respondi parou de propósito em 27/08/2026 (a página nova substituiu a LP antiga): não é alerta.

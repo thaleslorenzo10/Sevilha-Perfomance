@@ -7,10 +7,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-<link rel="stylesheet" href="/assets/css/admin-dashboard.css?v=dash-2">
-<link rel="stylesheet" href="/assets/css/admin-sidebar.css?v=dash-2">
+<link rel="stylesheet" href="/assets/css/admin-dashboard.css?v=dash-3">
+<link rel="stylesheet" href="/assets/css/admin-sidebar.css?v=dash-3">
 <link rel="stylesheet" href="/assets/css/lm-ds.css?v=lm-ds-2">
-<script src="/assets/admin-sidebar.js?v=dash-2" defer></script>
+<script src="/assets/admin-sidebar.js?v=dash-3" defer></script>
 </head>
 <body class="admin-dashboard admin-side-layout">
 <aside class="lm-menu" data-admin-sidebar aria-label="Navegação principal"><div class="lm-menu-brand"><img class="lm-menu-client-logo" src="/assets/logo-sevilha-performance.png" alt="Sevilha Performance" width="640" height="291"><button class="admin-menu-toggle lm-menu-toggle" type="button" aria-expanded="false" aria-controls="admin-sidebar-menu">Abrir menu</button></div><div class="lm-menu-content"><div class="lm-menu-client"><small>Marketing e resultados</small><span class="lm-menu-logo"><img src="/assets/lorenzo-horizontal.svg" alt="Lorenzo Media" width="526" height="61"></span></div><nav id="admin-sidebar-menu" class="admin-sidebar-menu lm-menu-nav" aria-label="Áreas do painel">
@@ -20,6 +20,7 @@
   <button class="tab-btn lm-menu-item" data-tab="se"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m2 4a5 5 0 0 1 2 4v2"/></svg><span><strong>Sessão Estratégica</strong><small>[SE]</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
   <button class="tab-btn lm-menu-item" data-tab="cafe"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m2 4a5 5 0 0 1 2 4v2"/></svg><span><strong>Café com Sevilha</strong><small>[CAFÉ]</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
   <button class="tab-btn lm-menu-item" data-tab="cp"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m2 4a5 5 0 0 1 2 4v2"/></svg><span><strong>Clube da Performance</strong><small>[CP]</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+  <button class="tab-btn lm-menu-item" data-tab="aula"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m2 4a5 5 0 0 1 2 4v2"/></svg><span><strong>Aula paga</strong><small>[AULA]</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
   <button class="tab-btn lm-menu-item" data-tab="origem"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15V9m6 9V6m6 8v-4m6-5v14"/></svg><span><strong>Origem</strong><small>Campanha, público, anúncio, fonte</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
   <button class="tab-btn lm-menu-item" data-tab="ab"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15V9m6 9V6m6 8v-4m6-5v14"/></svg><span><strong>Comparativo A/B</strong><small>Páginas de captura</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
 </div>
@@ -75,6 +76,7 @@
   <div class="kpi-card"><div class="kpi-label">CPL</div><div class="kpi-value skeleton kpi-skel" id="ex-cpl"></div><div class="kpi-sub" id="ex-cpl-sub"></div></div>
   <div class="kpi-card"><div class="kpi-label">CPMQL</div><div class="kpi-value skeleton kpi-skel" id="ex-cpmql"></div><div class="kpi-sub" id="ex-cpmql-sub"></div></div>
   <div class="kpi-card"><div class="kpi-label">Deals (com campanha)</div><div class="kpi-value skeleton kpi-skel" id="ex-deals"></div><div class="kpi-sub" id="ex-deals-sub"></div></div>
+  <div class="kpi-card green" id="ex-receita-aula" hidden><div class="kpi-label">Receita da aula</div><div class="kpi-value" id="ex-receita-aula-valor"></div><div class="kpi-sub" id="ex-receita-aula-sub"></div></div>
 </section>
 <div class="alertas" id="alertas" role="status"></div>
 
@@ -120,21 +122,23 @@
 <div class="tab-panel" id="tab-se"><div class="container" id="painelSE"></div></div>
 <div class="tab-panel" id="tab-cafe"><div class="container" id="painelCAFE"></div></div>
 <div class="tab-panel" id="tab-cp"><div class="container" id="painelCP"></div></div>
+<div class="tab-panel" id="tab-aula"><div class="container" id="painelAULA"></div></div>
 <div class="tab-panel" id="tab-origem"><div class="container" id="painelOrigem"></div></div>
 <div class="tab-panel" id="tab-ab"><div class="container" id="painelAb"></div></div>
 </main>
 
-<script src="/assets/js/dash/formato.js?v=dash-2"></script>
-<script src="/assets/js/dash/cruzamento.js?v=dash-2"></script>
-<script src="/assets/js/dash/api.js?v=dash-2"></script>
-<script src="/assets/js/dash/graficos.js?v=dash-2"></script>
-<script src="/assets/js/dash/tabelas.js?v=dash-2"></script>
-<script src="/assets/js/dash/executivo.js?v=dash-2"></script>
-<script src="/assets/js/dash/geral.js?v=dash-2"></script>
-<script src="/assets/js/dash/formatos.js?v=dash-2"></script>
-<script src="/assets/js/dash/grupo.js?v=dash-2"></script>
-<script src="/assets/js/dash/origem.js?v=dash-2"></script>
-<script src="/assets/js/dash/ab.js?v=dash-2"></script>
-<script src="/assets/js/dash/main.js?v=dash-2"></script>
+<script src="/assets/js/dash/formato.js?v=dash-3"></script>
+<script src="/assets/js/dash/cruzamento.js?v=dash-3"></script>
+<script src="/assets/js/dash/api.js?v=dash-3"></script>
+<script src="/assets/js/dash/graficos.js?v=dash-3"></script>
+<script src="/assets/js/dash/tabelas.js?v=dash-3"></script>
+<script src="/assets/js/dash/executivo.js?v=dash-3"></script>
+<script src="/assets/js/dash/geral.js?v=dash-3"></script>
+<script src="/assets/js/dash/formatos.js?v=dash-3"></script>
+<script src="/assets/js/dash/grupo.js?v=dash-3"></script>
+<script src="/assets/js/dash/aula.js?v=dash-3"></script>
+<script src="/assets/js/dash/origem.js?v=dash-3"></script>
+<script src="/assets/js/dash/ab.js?v=dash-3"></script>
+<script src="/assets/js/dash/main.js?v=dash-3"></script>
 </body>
 </html>
