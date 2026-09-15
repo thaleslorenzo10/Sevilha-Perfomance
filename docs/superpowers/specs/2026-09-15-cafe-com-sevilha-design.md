@@ -119,7 +119,7 @@ Escala: h1 `clamp(2.4rem, 5vw, 4.5rem)` com `line-height: 1`, h2
 
 Reusa `assets/form-steps.js` inteiro — passo 1 (porte + cargo, um toque cada),
 passo 2 (nome, WhatsApp, e-mail, escritório), roteamento de quem tem menos de
-10 para o Clube (`/campanha`) com "Continuar mesmo assim", máscara de telefone,
+10 para a aula paga (`data-rota`) com "Continuar mesmo assim", máscara de telefone,
 foco preso no diálogo, Esc fecha, micro-eventos do funil via `SP_marcar`.
 
 O que muda para o Café é **copy e destino do sucesso**, e isso entra pelo
@@ -142,6 +142,12 @@ Em `assets/form-steps.js`:
   checkout).
 - `data-whatsapp` troca a URL que `#err-wa` e `#wa-link` recebem — sem isso os
   dois links do Café abririam o WhatsApp com a mensagem da Sessão Estratégica.
+- `data-rota` troca o destino de quem está abaixo do porte (padrão `/campanha`).
+  **No Café é `/aula-gestao-operacional`** — decisão do cliente em 15/09: quem
+  tem menos de 10 vai para a aula paga, não para o Clube. O link leva as UTMs
+  junto (`utm_*`, `fbclid`, `gclid` da `sessionStorage`, onde o `tracking.js`
+  as guarda); sem isso o clique vira visita orgânica na outra página. As irmãs
+  ganham o mesmo anexo de UTM no link de rota delas.
 
 Sem atributo, o comportamento é o de hoje — `/mentoria`, `/mentoria-2` e a
 aula não mudam.
@@ -171,9 +177,9 @@ Campos, com o `name=` que é contrato com `/api/leads`:
 Copy dos avisos de rota (dentro do HTML, como nas irmãs):
 
 - `#route-porte` (abaixo de 10): "O Café é para escritórios com mais de 10
-  colaboradores. Para o seu porte, o Clube da Performance é o caminho certo."
-  Botões: "Conhecer o Clube da Performance" (`#clube-link`) · "Continuar mesmo
-  assim" (`#route-continuar`).
+  colaboradores. Para o seu porte, a aula de Gestão Operacional é o caminho
+  certo." Botões: "Conhecer a aula" (`#clube-link` → `/aula-gestao-operacional`
+  com UTMs) · "Continuar mesmo assim" (`#route-continuar`).
 - `#route-cargo` (operacional, 10+): "O Café é pensado para quem decide.
   Se o dono ou sócio for participar, cadastre em nome dele."
 - `#form-success`: "Recebemos seu interesse. Nossa equipe entra em contato com
