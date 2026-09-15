@@ -194,6 +194,19 @@ var SP_CONFIG = {
     log('hidden fields populated');
   };
 
+  /* URL com as UTMs da sessão anexadas. Usada pelo link de rota do modal:
+     sem isso o clique vira visita orgânica na outra página e some do painel. */
+  window.SP_comUtms = function (url) {
+    var partes = [];
+    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','fbclid','gclid'].forEach(function (k) {
+      var v = null;
+      try { v = sessionStorage.getItem(k); } catch { /* storage bloqueado: segue sem */ }
+      if (v) partes.push(k + '=' + encodeURIComponent(v));
+    });
+    if (!partes.length) return url;
+    return url + (url.indexOf('?') > -1 ? '&' : '?') + partes.join('&');
+  };
+
   /* ── Dispara eventos de conversão ────────────────────── */
   window.SP_fireLeadEvents = function (eventId, formData) {
     // Meta Pixel Lead
@@ -320,7 +333,7 @@ var SP_CONFIG = {
   // Ao mudar esta lista, subir o ?v= da tag <script> nas páginas. Este arquivo
   // é servido com must-revalidate, mas quem visitou antes disso ainda carrega a
   // versão immutable de um ano — e um beacon congelado não registra a página nova.
-  var PAGEVIEW_BEACON_PAGES = ['/mentoria', '/mentoria-2', '/aula-gestao-operacional'];
+  var PAGEVIEW_BEACON_PAGES = ['/mentoria', '/mentoria-2', '/aula-gestao-operacional', '/cafe-com-sevilha'];
   var PAGINA_ATUAL = window.location.pathname.replace(/\/$/, '') || '/';
   var INSTRUMENTADA = PAGEVIEW_BEACON_PAGES.indexOf(PAGINA_ATUAL) !== -1;
 

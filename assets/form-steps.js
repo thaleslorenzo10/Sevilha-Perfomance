@@ -6,37 +6,29 @@
  * enquanto cada página tinha a própria cópia deste código, qualquer correção
  * feita em uma e esquecida na outra passaria a medir a correção, não o layout.
  * A grade e a tipografia continuam sendo a variável; o formulário, não.
- *
  * ── Por que dois passos ─────────────────────────────────────────────────
- *
  * O formulário anterior pedia seis campos de uma vez e deixava a pergunta de
  * porte para o fim. Três consequências medidas em 25/08–03/09/2026:
- *
  *   • de 185 carregamentos vindos de anúncio, 8 abriram o formulário;
  *   • quem abria convertia bem (5 de 8), então o gargalo era ABRIR;
  *   • 3 em cada 4 leads que o anúncio traz têm menos de 10 colaboradores, e
  *     só descobriam que a oferta não era para eles depois de digitar tudo.
- *
- * Daí o desenho: o primeiro passo são duas perguntas de um toque cada (porte
- * e cargo), e o segundo pede contato. Quem está abaixo de 10 colaboradores
- * recebe o caminho do Clube da Performance no primeiro passo — e continua
- * podendo se inscrever, porque quem separa perfil é o time no CRM, não a
- * página (ver PRODUCT.md).
- *
+ * Daí o desenho: o primeiro passo são duas perguntas de um toque cada (porte e cargo),
+ * e o segundo pede contato. Quem está abaixo de 10 colaboradores recebe, no primeiro
+ * passo, o caminho da oferta certa para o porte (o Clube por padrão; data-rota troca o
+ * destino — no Café é a aula paga) — e continua podendo se inscrever, porque quem
+ * separa perfil é o time no CRM, não a página (ver PRODUCT.md).
  * ── Contrato com o HTML ─────────────────────────────────────────────────
- *
  * Ids esperados na página (ausentes = o trecho correspondente não roda):
  *   #modal-overlay #form-wrapper #sessao-form #modal-foot
  *   #passo-1 #passo-2 #passo-rotulo #modal-title #modal-sub
  *   #route-porte #clube-link #route-continuar #route-cargo
  *   #form-error #err-wa #form-success #wa-link #submit-btn
  *   #voltar-passo-1 #f-name #f-phone
- *
  * Os campos de porte e cargo são grupos de <input type="radio"> com
  * name="colaboradores" e name="cargo" — o mesmo `name=` dos <select> que eles
  * substituíram, porque esse nome é contrato com /api/leads. Um toque no lugar
  * de abrir a roleta do iOS, rolar e confirmar.
- *
  * Os atalhos do topo da página são <button class="porte-chip" data-porte="…">:
  * respondem o porte e já abrem o modal no passo certo.
  */
@@ -51,7 +43,6 @@
      Clube da Performance — ver api/ab.js. Não é `/` para a visita entrar no
      teste A/B daquela oferta como qualquer outra. */
   var CLUBE_URL = '/campanha';
-
   var FORA_DO_PORTE = ['De 0 a 4', 'De 5 a 9'];
 
   var overlay = document.getElementById('modal-overlay');
@@ -60,8 +51,10 @@
 
   /* Parametrização por data-* no <form>. Sem atributo, tudo se comporta como
      em /mentoria: WhatsApp no sucesso, textos da Sessão Estratégica. */
-  var DESTINO = form.dataset.destino || 'whatsapp';   // 'whatsapp' | 'kiwify'
-  var TEXTOS_ID = form.dataset.textos || 'sessao';
+  var DESTINO = form.dataset.destino || 'whatsapp';   // 'whatsapp' | 'kiwify' | 'inline'
+  var TEXTOS_ID = form.dataset.textos || 'sessao';    // 'sessao' | 'aula' | 'cafe'
+  if (form.dataset.whatsapp) WHATSAPP_URL = form.dataset.whatsapp;
+  var ROTA_URL = form.dataset.rota || CLUBE_URL;   // data-rota: URL de quem está abaixo do porte
 
   var passo1     = document.getElementById('passo-1');
   var passo2     = document.getElementById('passo-2');
@@ -90,6 +83,7 @@
     return campo ? campo.value : '';
   }
 
+  function comUtms(u) { return window.SP_comUtms ? window.SP_comUtms(u) : u; }
   var TEXTOS_POR_OFERTA = {
     sessao: {
       1: { rotulo: 'Passo 1 de 2', titulo: 'Duas perguntas rápidas',
@@ -102,6 +96,10 @@
            sub: 'A aula foi desenhada para escritórios com equipe estruturada. Isso ajuda a gente a preparar o material.' },
       2: { rotulo: 'Passo 2 de 2', titulo: 'Onde enviamos o link da aula',
            sub: 'Você segue para o pagamento em seguida. O acesso chega por e-mail e WhatsApp.' },
+    },
+    cafe: {
+      1: { rotulo: 'Passo 1 de 2', titulo: 'Duas perguntas rápidas', sub: 'Elas definem se o Café com Sevilha é o formato certo para o seu escritório.' },
+      2: { rotulo: 'Passo 2 de 2', titulo: 'Onde falamos com você', sub: 'Nossa equipe entra em contato com as próximas informações do encontro.' },
     },
   };
   var TEXTOS = TEXTOS_POR_OFERTA[TEXTOS_ID] || TEXTOS_POR_OFERTA.sessao;
@@ -243,8 +241,8 @@
 
   var clube = document.getElementById('clube-link');
   if (clube) {
-    clube.href = CLUBE_URL;
-    clube.addEventListener('click', function () { marcar('clube'); });
+    clube.href = comUtms(ROTA_URL);
+    clube.addEventListener('click', function () { clube.href = comUtms(ROTA_URL); marcar('clube'); });
   }
 
   var continuar = document.getElementById('route-continuar');
@@ -310,6 +308,8 @@
     var sucesso = document.getElementById('form-success');
     if (wrapper) wrapper.style.display = 'none';
     if (sucesso) sucesso.style.display = 'block';
+    // Café: a confirmação fica na tela, então o foco vai para ela — o botão de enviar sumiu e o leitor de tela ficaria no <body>.
+    if (DESTINO === 'inline' && sucesso) { sucesso.setAttribute('tabindex', '-1'); sucesso.focus(); }
     if (DESTINO === 'kiwify') {
       var dados = ultimoEnvio || {};
       if (window.fbq && window.AULA && window.AULA.checkoutUrl) {
@@ -321,6 +321,7 @@
       setTimeout(function () { window.location.href = window.SP_urlCheckout(dados); }, 1200);
       return;
     }
+    if (DESTINO === 'inline') return;
     setTimeout(function () { window.location.href = WHATSAPP_URL; }, 2500);
   }
 

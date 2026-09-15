@@ -62,12 +62,25 @@ const AULA = {
   valor:       47,
 };
 
-// Toda página nova da Sessão Estratégica precisa entrar aqui. Fora do mapa, o
+// Café com Sevilha: encontro presencial, 6/10, para escritórios 10+. A página
+// era uma LP do RD (identificador `cafe-com-sevilha`); o `-site` separa a
+// conversão nova da automação que o RD ainda tem sobre a antiga.
+const CAFE_COM_SEVILHA = {
+  rotulo:      'Café com Sevilha',
+  marca:       '[CAFÉ]',
+  conversao:   'cafe-com-sevilha-site',
+  tags:        ['cafe-com-sevilha', 'evento'],
+  stageEnv:    'RD_CRM_STAGE_ID_CAFE',
+  campaignEnv: 'RD_CRM_CAMPAIGN_ID_CAFE',
+};
+
+// Toda página nova com oferta própria precisa entrar aqui. Fora do mapa, o
 // lead cai no padrão e entra no funil do Clube da Performance — silenciosamente.
 const OFERTAS = {
   '/mentoria':   SESSAO_ESTRATEGICA,
   '/mentoria-2': SESSAO_ESTRATEGICA,
   '/aula-gestao-operacional': AULA,
+  '/cafe-com-sevilha': CAFE_COM_SEVILHA,
 };
 
 const OFERTA_PADRAO = {
