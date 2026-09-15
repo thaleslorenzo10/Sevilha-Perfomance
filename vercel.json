@@ -47,6 +47,18 @@
       "destination": "/api/sheet-leads?modo=unificados"
     },
     {
+      "source": "/aula-gestao-operacional",
+      "destination": "/aula-gestao-operacional/index.html"
+    },
+    {
+      "source": "/aula-gestao-operacional/obrigado",
+      "destination": "/aula-gestao-operacional/obrigado/index.html"
+    },
+    {
+      "source": "/api/kiwify-webhook",
+      "destination": "/api/eventos-qualificados"
+    },
+    {
       "source": "/api/(.*)",
       "destination": "/api/$1"
     }
