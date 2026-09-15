@@ -84,10 +84,11 @@ function ofertaDe(pagina) {
 }
 
 /** Valor do evento em reais: o `valor_centavos` que a página manda (lote
- * atual, AULA.lote.precoCentavos) ou o valor fixo da oferta. */
+ * atual, AULA.lote.precoCentavos) ou o valor fixo da oferta. Vem do navegador,
+ * então só entra inteiro entre 1 centavo e R$ 1.000 — fora disso, o fixo. */
 function valorDaOferta(oferta, centavos) {
   const n = Number(centavos);
-  return oferta.valor && Number.isInteger(n) && n > 0 ? n / 100 : oferta.valor;
+  return oferta.valor && Number.isInteger(n) && n > 0 && n <= 100000 ? n / 100 : oferta.valor;
 }
 
 /** Nome do deal marcado com a oferta, para separar os dois produtos no funil. */

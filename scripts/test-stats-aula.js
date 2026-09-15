@@ -44,7 +44,7 @@ const responde = (r, esperado) => r.code === 200 && JSON.stringify(r.dado) === J
   stubFetch(206, '0-0/12');
   const r = await chamar();
   ok(responde(r, { vendidos: 12 }), 'Content-Range 0-0/12 → { vendidos: 12 }, sem baixar linhas');
-  ok(r.cabecalhos['Cache-Control'] === 'public, max-age=60' && r.cabecalhos['Access-Control-Allow-Origin'] === '*', 'Cache-Control public, max-age=60 e CORS *');
+  ok(r.cabecalhos['Cache-Control'] === 'public, s-maxage=60, max-age=60' && r.cabecalhos['Access-Control-Allow-Origin'] === '*', 'Cache-Control public, s-maxage=60, max-age=60 e CORS *');
   const c = chamadas[0];
   ok(/sevilha_compras_aula\?select=order_id&status=eq\.paid$/.test(c.url), 'consulta só status=paid');
   ok(c.headers.Prefer === 'count=exact' && c.headers.Range === '0-0', 'pede count=exact com Range 0-0');

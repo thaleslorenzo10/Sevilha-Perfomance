@@ -44,6 +44,15 @@ async function enviar(body) {
   return eventosCapi();
 }
 const valorDo = (ev, nome) => ev.find(e => e.event_name === nome).custom_data.value;
+/** true se todo valor_centavos da lista cai no 47 fixo da oferta. */
+async function caemNo47(valores) {
+  const values = [];
+  for (const valor_centavos of valores) {
+    const ev = await enviar({ nome: 'Teste', email: 't4@x.com', telefone: '31999990003', pagina: '/aula-gestao-operacional', colaboradores: 'De 10 a 19', cargo: 'Dono/Sócio', event_id: 'ev_4', valor_centavos });
+    values.push(valorDo(ev, 'Lead'));
+  }
+  return values.every(v => v === 47);
+}
 
 (async () => {
   console.log('\n/aula-gestao-operacional');
@@ -58,8 +67,8 @@ const valorDo = (ev, nome) => ev.find(e => e.event_name === nome).custom_data.va
 
   const ev3 = await enviar({ nome: 'Teste', email: 't3@x.com', telefone: '31999990002', pagina: '/aula-gestao-operacional', colaboradores: 'De 5 a 9', cargo: 'Dono/Sócio', event_id: 'ev_3', valor_centavos: '2700' });
   ok(valorDo(ev3, 'Lead') === 27 && valorDo(ev3, 'InitiateCheckout') === 27, 'Lead e InitiateCheckout com value 27 (lote)');
-  const ev4 = await enviar({ nome: 'Teste', email: 't4@x.com', telefone: '31999990003', pagina: '/aula-gestao-operacional', colaboradores: 'De 10 a 19', cargo: 'Dono/Sócio', event_id: 'ev_4', valor_centavos: 'abc' });
-  ok(valorDo(ev4, 'Lead') === 47, 'valor_centavos inválido → 47 fixo da oferta');
+  ok(await caemNo47(['abc', 999999999, 100001]),
+     'valor_centavos inválido ou acima do teto (R$ 1.000) → 47 fixo da oferta');
 
   console.log('\n/mentoria (sem regressão)');
   const ev2 = await enviar({ nome: 'Teste', email: 't2@x.com', telefone: '31999990001', pagina: '/mentoria', colaboradores: 'De 5 a 9', cargo: 'Dono/Sócio', event_id: 'ev_2', valor_centavos: '2700' });
