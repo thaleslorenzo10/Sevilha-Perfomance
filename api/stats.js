@@ -12,6 +12,7 @@
 const { TABELAS, lerTudo } = require('../lib/supabase');
 const { inicioDoDia, fimDoDia } = require('../lib/fuso');
 const { responder: responderSessaoEstrategica } = require('../lib/sessao-estrategica');
+const { responderAula } = require('../lib/stats-aula');
 const { ehQualificado } = require('../lib/porte');
 
 const PAGES = ['/', '/pre-inscricao-2', '/pre-inscricao-3'];
@@ -32,6 +33,8 @@ module.exports = async function handler(req, res) {
   if (modo === 'sessao-estrategica' || url.pathname.includes('sessao-estrategica')) {
     return responderSessaoEstrategica(req, res);
   }
+  // Contador do lote da aula — público, cacheável, sem período (lib/stats-aula.js).
+  if (modo === 'aula') return responderAula(req, res);
 
   const supabaseUrl = process.env.SUPABASE_URL;
   const supabaseKey = process.env.SUPABASE_SERVICE_KEY;

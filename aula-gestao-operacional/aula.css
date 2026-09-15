@@ -52,8 +52,16 @@ section { padding-block: 3.5rem; }
 .ingresso .corpo small { display: block; color: var(--muted); font-size: .85rem; }
 .ingresso .corpo b { font-size: 1.05rem; }
 .ingresso .canhoto { padding: 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
-.ingresso .preco { font-size: 2rem; font-weight: 800; line-height: 1; }
-.ingresso .preco small { display: block; font-size: .8rem; font-weight: 400; color: var(--muted); margin-top: .35rem; }
+.ingresso .preco { display: block; font-size: 2rem; font-weight: 800; line-height: 1; }
+.ingresso .oferta small { display: block; font-size: .8rem; color: var(--muted); margin-top: .35rem; }
+.ingresso .oferta small[hidden] { display: none; }
+/* Barra do lote: rótulo e restantes em cima, trilha embaixo; ocupa o canhoto
+   inteiro. Sem animação de contagem — o número é o que o config e o endpoint
+   dizem, na hora em que dizem. */
+.lote { flex-basis: 100%; }
+.lote-txt { display: flex; justify-content: space-between; gap: 1rem; font-size: .85rem; color: var(--muted); margin-bottom: .4rem; }
+.lote .trilha { height: 8px; border-radius: 4px; background: #e9e6f5; overflow: hidden; }
+.lote .trilha i { display: block; height: 100%; background: var(--neon); border-radius: 4px; }
 @media (min-width: 900px) { .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 3rem; align-items: center; } }
 
 /* ── Programação, leva, Bruno, FAQ ─────────────────────── */
@@ -83,7 +91,7 @@ section { padding-block: 3.5rem; }
 .faq details:last-child { border-bottom: 1px solid var(--borda); }
 .faq summary { font-weight: 700; cursor: pointer; }
 .faq details p { margin: .6rem 0 0; }
-.lista-nao li { color: var(--muted); }
+.lista-nao { color: var(--muted); }
 .fecho { min-height: 100vh; display: grid; place-items: center; }
 .fecho .wrap { max-width: 40rem; }
 
@@ -164,6 +172,9 @@ section { padding-block: 3.5rem; }
   background: var(--roxo); color: #fff;
 }
 .route-acoes a.secundario { background: transparent; color: #4a3b18; text-decoration: underline; }
+/* `display` do seletor acima vence o [hidden] do navegador: a aula esconde
+   o "continuar mesmo assim" porque abaixo de 10 já não bloqueia. */
+.route-acoes a[hidden] { display: none; }
 .form-error { background: #fdecec; border: 1px solid #f2bcbc; color: #6d1f1f; }
 .form-error strong { display: block; font-family: Poppins, sans-serif; margin-bottom: 5px; }
 .form-error a { color: #6d1f1f; font-weight: 600; }

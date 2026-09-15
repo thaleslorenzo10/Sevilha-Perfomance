@@ -96,6 +96,14 @@ function ofertaDe(pagina) {
   return OFERTAS[pagina] || OFERTA_PADRAO;
 }
 
+/** Valor do evento em reais: o `valor_centavos` que a página manda (lote
+ * atual, AULA.lote.precoCentavos) ou o valor fixo da oferta. Vem do navegador,
+ * então só entra inteiro entre 1 centavo e R$ 1.000 — fora disso, o fixo. */
+function valorDaOferta(oferta, centavos) {
+  const n = Number(centavos);
+  return oferta.valor && Number.isInteger(n) && n > 0 && n <= 100000 ? n / 100 : oferta.valor;
+}
+
 /** Nome do deal marcado com a oferta, para separar os dois produtos no funil. */
 function nomeDoDeal(data, oferta) {
   const base = data.nome || data.email || 'Lead';
@@ -553,11 +561,12 @@ module.exports = async function handler(req, res) {
   });
 
   const oferta = ofertaDe(pagina);
+  const valor  = valorDaOferta(oferta, body.valor_centavos);
   const customData = {
     content_name: pagina,
     content_category: oferta.valor ? 'aula' : 'pre-inscricao',
     currency: 'BRL',
-    value: oferta.valor || 0,
+    value: valor || 0,
   };
   if (utm_source)   customData.utm_source   = utm_source;
   if (utm_medium)   customData.utm_medium   = utm_medium;
@@ -594,7 +603,7 @@ module.exports = async function handler(req, res) {
       eventId:      `ic:${finalEventId}`,
       quando:       eventTime,
       userData,
-      customData:   { content_name: oferta.rotulo, currency: 'BRL', value: oferta.valor },
+      customData:   { content_name: oferta.rotulo, currency: 'BRL', value: valor },
       sourceUrl,
       referrerUrl,
       actionSource: 'website',

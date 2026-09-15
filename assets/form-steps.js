@@ -30,8 +30,7 @@
  * substituíram, porque esse nome é contrato com /api/leads. Um toque no lugar
  * de abrir a roleta do iOS, rolar e confirmar.
  * Os atalhos do topo da página são <button class="porte-chip" data-porte="…">:
- * respondem o porte e já abrem o modal no passo certo. É a primeira interação
- * da página ser a pergunta, em vez de um botão que leva a um paredão de campos.
+ * respondem o porte e já abrem o modal no passo certo.
  */
 (function () {
   'use strict';
@@ -44,7 +43,6 @@
      Clube da Performance — ver api/ab.js. Não é `/` para a visita entrar no
      teste A/B daquela oferta como qualquer outra. */
   var CLUBE_URL = '/campanha';
-
   var FORA_DO_PORTE = ['De 0 a 4', 'De 5 a 9'];
 
   var overlay = document.getElementById('modal-overlay');
@@ -194,7 +192,9 @@
     if (!porte) return;
 
     var fora = FORA_DO_PORTE.indexOf(porte) > -1;
-    var bloqueado = fora && !continuarLiberado;
+    // data-porte="livre" (aula): abaixo de 10 o aviso do Clube é só informativo,
+    // o cargo fica na tela e escolher cargo avança. Sem o atributo, bloqueia.
+    var bloqueado = fora && !continuarLiberado && form.dataset.porte !== 'livre';
     if (rPorte) rPorte.classList.toggle('on', fora);
     if (rCargo) rCargo.classList.toggle('on', !bloqueado && cargo === 'Cargo Operacional');
 
@@ -314,7 +314,7 @@
       var dados = ultimoEnvio || {};
       if (window.fbq && window.AULA && window.AULA.checkoutUrl) {
         window.fbq('track', 'InitiateCheckout',
-          { content_name: 'Aula Gestão Operacional', currency: 'BRL', value: (window.AULA.precoCentavos || 0) / 100 },
+          { content_name: 'Aula Gestão Operacional', currency: 'BRL', value: ((window.AULA.lote || {}).precoCentavos || 0) / 100 },
           { eventID: 'ic:' + (dados.event_id || '') });
       }
       marcar('checkout');
