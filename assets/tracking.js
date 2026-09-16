@@ -119,34 +119,65 @@ var SP_CONFIG = {
     return 'ev_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
   }
 
+  /* Lista única de parâmetros de rastreio: captura, preenchimento dos campos
+     ocultos, rede de segurança do submit e URL de rota leem todos daqui —
+     parâmetro novo entra em um lugar só. */
+  var PARAMS_DE_RASTREIO = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term',
+    'utm_content', 'fbclid', 'gclid', 'ttclid', 'msclkid'];
+
+  /* Valor atual de um parâmetro de rastreio: a URL primeiro, a sessão depois.
+     O navegador interno do Instagram/Facebook no iOS pré-carrega a página numa
+     partição descartável e entrega o documento noutra: o que foi guardado no
+     carregamento some, mas a URL continua com tudo. 4 de 15 leads (20/08–16/09)
+     chegaram com page_url cheia de UTM e colunas vazias por isso. */
+  function paramDeRastreio(k) {
+    var daUrl = '';
+    try { daUrl = new URLSearchParams(window.location.search).get(k) || ''; } catch {}
+    if (daUrl) return daUrl;
+    try { return sessionStorage.getItem(k) || ''; } catch { return ''; }
+  }
+
+  /* fbc atual: cookie primeiro; se sumiu mas há fbclid (URL ou sessão), deriva
+     e grava o cookie de novo — mesmo formato que captureParams usa no load.
+     Usado tanto no preenchimento dos campos ocultos quanto na rede de
+     segurança do submit, para não duplicar a derivação nos dois lugares. */
+  function getOrDeriveFbc() {
+    var fbc = getCookie('_fbc');
+    if (fbc) return fbc;
+    var fbclid = paramDeRastreio('fbclid');
+    if (!fbclid) return '';
+    fbc = 'fb.1.' + Date.now() + '.' + fbclid;
+    try { setCookie('_fbc', fbc, 90); } catch {}
+    return fbc;
+  }
+
   /* ── Captura UTMs e Click IDs ─────────────────────────── */
   getOrCreateFbp();
   firstReferrer();
 
   (function captureParams() {
     var params = new URLSearchParams(window.location.search);
-    var keys   = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content',
-                  'fbclid','gclid','ttclid','msclkid'];
 
-    keys.forEach(function (k) {
+    PARAMS_DE_RASTREIO.forEach(function (k) {
       var val = params.get(k);
       if (val) {
-        sessionStorage.setItem(k, val);
+        try { sessionStorage.setItem(k, val); } catch {}
         log('captured', k, val);
 
         // Gera _fbc a partir do fbclid
         if (k === 'fbclid') {
           var fbc = 'fb.1.' + Date.now() + '.' + val;
-          setCookie('_fbc', fbc, 90);
+          try { setCookie('_fbc', fbc, 90); } catch {}
           log('_fbc cookie set');
         }
       } else {
         // Tenta restaurar da sessionStorage (navegações entre páginas)
-        var stored = sessionStorage.getItem(k);
+        var stored = '';
+        try { stored = sessionStorage.getItem(k) || ''; } catch {}
         if (stored) log('restored from session', k, stored);
         // Cookie de 90 dias pode ter sido apagado antes do fbclid da sessão.
         if (k === 'fbclid' && stored && !getCookie('_fbc')) {
-          setCookie('_fbc', 'fb.1.' + Date.now() + '.' + stored, 90);
+          try { setCookie('_fbc', 'fb.1.' + Date.now() + '.' + stored, 90); } catch {}
           log('_fbc recriado do fbclid guardado');
         }
       }
@@ -161,12 +192,9 @@ var SP_CONFIG = {
 
   /* ── Preenche campos ocultos do formulário ───────────── */
   window.SP_populateHiddenFields = function (form) {
-    var utmKeys = ['utm_source','utm_medium','utm_campaign','utm_term','utm_content',
-                   'fbclid','gclid','ttclid','msclkid'];
-
-    utmKeys.forEach(function (k) {
+    PARAMS_DE_RASTREIO.forEach(function (k) {
       var el = form.querySelector('[name="' + k + '"]');
-      if (el) el.value = sessionStorage.getItem(k) || '';
+      if (el) el.value = paramDeRastreio(k);
     });
 
     // Meta Pixel cookies
@@ -174,7 +202,7 @@ var SP_CONFIG = {
     if (fbpEl) fbpEl.value = getOrCreateFbp();
 
     var fbcEl = form.querySelector('[name="fbc"]');
-    if (fbcEl) fbcEl.value = getCookie('_fbc');
+    if (fbcEl) fbcEl.value = getOrDeriveFbc();
 
     // Identificadores
     var extIdEl = form.querySelector('[name="external_id"]');
@@ -198,9 +226,8 @@ var SP_CONFIG = {
      sem isso o clique vira visita orgânica na outra página e some do painel. */
   window.SP_comUtms = function (url) {
     var partes = [];
-    ['utm_source','utm_medium','utm_campaign','utm_term','utm_content','fbclid','gclid'].forEach(function (k) {
-      var v = null;
-      try { v = sessionStorage.getItem(k); } catch { /* storage bloqueado: segue sem */ }
+    PARAMS_DE_RASTREIO.forEach(function (k) {
+      var v = paramDeRastreio(k);
       if (v) partes.push(k + '=' + encodeURIComponent(v));
     });
     if (!partes.length) return url;
@@ -295,8 +322,9 @@ var SP_CONFIG = {
     // o campo oculto correspondente. Sem isto, incluir um parâmetro novo no
     // evento obriga a editar todas as landing pages — e a que ficar para trás
     // manda evento pior sem avisar ninguém.
+    PARAMS_DE_RASTREIO.forEach(function (k) { data[k] = data[k] || paramDeRastreio(k); });
     data.fbp         = data.fbp         || getCookie('_fbp') || getOrCreateFbp();
-    data.fbc         = data.fbc         || getCookie('_fbc');
+    data.fbc         = data.fbc         || getOrDeriveFbc();
     data.external_id = data.external_id || getOrCreateExtId();
     data.page_url    = data.page_url    || window.location.href;
     data.user_agent  = data.user_agent  || navigator.userAgent;

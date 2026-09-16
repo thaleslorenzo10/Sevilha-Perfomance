@@ -265,6 +265,29 @@ ok(/PAGEVIEW_BEACON_PAGES = \[[^\]]*'\/aula-gestao-operacional'/.test(tr), 'pág
 ok(/PAGEVIEW_BEACON_PAGES = \[[^\]]*'\/cafe-com-sevilha'/.test(tr), 'página do Café no beacon');
 ok(/window\.SP_comUtms = function/.test(tr), 'tracking.js expõe SP_comUtms (UTMs da sessão na URL de rota)');
 
+/* ── UTM no envio vem da URL, não só da sessão (navegador interno do Instagram) ── */
+console.log('\nassets/tracking.js — UTM da URL no envio');
+{
+  ok(/function paramDeRastreio\(/.test(tr), 'existe paramDeRastreio (URL primeiro, sessão depois)');
+  const trechoParam = tr.match(/function paramDeRastreio\([\s\S]*?\n {2}\}\n/);
+  ok(!!trechoParam, 'paramDeRastreio isolável para teste');
+  if (trechoParam) {
+    const fn = new Function('window', 'sessionStorage', 'URLSearchParams', trechoParam[0] + ' return paramDeRastreio;');
+    const vazio = { getItem: () => null };
+    const sessao = { getItem: k => ({ utm_source: 'da_sessao' })[k] || null };
+    const url = { location: { search: '?utm_source=Instagram_Stories&fbclid=abc' } };
+    ok(fn(url, vazio, URLSearchParams)('utm_source') === 'Instagram_Stories', 'lê da URL quando a sessão está vazia (partição trocada)');
+    ok(fn(url, sessao, URLSearchParams)('utm_source') === 'Instagram_Stories', 'URL vence a sessão');
+    ok(fn({ location: { search: '' } }, sessao, URLSearchParams)('utm_source') === 'da_sessao', 'sem parâmetro na URL, usa a sessão');
+    const quebrado = { getItem: () => { throw new Error('SecurityError'); } };
+    ok(fn({ location: { search: '' } }, quebrado, URLSearchParams)('utm_source') === '', 'sessionStorage bloqueado não derruba o envio');
+  }
+  ok(/el\.value = paramDeRastreio\(k\)/.test(tr), 'os campos ocultos são preenchidos por paramDeRastreio');
+  ok(!/el\.value = sessionStorage\.getItem\(k\)/.test(tr), 'nenhum campo oculto lê só da sessionStorage');
+  ok(/paramDeRastreio\('fbclid'\)/.test(tr), 'fbc deriva do fbclid da URL quando o cookie sumiu');
+  ok(/var PARAMS_DE_RASTREIO = \[/.test(tr), 'lista única de parâmetros de rastreio');
+}
+
 // Data e horário vêm de window.AULA e caem em células separadas, nos dois cards.
 const htmlAula = fs.readFileSync(path.join(RAIZ, 'aula-gestao-operacional/index.html'), 'utf8');
 const jsAula   = fs.readFileSync(path.join(RAIZ, 'aula-gestao-operacional/aula.js'), 'utf8');
@@ -298,7 +321,7 @@ for (const p of ['mentoria/index.html', 'mentoria-2/index.html']) {
 }
 for (const p of PAGINAS) {
   const html = fs.readFileSync(path.join(RAIZ, p), 'utf8');
-  ok(/tracking\.js\?v=7/.test(html) && /form-steps\.js\?v=4/.test(html), `${p} com ?v= novo dos assets`);
+  ok(/tracking\.js\?v=8/.test(html) && /form-steps\.js\?v=4/.test(html), `${p} com ?v= novo dos assets`);
 }
 
 console.log(falhas === 0
