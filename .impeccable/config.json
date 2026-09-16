@@ -1,7 +1,9 @@
 {
   "detector": {
     "ignoreRules": [],
-    "ignoreFiles": [],
+    "ignoreFiles": [
+      "criativos/**"
+    ],
     "ignoreValues": [
       {
         "rule": "overused-font",
