@@ -27,7 +27,11 @@ global.fetch = async (url, opts = {}) => {
     if (capiFalha) return { ok: false, json: async () => ({ error: { message: 'boom' } }) };
     return { ok: true, json: async () => ({ events_received: 1 }) };
   }
-  if (u.includes('crm.rdstation.com') && u.includes('/contacts?')) return { ok: true, json: async () => ({ contacts: [{ _id: 'c1', deal_ids: ['d1'] }] }) };
+  // Lista real da RD vem "magra" (sem deal_ids) e o e-mail se repete em 2 contatos —
+  // só GET /contacts/:id devolve o array completo (ver lib/kiwify.js: avancarDeal).
+  if (u.includes('crm.rdstation.com') && u.includes('/contacts?')) return { ok: true, json: async () => ({ contacts: [{ _id: 'c0', name: 'Sem deal' }, { _id: 'c1', name: 'Com deal' }] }) };
+  if (u.includes('crm.rdstation.com') && u.includes('/contacts/c0')) return { ok: true, json: async () => ({ _id: 'c0', deal_ids: [] }) };
+  if (u.includes('crm.rdstation.com') && u.includes('/contacts/c1')) return { ok: true, json: async () => ({ _id: 'c1', deal_ids: ['d1'] }) };
   if (u.includes('crm.rdstation.com') && u.includes('/deals/d1') && (opts.method || 'GET') === 'GET') return { ok: true, json: async () => ({ _id: 'd1', name: '[AULA] Teste', deal_stage: { _id: 'stage-inscrito' } }) };
   if (u.includes('crm.rdstation.com')) return { ok: true, json: async () => ({ _id: 'd1' }), text: async () => '' };
   return { ok: true, status: 201, json: async () => [{ order_id: 'o1' }], text: async () => '' };
@@ -73,6 +77,8 @@ const upserts = () => chamadas.filter(c => c.u.includes('sevilha_compras_aula') 
   ok(p && p.custom_data.value === 47 && p.custom_data.currency === 'BRL', 'value 47 BRL');
   ok(p && p.user_data.fbp === 'fb.1.1.1' && p.user_data.fbc === 'fb.1.2.2', 'fbp/fbc do lead');
   ok(chamadas.some(c => c.u.includes('/deals/d1') && c.method === 'PUT' && c.body.deal.deal_stage_id === 'stage-pago'), 'deal [AULA] avança para o stage pago');
+  const patchCrm = chamadas.filter(c => c.u.includes('sevilha_compras_aula') && c.method === 'PATCH').pop();
+  ok(patchCrm && patchCrm.body.crm_status === 'ok', 'crm_status gravado como ok (deal estava no 2º contato da lista magra)');
 
   console.log('\nreentrega');
   chamadas.length = 0; r = res(); await tratarKiwify(req(corpo()), r);
