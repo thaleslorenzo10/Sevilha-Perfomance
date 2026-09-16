@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>margem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --roxo:#150C43; --neon:#50DC00; --neon-ink:#2a7a00; --chao:#f3f1fa; --borda:#e2def2; --raio:20px; }
+  * { box-sizing:border-box; }
+  body { margin:0; width:1080px; height:1350px; overflow:hidden; background:var(--roxo); color:#fff;
+    font-family:Inter, system-ui, sans-serif; position:relative; }
+  .marca { position:absolute; top:76px; left:80px; display:flex; align-items:center; gap:16px; }
+  .marca img { width:52px; height:62px; display:block; }
+  .marca b { font:700 30px/1.1 Poppins, sans-serif; }
+  .marca b small { display:block; font:400 24px/1.1 Inter, sans-serif; color:rgba(255,255,255,.8); }
+  /* Zona segura: 220px em cima e embaixo ficam livres (Reels corta 4:5 para 9:16). */
+  .zona { position:absolute; top:220px; bottom:220px; left:80px; right:80px;
+    display:flex; flex-direction:column; justify-content:space-between; }
+  h1 { font:800 112px/1.06 Poppins, sans-serif; letter-spacing:-.015em; margin:0; isolation:isolate; text-wrap:balance; }
+  mark { background:var(--neon); color:var(--roxo); padding:.02em .18em; border-radius:14px; position:relative; z-index:-1;
+    box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+  .apoio { font:400 36px/1.4 Inter, sans-serif; color:rgba(255,255,255,.88); margin:36px 0 0; max-width:900px; text-wrap:pretty; }
+  .fecho { display:flex; align-items:center; justify-content:space-between; gap:32px; }
+  .btn { display:inline-flex; align-items:center; justify-content:center; min-height:104px; padding:0 56px;
+    border-radius:18px; background:var(--neon); color:var(--roxo); font:700 40px/1 Poppins, sans-serif; white-space:nowrap; }
+  .rodape { font:600 30px/1.3 Inter, sans-serif; color:rgba(255,255,255,.82); text-align:right; }
+  .num { font-variant-numeric:tabular-nums; }
+  /* Detalhe: a barra do lote da página, discreta. */
+  .lote { margin-top:48px; width:440px; }
+  .lote .trilha { height:12px; border-radius:6px; background:rgba(255,255,255,.14); overflow:hidden; }
+  .lote .trilha i { display:block; height:100%; width:62%; background:var(--neon); border-radius:6px; }
+</style></head><body>
+<div class="marca"><img src="../../assets/logo-sevilha.svg" alt=""><b>Sevilha<small>Performance</small></b></div>
+<div class="zona">
+  <div>
+    <h1>O escritório cresceu. A <mark>margem</mark> não.</h1>
+    <p class="apoio">O projeto de gestão operacional que a Sevilha aplica em escritórios 10+, aberto em uma aula ao vivo de 2h10. Com as 5 planilhas.</p>
+    <div class="lote" aria-hidden="true"><div class="trilha"><i></i></div></div>
+  </div>
+  <div class="fecho"><span class="btn">Garantir vaga</span><span class="rodape num">Escritórios com 10+ colaboradores · R$ 27</span></div>
+</div>
+</body></html>
