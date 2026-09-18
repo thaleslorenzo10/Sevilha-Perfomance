@@ -29,7 +29,8 @@ const TABELA = 'sevilha_compras_aula';
   const compras = await r.json();
   console.log(`${compras.length} compra(s) com CRM pendente${aplicar ? '' : ' — dry-run, use --aplicar para executar'}`);
   for (const compra of compras) {
-    const mascara = compra.email.replace(/^(.{3}).*@/, '$1…@');
+    const [local, dominio] = String(compra.email).split('@');
+    const mascara = `${local.slice(0, 3)}…@${dominio || ''}`;
     if (!aplicar) { console.log(`  ${compra.order_id.slice(0, 8)}  ${mascara}  ${compra.crm_status}`); continue; }
     const status = await avancarDeal(compra.email);
     const p = await fetch(rest(TABELA, `order_id=eq.${encodeURIComponent(compra.order_id)}`), {
