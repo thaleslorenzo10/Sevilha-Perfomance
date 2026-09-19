@@ -1,7 +1,9 @@
 'use strict';
 /* Estado, período, abas, tema e o ciclo carregar → render → auto-refresh. */
 (function (D) {
-  const estado = { since: '', until: '', preset: 'last_30d', dados: null, anterior: null, anteriorChave: null, timer: null };
+  const estado = { since: '', until: '', preset: 'last_30d', dados: null, anterior: null, anteriorChave: null, timer: null, ultimoCarregamento: 0 };
+  // Cada ciclo invoca 4 funções serverless na Vercel: a 60 s deu 222K invocações/mês.
+  const INTERVALO_MS = 300000;
   const p2 = n => String(n).padStart(2, '0');
   // Datas sempre em horário local: toISOString() é UTC e, depois das 21h, "hoje" já seria amanhã.
   const isoLocal = d => `${d.getFullYear()}-${p2(d.getMonth() + 1)}-${p2(d.getDate())}`;
@@ -61,7 +63,7 @@
     seExiste(D.renderAb, d);
   }
 
-  // Período anterior não muda com o refresh automático de 60s: só rebusca
+  // Período anterior não muda com o refresh automático de 5 min: só rebusca
   // quando o período em tela mudou (ou ainda não tinha base nenhuma).
   async function buscarAnterior(since, until) {
     const ant = D.periodoAnterior(since, until);
@@ -93,8 +95,10 @@
       D.banner('errorBanner', `⚠️ <strong>Erro ao carregar o Meta Ads:</strong> ${D.esc(e.message)}`);
     }
     btn.disabled = false;
+    estado.ultimoCarregamento = Date.now();
     clearTimeout(estado.timer);
-    estado.timer = setTimeout(carregar, 60000);
+    // Aba em segundo plano não agenda: o visibilitychange retoma quando ela volta.
+    estado.timer = document.hidden ? null : setTimeout(carregar, INTERVALO_MS);
   }
 
   // Tema: persistido por navegador; ao trocar, redesenha para os gráficos lerem as cores novas.
@@ -111,6 +115,12 @@
     if (escuro) aplicarTema(true);
     document.getElementById('btnTheme').addEventListener('click', () => aplicarTema(document.documentElement.getAttribute('data-theme') !== 'dark'));
     document.getElementById('btnRefresh').addEventListener('click', carregar);
+    document.addEventListener('visibilitychange', () => {
+      clearTimeout(estado.timer); estado.timer = null;
+      if (document.hidden) return;
+      const restante = INTERVALO_MS - (Date.now() - estado.ultimoCarregamento);
+      if (restante <= 0) carregar(); else estado.timer = setTimeout(carregar, restante);
+    });
     document.querySelectorAll('.preset-btn').forEach(b => b.addEventListener('click', () => clicarPreset(b)));
     document.getElementById('btnApply').addEventListener('click', () => {
       const s = document.getElementById('dateSince').value, u = document.getElementById('dateUntil').value;
