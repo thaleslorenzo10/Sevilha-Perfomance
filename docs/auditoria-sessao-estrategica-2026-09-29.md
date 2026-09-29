@@ -33,7 +33,25 @@ Janeiro–abril reúne 120 dias; setembro, 29. A comparação de CPL e custo/MQL
 | Abr | FORMS quente **Melhores Ads** (R$ 4.499,15) e **Teste de Ads** (R$ 1.844,74); LP quente **Melhores Ads** (R$ 1.788,28); FORMS frio **Melhores Ads** (R$ 1.495,91) | Quatro campanhas; concentração no formulário quente. O 005 Vicente gastou R$ 2.526,89 dentro do principal conjunto de anúncios quentes. |
 | Set, 1–29 | **Página nova** quente (R$ 2.846,93) e fria (R$ 886,34); FORMS quente **Teste de Ads** (R$ 2.840,95); FORMS frio **Fábrica de Criativos** (R$ 2.239,25) | Página nova substitui a LP antiga no mix. Quatro instâncias do criativo “Como saber onde usar Inteligência” consumiram R$ 7.002,04, **79,4%** do gasto `[SE]`. |
 
-Os nomes acima resumem os identificadores `[SE]` do Meta. “Rodava” significa **teve entrega e gasto no período**, não que seu status esteja ativo hoje. O endpoint público de insights não informa status atual, configuração de otimização, audiência ou frequência; a leitura direta autenticada da conta não estava disponível nesta auditoria.
+Os nomes acima resumem os identificadores `[SE]` do Meta. “Rodava” significa **teve entrega e gasto no período**. Nomes foram reutilizados em anúncios de IDs diferentes.
+
+### Anúncios históricos: estão entregando agora?
+
+Leitura autenticada de `status` e `effective_status` por **ID exato** na Graph API da conta 1676714556216146 em 29/09/2026. Janeiro teve o menor CPL real; abril teve o maior volume mensal de MQLs (65).
+
+| Referência | Anúncio (ID final) | Gasto no mês de referência | Leads Meta no mês | Situação efetiva agora |
+|---|---|---:|---:|---|
+| Jan, FORMS frio | AD16 (`120235361806270526`) | R$ 1.445,26 | 81 onsite | **Pausado**; R$ 0 em setembro |
+| Jan, FORMS quente | AD16 (`120235361806360526`) | R$ 1.236,75 | 116 onsite | Anúncio marcado ativo, **conjunto pausado**; R$ 0 em setembro |
+| Jan, LP fria | AD16 (`120235361796950526`) | R$ 1.227,21 | 0 pixel | **Pausado**; R$ 0 em setembro. O zero de pixel não mede seus leads reais. |
+| Abr, FORMS quente | 005 Vicente (`120244151199580526`) | R$ 2.526,89 | 85 onsite | **Pausado**; R$ 0 em setembro |
+| Abr, FORMS quente | AD21 (`120244151199590526`) | R$ 1.189,42 | 40 onsite | **Pausado**; R$ 0 em setembro |
+| Abr, LP quente | 005 Vicente (`120244151307830526`) | R$ 1.174,49 | 32 pixel | **Pausado**; R$ 0 em setembro |
+| Abr, FORMS frio | 005 Vicente (`120244151200210526`) | R$ 748,26 | 28 onsite | Anúncio marcado ativo, **campanha pausada**; R$ 0 em setembro |
+
+As três instâncias com mais gasto agora são outros anúncios `[SE]`, todos efetivamente ativos em 29/09: **“Como saber onde usar Inteligência”** na LP nova quente (`120252914557100526`), FORMS quente (`120252914643230526`) e FORMS frio (`120252914614380526`). Juntas, gastaram R$ 6.269,10 entre 1º e 29/09. Uma quarta instância na LP fria (`120252914543520526`) gastou R$ 735,89 no mês, mas sua campanha estava pausada na consulta. Cópias ativas com nomes “AD16” ou “Vicente” têm outros IDs e **não** reativam os anúncios históricos.
+
+Esses números de lead por anúncio vêm do Meta. A base operacional agrupa criativos pelo **nome**, reutilizado em campanhas diferentes; ela não permite atribuir MQL com segurança a cada um desses IDs. A leitura autenticada confirmou status, campanha e conjunto, mas não examinou objetivo de otimização, audiência, frequência ou orçamento configurado.
 
 ## Onde o custo mudou
 
@@ -61,4 +79,4 @@ O painel da Meta registrou **199 leads `[SE]`** em setembro, enquanto as fontes 
 - [Meta, jan–abr](https://sevilha-perfomance.vercel.app/api/meta?since=2026-01-01&until=2026-04-30) e [Meta, setembro](https://sevilha-perfomance.vercel.app/api/meta?since=2026-09-01&until=2026-09-29): gasto, impressões, cliques e insights por campanha/conjunto/anúncio. Consultas mensais equivalentes produziram a série; resposta sem campos degradados.
 - [Leads unificados, jan–abr](https://sevilha-perfomance.vercel.app/api/leads-unificados?since=2026-01-01&until=2026-04-30) e [setembro](https://sevilha-perfomance.vercel.app/api/leads-unificados?since=2026-09-01&until=2026-09-29): planilha Meta FORMS, Respondi LP e Supabase; deduplicação por e-mail/telefone. Respostas sem erro de fonte. MQL = 10+ colaboradores em `lib/porte.js`.
 - [Raio-X de 03/09](raio-x-meta-2026-09-03.html): contexto anterior sobre LP, pixel, público e criativos. Achados datados, **não** confirmação da configuração atual.
-- O grupo de leads `[SE]` usa nome da campanha e, na falta dele, página da oferta. Alguns leads antigos têm etiqueta de campanha sem gasto no mesmo mês; portanto, gasto `[SE]` / leads `[SE]` é um **indicador operacional de aquisição**, não um ROAS por atribuição perfeita de anúncio. Não houve acesso confirmado ao status atual dos anúncios, frequência, orçamento configurado ou estágios comerciais. Nenhuma recomendação acima foi aplicada à conta.
+- A situação efetiva dos IDs históricos e atuais foi lida na Graph API autenticada da conta certa em 29/09/2026 (`status`, `effective_status`, campanha e conjunto); por segurança, credenciais não integram este arquivo. O grupo de leads `[SE]` usa nome da campanha e, na falta dele, página da oferta. Alguns leads antigos têm etiqueta de campanha sem gasto no mesmo mês; portanto, gasto `[SE]` / leads `[SE]` é um **indicador operacional de aquisição**, não um ROAS por atribuição perfeita de anúncio. Frequência, orçamento configurado e estágios comerciais não foram confirmados. Nenhuma recomendação acima foi aplicada à conta.
