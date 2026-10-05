@@ -1,0 +1,233 @@
+{
+  "scope": "Somente Sessao Estrategica; pausa LP e 3 budgets existentes; sem reativacao",
+  "account": {
+    "id": "act_1676714556216146",
+    "currency": "BRL",
+    "timezone_name": "America/Sao_Paulo",
+    "account_status": 9,
+    "disable_reason": 0
+  },
+  "account_status_interpretation": "account_status 9, disable_reason 0 recorded only; no health claim",
+  "preflight_observed_at": "2026-10-05T16:45:33.585053-03:00",
+  "final_observed_at": "2026-10-05T16:48:17.350925-03:00",
+  "completed_at": "2026-10-05T16:48:17.354942-03:00",
+  "api_version": "v23.0",
+  "operations": [
+    {
+      "id": "120252795398510526",
+      "field": "status",
+      "target": "PAUSED",
+      "started_at": "2026-10-05T16:46:49.352099-03:00",
+      "completed_at": "2026-10-05T16:46:51.643121-03:00",
+      "confirmed": true,
+      "before": {
+        "id": "120252795398510526",
+        "account_id": "1676714556216146",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "13000"
+      },
+      "after": {
+        "id": "120252795398510526",
+        "account_id": "1676714556216146",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "daily_budget": "13000"
+      },
+      "children_after": [
+        {
+          "id": "120252795398450526",
+          "effective_status": "CAMPAIGN_PAUSED"
+        },
+        {
+          "id": "120252914557090526",
+          "effective_status": "CAMPAIGN_PAUSED"
+        },
+        {
+          "id": "120252914557060526",
+          "effective_status": "CAMPAIGN_PAUSED"
+        },
+        {
+          "id": "120252914557100526",
+          "effective_status": "CAMPAIGN_PAUSED"
+        },
+        {
+          "id": "120252914557070526",
+          "effective_status": "CAMPAIGN_PAUSED"
+        },
+        {
+          "id": "120252914557080526",
+          "effective_status": "CAMPAIGN_PAUSED"
+        },
+        {
+          "id": "120252795398480526",
+          "effective_status": "CAMPAIGN_PAUSED"
+        },
+        {
+          "id": "120252795398460526",
+          "effective_status": "CAMPAIGN_PAUSED"
+        },
+        {
+          "id": "120252795398520526",
+          "effective_status": "CAMPAIGN_PAUSED"
+        },
+        {
+          "id": "120252795398470526",
+          "effective_status": "CAMPAIGN_PAUSED"
+        }
+      ],
+      "operation_id": "5ec5db4d09fd8c012dd4819d0f1563f4c8e3baacf5cb95d280c08f6bbcc33cf9"
+    },
+    {
+      "id": "120253330191810526",
+      "field": "daily_budget",
+      "target_minor": 13235,
+      "started_at": "2026-10-05T16:47:48.801755-03:00",
+      "completed_at": "2026-10-05T16:47:50.570231-03:00",
+      "confirmed": true,
+      "rollback_minor": 10000,
+      "before": {
+        "id": "120253330191810526",
+        "account_id": "1676714556216146",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "10000"
+      },
+      "after": {
+        "id": "120253330191810526",
+        "account_id": "1676714556216146",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "13235"
+      },
+      "final_effective_status": "ACTIVE",
+      "operation_id": "769ac68535cc660c1457a9d257188dac33ba3d3fcf4cc13048eea0afa664ecf1"
+    },
+    {
+      "id": "120248779747120526",
+      "field": "daily_budget",
+      "target_minor": 14559,
+      "started_at": "2026-10-05T16:47:50.574682-03:00",
+      "completed_at": "2026-10-05T16:47:52.274124-03:00",
+      "confirmed": true,
+      "rollback_minor": 11000,
+      "before": {
+        "id": "120248779747120526",
+        "account_id": "1676714556216146",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "11000"
+      },
+      "after": {
+        "id": "120248779747120526",
+        "account_id": "1676714556216146",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "14559"
+      },
+      "final_effective_status": "ACTIVE",
+      "operation_id": "0b84708fbd2f8c0c19a6908775738d0fa7988d53cbef73cda293a16f5b42f302"
+    },
+    {
+      "id": "120243440924150526",
+      "field": "daily_budget",
+      "target_minor": 17206,
+      "started_at": "2026-10-05T16:47:52.277938-03:00",
+      "completed_at": "2026-10-05T16:47:54.429064-03:00",
+      "confirmed": true,
+      "rollback_minor": 13000,
+      "before": {
+        "id": "120243440924150526",
+        "account_id": "1676714556216146",
+        "campaign_id": "120235128444610526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "13000",
+        "lifetime_budget": "0"
+      },
+      "after": {
+        "id": "120243440924150526",
+        "account_id": "1676714556216146",
+        "campaign_id": "120235128444610526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "17206",
+        "lifetime_budget": "0"
+      },
+      "final_effective_status": "ACTIVE",
+      "operation_id": "d927c0ce15681fab2952b6501ee65cefcd248253383262d56dbbc32d6403ce16"
+    }
+  ],
+  "writes_count": 4,
+  "lp_cold_unchanged": {
+    "id": "120252795560930526",
+    "account_id": "1676714556216146",
+    "status": "PAUSED",
+    "effective_status": "PAUSED",
+    "daily_budget": "9000"
+  },
+  "aggregate_verification": {
+    "all_se_campaigns_read": 22,
+    "controllers": [
+      {
+        "id": "120253330191810526",
+        "entity": "campaign",
+        "daily_budget_minor": 13235,
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "120248779747120526",
+        "entity": "campaign",
+        "daily_budget_minor": 14559,
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE"
+      },
+      {
+        "id": "120243440924150526",
+        "campaign_id": "120235128444610526",
+        "entity": "adset",
+        "daily_budget_minor": 17206,
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE"
+      }
+    ],
+    "daily_total_minor": 45000,
+    "all_effectively_active": true
+  },
+  "pace_after": {
+    "ceiling_minor": 1400000,
+    "october_spend_minor": 196233,
+    "remaining_minor": 1203767,
+    "full_days_after_today": 26,
+    "full_days_nominal_minor": 1170000,
+    "reserve_remainder_today_minor": 26983,
+    "reserve_rule": "2x remaining fraction of day times nominal daily budget; arithmetic conservative allowance, not guaranteed maximum spend",
+    "projected_with_allowance_minor": 1393216,
+    "arithmetic_margin_minor": 6784,
+    "monthly_cap_enforced": false,
+    "requires_manual_daily_reconciliation": true
+  },
+  "rollback_policy": "Restaurar apenas budgets modificados; LP permanece pausada",
+  "rollback_needed": false,
+  "idempotency_strategy": "Operation IDs are local references for deduplication and read-before-write auditing, not credential tokens. Absolute field assignments plus read-before-retry; the API does not guarantee idempotency from these local references.",
+  "no_paused_campaign_reactivated": true,
+  "no_paused_adset_reactivated": true,
+  "final_acceptance_checks": {
+    "all_four_changes_confirmed": true,
+    "all_se_budget_controllers_effectively_active": true,
+    "daily_total_45000_minor": true,
+    "both_lp_campaigns_effectively_paused": true,
+    "no_reactivation": true,
+    "no_budget_rollback_needed": true,
+    "all_children_read": true
+  },
+  "errors": [],
+  "limitations": [
+    "Daily budget is nominal pacing, not a hard monthly cap.",
+    "Remaining-day allowance uses twice the remaining fraction times the daily budget; actual spend can differ.",
+    "Manual daily spend reconciliation required; no monitor created.",
+    "Account status recorded without health interpretation."
+  ],
+  "credential_handling": "Global ads.env read directly; token sent only in Bearer header, never retained."
+}

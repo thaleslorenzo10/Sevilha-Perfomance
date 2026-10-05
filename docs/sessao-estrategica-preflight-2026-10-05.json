@@ -1,0 +1,205 @@
+{
+  "scope": "Somente [SE], preflight GET; nenhuma mutacao",
+  "observed_at": "2026-10-05T16:41:44-03:00",
+  "account": {
+    "id": "act_1676714556216146",
+    "currency": "BRL",
+    "timezone_name": "America/Sao_Paulo",
+    "spend_cap_minor": 0,
+    "account_status": 9,
+    "disable_reason": 0,
+    "status_interpretation": "Nao confirmado por fonte oficial: pagina de referencia Meta retornou timeout; nao afirmar conta saudavel",
+    "token_source": "Arquivo global ads.env, valor nao copiado"
+  },
+  "campaigns": [
+    {
+      "id": "120252795398510526",
+      "format": "LP",
+      "temperature": "HOT",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "budget_source": "CBO",
+      "daily_budget_minor": 13000,
+      "active_adset_id": "120252795398450526",
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "custom_event": "LeadQualificado",
+      "destination_confirmed": "https://sevilha-perfomance.vercel.app/diagnostico",
+      "action_proposed": "PAUSED"
+    },
+    {
+      "id": "120252795560930526",
+      "format": "LP",
+      "temperature": "COLD",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "budget_source": "CBO",
+      "daily_budget_minor": 9000,
+      "action_proposed": "none_already_paused"
+    },
+    {
+      "id": "120253330191810526",
+      "format": "FORMS",
+      "label": "Bruno Novo Setembro",
+      "temperature": "COLD",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "budget_source": "CBO",
+      "daily_budget_minor": 10000,
+      "active_adset_id": "120253330191850526",
+      "optimization_goal": "QUALITY_LEAD",
+      "destination_type": "ON_AD",
+      "lead_gen_form_id": "1836784071025712",
+      "creative_link": "https://form.respondi.app/gvz4UKQr",
+      "start_time": "2026-09-29T23:30:49-0300"
+    },
+    {
+      "id": "120248779747120526",
+      "format": "FORMS",
+      "label": "Fabrica de Criativos",
+      "temperature": "COLD",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "budget_source": "CBO",
+      "daily_budget_minor": 11000,
+      "active_adset_id": "120248779747210526",
+      "optimization_goal": "QUALITY_LEAD",
+      "destination_type": "ON_AD",
+      "lead_gen_form_id": "1836784071025712",
+      "creative_link": "https://form.respondi.app/gvz4UKQr",
+      "start_time": "2026-06-01T23:16:44-0300"
+    },
+    {
+      "id": "120235128444610526",
+      "format": "FORMS",
+      "label": "Teste de Ads",
+      "temperature": "HOT",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "budget_source": "ABO",
+      "campaign_daily_budget_minor": null,
+      "active_adset_id": "120243440924150526",
+      "daily_budget_minor": 13000,
+      "optimization_goal": "LEAD_GENERATION",
+      "destination_type": "ON_AD",
+      "lead_gen_form_id": "1836784071025712",
+      "creative_link": "https://form.respondi.app/gvz4UKQr",
+      "active_adset_start_time": "2026-03-05T23:30:41-0300",
+      "paused_adset_excluded": "120235128444600526"
+    }
+  ],
+  "budget": {
+    "current_daily_brl": 470,
+    "after_lp_pause_daily_brl": 340,
+    "monthly_ceiling_brl": 14000,
+    "counting_rule": "Somar CBO ativo e ABO apenas adsets efetivamente ativos; nao duplicar CBO nem incluir campanhas pausadas",
+    "no_end_time_returned": true,
+    "no_active_lifetime_budget_returned": true
+  },
+  "october_spend": {
+    "since": "2026-10-01",
+    "until": "2026-10-05",
+    "includes_partial_today": true,
+    "total_se_brl": 1960.46,
+    "by_campaign": [
+      {
+        "id": "120235128444610526",
+        "spend_brl": 513.92
+      },
+      {
+        "id": "120248779747120526",
+        "spend_brl": 452
+      },
+      {
+        "id": "120252795398510526",
+        "spend_brl": 532.63
+      },
+      {
+        "id": "120253330191810526",
+        "spend_brl": 461.91
+      }
+    ]
+  },
+  "frequency": {
+    "last_14_days": {
+      "since": "2026-09-22",
+      "until": "2026-10-05",
+      "hot_forms": 2.216358,
+      "cold_factory": 1.702796,
+      "cold_bruno": 1.975827,
+      "hot_lp": 2.219735
+    },
+    "last_30_days": {
+      "since": "2026-09-06",
+      "until": "2026-10-05",
+      "hot_forms": 2.900537,
+      "cold_factory": 2.251858,
+      "cold_bruno": 1.975827,
+      "hot_lp": 2.754318
+    },
+    "interpretation": "Nao prova saturacao ou overlap"
+  },
+  "proposal": {
+    "allocation_rule": "Preservar proporcao FORMS 100:110:130 para nao introduzir mudanca de mix junto da pausa LP",
+    "daily_total_brl": 450,
+    "updates": [
+      {
+        "id": "120253330191810526",
+        "entity": "campaign",
+        "field": "daily_budget",
+        "before_minor": 10000,
+        "proposed_minor": 13235
+      },
+      {
+        "id": "120248779747120526",
+        "entity": "campaign",
+        "field": "daily_budget",
+        "before_minor": 11000,
+        "proposed_minor": 14559
+      },
+      {
+        "id": "120243440924150526",
+        "entity": "adset",
+        "field": "daily_budget",
+        "before_minor": 13000,
+        "proposed_minor": 17206
+      }
+    ],
+    "pace": {
+      "remaining_at_observation_brl": 12039.54,
+      "full_days_after_today": 26,
+      "projected_full_days_brl": 11700,
+      "reserve_for_remainder_today_and_variation_brl": 339.54,
+      "projected_without_remainder_today_brl": 13660.46,
+      "caveat": "Orcamento diario nao e teto mensal rigido. Requer acompanhamento/reconciliacao do gasto SE para impedir exceder 14000; spend_cap da conta inteira atingiria outras ofertas e nao deve ser usado."
+    },
+    "writes_if_approved_by_orchestrator": 4,
+    "sequence": "Pausar LP e reler; atualizar 3 budgets sequencialmente com readback; nenhuma reativacao"
+  },
+  "performance_support": {
+    "september_complete": {
+      "spend_brl": 9503.2,
+      "unique_leads": 121,
+      "mql": 45,
+      "cost_per_mql_brl": 211.18
+    },
+    "september_forms_hot": {
+      "spend_brl": 3045.52,
+      "unique_leads": 69,
+      "mql": 25,
+      "cost_per_mql_brl": 121.82
+    },
+    "september_forms_cold_factory": {
+      "spend_brl": 2428.56,
+      "unique_leads": 40,
+      "mql": 10,
+      "cost_per_mql_brl": 242.86
+    },
+    "october_1_4": {
+      "spend_brl": 1746.33,
+      "unique_leads": 22,
+      "mql": 3,
+      "cost_per_mql_brl": 582.11,
+      "note": "Amostra curta; nao justificativa unica para redistribuir mix"
+    }
+  }
+}
