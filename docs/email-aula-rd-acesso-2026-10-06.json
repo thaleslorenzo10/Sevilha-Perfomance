@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-06",
+  "scope": "readonly RD email send capability diagnosis",
+  "configured_credentials": {
+    "RD_MARKETING_TOKEN": "present; used as conversion API key in api/leads.js",
+    "RD_CRM_TOKEN": "present",
+    "oauth_access_refresh_client_credentials": "not found among project .env.local RD keys"
+  },
+  "readback": {
+    "endpoint": "GET https://api.rd.services/platform/segmentations",
+    "status": 401,
+    "authorization_mode": "Bearer configured RD_MARKETING_TOKEN",
+    "contacts_exported": false
+  },
+  "public_api": {
+    "segmentations": "OAuth bearer required",
+    "email_campaign_creation_and_send": "not found in public official documentation index; browser product interface needed",
+    "crm_campaigns": "attribution records, not email sends"
+  },
+  "browser": {
+    "agent_browser_session": "rd-email-acesso-20261006",
+    "correct_app_url": "https://app.rdstation.com.br",
+    "state": "redirected to RD Station Login",
+    "wrong_domain": "https://app.rdstation.com returned DNS resolution error; corrected to app.rdstation.com.br"
+  },
+  "n8n": {
+    "sevilha_workflows_count": 14,
+    "email_sender_workflow_found": false,
+    "workflows_executed": false
+  },
+  "unverified": [
+    "RD Marketing account identity",
+    "eligible audience count",
+    "authenticated sender",
+    "buyer exclusions",
+    "opt-out exclusions",
+    "email send allowance"
+  ],
+  "next_required": "Use already authenticated real Chrome via documented BROWSER.md exception, or sign into RD Station normal UI. Do not export to a different email provider.",
+  "references": [
+    "https://developers.rdstation.com/reference/get_platform-segmentations",
+    "https://developers.rdstation.com/reference/autentica%C3%A7%C3%A3o",
+    "https://developers.rdstation.com/reference/conversao",
+    "https://developers.rdstation.com/llms.txt"
+  ]
+}
