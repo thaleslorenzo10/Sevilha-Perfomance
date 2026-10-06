@@ -1,0 +1,176 @@
+[
+  {
+    "path": "/dashboard",
+    "status": 200,
+    "bytes": 15473,
+    "sha1": "486aeb705e8f1874640a8dafbf90eb13c5ba7e51"
+  },
+  {
+    "path": "/assets/tracking.js",
+    "status": 200,
+    "bytes": 26848,
+    "sha1": "781dcd4f174f93724d8bdec5ef62a8f1cc4b50dd"
+  },
+  {
+    "path": "/assets/js/dash/aquisicao-se.js",
+    "status": 200,
+    "bytes": 10952,
+    "sha1": "86f569a3964d9bc8f5a5c20de2a2c0a1c228d226"
+  },
+  {
+    "path": "/mentoria?sp_interno=1",
+    "status": 200,
+    "bytes": 39755,
+    "sha1": "a284a25dfcf014ee75202b32ef97d4172621203e"
+  },
+  {
+    "path": "/aula-gestao-operacional?sp_interno=1",
+    "status": 200,
+    "bytes": 20006,
+    "sha1": "23a15fdda550d2d02b2bc289dc63c8ddd5978486"
+  },
+  {
+    "path": "/cafe-com-sevilha?sp_interno=1",
+    "status": 200,
+    "bytes": 16233,
+    "sha1": "4295f5aa6b35d50e3e96e8689527bbfb8861dd8b"
+  },
+  {
+    "path": "/api/leads",
+    "error_type": "HTTPError",
+    "status": 405
+  },
+  {
+    "path": "/api/leads-unificados?since=2026-10-01&until=2026-10-05",
+    "status": 200,
+    "bytes": 12242,
+    "sha1": "d2204bce47f3fff8a6852d2784d9d8175de980e6",
+    "top_keys": [
+      "periodo",
+      "total",
+      "por_dia",
+      "por_grupo",
+      "por_formato",
+      "por_formato_aquisicao_se",
+      "por_campanha_formato_se",
+      "entregas_se",
+      "cobertura_custos",
+      "compras",
+      "por_campanha",
+      "por_conjunto",
+      "por_anuncio",
+      "por_fonte",
+      "por_pagina",
+      "porte",
+      "qualificacao",
+      "fontes",
+      "compras_erro",
+      "leads_erro",
+      "gerado_em"
+    ],
+    "private_contact_fields": false,
+    "source_status": [
+      {
+        "nome": "FORMS",
+        "total_no_periodo": 23,
+        "ultimo_lead": "2026-10-05",
+        "dias_sem_lead": 0,
+        "modo": "service-account",
+        "erro": null
+      },
+      {
+        "nome": "RESPONDI",
+        "total_no_periodo": 0,
+        "ultimo_lead": "2026-08-27",
+        "dias_sem_lead": 39,
+        "modo": "service-account",
+        "erro": null
+      },
+      {
+        "nome": "SUPABASE",
+        "total_no_periodo": 39,
+        "ultimo_lead": "2026-10-05",
+        "dias_sem_lead": 0,
+        "modo": "postgrest",
+        "erro": null
+      },
+      {
+        "nome": "CAFE",
+        "total_no_periodo": 0,
+        "ultimo_lead": null,
+        "dias_sem_lead": null,
+        "modo": "postgrest",
+        "erro": null
+      }
+    ],
+    "error": null
+  },
+  {
+    "path": "/api/google-ads?since=2026-10-01&until=2026-10-05",
+    "status": 200,
+    "bytes": 521,
+    "sha1": "b093f06ef8a36c7cbd37dbfebb3104b94e35672b",
+    "top_keys": [
+      "campanhas",
+      "periodo",
+      "spend",
+      "moeda",
+      "fuso",
+      "customer_id",
+      "fonte",
+      "status",
+      "error",
+      "gerado_em"
+    ],
+    "private_contact_fields": false,
+    "aggregate": {
+      "campanhas": [
+        {
+          "id": "24317774874",
+          "nome": "[SE][SEARCH][MARCA] Sessao Estrategica 20261005",
+          "status": "PAUSED",
+          "grupo": "SE",
+          "formato": "SEARCH",
+          "spend": 0
+        },
+        {
+          "id": "24328953730",
+          "nome": "[SE][SEARCH][CAPTACAO] Sessao Estrategica 20261005",
+          "status": "PAUSED",
+          "grupo": "SE",
+          "formato": "SEARCH",
+          "spend": 0
+        }
+      ],
+      "periodo": {
+        "since": "2026-10-01",
+        "until": "2026-10-05"
+      },
+      "spend": 0,
+      "moeda": "BRL",
+      "fuso": "America/Sao_Paulo",
+      "customer_id": "1316487378",
+      "fonte": "google_ads",
+      "status": "disponivel",
+      "error": null,
+      "gerado_em": "2026-10-06T02:41:43.477Z"
+    }
+  },
+  {
+    "path": "/api/rd-stats?from=2026-10-01&to=2026-10-05",
+    "status": 200,
+    "bytes": 2160,
+    "sha1": "ada1035076fab91dc9e9ab1388a84a2f71e79bc3",
+    "top_keys": [
+      "periodo",
+      "acumulado",
+      "funis",
+      "total_deals",
+      "por_campanha",
+      "gerado_em"
+    ],
+    "private_contact_fields": false,
+    "source_status": {},
+    "error": null
+  }
+]

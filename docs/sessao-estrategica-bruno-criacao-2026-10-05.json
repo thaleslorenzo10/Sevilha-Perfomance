@@ -200,28 +200,631 @@
         "daily_budget": "32000"
       },
       "confirmed": true
+    },
+    {
+      "kind": "campaigns",
+      "params": {
+        "name": "[SE] [BRUNO] [IG] [CONTEÚDO PERFIL] 2026-10-05",
+        "objective": "OUTCOME_TRAFFIC",
+        "status": "PAUSED",
+        "special_ad_categories": [],
+        "daily_budget": 4000,
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+      },
+      "journal_fingerprint": "2751108fed15b6782e8e98d154e10a0a432a4347c1ea011e9129354cf9c530ee",
+      "started_at": "2026-10-05T23:26:26.302634-03:00",
+      "rollback": "Manter pausado; nenhuma exclusão automática",
+      "response": {
+        "id": "120253414357780526"
+      },
+      "id": "120253414357780526",
+      "readback": {
+        "id": "120253414357780526",
+        "name": "[SE] [BRUNO] [IG] [CONTEÚDO PERFIL] 2026-10-05",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "objective": "OUTCOME_TRAFFIC",
+        "daily_budget": "4000"
+      },
+      "confirmed": true
+    },
+    {
+      "kind": "adsets",
+      "params": {
+        "name": "Contabilidade financeira | Bruno perfil | IG-only | 2026-10-05",
+        "campaign_id": "120253414357780526",
+        "status": "PAUSED",
+        "billing_event": "IMPRESSIONS",
+        "optimization_goal": "VISIT_INSTAGRAM_PROFILE",
+        "targeting": {
+          "age_max": 60,
+          "age_min": 25,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003389795312",
+                  "name": "Contabilidade financeira (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "home",
+              "recent"
+            ]
+          },
+          "brand_safety_content_filter_levels": [
+            "FACEBOOK_RELAXED",
+            "AN_RELAXED"
+          ],
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "instagram"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "reels"
+          ]
+        }
+      },
+      "journal_fingerprint": "4b8c3d6c235fb1ce128968493a71f992f706d4790007b7902d62448cbb85c0a0",
+      "started_at": "2026-10-05T23:26:28.328920-03:00",
+      "rollback": "Manter pausado; nenhuma exclusão automática",
+      "response": {
+        "id": "120253414358070526"
+      },
+      "id": "120253414358070526",
+      "readback": {
+        "id": "120253414358070526",
+        "name": "Contabilidade financeira | Bruno perfil | IG-only | 2026-10-05",
+        "campaign_id": "120253414357780526",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "targeting": {
+          "age_max": 60,
+          "age_min": 25,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003389795312",
+                  "name": "Contabilidade financeira (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "home",
+              "recent"
+            ]
+          },
+          "brand_safety_content_filter_levels": [
+            "FACEBOOK_RELAXED",
+            "AN_RELAXED"
+          ],
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "instagram"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "reels"
+          ]
+        },
+        "optimization_goal": "VISIT_INSTAGRAM_PROFILE",
+        "destination_type": "UNDEFINED"
+      },
+      "confirmed": true
+    },
+    {
+      "kind": "adcreatives",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Liderança e resultado | 2026-10-05",
+        "object_id": "106292094924513",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "17910884640537456",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "journal_fingerprint": "4f8ea97f9cade248981e1955adb79226ce5765ec08874245c35525069dc3fcae",
+      "started_at": "2026-10-05T23:26:44.252074-03:00",
+      "rollback": "Manter pausado; nenhuma exclusão automática",
+      "response": {
+        "id": "2003735993633999"
+      },
+      "id": "2003735993633999",
+      "readback": {
+        "id": "2003735993633999",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "17910884640537456",
+        "name": "[SE] Bruno conteúdo | Liderança e resultado | 2026-10-05 2026-10-05-7c272cf111c9fa9a19e126da81b49c6f",
+        "object_id": "106292094924513",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "confirmed": true
+    },
+    {
+      "kind": "ads",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Liderança e resultado | 2026-10-05",
+        "adset_id": "120253414358070526",
+        "creative": {
+          "creative_id": "2003735993633999"
+        },
+        "status": "PAUSED"
+      },
+      "journal_fingerprint": "d1e154e32edc0c1faab7d6694d42d9ba6a27f4294527a8a7a9e03a258c6523dc",
+      "started_at": "2026-10-05T23:26:48.547750-03:00",
+      "rollback": "Manter pausado; nenhuma exclusão automática",
+      "response": {
+        "id": "120253414359770526"
+      },
+      "id": "120253414359770526",
+      "readback": {
+        "id": "120253414359770526",
+        "name": "[SE] Bruno conteúdo | Liderança e resultado | 2026-10-05",
+        "campaign_id": "120253414357780526",
+        "adset_id": "120253414358070526",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "creative": {
+          "id": "2003735993633999"
+        }
+      },
+      "confirmed": true
+    },
+    {
+      "kind": "adcreatives",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Definir resultado antes de melhorar | 2026-10-05",
+        "object_id": "106292094924513",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "17977204748918220",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "journal_fingerprint": "0e1ccdaee8ea228ea408b5278ada829b3d436917a84801d00de9cedab80b6fd2",
+      "started_at": "2026-10-05T23:27:06.400737-03:00",
+      "rollback": "Manter pausado; nenhuma exclusão automática",
+      "response": {
+        "id": "1088048704001716"
+      },
+      "id": "1088048704001716",
+      "readback": {
+        "id": "1088048704001716",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "17977204748918220",
+        "name": "[SE] Bruno conteúdo | Definir resultado antes de melhorar | 2026-10-05 2026-10-05-bd50a7a4d577aa78c714e682ff889e5a",
+        "object_id": "106292094924513",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "confirmed": true
+    },
+    {
+      "kind": "ads",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Definir resultado antes de melhorar | 2026-10-05",
+        "adset_id": "120253414358070526",
+        "creative": {
+          "creative_id": "1088048704001716"
+        },
+        "status": "PAUSED"
+      },
+      "journal_fingerprint": "89666613110b49d6a714029670f2b62df8db501bcc6e082d10db2c230758415a",
+      "started_at": "2026-10-05T23:27:10.224533-03:00",
+      "rollback": "Manter pausado; nenhuma exclusão automática",
+      "response": {
+        "id": "120253414362440526"
+      },
+      "id": "120253414362440526",
+      "readback": {
+        "id": "120253414362440526",
+        "name": "[SE] Bruno conteúdo | Definir resultado antes de melhorar | 2026-10-05",
+        "campaign_id": "120253414357780526",
+        "adset_id": "120253414358070526",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "creative": {
+          "id": "1088048704001716"
+        }
+      },
+      "confirmed": true
+    },
+    {
+      "kind": "adcreatives",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Organizar antes de contratar | 2026-10-05",
+        "object_id": "106292094924513",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "18115610558043965",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "journal_fingerprint": "5348f1fb8df6854fe23466984700cc81b11efe57bf8eb0b3f4d98cf513805e9f",
+      "started_at": "2026-10-05T23:27:27.202840-03:00",
+      "rollback": "Manter pausado; nenhuma exclusão automática",
+      "response": {
+        "id": "958753126733052"
+      },
+      "id": "958753126733052",
+      "readback": {
+        "id": "958753126733052",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "18115610558043965",
+        "name": "[SE] Bruno conteúdo | Organizar antes de contratar | 2026-10-05 2026-10-05-8a435b5c0d27425a54c5594e5b538b1e",
+        "object_id": "106292094924513",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "confirmed": true
+    },
+    {
+      "kind": "ads",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Organizar antes de contratar | 2026-10-05",
+        "adset_id": "120253414358070526",
+        "creative": {
+          "creative_id": "958753126733052"
+        },
+        "status": "PAUSED"
+      },
+      "journal_fingerprint": "88161621050fa367c94a08774d1603617d5b118d020de3869e9aee077a4bed83",
+      "started_at": "2026-10-05T23:27:30.797957-03:00",
+      "rollback": "Manter pausado; nenhuma exclusão automática",
+      "response": {
+        "id": "120253414364330526"
+      },
+      "id": "120253414364330526",
+      "readback": {
+        "id": "120253414364330526",
+        "name": "[SE] Bruno conteúdo | Organizar antes de contratar | 2026-10-05",
+        "campaign_id": "120253414357780526",
+        "adset_id": "120253414358070526",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "creative": {
+          "id": "958753126733052"
+        }
+      },
+      "confirmed": true
+    },
+    {
+      "kind": "transition_capture_budget",
+      "id": "120253330191810526",
+      "params": {
+        "daily_budget": "12059"
+      },
+      "before": {
+        "id": "120253330191810526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "13235"
+      },
+      "started_at": "2026-10-05T23:29:59.249308-03:00",
+      "rollback": {
+        "daily_budget": "13235"
+      },
+      "response": {
+        "success": true
+      },
+      "readback": {
+        "id": "120253330191810526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "12059"
+      },
+      "confirmed": true,
+      "completed_at": "2026-10-05T23:30:00.786771-03:00"
+    },
+    {
+      "kind": "transition_capture_budget",
+      "id": "120248779747120526",
+      "params": {
+        "daily_budget": "13265"
+      },
+      "before": {
+        "id": "120248779747120526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "14559"
+      },
+      "started_at": "2026-10-05T23:30:00.789518-03:00",
+      "rollback": {
+        "daily_budget": "14559"
+      },
+      "response": {
+        "success": true
+      },
+      "readback": {
+        "id": "120248779747120526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "13265"
+      },
+      "confirmed": true,
+      "completed_at": "2026-10-05T23:30:02.471692-03:00"
+    },
+    {
+      "kind": "transition_capture_budget",
+      "id": "120243440924150526",
+      "params": {
+        "daily_budget": "15676"
+      },
+      "before": {
+        "id": "120243440924150526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "17206"
+      },
+      "started_at": "2026-10-05T23:30:02.477633-03:00",
+      "rollback": {
+        "daily_budget": "17206"
+      },
+      "response": {
+        "success": true
+      },
+      "readback": {
+        "id": "120243440924150526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "15676"
+      },
+      "confirmed": true,
+      "completed_at": "2026-10-05T23:30:04.106604-03:00"
+    },
+    {
+      "kind": "activate_content_child",
+      "id": "120253414359770526",
+      "params": {
+        "status": "ACTIVE"
+      },
+      "before": {
+        "id": "120253414359770526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      },
+      "started_at": "2026-10-05T23:30:05.232743-03:00",
+      "rollback": {
+        "status": "PAUSED"
+      },
+      "response": {
+        "success": true
+      },
+      "readback": {
+        "id": "120253414359770526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS"
+      },
+      "confirmed": true,
+      "completed_at": "2026-10-05T23:30:07.090854-03:00"
+    },
+    {
+      "kind": "activate_content_child",
+      "id": "120253414362440526",
+      "params": {
+        "status": "ACTIVE"
+      },
+      "before": {
+        "id": "120253414362440526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      },
+      "started_at": "2026-10-05T23:30:07.406637-03:00",
+      "rollback": {
+        "status": "PAUSED"
+      },
+      "response": {
+        "success": true
+      },
+      "readback": {
+        "id": "120253414362440526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS"
+      },
+      "confirmed": true,
+      "completed_at": "2026-10-05T23:30:08.988343-03:00"
+    },
+    {
+      "kind": "activate_content_child",
+      "id": "120253414364330526",
+      "params": {
+        "status": "ACTIVE"
+      },
+      "before": {
+        "id": "120253414364330526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      },
+      "started_at": "2026-10-05T23:30:09.266185-03:00",
+      "rollback": {
+        "status": "PAUSED"
+      },
+      "response": {
+        "success": true
+      },
+      "readback": {
+        "id": "120253414364330526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS"
+      },
+      "confirmed": true,
+      "completed_at": "2026-10-05T23:30:10.938200-03:00"
+    },
+    {
+      "kind": "activate_content_child",
+      "id": "120253414358070526",
+      "params": {
+        "status": "ACTIVE"
+      },
+      "before": {
+        "id": "120253414358070526",
+        "status": "PAUSED",
+        "effective_status": "PAUSED"
+      },
+      "started_at": "2026-10-05T23:30:11.233269-03:00",
+      "rollback": {
+        "status": "PAUSED"
+      },
+      "response": {
+        "success": true
+      },
+      "readback": {
+        "id": "120253414358070526",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED"
+      },
+      "confirmed": true,
+      "completed_at": "2026-10-05T23:30:12.838924-03:00"
+    },
+    {
+      "kind": "activate_content_campaign",
+      "id": "120253414357780526",
+      "params": {
+        "status": "ACTIVE"
+      },
+      "before": {
+        "id": "120253414357780526",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "daily_budget": "4000"
+      },
+      "started_at": "2026-10-05T23:30:13.089425-03:00",
+      "rollback": {
+        "status": "PAUSED"
+      },
+      "response": {
+        "success": true
+      },
+      "readback": {
+        "id": "120253414357780526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "4000"
+      },
+      "confirmed": true,
+      "completed_at": "2026-10-05T23:30:14.417247-03:00"
     }
   ],
   "current_capture_readback": {
-    "observed_at": "2026-10-05T23:13:32.525501-03:00",
+    "observed_at": "2026-10-05T23:28:00.541584-03:00",
     "controllers": [
       {
         "id": "120253330191810526",
-        "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Bruno Novo Setembro",
         "status": "ACTIVE",
         "effective_status": "ACTIVE",
         "daily_budget": "13235"
       },
       {
         "id": "120248779747120526",
-        "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Fábrica de Criativos",
         "status": "ACTIVE",
         "effective_status": "ACTIVE",
         "daily_budget": "14559"
       },
       {
         "id": "120243440924150526",
-        "name": "Warm",
         "status": "ACTIVE",
         "effective_status": "ACTIVE",
         "daily_budget": "17206"
@@ -230,8 +833,8 @@
     "daily_total_minor": 45000,
     "all_effectively_active": true
   },
-  "stopped_reason": "Público Bruno regra de evento rejeitada2654/1713151; conjunto conteúdo POST_ENGAGEMENT rejeitado100/2490408. Nenhuma ativação. Novo formulário sem prova de ingestão.",
-  "final_at": "2026-10-05T23:13:32.525569-03:00",
+  "stopped_reason": "Conteúdo solicitadoACTIVE após transição410+40 confirmada. CapturaformnovaPAUSEDsemproof; públicoBruno/HOTblocked.",
+  "final_at": "2026-10-05T23:30:17.142889-03:00",
   "distribution_model_readback": {
     "observed_at": "2026-10-05T23:14:22.850417-03:00",
     "campaign_id": "120234703907860526",
@@ -385,5 +988,476 @@
       }
     },
     "at": "2026-10-05T23:15:00.030182-03:00"
+  },
+  "validations": [
+    {
+      "kind": "campaigns",
+      "params": {
+        "name": "[SE] [BRUNO] [IG] [CONTEÚDO PERFIL] 2026-10-05",
+        "objective": "OUTCOME_TRAFFIC",
+        "status": "PAUSED",
+        "special_ad_categories": [],
+        "daily_budget": 4000,
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+      },
+      "result": {
+        "success": true
+      },
+      "at": "2026-10-05T23:26:10.438475-03:00"
+    },
+    {
+      "kind": "campaigns",
+      "params": {
+        "name": "[SE] [BRUNO] [IG] [CONTEÚDO PERFIL] 2026-10-05",
+        "objective": "OUTCOME_TRAFFIC",
+        "status": "PAUSED",
+        "special_ad_categories": [],
+        "daily_budget": 4000,
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+      },
+      "result": {
+        "success": true
+      },
+      "at": "2026-10-05T23:26:26.299972-03:00"
+    },
+    {
+      "kind": "adsets",
+      "params": {
+        "name": "Contabilidade financeira | Bruno perfil | IG-only | 2026-10-05",
+        "campaign_id": "120253414357780526",
+        "status": "PAUSED",
+        "billing_event": "IMPRESSIONS",
+        "optimization_goal": "VISIT_INSTAGRAM_PROFILE",
+        "targeting": {
+          "age_max": 60,
+          "age_min": 25,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003389795312",
+                  "name": "Contabilidade financeira (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "home",
+              "recent"
+            ]
+          },
+          "brand_safety_content_filter_levels": [
+            "FACEBOOK_RELAXED",
+            "AN_RELAXED"
+          ],
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "instagram"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "reels"
+          ]
+        }
+      },
+      "result": {
+        "success": true
+      },
+      "at": "2026-10-05T23:26:28.328209-03:00"
+    },
+    {
+      "kind": "adcreatives",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Liderança e resultado | 2026-10-05",
+        "object_id": "106292094924513",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "17910884640537456",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "result": {
+        "success": true
+      },
+      "at": "2026-10-05T23:26:44.244207-03:00"
+    },
+    {
+      "kind": "ads",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Liderança e resultado | 2026-10-05",
+        "adset_id": "120253414358070526",
+        "creative": {
+          "creative_id": "2003735993633999"
+        },
+        "status": "PAUSED"
+      },
+      "result": {
+        "success": true
+      },
+      "at": "2026-10-05T23:26:48.545515-03:00"
+    },
+    {
+      "kind": "adcreatives",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Definir resultado antes de melhorar | 2026-10-05",
+        "object_id": "106292094924513",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "17977204748918220",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "result": {
+        "success": true
+      },
+      "at": "2026-10-05T23:27:06.398180-03:00"
+    },
+    {
+      "kind": "ads",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Definir resultado antes de melhorar | 2026-10-05",
+        "adset_id": "120253414358070526",
+        "creative": {
+          "creative_id": "1088048704001716"
+        },
+        "status": "PAUSED"
+      },
+      "result": {
+        "success": true
+      },
+      "at": "2026-10-05T23:27:10.223608-03:00"
+    },
+    {
+      "kind": "adcreatives",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Organizar antes de contratar | 2026-10-05",
+        "object_id": "106292094924513",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "18115610558043965",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "result": {
+        "success": true
+      },
+      "at": "2026-10-05T23:27:27.198809-03:00"
+    },
+    {
+      "kind": "ads",
+      "params": {
+        "name": "[SE] Bruno conteúdo | Organizar antes de contratar | 2026-10-05",
+        "adset_id": "120253414358070526",
+        "creative": {
+          "creative_id": "958753126733052"
+        },
+        "status": "PAUSED"
+      },
+      "result": {
+        "success": true
+      },
+      "at": "2026-10-05T23:27:30.791409-03:00"
+    }
+  ],
+  "latest_stopped_reason": "'journal_fingerprint'",
+  "content_creation_complete": true,
+  "final_entity_statuses": {
+    "120253414357780526": {
+      "id": "120253414357780526",
+      "name": "[SE] [BRUNO] [IG] [CONTEÚDO PERFIL] 2026-10-05",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253414358070526": {
+      "id": "120253414358070526",
+      "name": "Contabilidade financeira | Bruno perfil | IG-only | 2026-10-05",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253414359770526": {
+      "id": "120253414359770526",
+      "name": "[SE] Bruno conteúdo | Liderança e resultado | 2026-10-05",
+      "status": "PAUSED",
+      "effective_status": "IN_PROCESS"
+    },
+    "120253414362440526": {
+      "id": "120253414362440526",
+      "name": "[SE] Bruno conteúdo | Definir resultado antes de melhorar | 2026-10-05",
+      "status": "PAUSED",
+      "effective_status": "IN_PROCESS"
+    },
+    "120253414364330526": {
+      "id": "120253414364330526",
+      "name": "[SE] Bruno conteúdo | Organizar antes de contratar | 2026-10-05",
+      "status": "PAUSED",
+      "effective_status": "IN_PROCESS"
+    },
+    "120253413819760526": {
+      "id": "120253413819760526",
+      "name": "[SE] [FORMS] [MAIOR INTENÇÃO] [IDENTIDADE] 2026-10-05",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    }
+  },
+  "content_campaign_final_readback": {
+    "id": "120253414357780526",
+    "name": "[SE] [BRUNO] [IG] [CONTEÚDO PERFIL] 2026-10-05",
+    "status": "PAUSED",
+    "effective_status": "PAUSED",
+    "objective": "OUTCOME_TRAFFIC",
+    "daily_budget": "4000"
+  },
+  "activation_plan": {
+    "started_at": "2026-10-05T23:29:59.248307-03:00",
+    "authorization": "Root autorização explícita: reduzir3controles→41000 antes ativação ads/conjunto/campanha Bruno4000, campanhasnovasform/GooglecontinuamPAUSED",
+    "controllers_before": [
+      {
+        "id": "120253330191810526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "13235"
+      },
+      {
+        "id": "120248779747120526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "14559"
+      },
+      {
+        "id": "120243440924150526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "17206"
+      }
+    ],
+    "controllers_targets": [
+      {
+        "id": "120253330191810526",
+        "daily_budget": 12059
+      },
+      {
+        "id": "120248779747120526",
+        "daily_budget": 13265
+      },
+      {
+        "id": "120243440924150526",
+        "daily_budget": 15676
+      }
+    ],
+    "campaign": {
+      "id": "120253414357780526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "4000"
+    },
+    "cold_capture": {
+      "id": "120253413819760526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "32000"
+    },
+    "campaign_last": true,
+    "stop_on_uncertain": true
+  },
+  "capture_410_verified": {
+    "at": "2026-10-05T23:30:04.942146-03:00",
+    "controllers": [
+      {
+        "id": "120253330191810526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "12059"
+      },
+      {
+        "id": "120248779747120526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "13265"
+      },
+      {
+        "id": "120243440924150526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "15676"
+      }
+    ],
+    "daily_total_minor": 41000
+  },
+  "content_activation_readback": {
+    "120253414357780526": {
+      "id": "120253414357780526",
+      "name": "[SE] [BRUNO] [IG] [CONTEÚDO PERFIL] 2026-10-05",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253414358070526": {
+      "id": "120253414358070526",
+      "name": "Contabilidade financeira | Bruno perfil | IG-only | 2026-10-05",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253414359770526": {
+      "id": "120253414359770526",
+      "name": "[SE] Bruno conteúdo | Liderança e resultado | 2026-10-05",
+      "status": "ACTIVE",
+      "effective_status": "IN_PROCESS"
+    },
+    "120253414362440526": {
+      "id": "120253414362440526",
+      "name": "[SE] Bruno conteúdo | Definir resultado antes de melhorar | 2026-10-05",
+      "status": "ACTIVE",
+      "effective_status": "IN_PROCESS"
+    },
+    "120253414364330526": {
+      "id": "120253414364330526",
+      "name": "[SE] Bruno conteúdo | Organizar antes de contratar | 2026-10-05",
+      "status": "ACTIVE",
+      "effective_status": "IN_PROCESS"
+    }
+  },
+  "activation_budget_reconciliation": {
+    "observed_at": "2026-10-05T23:30:17.142765-03:00",
+    "capture_controllers": [
+      {
+        "id": "120253330191810526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "12059"
+      },
+      {
+        "id": "120248779747120526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "13265"
+      },
+      {
+        "id": "120243440924150526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "15676"
+      }
+    ],
+    "capture_minor": 41000,
+    "content_campaign": {
+      "id": "120253414357780526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "4000"
+    },
+    "nominal_total_minor": 45000,
+    "cold_capture": {
+      "id": "120253413819760526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "32000"
+    },
+    "empty_attempt_campaign": {
+      "id": "120253414251620526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "4000"
+    },
+    "google_state": "PAUSED conforme owner; não consultada Meta",
+    "monthly_hard_cap": false
+  },
+  "content_activation_complete": true,
+  "production_stage_readback": {
+    "observed_at": "2026-10-05T23:41:42.240884-03:00",
+    "ads": {
+      "120253414359770526": {
+        "id": "120253414359770526",
+        "name": "[SE] Bruno conteúdo | Liderança e resultado | 2026-10-05",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE"
+      },
+      "120253414362440526": {
+        "id": "120253414362440526",
+        "name": "[SE] Bruno conteúdo | Definir resultado antes de melhorar | 2026-10-05",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE"
+      },
+      "120253414364330526": {
+        "id": "120253414364330526",
+        "name": "[SE] Bruno conteúdo | Organizar antes de contratar | 2026-10-05",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE"
+      }
+    },
+    "controllers": [
+      {
+        "id": "120253330191810526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "12059"
+      },
+      {
+        "id": "120248779747120526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "13265"
+      },
+      {
+        "id": "120243440924150526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "15676"
+      },
+      {
+        "id": "120253414357780526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "4000"
+      }
+    ],
+    "nominal_total_minor": 45000,
+    "capture_minor": 41000,
+    "content_minor": 4000
   }
 }

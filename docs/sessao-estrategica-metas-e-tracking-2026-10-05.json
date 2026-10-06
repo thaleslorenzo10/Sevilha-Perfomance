@@ -40,8 +40,8 @@
     "google_status": "PAUSED; planned 90/day not counted as active spend",
     "pacing": "remaining total SE monthly balance / remaining days; re-read live budgets and spend before writes",
     "current_verified_daily_brl": {
-      "meta_capture": 450,
-      "bruno_ig_content": 0,
+      "meta_capture": 410,
+      "bruno_ig_content": 40,
       "google": 0
     },
     "planned_transition_daily_brl": {
@@ -49,8 +49,8 @@
       "bruno_ig_content": 40,
       "google": 0
     },
-    "planned_transition_executed": false,
-    "state_source": "bruno-distribuicao-execucao-2026-10-05.json runtime_boundary: remote_mutations_this_stage=0, no_budget_change=true, no_new_distribution_campaign=true",
+    "planned_transition_executed": true,
+    "state_source": "sessao-estrategica-bruno-criacao-2026-10-05.json activation_budget_reconciliation observed_at2026-10-05T23:30:17.142765-03:00",
     "mtd_capture_spend": {
       "brl": 2112.22,
       "period_start": "2026-10-01",
@@ -61,6 +61,30 @@
       "previous_preflight_brl": 1961.61,
       "remaining_capture_only_monthly_balance_brl": 11887.78,
       "scope_note": "old distribution spend438.18 separate pending budget scope decision; account5884.59 includes other offers"
+    },
+    "previous_verified_daily_brl": {
+      "meta_capture": 450,
+      "bruno_ig_content": 0,
+      "google": 0
+    },
+    "content_status": {
+      "campaign_id": "120253414357780526",
+      "campaign_status": "ACTIVE",
+      "campaign_effective_status": "ACTIVE",
+      "adset_id": "120253414358070526",
+      "adset_status": "ACTIVE",
+      "adset_effective_status": "ACTIVE",
+      "ads_status": "ACTIVE",
+      "ads_effective_status": "ACTIVE",
+      "delivery_confirmed": false,
+      "assisted_mql_attribution_confirmed": false,
+      "provider_effective_active_confirmed": true,
+      "observed_at": "2026-10-05T23:41:42.240884-03:00"
+    },
+    "new_capture_status": {
+      "campaign_id": "120253413819760526",
+      "status": "PAUSED",
+      "daily_brl": 320
     }
   },
   "ranking_concepts": [

@@ -41,8 +41,8 @@
     },
     {
       "file": "api/leads.js",
-      "sha": "a1eb5124877f5b90dd386aea9ebf82650734eba3",
-      "size": 32268
+      "sha": "0ff76267a2e6227f68e635f1a89b81f7335c2494",
+      "size": 32479
     },
     {
       "file": "api/meta.js",
@@ -51,8 +51,8 @@
     },
     {
       "file": "api/rd-stats.js",
-      "sha": "71acf4a017467fed8713159d11288542a802964a",
-      "size": 8925
+      "sha": "a0a52eaf7e7d21eb647f2753470ad499389d18e1",
+      "size": 9270
     },
     {
       "file": "api/respondi.js",
@@ -71,8 +71,8 @@
     },
     {
       "file": "api/sheet-leads.js",
-      "sha": "412533c717cfe0271a3924559c2911d775c9d57e",
-      "size": 8039
+      "sha": "c752e4e2372156c2e1dfbb7cece54158c7bc1f7e",
+      "size": 8098
     },
     {
       "file": "api/stats.js",
@@ -421,8 +421,8 @@
     },
     {
       "file": "lib/leads-fontes.js",
-      "sha": "f29552902b5178d2063d5ac66e222608c3e8addf",
-      "size": 5912
+      "sha": "bfb5761f9755bf34694b74b41c45d409752f4e7a",
+      "size": 6374
     },
     {
       "file": "lib/leads-unificados.js",
@@ -433,6 +433,11 @@
       "file": "lib/meta.js",
       "sha": "a924b2b97c44ce7025888073e96cedb2b2c7bab9",
       "size": 8077
+    },
+    {
+      "file": "lib/metricas-publicas.js",
+      "sha": "091795c39540ac4635d777466c6f269d92379492",
+      "size": 3314
     },
     {
       "file": "lib/pageviews.js",
@@ -550,5 +555,20 @@
     "non-runtime creative assets"
   ],
   "source_branch": "codex/se-captacao-google-20261005",
-  "source_head": "c0bd66c"
+  "source_head": "cb8079e",
+  "runtime_files": 108,
+  "publication": {
+    "production_id": "dpl_EBqu1eMmpKQKjYmQhNBWSG8Ye2yX",
+    "production_status": "READY",
+    "production_url": "https://sevilha-perfomance.vercel.app",
+    "public_http_hashes": "verified",
+    "preview_id": "dpl_FzsX5LXDrgH7dii7VceH9DT6xNH5",
+    "preview_status": "READY",
+    "preview_application_validation": "blocked_vercel_sso",
+    "preview_bypass": "rejected_auto_review_not_created",
+    "google_credentials": "four_sensitive_vars_production_preview_configured",
+    "method": "runtime_source_upload_production_rebuild",
+    "production_aggregate_apis": "http_200_no_private_contact_fields",
+    "production_browser": "verified_desktop_mobile_dashboard_and_mentoria_seven_day_filter_delayed"
+  }
 }

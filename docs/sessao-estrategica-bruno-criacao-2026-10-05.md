@@ -1,27 +1,42 @@
-# Meta SE e Bruno — tentativa de publicação autorizada
+# Meta SE e Bruno — criação e readback
 
-Leituras realizadas em 2026-10-05T23:05:49.717009-03:00; readback final 2026-10-05T23:13:32.525569-03:00. Conta1676714556216146, BRL, America/Sao_Paulo. O GET da conta e os GETs subsequentes passaram sem rate limit. `account_status=9`, `disable_reason=0` são os valores recebidos; não foram tratados como prova de elegibilidade ou entrega. Inventário de públicos:68 completos, nenhum Bruno antes da tentativa.
+Atualização de ativação: **2026-10-05T23:30:17-03:00**. Conta1676714556216146, BRL, America/Sao_Paulo. Conteúdo Bruno configurado ACTIVE após redução confirmada dos três orçamentos antigos; entrega dos três anúncios ainda pendente de processamento.
 
-## Feito e confirmado
+## Conteúdo criado e ativação solicitada
 
-- Criada campanha **[SE] [BRUNO] [IG] [CONTEÚDO] 2026-10-05**, ID **120253414251620526**, objetivoOUTCOME_ENGAGEMENT, orçamento **R$40/dia**, status/effective_status **PAUSED** relidos. Não possui conjunto/anúncios completos; não está pronta para ativar.
-- Campanha de captura nova **120253413819760526** ajustada de **R$360 para R$320/dia**, status solicitado **PAUSED**; primeiro effective_status **IN_PROCESS**, seguido de readback final **PAUSED / PAUSED**. Apenas esse orçamento pausado foi alterado.
-- Captação antiga permanece **R$450.00/dia**, com os três controladores efetivamente ativos. Nenhuma pausa ou redução nos controladores antigos e nenhuma ativação nova.
+Campanha **120253414357780526**, **[SE] [BRUNO] [IG] [CONTEÚDO PERFIL] 2026-10-05**, objetivo **OUTCOME_TRAFFIC**, orçamento **R$40/dia**, estado solicitado **ACTIVE** após transição. Conjunto **120253414358070526**, meta **VISIT_INSTAGRAM_PROFILE**, BR25–60, interesse contabilidade financeira, Instagram feed/stories/reels exclusivamente; públicos/exclusões e expansão preservados do modelo frio validado.
 
-| Controlador existente | Orçamento diário | Estado relido |
-|---|---:|---|
-| 120253330191810526 | R$132.35 | ACTIVE / ACTIVE |
-| 120248779747120526 | R$145.59 | ACTIVE / ACTIVE |
-| 120243440924150526 | R$172.06 | ACTIVE / ACTIVE |
+A criação de campanha, conjunto, criativos e anúncios passou primeiro por `validate_only` e depois por criação/readback. A otimização de visita ao perfil foi comprovada em conjunto de distribuição existente; a nova combinação de objetivo/meta foi validada pela própria API. Essa é distribuição dos posts existentes, sem formulário ou conversão de lead no destino.
 
-## Bloqueios exatos
+| Post existente | Media ID | Creative ID | Ad ID |
+|---|---|---|---|
+| [Liderança e resultado](https://www.instagram.com/reel/Dd6fYcsOfjV/) |17910884640537456|2003735993633999|120253414359770526|
+| [Definir resultado](https://www.instagram.com/reel/Dd1sffWiY3a/) |17977204748918220|1088048704001716|120253414362440526|
+| [Organizar antes de contratar](https://www.instagram.com/reel/DdtqySRunlo/) |18115610558043965|958753126733052|120253414364330526|
 
-1. **Públicos Bruno:** tentou-se reutilizar a regra de engajamento IG aceita de público existente da mesma conta, com fonte Bruno `ig_id=47014896777` relida. POST rejeitado antes de criar ID: **2654 / 1713151**, nome de evento inválido. O formato legado `ig_business_profile_all` não foi aceito em criação. Nenhum público Bruno foi criado; nenhuma variante foi tentada por adivinhação. Os dois novos conjuntos HOT e seus anúncios não foram criados porque a inclusão Bruno não pôde ser validada.
-2. **Conteúdo IG:** o conjunto para os três posts existentes, Instagram feed/stories/reels somente, foi rejeitado antes de criar ID: **100 / 2490408**. Uma validação sem criação confirmou a explicação: a meta de desempenho **POST_ENGAGEMENT** não está disponível com o objetivo selecionado. Leitura de modelo existente confirmou **VISIT_INSTAGRAM_PROFILE**, Instagram-only e objetivo legado **LINK_CLICKS**. A validação sem criação dessa meta na nova OUTCOME_ENGAGEMENT também foi rejeitada100/2490408. Não se forçou mapeamento do objetivo legado nem outra otimização sem esquema comprovado. Não há conjunto, criativos ou anúncios publicados desses três posts nesta etapa.
-3. **Captação nativa:** o novo formulário1776305790272614 ainda não tem prova de recebimento nos destinos. Backend owner confirmou0leads e0linhas na planilha do formulário; assinaturaPage presente não demonstra entrega CRM/Sheets. Portanto a campanha nova continua pausada.
+Os três criativos foram relidos com Página Bruno106292094924513, Instagram17841446823336862, `source_instagram_media_id` correspondente e tags exatas:
 
-Posts mantidos no plano, sem novos assets: [liderança e resultado](https://www.instagram.com/reel/Dd6fYcsOfjV/), [definir resultado](https://www.instagram.com/reel/Dd1sffWiY3a/), [organizar antes de contratar](https://www.instagram.com/reel/DdtqySRunlo/). UTMs canônicas constam no plano de criativos; não se afirma que anúncios inexistentes já possuem tags.
+```
+utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}
+```
 
-Orçamento futuro preparado: **R$320 captura + R$40 conteúdo + R$90 Google = R$450/dia**, condicionado à prova de ingestão, correção dos bloqueios e transição coordenada. Valores pausados não são gastos nem se somam ao orçamento ativo. Distribuições antigas permanecem preservadas e separadas conforme escopo anterior; este readback confirma os três controladores de captação SE, não reclassifica outras ofertas.
+No readback de ativação, campanha e conjunto estavam **ACTIVE/ACTIVE**; os três anúncios estavam **status ACTIVE / effective_status IN_PROCESS**. `IN_PROCESS` não prova aprovação ou entrega. Estados finais estão no journal; campanhas em preparação não representam resultado de teste. A campanha tentativa **120253414251620526** (OUTCOME_ENGAGEMENT) continua pausada e vazia, sem anúncios. Ela não deve ser ativada nem somada ao orçamento operacional reservado.
 
-A autorização para ativar foi recebida, porém **nenhuma campanha nova foi ativada**. Nenhum conceito histórico, post novo, contato teste, envio CRM ou disparo de mensagem foi criado por esta execução. [Journal sanitizado](sessao-estrategica-bruno-criacao-2026-10-05.json) · [Preflight](sessao-estrategica-meta-ativacao-preflight-2026-10-05.json).
+## Orçamento preservado
+
+Captura nova **120253413819760526** ajustada36000→32000centavos; último estado PAUSED/PAUSED e R$320/dia. Captação antiga foi reduzida antes da ativação:13235→12059,14559→13265 e17206→15676centavos, com escrita/readback individual e soma41000 confirmada antes de ativar anúncios/conjunto. Campanha de conteúdo ativada por último. Controladores mantiveram statusACTIVE; dois estavam effective_statusIN_PROCESS e WarmACTIVE no readback final. **Atual nominal: R$410 captação antiga + R$40 conteúdo Bruno = R$450/dia**, confirmado23:30:17BRT. Não é teto mensal rígido nem prova de entrega.
+
+Reserva futura: R$320 captura + R$40 conteúdo + R$90 Google = R$450/dia, condicionada à prova de ingestão e transição coordenada. Valores pausados não são gasto nem se somam ao orçamento ativo. A transição410captura antiga+40conteúdo foi executada e relida; migração futura320captura nova+40conteúdo+90Google continua condicionada ao formulário comprovado. Distribuições antigas e demais ofertas foram preservadas.
+
+## Bloqueios remanescentes
+
+- Público Bruno: regra de engajamento existente com fonte `ig_id47014896777` confirmada foi rejeitada antes de criar ID, **2654/1713151**, nome de evento inválido. Nenhum público Bruno foi criado; nenhum conjunto HOT novo foi criado sem essa inclusão. Documentação oficial de engagement custom audiences retornou429; não se repetiram variantes sem prova.
+- O primeiro conjunto POST_ENGAGEMENT/OUTCOME_ENGAGEMENT foi rejeitado **100/2490408**. Validar VISIT_INSTAGRAM_PROFILE naquela mesma campanha também falhou. A segunda campanha OUTCOME_TRAFFIC descrita acima resolveu esse bloqueio de conteúdo; ativação solicitada após transição, anúncios ainda IN_PROCESS.
+- Novo formulário1776305790272614 ainda não tem prova de recebimento nos destinos (0leads e0linhas na planilha relidos pelo backend owner). AssinaturaPage presente não comprova CRM/Sheets. Captura nova continua pausada.
+
+[Journal sanitizado](sessao-estrategica-bruno-criacao-2026-10-05.json) · [Preflight](sessao-estrategica-meta-ativacao-preflight-2026-10-05.json). Nenhum post novo, conceito adicional, contato teste, envio CRM ou mensagem criado por esta execução.
+
+Visitas ao perfil e seus anúncios de distribuição não persistem UTM em um formulário por si. Tags nos criativos foram relidas3/3, mas não demonstram atribuição de MQL assistido nem resolução downstream de macros.
+
+
+Readback posterior, 05/10/2026 23:41:42 BRT: três anúncios de conteúdo 120253414359770526, 120253414362440526 e 120253414364330526 passaram a **ACTIVE/ACTIVE**. Os quatro controladores estão ACTIVE/ACTIVE, com 12059 + 13265 + 15676 + 4000 = 45000 centavos/dia (R$410 captação antiga + R$40 conteúdo). Isso atualiza os estados IN_PROCESS do snapshot23:30, preservado acima como histórico; estado efetivo não comprova impressões, gasto ou MQL assistido. Captura nativa nova R$320 permanece pausada até prova de ingestão. Fonte: production_stage_readback no journal de criação.

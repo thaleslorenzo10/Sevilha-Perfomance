@@ -57,7 +57,7 @@
 
 - [ ] Criar nova conta BRL/America_Sao_Paulo no gerenciador Lorenzo e reler ID, nome e estado; verificar faturamento e conversões.
 - [ ] Preparar campanha Search, dois grupos e todos os assets; verificar limites de caracteres e URLs.
-- [ ] Proposta inicial: R$320/dia Meta aquisição + R$40/dia conteúdo Instagram Bruno + R$70/dia Google genérico + R$20/dia marca; R$450/dia combinados. Em mês de 31 dias, Meta 360×31 + Google 90×30,4 = R$13.896 nominais; diário não garante hard cap. Recalcular pacing pelo saldo real de R$14.000. Estado atual confirmado: captação Meta R$450 + conteúdo Bruno R$0 + Google R$0. Transição proposta, ainda não aplicada: captação R$410 + conteúdo R$40, Google pausado R$0; sem somar R$90 enquanto inativo.
+- [ ] Proposta inicial: R$320/dia Meta aquisição + R$40/dia conteúdo Instagram Bruno + R$70/dia Google genérico + R$20/dia marca; R$450/dia combinados. Em mês de 31 dias, Meta 360×31 + Google 90×30,4 = R$13.896 nominais; diário não garante hard cap. Recalcular pacing pelo saldo real de R$14.000. Estado atual configurado após readback23:30BRT: captação antiga Meta R$410 + conteúdo Bruno R$40 + Google R$0 (pausado). Transição executada com redução/readback antes de ativar conteúdo; anúncios ACTIVE/IN_PROCESS não demonstram entrega. Captura nova320PAUSED; futuro320+40+90 depende de ingestão e substituição, sem somar R$90 enquanto Google inativo.
 - [ ] Validar por API sem mutação quando conta estiver comprovada; criar pausada depois da validação.
 - [ ] Ativar somente com medição da Sessão Estratégica comprovada e conferir status/qualidade retornados.
 
@@ -89,7 +89,7 @@ Plano autoaprovado conforme instrução do usuário. A autorização cobre campa
 - Meta de MQL: 80–90/mês, equivalente a 18,5–20,8/semana (~19–21), usando 52/12 semanas por mês.
 - Com R$14.000 totais: custo total/MQL de R$155,56–175,00 e custo total/sessão de R$466,67. Razão 30÷80–90 = 33,3–37,5% somente se as mesmas coortes e definição de sessão forem usadas; não é comparecimento comprovado.
 - Comparecimento = realizadas÷agendadas; conversão de agendamento = agendadas÷MQL. Se agenda não estiver disponível no painel, informar indisponível, sem preencher com zero.
-- Estados separados conforme Task 3: atual 450/0/0, transição planejada 410/40/0 e futuro planejado 320/40/70/20; conteúdo Bruno pertence ao total SE, sem dupla contagem CBO/ABO nem expansão para Aula/Clube/Café. Não ativar Google enquanto pausado nem empilhar orçamento da nova captação sobre o legado.
+- Estados separados conforme Task 3: preflight histórico450/0/0, atual configurado410/40/0 após transição executada23:30BRT e futuro planejado320/40/70/20; conteúdo Bruno pertence ao total SE, sem dupla contagem CBO/ABO nem expansão para Aula/Clube/Café. Não ativar Google enquanto pausado nem empilhar orçamento da nova captação sobre o legado.
 - Ranking permanece AD21, AD16, IA, AD29 e Vicente, escolhidos por MQL real em intervalo de gasto compatível; dez instâncias de identidade não significam dez conceitos.
 - Auditar `creative.url_tags` dos ativos SE e dos dez pausados, distinguindo campo com macros (correto) de macro literal em registro downstream (falha de substituição). Formulário nativo depende dos IDs de ad/adset/campaign no export, não de url_tags sozinho.
 - Somente recomendar mapeamento semântico de captura e HOT; não renomear live: nomes alimentam UTMs e junções históricas. Escopo HOT/Bruno continua com o agente de funil.
@@ -113,7 +113,7 @@ Medir MQL → contatado → agendado → realizado com dedupe, tempo de resposta
 
 ### Pacing e estado efetivamente aplicado
 
-A etapa Bruno registrou zero mutações de orçamento/distribuição: estado atual é captação R$450/dia, conteúdo Bruno R$0 e Google R$0 (pausado). Transição 410+40 e futuro 320+40+70+20 continuam propostas. Fonte MTD mais recente: preflight Bruno, captação [SE] de 01–05/out R$2.112,22; arquivo gravado 06/out 01:31:31 UTC (05/out 22:31:31 BRT), não timestamp exato da API. Esse snapshot substitui R$1.961,61 para pacing; saldo de captação R$11.887,78, sujeito a gasto posterior e decisão de escopo dos R$438,18 de distribuição antiga.
+A etapa de distribuição inicial registrou zero mutações; a execução posterior autorizada criou conteúdo Instagram e executou transição410+40 às23:30BRT. Estado atual configurado: captação antiga R$410/dia, conteúdo Bruno R$40 e Google R$0 (pausado). Campanha/conjunto ACTIVE; anúncios ACTIVE/IN_PROCESS, entrega ainda não comprovada. Captura nova320PAUSED. Futuro320+40+70+20 continua proposto. Fonte:[journal criação/ativação](../../sessao-estrategica-bruno-criacao-2026-10-05.json). Fonte MTD mais recente: preflight Bruno, captação [SE] de 01–05/out R$2.112,22; arquivo gravado 06/out 01:31:31 UTC (05/out 22:31:31 BRT), não timestamp exato da API. Esse snapshot substitui R$1.961,61 para pacing; saldo de captação R$11.887,78, sujeito a gasto posterior e decisão de escopo dos R$438,18 de distribuição antiga.
 
 
 ## Adendo — campanhas novas, entrega e dashboard
@@ -153,3 +153,6 @@ Aceite final: relatório distingue planejado, aplicado, validado localmente, pub
 Usuário autorizou publicar e ativar tudo na noite de 05/10. Código final preservado na branch codex/se-captacao-google-20261005: c8aa709,23616f5,4240f29,60dc9d3. Quinze testes offline passaram; lint do código alterado sem erros; navegador local desktop/mobile validado com dados sintéticos. Fonte própria Google reutiliza api/meta.js com modo=google e rewrite, preservando 12 funções. Coluna integracoes aplicada/readback JSONB confirmado.
 
 Publicação continua bloqueada: nova revisão automática rejeitou upload api/meta.js por exigir autorização específica de backend/APIs internas/dashboard. Configuração das quatro credenciais Google em produção/preview também rejeitada por falta de consentimento específico de transferência. Nenhum deployment criado, nenhuma credencial transferida, nenhum anúncio novo ativado. Conta Google sem billing; formulário Meta novo sem recebimento comprovado em Sheets/CRM. Consolidado autoritativo: docs/sessao-estrategica-consolidado-2026-10-05.md.
+
+
+Readback posterior, 05/10/2026 23:41:42 BRT: três anúncios de conteúdo 120253414359770526, 120253414362440526 e 120253414364330526 passaram a **ACTIVE/ACTIVE**. Os quatro controladores estão ACTIVE/ACTIVE, com 12059 + 13265 + 15676 + 4000 = 45000 centavos/dia (R$410 captação antiga + R$40 conteúdo). Isso atualiza os estados IN_PROCESS do snapshot23:30, preservado acima como histórico; estado efetivo não comprova impressões, gasto ou MQL assistido. Captura nativa nova R$320 permanece pausada até prova de ingestão. Fonte: production_stage_readback no journal de criação.

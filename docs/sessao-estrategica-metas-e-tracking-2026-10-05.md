@@ -17,15 +17,15 @@ Esses custos incluem toda a verba SE, inclusive conteúdo. Não são CPL de plat
 
 ## Orçamento e distribuição
 
-| Frente | Atual confirmado | Transição planejada | Futuro planejado |
+| Frente | Antes da transição (preflight) | Atual configurado (23:30 BRT) | Futuro planejado |
 |---|---:|---:|---:|
 | Meta captação | R$450 | R$410 | R$320 |
 | Conteúdo Instagram Bruno | R$0 | R$40 | R$40 |
 | Google Search genérico | R$0, pausado | R$0, pausado | R$70 |
 | Google Search marca | R$0, pausado | R$0, pausado | R$20 |
-| Total | **R$450 ativos** | **R$450 propostos** | **R$450 propostos** |
+| Total | **R$450 ativos** | **R$450 configurados ACTIVE** | **R$450 propostos** |
 
-A transição **não foi executada**. O [journal Bruno](bruno-distribuicao-execucao-2026-10-05.json) registra zero mutações remotas, nenhum ajuste de orçamento e nenhuma nova campanha de distribuição. Os R$40 são reserva proposta; conteúdo Bruno ainda não recebe essa verba. O futuro depende da redistribuição e dos gates de ativação.
+A transição **foi executada e relida às23:30:17BRT**: os três controladores antigos foram reduzidos primeiro a12059+13265+15676=41000centavos; depois conteúdo Bruno4000 foi solicitadoACTIVE. Campanha120253414357780526 e conjunto120253414358070526 ACTIVE/ACTIVE; três anúncios ACTIVE/IN_PROCESS, sem entrega confirmada. Captura nova120253413819760526 permanecePAUSED32000; Google continuaPAUSED. Fonte:[journal de criação/ativação Bruno](sessao-estrategica-bruno-criacao-2026-10-05.json). O journal de distribuição anterior permanece evidência histórica de zero mutações naquela etapa. Futuro320+40+90 exige prova de ingestão e redistribuição, sem empilhar orçamento.
 
 Leitura mais recente registrada no [preflight Bruno](bruno-distribuicao-preflight-2026-10-05.json) e [relato Bruno](bruno-distribuicao-2026-10-05.md): **R$2.112,22** de captação [SE] em 01–05/10, substituindo o snapshot anterior de R$1.961,61 para pacing. O arquivo-fonte foi gravado em **06/10/2026 01:31:31 UTC (05/10 22:31:31 BRT)**; esse é timestamp do arquivo, pois o horário exato da resposta API não foi salvo. Saldo de R$14.000 menos essa captação: **R$11.887,78**, ainda sujeito à definição de inclusão dos R$438,18 da distribuição antiga e ao gasto após a leitura. A conta inteira soma R$5.884,59 e inclui outras ofertas; não usar esse valor como gasto SE.
 
@@ -66,6 +66,9 @@ Acompanhar o funil **MQL → contatado → agendado → realizado** com contato 
 
 ## Feito e pendente
 
-Feito nesta revisão: metas/fórmulas, propostas de distribuição futura e transição (não publicadas), plano atualizado, confirmação dos dez url_tags por readback existente e plano do Respondi. Pendente: cobertura GET de todos os ativos após cooldown, evidência de substituição downstream/agenda, validade e rastreio do Respondi e aprovação/ingestão das substituições antes de ativar. A nomenclatura é recomendação; não foi publicada.
+Feito nesta revisão: metas/fórmulas, proposta futura, plano atualizado, dez url_tags da nova captura e três tags do conteúdo Bruno relidos, plano do Respondi e transição410+40 executada. Conteúdo configuradoACTIVE, anúncios aindaIN_PROCESS; não se afirma entrega nem MQL assistido por visitas ao perfil. Pendente: cobertura GET de todos os ativos após cooldown, evidência de substituição downstream/agenda, validade e rastreio do Respondi e aprovação/ingestão das substituições antes de ativar. A nomenclatura é recomendação; não foi publicada.
 
 Fontes locais: [journal Meta](sessao-estrategica-meta-execucao-2026-10-05.json), [auditoria anterior](auditoria-sessao-estrategica-2026-09-29.md), [plano atualizado](superpowers/plans/2026-10-05-sessao-estrategica-meta-search.md), contrato export `lib/planilha-leads.js`. [Dados sanitizados desta revisão](sessao-estrategica-metas-e-tracking-2026-10-05.json).
+
+
+Readback posterior, 05/10/2026 23:41:42 BRT: três anúncios de conteúdo 120253414359770526, 120253414362440526 e 120253414364330526 passaram a **ACTIVE/ACTIVE**. Os quatro controladores estão ACTIVE/ACTIVE, com 12059 + 13265 + 15676 + 4000 = 45000 centavos/dia (R$410 captação antiga + R$40 conteúdo). Isso atualiza os estados IN_PROCESS do snapshot23:30, preservado acima como histórico; estado efetivo não comprova impressões, gasto ou MQL assistido. Captura nativa nova R$320 permanece pausada até prova de ingestão. Fonte: production_stage_readback no journal de criação.

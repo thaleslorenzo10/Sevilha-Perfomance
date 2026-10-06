@@ -1,6 +1,6 @@
 # Sessão Estratégica — execução, metas e próximos passos
 
-Atualização: noite de 05/10/2026, horário de São Paulo. Este relatório distingue configuração criada, implementação local, publicação e veiculação. A autorização final foi publicar e ativar todas as campanhas novas; os bloqueios abaixo impediram concluir essas duas últimas etapas.
+Atualização: noite de 05/10/2026, horário de São Paulo. Este relatório distingue configuração criada, implementação local, publicação e veiculação. A autorização final permitiu publicar o runtime e ativar campanhas novas. O runtime está publicado em produção READY; conteúdo Bruno está configurado ativo, com os três anúncios ACTIVE/ACTIVE no readback final de 23h41min42s BRT. Captação nova e Google permanecem pausados pelos bloqueios concretos abaixo.
 
 ## Objetivo e orçamento
 
@@ -11,12 +11,12 @@ Orçamento total exclusivo de SE: **R$ 14.000/mês**, incluindo captação, cont
 | Frente | Alocação planejada por dia | Situação |
 |---|---:|---|
 | Meta captação fria/quente, novas campanhas | R$ 320 | Preparação pausada; depende da entrega de leads |
-| Conteúdo novo de Bruno, somente Instagram | R$ 40 | Preparação; dentro do teto, sem verba adicional |
+| Conteúdo novo de Bruno, somente Instagram | R$ 40 | Campanha/conjunto ACTIVE; três anúncios ACTIVE/ACTIVE; entrega não comprovada |
 | Google Search genérico | R$ 70 | Criada, pausada |
 | Google Search de marca | R$ 20 | Criada, pausada |
 | Total | R$ 450 | Nominal até R$ 13.896: Meta 31 dias + Google 30,4 dias |
 
-A configuração ativa anterior mantém **R$ 450/dia somente em captação Meta**, soma dos CBOs R$ 132,35 + R$ 145,59 e ABO R$ 172,06. A distribuição futura não foi adicionada por cima desse gasto. A migração deve reduzir/substituir a verba antiga antes de ativar conteúdo e Google. Limite diário nominal não é trava financeira mensal; controlar gasto acumulado de SE, sem limitar outras ofertas da conta.
+A captação Meta anterior foi reduzida para **R$ 410/dia** antes da ativação de conteúdo Bruno de **R$ 40/dia**, totalizando **R$ 450/dia configurados**. Os R$ 320 de captação nova e R$ 90 de Google permanecem pausados; sua futura ativação exige reduzir/substituir a captação anterior para manter o teto. ACTIVE/ACTIVE não comprova alcance, gasto ou leads dos anúncios de conteúdo. Limite diário nominal não é trava financeira mensal; controlar gasto acumulado de SE, sem limitar outras ofertas da conta.
 
 ## Alterações realmente realizadas
 
@@ -31,7 +31,7 @@ A configuração ativa anterior mantém **R$ 450/dia somente em captação Meta*
 
 ## CRM, planilhas e rastreamento
 
-Implementação pronta na branch **codex/se-captacao-google-20261005**, baseada na versão exata que está em produção, preservando mudanças recentes de Aula e Café. Commits: c8aa709 (tracking), 23616f5 (ingestão/recibos), 4240f29 (fonte Google), 60dc9d3 (dashboard).
+Implementação publicada a partir da branch **codex/se-captacao-google-20261005**, source **cb8079e**, preservando mudanças recentes de Aula e Café. Produção **dpl_EBqu1eMmpKQKjYmQhNBWSG8Ye2yX**, estado **READY**, alias https://sevilha-perfomance.vercel.app. As quatro credenciais Google existentes da agência foram configuradas como sensíveis em produção e preview, com autorização resolvida; valores não integram este relatório. A projeção pública retorna agregados e erro genérico, sem dados pessoais de contatos.
 
 Cada inscrição do site registra resultado por integração: Supabase, Sheets, RD Marketing e RD CRM. Confirmação da planilha depende do recibo do append; confirmação de CRM depende de releitura do negócio e correspondência do contato. A resposta aceita pelo provedor e a entrega verificada são estados separados. E-mail/telefone não vão para nomes de campanhas nem UTMs.
 
@@ -55,7 +55,7 @@ Agenda ainda não integrada: sessões agendadas/realizadas aparecem indisponíve
 
 Somente Instagram, usando conteúdos originais recentes de @brunosilvestreconsultor, sem inventar posts: 30/09 (liderança/eficiência), 28/09 (resultado antes de processo) e 25/09 (organizar antes de contratar). Público quente deve incluir públicos de Bruno em todos os conjuntos novos quentes; preservar exclusões que evitam perseguir leads já captados. Públicos e placements precisam de releitura por ID antes da ativação.
 
-[Plano e posts selecionados](bruno-distribuicao-2026-10-05.md). Público Bruno não criado: a regra de engajamento retornou erro de evento inválido (2654/1713151). Os conjuntos quentes novos ainda não foram criados, pois não cumpririam a inclusão de Bruno. Campanha de conteúdo **120253414251620526**, R$ 40/dia, criada PAUSED; a configuração inicial do conjunto foi rejeitada por incompatibilidade da meta de desempenho. Não houve entrega ou anúncio de conteúdo ativo. Os journals registram as tentativas e os objetos efetivamente criados.
+[Plano e posts selecionados](bruno-distribuicao-2026-10-05.md). Público Bruno não criado: a regra de engajamento retornou erro de evento inválido (2654/1713151). Os conjuntos quentes novos ainda não foram criados, pois não cumpririam a inclusão de Bruno. Campanha de conteúdo válida **120253414357780526**, conjunto **120253414358070526**, ambos **ACTIVE**, R$ 40/dia. Os três anúncios estão **ACTIVE/ACTIVE** na leitura final de 23h41min42s BRT; alcance, gasto e leads ainda não comprovados. A campanha inicial **120253414251620526** continua **PAUSED**, vazia, após a incompatibilidade de meta de desempenho. Os journals registram os objetos criados e os estados relidos.
 
 ## Respondi
 
@@ -63,42 +63,55 @@ Teste planejado com nova campanha e verba realocada dentro dos R$ 320/dia de cap
 
 ## Validação e limites de entrega
 
-- 15 testes offline passaram: tracking, persistência, CAPI, classificação de formatos, fontes indisponíveis, deduplicação por oferta, recibos, Google e dashboard, incluindo regressões Aula.
-- Lint dos 27 arquivos JS/HTML alterados no código de produção: **0 erros, 156 avisos**. Lint canônico do projeto: **0 erros, 781 avisos na raiz e 2 no Clube**; Biome **0 erros e 5 avisos**. Nenhum teto foi aumentado.
+- 16 testes offline passaram: tracking, persistência, CAPI, classificação de formatos, fontes indisponíveis, deduplicação por oferta, recibos, Google e dashboard, incluindo regressões Aula.
+- Lint dos 34 arquivos JS/HTML alterados no código de produção: **0 erros, 170 avisos**. Lint canônico do projeto: **0 erros, 781 avisos na raiz e 2 no Clube**; Biome **0 erros e 5 avisos**. Nenhum teto foi aumentado.
 - Typecheck e build do Clube passaram (Next 14.2.5, quatro páginas estáticas); a raiz HTML/serverless não tem build canônico.
-- Agent-browser local desktop e mobile: navegação, filtro e tabelas conferidos com dados sintéticos; sem submissão ou chamada externa. Preview/produção das alterações não foram validados porque a publicação foi bloqueada.
+- Agent-browser local desktop e mobile: navegação, filtro e tabelas conferidos com dados sintéticos; sem submissão ou chamada externa. Preview READY **dpl_FzsX5LXDrgH7dii7VceH9DT6xNH5** está protegido por SSO, que impede validar o app nesse destino. A revisão automática rejeitou um link temporário de bypass; nenhum bypass foi realizado. Validação HTTP da produção concluída; verificação visual em produção concluída em desktop/mobile com dados reais, com limitação de verificação do filtro de sete dias.
 - Gitleaks com redação: nenhum segredo no runtime revisado. Não houve atualização de framework nem dependência nova.
 
 ## Bloqueios concretos e próxima execução
 
-1. **Publicação:** a revisão automática rejeitou o upload de api/meta.js por exigir autorização específica para publicar backend/APIs internas e dashboard no projeto Vercel. Nenhum novo deployment foi criado; o upload anterior de arquivo é inerte.
-2. **Credenciais Google:** a revisão automática rejeitou o envio das quatro credenciais existentes da agência para as variáveis sensíveis do projeto Vercel, produção/preview. Nada foi configurado. Nunca enviar os valores no chat.
-3. **Google:** completar faturamento da nova conta, publicar tracking e configurar credenciais; depois reler qualidade/força dos anúncios e ativar dentro da alocação de R$ 90/dia.
+1. **Publicação:** concluída em produção READY, source cb8079e. Leitura pública confirmou `/dashboard`, `/assets/tracking.js`, `/assets/js/dash/aquisicao-se.js`, `/mentoria`, `/aula-gestao-operacional` e `/cafe-com-sevilha` com HTTP 200 e SHA1 exato da fonte; `/api/leads` GET retornou 405 esperado. A verificação visual por browser está concluída, com limitação de verificação do filtro de sete dias.
+2. **Credenciais Google:** quatro variáveis configuradas sensíveis em produção e preview; autorização resolvida. Não existe pendência de configuração dessas credenciais.
+3. **Google:** completar faturamento da nova conta (leitura retornou lista vazia), reler força dos anúncios ainda PENDING e validar conversões antes de ativar dentro da alocação de R$ 90/dia. `/api/google-ads` público retornou disponível, conta 1316487378, duas campanhas PAUSED e gasto zero em 1–5/out.
 4. **Meta nativo:** comprovar callback/CRM/Sheets e URL de privacidade própria do anunciante; se a plataforma exigir novo formulário para ajustar essa URL, duplicá-lo e atualizar os anúncios antes de ativar. Só então trocar a captura antiga pela nova. Formulário publicado pela plataforma não equivale a cadeia de entrega pronta.
 5. **Agenda:** definir fonte de agendamentos, comparecimento e motivo de perda; responsável comercial precisa retornar desfechos. Sem isso, otimização mede MQL, mas não as 30 sessões.
 6. **Ritmo operacional:** revisar por formato os MQL pagos, custo/MQL, agendamentos e comparecimento; acompanhar acumulado de verba; realocar com janela e amostra comparáveis. Antes de cortar criativo, considerar defasagem comercial. Metas semanais: aproximadamente 19–21 MQL e 7 sessões.
 
 ## Responsabilidades para concluir
 
-**Nossa equipe:** publicar e conferir o runtime autorizado; configurar a fonte Google; identificar/conectar o callback do formulário novo; validar uma inscrição controlada nos três destinos sem disparos indesejados; finalizar públicos e distribuição Bruno; conferir revisão/qualidade e trocar campanhas antigas pelas novas dentro do teto; reconciliar resultados no dashboard.
+**Nossa equipe:** identificar/conectar o callback do formulário novo; validar uma inscrição controlada nos três destinos sem disparos indesejados; finalizar públicos quentes de Bruno; conferir revisão/qualidade e trocar campanhas antigas pelas novas dentro do teto; reconciliar resultados no dashboard.
 
 **Cliente:** concluir faturamento Google com o responsável da conta; fornecer ou validar a URL de política de privacidade do anunciante; alinhar agenda, capacidade de atendimento e retorno dos desfechos comerciais. Credenciais nunca devem ser coladas no chat.
 
 A primeira janela de comparação começa após integração comprovada e veiculação. Campanhas pausadas e telas de teste não entram como resultado. Revisar MQL por formato e sessões efetivas, mantendo os períodos iguais e registrando ausência de rastreio.
 
-## Consentimento específico exigido pela revisão automática
+## Publicação e readback
 
-O projeto de destino foi confirmado por leitura: **sevilha-perfomance**, ID prj_POvAf5LHu471jwcKljqgOSAS1pdd, equipe team_QFKNlEWIaRADsF4B2Ci6eaE7. A próxima autorização precisa mencionar:
+Produção READY **dpl_EBqu1eMmpKQKjYmQhNBWSG8Ye2yX**, alias https://sevilha-perfomance.vercel.app, source **cb8079e**. Preview READY **dpl_FzsX5LXDrgH7dii7VceH9DT6xNH5** permanece protegido por SSO. A revisão automática rejeitou a criação de link temporário para bypass; nenhum bypass foi feito. Esse limite não impede conferir o destino público de produção.
 
-- Publicação de **107 arquivos de runtime** (páginas, assets, dashboard, backend e as 12 funções existentes, incluindo APIs de leads/CRM), preservando a base atual de produção. Documentação, scripts de operação, testes, arquivos .env e materiais fora do runtime foram excluídos. Validar preview com agent-browser antes de promover à produção e reler o destino.
-- Adição das variáveis **GOOGLE_ADS_CLIENT_ID, GOOGLE_ADS_CLIENT_SECRET, GOOGLE_ADS_REFRESH_TOKEN e GOOGLE_ADS_DEVELOPER_TOKEN**, usando os valores já existentes da agência, como **sensíveis em produção e preview** nesse projeto. As quatro estavam ausentes; não foi autorizado nem realizado sobrescrever valores de outros projetos. Não copiar valores para chat/documentação.
-
-Nenhum novo gasto de campanha foi ativado como consequência das tentativas de publicação.
+[Registro de produção](sessao-estrategica-producao-readback-2026-10-05.json): `/api/leads-unificados` retornou 200 com agregados de Forms, Respondi, Supabase e CAFE, sem erro de fonte; `/api/rd-stats` retornou 200. A resposta pública não contém campos email, phone, telefone ou contacts. Isso valida disponibilidade e projeção agregada, não comprova callback nem entrega de um novo lead nativo em CRM/Sheets. Browser de produção concluído: APIs e Chart CDN/fontes responderam 200, console vazio e sem overflow mobile; tabelas têm rolagem. No filtro de sete dias, a espera usou o seletor de SE enquanto a aba Formatos estava aberta e expirou; o DOM final mostrou o quadro preenchido (31/31). Essa captura não certifica o filtro nem o intervalo temporal exibido, e não permite concluir que houve falha ou lentidão do produto. Favicon 404 preexistente, sem erro JavaScript.
 
 ## Mensagem pronta para o cliente
 
-> Estruturamos a reformulação da captação da Sessão Estratégica com investimento total de R$ 14 mil/mês e foco em 80–90 leads qualificados e 30 sessões mensais. Criamos um novo formulário Meta e uma nova estrutura de campanhas com os cinco conceitos de anúncio mais eficientes do histórico, incluindo teste com o perfil do Bruno. Também criamos uma nova conta Google Ads, com campanhas de pesquisa para procura por marca e por solução.
+> Publicamos as integrações e o dashboard da Sessão Estratégica, com investimento total planejado de R$ 14 mil/mês. A leitura pública confirmou as páginas e APIs esperadas, incluindo dados agregados sem informações pessoais. Conferimos o dashboard e a página da sessão em desktop e celular com dados reais. O quadro final ficou preenchido; a captura do filtro de sete dias tem limitação de verificação do intervalo, registrada no relatório.
 >
-> O dashboard foi preparado para comparar Meta nativo, Respondi e Google por custo/MQL, além de mostrar a confirmação de entrega dos leads. A ativação completa ainda depende de concluir a publicação das integrações, comprovar a chegada do novo formulário ao CRM e às planilhas e configurar o faturamento do Google. As campanhas novas permanecem em preparação; a captação anterior foi preservada enquanto resolvemos esses pontos.
+> A captação anterior está configurada em R$ 410/dia e o conteúdo de Bruno em R$ 40/dia, dentro da soma de R$ 450/dia. A campanha e o conjunto de conteúdo estão ativos, e os três anúncios foram confirmados ativos pela plataforma; ainda não temos comprovação de alcance, gasto ou leads dessa frente. A nova captação Meta de R$ 320/dia e as duas campanhas Google de R$ 70 e R$ 20/dia permanecem pausadas.
 >
-> Para a próxima etapa, precisamos concluir o faturamento da nova conta Google, validar a política de privacidade do formulário e alinhar o retorno comercial: agendado, realizado, ausência e motivo de perda. Com essa base, vamos acompanhar cada formato e realocar o investimento conforme leads qualificados e sessões efetivamente realizadas. Os objetivos são metas de trabalho, e vamos medir a evolução sem prometer volume antes da veiculação.
+> Para ativar as próximas frentes, precisamos comprovar o callback do novo formulário Meta e sua chegada ao CRM e às planilhas, validar a política de privacidade própria do anunciante e concluir o faturamento Google. A força dos anúncios Google ainda está pendente. Os novos públicos quentes de Bruno não foram criados e Respondi continua apenas planejado.
+>
+> A meta de trabalho é 80–90 leads qualificados e 30 sessões/mês, sem promessa de volume. O próximo passo é concluir esses pontos, alinhar os registros de agenda e comparecimento e substituir a verba antiga gradualmente, mantendo o teto total. O teste controlado autorizado deve comprovar a chegada do novo formulário aos destinos antes da ativação da captação nova.
+
+**Readback Meta final, 23h41min42s BRT:** os quatro controladores de orçamento estão ACTIVE/ACTIVE, com 12059 + 13265 + 15676 + 4000 = 45000 centavos/dia. Os primeiros três somam R$ 410/dia de captação anterior; o quarto corresponde a R$ 40/dia de conteúdo. Três anúncios de conteúdo ACTIVE/ACTIVE; estado efetivo não comprova entrega. Agent-browser concluiu a validação pública de produção em desktop/mobile, com limitação de verificação do filtro de sete dias.
+
+## Evidência visual de produção
+
+Cinco capturas reais, sem fixtures:
+
+- [Formatos desktop](evidencias/sessao-estrategica-dashboard-2026-10-05-producao-formatos-desktop.png).
+- [Sessão Estratégica desktop](evidencias/sessao-estrategica-dashboard-2026-10-05-producao-se-desktop.png).
+- [Sessão Estratégica mobile](evidencias/sessao-estrategica-dashboard-2026-10-05-producao-se-mobile.png).
+- [Mentoria mobile](evidencias/sessao-estrategica-dashboard-2026-10-05-producao-mentoria-mobile.png).
+- [Mentoria desktop](evidencias/sessao-estrategica-dashboard-2026-10-05-producao-mentoria-desktop.png).
+
+O quadro de SE mostrou cinco linhas e sete colunas; Google mostrou duas campanhas pausadas com gasto zero. Mentoria foi verificada sem submissão, com `internal=1` e sem envio de analytics Meta/Google; quatro âncoras conferidas. Na janela 06/09–05/10, Meta nativo mostrou 109 contatos, 34 MQL, gasto R$ 6.325,31 e custo/MQL R$ 186,04. Os demais formatos não são comparáveis nessa leitura; não foi declarado vencedor.

@@ -1,11 +1,30 @@
 {
-  "updated_at_brt": "2026-10-05T23:16:00-03:00",
+  "updated_at_brt": "2026-10-05T23:48:29-03:00",
   "source_branch": "codex/se-captacao-google-20261005",
-  "source_head": "c0bd66c",
+  "source_head": "cb8079e",
   "publication": {
-    "created": false,
-    "status": "blocked_auto_review",
-    "credentials_google_configured": false
+    "created": true,
+    "status": "READY",
+    "production_deployment_id": "dpl_EBqu1eMmpKQKjYmQhNBWSG8Ye2yX",
+    "production_alias": "https://sevilha-perfomance.vercel.app",
+    "source_head": "cb8079e",
+    "preview_deployment_id": "dpl_FzsX5LXDrgH7dii7VceH9DT6xNH5",
+    "preview_status": "READY",
+    "preview_app_validation": "blocked_sso",
+    "temporary_bypass_auto_review": "rejected",
+    "bypass_performed": false,
+    "credentials_google_configured": true,
+    "credentials_google_count": 4,
+    "credentials_google_targets": [
+      "production",
+      "preview"
+    ],
+    "credentials_google_sensitive": true,
+    "credentials_authorization": "resolved",
+    "public_http_validation": "passed",
+    "public_browser_validation": "passed_desktop_mobile_with_filter_limitation",
+    "privacy_aggregates_generic_error_published": true,
+    "readback_file": "sessao-estrategica-producao-readback-2026-10-05.json"
   },
   "meta": {
     "capture_new": {
@@ -14,17 +33,37 @@
       "status": "PAUSED"
     },
     "content_new": {
-      "id": "120253414251620526",
+      "id": "120253414357780526",
+      "adset_id": "120253414358070526",
       "daily_budget_cents": 4000,
-      "status": "PAUSED",
-      "adsets": 0,
-      "ads": 0,
-      "ready": false
+      "status": "ACTIVE",
+      "adset_status": "ACTIVE",
+      "ads": 3,
+      "ads_status": "ACTIVE",
+      "ads_effective_status": "ACTIVE",
+      "delivery_verified": false
     },
     "hot_created": false,
     "bruno_audience_created": false,
-    "existing_capture_daily_cents": 45000,
-    "new_capture_activated": false
+    "existing_capture_daily_cents": 41000,
+    "new_capture_activated": false,
+    "content_failed_initial": {
+      "id": "120253414251620526",
+      "status": "PAUSED",
+      "adsets": 0,
+      "ads": 0
+    },
+    "configured_active_total_daily_cents": 45000,
+    "monthly_total_budget_brl": 14000,
+    "daily_budget_is_monthly_hard_cap": false,
+    "final_readback_at_brt": "2026-10-05T23:41:42-03:00",
+    "active_budget_controllers_cents": [
+      12059,
+      13265,
+      15676,
+      4000
+    ],
+    "active_budget_controllers_status": "ACTIVE/ACTIVE"
   },
   "google": {
     "customer": "1316487378",
@@ -35,18 +74,20 @@
     "status": "PAUSED",
     "billing_configured": false,
     "rsa_review": "APPROVED",
-    "ad_strength": "PENDING"
+    "ad_strength": "PENDING",
+    "billing_setup_readback": []
   },
   "integration": {
     "receipt_column_applied_verified": true,
     "new_native_form": "1776305790272614",
     "native_crm_sheets_verified": false,
-    "live_test_lead_sent": false
+    "live_test_lead_sent": false,
+    "advertiser_own_privacy_policy_verified": false
   },
   "validation": {
-    "offline_tests_passed": 15,
+    "offline_tests_passed": 16,
     "changed_files_lint_errors": 0,
-    "changed_files_lint_warnings": 156,
+    "changed_files_lint_warnings": 170,
     "root_lint_errors": 0,
     "root_lint_warnings": 781,
     "club_lint_errors": 0,
@@ -56,7 +97,55 @@
     "typecheck": "passed",
     "club_build": "passed",
     "browser_local": "passed_synthetic_desktop_mobile",
-    "browser_preview": "not_performed_publication_blocked"
+    "browser_preview": "blocked_sso_no_bypass",
+    "changed_files_lint_count": 34,
+    "browser_production": "passed_desktop_mobile_with_filter_limitation",
+    "http_production": "passed_source_sha1_routes_and_aggregate_apis",
+    "public_personal_fields_present": false,
+    "production_console_errors": 0,
+    "mobile_overflow": false,
+    "filter_7_days": {
+      "selector_wait": "expired_wrong_tab_selector",
+      "active_tab": "Formatos",
+      "awaited_selector": "SE",
+      "final_dom": "filled_31_of_31",
+      "filter_interval_certified": false,
+      "screenshot_temporal_interval_certified": false,
+      "timing_certified": false
+    },
+    "favicon_404": "preexisting",
+    "production_screenshots": [
+      "evidencias/sessao-estrategica-dashboard-2026-10-05-producao-formatos-desktop.png",
+      "evidencias/sessao-estrategica-dashboard-2026-10-05-producao-se-desktop.png",
+      "evidencias/sessao-estrategica-dashboard-2026-10-05-producao-se-mobile.png",
+      "evidencias/sessao-estrategica-dashboard-2026-10-05-producao-mentoria-mobile.png",
+      "evidencias/sessao-estrategica-dashboard-2026-10-05-producao-mentoria-desktop.png"
+    ],
+    "browser_data": "real_no_fixtures"
   },
-  "report": "sessao-estrategica-consolidado-2026-10-05.md"
+  "report": "sessao-estrategica-consolidado-2026-10-05.md",
+  "respondi": {
+    "status": "planned_only",
+    "new_campaign_created": false,
+    "new_campaign_activated": false
+  },
+  "next_steps": [
+    "Comprovar callback do formulário Meta novo e entrega CRM/Sheets",
+    "Validar política de privacidade própria do anunciante",
+    "Configurar faturamento Google e reler ad strength PENDING",
+    "Criar públicos Bruno e conjuntos HOT quando regra válida estiver confirmada",
+    "Validar fluxo Respondi antes de criar/ativar piloto",
+    "Conectar agenda e comparecimento sem confundir MQL com sessão",
+    "Substituir orçamento antigo antes de ativar novas campanhas dentro do teto mensal"
+  ],
+  "observed_dashboard": {
+    "since": "2026-09-06",
+    "until": "2026-10-05",
+    "meta_native_contacts": 109,
+    "meta_native_mql": 34,
+    "meta_native_spend_brl": 6325.31,
+    "meta_native_cost_mql_brl": 186.04,
+    "other_formats_comparable": false,
+    "winner_declared": false
+  }
 }
