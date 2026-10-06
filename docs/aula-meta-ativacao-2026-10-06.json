@@ -1,0 +1,773 @@
+{
+  "started_at": "2026-10-06T09:16:17.571976-03:00",
+  "scope": "Only Aula; new COLD activated, HOT held for required Bruno audience; existing429 plus newCOLD351 lifetime today =780 nominal. 90percent share pending HOT gate.",
+  "operations": [
+    {
+      "id": "120253257675140526",
+      "payload": {
+        "daily_budget": 17875
+      },
+      "started_at": "2026-10-06T09:16:17.937993-03:00",
+      "before": {
+        "id": "120253257675140526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "25000"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253257675140526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "17875"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253257675000526",
+      "payload": {
+        "daily_budget": 17875
+      },
+      "started_at": "2026-10-06T09:16:19.811322-03:00",
+      "before": {
+        "id": "120253257675000526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "25000"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253257675000526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "17875"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253144969620526",
+      "payload": {
+        "daily_budget": 7150
+      },
+      "started_at": "2026-10-06T09:16:21.675305-03:00",
+      "before": {
+        "id": "120253144969620526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "10000"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253144969620526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "7150"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253257680570526",
+      "payload": {
+        "end_time": "2026-10-06T16:00:00-03:00"
+      },
+      "started_at": "2026-10-06T09:16:23.474797-03:00",
+      "before": {
+        "id": "120253257680570526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253257675140526",
+        "end_time": "2026-10-06T19:00:00-0300"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253257680570526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253257675140526",
+        "end_time": "2026-10-06T16:00:00-0300"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253257680250526",
+      "payload": {
+        "end_time": "2026-10-06T16:00:00-03:00"
+      },
+      "started_at": "2026-10-06T09:16:25.534629-03:00",
+      "before": {
+        "id": "120253257680250526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253257675000526",
+        "end_time": "2026-10-06T19:00:00-0300"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253257680250526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253257675000526",
+        "end_time": "2026-10-06T16:00:00-0300"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253144976310526",
+      "payload": {
+        "end_time": "2026-10-06T17:30:00-03:00"
+      },
+      "started_at": "2026-10-06T09:16:27.916645-03:00",
+      "before": {
+        "id": "120253144976310526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253144969620526",
+        "end_time": "2026-10-06T19:00:00-0300"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253144976310526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253144969620526",
+        "end_time": "2026-10-06T17:30:00-0300"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422703120526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:29.651192-03:00",
+      "before": {
+        "id": "120253422703120526",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "campaign_id": "120253422702950526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422703120526",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "campaign_id": "120253422702950526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422706170526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:31.917362-03:00",
+      "before": {
+        "id": "120253422706170526",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "campaign_id": "120253422702950526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422706170526",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "campaign_id": "120253422702950526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422703600526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:33.896909-03:00",
+      "before": {
+        "id": "120253422703600526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422703600526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422703870526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:36.376013-03:00",
+      "before": {
+        "id": "120253422703870526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422703870526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422704130526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:38.614889-03:00",
+      "before": {
+        "id": "120253422704130526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422704130526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422704450526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:40.534391-03:00",
+      "before": {
+        "id": "120253422704450526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422704450526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422704840526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:42.225981-03:00",
+      "before": {
+        "id": "120253422704840526",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422704840526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422705580526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:44.254073-03:00",
+      "before": {
+        "id": "120253422705580526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422705580526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422706880526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:46.129562-03:00",
+      "before": {
+        "id": "120253422706880526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422706880526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422707630526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:47.899038-03:00",
+      "before": {
+        "id": "120253422707630526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422707630526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422708590526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:49.748178-03:00",
+      "before": {
+        "id": "120253422708590526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422708590526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422709050526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:51.831462-03:00",
+      "before": {
+        "id": "120253422709050526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422709050526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422709830526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:53.649693-03:00",
+      "before": {
+        "id": "120253422709830526",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422709830526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422710480526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:55.871758-03:00",
+      "before": {
+        "id": "120253422710480526",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422710480526",
+        "status": "ACTIVE",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526"
+      },
+      "confirmed": true
+    },
+    {
+      "id": "120253422702950526",
+      "payload": {
+        "status": "ACTIVE"
+      },
+      "started_at": "2026-10-06T09:16:57.972514-03:00",
+      "before": {
+        "id": "120253422702950526",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "lifetime_budget": "35100"
+      },
+      "response": {
+        "success": true
+      },
+      "after": {
+        "id": "120253422702950526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "lifetime_budget": "35100"
+      },
+      "confirmed": true
+    }
+  ],
+  "rollback": {
+    "old_daily_budgets": {
+      "120253257675140526": 25000,
+      "120253257675000526": 25000,
+      "120253144969620526": 10000
+    },
+    "old_adset_end_time": "2026-10-06T19:00:00-0300",
+    "new_campaign_pause": "120253422702950526"
+  },
+  "errors": [
+    {
+      "at": "2026-10-06T09:17:00.185389-03:00",
+      "error": "{\"code\": 100, \"error_subcode\": null, \"type\": \"OAuthException\", \"message\": \"(#100) Tried accessing nonexisting field (daily_budget)\", \"fbtrace_id\": \"AABe_uzzyn_yCuLepo5JiUT\"}",
+      "action": "Stop; reconcile all already written objects before retry"
+    }
+  ],
+  "preflight": {
+    "120253257675140526": {
+      "id": "120253257675140526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "25000",
+      "account_id": "1676714556216146"
+    },
+    "120253257675000526": {
+      "id": "120253257675000526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "25000",
+      "account_id": "1676714556216146"
+    },
+    "120253144969620526": {
+      "id": "120253144969620526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "10000",
+      "account_id": "1676714556216146"
+    },
+    "120253422702950526": {
+      "id": "120253422702950526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "lifetime_budget": "35100",
+      "account_id": "1676714556216146"
+    },
+    "120253422686060526": {
+      "id": "120253422686060526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "lifetime_budget": "35100",
+      "account_id": "1676714556216146"
+    }
+  },
+  "final_status": {
+    "120253257675140526": {
+      "id": "120253257675140526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253257675000526": {
+      "id": "120253257675000526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253144969620526": {
+      "id": "120253144969620526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422702950526": {
+      "id": "120253422702950526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422686060526": {
+      "id": "120253422686060526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422686190526": {
+      "id": "120253422686190526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422693840526": {
+      "id": "120253422693840526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422694130526": {
+      "id": "120253422694130526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422694790526": {
+      "id": "120253422694790526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422695620526": {
+      "id": "120253422695620526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422696690526": {
+      "id": "120253422696690526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422697410526": {
+      "id": "120253422697410526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422698100526": {
+      "id": "120253422698100526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422699620526": {
+      "id": "120253422699620526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422700110526": {
+      "id": "120253422700110526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422700600526": {
+      "id": "120253422700600526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422701050526": {
+      "id": "120253422701050526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422701770526": {
+      "id": "120253422701770526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422702430526": {
+      "id": "120253422702430526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    "120253422703120526": {
+      "id": "120253422703120526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422703600526": {
+      "id": "120253422703600526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422703870526": {
+      "id": "120253422703870526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422704130526": {
+      "id": "120253422704130526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422704450526": {
+      "id": "120253422704450526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422704840526": {
+      "id": "120253422704840526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422705580526": {
+      "id": "120253422705580526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422706170526": {
+      "id": "120253422706170526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422706880526": {
+      "id": "120253422706880526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422707630526": {
+      "id": "120253422707630526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422708590526": {
+      "id": "120253422708590526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422709050526": {
+      "id": "120253422709050526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422709830526": {
+      "id": "120253422709830526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    },
+    "120253422710480526": {
+      "id": "120253422710480526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE"
+    }
+  },
+  "final_budgets": {
+    "120253257675140526": {
+      "id": "120253257675140526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "17875"
+    },
+    "120253257675000526": {
+      "id": "120253257675000526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "17875"
+    },
+    "120253144969620526": {
+      "id": "120253144969620526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "7150"
+    },
+    "120253422702950526": {
+      "id": "120253422702950526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "lifetime_budget": "35100"
+    },
+    "120253422686060526": {
+      "id": "120253422686060526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "lifetime_budget": "35100"
+    }
+  },
+  "completed_at": "2026-10-06T09:22:17.391876-03:00",
+  "final_read_error_resolved": "Mixed Ad and Campaign budget fields replaced by separate type-specific read, no writes repeated"
+}

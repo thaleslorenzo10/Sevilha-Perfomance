@@ -1,0 +1,101 @@
+{
+  "account_id": "1676714556216146",
+  "images": [
+    {
+      "file": "aula-01.png",
+      "sha256": "8421b46bfe3c6c4484c49ecfa0f8f887e1c062e4a548780cbdcd6a0c9f3109ac",
+      "width": 1122,
+      "height": 1402,
+      "status": "verified",
+      "hash": "1a812d796e675d9d009bfdd3d6232995"
+    },
+    {
+      "file": "aula-02.png",
+      "sha256": "6e54bc2b16a4fe35243861e6d634ff9bc18a9209528ff851ab0446c2ec055549",
+      "width": 1122,
+      "height": 1402,
+      "status": "verified",
+      "hash": "6ff5447dc5bd644fbdc31f9aedaa107e"
+    },
+    {
+      "file": "aula-03.png",
+      "sha256": "d516efe8eff6fe5e3244c066247a682c715d6aeaf8d91149afb7f33129d96b56",
+      "width": 1122,
+      "height": 1402,
+      "status": "verified",
+      "hash": "cc14679ced69f1aecb53e4bbb71cd671"
+    },
+    {
+      "file": "aula-04.png",
+      "sha256": "7f6c344559c82d11aa6a65873fb4c3c5fe7b090d6cd6bae3bf32189316c09589",
+      "width": 1122,
+      "height": 1402,
+      "status": "verified",
+      "hash": "f1df70b06db07ae25ec871fe7ab75dce"
+    },
+    {
+      "file": "aula-05.png",
+      "sha256": "c3276bec9412becc8eeb82448f5648aa7d955186465a94fd193aeac3fbeb20d8",
+      "width": 1122,
+      "height": 1402,
+      "status": "verified",
+      "hash": "2a3bb56c2c4ea5b160165d26a1b6b232"
+    },
+    {
+      "file": "aula-06.png",
+      "sha256": "d8fcb7f46c7a174e50292d78e50fdb08fb4ce806bca6d8eb30a7cfa9e0d259c5",
+      "width": 1086,
+      "height": 1448,
+      "status": "verified",
+      "hash": "239dd7abb79e099aa2f162f6d08a73fc"
+    },
+    {
+      "file": "lote-01.png",
+      "sha256": "7772aa21f9125ef393a24f948dafd1dca4e957b8860f79e43657379dcf7a01b3",
+      "width": 1122,
+      "height": 1402,
+      "status": "verified",
+      "hash": "f132d0edc35a65aea2b8c86aab97dca5"
+    },
+    {
+      "file": "lote-02.png",
+      "sha256": "856fdaf31fd72e6cff686fd18cb9381ab737f445b89b97a0be16b2c9140de239",
+      "width": 1122,
+      "height": 1402,
+      "status": "verified",
+      "hash": "fa4948cd9b530522181aee2cf658d43d"
+    },
+    {
+      "file": "lote-03.png",
+      "sha256": "e6124fe753a429131fb6c256df997efe8ff2f5a28a912bb1f21a83c12b2bc365",
+      "width": 1122,
+      "height": 1402,
+      "status": "verified",
+      "hash": "a3c21f893b0c198f263bda5649986874"
+    },
+    {
+      "file": "lote-04.png",
+      "sha256": "fc59ce172d6b1debceb76e9424a3b7315cd9909eaa27c5f4ea7be680f7eea897",
+      "width": 1122,
+      "height": 1402,
+      "status": "verified",
+      "hash": "f48972913b09fcb4b77137e1dfa1c730"
+    },
+    {
+      "file": "lote-05.png",
+      "sha256": "9136b0ac483c6f736c7d6ae44b7bce952d1d638f9fa25b8232cad0d26de793a6",
+      "width": 1122,
+      "height": 1402,
+      "status": "verified",
+      "hash": "e9d6789e84b760aded2fe7dbe63c82b7"
+    },
+    {
+      "file": "lote-06.png",
+      "sha256": "f5e3b8c984f5585eda8c49895579fe562435709b87e81670b11217c580db93f5",
+      "width": 1092,
+      "height": 1440,
+      "status": "verified",
+      "hash": "72a2186aa38a19078117321689f1bd9c"
+    }
+  ]
+}

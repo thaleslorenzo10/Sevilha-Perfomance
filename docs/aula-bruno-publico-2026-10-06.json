@@ -1,0 +1,86 @@
+{
+  "name": "[BRUNO] [IG] Envolvimento 180D | 2026-10-06",
+  "rule": {
+    "inclusions": {
+      "operator": "or",
+      "rules": [
+        {
+          "event_sources": [
+            {
+              "type": "ig_business",
+              "id": "17841446823336862"
+            }
+          ],
+          "retention_seconds": 15552000,
+          "filter": {
+            "operator": "and",
+            "filters": [
+              {
+                "field": "event",
+                "operator": "eq",
+                "value": "ig_business_profile_all"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "status": "failed",
+  "timestamp": "2026-10-06T09:01:30.129630-03:00",
+  "error": "{\"code\": 2654, \"error_subcode\": 1713151, \"type\": \"OAuthException\", \"message\": \"(#2654) Nome do evento inv\\u00e1lido para o p\\u00fablico personalizado: O nome do evento deve ter menos de 50 caracteres e s\\u00f3 pode conter caracteres alfanum\\u00e9ricos e sublinhados.\", \"fbtrace_id\": \"AG_LWkHIBT9dV4WpDWrCnl3\"}",
+  "attempts": [
+    {
+      "rule": {
+        "inclusions": {
+          "operator": "or",
+          "rules": [
+            {
+              "event_sources": [
+                {
+                  "type": "ig_business",
+                  "id": 47014896777
+                }
+              ],
+              "retention_seconds": 15552000,
+              "filter": {
+                "operator": "and",
+                "filters": [
+                  {
+                    "field": "event",
+                    "operator": "eq",
+                    "value": "ig_business_profile_all"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "status": "failed",
+      "timestamp": "2026-10-06T09:03:24.188383-03:00",
+      "error": "{\"code\": 2654, \"error_subcode\": 1713151, \"type\": \"OAuthException\", \"message\": \"(#2654) Nome do evento inv\\u00e1lido para o p\\u00fablico personalizado: O nome do evento deve ter menos de 50 caracteres e s\\u00f3 pode conter caracteres alfanum\\u00e9ricos e sublinhados.\", \"fbtrace_id\": \"ARd5y67Kx2dcUIvVUrmkHNg\"}"
+    },
+    {
+      "rule": {
+        "event_name": "ig_business_profile_all",
+        "object_id": "17841446823336862"
+      },
+      "status": "failed",
+      "timestamp": "2026-10-06T09:05:51.734338-03:00",
+      "format": "ENGAGEMENT legacy event_name/object_id, modern rule rejected missing event_name",
+      "error": "{\"code\": 100, \"error_subcode\": 1870029, \"type\": \"OAuthException\", \"message\": \"Invalid parameter\", \"fbtrace_id\": \"ARXSQx3tK-d_Yofs5BkFpq3\"}"
+    },
+    {
+      "rule": {
+        "event_name": "page_engaged",
+        "object_id": "106292094924513"
+      },
+      "name": "[BRUNO] [FB] Engajamento 180D | 2026-10-06",
+      "status": "failed",
+      "timestamp": "2026-10-06T09:09:15.875659-03:00",
+      "format": "Facebook page linked to verified Bruno Instagram, distinct fallback, not Instagram profile audience",
+      "error": "{\"code\": 100, \"error_subcode\": 1870029, \"type\": \"OAuthException\", \"message\": \"Invalid parameter\", \"fbtrace_id\": \"Aya9JMQMXOFhtLOtjqz8bPM\"}"
+    }
+  ]
+}

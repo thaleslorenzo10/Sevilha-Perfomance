@@ -1,0 +1,4665 @@
+{
+  "scope": "Only NEW paused Aula campaigns, adsets, creatives and ads; no existing writes or activation",
+  "started_at": "2026-10-06T09:02:27.575183",
+  "operations": [
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][LOTE_HOJE] 01 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:04:32.353561-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 01 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "O lote da Aula de Gestão Operacional vira hoje. Garanta sua inscrição no lote atual e participe ao vivo às 19h30, horário de Brasília. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "O lote vira hoje",
+            "image_hash": "f132d0edc35a65aea2b8c86aab97dca5",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "1410961037902911",
+      "readback": {
+        "id": "1410961037902911",
+        "name": "[AULA][LOTE_HOJE] 01 | 20261006 | ESTATICO 2026-10-06-5fdb01d34bb29c85392d9e903e839c95",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "O lote da Aula de Gestão Operacional vira hoje. Garanta sua inscrição no lote atual e participe ao vivo às 19h30, horário de Brasília. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "O lote vira hoje",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "f132d0edc35a65aea2b8c86aab97dca5",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "reconciled_by_name": "1410961037902911",
+      "verified_at": "2026-10-06T09:06:45.228579-03:00"
+    },
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][LOTE_HOJE] 02 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:05:06.860237-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 02 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "A virada é hoje. Aprenda o método de Gestão Operacional da Sevilha para escritórios contábeis. A aula acontece hoje, às 19h30, horário de Brasília. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "Garanta o lote atual",
+            "image_hash": "fa4948cd9b530522181aee2cf658d43d",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "1419365497014216",
+      "readback": {
+        "id": "1419365497014216",
+        "name": "[AULA][LOTE_HOJE] 02 | 20261006 | ESTATICO 2026-10-06-1e5570512365a4593e3c5951d9a0b3ea",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "A virada é hoje. Aprenda o método de Gestão Operacional da Sevilha para escritórios contábeis. A aula acontece hoje, às 19h30, horário de Brasília. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "Garanta o lote atual",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "fa4948cd9b530522181aee2cf658d43d",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "verified_at": "2026-10-06T09:06:45.569622-03:00",
+      "reconciled_by_name": "1419365497014216"
+    },
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][LOTE_HOJE] 03 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:05:09.869270-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 03 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "Antes da virada de lote, garanta sua inscrição. Hoje, às 19h30, Bruno Silvestre apresenta a Gestão Operacional da Sevilha em uma aula ao vivo. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "Inscreva-se antes da virada",
+            "image_hash": "a3c21f893b0c198f263bda5649986874",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "1547583650458636",
+      "readback": {
+        "id": "1547583650458636",
+        "name": "[AULA][LOTE_HOJE] 03 | 20261006 | ESTATICO 2026-10-06-fdae3bc96c1733d2f9b63b6ff4dfb969",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "Antes da virada de lote, garanta sua inscrição. Hoje, às 19h30, Bruno Silvestre apresenta a Gestão Operacional da Sevilha em uma aula ao vivo. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "Inscreva-se antes da virada",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "a3c21f893b0c198f263bda5649986874",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "verified_at": "2026-10-06T09:06:45.843387-03:00",
+      "reconciled_by_name": "1547583650458636"
+    },
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][LOTE_HOJE] 04 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:05:12.679120-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 04 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "Hoje tem virada de lote da Aula de Gestão Operacional. Inscreva-se no lote atual para acompanhar a aula ao vivo às 19h30, horário de Brasília. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "Aproveite o lote atual",
+            "image_hash": "f48972913b09fcb4b77137e1dfa1c730",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "1563067029188613",
+      "readback": {
+        "id": "1563067029188613",
+        "name": "[AULA][LOTE_HOJE] 04 | 20261006 | ESTATICO 2026-10-06-4245b4477275a82312965afe3182d473",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "Hoje tem virada de lote da Aula de Gestão Operacional. Inscreva-se no lote atual para acompanhar a aula ao vivo às 19h30, horário de Brasília. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "Aproveite o lote atual",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "f48972913b09fcb4b77137e1dfa1c730",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "verified_at": "2026-10-06T09:06:46.154852-03:00",
+      "reconciled_by_name": "1563067029188613"
+    },
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][LOTE_HOJE] 05 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:05:15.844249-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 05 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "O lote atual termina hoje. A Aula de Gestão Operacional acontece às 19h30 e apresenta o método da Sevilha para escritórios contábeis. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "Garanta sua inscrição hoje",
+            "image_hash": "e9d6789e84b760aded2fe7dbe63c82b7",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "2881485352232002",
+      "readback": {
+        "id": "2881485352232002",
+        "name": "[AULA][LOTE_HOJE] 05 | 20261006 | ESTATICO 2026-10-06-7eb2d578c1f43629ed7bee216a92d673",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "O lote atual termina hoje. A Aula de Gestão Operacional acontece às 19h30 e apresenta o método da Sevilha para escritórios contábeis. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "Garanta sua inscrição hoje",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "e9d6789e84b760aded2fe7dbe63c82b7",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "verified_at": "2026-10-06T09:06:46.473058-03:00",
+      "reconciled_by_name": "2881485352232002"
+    },
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][LOTE_HOJE] 06 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:05:19.303866-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 06 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "A virada de lote é hoje. Garanta sua inscrição para a aula ao vivo de Gestão Operacional, com Bruno Silvestre, às 19h30, horário de Brasília. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "Inscreva-se no lote atual",
+            "image_hash": "72a2186aa38a19078117321689f1bd9c",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "2449807105546671",
+      "readback": {
+        "id": "2449807105546671",
+        "name": "[AULA][LOTE_HOJE] 06 | 20261006 | ESTATICO 2026-10-06-b8b36f357c065eed54256d4ccd6b039a",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "A virada de lote é hoje. Garanta sua inscrição para a aula ao vivo de Gestão Operacional, com Bruno Silvestre, às 19h30, horário de Brasília. O lote atual encerra às 16h, horário de Brasília.",
+            "name": "Inscreva-se no lote atual",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "72a2186aa38a19078117321689f1bd9c",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "verified_at": "2026-10-06T09:06:46.790630-03:00",
+      "reconciled_by_name": "2449807105546671"
+    },
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][AULA_HOJE] 01 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:05:23.179777-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 01 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "É hoje! Às 19h30, horário de Brasília, a Sevilha apresenta seu método de Gestão Operacional para escritórios contábeis em uma aula ao vivo.",
+            "name": "A aula é hoje, às 19h30",
+            "image_hash": "1a812d796e675d9d009bfdd3d6232995",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "1092719246733771",
+      "readback": {
+        "id": "1092719246733771",
+        "name": "[AULA][AULA_HOJE] 01 | 20261006 | ESTATICO 2026-10-06-502d5f83d867733d500968c0ff66edf6",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "É hoje! Às 19h30, horário de Brasília, a Sevilha apresenta seu método de Gestão Operacional para escritórios contábeis em uma aula ao vivo.",
+            "name": "A aula é hoje, às 19h30",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "1a812d796e675d9d009bfdd3d6232995",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "verified_at": "2026-10-06T09:06:47.075164-03:00",
+      "reconciled_by_name": "1092719246733771"
+    },
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][AULA_HOJE] 02 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:05:25.819932-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 02 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "Reserve o horário: hoje, às 19h30. Participe da Aula de Gestão Operacional da Sevilha e acompanhe o método apresentado ao vivo.",
+            "name": "Hoje, às 19h30",
+            "image_hash": "6ff5447dc5bd644fbdc31f9aedaa107e",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "1464344919084855",
+      "readback": {
+        "id": "1464344919084855",
+        "name": "[AULA][AULA_HOJE] 02 | 20261006 | ESTATICO 2026-10-06-f5f494a39714a5ecccb5648e52658f9c",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "Reserve o horário: hoje, às 19h30. Participe da Aula de Gestão Operacional da Sevilha e acompanhe o método apresentado ao vivo.",
+            "name": "Hoje, às 19h30",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "6ff5447dc5bd644fbdc31f9aedaa107e",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "verified_at": "2026-10-06T09:06:47.367227-03:00",
+      "reconciled_by_name": "1464344919084855"
+    },
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][AULA_HOJE] 03 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:05:28.797039-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 03 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "Hoje tem aula com Bruno Silvestre. Gestão Operacional para escritórios contábeis, ao vivo, às 19h30, horário de Brasília. Garanta sua inscrição.",
+            "name": "Participe ao vivo hoje",
+            "image_hash": "cc14679ced69f1aecb53e4bbb71cd671",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "1098652012647798",
+      "readback": {
+        "id": "1098652012647798",
+        "name": "[AULA][AULA_HOJE] 03 | 20261006 | ESTATICO 2026-10-06-a18782c0a4485e4b60453d9542aa65b7",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "Hoje tem aula com Bruno Silvestre. Gestão Operacional para escritórios contábeis, ao vivo, às 19h30, horário de Brasília. Garanta sua inscrição.",
+            "name": "Participe ao vivo hoje",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "cc14679ced69f1aecb53e4bbb71cd671",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "verified_at": "2026-10-06T09:06:47.749412-03:00",
+      "reconciled_by_name": "1098652012647798"
+    },
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][AULA_HOJE] 04 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:05:31.536517-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 04 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "Do processo à margem: conheça o método de Gestão Operacional da Sevilha para escritórios contábeis. A aula é hoje, às 19h30, horário de Brasília.",
+            "name": "É hoje: Gestão Operacional",
+            "image_hash": "f1df70b06db07ae25ec871fe7ab75dce",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "1809120390125375",
+      "readback": {
+        "id": "1809120390125375",
+        "name": "[AULA][AULA_HOJE] 04 | 20261006 | ESTATICO 2026-10-06-5d80aa6c651e44263ba43cc645b8b474",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "Do processo à margem: conheça o método de Gestão Operacional da Sevilha para escritórios contábeis. A aula é hoje, às 19h30, horário de Brasília.",
+            "name": "É hoje: Gestão Operacional",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "f1df70b06db07ae25ec871fe7ab75dce",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "verified_at": "2026-10-06T09:06:48.121530-03:00",
+      "reconciled_by_name": "1809120390125375"
+    },
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][AULA_HOJE] 05 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:05:34.839775-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 05 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "O método da Sevilha, ao vivo, hoje. Bruno Silvestre apresenta a Gestão Operacional em uma aula para escritórios contábeis. Começa às 19h30, horário de Brasília.",
+            "name": "O método da Sevilha, ao vivo",
+            "image_hash": "2a3bb56c2c4ea5b160165d26a1b6b232",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "1649447766792783",
+      "readback": {
+        "id": "1649447766792783",
+        "name": "[AULA][AULA_HOJE] 05 | 20261006 | ESTATICO 2026-10-06-6f4d91ef0b0fbe63f2cd067d1d013651",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "O método da Sevilha, ao vivo, hoje. Bruno Silvestre apresenta a Gestão Operacional em uma aula para escritórios contábeis. Começa às 19h30, horário de Brasília.",
+            "name": "O método da Sevilha, ao vivo",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "2a3bb56c2c4ea5b160165d26a1b6b232",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "verified_at": "2026-10-06T09:06:48.478502-03:00",
+      "reconciled_by_name": "1649447766792783"
+    },
+    {
+      "kind": "adcreatives",
+      "name": "[AULA][AULA_HOJE] 06 | 20261006 | ESTATICO",
+      "started_at": "2026-10-06T09:05:37.661381-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 06 | 20261006 | ESTATICO",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "message": "Seu escritório tem aula hoje. Participe da Aula de Gestão Operacional com Bruno Silvestre, às 19h30, horário de Brasília.",
+            "name": "Inscreva-se para a aula de hoje",
+            "image_hash": "239dd7abb79e099aa2f162f6d08a73fc",
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        }
+      },
+      "state": "verified",
+      "id": "4618589501751021",
+      "readback": {
+        "id": "4618589501751021",
+        "name": "[AULA][AULA_HOJE] 06 | 20261006 | ESTATICO 2026-10-06-0e7a0ae9665a617ac6df4b8ab62e8117",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "link_data": {
+            "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+            "message": "Seu escritório tem aula hoje. Participe da Aula de Gestão Operacional com Bruno Silvestre, às 19h30, horário de Brasília.",
+            "name": "Inscreva-se para a aula de hoje",
+            "description": "Aula ao vivo · 6/10 · 19h30 (Brasília)",
+            "image_hash": "239dd7abb79e099aa2f162f6d08a73fc",
+            "call_to_action": {
+              "type": "SIGN_UP",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      },
+      "verified_at": "2026-10-06T09:06:48.752395-03:00",
+      "reconciled_by_name": "4618589501751021"
+    },
+    {
+      "kind": "campaigns",
+      "name": "[AULA] [VENDAS] [E HOJE] [HOT] 2026-10-06",
+      "started_at": "2026-10-06T09:05:40.699214-03:00",
+      "payload": {
+        "name": "[AULA] [VENDAS] [E HOJE] [HOT] 2026-10-06",
+        "objective": "OUTCOME_SALES",
+        "daily_budget": 35100,
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "special_ad_categories": [],
+        "is_adset_budget_sharing_enabled": false,
+        "status": "PAUSED"
+      },
+      "state": "superseded_paused_empty",
+      "id": "120253422648440526",
+      "readback": {
+        "id": "120253422648440526",
+        "name": "[AULA] [VENDAS] [E HOJE] [HOT] 2026-10-06",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "objective": "OUTCOME_SALES",
+        "daily_budget": "35100",
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "special_ad_categories": [],
+        "is_adset_budget_sharing_enabled": false
+      },
+      "verified_at": "2026-10-06T09:06:48.996484-03:00",
+      "reconciled_by_name": "120253422648440526"
+    },
+    {
+      "kind": "adsets",
+      "name": "[HOT] [LOTE_HOJE] Brasil · Compras · 20261006",
+      "started_at": "2026-10-06T09:05:41.858261-03:00",
+      "payload": {
+        "name": "[HOT] [LOTE_HOJE] Brasil · Compras · 20261006",
+        "campaign_id": "120253422648440526",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "custom_audiences": [
+            {
+              "id": "120219034626410526",
+              "name": "[SITE] - Acessou site - 007D"
+            },
+            {
+              "id": "120219034627270526",
+              "name": "[SITE] - Acessou site - 015D"
+            },
+            {
+              "id": "120219034628630526",
+              "name": "[SITE] - Acessou site - 030D"
+            },
+            {
+              "id": "120219034630480526",
+              "name": "[SITE] - Acessou site - 060D"
+            },
+            {
+              "id": "120219034632680526",
+              "name": "[SITE] - Acessou site - 090D"
+            },
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219361601410526",
+              "name": "[EVENTO] - Lead - 060D"
+            },
+            {
+              "id": "120219361601420526",
+              "name": "[EVENTO] - Lead - 045D"
+            },
+            {
+              "id": "120219361601540526",
+              "name": "[EVENTO] - Lead - 030D"
+            },
+            {
+              "id": "120219361601680526",
+              "name": "[EVENTO] - Lead - 015D"
+            },
+            {
+              "id": "120219361601690526",
+              "name": "[EVENTO] - Lead - 007D"
+            },
+            {
+              "id": "120219361635560526",
+              "name": "[EVENTO] - Lead - 180D"
+            },
+            {
+              "id": "120219361635580526",
+              "name": "[EVENTO] - Lead - 090D"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282795950526",
+              "name": "[IG] Envolvimento completo 180D"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 7
+          },
+          {
+            "event_type": "VIEW_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "WEBSITE",
+        "start_time": 1791288306,
+        "end_time": "2026-10-06T16:00:00-03:00",
+        "status": "PAUSED"
+      },
+      "state": "rejected",
+      "api_error": {
+        "code": 100,
+        "error_subcode": 1487793,
+        "type": "OAuthException",
+        "message": "Invalid parameter",
+        "fbtrace_id": "AxWoxGBYNKOfue_l8hTiUF6"
+      }
+    },
+    {
+      "kind": "adsets",
+      "name": "[HOT] [LOTE_HOJE] Brasil · Compras · 20261006",
+      "started_at": "2026-10-06T09:06:48.999879-03:00",
+      "payload": {
+        "name": "[HOT] [LOTE_HOJE] Brasil · Compras · 20261006",
+        "campaign_id": "120253422648440526",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 7
+          },
+          {
+            "event_type": "VIEW_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "WEBSITE",
+        "start_time": 1791288404,
+        "end_time": "2026-10-06T16:00:00-03:00",
+        "status": "PAUSED"
+      },
+      "state": "rejected",
+      "api_error": {
+        "code": 100,
+        "error_subcode": 1487793,
+        "type": "OAuthException",
+        "message": "Invalid parameter",
+        "fbtrace_id": "AlgumPVYxHThlI6Kw45yVJH"
+      }
+    },
+    {
+      "kind": "budget_conversion",
+      "name": "HOT daily to lifetime",
+      "id": "120253422648440526",
+      "started_at": "2026-10-06T09:10:28.812482-03:00",
+      "payload": {
+        "daily_budget": 0,
+        "lifetime_budget": 35100
+      },
+      "state": "rejected",
+      "error": "{\"code\": 1487164, \"error_subcode\": null, \"type\": \"OAuthException\", \"message\": \"(#1487164) Only one of daily budget or lifetime budget can be set\", \"error_user_title\": null, \"error_user_msg\": null, \"fbtrace_id\": \"As77CTljkFdjqe9wcAKABWg\"}"
+    },
+    {
+      "kind": "budget_conversion",
+      "name": "HOT daily to lifetime",
+      "id": "120253422648440526",
+      "started_at": "2026-10-06T09:10:46.505026-03:00",
+      "payload": {
+        "daily_budget": 0,
+        "lifetime_budget": 35100
+      },
+      "state": "rejected",
+      "error": "{\"code\": 1487164, \"error_subcode\": null, \"type\": \"OAuthException\", \"message\": \"(#1487164) Only one of daily budget or lifetime budget can be set\", \"error_user_title\": null, \"error_user_msg\": null, \"fbtrace_id\": \"AFckFsW_0hF4m159BTOzK9t\"}"
+    },
+    {
+      "kind": "campaigns",
+      "name": "[AULA] [VENDAS] [E HOJE] [HOT] 2026-10-06 TOTAL HOJE",
+      "started_at": "2026-10-06T09:10:47.119321-03:00",
+      "payload": {
+        "name": "[AULA] [VENDAS] [E HOJE] [HOT] 2026-10-06 TOTAL HOJE",
+        "objective": "OUTCOME_SALES",
+        "lifetime_budget": 35100,
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "special_ad_categories": [],
+        "is_adset_budget_sharing_enabled": false,
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422686060526",
+      "readback": {
+        "id": "120253422686060526",
+        "name": "[AULA] [VENDAS] [E HOJE] [HOT] 2026-10-06 TOTAL HOJE",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "objective": "OUTCOME_SALES",
+        "lifetime_budget": "35100",
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "special_ad_categories": [],
+        "is_adset_budget_sharing_enabled": false
+      },
+      "verified_at": "2026-10-06T09:10:48.367448-03:00"
+    },
+    {
+      "kind": "adsets",
+      "name": "[HOT] [LOTE_HOJE] Brasil · Compras · 20261006",
+      "started_at": "2026-10-06T09:10:48.371321-03:00",
+      "payload": {
+        "name": "[HOT] [LOTE_HOJE] Brasil · Compras · 20261006",
+        "campaign_id": "120253422686060526",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_relaxation_types": {
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 7
+          },
+          {
+            "event_type": "VIEW_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "WEBSITE",
+        "start_time": 1791288768,
+        "end_time": "2026-10-06T16:00:00-03:00",
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422686190526",
+      "readback": {
+        "id": "120253422686190526",
+        "name": "[HOT] [LOTE_HOJE] Brasil · Compras · 20261006",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "campaign_id": "120253422686060526",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 7
+          },
+          {
+            "event_type": "VIEW_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "WEBSITE",
+        "start_time": "2026-10-06T09:12:48-0300",
+        "end_time": "2026-10-06T16:00:00-0300"
+      },
+      "reconciled_by_name": "120253422686190526",
+      "verified_at": "2026-10-06T09:11:15.437187-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 01 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:15.440892-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 01 |HOT|20261006",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "creative_id": "1410961037902911"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422693840526",
+      "readback": {
+        "id": "120253422693840526",
+        "name": "[AULA][LOTE_HOJE] 01 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "id": "1410961037902911"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:18.457479-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 02 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:18.461813-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 02 |HOT|20261006",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "creative_id": "1419365497014216"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422694130526",
+      "readback": {
+        "id": "120253422694130526",
+        "name": "[AULA][LOTE_HOJE] 02 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "id": "1419365497014216"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:20.967901-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 03 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:20.970589-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 03 |HOT|20261006",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "creative_id": "1547583650458636"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422694790526",
+      "readback": {
+        "id": "120253422694790526",
+        "name": "[AULA][LOTE_HOJE] 03 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "id": "1547583650458636"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:23.246620-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 04 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:23.250303-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 04 |HOT|20261006",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "creative_id": "1563067029188613"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422695620526",
+      "readback": {
+        "id": "120253422695620526",
+        "name": "[AULA][LOTE_HOJE] 04 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "id": "1563067029188613"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:25.370256-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 05 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:25.374575-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 05 |HOT|20261006",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "creative_id": "2881485352232002"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422696690526",
+      "readback": {
+        "id": "120253422696690526",
+        "name": "[AULA][LOTE_HOJE] 05 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "id": "2881485352232002"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:27.667913-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 06 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:27.672231-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 06 |HOT|20261006",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "creative_id": "2449807105546671"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422697410526",
+      "readback": {
+        "id": "120253422697410526",
+        "name": "[AULA][LOTE_HOJE] 06 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422686190526",
+        "creative": {
+          "id": "2449807105546671"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:29.688303-03:00"
+    },
+    {
+      "kind": "adsets",
+      "name": "[HOT] [AULA_HOJE] Brasil · Compras · 20261006",
+      "started_at": "2026-10-06T09:11:29.693200-03:00",
+      "payload": {
+        "name": "[HOT] [AULA_HOJE] Brasil · Compras · 20261006",
+        "campaign_id": "120253422686060526",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_relaxation_types": {
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 7
+          },
+          {
+            "event_type": "VIEW_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "WEBSITE",
+        "start_time": 1791288809,
+        "end_time": "2026-10-06T17:30:00-03:00",
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422698100526",
+      "readback": {
+        "id": "120253422698100526",
+        "name": "[HOT] [AULA_HOJE] Brasil · Compras · 20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 7
+          },
+          {
+            "event_type": "VIEW_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "WEBSITE",
+        "start_time": "2026-10-06T09:13:29-0300",
+        "end_time": "2026-10-06T17:30:00-0300"
+      },
+      "verified_at": "2026-10-06T09:11:31.781476-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 01 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:31.786824-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 01 |HOT|20261006",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "creative_id": "1092719246733771"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422699620526",
+      "readback": {
+        "id": "120253422699620526",
+        "name": "[AULA][AULA_HOJE] 01 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "id": "1092719246733771"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:33.971968-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 02 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:33.979118-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 02 |HOT|20261006",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "creative_id": "1464344919084855"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422700110526",
+      "readback": {
+        "id": "120253422700110526",
+        "name": "[AULA][AULA_HOJE] 02 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "id": "1464344919084855"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:36.113521-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 03 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:36.118577-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 03 |HOT|20261006",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "creative_id": "1098652012647798"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422700600526",
+      "readback": {
+        "id": "120253422700600526",
+        "name": "[AULA][AULA_HOJE] 03 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "id": "1098652012647798"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:38.410836-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 04 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:38.416375-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 04 |HOT|20261006",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "creative_id": "1809120390125375"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422701050526",
+      "readback": {
+        "id": "120253422701050526",
+        "name": "[AULA][AULA_HOJE] 04 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "id": "1809120390125375"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:41.092423-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 05 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:41.098432-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 05 |HOT|20261006",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "creative_id": "1649447766792783"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422701770526",
+      "readback": {
+        "id": "120253422701770526",
+        "name": "[AULA][AULA_HOJE] 05 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "id": "1649447766792783"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:43.426461-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 06 |HOT|20261006",
+      "started_at": "2026-10-06T09:11:43.431909-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 06 |HOT|20261006",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "creative_id": "4618589501751021"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422702430526",
+      "readback": {
+        "id": "120253422702430526",
+        "name": "[AULA][AULA_HOJE] 06 |HOT|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422686060526",
+        "adset_id": "120253422698100526",
+        "creative": {
+          "id": "4618589501751021"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:45.718239-03:00"
+    },
+    {
+      "kind": "campaigns",
+      "name": "[AULA] [VENDAS] [E HOJE] [COLD] 2026-10-06",
+      "started_at": "2026-10-06T09:11:45.722103-03:00",
+      "payload": {
+        "name": "[AULA] [VENDAS] [E HOJE] [COLD] 2026-10-06",
+        "objective": "OUTCOME_SALES",
+        "lifetime_budget": 35100,
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "special_ad_categories": [],
+        "is_adset_budget_sharing_enabled": false,
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422702950526",
+      "readback": {
+        "id": "120253422702950526",
+        "name": "[AULA] [VENDAS] [E HOJE] [COLD] 2026-10-06",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "objective": "OUTCOME_SALES",
+        "lifetime_budget": "35100",
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "special_ad_categories": [],
+        "is_adset_budget_sharing_enabled": false
+      },
+      "verified_at": "2026-10-06T09:11:46.935396-03:00"
+    },
+    {
+      "kind": "adsets",
+      "name": "[COLD] [LOTE_HOJE] Brasil · Compras · 20261006",
+      "started_at": "2026-10-06T09:11:46.940924-03:00",
+      "payload": {
+        "name": "[COLD] [LOTE_HOJE] Brasil · Compras · 20261006",
+        "campaign_id": "120253422702950526",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003138589139",
+                  "name": "Contabilidade (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_automation": {
+            "advantage_audience": 1
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 7
+          },
+          {
+            "event_type": "VIEW_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "WEBSITE",
+        "start_time": 1791288826,
+        "end_time": "2026-10-06T16:00:00-03:00",
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422703120526",
+      "readback": {
+        "id": "120253422703120526",
+        "name": "[COLD] [LOTE_HOJE] Brasil · Compras · 20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003138589139",
+                  "name": "Contabilidade (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_automation": {
+            "advantage_audience": 1
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 7
+          },
+          {
+            "event_type": "VIEW_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "WEBSITE",
+        "start_time": "2026-10-06T09:13:46-0300",
+        "end_time": "2026-10-06T16:00:00-0300"
+      },
+      "verified_at": "2026-10-06T09:11:48.952028-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 01 |COLD|20261006",
+      "started_at": "2026-10-06T09:11:48.957319-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 01 |COLD|20261006",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "creative_id": "1410961037902911"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422703600526",
+      "readback": {
+        "id": "120253422703600526",
+        "name": "[AULA][LOTE_HOJE] 01 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "id": "1410961037902911"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:51.265881-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 02 |COLD|20261006",
+      "started_at": "2026-10-06T09:11:51.270661-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 02 |COLD|20261006",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "creative_id": "1419365497014216"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422703870526",
+      "readback": {
+        "id": "120253422703870526",
+        "name": "[AULA][LOTE_HOJE] 02 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "id": "1419365497014216"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:53.604160-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 03 |COLD|20261006",
+      "started_at": "2026-10-06T09:11:53.610329-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 03 |COLD|20261006",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "creative_id": "1547583650458636"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422704130526",
+      "readback": {
+        "id": "120253422704130526",
+        "name": "[AULA][LOTE_HOJE] 03 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "id": "1547583650458636"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:55.957348-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 04 |COLD|20261006",
+      "started_at": "2026-10-06T09:11:55.962659-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 04 |COLD|20261006",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "creative_id": "1563067029188613"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422704450526",
+      "readback": {
+        "id": "120253422704450526",
+        "name": "[AULA][LOTE_HOJE] 04 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "id": "1563067029188613"
+        }
+      },
+      "verified_at": "2026-10-06T09:11:58.284267-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 05 |COLD|20261006",
+      "started_at": "2026-10-06T09:11:58.287694-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 05 |COLD|20261006",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "creative_id": "2881485352232002"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422704840526",
+      "readback": {
+        "id": "120253422704840526",
+        "name": "[AULA][LOTE_HOJE] 05 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "id": "2881485352232002"
+        }
+      },
+      "verified_at": "2026-10-06T09:12:00.345298-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][LOTE_HOJE] 06 |COLD|20261006",
+      "started_at": "2026-10-06T09:12:00.351410-03:00",
+      "payload": {
+        "name": "[AULA][LOTE_HOJE] 06 |COLD|20261006",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "creative_id": "2449807105546671"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422705580526",
+      "readback": {
+        "id": "120253422705580526",
+        "name": "[AULA][LOTE_HOJE] 06 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422703120526",
+        "creative": {
+          "id": "2449807105546671"
+        }
+      },
+      "verified_at": "2026-10-06T09:12:02.937021-03:00"
+    },
+    {
+      "kind": "adsets",
+      "name": "[COLD] [AULA_HOJE] Brasil · Compras · 20261006",
+      "started_at": "2026-10-06T09:12:02.939440-03:00",
+      "payload": {
+        "name": "[COLD] [AULA_HOJE] Brasil · Compras · 20261006",
+        "campaign_id": "120253422702950526",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003138589139",
+                  "name": "Contabilidade (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_automation": {
+            "advantage_audience": 1
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 7
+          },
+          {
+            "event_type": "VIEW_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "WEBSITE",
+        "start_time": 1791288842,
+        "end_time": "2026-10-06T17:30:00-03:00",
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422706170526",
+      "readback": {
+        "id": "120253422706170526",
+        "name": "[COLD] [AULA_HOJE] Brasil · Compras · 20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003138589139",
+                  "name": "Contabilidade (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_automation": {
+            "advantage_audience": 1
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 7
+          },
+          {
+            "event_type": "VIEW_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "WEBSITE",
+        "start_time": "2026-10-06T09:14:02-0300",
+        "end_time": "2026-10-06T17:30:00-0300"
+      },
+      "verified_at": "2026-10-06T09:12:05.171226-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 01 |COLD|20261006",
+      "started_at": "2026-10-06T09:12:05.174776-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 01 |COLD|20261006",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "creative_id": "1092719246733771"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422706880526",
+      "readback": {
+        "id": "120253422706880526",
+        "name": "[AULA][AULA_HOJE] 01 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "id": "1092719246733771"
+        }
+      },
+      "verified_at": "2026-10-06T09:12:07.400446-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 02 |COLD|20261006",
+      "started_at": "2026-10-06T09:12:07.404937-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 02 |COLD|20261006",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "creative_id": "1464344919084855"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422707630526",
+      "readback": {
+        "id": "120253422707630526",
+        "name": "[AULA][AULA_HOJE] 02 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "id": "1464344919084855"
+        }
+      },
+      "verified_at": "2026-10-06T09:12:09.935439-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 03 |COLD|20261006",
+      "started_at": "2026-10-06T09:12:09.942364-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 03 |COLD|20261006",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "creative_id": "1098652012647798"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422708590526",
+      "readback": {
+        "id": "120253422708590526",
+        "name": "[AULA][AULA_HOJE] 03 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "id": "1098652012647798"
+        }
+      },
+      "verified_at": "2026-10-06T09:12:12.409772-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 04 |COLD|20261006",
+      "started_at": "2026-10-06T09:12:12.416799-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 04 |COLD|20261006",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "creative_id": "1809120390125375"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422709050526",
+      "readback": {
+        "id": "120253422709050526",
+        "name": "[AULA][AULA_HOJE] 04 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "id": "1809120390125375"
+        }
+      },
+      "verified_at": "2026-10-06T09:12:14.682685-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 05 |COLD|20261006",
+      "started_at": "2026-10-06T09:12:14.687500-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 05 |COLD|20261006",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "creative_id": "1649447766792783"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422709830526",
+      "readback": {
+        "id": "120253422709830526",
+        "name": "[AULA][AULA_HOJE] 05 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "id": "1649447766792783"
+        }
+      },
+      "verified_at": "2026-10-06T09:12:17.137815-03:00"
+    },
+    {
+      "kind": "ads",
+      "name": "[AULA][AULA_HOJE] 06 |COLD|20261006",
+      "started_at": "2026-10-06T09:12:17.144352-03:00",
+      "payload": {
+        "name": "[AULA][AULA_HOJE] 06 |COLD|20261006",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "creative_id": "4618589501751021"
+        },
+        "status": "PAUSED"
+      },
+      "state": "verified",
+      "id": "120253422710480526",
+      "readback": {
+        "id": "120253422710480526",
+        "name": "[AULA][AULA_HOJE] 06 |COLD|20261006",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253422702950526",
+        "adset_id": "120253422706170526",
+        "creative": {
+          "id": "4618589501751021"
+        }
+      },
+      "verified_at": "2026-10-06T09:12:19.310927-03:00"
+    }
+  ],
+  "errors": [
+    {
+      "code": 17,
+      "error_subcode": 2446079,
+      "action": "Read-only initial account inventory hit request limit; zero objects created. Removed full-account pagination; resume only after root cooldown authorization."
+    },
+    {
+      "at": "2026-10-06T09:04:40.499683-03:00",
+      "error": "",
+      "action": "Stopped; no blind retries, no activation"
+    },
+    {
+      "at": "2026-10-06T09:05:42.918103-03:00",
+      "error": "{\"code\": 100, \"error_subcode\": 1487793, \"type\": \"OAuthException\", \"message\": \"Invalid parameter\", \"fbtrace_id\": \"AxWoxGBYNKOfue_l8hTiUF6\"}",
+      "action": "Stopped; no blind retries, no activation"
+    },
+    {
+      "at": "2026-10-06T09:06:49.672239-03:00",
+      "error": "{\"code\": 100, \"error_subcode\": 1487793, \"type\": \"OAuthException\", \"message\": \"Invalid parameter\", \"fbtrace_id\": \"AlgumPVYxHThlI6Kw45yVJH\"}",
+      "action": "Stopped; no blind retries, no activation"
+    },
+    {
+      "at": "2026-10-06T09:10:29.458264-03:00",
+      "error": "{\"code\": 1487164, \"error_subcode\": null, \"type\": \"OAuthException\", \"message\": \"(#1487164) Only one of daily budget or lifetime budget can be set\", \"error_user_title\": null, \"error_user_msg\": null, \"fbtrace_id\": \"As77CTljkFdjqe9wcAKABWg\"}",
+      "action": "Stopped; no blind retries, no activation"
+    },
+    {
+      "at": "2026-10-06T09:10:51.088015-03:00",
+      "error": "Invalid isoformat string: '2026-10-06T16:00:00-0300'",
+      "action": "Stopped; no blind retries, no activation"
+    }
+  ],
+  "excluded_unusable_audience_ids": {
+    "HOT": [
+      "120219034626410526",
+      "120219034627270526",
+      "120219034628630526",
+      "120219034630480526",
+      "120219034632680526",
+      "120219361601410526",
+      "120219361601420526",
+      "120219361601540526",
+      "120219361601680526",
+      "120219361601690526",
+      "120219361635560526",
+      "120219361635580526",
+      "120242282795950526"
+    ],
+    "COLD": [
+      "120219034626410526",
+      "120219034627270526",
+      "120219034628630526",
+      "120219034630480526",
+      "120219034632680526",
+      "120219361601410526",
+      "120219361601420526",
+      "120219361601540526",
+      "120219361601680526",
+      "120219361601690526",
+      "120219361635560526",
+      "120219361635580526",
+      "120242282795950526"
+    ]
+  },
+  "validation_only": [
+    {
+      "mode": "validate_only",
+      "payload": {
+        "name": "[HOT] [LOTE_HOJE] Brasil · Compras · 20261006",
+        "campaign_id": "120253422648440526",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_relaxation_types": {
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 7
+          },
+          {
+            "event_type": "VIEW_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "WEBSITE",
+        "start_time": 1791288668,
+        "end_time": "2026-10-06T16:00:00-03:00",
+        "status": "PAUSED",
+        "execution_options": [
+          "validate_only"
+        ]
+      },
+      "at": "2026-10-06T09:09:08.261483",
+      "error": {
+        "code": 100,
+        "error_subcode": 1487793,
+        "type": "OAuthException",
+        "message": "Invalid parameter",
+        "error_user_title": "A programação da campanha é muito curta",
+        "error_user_msg": "Conjuntos de anúncios que têm um orçamento diário ou um limite máximo diário de gastos devem ser programados para ser veiculados por pelo menos 24 horas. Estenda a programação deste conjunto de anúncios.",
+        "fbtrace_id": "AtpV0izKDdN1PLMQnFixcp0"
+      }
+    }
+  ],
+  "hot_lifetime_conversion_rejected": true,
+  "budget_semantics": "Meta: BRL351 lifetime per new CBO today (BRL702 total); Google: BRL78/day. Existing spend is outside these new allocations. Daily budget differs from lifetime cap; no claim of total-day account hard cap.",
+  "completed_at": "2026-10-06T09:12:19.316489-03:00",
+  "counts": {
+    "campaigns": 2,
+    "adsets": 4,
+    "adcreatives": 12,
+    "ads": 24
+  }
+}
