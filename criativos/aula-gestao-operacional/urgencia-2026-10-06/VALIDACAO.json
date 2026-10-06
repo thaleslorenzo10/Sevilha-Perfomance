@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-06",
+  "count": 12,
+  "categories": {
+    "lote_vira_hoje": 6,
+    "aula_e_hoje": 6
+  },
+  "generation": "built_in_imagegen",
+  "png_crc_validated": true,
+  "independent_review_correction": "lote-03: pin removido; horario de Brasilia explicito",
+  "publication": false,
+  "native_dimensions_preserved": true,
+  "files": [
+    {
+      "file": "lote-01.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1187212,
+      "sha256": "7772aa21f9125ef393a24f948dafd1dca4e957b8860f79e43657379dcf7a01b3",
+      "visual_review": "passed"
+    },
+    {
+      "file": "lote-02.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1275285,
+      "sha256": "856fdaf31fd72e6cff686fd18cb9381ab737f445b89b97a0be16b2c9140de239",
+      "visual_review": "passed"
+    },
+    {
+      "file": "lote-03.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1551152,
+      "sha256": "e6124fe753a429131fb6c256df997efe8ff2f5a28a912bb1f21a83c12b2bc365",
+      "visual_review": "passed"
+    },
+    {
+      "file": "lote-04.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1105122,
+      "sha256": "fc59ce172d6b1debceb76e9424a3b7315cd9909eaa27c5f4ea7be680f7eea897",
+      "visual_review": "passed"
+    },
+    {
+      "file": "lote-05.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1212533,
+      "sha256": "9136b0ac483c6f736c7d6ae44b7bce952d1d638f9fa25b8232cad0d26de793a6",
+      "visual_review": "passed"
+    },
+    {
+      "file": "lote-06.png",
+      "width": 1092,
+      "height": 1440,
+      "bytes": 1199827,
+      "sha256": "f5e3b8c984f5585eda8c49895579fe562435709b87e81670b11217c580db93f5",
+      "visual_review": "passed"
+    },
+    {
+      "file": "aula-01.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1336501,
+      "sha256": "8421b46bfe3c6c4484c49ecfa0f8f887e1c062e4a548780cbdcd6a0c9f3109ac",
+      "visual_review": "passed"
+    },
+    {
+      "file": "aula-02.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1346378,
+      "sha256": "6e54bc2b16a4fe35243861e6d634ff9bc18a9209528ff851ab0446c2ec055549",
+      "visual_review": "passed"
+    },
+    {
+      "file": "aula-03.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1659646,
+      "sha256": "d516efe8eff6fe5e3244c066247a682c715d6aeaf8d91149afb7f33129d96b56",
+      "visual_review": "passed"
+    },
+    {
+      "file": "aula-04.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1324335,
+      "sha256": "7f6c344559c82d11aa6a65873fb4c3c5fe7b090d6cd6bae3bf32189316c09589",
+      "visual_review": "passed"
+    },
+    {
+      "file": "aula-05.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1566169,
+      "sha256": "c3276bec9412becc8eeb82448f5648aa7d955186465a94fd193aeac3fbeb20d8",
+      "visual_review": "passed"
+    },
+    {
+      "file": "aula-06.png",
+      "width": 1086,
+      "height": 1448,
+      "bytes": 1029806,
+      "sha256": "d8fcb7f46c7a174e50292d78e50fdb08fb4ce806bca6d8eb30a7cfa9e0d259c5",
+      "visual_review": "passed"
+    }
+  ]
+}

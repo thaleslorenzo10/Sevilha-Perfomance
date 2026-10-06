@@ -1,0 +1,10 @@
+Use case: ads-marketing
+Asset type: ONE standalone finished vertical Instagram feed PNG, 4:5 ratio, ideally 1080x1350.
+Input reference: Sevilha Performance real logo. Match real symbol, lettering and proportions; on white background use navy brand lettering for clear contrast.
+Create a premium BRIGHT WHITE POSTER with editorial direct-response typography, distinct from dark calendar and portrait ads. White background, navy #14103c bold type, flat lime #64dd00 horizontal highlight behind final "HOJE" line. Simple crisp magazine-like spacing, plenty of white space, few sharp rectilinear rules. Top small real logo, very large left aligned headline in middle, supporting line and event time beneath, strong navy bottom CTA bar with white text and a lime tiny arrow. No portrait, no calendar icon, no stock photo. Minimum 64px safe margins. Tall typography, one-page full-bleed poster, sharp edges, high contrast.
+Render all Portuguese text verbatim:
+"SEU ESCRITÓRIO TEM AULA HOJE"
+"Gestão Operacional com Bruno Silvestre"
+"Hoje • 19h30 • Brasília"
+"INSCREVA-SE AGORA"
+Headline may wrap into "SEU ESCRITÓRIO" / "TEM AULA" / "HOJE", but exact words and accent. Support wraps across two lines if necessary. Only extra text is brand logo lettering. No price, discount, limited spots, guarantees, recordings, additional credentials, watermark, mockup, multi-art grid or collage. One independent complete polished ad.

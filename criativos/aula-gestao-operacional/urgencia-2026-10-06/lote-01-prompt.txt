@@ -1,0 +1,13 @@
+FERRAMENTA: image_gen__imagegen built-in
+ARTE: lote-01.png
+COPY E DIREÇÃO: Direção editorial tipográfica marinho. Copy: O LOTE VIRA HOJE / Aula de Gestão Operacional / Para escritórios contábeis / Hoje • 19h30 • Brasília / GARANTA SUA INSCRIÇÃO.
+PROMPT FINAL:
+Use case: ads-marketing. Create ONE finished Brazilian Portuguese static advertising image, vertical 4:5 feed format, ideally 1080x1350. Sevilha Performance brand. Image reference is logo ONLY; faithfully incorporate its small mark and name at top with ample breathing room. Flat navy #14103c background, lime #64dd00 and white typography. Direction: premium editorial typography, massive tightly composed sans-serif headline left aligned; lime thin accent rule and large negative space. No portrait. Crisp print-quality text. Minimum 64px safe margins all around. Exact text, no extra words:
+"O LOTE
+VIRA HOJE"
+"Aula de Gestão Operacional"
+"Para escritórios contábeis"
+"Hoje • 19h30 • Brasília"
+Bottom lime solid CTA rectangle, navy exact text "GARANTA SUA INSCRIÇÃO".
+Main headline white with HOJE in lime. Hierarchy: headline largest, course title second, supporting text smaller but legible at mobile scale. Professional, clean, flat graphic poster, no gradients except native logo. Avoid price, discounts, numbers of seats, countdown numbers, midnight deadlines, guarantees, recordings, mockups, watermarks, invented claims. Today means 06/10/2026, but visible date line uses exact 'Hoje • 19h30 • Brasília'.
+VALIDAÇÃO: inspeção visual concluída; texto correto; sem preço ou afirmações não fornecidas. PNG nativo copiado sem alteração manual.

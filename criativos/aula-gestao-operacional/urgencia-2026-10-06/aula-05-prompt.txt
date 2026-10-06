@@ -1,0 +1,11 @@
+Use case: ads-marketing
+Asset type: ONE standalone premium vertical Instagram feed PNG, aspect ratio 4:5, ideally 1080x1350.
+Input image 1: actual Sevilha Performance logo, preserve lettering and symbol. Input image 2: REAL Bruno Silvestre portrait; preserve recognisable exact identity, face shape, smile, short hair, trimmed beard and dark jacket with black shirt. Use this same real person, never substitute generic man.
+Create an editorial split portrait + typography composition. Navy #14103c field. Left 52 percent large stacked white headline, lime emphasis on "HOJE."; right 48 percent authentic photographic cutout of Bruno waist-up, naturally smiling, subtle soft frontal light consistent with original photograph. His face sits around upper-middle right; no words cover face. Brand logo small upper-left, headline below; lime fine vertical separation line optional. Supporting information in full-width footer and strong lime CTA bar. Polished editorial design, flat front view, excellent contrast, minimum 64px safe margins. Avoid too-small typography. This is an aula today ad, not a price poster.
+Text exactly:
+"O MÉTODO DA SEVILHA."
+"AO VIVO. HOJE."
+"Gestão Operacional"
+"06/10 • 19h30 • Brasília"
+"GARANTA SUA INSCRIÇÃO"
+All accents exact. No additional copy except faithful logo. Preserve portrait identity and realistic photograph, no cartoon. No price, discounts, slots, countdown, guaranteed outcomes, recording, watermark, multi-ad layout or mockup. One independent complete creative.

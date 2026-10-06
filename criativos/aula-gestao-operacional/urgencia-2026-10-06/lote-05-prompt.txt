@@ -1,0 +1,11 @@
+Use case: ads-marketing
+Asset type: ONE finished standalone vertical Instagram feed ad, 4:5 aspect ratio, ideally 1080 x 1350 pixels. Produce a single raster PNG.
+Brand: Sevilha Performance. Image 1 is the real logo reference; reproduce its lettering and symbol faithfully. No portrait needed.
+Primary request: premium Swiss editorial calendar-grid poster with a commanding date tile 06/10 and precise grid rules. Navy #14103c background, white headlines, lime #64dd00 accent. Distinctive typographic composition with generous blank space, crisp clean layout and flat ink-like surfaces. Calendar date and today deadline are the hero. Keep every element within 64px safe margins. Use a compact real brand logo at the top, big calendar date upper-right, left aligned headline filling the middle, support and solid lime CTA panel toward bottom.
+Text (verbatim, preserve accents):
+"O LOTE ATUAL TERMINA HOJE"
+"06/10"
+"Aula de Gestão Operacional"
+"Hoje • 19h30 • Brasília"
+"GARANTA SUA INSCRIÇÃO"
+Only those text lines plus logo lettering. Huge legible contemporary bold sans typography; CTA with navy type on lime. Headline can break into 4 lines, but wording exact. Flat front view, no 3D mockup, no collage, no multi-art grid, no watermark, no prices, no discount, no stock counts, no countdown time, no false claims. Deadline for lot has no specified hour: 19h30 is aula start only. Do not imply lot changes at 19h30.

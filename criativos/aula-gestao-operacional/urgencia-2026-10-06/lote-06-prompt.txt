@@ -1,0 +1,10 @@
+Use case: ads-marketing
+Asset type: ONE finished standalone vertical Instagram feed ad, 4:5 aspect ratio, ideally 1080 x 1350 pixels. Single raster PNG.
+Input reference: actual Sevilha Performance logo. Preserve logo design and letters.
+Create a distinctive PREMIUM PURE TYPOGRAPHY poster. Flat deep navy #14103c, white #ffffff and lime #64dd00 only except faithful logo gradient. No calendar, clock, icon, photo, rounded button or decorative stock artwork. Huge typographic HOJE in lime dominates center; small white "VIRADA DE LOTE:" immediately above. Architecturally aligned margins and asymmetric typographic hierarchy. Top compact real logo, middle headline, elegant supporting copy under headline and date in fine lime rule band. Bottom CTA as sharp square-corner lime strip. Minimum 64px safe margins, all copy cleanly readable.
+Text verbatim:
+"VIRADA DE LOTE: HOJE"
+"Gestão Operacional para escritórios contábeis"
+"Aula ao vivo • 06/10 • 19h30 (Brasília)"
+"INSCREVA-SE NO LOTE ATUAL"
+Headline wraps with "HOJE" exceptionally large. Support must be readable and accents intact. Brand lettering only additional text. Evening time explicitly belongs to aula, not lot change. No price, discounts, spots, countdown, implied cutoff hour, course promise, recording claim, watermarks, mockup or collage. One independent full-frame polished ad.

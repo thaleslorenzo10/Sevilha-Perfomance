@@ -1,0 +1,17 @@
+FERRAMENTA: image_gen__imagegen built-in
+ARTE: lote-04.png
+COPY E DIREÇÃO: Direção clara com tíquete lima. Copy: HOJE TEM VIRADA DE LOTE / Aula ao vivo de Gestão Operacional / 06/10/2026 / 19h30 • Brasília / APROVEITE O LOTE ATUAL.
+PROMPT FINAL:
+Use case: ads-marketing. ONE finished Brazilian Portuguese static ad, vertical 4:5 ideal1080x1350. Brand Sevilha Performance. Input reference is logo, use its genuine graphic symbol at upper left; brand wordmark rendered navy to remain visible on white. Distinct direction: crisp minimalist bright white background, huge navy#14103c editorial typography, a large flat lime#64dd00 ticket-shaped panel with subtle rounded corners and small semicircular notch each side, no barcode or serial number. No photograph. Layout small logo at top, headline upper middle left aligned, ticket center lower with course title/date, navy CTA bottom with white text. At least64px margins. Subtle pale gray rule separator, lots of whitespace.
+Exact visible copy:
+"HOJE TEM
+VIRADA DE LOTE"
+On lime ticket:
+"Aula ao vivo de
+Gestão Operacional"
+"06/10/2026"
+"19h30 • Brasília"
+Bottom CTA:
+"APROVEITE O LOTE ATUAL"
+Bold geometric sans serif, beautiful controlled linebreaks, extremely legible smartphone copy, impeccable Portuguese accents. No price, discount, seat count, countdown, midnight, guarantees, recording, extra words, watermark, product mockup. All text flat, frontal, crisp.
+VALIDAÇÃO: inspeção visual concluída; texto correto; sem preço ou afirmações não fornecidas. PNG nativo copiado sem alteração manual.

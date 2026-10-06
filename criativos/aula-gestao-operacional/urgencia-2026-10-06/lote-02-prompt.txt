@@ -1,0 +1,15 @@
+FERRAMENTA: image_gen__imagegen built-in
+ARTE: lote-02.png
+COPY E DIREÇÃO: Direção relógio abstrato sem números de contagem. Copy: GARANTA O LOTE ATUAL / A virada é hoje. / Aula de Gestão Operacional / 06/10/2026 • 19h30 • Brasília / INSCREVA-SE.
+PROMPT FINAL:
+Use case: ads-marketing. Create ONE finished premium static ad in Brazilian Portuguese, vertical 4:5, ideally 1080x1350 pixels. Reference image is Sevilha Performance logo; place logo small at top. Navy #14103c background, lime #64dd00, white. Distinct visual direction: an elegant oversized abstract outline clock occupying lower right midground, partial concentric arcs suggesting time and motion, with TWO unlabeled clock hands but NO numerals and NO digital countdown, flat editorial design. Layout top logo, dominant large headline upper left over 3 lines, subordinate text middle left, lime CTA band near bottom. Keep all copy at least64px from edges. Plenty of breathing room; clock behind/next to text without hurting contrast.
+Exact copy:
+"GARANTA O
+LOTE ATUAL"
+"A virada é hoje."
+"Aula de Gestão Operacional"
+"06/10/2026 • 19h30 • Brasília"
+"INSCREVA-SE"
+Typography excellent bold sans-serif, headline white with 'LOTE ATUAL' lime, supporting text clean white. Sharp legible Portuguese diacritics. Only visual number allowed is exact lesson date/time line; clock no numbers. No price, discounts, seat scarcity, midnight, guarantees, recording claims, other copy, watermark or mockup.
+Edit this finished poster: preserve all exact wording, logo, clock motif and palette. Only make foreground content marginally smaller to guarantee minimum80px safe margin from all native image edges for all text, logo and CTA. Clock background shapes may bleed to edge. Preserve impeccable copy without rewriting.
+VALIDAÇÃO: inspeção visual concluída; texto correto; sem preço ou afirmações não fornecidas. PNG nativo copiado sem alteração manual.
