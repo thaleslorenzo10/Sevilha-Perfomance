@@ -89,7 +89,7 @@
         "genericAuthType": "httpHeaderAuth",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({where:{key:{remoteJid:$json.channel === \"group\" ? $json.destination : $json.destination+\"@s.whatsapp.net\",remoteJidAlt:$json.channel === \"group\" ? $json.destination : $json.destination+\"@s.whatsapp.net\"}},offset:1000,page:1}) }}"
+        "jsonBody": "={{ JSON.stringify({where:{key:{remoteJid:$json.channel === \"group\" ? $json.destination : $json.destination+\"@s.whatsapp.net\",remoteJidAlt:$json.channel === \"group\" ? $json.destination : $json.destination+\"@s.whatsapp.net\"} },offset:1000,page:1}) }}"
       },
       "credentials": {
         "httpHeaderAuth": {

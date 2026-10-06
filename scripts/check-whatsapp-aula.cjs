@@ -1,6 +1,12 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const workflow = JSON.parse(fs.readFileSync('docs/whatsapp-aula-2026-10-06-workflow.json', 'utf8'));
+for (const node of workflow.nodes) {
+  const expression = node.parameters.jsonBody;
+  if (expression?.startsWith('={{')) {
+    assert.equal(expression.indexOf('}}'), expression.length - 2, `${node.name}: premature n8n expression delimiter`);
+  }
+}
 const code = workflow.nodes.find(n => n.name === 'Conferir recusa e validade').parameters.jsCode;
 const run = new Function('$input', '$', code);
 function check({text = '', global = [], http = 200, expires = Date.now() + 60000} = {}) {
