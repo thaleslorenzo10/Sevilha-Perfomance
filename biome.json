@@ -28,6 +28,9 @@
   "files": {
     "includes": [
       "**",
+      "!!**/node_modules",
+      "!!**/.next",
+      "!!.superpowers/worktrees",
       "!node_modules/**",
       "!.next/**",
       "!dist/**",
