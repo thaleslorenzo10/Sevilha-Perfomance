@@ -1,0 +1,174 @@
+{
+  "observed_at": "2026-10-06T10:59:05.500166-03:00",
+  "scope": "Read-only verification of existing Bruno Instagram content campaign; no Meta mutations",
+  "conclusion": "Requested Instagram profile visits objective already configured; no change necessary",
+  "campaign": {
+    "id": "120253414357780526",
+    "account_id": "1676714556216146",
+    "name": "[SE] [BRUNO] [IG] [CONTEÚDO PERFIL] 2026-10-05",
+    "status": "ACTIVE",
+    "effective_status": "ACTIVE",
+    "objective": "OUTCOME_TRAFFIC",
+    "daily_budget": "4000"
+  },
+  "adsets": [
+    {
+      "id": "120253414358070526",
+      "campaign_id": "120253414357780526",
+      "name": "Contabilidade financeira | Bruno perfil | IG-only | 2026-10-05",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "optimization_goal": "VISIT_INSTAGRAM_PROFILE",
+      "destination_type": "UNDEFINED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "instagram"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels"
+        ]
+      }
+    }
+  ],
+  "ads": [
+    {
+      "id": "120253414364330526",
+      "campaign_id": "120253414357780526",
+      "adset_id": "120253414358070526",
+      "name": "[SE] Bruno conteúdo | Organizar antes de contratar | 2026-10-05",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "creative": {
+        "id": "958753126733052",
+        "actor_id": "106292094924513",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "18115610558043965",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "instagram_permalink_url": "https://www.instagram.com/p/DeIthbHgdZJ/"
+      }
+    },
+    {
+      "id": "120253414362440526",
+      "campaign_id": "120253414357780526",
+      "adset_id": "120253414358070526",
+      "name": "[SE] Bruno conteúdo | Definir resultado antes de melhorar | 2026-10-05",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "creative": {
+        "id": "1088048704001716",
+        "actor_id": "106292094924513",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "17977204748918220",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "instagram_permalink_url": "https://www.instagram.com/p/DeIteHfgui2/"
+      }
+    },
+    {
+      "id": "120253414359770526",
+      "campaign_id": "120253414357780526",
+      "adset_id": "120253414358070526",
+      "name": "[SE] Bruno conteúdo | Liderança e resultado | 2026-10-05",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "creative": {
+        "id": "2003735993633999",
+        "actor_id": "106292094924513",
+        "instagram_user_id": "17841446823336862",
+        "source_instagram_media_id": "17910884640537456",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "instagram_permalink_url": "https://www.instagram.com/p/DeItb7vAsX3/"
+      }
+    }
+  ],
+  "checks": {
+    "account_confirmed": true,
+    "campaign_traffic": true,
+    "optimization_instagram_profile_visits": true,
+    "instagram_only_placements": true,
+    "campaign_adset_and_3ads_effective_active": true,
+    "identity_bruno_page_and_instagram": true,
+    "source_existing_3posts_match": true,
+    "utm_tags_3of3": true,
+    "no_remote_writes": true
+  },
+  "limitations": [
+    "Meta readback returns destination_type UNDEFINED and omits promoted_object and call_to_action_type for these existing Instagram post creatives; VISIT_INSTAGRAM_PROFILE and Bruno instagram_user_id are confirmed.",
+    "ACTIVE/effective ACTIVE verifies configured serving eligibility; impressions, spend, and profile visit results were not queried."
+  ]
+}
