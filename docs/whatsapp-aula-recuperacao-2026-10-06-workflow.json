@@ -1,0 +1,518 @@
+{
+  "nodes": [
+    {
+      "id": "Cada minuto",
+      "name": "Cada minuto",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "Janela da aula",
+      "name": "Janela da aula",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const now=new Date(); return now>=new Date('2026-10-06T18:00:00-03:00') && now<new Date('2026-10-06T19:15:00-03:00') ? [{json:{}}] : [];"
+      }
+    },
+    {
+      "id": "Reservar",
+      "name": "Reservar",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        440,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://hojcntkggnwrvbvmcwxe.supabase.co/rest/v1/rpc/sevilha_claim_whatsapp_recuperacao",
+        "authentication": "predefinedCredentialType",
+        "options": {
+          "timeout": 20000
+        },
+        "nodeCredentialType": "supabaseApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\"p_limit\": 10}"
+      },
+      "credentials": {
+        "supabaseApi": {
+          "id": "t5ROiLGbRNVs8ShE",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "id": "Historico",
+      "name": "Historico",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        660,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://lm-evolution-api.dfp2bq.easypanel.host/chat/findMessages/teste",
+        "authentication": "genericCredentialType",
+        "options": {
+          "timeout": 20000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        },
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({where:{key:{remoteJid:$json.channel === \"group\" ? $json.destination : $json.destination+\"@s.whatsapp.net\",remoteJidAlt:$json.channel === \"group\" ? $json.destination : $json.destination+\"@s.whatsapp.net\"} },offset:1000,page:1}) }}"
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "F0q5UegBWSWLk31R",
+          "name": "apikey - teste"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "Conferir recusa e validade",
+      "name": "Conferir recusa e validade",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        0
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "const stop=/^(?:sair|stop|parar|cancelar|remover|descadastrar)(?:[.!\\s]|$)|nao (?:quero|desejo|mande|envie|me envie|me mande|quero receber)|pare de (?:enviar|mandar)|retire (?:meu|o meu)|remov[ae] (?:meu|o meu|me)|exclu[ai] (?:meu|o meu|me)/;\nreturn $input.all().map((it,i)=>{\n const job=$('Um por vez').itemMatching(i).json, h=$('Historico').itemMatching(i).json, history=h.body?.messages;\n const optout=$('Recusa atual').itemMatching(i).json;\n const purchaseOrUnavailable=it.json.statusCode!==200 || !Array.isArray(it.json.body) || it.json.body[0]?.eligible!==true;\n const duplicate=(history?.records||[]).some(r=>r.key?.fromMe===true && (r.message?.conversation||r.message?.extendedTextMessage?.text||'').includes('aula_20261006_recuperacao'));\n const globalRefusal=job.channel==='private' && (optout.statusCode!==200 || !Array.isArray(optout.body) || optout.body.length>0);\n const expired=Date.now()>=Date.parse(job.expires_at);\n const unreadable=job.channel==='private' && (h.statusCode!==200 || !Array.isArray(history?.records) || history.pages>1);\n const refused=job.channel==='private' && (history?.records||[]).some(r=>{\n  if(r.key?.fromMe!==false) return false;\n  const text=(r.message?.conversation||r.message?.extendedTextMessage?.text||'').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').toLowerCase().trim();\n  return stop.test(text);\n });\n return {json:{...job,allow:!expired&&!unreadable&&!refused&&!globalRefusal&&!purchaseOrUnavailable&&!duplicate,provider_status:purchaseOrUnavailable?'buyer_or_ineligible':duplicate?'already_contacted':expired?'expired':unreadable?'history_unavailable':refused?'optout_history':globalRefusal?'optout_or_unavailable':null},pairedItem:{item:i}};\n});"
+      }
+    },
+    {
+      "id": "Pode enviar",
+      "name": "Pode enviar",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1100,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ $json.allow }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "Enviar lembrete",
+      "name": "Enviar lembrete",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1320,
+        0
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://lm-evolution-api.dfp2bq.easypanel.host/message/sendText/teste",
+        "authentication": "genericCredentialType",
+        "options": {
+          "timeout": 20000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        },
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ (() => {if(Date.now()>=Date.parse($json.expires_at)) throw new Error(\"expired_before_post\");return JSON.stringify({number:$json.destination,text:$json.message,linkPreview:false});})() }}"
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "F0q5UegBWSWLk31R",
+          "name": "apikey - teste"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "Recibo",
+      "name": "Recibo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        0
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return $input.all().map((it,i)=>{const job=$('Conferir recusa e validade').itemMatching(i).json,b=it.json.body||{},ok=it.json.statusCode>=200&&it.json.statusCode<300&&typeof b.key?.id==='string';return {json:{key:job.key,state:ok?'accepted':'uncertain',message_id:b.key?.id||null,provider_status:b.status||('http_'+(it.json.statusCode||'unknown')),updated_at:new Date().toISOString()},pairedItem:{item:i}};});"
+      }
+    },
+    {
+      "id": "Bloqueado",
+      "name": "Bloqueado",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        0
+      ],
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "return $input.all().map((it,i)=>({json:{key:it.json.key,state:'blocked',message_id:null,provider_status:it.json.provider_status,updated_at:new Date().toISOString()},pairedItem:{item:i}}));"
+      }
+    },
+    {
+      "id": "Persistir resultado",
+      "name": "Persistir resultado",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1980,
+        0
+      ],
+      "parameters": {
+        "method": "PATCH",
+        "url": "={{ \"https://hojcntkggnwrvbvmcwxe.supabase.co/rest/v1/sevilha_whatsapp_lembretes?key=eq.\" + encodeURIComponent($json.key) + \"&state=eq.reserved\" }}",
+        "authentication": "predefinedCredentialType",
+        "options": {
+          "timeout": 20000
+        },
+        "nodeCredentialType": "supabaseApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({state:$json.state,message_id:$json.message_id,provider_status:$json.provider_status,updated_at:$json.updated_at}) }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Prefer",
+              "value": "return=representation"
+            }
+          ]
+        }
+      },
+      "credentials": {
+        "supabaseApi": {
+          "id": "t5ROiLGbRNVs8ShE",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "id": "loop",
+      "name": "Um por vez",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        650,
+        0
+      ],
+      "parameters": {
+        "batchSize": 1,
+        "options": {}
+      }
+    },
+    {
+      "id": "optout",
+      "name": "Recusa atual",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1100,
+        0
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "={{ (() => {const j=$(\"Um por vez\").item.json;const d=j.destination;const p8=d.length===13&&d.startsWith(\"55\")&&d[4]===\"9\"?d.slice(0,4)+d.slice(5):d;return \"https://hojcntkggnwrvbvmcwxe.supabase.co/rest/v1/lorenzo_whatsapp_optout?select=origem&or=\"+encodeURIComponent(\"(telefone.eq.\"+d+\",telefone_8.eq.\"+p8+\")\");})() }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "supabaseApi",
+        "options": {
+          "timeout": 20000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "credentials": {
+        "supabaseApi": {
+          "id": "t5ROiLGbRNVs8ShE",
+          "name": "Supabase account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "id": "interval",
+      "name": "Intervalo",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1800,
+        0
+      ],
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 2,
+        "unit": "seconds"
+      },
+      "webhookId": "1c47d249-5e22-45a6-86fd-63421793e5e4"
+    },
+    {
+      "id": "fresh-purchase",
+      "name": "Compra atual",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1000,
+        240
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://hojcntkggnwrvbvmcwxe.supabase.co/rest/v1/rpc/sevilha_validar_whatsapp_recuperacao",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "supabaseApi",
+        "options": {
+          "timeout": 20000,
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true,
+              "responseFormat": "json"
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({p_key:$('Um por vez').item.json.key}) }}"
+      },
+      "credentials": {
+        "supabaseApi": {
+          "id": "t5ROiLGbRNVs8ShE",
+          "name": "Supabase account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "Cada minuto": {
+      "main": [
+        [
+          {
+            "node": "Janela da aula",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Janela da aula": {
+      "main": [
+        [
+          {
+            "node": "Reservar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reservar": {
+      "main": [
+        [
+          {
+            "node": "Um por vez",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Historico": {
+      "main": [
+        [
+          {
+            "node": "Recusa atual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Conferir recusa e validade": {
+      "main": [
+        [
+          {
+            "node": "Pode enviar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pode enviar": {
+      "main": [
+        [
+          {
+            "node": "Enviar lembrete",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Bloqueado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enviar lembrete": {
+      "main": [
+        [
+          {
+            "node": "Recibo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recibo": {
+      "main": [
+        [
+          {
+            "node": "Persistir resultado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bloqueado": {
+      "main": [
+        [
+          {
+            "node": "Persistir resultado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Um por vez": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Historico",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Recusa atual": {
+      "main": [
+        [
+          {
+            "node": "Compra atual",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Persistir resultado": {
+      "main": [
+        [
+          {
+            "node": "Intervalo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Intervalo": {
+      "main": [
+        [
+          {
+            "node": "Um por vez",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compra atual": {
+      "main": [
+        [
+          {
+            "node": "Conferir recusa e validade",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo",
+    "availableInMCP": true,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  },
+  "name": "[SEVILHA AULA] Recuperacao formulario sem compra | 06-10-2026"
+}
