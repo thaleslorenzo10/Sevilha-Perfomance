@@ -1,5 +1,15 @@
 # Aula É hoje — publicação em06/10/2026
 
+## Atualização: quente Sevilha autorizada e ativada
+
+Em 06/10, o usuário autorizou explicitamente “Pode ativar Sevilha quente”. A nova HOT `120253422686060526`, seus dois conjuntos e 12 anúncios receberam status ACTIVE com os 53 públicos Sevilha já configurados. Os públicos Bruno continuam pendentes; a autorização atual permite esta campanha sem eles.
+
+Distribuição aplicada e relida: novas COLD e HOT R$351 de orçamento total cada para hoje; antigas `120253257675140526` R$32,50/dia, `120253257675000526` R$32,50/dia e `120253144969620526` R$13/dia. Soma nominal R$780, com 90% nas novas. Não é teto rígido de gasto nem comprovação de entrega. Horários e UTMs preservados.
+
+Journal `aula-meta-quente-ativacao-2026-10-06.json`: 18 gravações confirmadas por ID, campanha ativada por último; nenhum novo anúncio ou público criado. O restante deste documento registra o estado anterior à autorização e é histórico.
+
+Gate independente live final: HOT e COLD, quatro conjuntos e 24 anúncios ACTIVE/ACTIVE, sem processamento pendente. Conferidos 12 criativos com UTMs, 53 públicos HOT estritos e as mesmas exclusões COLD, Purchase no pixel correto e encerramentos às 16h/17h30.
+
 Conta Meta1676714556216146, reais/Brasília. Escopo: Aula Gestão Operacional, sem alterações em sessão estratégica, Café ou Clube.
 
 ## Aplicado e relido
