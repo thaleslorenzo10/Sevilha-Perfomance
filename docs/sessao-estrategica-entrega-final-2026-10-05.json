@@ -1,0 +1,62 @@
+{
+  "updated_at_brt": "2026-10-05T23:16:00-03:00",
+  "source_branch": "codex/se-captacao-google-20261005",
+  "source_head": "c0bd66c",
+  "publication": {
+    "created": false,
+    "status": "blocked_auto_review",
+    "credentials_google_configured": false
+  },
+  "meta": {
+    "capture_new": {
+      "id": "120253413819760526",
+      "daily_budget_cents": 32000,
+      "status": "PAUSED"
+    },
+    "content_new": {
+      "id": "120253414251620526",
+      "daily_budget_cents": 4000,
+      "status": "PAUSED",
+      "adsets": 0,
+      "ads": 0,
+      "ready": false
+    },
+    "hot_created": false,
+    "bruno_audience_created": false,
+    "existing_capture_daily_cents": 45000,
+    "new_capture_activated": false
+  },
+  "google": {
+    "customer": "1316487378",
+    "generic_id": "24328953730",
+    "generic_daily_brl": 70,
+    "brand_id": "24317774874",
+    "brand_daily_brl": 20,
+    "status": "PAUSED",
+    "billing_configured": false,
+    "rsa_review": "APPROVED",
+    "ad_strength": "PENDING"
+  },
+  "integration": {
+    "receipt_column_applied_verified": true,
+    "new_native_form": "1776305790272614",
+    "native_crm_sheets_verified": false,
+    "live_test_lead_sent": false
+  },
+  "validation": {
+    "offline_tests_passed": 15,
+    "changed_files_lint_errors": 0,
+    "changed_files_lint_warnings": 156,
+    "root_lint_errors": 0,
+    "root_lint_warnings": 781,
+    "club_lint_errors": 0,
+    "club_lint_warnings": 2,
+    "biome_errors": 0,
+    "biome_warnings": 5,
+    "typecheck": "passed",
+    "club_build": "passed",
+    "browser_local": "passed_synthetic_desktop_mobile",
+    "browser_preview": "not_performed_publication_blocked"
+  },
+  "report": "sessao-estrategica-consolidado-2026-10-05.md"
+}

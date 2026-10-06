@@ -1,0 +1,917 @@
+{
+  "1836784071025712": {
+    "id": "1836784071025712",
+    "name": "[SE] [FORMS] 6",
+    "status": "ACTIVE",
+    "page": {
+      "name": "Sevilha Performance",
+      "id": "131476997004991"
+    },
+    "questions": [
+      {
+        "key": "Quantos colaboradores você tem?",
+        "label": "Quantos colaboradores você tem?",
+        "options": [
+          {
+            "key": "De 0 a 4",
+            "value": "De 0 a 4"
+          },
+          {
+            "key": "De 5 a 9",
+            "value": "De 5 a 9"
+          },
+          {
+            "key": "De 10 a 19",
+            "value": "De 10 a 19"
+          },
+          {
+            "key": "De 20 a 29",
+            "value": "De 20 a 29"
+          },
+          {
+            "key": "De 30 a 49",
+            "value": "De 30 a 49"
+          },
+          {
+            "key": "Mais de 50",
+            "value": "Mais de 50"
+          }
+        ],
+        "type": "CUSTOM",
+        "id": "760055400377324"
+      },
+      {
+        "key": "Qual a sua posição no escritório Contábil?",
+        "label": "Qual a sua posição no escritório Contábil?",
+        "options": [
+          {
+            "key": "dono/sócio",
+            "value": "Dono/Sócio"
+          },
+          {
+            "key": "cargo_gerencial_(lider_/_gerente_/_encarregado_/_coordenador...)",
+            "value": "Cargo Gerencial (Lider / Gerente / Encarregado / Coordenador...)"
+          },
+          {
+            "key": "cargo_operacional_(assistente_/_analista...)",
+            "value": "Cargo Operacional (Assistente / Analista...)"
+          }
+        ],
+        "type": "CUSTOM",
+        "id": "926410553552427"
+      },
+      {
+        "key": "qual_o_nome_do_escritório_de_contabilidade?",
+        "label": "Qual o nome do Escritório de Contabilidade?",
+        "type": "CUSTOM",
+        "id": "2219590872213404"
+      },
+      {
+        "key": "full_name",
+        "label": "Full name",
+        "type": "FULL_NAME",
+        "id": "35874269075505214"
+      },
+      {
+        "key": "email",
+        "label": "Email",
+        "type": "EMAIL",
+        "id": "1235955798280442"
+      },
+      {
+        "key": "phone_number",
+        "label": "Phone number",
+        "type": "PHONE",
+        "id": "882576661481933"
+      }
+    ],
+    "privacy_policy_url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+    "thank_you_page": {
+      "title": "Pronto. Entraremos em contato o mais breve",
+      "body": "Você agendar seu diagnóstico clicando no botão abaixo.",
+      "button_text": "Quero marcar meu diagnóstico!",
+      "enable_messenger": false,
+      "button_type": "VIEW_WEBSITE",
+      "website_url": "https://hi.switchy.io/uA2W",
+      "id": "2247807145751470"
+    },
+    "locale": "pt_BR",
+    "follow_up_action_url": "https://hi.switchy.io/uA2W"
+  },
+  "1209796504420632": {
+    "id": "1209796504420632",
+    "name": "[SE] [FORMS] 5-copy",
+    "status": "ACTIVE",
+    "page": {
+      "name": "Sevilha Performance",
+      "id": "131476997004991"
+    },
+    "questions": [
+      {
+        "key": "Quantos colaboradores você tem?",
+        "label": "Quantos colaboradores você tem?",
+        "options": [
+          {
+            "key": "De 0 a 4",
+            "value": "De 0 a 4"
+          },
+          {
+            "key": "De 5 a 9",
+            "value": "De 5 a 9"
+          },
+          {
+            "key": "De 10 a 19",
+            "value": "De 10 a 19"
+          },
+          {
+            "key": "De 20 a 29",
+            "value": "De 20 a 29"
+          },
+          {
+            "key": "De 30 a 49",
+            "value": "De 30 a 49"
+          },
+          {
+            "key": "Mais de 50",
+            "value": "Mais de 50"
+          }
+        ],
+        "type": "CUSTOM",
+        "id": "722015897198931"
+      },
+      {
+        "key": "Qual a sua posição no escritório Contábil?",
+        "label": "Qual a sua posição no escritório Contábil?",
+        "options": [
+          {
+            "key": "dono/sócio",
+            "value": "Dono/Sócio"
+          },
+          {
+            "key": "cargo_gerencial_(lider_/_gerente_/_encarregado_/_coordenador...)",
+            "value": "Cargo Gerencial (Lider / Gerente / Encarregado / Coordenador...)"
+          },
+          {
+            "key": "cargo_operacional_(assistente_/_analista...)",
+            "value": "Cargo Operacional (Assistente / Analista...)"
+          }
+        ],
+        "type": "CUSTOM",
+        "id": "1227772812541379"
+      },
+      {
+        "key": "qual_o_nome_do_escritório_de_contabilidade?",
+        "label": "Qual o nome do Escritório de Contabilidade?",
+        "type": "CUSTOM",
+        "id": "819357817820039"
+      },
+      {
+        "key": "full_name",
+        "label": "Full name",
+        "type": "FULL_NAME",
+        "id": "1217734027002896"
+      },
+      {
+        "key": "email",
+        "label": "Email",
+        "type": "EMAIL",
+        "id": "1227989239198152"
+      },
+      {
+        "key": "phone_number",
+        "label": "Phone number",
+        "type": "PHONE",
+        "id": "1419034849656926"
+      }
+    ],
+    "privacy_policy_url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+    "thank_you_page": {
+      "title": "Pronto. Entraremos em contato o mais breve",
+      "body": "Você agendar seu diagnóstico clicando no botão abaixo.",
+      "button_text": "Quero marcar meu diagnóstico!",
+      "enable_messenger": false,
+      "button_type": "VIEW_WEBSITE",
+      "website_url": "https://hi.switchy.io/lsu7",
+      "id": "844445695153938"
+    },
+    "locale": "pt_BR",
+    "follow_up_action_url": "https://hi.switchy.io/lsu7"
+  },
+  "permissions": {
+    "data": [
+      {
+        "permission": "read_insights",
+        "status": "granted"
+      },
+      {
+        "permission": "publish_video",
+        "status": "granted"
+      },
+      {
+        "permission": "catalog_management",
+        "status": "granted"
+      },
+      {
+        "permission": "private_computation_access",
+        "status": "granted"
+      },
+      {
+        "permission": "threads_business_basic",
+        "status": "granted"
+      },
+      {
+        "permission": "pages_manage_cta",
+        "status": "granted"
+      },
+      {
+        "permission": "pages_manage_instant_articles",
+        "status": "granted"
+      },
+      {
+        "permission": "pages_show_list",
+        "status": "granted"
+      },
+      {
+        "permission": "read_page_mailboxes",
+        "status": "granted"
+      },
+      {
+        "permission": "ads_management",
+        "status": "granted"
+      },
+      {
+        "permission": "ads_read",
+        "status": "granted"
+      },
+      {
+        "permission": "business_management",
+        "status": "granted"
+      },
+      {
+        "permission": "pages_messaging",
+        "status": "granted"
+      },
+      {
+        "permission": "instagram_basic",
+        "status": "granted"
+      },
+      {
+        "permission": "instagram_manage_comments",
+        "status": "granted"
+      },
+      {
+        "permission": "instagram_manage_insights",
+        "status": "granted"
+      },
+      {
+        "permission": "instagram_content_publish",
+        "status": "granted"
+      },
+      {
+        "permission": "leads_retrieval",
+        "status": "granted"
+      },
+      {
+        "permission": "whatsapp_business_management",
+        "status": "granted"
+      },
+      {
+        "permission": "instagram_manage_messages",
+        "status": "granted"
+      },
+      {
+        "permission": "attribution_read",
+        "status": "granted"
+      },
+      {
+        "permission": "page_events",
+        "status": "granted"
+      },
+      {
+        "permission": "commerce_account_read_settings",
+        "status": "granted"
+      },
+      {
+        "permission": "commerce_account_manage_orders",
+        "status": "granted"
+      },
+      {
+        "permission": "commerce_account_read_orders",
+        "status": "granted"
+      },
+      {
+        "permission": "commerce_account_read_reports",
+        "status": "granted"
+      },
+      {
+        "permission": "pages_read_engagement",
+        "status": "granted"
+      },
+      {
+        "permission": "pages_manage_metadata",
+        "status": "granted"
+      },
+      {
+        "permission": "pages_read_user_content",
+        "status": "granted"
+      },
+      {
+        "permission": "pages_manage_ads",
+        "status": "granted"
+      },
+      {
+        "permission": "pages_manage_posts",
+        "status": "granted"
+      },
+      {
+        "permission": "pages_manage_engagement",
+        "status": "granted"
+      },
+      {
+        "permission": "whatsapp_business_messaging",
+        "status": "granted"
+      },
+      {
+        "permission": "instagram_shopping_tag_products",
+        "status": "granted"
+      },
+      {
+        "permission": "instagram_branded_content_brand",
+        "status": "granted"
+      },
+      {
+        "permission": "instagram_branded_content_ads_brand",
+        "status": "granted"
+      },
+      {
+        "permission": "manage_app_solution",
+        "status": "granted"
+      },
+      {
+        "permission": "pages_utility_messaging",
+        "status": "granted"
+      },
+      {
+        "permission": "paid_marketing_messages",
+        "status": "granted"
+      },
+      {
+        "permission": "whatsapp_business_manage_events",
+        "status": "granted"
+      },
+      {
+        "permission": "instagram_manage_contents",
+        "status": "granted"
+      },
+      {
+        "permission": "facebook_branded_content_ads_brand",
+        "status": "granted"
+      },
+      {
+        "permission": "public_profile",
+        "status": "granted"
+      }
+    ]
+  },
+  "page": {
+    "id": "131476997004991",
+    "name": "Sevilha Performance",
+    "page_access_token_available": true
+  },
+  "subscribed_apps": {
+    "data": [
+      {
+        "id": "1268751301361567",
+        "name": "API Oficial Lorenzo Media",
+        "subscribed_fields": [
+          "leadgen"
+        ]
+      }
+    ]
+  },
+  "capability_fields": {
+    "form_type": {
+      "error": {
+        "message": "(#100) Tried accessing nonexisting field (form_type)",
+        "type": "OAuthException",
+        "code": 100,
+        "fbtrace_id": "AVhpUjH-v-183Rl5dNInX3h"
+      },
+      "http": 400
+    },
+    "is_optimized_for_quality": {
+      "is_optimized_for_quality": false,
+      "id": "1836784071025712"
+    },
+    "allow_organic_lead": {
+      "allow_organic_lead": false,
+      "id": "1836784071025712"
+    },
+    "context_card": {
+      "id": "1836784071025712"
+    },
+    "preview_url": {
+      "error": {
+        "message": "(#100) Tried accessing nonexisting field (preview_url)",
+        "type": "OAuthException",
+        "code": 100,
+        "fbtrace_id": "AVN2I0HOW8A8IhxbcuT5kIJ"
+      },
+      "http": 400
+    },
+    "tracking_parameters": {
+      "tracking_parameters": [
+        {
+          "key": "utm_campaign",
+          "value": "{{campaign.name}}"
+        },
+        {
+          "key": "utm_source",
+          "value": "{{placement}}"
+        },
+        {
+          "key": "utm_medium",
+          "value": "{{adset.name}}"
+        },
+        {
+          "key": "utm_content",
+          "value": "{{ad.name}}"
+        }
+      ],
+      "id": "1836784071025712"
+    },
+    "custom_disclaimer": {
+      "error": {
+        "message": "(#100) Tried accessing nonexisting field (custom_disclaimer)",
+        "type": "OAuthException",
+        "code": 100,
+        "fbtrace_id": "AzSHO7b2HT_soQm74pfiJdL"
+      },
+      "http": 400
+    }
+  },
+  "1268751301361567/subscriptions": {
+    "error": {
+      "message": "An access token is required to request this resource.",
+      "code": 104,
+      "type": "OAuthException",
+      "fbtrace_id": "A4aijcHAUhN4bmuAIuR0SI9"
+    },
+    "http": 400
+  },
+  "131476997004991": {
+    "error": {
+      "message": "(#100) The parameter user_id is required.",
+      "type": "OAuthException",
+      "code": 100,
+      "fbtrace_id": "AlfUqe68zU0M2sV2qtlI6_r"
+    },
+    "http": 400
+  },
+  "131476997004991/leadgen_forms": {
+    "error": {
+      "message": "(#190) This method must be called with a Page Access Token",
+      "type": "OAuthException",
+      "code": 190,
+      "fbtrace_id": "AQ4E6uWpl-k1VffoFRCWgWP"
+    },
+    "http": 400
+  },
+  "page_conditions": {
+    "leadgen_tos_accepted": {
+      "leadgen_tos_accepted": true,
+      "id": "131476997004991"
+    },
+    "privacy_info_url": {
+      "id": "131476997004991"
+    },
+    "website": {
+      "website": "https://sevilhaperformance.com.br/cdp0226-bio",
+      "id": "131476997004991"
+    }
+  },
+  "page_form_inventory": {
+    "data": [
+      {
+        "id": "1836784071025712",
+        "name": "[SE] [FORMS] 6",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "1209796504420632",
+        "name": "[SE] [FORMS] 5-copy",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "1385929216252624",
+        "name": "[SE] [FORMS] 5",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "1380195693743721",
+        "name": "[SE] [FORMS] 4",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "2785665628296134",
+        "name": "[SE] [FORMS] 3-copy-copy",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "1529960981479151",
+        "name": "[SE] [FORMS] 3-copy",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "1331672145083026",
+        "name": "[SE] [FORMS] 3",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "4286729524881752",
+        "name": "[SE] [FORMS] 2-copy",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "818418257522157",
+        "name": "[SE] [FORMS] 2",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "1739558329876653",
+        "name": "[SE] [FORMS]-copy",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "1702348023763458",
+        "name": "[SE] [FORMS]",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "534927382244148",
+        "name": "Forms - Sessão estrategica 2.0",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "251419633544583",
+        "name": "Geração de Leads | ConsultoriA (02)",
+        "status": "ACTIVE"
+      },
+      {
+        "id": "338379544069386",
+        "name": "Geração de Leads | Consultoria",
+        "status": "ACTIVE"
+      }
+    ]
+  },
+  "proposal": {
+    "page_id": "131476997004991",
+    "name": "[SE] [FORMS] Diagnóstico Operacional | Maior intenção | 2026-10-05",
+    "locale": "pt_BR",
+    "is_optimized_for_quality": true,
+    "allow_organic_lead_retrieval": false,
+    "questions": [
+      {
+        "key": "Quantos colaboradores você tem?",
+        "label": "Quantos colaboradores você tem?",
+        "options": [
+          {
+            "key": "De 0 a 4",
+            "value": "De 0 a 4"
+          },
+          {
+            "key": "De 5 a 9",
+            "value": "De 5 a 9"
+          },
+          {
+            "key": "De 10 a 19",
+            "value": "De 10 a 19"
+          },
+          {
+            "key": "De 20 a 29",
+            "value": "De 20 a 29"
+          },
+          {
+            "key": "De 30 a 49",
+            "value": "De 30 a 49"
+          },
+          {
+            "key": "Mais de 50",
+            "value": "Mais de 50"
+          }
+        ],
+        "type": "CUSTOM"
+      },
+      {
+        "key": "Qual a sua posição no escritório Contábil?",
+        "label": "Qual a sua posição no escritório Contábil?",
+        "options": [
+          {
+            "key": "dono/sócio",
+            "value": "Dono/Sócio"
+          },
+          {
+            "key": "cargo_gerencial_(lider_/_gerente_/_encarregado_/_coordenador...)",
+            "value": "Cargo Gerencial (Lider / Gerente / Encarregado / Coordenador...)"
+          },
+          {
+            "key": "cargo_operacional_(assistente_/_analista...)",
+            "value": "Cargo Operacional (Assistente / Analista...)"
+          }
+        ],
+        "type": "CUSTOM"
+      },
+      {
+        "key": "qual_o_nome_do_escritório_de_contabilidade?",
+        "label": "Qual o nome do Escritório de Contabilidade?",
+        "type": "CUSTOM"
+      },
+      {
+        "key": "full_name",
+        "type": "FULL_NAME"
+      },
+      {
+        "key": "email",
+        "type": "EMAIL"
+      },
+      {
+        "key": "phone_number",
+        "type": "PHONE"
+      }
+    ],
+    "context_card": {
+      "title": "Seu escritório cresceu. A margem acompanhou?",
+      "style": "PARAGRAPH_STYLE",
+      "content": [
+        "Diagnóstico individual online de 45 minutos com Bruno Silvestre, gratuito e sem compromisso. Para donos ou sócios de escritórios contábeis com 10 ou mais colaboradores. Identifique gargalos de processos, estrutura e margem e as prioridades do escritório."
+      ],
+      "button_text": "Solicitar diagnóstico"
+    },
+    "thank_you_page": {
+      "title": "Pronto. Entraremos em contato o mais breve",
+      "body": "Você agendar seu diagnóstico clicando no botão abaixo.",
+      "button_text": "Quero marcar meu diagnóstico!",
+      "enable_messenger": false,
+      "button_type": "VIEW_WEBSITE",
+      "website_url": "https://hi.switchy.io/uA2W"
+    },
+    "tracking_parameters": {
+      "utm_source": "{{placement}}",
+      "utm_medium": "{{adset.name}}",
+      "utm_campaign": "{{campaign.name}}",
+      "utm_content": "{{ad.name}}"
+    },
+    "privacy_policy": {
+      "url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+      "staging_only": true
+    },
+    "creation_status": "CREATED_UNDISTRIBUTED",
+    "launch_blocked": true,
+    "form_id": "1776305790272614"
+  },
+  "integration": {
+    "page_leadgen_subscription": true,
+    "exact_form_filter_in_repo": false,
+    "native_callback_verified": false,
+    "native_to_sheet_crm_verified": false,
+    "leadqualificado_workflow_active": true,
+    "import_sheet_crm_workflow_active": false,
+    "export_record_width": 23,
+    "test_lead_created": false,
+    "remote_mutations": true
+  },
+  "staging_create_payload": {
+    "name": "[SE] [FORMS] Diagnóstico Operacional | Maior intenção | 2026-10-05",
+    "locale": "pt_BR",
+    "is_optimized_for_quality": "true",
+    "allow_organic_lead_retrieval": "false",
+    "questions": [
+      {
+        "key": "Quantos colaboradores você tem?",
+        "label": "Quantos colaboradores você tem?",
+        "options": [
+          {
+            "key": "De 0 a 4",
+            "value": "De 0 a 4"
+          },
+          {
+            "key": "De 5 a 9",
+            "value": "De 5 a 9"
+          },
+          {
+            "key": "De 10 a 19",
+            "value": "De 10 a 19"
+          },
+          {
+            "key": "De 20 a 29",
+            "value": "De 20 a 29"
+          },
+          {
+            "key": "De 30 a 49",
+            "value": "De 30 a 49"
+          },
+          {
+            "key": "Mais de 50",
+            "value": "Mais de 50"
+          }
+        ],
+        "type": "CUSTOM"
+      },
+      {
+        "key": "Qual a sua posição no escritório Contábil?",
+        "label": "Qual a sua posição no escritório Contábil?",
+        "options": [
+          {
+            "key": "dono/sócio",
+            "value": "Dono/Sócio"
+          },
+          {
+            "key": "cargo_gerencial_(lider_/_gerente_/_encarregado_/_coordenador...)",
+            "value": "Cargo Gerencial (Lider / Gerente / Encarregado / Coordenador...)"
+          },
+          {
+            "key": "cargo_operacional_(assistente_/_analista...)",
+            "value": "Cargo Operacional (Assistente / Analista...)"
+          }
+        ],
+        "type": "CUSTOM"
+      },
+      {
+        "key": "qual_o_nome_do_escritório_de_contabilidade?",
+        "label": "Qual o nome do Escritório de Contabilidade?",
+        "type": "CUSTOM"
+      },
+      {
+        "key": "full_name",
+        "type": "FULL_NAME"
+      },
+      {
+        "key": "email",
+        "type": "EMAIL"
+      },
+      {
+        "key": "phone_number",
+        "type": "PHONE"
+      }
+    ],
+    "privacy_policy": {
+      "url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+      "link_text": "Política de privacidade"
+    },
+    "follow_up_action_url": "https://hi.switchy.io/uA2W",
+    "thank_you_page": {
+      "title": "Pronto. Entraremos em contato o mais breve",
+      "body": "Você agendar seu diagnóstico clicando no botão abaixo.",
+      "button_text": "Quero marcar meu diagnóstico!",
+      "enable_messenger": false,
+      "button_type": "VIEW_WEBSITE",
+      "website_url": "https://hi.switchy.io/uA2W"
+    },
+    "context_card": {
+      "title": "Diagnóstico gratuito para seu escritório contábil",
+      "style": "PARAGRAPH_STYLE",
+      "content": [
+        "Sessão Estratégica online de 45 minutos com Bruno Silvestre, gratuita e sem compromisso. Para donos e sócios de escritórios contábeis com 10 ou mais colaboradores: identifique gargalos de processos, estrutura e margem e as prioridades do escritório."
+      ],
+      "button_text": "Solicitar diagnóstico"
+    },
+    "tracking_parameters": {
+      "utm_source": "{{placement}}",
+      "utm_medium": "{{adset.name}}",
+      "utm_campaign": "{{campaign.name}}",
+      "utm_content": "{{ad.name}}"
+    }
+  },
+  "creation_attempt": "STARTED_NO_RETRY",
+  "creation_result": {
+    "id": "1776305790272614"
+  },
+  "creation_readback": {
+    "id": "1776305790272614",
+    "name": "[SE] [FORMS] Diagnóstico Operacional | Maior intenção | 2026-10-05",
+    "status": "ACTIVE",
+    "page": {
+      "name": "Sevilha Performance",
+      "id": "131476997004991"
+    },
+    "questions": [
+      {
+        "key": "Quantos colaboradores você tem?",
+        "label": "Quantos colaboradores você tem?",
+        "options": [
+          {
+            "key": "De 0 a 4",
+            "value": "De 0 a 4"
+          },
+          {
+            "key": "De 5 a 9",
+            "value": "De 5 a 9"
+          },
+          {
+            "key": "De 10 a 19",
+            "value": "De 10 a 19"
+          },
+          {
+            "key": "De 20 a 29",
+            "value": "De 20 a 29"
+          },
+          {
+            "key": "De 30 a 49",
+            "value": "De 30 a 49"
+          },
+          {
+            "key": "Mais de 50",
+            "value": "Mais de 50"
+          }
+        ],
+        "type": "CUSTOM",
+        "id": "4479106988900146"
+      },
+      {
+        "key": "Qual a sua posição no escritório Contábil?",
+        "label": "Qual a sua posição no escritório Contábil?",
+        "options": [
+          {
+            "key": "dono/sócio",
+            "value": "Dono/Sócio"
+          },
+          {
+            "key": "cargo_gerencial_(lider_/_gerente_/_encarregado_/_coordenador...)",
+            "value": "Cargo Gerencial (Lider / Gerente / Encarregado / Coordenador...)"
+          },
+          {
+            "key": "cargo_operacional_(assistente_/_analista...)",
+            "value": "Cargo Operacional (Assistente / Analista...)"
+          }
+        ],
+        "type": "CUSTOM",
+        "id": "1836306627686150"
+      },
+      {
+        "key": "qual_o_nome_do_escritório_de_contabilidade?",
+        "label": "Qual o nome do Escritório de Contabilidade?",
+        "type": "CUSTOM",
+        "id": "2186037848610356"
+      },
+      {
+        "key": "full_name",
+        "label": "Full name",
+        "type": "FULL_NAME",
+        "id": "28974480668906413"
+      },
+      {
+        "key": "email",
+        "label": "Email",
+        "type": "EMAIL",
+        "id": "1449125423242892"
+      },
+      {
+        "key": "phone_number",
+        "label": "Phone number",
+        "type": "PHONE",
+        "id": "2371434567003650"
+      }
+    ],
+    "privacy_policy_url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+    "context_card": {
+      "title": "Diagnóstico gratuito para seu escritório contábil",
+      "content": [
+        "Sessão Estratégica online de 45 minutos com Bruno Silvestre, gratuita e sem compromisso. Para donos e sócios de escritórios contábeis com 10 ou mais colaboradores: identifique gargalos de processos, estrutura e margem e as prioridades do escritório."
+      ],
+      "style": "PARAGRAPH_STYLE",
+      "button_text": "Solicitar diagnóstico",
+      "id": "861247117015570"
+    },
+    "thank_you_page": {
+      "title": "Pronto. Entraremos em contato o mais breve",
+      "body": "Você agendar seu diagnóstico clicando no botão abaixo.",
+      "button_text": "Quero marcar meu diagnóstico!",
+      "enable_messenger": false,
+      "button_type": "VIEW_WEBSITE",
+      "website_url": "https://hi.switchy.io/uA2W",
+      "id": "30072267489025299"
+    },
+    "locale": "pt_BR",
+    "follow_up_action_url": "https://hi.switchy.io/uA2W",
+    "is_optimized_for_quality": true,
+    "allow_organic_lead": false,
+    "tracking_parameters": [
+      {
+        "key": "utm_source",
+        "value": "{{placement}}"
+      },
+      {
+        "key": "utm_medium",
+        "value": "{{adset.name}}"
+      },
+      {
+        "key": "utm_campaign",
+        "value": "{{campaign.name}}"
+      },
+      {
+        "key": "utm_content",
+        "value": "{{ad.name}}"
+      }
+    ]
+  }
+}

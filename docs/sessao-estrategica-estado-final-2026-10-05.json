@@ -1,0 +1,36 @@
+{
+  "verified_at_utc": "2026-10-06T01:19:08.251746+00:00",
+  "objects": [
+    {
+      "id": "120253330191810526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "13235"
+    },
+    {
+      "id": "120248779747120526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "14559"
+    },
+    {
+      "id": "120243440924150526",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "17206"
+    },
+    {
+      "id": "120252795398510526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED"
+    },
+    {
+      "id": "120253413819760526",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "36000"
+    }
+  ],
+  "current_active_meta_daily_cents": 45000,
+  "new_meta_daily_cents_paused": 36000
+}

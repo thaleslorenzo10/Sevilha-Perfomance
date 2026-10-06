@@ -1,0 +1,3340 @@
+{
+  "120253330191850526": {
+    "id": "120253330191850526",
+    "name": "Contabilidade financeira (negócios e finanças)",
+    "campaign_id": "120253330191810526",
+    "targeting": {
+      "age_max": 60,
+      "age_min": 25,
+      "excluded_custom_audiences": [
+        {
+          "id": "120219034633870526",
+          "name": "[SITE] - Acessou site - 180D"
+        },
+        {
+          "id": "120219348178940526",
+          "name": "[IG] Novos Seguidores SVL"
+        },
+        {
+          "id": "120222095713590526",
+          "name": "[COMBOPERFIL] Envolvimento - 365D"
+        },
+        {
+          "id": "120222096029020526",
+          "name": "Seguidores"
+        },
+        {
+          "id": "120227591567210526",
+          "name": "Instagram - 180D"
+        },
+        {
+          "id": "120234704197770526",
+          "name": "IG - Visitou Perfil - 60D"
+        },
+        {
+          "id": "120235128469700526",
+          "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+        },
+        {
+          "id": "120235128476740526",
+          "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+        },
+        {
+          "id": "120235128483260526",
+          "name": "PageView - Site - 180D"
+        },
+        {
+          "id": "120235128495180526",
+          "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+        }
+      ],
+      "flexible_spec": [
+        {
+          "interests": [
+            {
+              "id": "6003389795312",
+              "name": "Contabilidade financeira (negócios e finanças)"
+            }
+          ]
+        }
+      ],
+      "geo_locations": {
+        "countries": [
+          "BR"
+        ],
+        "location_types": [
+          "home",
+          "recent"
+        ]
+      },
+      "brand_safety_content_filter_levels": [
+        "FACEBOOK_RELAXED",
+        "AN_RELAXED"
+      ],
+      "targeting_relaxation_types": {
+        "lookalike": 0,
+        "custom_audience": 0
+      },
+      "targeting_automation": {
+        "advantage_audience": 0
+      },
+      "publisher_platforms": [
+        "instagram"
+      ],
+      "instagram_positions": [
+        "stream",
+        "story",
+        "reels"
+      ]
+    },
+    "promoted_object": {
+      "page_id": "131476997004991",
+      "smart_pse_enabled": false
+    },
+    "optimization_goal": "QUALITY_LEAD",
+    "billing_event": "IMPRESSIONS",
+    "destination_type": "ON_AD",
+    "attribution_spec": [
+      {
+        "event_type": "CLICK_THROUGH",
+        "window_days": 1
+      }
+    ]
+  },
+  "120253330191810526": {
+    "id": "120253330191810526",
+    "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Bruno Novo Setembro",
+    "objective": "OUTCOME_LEADS",
+    "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+    "special_ad_categories": []
+  },
+  "106292094924513": {
+    "id": "106292094924513",
+    "name": "Bruno Silvestre Consultor",
+    "instagram_business_account": {
+      "id": "17841446823336862"
+    },
+    "connected_instagram_account": {
+      "id": "17841446823336862"
+    }
+  },
+  "staging_conditions": {
+    "all_campaign_adset_ad_status": "PAUSED",
+    "form_id": "1776305790272614",
+    "activation_blockers": [
+      "Advertiser privacy policy required; Facebook policy staging only",
+      "Native ingest export mapping and persisted readback unverified"
+    ],
+    "monthly_total_target_brl": 14000,
+    "future_meta_daily_brl": 360,
+    "future_google_daily_brl": 90,
+    "existing_campaigns_unchanged": true,
+    "identity_test_metric": "Cost per MQL; same five assets/form/audience; Instagram feed/story/reels only; Bruno Facebook page and second form not created"
+  },
+  "objects": {
+    "campaign": {
+      "started": true,
+      "payload": {
+        "name": "[SE] [FORMS] [MAIOR INTENÇÃO] [IDENTIDADE] 2026-10-05",
+        "objective": "OUTCOME_LEADS",
+        "status": "PAUSED",
+        "special_ad_categories": [],
+        "daily_budget": 36000,
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+        "is_adset_budget_sharing_enabled": "false"
+      },
+      "id": "120253413819760526",
+      "readback": {
+        "id": "120253413819760526",
+        "name": "[SE] [FORMS] [MAIOR INTENÇÃO] [IDENTIDADE] 2026-10-05",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "objective": "OUTCOME_LEADS",
+        "daily_budget": "36000"
+      }
+    },
+    "adset_Sevilha": {
+      "started": true,
+      "payload": {
+        "name": "Contabilidade financeira | Sevilha | 2026-10-05",
+        "campaign_id": "120253413819760526",
+        "status": "PAUSED",
+        "optimization_goal": "QUALITY_LEAD",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "ON_AD",
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "promoted_object": {
+          "page_id": "131476997004991",
+          "smart_pse_enabled": false
+        },
+        "targeting": {
+          "age_max": 60,
+          "age_min": 25,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003389795312",
+                  "name": "Contabilidade financeira (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "home",
+              "recent"
+            ]
+          },
+          "brand_safety_content_filter_levels": [
+            "FACEBOOK_RELAXED",
+            "AN_RELAXED"
+          ],
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          }
+        }
+      },
+      "id": "120253413819880526",
+      "readback": {
+        "id": "120253413819880526",
+        "name": "Contabilidade financeira | Sevilha | 2026-10-05",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "campaign_id": "120253413819760526",
+        "targeting": {
+          "age_max": 60,
+          "age_min": 25,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003389795312",
+                  "name": "Contabilidade financeira (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "home",
+              "recent"
+            ]
+          },
+          "brand_safety_content_filter_levels": [
+            "FACEBOOK_RELAXED",
+            "AN_RELAXED"
+          ],
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "instagram"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "reels"
+          ]
+        },
+        "promoted_object": {
+          "page_id": "131476997004991",
+          "smart_pse_enabled": false
+        },
+        "optimization_goal": "QUALITY_LEAD"
+      },
+      "instagram_only_update": {
+        "success": true
+      }
+    },
+    "creative_Sevilha_1": {
+      "started": true,
+      "payload": {
+        "name": "AD21 | Sevilha | maior intenção 2026-10-05",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "video_data": {
+            "video_id": "1496774951421524",
+            "image_hash": "5073b44b12749fa671d74504c47bb54d",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "lead_gen_form_id": "1776305790272614",
+                "link": "https://form.respondi.app/gvz4UKQr"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "asset_feed_spec": {
+          "optimization_type": "DEGREES_OF_FREEDOM",
+          "bodies": [
+            {
+              "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+            },
+            {
+              "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+            },
+            {
+              "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+            },
+            {
+              "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+            },
+            {
+              "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+            }
+          ],
+          "titles": [
+            {
+              "text": "Equipe sobrecarregada?"
+            },
+            {
+              "text": "Custos operacionais altos?"
+            },
+            {
+              "text": "Precisa de mais tempo?"
+            },
+            {
+              "text": "Contabilidade no Limite?"
+            },
+            {
+              "text": "Agende sua reunião estratégica!"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+            }
+          ]
+        }
+      },
+      "id": "4570363779911091"
+    },
+    "creative_Sevilha_2": {
+      "started": true,
+      "payload": {
+        "name": "AD16 | Sevilha | maior intenção 2026-10-05",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "video_data": {
+            "video_id": "1901350790760661",
+            "image_hash": "4a2db563a29a85423ab6def81272ef8a",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "lead_gen_form_id": "1776305790272614",
+                "link": "https://form.respondi.app/gvz4UKQr"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "asset_feed_spec": {
+          "optimization_type": "DEGREES_OF_FREEDOM",
+          "bodies": [
+            {
+              "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+            },
+            {
+              "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+            },
+            {
+              "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+            },
+            {
+              "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+            },
+            {
+              "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+            }
+          ],
+          "titles": [
+            {
+              "text": "Equipe sobrecarregada?"
+            },
+            {
+              "text": "Custos operacionais altos?"
+            },
+            {
+              "text": "Precisa de mais tempo?"
+            },
+            {
+              "text": "Contabilidade no Limite?"
+            },
+            {
+              "text": "Agende sua reunião estratégica!"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+            }
+          ]
+        }
+      },
+      "id": "1717101952684519"
+    },
+    "creative_Sevilha_3": {
+      "started": true,
+      "payload": {
+        "name": "AD - Vídeo - Como saber onde usar Inteligência — Cópia | Sevilha | maior intenção 2026-10-05",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "video_data": {
+            "video_id": "894752866821603",
+            "image_hash": "06d04489f2e6c4fa9c94b50c27dc92e9",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "lead_gen_form_id": "1776305790272614",
+                "link": "https://form.respondi.app/gvz4UKQr"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "asset_feed_spec": {
+          "optimization_type": "DEGREES_OF_FREEDOM",
+          "bodies": [
+            {
+              "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+            },
+            {
+              "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+            },
+            {
+              "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+            },
+            {
+              "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+            },
+            {
+              "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+            }
+          ],
+          "titles": [
+            {
+              "text": "Equipe sobrecarregada?"
+            },
+            {
+              "text": "Custos operacionais altos?"
+            },
+            {
+              "text": "Precisa de mais tempo?"
+            },
+            {
+              "text": "Contabilidade no Limite?"
+            },
+            {
+              "text": "Agende sua reunião estratégica!"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+            }
+          ]
+        }
+      },
+      "id": "4686119801612093"
+    },
+    "creative_Sevilha_4": {
+      "started": true,
+      "payload": {
+        "name": "AD29 | Sevilha | maior intenção 2026-10-05",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "video_data": {
+            "video_id": "1785167319119331",
+            "image_hash": "b69c9aeddf56b7dfa728ae92db11491c",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "lead_gen_form_id": "1776305790272614",
+                "link": "https://form.respondi.app/gvz4UKQr"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "asset_feed_spec": {
+          "optimization_type": "DEGREES_OF_FREEDOM",
+          "bodies": [
+            {
+              "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+            },
+            {
+              "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+            },
+            {
+              "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+            },
+            {
+              "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+            },
+            {
+              "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+            }
+          ],
+          "titles": [
+            {
+              "text": "Equipe sobrecarregada?"
+            },
+            {
+              "text": "Custos operacionais altos?"
+            },
+            {
+              "text": "Precisa de mais tempo?"
+            },
+            {
+              "text": "Contabilidade no Limite?"
+            },
+            {
+              "text": "Agende sua reunião estratégica!"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+            }
+          ]
+        }
+      },
+      "id": "1142920355064404"
+    },
+    "creative_Sevilha_5": {
+      "started": true,
+      "payload": {
+        "name": "005 - Está consumido pela operação da contabilidade VICENTE | Sevilha | maior intenção 2026-10-05",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850"
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "asset_feed_spec": {
+          "optimization_type": "PLACEMENT",
+          "call_to_action_types": [
+            "BOOK_TRAVEL"
+          ],
+          "ad_formats": [
+            "AUTOMATIC_FORMAT"
+          ],
+          "reasons_to_shop": false,
+          "shops_bundle": false,
+          "bodies": [
+            {
+              "text": "Descubra como otimizar a operação do seu escritório de contabilidade e liberar tempo para estratégias de crescimento",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6dcb793513d0ff8b_1741788662684"
+                },
+                {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Transforme a eficiência do seu escritório contábil: estratégias comprovadas para reduzir custos e aumentar lucros",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Está sobrecarregado com tarefas operacionais? Aprenda a delegar e focar no crescimento do seu negócio contábil",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Sua equipe está sobrecarregada? Descubra como aumentar a eficiência operacional e reduzir o estresse no trabalho",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Revolucione a gestão do seu escritório contábil: passos práticos para otimizar processos e aumentar a lucratividade",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+                }
+              ]
+            }
+          ],
+          "titles": [
+            {
+              "text": "Sobrecarregado com a operação do seu escritório?",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Sua contabilidade pode mais!",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Contabilidade no Limite?",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f5c006bef88e2dcd6_1741788662684"
+                }
+              ]
+            },
+            {
+              "text": "Liberte-se da rotina exaustiva e foque no crescimento estratégico.",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Sua equipe gasta muita energia nas tarefas diárias?",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Não deixe a operação consumir a sua vida!",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+                }
+              ]
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "Você se sente consumido pelas operações diárias do seu escritório de contabilidade, sem tempo para planejar estratégias de crescimento? Nós entendemos esse desafio. Nossa consultoria especializada ajuda a otimizar processos, reduzindo custos e liberando sua agenda para o que realmente importa: expandir seu negócio. Agende uma reunião estratégica gratuita e descubra como transformar sua rotina."
+            }
+          ],
+          "link_urls": [
+            {
+              "website_url": "https://form.respondi.app/gvz4UKQr",
+              "display_url": "",
+              "adlabels": [
+                {
+                  "name": "placement_asset_fc0349e90c941bb7f_1741788662684"
+                },
+                {
+                  "name": "placement_asset_fe0dacbb867defe68_1741788662678"
+                },
+                {
+                  "name": "placement_asset_fe8ecb622e8b543b8_1741796733575"
+                }
+              ]
+            }
+          ],
+          "images": [
+            {
+              "hash": "8a63e0308526561a5434dacace4a1e93",
+              "adlabels": [
+                {
+                  "name": "placement_asset_fe43d6e443702d83f_1741796733574"
+                }
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "video_id": "888793517491892",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f761e2b4387fead88_1741788662677"
+                }
+              ]
+            },
+            {
+              "video_id": "1827219514620080",
+              "adlabels": [
+                {
+                  "name": "placement_asset_fc92a0248a3e7bf96_1741788650517"
+                },
+                {
+                  "name": "placement_asset_f6c5b8ab93050baf4_1741788662681"
+                }
+              ]
+            }
+          ],
+          "asset_customization_rules": [
+            {
+              "priority": 1,
+              "body_label": {
+                "name": "placement_asset_f6dcb793513d0ff8b_1741788662684"
+              },
+              "title_label": {
+                "name": "placement_asset_f5c006bef88e2dcd6_1741788662684"
+              },
+              "link_url_label": {
+                "name": "placement_asset_fc0349e90c941bb7f_1741788662684"
+              },
+              "video_label": {
+                "name": "placement_asset_f6c5b8ab93050baf4_1741788662681"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65,
+                "publisher_platforms": [
+                  "facebook",
+                  "instagram"
+                ],
+                "instagram_positions": [
+                  "story",
+                  "reels"
+                ],
+                "facebook_positions": [
+                  "story",
+                  "facebook_reels",
+                  "facebook_reels_overlay"
+                ]
+              }
+            },
+            {
+              "priority": 2,
+              "body_label": {
+                "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+              },
+              "title_label": {
+                "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+              },
+              "link_url_label": {
+                "name": "placement_asset_fe8ecb622e8b543b8_1741796733575"
+              },
+              "image_label": {
+                "name": "placement_asset_fe43d6e443702d83f_1741796733574"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65,
+                "publisher_platforms": [
+                  "facebook"
+                ],
+                "facebook_positions": [
+                  "right_hand_column"
+                ]
+              }
+            },
+            {
+              "priority": 3,
+              "body_label": {
+                "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+              },
+              "title_label": {
+                "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+              },
+              "link_url_label": {
+                "name": "placement_asset_fe0dacbb867defe68_1741788662678"
+              },
+              "video_label": {
+                "name": "placement_asset_f761e2b4387fead88_1741788662677"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65
+              }
+            }
+          ],
+          "call_to_actions": [
+            {
+              "type": "BOOK_TRAVEL",
+              "value": {
+                "lead_gen_form_id": "1776305790272614"
+              }
+            }
+          ],
+          "additional_data": {
+            "multi_share_end_card": false,
+            "is_click_to_message": false
+          }
+        }
+      },
+      "id": "1092349323536897"
+    },
+    "ad_Sevilha_5": {
+      "started": true,
+      "payload": {
+        "name": "005 - Está consumido pela operação da contabilidade VICENTE",
+        "adset_id": "120253413819880526",
+        "status": "PAUSED",
+        "creative": {
+          "creative_id": "1092349323536897"
+        }
+      },
+      "id": "120253413820680526",
+      "readback": {
+        "id": "120253413820680526",
+        "name": "005 - Está consumido pela operação da contabilidade VICENTE",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253413819760526",
+        "adset_id": "120253413819880526",
+        "creative": {
+          "id": "1092349323536897",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850"
+          },
+          "asset_feed_spec": {
+            "images": [
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_fe43d6e443702d83f_1741796733574",
+                    "id": "120219588311900526"
+                  }
+                ],
+                "hash": "8a63e0308526561a5434dacace4a1e93"
+              }
+            ],
+            "videos": [
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f761e2b4387fead88_1741788662677",
+                    "id": "120219582869750526"
+                  }
+                ],
+                "video_id": "1620415912966749",
+                "thumbnail_url": "https://scontent.fsdu36-1.fna.fbcdn.net/v/t15.5256-10/836262478_1620415932966747_7113827340335344605_n.jpg?_nc_cat=109&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=d2b52d&_nc_ohc=GpWSlFNtgs4Q7kNvwEuYrpl&_nc_oc=AdpMjpqQnHidok9BtZok_a-gc5UytwFAwwzpfhH2CjrtQM59meoQZhn-hCZsor0S0us9BSKDFKCHaJe5Gi2QDgcm&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fsdu36-1.fna&_nc_gid=7aglkbxY-hSbqQOQKET3Dw&_nc_ss=7a22e&oh=00_AQOwRxGGicNNKxfAvZDkUgKuVh7Weg-X7774MlAGgZoo4Q&oe=6ACA0A1F"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_fc92a0248a3e7bf96_1741788650517",
+                    "id": "120219582869730526"
+                  },
+                  {
+                    "name": "placement_asset_f6c5b8ab93050baf4_1741788662681",
+                    "id": "120219582869740526"
+                  }
+                ],
+                "video_id": "1793249881717706",
+                "thumbnail_url": "https://scontent.fsdu36-1.fna.fbcdn.net/v/t15.5256-10/838515712_1793249905051037_4220406246392557026_n.jpg?_nc_cat=100&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=d2b52d&_nc_ohc=6VY_zI23maEQ7kNvwEfGJ-m&_nc_oc=AdqttrBfY9B0_4CvW8uJ7bKVXH8cPwMRu2wCo75-5En0w5K6MsiBktDfzPZfncqVxDEMbhMI7naP8C-8xSRR5RvD&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fsdu36-1.fna&_nc_gid=7aglkbxY-hSbqQOQKET3Dw&_nc_ss=7a22e&oh=00_AQMBAEq0vBIjnkEVbOug33lkiUZC95O_BDH1Wb0rTwnHqQ&oe=6ACA201A"
+              }
+            ],
+            "bodies": [
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6dcb793513d0ff8b_1741788662684",
+                    "id": "120219582869700526"
+                  },
+                  {
+                    "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                    "id": "120219582869710526"
+                  },
+                  {
+                    "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                    "id": "120219588311950526"
+                  }
+                ],
+                "text": "Descubra como otimizar a operação do seu escritório de contabilidade e liberar tempo para estratégias de crescimento"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                    "id": "120219582869710526"
+                  },
+                  {
+                    "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                    "id": "120219588311950526"
+                  }
+                ],
+                "text": "Transforme a eficiência do seu escritório contábil: estratégias comprovadas para reduzir custos e aumentar lucros"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                    "id": "120219582869710526"
+                  },
+                  {
+                    "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                    "id": "120219588311950526"
+                  }
+                ],
+                "text": "Está sobrecarregado com tarefas operacionais? Aprenda a delegar e focar no crescimento do seu negócio contábil"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                    "id": "120219582869710526"
+                  },
+                  {
+                    "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                    "id": "120219588311950526"
+                  }
+                ],
+                "text": "Sua equipe está sobrecarregada? Descubra como aumentar a eficiência operacional e reduzir o estresse no trabalho"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                    "id": "120219582869710526"
+                  },
+                  {
+                    "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                    "id": "120219588311950526"
+                  }
+                ],
+                "text": "Revolucione a gestão do seu escritório contábil: passos práticos para otimizar processos e aumentar a lucratividade"
+              }
+            ],
+            "call_to_action_types": [
+              "BOOK_TRAVEL"
+            ],
+            "call_to_actions": [
+              {
+                "type": "BOOK_TRAVEL",
+                "value": {
+                  "lead_gen_form_id": "1776305790272614"
+                }
+              }
+            ],
+            "descriptions": [
+              {
+                "text": "Você se sente consumido pelas operações diárias do seu escritório de contabilidade, sem tempo para planejar estratégias de crescimento? Nós entendemos esse desafio. Nossa consultoria especializada ajuda a otimizar processos, reduzindo custos e liberando sua agenda para o que realmente importa: expandir seu negócio. Agende uma reunião estratégica gratuita e descubra como transformar sua rotina."
+              }
+            ],
+            "link_urls": [
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_fc0349e90c941bb7f_1741788662684",
+                    "id": "120219582869680526"
+                  },
+                  {
+                    "name": "placement_asset_fe0dacbb867defe68_1741788662678",
+                    "id": "120219582869760526"
+                  },
+                  {
+                    "name": "placement_asset_fe8ecb622e8b543b8_1741796733575",
+                    "id": "120219588312010526"
+                  }
+                ],
+                "website_url": "https://form.respondi.app/gvz4UKQr",
+                "display_url": ""
+              }
+            ],
+            "titles": [
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                    "id": "120219582869690526"
+                  },
+                  {
+                    "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                    "id": "120219588311930526"
+                  }
+                ],
+                "text": "Sobrecarregado com a operação do seu escritório?"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                    "id": "120219582869690526"
+                  },
+                  {
+                    "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                    "id": "120219588311930526"
+                  }
+                ],
+                "text": "Sua contabilidade pode mais!"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f5c006bef88e2dcd6_1741788662684",
+                    "id": "120219582869720526"
+                  }
+                ],
+                "text": "Contabilidade no Limite?"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                    "id": "120219582869690526"
+                  },
+                  {
+                    "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                    "id": "120219588311930526"
+                  }
+                ],
+                "text": "Liberte-se da rotina exaustiva e foque no crescimento estratégico."
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                    "id": "120219582869690526"
+                  },
+                  {
+                    "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                    "id": "120219588311930526"
+                  }
+                ],
+                "text": "Sua equipe gasta muita energia nas tarefas diárias?"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                    "id": "120219582869690526"
+                  },
+                  {
+                    "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                    "id": "120219588311930526"
+                  }
+                ],
+                "text": "Não deixe a operação consumir a sua vida!"
+              }
+            ],
+            "ad_formats": [
+              "AUTOMATIC_FORMAT"
+            ],
+            "asset_customization_rules": [
+              {
+                "customization_spec": {
+                  "age_max": 65,
+                  "age_min": 13,
+                  "publisher_platforms": [
+                    "facebook",
+                    "instagram"
+                  ],
+                  "facebook_positions": [
+                    "story",
+                    "facebook_reels",
+                    "facebook_reels_overlay"
+                  ],
+                  "instagram_positions": [
+                    "story",
+                    "reels"
+                  ]
+                },
+                "video_label": {
+                  "name": "placement_asset_f6c5b8ab93050baf4_1741788662681",
+                  "id": "120219582869740526"
+                },
+                "body_label": {
+                  "name": "placement_asset_f6dcb793513d0ff8b_1741788662684",
+                  "id": "120219582869700526"
+                },
+                "link_url_label": {
+                  "name": "placement_asset_fc0349e90c941bb7f_1741788662684",
+                  "id": "120219582869680526"
+                },
+                "title_label": {
+                  "name": "placement_asset_f5c006bef88e2dcd6_1741788662684",
+                  "id": "120219582869720526"
+                },
+                "priority": 1
+              },
+              {
+                "customization_spec": {
+                  "age_max": 65,
+                  "age_min": 13,
+                  "publisher_platforms": [
+                    "facebook"
+                  ],
+                  "facebook_positions": [
+                    "right_hand_column"
+                  ]
+                },
+                "image_label": {
+                  "name": "placement_asset_fe43d6e443702d83f_1741796733574",
+                  "id": "120219588311900526"
+                },
+                "body_label": {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                  "id": "120219588311950526"
+                },
+                "link_url_label": {
+                  "name": "placement_asset_fe8ecb622e8b543b8_1741796733575",
+                  "id": "120219588312010526"
+                },
+                "title_label": {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                  "id": "120219588311930526"
+                },
+                "priority": 2
+              },
+              {
+                "customization_spec": {
+                  "age_max": 65,
+                  "age_min": 13
+                },
+                "video_label": {
+                  "name": "placement_asset_f761e2b4387fead88_1741788662677",
+                  "id": "120219582869750526"
+                },
+                "body_label": {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                  "id": "120219582869710526"
+                },
+                "link_url_label": {
+                  "name": "placement_asset_fe0dacbb867defe68_1741788662678",
+                  "id": "120219582869760526"
+                },
+                "title_label": {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                  "id": "120219582869690526"
+                },
+                "priority": 3
+              }
+            ],
+            "optimization_type": "PLACEMENT",
+            "additional_data": {
+              "multi_share_end_card": false,
+              "is_click_to_message": false
+            },
+            "reasons_to_shop": false,
+            "shops_bundle": false
+          },
+          "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+        }
+      }
+    },
+    "adset_Bruno": {
+      "started": true,
+      "payload": {
+        "name": "Contabilidade financeira | Bruno | 2026-10-05",
+        "campaign_id": "120253413819760526",
+        "status": "PAUSED",
+        "optimization_goal": "QUALITY_LEAD",
+        "billing_event": "IMPRESSIONS",
+        "destination_type": "ON_AD",
+        "attribution_spec": [
+          {
+            "event_type": "CLICK_THROUGH",
+            "window_days": 1
+          }
+        ],
+        "promoted_object": {
+          "page_id": "131476997004991",
+          "smart_pse_enabled": false
+        },
+        "targeting": {
+          "age_max": 60,
+          "age_min": 25,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003389795312",
+                  "name": "Contabilidade financeira (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "home",
+              "recent"
+            ]
+          },
+          "brand_safety_content_filter_levels": [
+            "FACEBOOK_RELAXED",
+            "AN_RELAXED"
+          ],
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          }
+        }
+      },
+      "id": "120253413820840526",
+      "readback": {
+        "id": "120253413820840526",
+        "name": "Contabilidade financeira | Bruno | 2026-10-05",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "campaign_id": "120253413819760526",
+        "targeting": {
+          "age_max": 60,
+          "age_min": 25,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003389795312",
+                  "name": "Contabilidade financeira (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "home",
+              "recent"
+            ]
+          },
+          "brand_safety_content_filter_levels": [
+            "FACEBOOK_RELAXED",
+            "AN_RELAXED"
+          ],
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "instagram"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "reels"
+          ]
+        },
+        "promoted_object": {
+          "page_id": "131476997004991",
+          "smart_pse_enabled": false
+        },
+        "optimization_goal": "QUALITY_LEAD"
+      },
+      "instagram_only_update": {
+        "success": true
+      }
+    },
+    "creative_Bruno_1": {
+      "started": true,
+      "payload": {
+        "name": "AD21 | Bruno | maior intenção 2026-10-05",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841446823336862",
+          "video_data": {
+            "video_id": "1496774951421524",
+            "image_hash": "5073b44b12749fa671d74504c47bb54d",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "lead_gen_form_id": "1776305790272614",
+                "link": "https://form.respondi.app/gvz4UKQr"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "asset_feed_spec": {
+          "optimization_type": "DEGREES_OF_FREEDOM",
+          "bodies": [
+            {
+              "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+            },
+            {
+              "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+            },
+            {
+              "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+            },
+            {
+              "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+            },
+            {
+              "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+            }
+          ],
+          "titles": [
+            {
+              "text": "Equipe sobrecarregada?"
+            },
+            {
+              "text": "Custos operacionais altos?"
+            },
+            {
+              "text": "Precisa de mais tempo?"
+            },
+            {
+              "text": "Contabilidade no Limite?"
+            },
+            {
+              "text": "Agende sua reunião estratégica!"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+            }
+          ]
+        }
+      },
+      "id": "1076595411869854"
+    },
+    "creative_Bruno_2": {
+      "started": true,
+      "payload": {
+        "name": "AD16 | Bruno | maior intenção 2026-10-05",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841446823336862",
+          "video_data": {
+            "video_id": "1901350790760661",
+            "image_hash": "4a2db563a29a85423ab6def81272ef8a",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "lead_gen_form_id": "1776305790272614",
+                "link": "https://form.respondi.app/gvz4UKQr"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "asset_feed_spec": {
+          "optimization_type": "DEGREES_OF_FREEDOM",
+          "bodies": [
+            {
+              "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+            },
+            {
+              "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+            },
+            {
+              "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+            },
+            {
+              "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+            },
+            {
+              "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+            }
+          ],
+          "titles": [
+            {
+              "text": "Equipe sobrecarregada?"
+            },
+            {
+              "text": "Custos operacionais altos?"
+            },
+            {
+              "text": "Precisa de mais tempo?"
+            },
+            {
+              "text": "Contabilidade no Limite?"
+            },
+            {
+              "text": "Agende sua reunião estratégica!"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+            }
+          ]
+        }
+      },
+      "id": "1174244444963304"
+    },
+    "creative_Bruno_3": {
+      "started": true,
+      "payload": {
+        "name": "AD - Vídeo - Como saber onde usar Inteligência — Cópia | Bruno | maior intenção 2026-10-05",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841446823336862",
+          "video_data": {
+            "video_id": "894752866821603",
+            "image_hash": "06d04489f2e6c4fa9c94b50c27dc92e9",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "lead_gen_form_id": "1776305790272614",
+                "link": "https://form.respondi.app/gvz4UKQr"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "asset_feed_spec": {
+          "optimization_type": "DEGREES_OF_FREEDOM",
+          "bodies": [
+            {
+              "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+            },
+            {
+              "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+            },
+            {
+              "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+            },
+            {
+              "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+            },
+            {
+              "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+            }
+          ],
+          "titles": [
+            {
+              "text": "Equipe sobrecarregada?"
+            },
+            {
+              "text": "Custos operacionais altos?"
+            },
+            {
+              "text": "Precisa de mais tempo?"
+            },
+            {
+              "text": "Contabilidade no Limite?"
+            },
+            {
+              "text": "Agende sua reunião estratégica!"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+            }
+          ]
+        }
+      },
+      "id": "1789799705606847"
+    },
+    "creative_Bruno_4": {
+      "started": true,
+      "payload": {
+        "name": "AD29 | Bruno | maior intenção 2026-10-05",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841446823336862",
+          "video_data": {
+            "video_id": "1785167319119331",
+            "image_hash": "b69c9aeddf56b7dfa728ae92db11491c",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "lead_gen_form_id": "1776305790272614",
+                "link": "https://form.respondi.app/gvz4UKQr"
+              }
+            }
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "asset_feed_spec": {
+          "optimization_type": "DEGREES_OF_FREEDOM",
+          "bodies": [
+            {
+              "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+            },
+            {
+              "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+            },
+            {
+              "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+            },
+            {
+              "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+            },
+            {
+              "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+            }
+          ],
+          "titles": [
+            {
+              "text": "Equipe sobrecarregada?"
+            },
+            {
+              "text": "Custos operacionais altos?"
+            },
+            {
+              "text": "Precisa de mais tempo?"
+            },
+            {
+              "text": "Contabilidade no Limite?"
+            },
+            {
+              "text": "Agende sua reunião estratégica!"
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+            }
+          ]
+        }
+      },
+      "id": "2210652646166743"
+    },
+    "creative_Bruno_5": {
+      "started": true,
+      "payload": {
+        "name": "005 - Está consumido pela operação da contabilidade VICENTE | Bruno | maior intenção 2026-10-05",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841446823336862"
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "asset_feed_spec": {
+          "optimization_type": "PLACEMENT",
+          "call_to_action_types": [
+            "BOOK_TRAVEL"
+          ],
+          "ad_formats": [
+            "AUTOMATIC_FORMAT"
+          ],
+          "reasons_to_shop": false,
+          "shops_bundle": false,
+          "bodies": [
+            {
+              "text": "Descubra como otimizar a operação do seu escritório de contabilidade e liberar tempo para estratégias de crescimento",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6dcb793513d0ff8b_1741788662684"
+                },
+                {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Transforme a eficiência do seu escritório contábil: estratégias comprovadas para reduzir custos e aumentar lucros",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Está sobrecarregado com tarefas operacionais? Aprenda a delegar e focar no crescimento do seu negócio contábil",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Sua equipe está sobrecarregada? Descubra como aumentar a eficiência operacional e reduzir o estresse no trabalho",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Revolucione a gestão do seu escritório contábil: passos práticos para otimizar processos e aumentar a lucratividade",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+                }
+              ]
+            }
+          ],
+          "titles": [
+            {
+              "text": "Sobrecarregado com a operação do seu escritório?",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Sua contabilidade pode mais!",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Contabilidade no Limite?",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f5c006bef88e2dcd6_1741788662684"
+                }
+              ]
+            },
+            {
+              "text": "Liberte-se da rotina exaustiva e foque no crescimento estratégico.",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Sua equipe gasta muita energia nas tarefas diárias?",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+                }
+              ]
+            },
+            {
+              "text": "Não deixe a operação consumir a sua vida!",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+                },
+                {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+                }
+              ]
+            }
+          ],
+          "descriptions": [
+            {
+              "text": "Você se sente consumido pelas operações diárias do seu escritório de contabilidade, sem tempo para planejar estratégias de crescimento? Nós entendemos esse desafio. Nossa consultoria especializada ajuda a otimizar processos, reduzindo custos e liberando sua agenda para o que realmente importa: expandir seu negócio. Agende uma reunião estratégica gratuita e descubra como transformar sua rotina."
+            }
+          ],
+          "link_urls": [
+            {
+              "website_url": "https://form.respondi.app/gvz4UKQr",
+              "display_url": "",
+              "adlabels": [
+                {
+                  "name": "placement_asset_fc0349e90c941bb7f_1741788662684"
+                },
+                {
+                  "name": "placement_asset_fe0dacbb867defe68_1741788662678"
+                },
+                {
+                  "name": "placement_asset_fe8ecb622e8b543b8_1741796733575"
+                }
+              ]
+            }
+          ],
+          "images": [
+            {
+              "hash": "8a63e0308526561a5434dacace4a1e93",
+              "adlabels": [
+                {
+                  "name": "placement_asset_fe43d6e443702d83f_1741796733574"
+                }
+              ]
+            }
+          ],
+          "videos": [
+            {
+              "video_id": "888793517491892",
+              "adlabels": [
+                {
+                  "name": "placement_asset_f761e2b4387fead88_1741788662677"
+                }
+              ]
+            },
+            {
+              "video_id": "1827219514620080",
+              "adlabels": [
+                {
+                  "name": "placement_asset_fc92a0248a3e7bf96_1741788650517"
+                },
+                {
+                  "name": "placement_asset_f6c5b8ab93050baf4_1741788662681"
+                }
+              ]
+            }
+          ],
+          "asset_customization_rules": [
+            {
+              "priority": 1,
+              "body_label": {
+                "name": "placement_asset_f6dcb793513d0ff8b_1741788662684"
+              },
+              "title_label": {
+                "name": "placement_asset_f5c006bef88e2dcd6_1741788662684"
+              },
+              "link_url_label": {
+                "name": "placement_asset_fc0349e90c941bb7f_1741788662684"
+              },
+              "video_label": {
+                "name": "placement_asset_f6c5b8ab93050baf4_1741788662681"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65,
+                "publisher_platforms": [
+                  "facebook",
+                  "instagram"
+                ],
+                "instagram_positions": [
+                  "story",
+                  "reels"
+                ],
+                "facebook_positions": [
+                  "story",
+                  "facebook_reels",
+                  "facebook_reels_overlay"
+                ]
+              }
+            },
+            {
+              "priority": 2,
+              "body_label": {
+                "name": "placement_asset_f327decc7d3b46b0c_1741796733575"
+              },
+              "title_label": {
+                "name": "placement_asset_f73717c0f4ec6ca09_1741796733575"
+              },
+              "link_url_label": {
+                "name": "placement_asset_fe8ecb622e8b543b8_1741796733575"
+              },
+              "image_label": {
+                "name": "placement_asset_fe43d6e443702d83f_1741796733574"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65,
+                "publisher_platforms": [
+                  "facebook"
+                ],
+                "facebook_positions": [
+                  "right_hand_column"
+                ]
+              }
+            },
+            {
+              "priority": 3,
+              "body_label": {
+                "name": "placement_asset_f55e201ba97ecc2da_1741788662677"
+              },
+              "title_label": {
+                "name": "placement_asset_f6d09619731ec2b2b_1741788662677"
+              },
+              "link_url_label": {
+                "name": "placement_asset_fe0dacbb867defe68_1741788662678"
+              },
+              "video_label": {
+                "name": "placement_asset_f761e2b4387fead88_1741788662677"
+              },
+              "customization_spec": {
+                "age_min": 13,
+                "age_max": 65
+              }
+            }
+          ],
+          "call_to_actions": [
+            {
+              "type": "BOOK_TRAVEL",
+              "value": {
+                "lead_gen_form_id": "1776305790272614"
+              }
+            }
+          ],
+          "additional_data": {
+            "multi_share_end_card": false,
+            "is_click_to_message": false
+          }
+        }
+      },
+      "id": "916370071350428"
+    },
+    "ad_Bruno_5": {
+      "started": true,
+      "payload": {
+        "name": "005 - Está consumido pela operação da contabilidade VICENTE",
+        "adset_id": "120253413820840526",
+        "status": "PAUSED",
+        "creative": {
+          "creative_id": "916370071350428"
+        }
+      },
+      "id": "120253413821600526",
+      "readback": {
+        "id": "120253413821600526",
+        "name": "005 - Está consumido pela operação da contabilidade VICENTE",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253413819760526",
+        "adset_id": "120253413820840526",
+        "creative": {
+          "id": "916370071350428",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841446823336862"
+          },
+          "asset_feed_spec": {
+            "images": [
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_fe43d6e443702d83f_1741796733574",
+                    "id": "120219588311900526"
+                  }
+                ],
+                "hash": "8a63e0308526561a5434dacace4a1e93"
+              }
+            ],
+            "videos": [
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f761e2b4387fead88_1741788662677",
+                    "id": "120219582869750526"
+                  }
+                ],
+                "video_id": "2679897259137780",
+                "thumbnail_url": "https://scontent.fsdu36-1.fna.fbcdn.net/v/t15.5256-10/837922433_2679897295804443_5290623579610180403_n.jpg?_nc_cat=111&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=d2b52d&_nc_ohc=ykwi9Ayfzb8Q7kNvwE1GeC-&_nc_oc=Adost_U4XVTVqQVhnPTHOv5SuhqEUyeb0XZNZB3TorhMV-noCucSC9wQeMYNLB5uXeMW-et3f0ikavlYgjlvTffF&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fsdu36-1.fna&_nc_gid=i4PwMUUnMnkIDLrrR50GYQ&_nc_ss=7a22e&oh=00_AQOk-kSq8iiy7knI_xbzpkRhRtkDZJuOZWY85YmxKZbnSQ&oe=6ACA1929"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_fc92a0248a3e7bf96_1741788650517",
+                    "id": "120219582869730526"
+                  },
+                  {
+                    "name": "placement_asset_f6c5b8ab93050baf4_1741788662681",
+                    "id": "120219582869740526"
+                  }
+                ],
+                "video_id": "1089772213876116",
+                "thumbnail_url": "https://scontent.fsdu36-1.fna.fbcdn.net/v/t15.5256-10/836199132_1089772243876113_7570953588052811003_n.jpg?_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=d2b52d&_nc_ohc=3L9hnzFl3ncQ7kNvwE5mPpY&_nc_oc=AdpBnkloTSQhrsA2kuuPb4-TiA7xuQu8oGgxocUqrMaa9u_8D61cHBbynnG2N6zBhYgeZwNogE3e7WhiCmZZJhKr&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fsdu36-1.fna&_nc_gid=i4PwMUUnMnkIDLrrR50GYQ&_nc_ss=7a22e&oh=00_AQN2KNBdGORb9T3RWHJtP60u-xO7GFUybehEEmcqv4MESw&oe=6ACA1367"
+              }
+            ],
+            "bodies": [
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6dcb793513d0ff8b_1741788662684",
+                    "id": "120219582869700526"
+                  },
+                  {
+                    "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                    "id": "120219582869710526"
+                  },
+                  {
+                    "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                    "id": "120219588311950526"
+                  }
+                ],
+                "text": "Descubra como otimizar a operação do seu escritório de contabilidade e liberar tempo para estratégias de crescimento"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                    "id": "120219582869710526"
+                  },
+                  {
+                    "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                    "id": "120219588311950526"
+                  }
+                ],
+                "text": "Transforme a eficiência do seu escritório contábil: estratégias comprovadas para reduzir custos e aumentar lucros"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                    "id": "120219582869710526"
+                  },
+                  {
+                    "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                    "id": "120219588311950526"
+                  }
+                ],
+                "text": "Está sobrecarregado com tarefas operacionais? Aprenda a delegar e focar no crescimento do seu negócio contábil"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                    "id": "120219582869710526"
+                  },
+                  {
+                    "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                    "id": "120219588311950526"
+                  }
+                ],
+                "text": "Sua equipe está sobrecarregada? Descubra como aumentar a eficiência operacional e reduzir o estresse no trabalho"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                    "id": "120219582869710526"
+                  },
+                  {
+                    "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                    "id": "120219588311950526"
+                  }
+                ],
+                "text": "Revolucione a gestão do seu escritório contábil: passos práticos para otimizar processos e aumentar a lucratividade"
+              }
+            ],
+            "call_to_action_types": [
+              "BOOK_TRAVEL"
+            ],
+            "call_to_actions": [
+              {
+                "type": "BOOK_TRAVEL",
+                "value": {
+                  "lead_gen_form_id": "1776305790272614"
+                }
+              }
+            ],
+            "descriptions": [
+              {
+                "text": "Você se sente consumido pelas operações diárias do seu escritório de contabilidade, sem tempo para planejar estratégias de crescimento? Nós entendemos esse desafio. Nossa consultoria especializada ajuda a otimizar processos, reduzindo custos e liberando sua agenda para o que realmente importa: expandir seu negócio. Agende uma reunião estratégica gratuita e descubra como transformar sua rotina."
+              }
+            ],
+            "link_urls": [
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_fc0349e90c941bb7f_1741788662684",
+                    "id": "120219582869680526"
+                  },
+                  {
+                    "name": "placement_asset_fe0dacbb867defe68_1741788662678",
+                    "id": "120219582869760526"
+                  },
+                  {
+                    "name": "placement_asset_fe8ecb622e8b543b8_1741796733575",
+                    "id": "120219588312010526"
+                  }
+                ],
+                "website_url": "https://form.respondi.app/gvz4UKQr",
+                "display_url": ""
+              }
+            ],
+            "titles": [
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                    "id": "120219582869690526"
+                  },
+                  {
+                    "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                    "id": "120219588311930526"
+                  }
+                ],
+                "text": "Sobrecarregado com a operação do seu escritório?"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                    "id": "120219582869690526"
+                  },
+                  {
+                    "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                    "id": "120219588311930526"
+                  }
+                ],
+                "text": "Sua contabilidade pode mais!"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f5c006bef88e2dcd6_1741788662684",
+                    "id": "120219582869720526"
+                  }
+                ],
+                "text": "Contabilidade no Limite?"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                    "id": "120219582869690526"
+                  },
+                  {
+                    "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                    "id": "120219588311930526"
+                  }
+                ],
+                "text": "Liberte-se da rotina exaustiva e foque no crescimento estratégico."
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                    "id": "120219582869690526"
+                  },
+                  {
+                    "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                    "id": "120219588311930526"
+                  }
+                ],
+                "text": "Sua equipe gasta muita energia nas tarefas diárias?"
+              },
+              {
+                "adlabels": [
+                  {
+                    "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                    "id": "120219582869690526"
+                  },
+                  {
+                    "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                    "id": "120219588311930526"
+                  }
+                ],
+                "text": "Não deixe a operação consumir a sua vida!"
+              }
+            ],
+            "ad_formats": [
+              "AUTOMATIC_FORMAT"
+            ],
+            "asset_customization_rules": [
+              {
+                "customization_spec": {
+                  "age_max": 65,
+                  "age_min": 13,
+                  "publisher_platforms": [
+                    "facebook",
+                    "instagram"
+                  ],
+                  "facebook_positions": [
+                    "story",
+                    "facebook_reels",
+                    "facebook_reels_overlay"
+                  ],
+                  "instagram_positions": [
+                    "story",
+                    "reels"
+                  ]
+                },
+                "video_label": {
+                  "name": "placement_asset_f6c5b8ab93050baf4_1741788662681",
+                  "id": "120219582869740526"
+                },
+                "body_label": {
+                  "name": "placement_asset_f6dcb793513d0ff8b_1741788662684",
+                  "id": "120219582869700526"
+                },
+                "link_url_label": {
+                  "name": "placement_asset_fc0349e90c941bb7f_1741788662684",
+                  "id": "120219582869680526"
+                },
+                "title_label": {
+                  "name": "placement_asset_f5c006bef88e2dcd6_1741788662684",
+                  "id": "120219582869720526"
+                },
+                "priority": 1
+              },
+              {
+                "customization_spec": {
+                  "age_max": 65,
+                  "age_min": 13,
+                  "publisher_platforms": [
+                    "facebook"
+                  ],
+                  "facebook_positions": [
+                    "right_hand_column"
+                  ]
+                },
+                "image_label": {
+                  "name": "placement_asset_fe43d6e443702d83f_1741796733574",
+                  "id": "120219588311900526"
+                },
+                "body_label": {
+                  "name": "placement_asset_f327decc7d3b46b0c_1741796733575",
+                  "id": "120219588311950526"
+                },
+                "link_url_label": {
+                  "name": "placement_asset_fe8ecb622e8b543b8_1741796733575",
+                  "id": "120219588312010526"
+                },
+                "title_label": {
+                  "name": "placement_asset_f73717c0f4ec6ca09_1741796733575",
+                  "id": "120219588311930526"
+                },
+                "priority": 2
+              },
+              {
+                "customization_spec": {
+                  "age_max": 65,
+                  "age_min": 13
+                },
+                "video_label": {
+                  "name": "placement_asset_f761e2b4387fead88_1741788662677",
+                  "id": "120219582869750526"
+                },
+                "body_label": {
+                  "name": "placement_asset_f55e201ba97ecc2da_1741788662677",
+                  "id": "120219582869710526"
+                },
+                "link_url_label": {
+                  "name": "placement_asset_fe0dacbb867defe68_1741788662678",
+                  "id": "120219582869760526"
+                },
+                "title_label": {
+                  "name": "placement_asset_f6d09619731ec2b2b_1741788662677",
+                  "id": "120219582869690526"
+                },
+                "priority": 3
+              }
+            ],
+            "optimization_type": "PLACEMENT",
+            "additional_data": {
+              "multi_share_end_card": false,
+              "is_click_to_message": false
+            },
+            "reasons_to_shop": false,
+            "shops_bundle": false
+          },
+          "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+        }
+      }
+    },
+    "ad_Sevilha_1": {
+      "started": true,
+      "payload": {
+        "name": "AD21",
+        "adset_id": "120253413819880526",
+        "status": "PAUSED",
+        "creative": {
+          "creative_id": "4570363779911091"
+        }
+      },
+      "id": "120253413828210526",
+      "readback": {
+        "id": "120253413828210526",
+        "name": "AD21",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253413819760526",
+        "adset_id": "120253413819880526",
+        "creative": {
+          "id": "4570363779911091",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "1496774951421524",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "lead_gen_form_id": "1776305790272614",
+                  "link": "https://form.respondi.app/gvz4UKQr"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQLtMeoZXxaBTZaeYdsMdXQYWBPWT4kyB-UQjZcsOvG65NpIm2R_ywgWHp4eUHiOHysqSejlQIKPcW7oZpOinNScJAzuibesmnGgFs9v6Eqsu7rxqis4vtkA6bY2QZc-MEPWch7qIejf2igMX8bZzWaO",
+              "image_hash": "5073b44b12749fa671d74504c47bb54d"
+            }
+          },
+          "asset_feed_spec": {
+            "bodies": [
+              {
+                "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+              },
+              {
+                "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+              },
+              {
+                "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+              },
+              {
+                "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+              },
+              {
+                "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+              }
+            ],
+            "descriptions": [
+              {
+                "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+              }
+            ],
+            "titles": [
+              {
+                "text": "Equipe sobrecarregada?"
+              },
+              {
+                "text": "Custos operacionais altos?"
+              },
+              {
+                "text": "Precisa de mais tempo?"
+              },
+              {
+                "text": "Contabilidade no Limite?"
+              },
+              {
+                "text": "Agende sua reunião estratégica!"
+              }
+            ],
+            "optimization_type": "DEGREES_OF_FREEDOM"
+          },
+          "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+        }
+      }
+    },
+    "ad_Sevilha_2": {
+      "started": true,
+      "payload": {
+        "name": "AD16",
+        "adset_id": "120253413819880526",
+        "status": "PAUSED",
+        "creative": {
+          "creative_id": "1717101952684519"
+        }
+      },
+      "id": "120253413828380526",
+      "readback": {
+        "id": "120253413828380526",
+        "name": "AD16",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253413819760526",
+        "adset_id": "120253413819880526",
+        "creative": {
+          "id": "1717101952684519",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "1901350790760661",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "lead_gen_form_id": "1776305790272614",
+                  "link": "https://form.respondi.app/gvz4UKQr"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQIUupwXJJlUOX8iqVfQiNmIPqVTmLW7-vkW76tQCTgHPBEybPEieZTB3dhB3SiMSurrLFTgj-Y0OfWG8xH1shfk7ZeP7VlRHGGCgdnNkCiTtYZCRN245xKNlO0tOvvTC7eaIXGmTgF2rOSzvjRurpnY",
+              "image_hash": "4a2db563a29a85423ab6def81272ef8a"
+            }
+          },
+          "asset_feed_spec": {
+            "bodies": [
+              {
+                "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+              },
+              {
+                "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+              },
+              {
+                "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+              },
+              {
+                "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+              },
+              {
+                "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+              }
+            ],
+            "descriptions": [
+              {
+                "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+              }
+            ],
+            "titles": [
+              {
+                "text": "Equipe sobrecarregada?"
+              },
+              {
+                "text": "Custos operacionais altos?"
+              },
+              {
+                "text": "Precisa de mais tempo?"
+              },
+              {
+                "text": "Contabilidade no Limite?"
+              },
+              {
+                "text": "Agende sua reunião estratégica!"
+              }
+            ],
+            "optimization_type": "DEGREES_OF_FREEDOM"
+          },
+          "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+        }
+      }
+    },
+    "ad_Sevilha_3": {
+      "started": true,
+      "payload": {
+        "name": "AD - Vídeo - Como saber onde usar Inteligência — Cópia",
+        "adset_id": "120253413819880526",
+        "status": "PAUSED",
+        "creative": {
+          "creative_id": "4686119801612093"
+        }
+      },
+      "id": "120253413828420526",
+      "readback": {
+        "id": "120253413828420526",
+        "name": "AD - Vídeo - Como saber onde usar Inteligência — Cópia",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253413819760526",
+        "adset_id": "120253413819880526",
+        "creative": {
+          "id": "4686119801612093",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "894752866821603",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "lead_gen_form_id": "1776305790272614",
+                  "link": "https://form.respondi.app/gvz4UKQr"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQJe6fmpfz6fnxyXvU4ALA82ImP0L8s_qjP3gFtEb3lPdgwjbbMImzfg6eEDhyHCQM7uy35DPMj-wvViSChBVy_cK9EdwjPt9UW3zqENt88mVEEgYz8OxT41GCeheApqOM9sQhr-YOqbACEQ6qra7JC4",
+              "image_hash": "06d04489f2e6c4fa9c94b50c27dc92e9"
+            }
+          },
+          "asset_feed_spec": {
+            "bodies": [
+              {
+                "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+              },
+              {
+                "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+              },
+              {
+                "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+              },
+              {
+                "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+              },
+              {
+                "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+              }
+            ],
+            "descriptions": [
+              {
+                "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+              }
+            ],
+            "titles": [
+              {
+                "text": "Equipe sobrecarregada?"
+              },
+              {
+                "text": "Custos operacionais altos?"
+              },
+              {
+                "text": "Precisa de mais tempo?"
+              },
+              {
+                "text": "Contabilidade no Limite?"
+              },
+              {
+                "text": "Agende sua reunião estratégica!"
+              }
+            ],
+            "optimization_type": "DEGREES_OF_FREEDOM"
+          },
+          "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+        }
+      }
+    },
+    "ad_Sevilha_4": {
+      "started": true,
+      "payload": {
+        "name": "AD29",
+        "adset_id": "120253413819880526",
+        "status": "PAUSED",
+        "creative": {
+          "creative_id": "1142920355064404"
+        }
+      },
+      "id": "120253413828450526",
+      "readback": {
+        "id": "120253413828450526",
+        "name": "AD29",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253413819760526",
+        "adset_id": "120253413819880526",
+        "creative": {
+          "id": "1142920355064404",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "1785167319119331",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "lead_gen_form_id": "1776305790272614",
+                  "link": "https://form.respondi.app/gvz4UKQr"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQL0RInIDYJ3RHpu5TEKXFKo7icGizuhXi6JQDIC9X3tROvmugE9G586pGzRRAm2ssqEXkATmeGutCFijjjX7rSzK9Oe-VogGzBCFUr_XuXHed4UUif4BlMkKiAizLV9ZYQF7UbQ-J1pEgK80w-ywfUP",
+              "image_hash": "b69c9aeddf56b7dfa728ae92db11491c"
+            }
+          },
+          "asset_feed_spec": {
+            "bodies": [
+              {
+                "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+              },
+              {
+                "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+              },
+              {
+                "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+              },
+              {
+                "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+              },
+              {
+                "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+              }
+            ],
+            "descriptions": [
+              {
+                "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+              }
+            ],
+            "titles": [
+              {
+                "text": "Equipe sobrecarregada?"
+              },
+              {
+                "text": "Custos operacionais altos?"
+              },
+              {
+                "text": "Precisa de mais tempo?"
+              },
+              {
+                "text": "Contabilidade no Limite?"
+              },
+              {
+                "text": "Agende sua reunião estratégica!"
+              }
+            ],
+            "optimization_type": "DEGREES_OF_FREEDOM"
+          },
+          "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+        }
+      }
+    },
+    "ad_Bruno_1": {
+      "started": true,
+      "payload": {
+        "name": "AD21",
+        "adset_id": "120253413820840526",
+        "status": "PAUSED",
+        "creative": {
+          "creative_id": "1076595411869854"
+        }
+      },
+      "id": "120253413830170526",
+      "readback": {
+        "id": "120253413830170526",
+        "name": "AD21",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253413819760526",
+        "adset_id": "120253413820840526",
+        "creative": {
+          "id": "1076595411869854",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841446823336862",
+            "video_data": {
+              "video_id": "1496774951421524",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "lead_gen_form_id": "1776305790272614",
+                  "link": "https://form.respondi.app/gvz4UKQr"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQKujttBY7-_iHQLgpq279sxda8doeiCYTD9HaIc7l6xJ7QAQ5--Bahv0Yi-YkOsHCdhS__VIscu3VBbxLgROYMftpVpCmrB4y6kbc039PTFAjGodiTfMqG_F6ejE-5Wjo6UPdgLNQu20RqNO2wyvBi7",
+              "image_hash": "5073b44b12749fa671d74504c47bb54d"
+            }
+          },
+          "asset_feed_spec": {
+            "bodies": [
+              {
+                "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+              },
+              {
+                "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+              },
+              {
+                "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+              },
+              {
+                "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+              },
+              {
+                "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+              }
+            ],
+            "descriptions": [
+              {
+                "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+              }
+            ],
+            "titles": [
+              {
+                "text": "Equipe sobrecarregada?"
+              },
+              {
+                "text": "Custos operacionais altos?"
+              },
+              {
+                "text": "Precisa de mais tempo?"
+              },
+              {
+                "text": "Contabilidade no Limite?"
+              },
+              {
+                "text": "Agende sua reunião estratégica!"
+              }
+            ],
+            "optimization_type": "DEGREES_OF_FREEDOM"
+          },
+          "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+        }
+      }
+    },
+    "ad_Bruno_2": {
+      "started": true,
+      "payload": {
+        "name": "AD16",
+        "adset_id": "120253413820840526",
+        "status": "PAUSED",
+        "creative": {
+          "creative_id": "1174244444963304"
+        }
+      },
+      "id": "120253413830270526",
+      "readback": {
+        "id": "120253413830270526",
+        "name": "AD16",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "campaign_id": "120253413819760526",
+        "adset_id": "120253413820840526",
+        "creative": {
+          "id": "1174244444963304",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841446823336862",
+            "video_data": {
+              "video_id": "1901350790760661",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "lead_gen_form_id": "1776305790272614",
+                  "link": "https://form.respondi.app/gvz4UKQr"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQJzOJZO-r_OEVAbyM56Gr017wC8unPOw4O8YI6HNDrBd9BF6cDp4xfaGQI_Mnkf6SFn-azhhoQWrNKMvv1WtHFgoJUu4mBNfqwNx9qOi9EUD1H3IZ18y8eKf0fbkGPEiEiHuhllC-SAgg5CwHopxALW",
+              "image_hash": "4a2db563a29a85423ab6def81272ef8a"
+            }
+          },
+          "asset_feed_spec": {
+            "bodies": [
+              {
+                "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+              },
+              {
+                "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+              },
+              {
+                "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+              },
+              {
+                "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+              },
+              {
+                "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+              }
+            ],
+            "descriptions": [
+              {
+                "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+              }
+            ],
+            "titles": [
+              {
+                "text": "Equipe sobrecarregada?"
+              },
+              {
+                "text": "Custos operacionais altos?"
+              },
+              {
+                "text": "Precisa de mais tempo?"
+              },
+              {
+                "text": "Contabilidade no Limite?"
+              },
+              {
+                "text": "Agende sua reunião estratégica!"
+              }
+            ],
+            "optimization_type": "DEGREES_OF_FREEDOM"
+          },
+          "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+        }
+      }
+    },
+    "ad_Bruno_3": {
+      "started": true,
+      "payload": {
+        "name": "AD - Vídeo - Como saber onde usar Inteligência — Cópia",
+        "adset_id": "120253413820840526",
+        "status": "PAUSED",
+        "creative": {
+          "creative_id": "1789799705606847"
+        }
+      },
+      "id": "120253413830380526",
+      "readback": {
+        "id": "120253413830380526",
+        "name": "AD - Vídeo - Como saber onde usar Inteligência — Cópia",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253413819760526",
+        "adset_id": "120253413820840526",
+        "creative": {
+          "id": "1789799705606847",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841446823336862",
+            "video_data": {
+              "video_id": "894752866821603",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "lead_gen_form_id": "1776305790272614",
+                  "link": "https://form.respondi.app/gvz4UKQr"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQJYkOkbcN2MjHpqvKb3lH5d9vi61m6se6mpIEdCu07vbjs0aCiZQNdvYz7uYpGYlhLntbVFB89My06kqqFO9QfnVNNiahak8KgLRFvt-LwNG7fB1ALDpreGh9eJH4ey4TLHFSBnVNmoDafssEaXKMUg",
+              "image_hash": "06d04489f2e6c4fa9c94b50c27dc92e9"
+            }
+          },
+          "asset_feed_spec": {
+            "bodies": [
+              {
+                "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+              },
+              {
+                "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+              },
+              {
+                "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+              },
+              {
+                "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+              },
+              {
+                "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+              }
+            ],
+            "descriptions": [
+              {
+                "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+              }
+            ],
+            "titles": [
+              {
+                "text": "Equipe sobrecarregada?"
+              },
+              {
+                "text": "Custos operacionais altos?"
+              },
+              {
+                "text": "Precisa de mais tempo?"
+              },
+              {
+                "text": "Contabilidade no Limite?"
+              },
+              {
+                "text": "Agende sua reunião estratégica!"
+              }
+            ],
+            "optimization_type": "DEGREES_OF_FREEDOM"
+          },
+          "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+        }
+      }
+    },
+    "ad_Bruno_4": {
+      "started": true,
+      "payload": {
+        "name": "AD29",
+        "adset_id": "120253413820840526",
+        "status": "PAUSED",
+        "creative": {
+          "creative_id": "2210652646166743"
+        }
+      },
+      "id": "120253413830430526",
+      "readback": {
+        "id": "120253413830430526",
+        "name": "AD29",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW",
+        "campaign_id": "120253413819760526",
+        "adset_id": "120253413820840526",
+        "creative": {
+          "id": "2210652646166743",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841446823336862",
+            "video_data": {
+              "video_id": "1785167319119331",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "lead_gen_form_id": "1776305790272614",
+                  "link": "https://form.respondi.app/gvz4UKQr"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQJhY4GwE_WOwrBSK8BpwkLS0wh52brBxf4PjTbCTc2phqEkjX31MwmF5aSA1B4A1PFsbnDDPh92RkLZOEMx-0MoDOjATB6rojaDyPOu0oCKGtPU6W0_-bOlnCBBx7zLrWzOlIoEaOBXRQ7MXvqpBh6o",
+              "image_hash": "b69c9aeddf56b7dfa728ae92db11491c"
+            }
+          },
+          "asset_feed_spec": {
+            "bodies": [
+              {
+                "text": "Que tal equilibrar o crescimento do seu escritório de contabilidade com custos operacionais controlados?"
+              },
+              {
+                "text": "Equipe sobrecarregada com a chegada de novos clientes? Aprenda a otimizar processos e reduzir custos operacionais em nossa reunião estratégica."
+              },
+              {
+                "text": "Crescimento descontrolado afetando sua operação? Agende uma reunião estratégica e retome o controle do seu escritório contábil."
+              },
+              {
+                "text": "Custos operacionais altos comprometendo seus lucros? Descubra soluções eficientes para otimizar sua contabilidade em nossa sessão estratégica."
+              },
+              {
+                "text": "Falta tempo para desenvolver estratégias de crescimento? Nós ajudamos você a otimizar sua gestão em uma reunião personalizada."
+              }
+            ],
+            "descriptions": [
+              {
+                "text": "A chegada de novos clientes deveria ser motivo de celebração, mas sua equipe está sobrecarregada? Nós entendemos esse desafio. Agende uma reunião estratégica e descubra como otimizar processos, reduzir custos operacionais e aumentar a satisfação da sua equipe."
+              }
+            ],
+            "titles": [
+              {
+                "text": "Equipe sobrecarregada?"
+              },
+              {
+                "text": "Custos operacionais altos?"
+              },
+              {
+                "text": "Precisa de mais tempo?"
+              },
+              {
+                "text": "Contabilidade no Limite?"
+              },
+              {
+                "text": "Agende sua reunião estratégica!"
+              }
+            ],
+            "optimization_type": "DEGREES_OF_FREEDOM"
+          },
+          "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+        }
+      }
+    }
+  },
+  "form_creation_readback": {
+    "id": "1776305790272614",
+    "name": "[SE] [FORMS] Diagnóstico Operacional | Maior intenção | 2026-10-05",
+    "status": "ACTIVE",
+    "page": {
+      "name": "Sevilha Performance",
+      "id": "131476997004991"
+    },
+    "questions": [
+      {
+        "key": "Quantos colaboradores você tem?",
+        "label": "Quantos colaboradores você tem?",
+        "options": [
+          {
+            "key": "De 0 a 4",
+            "value": "De 0 a 4"
+          },
+          {
+            "key": "De 5 a 9",
+            "value": "De 5 a 9"
+          },
+          {
+            "key": "De 10 a 19",
+            "value": "De 10 a 19"
+          },
+          {
+            "key": "De 20 a 29",
+            "value": "De 20 a 29"
+          },
+          {
+            "key": "De 30 a 49",
+            "value": "De 30 a 49"
+          },
+          {
+            "key": "Mais de 50",
+            "value": "Mais de 50"
+          }
+        ],
+        "type": "CUSTOM",
+        "id": "4479106988900146"
+      },
+      {
+        "key": "Qual a sua posição no escritório Contábil?",
+        "label": "Qual a sua posição no escritório Contábil?",
+        "options": [
+          {
+            "key": "dono/sócio",
+            "value": "Dono/Sócio"
+          },
+          {
+            "key": "cargo_gerencial_(lider_/_gerente_/_encarregado_/_coordenador...)",
+            "value": "Cargo Gerencial (Lider / Gerente / Encarregado / Coordenador...)"
+          },
+          {
+            "key": "cargo_operacional_(assistente_/_analista...)",
+            "value": "Cargo Operacional (Assistente / Analista...)"
+          }
+        ],
+        "type": "CUSTOM",
+        "id": "1836306627686150"
+      },
+      {
+        "key": "qual_o_nome_do_escritório_de_contabilidade?",
+        "label": "Qual o nome do Escritório de Contabilidade?",
+        "type": "CUSTOM",
+        "id": "2186037848610356"
+      },
+      {
+        "key": "full_name",
+        "label": "Full name",
+        "type": "FULL_NAME",
+        "id": "28974480668906413"
+      },
+      {
+        "key": "email",
+        "label": "Email",
+        "type": "EMAIL",
+        "id": "1449125423242892"
+      },
+      {
+        "key": "phone_number",
+        "label": "Phone number",
+        "type": "PHONE",
+        "id": "2371434567003650"
+      }
+    ],
+    "privacy_policy_url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+    "context_card": {
+      "title": "Diagnóstico gratuito para seu escritório contábil",
+      "content": [
+        "Sessão Estratégica online de 45 minutos com Bruno Silvestre, gratuita e sem compromisso. Para donos e sócios de escritórios contábeis com 10 ou mais colaboradores: identifique gargalos de processos, estrutura e margem e as prioridades do escritório."
+      ],
+      "style": "PARAGRAPH_STYLE",
+      "button_text": "Solicitar diagnóstico",
+      "id": "861247117015570"
+    },
+    "thank_you_page": {
+      "title": "Pronto. Entraremos em contato o mais breve",
+      "body": "Você agendar seu diagnóstico clicando no botão abaixo.",
+      "button_text": "Quero marcar meu diagnóstico!",
+      "enable_messenger": false,
+      "button_type": "VIEW_WEBSITE",
+      "website_url": "https://hi.switchy.io/uA2W",
+      "id": "30072267489025299"
+    },
+    "locale": "pt_BR",
+    "follow_up_action_url": "https://hi.switchy.io/uA2W",
+    "is_optimized_for_quality": true,
+    "allow_organic_lead": false,
+    "tracking_parameters": [
+      {
+        "key": "utm_source",
+        "value": "{{placement}}"
+      },
+      {
+        "key": "utm_medium",
+        "value": "{{adset.name}}"
+      },
+      {
+        "key": "utm_campaign",
+        "value": "{{campaign.name}}"
+      },
+      {
+        "key": "utm_content",
+        "value": "{{ad.name}}"
+      }
+    ]
+  },
+  "form_creation_payload": {
+    "name": "[SE] [FORMS] Diagnóstico Operacional | Maior intenção | 2026-10-05",
+    "locale": "pt_BR",
+    "is_optimized_for_quality": "true",
+    "allow_organic_lead_retrieval": "false",
+    "questions": [
+      {
+        "key": "Quantos colaboradores você tem?",
+        "label": "Quantos colaboradores você tem?",
+        "options": [
+          {
+            "key": "De 0 a 4",
+            "value": "De 0 a 4"
+          },
+          {
+            "key": "De 5 a 9",
+            "value": "De 5 a 9"
+          },
+          {
+            "key": "De 10 a 19",
+            "value": "De 10 a 19"
+          },
+          {
+            "key": "De 20 a 29",
+            "value": "De 20 a 29"
+          },
+          {
+            "key": "De 30 a 49",
+            "value": "De 30 a 49"
+          },
+          {
+            "key": "Mais de 50",
+            "value": "Mais de 50"
+          }
+        ],
+        "type": "CUSTOM"
+      },
+      {
+        "key": "Qual a sua posição no escritório Contábil?",
+        "label": "Qual a sua posição no escritório Contábil?",
+        "options": [
+          {
+            "key": "dono/sócio",
+            "value": "Dono/Sócio"
+          },
+          {
+            "key": "cargo_gerencial_(lider_/_gerente_/_encarregado_/_coordenador...)",
+            "value": "Cargo Gerencial (Lider / Gerente / Encarregado / Coordenador...)"
+          },
+          {
+            "key": "cargo_operacional_(assistente_/_analista...)",
+            "value": "Cargo Operacional (Assistente / Analista...)"
+          }
+        ],
+        "type": "CUSTOM"
+      },
+      {
+        "key": "qual_o_nome_do_escritório_de_contabilidade?",
+        "label": "Qual o nome do Escritório de Contabilidade?",
+        "type": "CUSTOM"
+      },
+      {
+        "key": "full_name",
+        "type": "FULL_NAME"
+      },
+      {
+        "key": "email",
+        "type": "EMAIL"
+      },
+      {
+        "key": "phone_number",
+        "type": "PHONE"
+      }
+    ],
+    "privacy_policy": {
+      "url": "https://www.facebook.com/privacy/policy/?locale=pt_BR",
+      "link_text": "Política de privacidade"
+    },
+    "follow_up_action_url": "https://hi.switchy.io/uA2W",
+    "thank_you_page": {
+      "title": "Pronto. Entraremos em contato o mais breve",
+      "body": "Você agendar seu diagnóstico clicando no botão abaixo.",
+      "button_text": "Quero marcar meu diagnóstico!",
+      "enable_messenger": false,
+      "button_type": "VIEW_WEBSITE",
+      "website_url": "https://hi.switchy.io/uA2W"
+    },
+    "context_card": {
+      "title": "Diagnóstico gratuito para seu escritório contábil",
+      "style": "PARAGRAPH_STYLE",
+      "content": [
+        "Sessão Estratégica online de 45 minutos com Bruno Silvestre, gratuita e sem compromisso. Para donos e sócios de escritórios contábeis com 10 ou mais colaboradores: identifique gargalos de processos, estrutura e margem e as prioridades do escritório."
+      ],
+      "button_text": "Solicitar diagnóstico"
+    },
+    "tracking_parameters": {
+      "utm_source": "{{placement}}",
+      "utm_medium": "{{adset.name}}",
+      "utm_campaign": "{{campaign.name}}",
+      "utm_content": "{{ad.name}}"
+    }
+  },
+  "approval_review_blocks": [
+    {
+      "action": "Create second form on Bruno Page",
+      "attempts": 2,
+      "http_request_sent": false,
+      "reason": "Additional persistent data capture considered outside original authorization; advertiser policy/ingestion pending",
+      "resolution": "Second form abandoned; original connected Instagram identity alternative explicitly approved"
+    }
+  ],
+  "final_verification": {
+    "campaign_id": "120253413819760526",
+    "daily_budget_cents": 36000,
+    "adsets": [
+      {
+        "id": "120253413819880526",
+        "status": "PAUSED",
+        "effective_status": "PAUSED"
+      },
+      {
+        "id": "120253413820840526",
+        "status": "PAUSED",
+        "effective_status": "PAUSED"
+      }
+    ],
+    "ads": [
+      {
+        "rank": 5,
+        "identity": "Sevilha",
+        "id": "120253413820680526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      },
+      {
+        "rank": 5,
+        "identity": "Bruno",
+        "id": "120253413821600526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      },
+      {
+        "rank": 1,
+        "identity": "Sevilha",
+        "id": "120253413828210526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      },
+      {
+        "rank": 2,
+        "identity": "Sevilha",
+        "id": "120253413828380526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      },
+      {
+        "rank": 3,
+        "identity": "Sevilha",
+        "id": "120253413828420526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      },
+      {
+        "rank": 4,
+        "identity": "Sevilha",
+        "id": "120253413828450526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      },
+      {
+        "rank": 1,
+        "identity": "Bruno",
+        "id": "120253413830170526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      },
+      {
+        "rank": 2,
+        "identity": "Bruno",
+        "id": "120253413830270526",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS"
+      },
+      {
+        "rank": 3,
+        "identity": "Bruno",
+        "id": "120253413830380526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      },
+      {
+        "rank": 4,
+        "identity": "Bruno",
+        "id": "120253413830430526",
+        "status": "PAUSED",
+        "effective_status": "PENDING_REVIEW"
+      }
+    ],
+    "form_id": "1776305790272614",
+    "verification": "PASS: ten PAUSED ads, exact UTM macros, single form, correct connected IG identities and equal Instagram-only audience; five concepts use identical submitted assets/copy",
+    "readback_caveat": "Meta generated distinct video IDs for per-placement rank5 copies although submitted video assets/labels/placement rules were identical. Review/effective states still IN_PROCESS or PENDING_REVIEW.",
+    "launch_ready": false
+  }
+}

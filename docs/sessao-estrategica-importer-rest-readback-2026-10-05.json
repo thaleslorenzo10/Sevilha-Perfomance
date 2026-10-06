@@ -1,0 +1,200 @@
+{
+  "id": "QUHr7JRIIhGrOgOY",
+  "name": "[SEVILHA PERFOMANCE] Import Planilha (2 abas) → RD CRM",
+  "active": false,
+  "nodes": [
+    {
+      "name": "Run (Manual)",
+      "type": "n8n-nodes-base.manualTrigger",
+      "operation": null,
+      "method": null,
+      "http_host": null,
+      "http_path": "",
+      "mentions_new_form": false,
+      "mentions_form_id": false,
+      "outbound_messaging_possible": false,
+      "document_id": null,
+      "sheet_name": null,
+      "code_mentions_crm": false,
+      "code_mentions_leadgen": false,
+      "has_code": false
+    },
+    {
+      "name": "Sheets - Página1",
+      "type": "n8n-nodes-base.googleSheets",
+      "operation": null,
+      "method": null,
+      "http_host": null,
+      "http_path": "",
+      "mentions_new_form": false,
+      "mentions_form_id": false,
+      "outbound_messaging_possible": false,
+      "document_id": "148Gt4pctbsWIiiH-TNCfxgXErkvemPKczmggtpUDl6Q",
+      "sheet_name": "0",
+      "code_mentions_crm": false,
+      "code_mentions_leadgen": false,
+      "has_code": false
+    },
+    {
+      "name": "Sheets - [SE] [FORMS] 6",
+      "type": "n8n-nodes-base.googleSheets",
+      "operation": null,
+      "method": null,
+      "http_host": null,
+      "http_path": "",
+      "mentions_new_form": false,
+      "mentions_form_id": false,
+      "outbound_messaging_possible": false,
+      "document_id": "148Gt4pctbsWIiiH-TNCfxgXErkvemPKczmggtpUDl6Q",
+      "sheet_name": "857728296",
+      "code_mentions_crm": false,
+      "code_mentions_leadgen": false,
+      "has_code": false
+    },
+    {
+      "name": "Merge (append)",
+      "type": "n8n-nodes-base.merge",
+      "operation": null,
+      "method": null,
+      "http_host": null,
+      "http_path": "",
+      "mentions_new_form": false,
+      "mentions_form_id": false,
+      "outbound_messaging_possible": false,
+      "document_id": null,
+      "sheet_name": null,
+      "code_mentions_crm": false,
+      "code_mentions_leadgen": false,
+      "has_code": false
+    },
+    {
+      "name": "Limpa & Mapeia",
+      "type": "n8n-nodes-base.set",
+      "operation": null,
+      "method": null,
+      "http_host": null,
+      "http_path": "",
+      "mentions_new_form": false,
+      "mentions_form_id": false,
+      "outbound_messaging_possible": false,
+      "document_id": null,
+      "sheet_name": null,
+      "code_mentions_crm": false,
+      "code_mentions_leadgen": false,
+      "has_code": false
+    },
+    {
+      "name": "Tem e-mail?",
+      "type": "n8n-nodes-base.filter",
+      "operation": null,
+      "method": null,
+      "http_host": null,
+      "http_path": "",
+      "mentions_new_form": false,
+      "mentions_form_id": false,
+      "outbound_messaging_possible": false,
+      "document_id": null,
+      "sheet_name": null,
+      "code_mentions_crm": false,
+      "code_mentions_leadgen": false,
+      "has_code": false
+    },
+    {
+      "name": "Dedup por e-mail",
+      "type": "n8n-nodes-base.removeDuplicates",
+      "operation": "removeDuplicateInputItems",
+      "method": null,
+      "http_host": null,
+      "http_path": "",
+      "mentions_new_form": false,
+      "mentions_form_id": false,
+      "outbound_messaging_possible": false,
+      "document_id": null,
+      "sheet_name": null,
+      "code_mentions_crm": false,
+      "code_mentions_leadgen": false,
+      "has_code": false
+    },
+    {
+      "name": "RD CRM - Cria Contato + Deal",
+      "type": "n8n-nodes-base.httpRequest",
+      "operation": null,
+      "method": "POST",
+      "http_host": "crm.rdstation.com",
+      "http_path": "/api/v1/deals",
+      "mentions_new_form": false,
+      "mentions_form_id": false,
+      "outbound_messaging_possible": false,
+      "document_id": null,
+      "sheet_name": null,
+      "code_mentions_crm": true,
+      "code_mentions_leadgen": false,
+      "has_code": false
+    },
+    {
+      "name": "Pula já importados",
+      "type": "n8n-nodes-base.code",
+      "operation": null,
+      "method": null,
+      "http_host": null,
+      "http_path": "",
+      "mentions_new_form": false,
+      "mentions_form_id": false,
+      "outbound_messaging_possible": false,
+      "document_id": null,
+      "sheet_name": null,
+      "code_mentions_crm": false,
+      "code_mentions_leadgen": false,
+      "has_code": true
+    },
+    {
+      "name": "Run (Webhook)",
+      "type": "n8n-nodes-base.webhook",
+      "operation": null,
+      "method": null,
+      "http_host": null,
+      "http_path": "",
+      "mentions_new_form": false,
+      "mentions_form_id": false,
+      "outbound_messaging_possible": false,
+      "document_id": null,
+      "sheet_name": null,
+      "code_mentions_crm": false,
+      "code_mentions_leadgen": false,
+      "has_code": false
+    }
+  ],
+  "connections": {
+    "Run (Manual)": [
+      "Sheets - Página1",
+      "Sheets - [SE] [FORMS] 6"
+    ],
+    "Sheets - Página1": [
+      "Merge (append)"
+    ],
+    "Sheets - [SE] [FORMS] 6": [
+      "Merge (append)"
+    ],
+    "Merge (append)": [
+      "Limpa & Mapeia"
+    ],
+    "Limpa & Mapeia": [
+      "Tem e-mail?"
+    ],
+    "Tem e-mail?": [
+      "Dedup por e-mail"
+    ],
+    "Dedup por e-mail": [
+      "Pula já importados"
+    ],
+    "Pula já importados": [
+      "RD CRM - Cria Contato + Deal"
+    ],
+    "Run (Webhook)": [
+      "Sheets - Página1",
+      "Sheets - [SE] [FORMS] 6"
+    ]
+  },
+  "new_form_specific_filter_present": false,
+  "messaging_nodes_possible": false
+}

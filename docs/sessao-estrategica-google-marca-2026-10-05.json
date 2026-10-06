@@ -1,0 +1,1148 @@
+{
+  "customer_id": "1316487378",
+  "manager_id": "3844411205",
+  "name": "[SE][SEARCH][MARCA] Sessao Estrategica 20261005",
+  "monthly_limit_total": 14000,
+  "google_daily_total": 90,
+  "brand_daily": 20,
+  "generic_daily": 70,
+  "forecast": "Nenhuma previsao de volume ou CPC de marca; teto CPC 5.50 e limite de lance, nao previsao.",
+  "mql_target": {
+    "sessions_month": 30,
+    "mql_month": "80-90",
+    "not_guaranteed": true
+  },
+  "operations": [
+    {
+      "campaignBudgetOperation": {
+        "update": {
+          "resourceName": "customers/1316487378/campaignBudgets/15919750457",
+          "amountMicros": "70000000"
+        },
+        "updateMask": "amount_micros"
+      }
+    },
+    {
+      "campaignBudgetOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/campaignBudgets/-101",
+          "name": "[SE][SEARCH][MARCA] Sessao Estrategica 20261005 Budget",
+          "amountMicros": "20000000",
+          "deliveryMethod": "STANDARD",
+          "explicitlyShared": false
+        }
+      }
+    },
+    {
+      "campaignOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/campaigns/-102",
+          "name": "[SE][SEARCH][MARCA] Sessao Estrategica 20261005",
+          "status": "PAUSED",
+          "advertisingChannelType": "SEARCH",
+          "campaignBudget": "customers/1316487378/campaignBudgets/-101",
+          "targetSpend": {
+            "cpcBidCeilingMicros": "5500000"
+          },
+          "networkSettings": {
+            "targetGoogleSearch": true,
+            "targetSearchNetwork": false,
+            "targetContentNetwork": false,
+            "targetPartnerSearchNetwork": false
+          },
+          "geoTargetTypeSetting": {
+            "positiveGeoTargetType": "PRESENCE",
+            "negativeGeoTargetType": "PRESENCE"
+          },
+          "containsEuPoliticalAdvertising": "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING"
+        }
+      }
+    },
+    {
+      "campaignCriterionOperation": {
+        "create": {
+          "campaign": "customers/1316487378/campaigns/-102",
+          "location": {
+            "geoTargetConstant": "geoTargetConstants/2076"
+          }
+        }
+      }
+    },
+    {
+      "campaignCriterionOperation": {
+        "create": {
+          "campaign": "customers/1316487378/campaigns/-102",
+          "language": {
+            "languageConstant": "languageConstants/1014"
+          }
+        }
+      }
+    },
+    {
+      "adGroupOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/adGroups/-103",
+          "campaign": "customers/1316487378/campaigns/-102",
+          "name": "Marca Sevilha e Bruno",
+          "status": "ENABLED",
+          "type": "SEARCH_STANDARD",
+          "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=RSA%20Marca%20Sessao%2020261005&utm_term={keyword}"
+        }
+      }
+    },
+    {
+      "adGroupCriterionOperation": {
+        "create": {
+          "adGroup": "customers/1316487378/adGroups/-103",
+          "status": "ENABLED",
+          "keyword": {
+            "text": "sevilha contabilidade",
+            "matchType": "EXACT"
+          }
+        }
+      }
+    },
+    {
+      "adGroupCriterionOperation": {
+        "create": {
+          "adGroup": "customers/1316487378/adGroups/-103",
+          "status": "ENABLED",
+          "keyword": {
+            "text": "sevilha contabilidade",
+            "matchType": "PHRASE"
+          }
+        }
+      }
+    },
+    {
+      "adGroupCriterionOperation": {
+        "create": {
+          "adGroup": "customers/1316487378/adGroups/-103",
+          "status": "ENABLED",
+          "keyword": {
+            "text": "sevilha performance",
+            "matchType": "EXACT"
+          }
+        }
+      }
+    },
+    {
+      "adGroupCriterionOperation": {
+        "create": {
+          "adGroup": "customers/1316487378/adGroups/-103",
+          "status": "ENABLED",
+          "keyword": {
+            "text": "sevilha performance",
+            "matchType": "PHRASE"
+          }
+        }
+      }
+    },
+    {
+      "adGroupCriterionOperation": {
+        "create": {
+          "adGroup": "customers/1316487378/adGroups/-103",
+          "status": "ENABLED",
+          "keyword": {
+            "text": "sevilha perfomance",
+            "matchType": "EXACT"
+          }
+        }
+      }
+    },
+    {
+      "adGroupCriterionOperation": {
+        "create": {
+          "adGroup": "customers/1316487378/adGroups/-103",
+          "status": "ENABLED",
+          "keyword": {
+            "text": "sevilha perfomance",
+            "matchType": "PHRASE"
+          }
+        }
+      }
+    },
+    {
+      "adGroupCriterionOperation": {
+        "create": {
+          "adGroup": "customers/1316487378/adGroups/-103",
+          "status": "ENABLED",
+          "keyword": {
+            "text": "bruno silvestre consultor",
+            "matchType": "EXACT"
+          }
+        }
+      }
+    },
+    {
+      "adGroupCriterionOperation": {
+        "create": {
+          "adGroup": "customers/1316487378/adGroups/-103",
+          "status": "ENABLED",
+          "keyword": {
+            "text": "bruno silvestre consultor",
+            "matchType": "PHRASE"
+          }
+        }
+      }
+    },
+    {
+      "adGroupAdOperation": {
+        "create": {
+          "adGroup": "customers/1316487378/adGroups/-103",
+          "status": "ENABLED",
+          "ad": {
+            "name": "RSA Marca Sessao 20261005",
+            "finalUrls": [
+              "https://sevilha-perfomance.vercel.app/mentoria"
+            ],
+            "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=RSA%20Marca%20Sessao%2020261005&utm_term={keyword}",
+            "responsiveSearchAd": {
+              "headlines": [
+                {
+                  "text": "Sevilha Performance"
+                },
+                {
+                  "text": "Sevilha Contabilidade"
+                },
+                {
+                  "text": "Sevilha Perfomance"
+                },
+                {
+                  "text": "Bruno Silvestre Consultor"
+                },
+                {
+                  "text": "Sessão Estratégica Sevilha"
+                },
+                {
+                  "text": "Gestão Com Bruno Silvestre"
+                },
+                {
+                  "text": "45 Minutos Com Bruno"
+                },
+                {
+                  "text": "Sessão Online Gratuita"
+                },
+                {
+                  "text": "Escritório Com Equipe 10+"
+                },
+                {
+                  "text": "Processos Mais Claros"
+                },
+                {
+                  "text": "Diagnóstico Do Escritório"
+                },
+                {
+                  "text": "Converse Sobre Sua Gestão"
+                },
+                {
+                  "text": "Organize Sua Operação"
+                },
+                {
+                  "text": "Avalie Processos E Margem"
+                },
+                {
+                  "text": "Solicite Sua Sessão"
+                }
+              ],
+              "descriptions": [
+                {
+                  "text": "Sessão gratuita de 45 minutos com Bruno para escritórios contábeis com equipe de 10+."
+                },
+                {
+                  "text": "Conheça a Sessão Estratégica Sevilha e converse sobre os desafios da sua operação."
+                },
+                {
+                  "text": "Avalie processos e gestão do seu escritório. Envie seus dados para solicitar a sessão."
+                },
+                {
+                  "text": "Bruno Silvestre conduz uma conversa online sobre processos e margem na contabilidade."
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "assetOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/assets/-110",
+          "name": "SE Marca Como Funciona a Sessao",
+          "finalUrls": [
+            "https://sevilha-perfomance.vercel.app/mentoria#como-funciona"
+          ],
+          "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=Sitelink%20Como%20Funciona%20a%20Sessao&utm_term={keyword}",
+          "sitelinkAsset": {
+            "linkText": "Como Funciona a Sessao",
+            "description1": "45 minutos online com Bruno",
+            "description2": "Entenda o agendamento"
+          }
+        }
+      }
+    },
+    {
+      "campaignAssetOperation": {
+        "create": {
+          "campaign": "customers/1316487378/campaigns/-102",
+          "asset": "customers/1316487378/assets/-110",
+          "fieldType": "SITELINK"
+        }
+      }
+    },
+    {
+      "assetOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/assets/-111",
+          "name": "SE Marca Para Quem e a Sessao",
+          "finalUrls": [
+            "https://sevilha-perfomance.vercel.app/mentoria#para-quem"
+          ],
+          "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=Sitelink%20Para%20Quem%20e%20a%20Sessao&utm_term={keyword}",
+          "sitelinkAsset": {
+            "linkText": "Para Quem e a Sessao",
+            "description1": "Escritorios com equipe de 10+",
+            "description2": "Veja se o perfil e o seu"
+          }
+        }
+      }
+    },
+    {
+      "campaignAssetOperation": {
+        "create": {
+          "campaign": "customers/1316487378/campaigns/-102",
+          "asset": "customers/1316487378/assets/-111",
+          "fieldType": "SITELINK"
+        }
+      }
+    },
+    {
+      "assetOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/assets/-112",
+          "name": "SE Marca Conheca Bruno Silvestre",
+          "finalUrls": [
+            "https://sevilha-perfomance.vercel.app/mentoria#bruno-silvestre"
+          ],
+          "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=Sitelink%20Conheca%20Bruno%20Silvestre&utm_term={keyword}",
+          "sitelinkAsset": {
+            "linkText": "Conheca Bruno Silvestre",
+            "description1": "Quem conduz seu diagnostico",
+            "description2": "Consultoria para contabilidades"
+          }
+        }
+      }
+    },
+    {
+      "campaignAssetOperation": {
+        "create": {
+          "campaign": "customers/1316487378/campaigns/-102",
+          "asset": "customers/1316487378/assets/-112",
+          "fieldType": "SITELINK"
+        }
+      }
+    },
+    {
+      "assetOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/assets/-113",
+          "name": "SE Marca Agendar Diagnostico",
+          "finalUrls": [
+            "https://sevilha-perfomance.vercel.app/mentoria#agendar"
+          ],
+          "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=Sitelink%20Agendar%20Diagnostico&utm_term={keyword}",
+          "sitelinkAsset": {
+            "linkText": "Agendar Diagnostico",
+            "description1": "Gratuito e sem compromisso",
+            "description2": "Escolha seu horario com o time"
+          }
+        }
+      }
+    },
+    {
+      "campaignAssetOperation": {
+        "create": {
+          "campaign": "customers/1316487378/campaigns/-102",
+          "asset": "customers/1316487378/assets/-113",
+          "fieldType": "SITELINK"
+        }
+      }
+    },
+    {
+      "assetOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/assets/-120",
+          "name": "SE Marca Sessao Gratuita",
+          "calloutAsset": {
+            "calloutText": "Sessao Gratuita"
+          }
+        }
+      }
+    },
+    {
+      "campaignAssetOperation": {
+        "create": {
+          "campaign": "customers/1316487378/campaigns/-102",
+          "asset": "customers/1316487378/assets/-120",
+          "fieldType": "CALLOUT"
+        }
+      }
+    },
+    {
+      "assetOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/assets/-121",
+          "name": "SE Marca 45 Minutos Online",
+          "calloutAsset": {
+            "calloutText": "45 Minutos Online"
+          }
+        }
+      }
+    },
+    {
+      "campaignAssetOperation": {
+        "create": {
+          "campaign": "customers/1316487378/campaigns/-102",
+          "asset": "customers/1316487378/assets/-121",
+          "fieldType": "CALLOUT"
+        }
+      }
+    },
+    {
+      "assetOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/assets/-122",
+          "name": "SE Marca Equipe De 10 Ou Mais",
+          "calloutAsset": {
+            "calloutText": "Equipe De 10 Ou Mais"
+          }
+        }
+      }
+    },
+    {
+      "campaignAssetOperation": {
+        "create": {
+          "campaign": "customers/1316487378/campaigns/-102",
+          "asset": "customers/1316487378/assets/-122",
+          "fieldType": "CALLOUT"
+        }
+      }
+    },
+    {
+      "assetOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/assets/-123",
+          "name": "SE Marca Com Bruno Silvestre",
+          "calloutAsset": {
+            "calloutText": "Com Bruno Silvestre"
+          }
+        }
+      }
+    },
+    {
+      "campaignAssetOperation": {
+        "create": {
+          "campaign": "customers/1316487378/campaigns/-102",
+          "asset": "customers/1316487378/assets/-123",
+          "fieldType": "CALLOUT"
+        }
+      }
+    },
+    {
+      "assetOperation": {
+        "create": {
+          "resourceName": "customers/1316487378/assets/-124",
+          "name": "SE Marca Diagnostico De Gestao",
+          "calloutAsset": {
+            "calloutText": "Diagnostico De Gestao"
+          }
+        }
+      }
+    },
+    {
+      "campaignAssetOperation": {
+        "create": {
+          "campaign": "customers/1316487378/campaigns/-102",
+          "asset": "customers/1316487378/assets/-124",
+          "fieldType": "CALLOUT"
+        }
+      }
+    }
+  ],
+  "validateOnly": {},
+  "mutate": {
+    "mutateOperationResponses": [
+      {
+        "campaignBudgetResult": {
+          "resourceName": "customers/1316487378/campaignBudgets/15919750457"
+        }
+      },
+      {
+        "campaignBudgetResult": {
+          "resourceName": "customers/1316487378/campaignBudgets/15925051323"
+        }
+      },
+      {
+        "campaignResult": {
+          "resourceName": "customers/1316487378/campaigns/24317774874"
+        }
+      },
+      {
+        "campaignCriterionResult": {
+          "resourceName": "customers/1316487378/campaignCriteria/24317774874~2076"
+        }
+      },
+      {
+        "campaignCriterionResult": {
+          "resourceName": "customers/1316487378/campaignCriteria/24317774874~1014"
+        }
+      },
+      {
+        "adGroupResult": {
+          "resourceName": "customers/1316487378/adGroups/201837475898"
+        }
+      },
+      {
+        "adGroupCriterionResult": {
+          "resourceName": "customers/1316487378/adGroupCriteria/201837475898~319698027040"
+        }
+      },
+      {
+        "adGroupCriterionResult": {
+          "resourceName": "customers/1316487378/adGroupCriteria/201837475898~321699260790"
+        }
+      },
+      {
+        "adGroupCriterionResult": {
+          "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2371177226605"
+        }
+      },
+      {
+        "adGroupCriterionResult": {
+          "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2464802439529"
+        }
+      },
+      {
+        "adGroupCriterionResult": {
+          "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2507522081261"
+        }
+      },
+      {
+        "adGroupCriterionResult": {
+          "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2507522081421"
+        }
+      },
+      {
+        "adGroupCriterionResult": {
+          "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2507522081461"
+        }
+      },
+      {
+        "adGroupCriterionResult": {
+          "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2507522081501"
+        }
+      },
+      {
+        "adGroupAdResult": {
+          "resourceName": "customers/1316487378/adGroupAds/201837475898~827126991536"
+        }
+      },
+      {
+        "assetResult": {
+          "resourceName": "customers/1316487378/assets/428153841468"
+        }
+      },
+      {
+        "campaignAssetResult": {
+          "resourceName": "customers/1316487378/campaignAssets/24317774874~428153841468~SITELINK"
+        }
+      },
+      {
+        "assetResult": {
+          "resourceName": "customers/1316487378/assets/428153848788"
+        }
+      },
+      {
+        "campaignAssetResult": {
+          "resourceName": "customers/1316487378/campaignAssets/24317774874~428153848788~SITELINK"
+        }
+      },
+      {
+        "assetResult": {
+          "resourceName": "customers/1316487378/assets/428153848797"
+        }
+      },
+      {
+        "campaignAssetResult": {
+          "resourceName": "customers/1316487378/campaignAssets/24317774874~428153848797~SITELINK"
+        }
+      },
+      {
+        "assetResult": {
+          "resourceName": "customers/1316487378/assets/427967168120"
+        }
+      },
+      {
+        "campaignAssetResult": {
+          "resourceName": "customers/1316487378/campaignAssets/24317774874~427967168120~SITELINK"
+        }
+      },
+      {
+        "assetResult": {
+          "resourceName": "customers/1316487378/assets/428063613268"
+        }
+      },
+      {
+        "campaignAssetResult": {
+          "resourceName": "customers/1316487378/campaignAssets/24317774874~428063613268~CALLOUT"
+        }
+      },
+      {
+        "assetResult": {
+          "resourceName": "customers/1316487378/assets/428063613271"
+        }
+      },
+      {
+        "campaignAssetResult": {
+          "resourceName": "customers/1316487378/campaignAssets/24317774874~428063613271~CALLOUT"
+        }
+      },
+      {
+        "assetResult": {
+          "resourceName": "customers/1316487378/assets/428063613280"
+        }
+      },
+      {
+        "campaignAssetResult": {
+          "resourceName": "customers/1316487378/campaignAssets/24317774874~428063613280~CALLOUT"
+        }
+      },
+      {
+        "assetResult": {
+          "resourceName": "customers/1316487378/assets/428063613292"
+        }
+      },
+      {
+        "campaignAssetResult": {
+          "resourceName": "customers/1316487378/campaignAssets/24317774874~428063613292~CALLOUT"
+        }
+      },
+      {
+        "assetResult": {
+          "resourceName": "customers/1316487378/assets/428153848827"
+        }
+      },
+      {
+        "campaignAssetResult": {
+          "resourceName": "customers/1316487378/campaignAssets/24317774874~428153848827~CALLOUT"
+        }
+      }
+    ]
+  },
+  "readback": {
+    "campaigns": {
+      "results": [
+        {
+          "campaign": {
+            "resourceName": "customers/1316487378/campaigns/24317774874",
+            "status": "PAUSED",
+            "name": "[SE][SEARCH][MARCA] Sessao Estrategica 20261005",
+            "id": "24317774874",
+            "primaryStatus": "PAUSED"
+          },
+          "campaignBudget": {
+            "resourceName": "customers/1316487378/campaignBudgets/15925051323",
+            "id": "15925051323",
+            "amountMicros": "20000000"
+          }
+        },
+        {
+          "campaign": {
+            "resourceName": "customers/1316487378/campaigns/24328953730",
+            "status": "PAUSED",
+            "name": "[SE][SEARCH][CAPTACAO] Sessao Estrategica 20261005",
+            "id": "24328953730",
+            "primaryStatus": "PAUSED"
+          },
+          "campaignBudget": {
+            "resourceName": "customers/1316487378/campaignBudgets/15919750457",
+            "id": "15919750457",
+            "amountMicros": "70000000"
+          }
+        }
+      ],
+      "fieldMask": "campaign.id,campaign.name,campaign.status,campaign.primaryStatus,campaignBudget.id,campaignBudget.amountMicros",
+      "queryResourceConsumption": "807"
+    },
+    "brand_ads": {
+      "results": [
+        {
+          "adGroup": {
+            "resourceName": "customers/1316487378/adGroups/201837475898",
+            "id": "201837475898",
+            "name": "Marca Sevilha e Bruno",
+            "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=RSA%20Marca%20Sessao%2020261005&utm_term={keyword}"
+          },
+          "adGroupAd": {
+            "resourceName": "customers/1316487378/adGroupAds/201837475898~827126991536",
+            "ad": {
+              "responsiveSearchAd": {
+                "headlines": [
+                  {
+                    "text": "Sevilha Performance",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Sevilha Contabilidade",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Sevilha Perfomance",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Bruno Silvestre Consultor",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Sessão Estratégica Sevilha",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Gestão Com Bruno Silvestre",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "45 Minutos Com Bruno",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Sessão Online Gratuita",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Escritório Com Equipe 10+",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Processos Mais Claros",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Diagnóstico Do Escritório",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Converse Sobre Sua Gestão",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Organize Sua Operação",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Avalie Processos E Margem",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Solicite Sua Sessão",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  }
+                ],
+                "descriptions": [
+                  {
+                    "text": "Sessão gratuita de 45 minutos com Bruno para escritórios contábeis com equipe de 10+.",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Conheça a Sessão Estratégica Sevilha e converse sobre os desafios da sua operação.",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Avalie processos e gestão do seu escritório. Envie seus dados para solicitar a sessão.",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  },
+                  {
+                    "text": "Bruno Silvestre conduz uma conversa online sobre processos e margem na contabilidade.",
+                    "assetPerformanceLabel": "PENDING",
+                    "policySummaryInfo": {
+                      "reviewStatus": "REVIEW_IN_PROGRESS"
+                    }
+                  }
+                ]
+              },
+              "resourceName": "customers/1316487378/ads/827126991536",
+              "id": "827126991536",
+              "finalUrls": [
+                "https://sevilha-perfomance.vercel.app/mentoria"
+              ],
+              "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=RSA%20Marca%20Sessao%2020261005&utm_term={keyword}",
+              "name": "RSA Marca Sessao 20261005"
+            },
+            "policySummary": {
+              "reviewStatus": "REVIEW_IN_PROGRESS",
+              "approvalStatus": "UNKNOWN"
+            },
+            "adStrength": "PENDING"
+          }
+        }
+      ],
+      "fieldMask": "adGroup.id,adGroup.name,adGroup.finalUrlSuffix,adGroupAd.ad.id,adGroupAd.ad.name,adGroupAd.ad.finalUrls,adGroupAd.ad.finalUrlSuffix,adGroupAd.ad.responsiveSearchAd.headlines,adGroupAd.ad.responsiveSearchAd.descriptions,adGroupAd.adStrength,adGroupAd.policySummary.approvalStatus,adGroupAd.policySummary.reviewStatus",
+      "queryResourceConsumption": "788"
+    },
+    "brand_keywords": {
+      "results": [
+        {
+          "adGroupCriterion": {
+            "resourceName": "customers/1316487378/adGroupCriteria/201837475898~319698027040",
+            "status": "ENABLED",
+            "keyword": {
+              "matchType": "EXACT",
+              "text": "sevilha contabilidade"
+            }
+          }
+        },
+        {
+          "adGroupCriterion": {
+            "resourceName": "customers/1316487378/adGroupCriteria/201837475898~321699260790",
+            "status": "ENABLED",
+            "keyword": {
+              "matchType": "PHRASE",
+              "text": "sevilha contabilidade"
+            }
+          }
+        },
+        {
+          "adGroupCriterion": {
+            "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2371177226605",
+            "status": "ENABLED",
+            "keyword": {
+              "matchType": "EXACT",
+              "text": "sevilha performance"
+            }
+          }
+        },
+        {
+          "adGroupCriterion": {
+            "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2464802439529",
+            "status": "ENABLED",
+            "keyword": {
+              "matchType": "PHRASE",
+              "text": "sevilha performance"
+            }
+          }
+        },
+        {
+          "adGroupCriterion": {
+            "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2507522081261",
+            "status": "ENABLED",
+            "keyword": {
+              "matchType": "EXACT",
+              "text": "sevilha perfomance"
+            }
+          }
+        },
+        {
+          "adGroupCriterion": {
+            "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2507522081421",
+            "status": "ENABLED",
+            "keyword": {
+              "matchType": "PHRASE",
+              "text": "sevilha perfomance"
+            }
+          }
+        },
+        {
+          "adGroupCriterion": {
+            "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2507522081461",
+            "status": "ENABLED",
+            "keyword": {
+              "matchType": "EXACT",
+              "text": "bruno silvestre consultor"
+            }
+          }
+        },
+        {
+          "adGroupCriterion": {
+            "resourceName": "customers/1316487378/adGroupCriteria/201837475898~2507522081501",
+            "status": "ENABLED",
+            "keyword": {
+              "matchType": "PHRASE",
+              "text": "bruno silvestre consultor"
+            }
+          }
+        }
+      ],
+      "fieldMask": "adGroupCriterion.keyword.text,adGroupCriterion.keyword.matchType,adGroupCriterion.status",
+      "queryResourceConsumption": "554"
+    },
+    "brand_assets": {
+      "results": [
+        {
+          "campaign": {
+            "resourceName": "customers/1316487378/campaigns/24317774874",
+            "id": "24317774874"
+          },
+          "asset": {
+            "resourceName": "customers/1316487378/assets/427967168120",
+            "id": "427967168120",
+            "finalUrls": [
+              "https://sevilha-perfomance.vercel.app/mentoria#agendar"
+            ],
+            "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=Sitelink%20Agendar%20Diagnostico&utm_term={keyword}",
+            "sitelinkAsset": {
+              "linkText": "Agendar Diagnostico"
+            }
+          },
+          "campaignAsset": {
+            "resourceName": "customers/1316487378/campaignAssets/24317774874~427967168120~SITELINK",
+            "fieldType": "SITELINK"
+          }
+        },
+        {
+          "campaign": {
+            "resourceName": "customers/1316487378/campaigns/24317774874",
+            "id": "24317774874"
+          },
+          "asset": {
+            "resourceName": "customers/1316487378/assets/428153841468",
+            "id": "428153841468",
+            "finalUrls": [
+              "https://sevilha-perfomance.vercel.app/mentoria#como-funciona"
+            ],
+            "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=Sitelink%20Como%20Funciona%20a%20Sessao&utm_term={keyword}",
+            "sitelinkAsset": {
+              "linkText": "Como Funciona a Sessao"
+            }
+          },
+          "campaignAsset": {
+            "resourceName": "customers/1316487378/campaignAssets/24317774874~428153841468~SITELINK",
+            "fieldType": "SITELINK"
+          }
+        },
+        {
+          "campaign": {
+            "resourceName": "customers/1316487378/campaigns/24317774874",
+            "id": "24317774874"
+          },
+          "asset": {
+            "resourceName": "customers/1316487378/assets/428153848788",
+            "id": "428153848788",
+            "finalUrls": [
+              "https://sevilha-perfomance.vercel.app/mentoria#para-quem"
+            ],
+            "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=Sitelink%20Para%20Quem%20e%20a%20Sessao&utm_term={keyword}",
+            "sitelinkAsset": {
+              "linkText": "Para Quem e a Sessao"
+            }
+          },
+          "campaignAsset": {
+            "resourceName": "customers/1316487378/campaignAssets/24317774874~428153848788~SITELINK",
+            "fieldType": "SITELINK"
+          }
+        },
+        {
+          "campaign": {
+            "resourceName": "customers/1316487378/campaigns/24317774874",
+            "id": "24317774874"
+          },
+          "asset": {
+            "resourceName": "customers/1316487378/assets/428153848797",
+            "id": "428153848797",
+            "finalUrls": [
+              "https://sevilha-perfomance.vercel.app/mentoria#bruno-silvestre"
+            ],
+            "finalUrlSuffix": "utm_source=google_search&utm_medium=Marca%20Sevilha%20e%20Bruno&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BMARCA%5D%20Sessao%20Estrategica%2020261005&utm_content=Sitelink%20Conheca%20Bruno%20Silvestre&utm_term={keyword}",
+            "sitelinkAsset": {
+              "linkText": "Conheca Bruno Silvestre"
+            }
+          },
+          "campaignAsset": {
+            "resourceName": "customers/1316487378/campaignAssets/24317774874~428153848797~SITELINK",
+            "fieldType": "SITELINK"
+          }
+        },
+        {
+          "campaign": {
+            "resourceName": "customers/1316487378/campaigns/24317774874",
+            "id": "24317774874"
+          },
+          "asset": {
+            "resourceName": "customers/1316487378/assets/428063613268",
+            "id": "428063613268",
+            "calloutAsset": {
+              "calloutText": "Sessao Gratuita"
+            }
+          },
+          "campaignAsset": {
+            "resourceName": "customers/1316487378/campaignAssets/24317774874~428063613268~CALLOUT",
+            "fieldType": "CALLOUT"
+          }
+        },
+        {
+          "campaign": {
+            "resourceName": "customers/1316487378/campaigns/24317774874",
+            "id": "24317774874"
+          },
+          "asset": {
+            "resourceName": "customers/1316487378/assets/428063613271",
+            "id": "428063613271",
+            "calloutAsset": {
+              "calloutText": "45 Minutos Online"
+            }
+          },
+          "campaignAsset": {
+            "resourceName": "customers/1316487378/campaignAssets/24317774874~428063613271~CALLOUT",
+            "fieldType": "CALLOUT"
+          }
+        },
+        {
+          "campaign": {
+            "resourceName": "customers/1316487378/campaigns/24317774874",
+            "id": "24317774874"
+          },
+          "asset": {
+            "resourceName": "customers/1316487378/assets/428063613280",
+            "id": "428063613280",
+            "calloutAsset": {
+              "calloutText": "Equipe De 10 Ou Mais"
+            }
+          },
+          "campaignAsset": {
+            "resourceName": "customers/1316487378/campaignAssets/24317774874~428063613280~CALLOUT",
+            "fieldType": "CALLOUT"
+          }
+        },
+        {
+          "campaign": {
+            "resourceName": "customers/1316487378/campaigns/24317774874",
+            "id": "24317774874"
+          },
+          "asset": {
+            "resourceName": "customers/1316487378/assets/428063613292",
+            "id": "428063613292",
+            "calloutAsset": {
+              "calloutText": "Com Bruno Silvestre"
+            }
+          },
+          "campaignAsset": {
+            "resourceName": "customers/1316487378/campaignAssets/24317774874~428063613292~CALLOUT",
+            "fieldType": "CALLOUT"
+          }
+        },
+        {
+          "campaign": {
+            "resourceName": "customers/1316487378/campaigns/24317774874",
+            "id": "24317774874"
+          },
+          "asset": {
+            "resourceName": "customers/1316487378/assets/428153848827",
+            "id": "428153848827",
+            "calloutAsset": {
+              "calloutText": "Diagnostico De Gestao"
+            }
+          },
+          "campaignAsset": {
+            "resourceName": "customers/1316487378/campaignAssets/24317774874~428153848827~CALLOUT",
+            "fieldType": "CALLOUT"
+          }
+        }
+      ],
+      "fieldMask": "campaign.id,campaignAsset.fieldType,asset.id,asset.finalUrls,asset.finalUrlSuffix,asset.sitelinkAsset.linkText,asset.calloutAsset.calloutText",
+      "queryResourceConsumption": "336"
+    },
+    "billing": {
+      "fieldMask": "billingSetup.id,billingSetup.status",
+      "queryResourceConsumption": "70"
+    },
+    "customer": {
+      "results": [
+        {
+          "customer": {
+            "resourceName": "customers/1316487378",
+            "id": "1316487378",
+            "autoTaggingEnabled": true
+          }
+        }
+      ],
+      "fieldMask": "customer.id,customer.autoTaggingEnabled",
+      "queryResourceConsumption": "42"
+    },
+    "conversions": {
+      "results": [
+        {
+          "conversionAction": {
+            "resourceName": "customers/1316487378/conversionActions/7823726107",
+            "id": "7823726107",
+            "name": "SE Lead",
+            "primaryForGoal": false
+          }
+        },
+        {
+          "conversionAction": {
+            "resourceName": "customers/1316487378/conversionActions/7823726110",
+            "id": "7823726110",
+            "name": "SE MQL",
+            "primaryForGoal": true
+          }
+        }
+      ],
+      "fieldMask": "conversionAction.id,conversionAction.name,conversionAction.primaryForGoal",
+      "queryResourceConsumption": "923"
+    }
+  }
+}

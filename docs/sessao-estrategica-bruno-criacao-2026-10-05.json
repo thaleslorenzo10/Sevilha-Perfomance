@@ -1,0 +1,389 @@
+{
+  "account_id": "1676714556216146",
+  "started_at": "2026-10-05T23:05:49.717009-03:00",
+  "authorization": "Criar públicos Bruno, 2 HOT e 10 anúncios dos mesmos 5 conceitos na CBO nova; criar conteúdo IG dos 3 posts PAUSED. Ativação condicionada a prova ingestão e transição de orçamento.",
+  "budget_policy": {
+    "current_capture_daily": 450,
+    "new_capture_target_daily": 320,
+    "new_content_daily": 40,
+    "google_target_daily": 90,
+    "no_activation_this_stage": true
+  },
+  "operations": [
+    {
+      "kind": "customaudiences",
+      "params": {
+        "name": "[SE] [BRUNO] IG Envolvimento 180D | 2026-10-05",
+        "subtype": "ENGAGEMENT",
+        "rule": "{\"inclusions\": {\"operator\": \"or\", \"rules\": [{\"event_sources\": [{\"type\": \"ig_business\", \"id\": 47014896777}], \"retention_seconds\": 15552000, \"filter\": {\"operator\": \"and\", \"filters\": [{\"field\": \"event\", \"operator\": \"eq\", \"value\": \"ig_business_profile_all\"}]}}]}}",
+        "description": "Fonte Bruno ig_id 47014896777 confirmada pela API; regra reutilizada de público aceito da mesma conta.",
+        "retention_days": 180
+      },
+      "started_at": "2026-10-05T23:05:49.718973-03:00",
+      "rollback": "Manter pausado; nenhuma exclusão automática",
+      "error": {
+        "code": 2654,
+        "error_subcode": 1713151,
+        "type": "OAuthException",
+        "message": "(#2654) Nome do evento inválido para o público personalizado: O nome do evento deve ter menos de 50 caracteres e só pode conter caracteres alfanuméricos e sublinhados.",
+        "fbtrace_id": "AkTOXoUz7a-AitgDaVHvUR5"
+      },
+      "stopped_at": "2026-10-05T23:05:50.047253-03:00",
+      "journal_fingerprint": "a2439a6e92cd1c02e5445197f1bc5db4ebb7a2a2b37843ed482eaa8e82b9eb88"
+    },
+    {
+      "kind": "campaigns",
+      "params": {
+        "name": "[SE] [BRUNO] [IG] [CONTEÚDO] 2026-10-05",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "status": "PAUSED",
+        "special_ad_categories": [],
+        "daily_budget": 4000,
+        "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+      },
+      "started_at": "2026-10-05T23:12:30.626944-03:00",
+      "rollback": "Manter pausado; nenhuma exclusão automática",
+      "response": {
+        "id": "120253414251620526"
+      },
+      "id": "120253414251620526",
+      "readback": {
+        "id": "120253414251620526",
+        "name": "[SE] [BRUNO] [IG] [CONTEÚDO] 2026-10-05",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "objective": "OUTCOME_ENGAGEMENT",
+        "daily_budget": "4000"
+      },
+      "confirmed": true,
+      "journal_fingerprint": "6dbd475bd3165135b63262b9b3927646f48b9b6ef7c32dd157f662fa2a722ce0"
+    },
+    {
+      "kind": "adsets",
+      "params": {
+        "name": "Contabilidade financeira | Bruno conteúdo | IG-only | 2026-10-05",
+        "campaign_id": "120253414251620526",
+        "status": "PAUSED",
+        "billing_event": "IMPRESSIONS",
+        "optimization_goal": "POST_ENGAGEMENT",
+        "targeting": {
+          "age_max": 60,
+          "age_min": 25,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003389795312",
+                  "name": "Contabilidade financeira (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "home",
+              "recent"
+            ]
+          },
+          "brand_safety_content_filter_levels": [
+            "FACEBOOK_RELAXED",
+            "AN_RELAXED"
+          ],
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "instagram"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "reels"
+          ]
+        },
+        "promoted_object": {
+          "page_id": "106292094924513"
+        }
+      },
+      "started_at": "2026-10-05T23:12:31.933752-03:00",
+      "rollback": "Manter pausado; nenhuma exclusão automática",
+      "error": {
+        "code": 100,
+        "error_subcode": 2490408,
+        "type": "OAuthException",
+        "message": "Invalid parameter",
+        "fbtrace_id": "A_sK-nVoM9fchYdOhIbSQK6"
+      },
+      "stopped_at": "2026-10-05T23:12:32.724825-03:00",
+      "validation_detail": {
+        "error": {
+          "code": 100,
+          "error_subcode": 2490408,
+          "message": "Invalid parameter",
+          "error_user_title": "A meta de desempenho não está disponível",
+          "error_user_msg": "Você não pode usar a meta de desempenho selecionada com seu objetivo da campanha. Selecione outra meta ou edite sua campanha.",
+          "fbtrace_id": "A5aWAmvdA_eu3jUjRKWoqCw"
+        }
+      },
+      "journal_fingerprint": "ceaa639b1410a89963c904f2103e4d910cf9dfbace3d41c9e728fad1af8ef3ac"
+    },
+    {
+      "kind": "paused_capture_budget",
+      "id": "120253413819760526",
+      "before": {
+        "id": "120253413819760526",
+        "name": "[SE] [FORMS] [MAIOR INTENÇÃO] [IDENTIDADE] 2026-10-05",
+        "status": "PAUSED",
+        "effective_status": "PAUSED",
+        "daily_budget": "36000"
+      },
+      "target_minor": 32000,
+      "started_at": "2026-10-05T23:13:30.194588-03:00",
+      "rollback_minor": 36000,
+      "response": {
+        "success": true
+      },
+      "readback": {
+        "id": "120253413819760526",
+        "name": "[SE] [FORMS] [MAIOR INTENÇÃO] [IDENTIDADE] 2026-10-05",
+        "status": "PAUSED",
+        "effective_status": "IN_PROCESS",
+        "daily_budget": "32000"
+      },
+      "confirmed": true
+    }
+  ],
+  "current_capture_readback": {
+    "observed_at": "2026-10-05T23:13:32.525501-03:00",
+    "controllers": [
+      {
+        "id": "120253330191810526",
+        "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Bruno Novo Setembro",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "13235"
+      },
+      {
+        "id": "120248779747120526",
+        "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Fábrica de Criativos",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "14559"
+      },
+      {
+        "id": "120243440924150526",
+        "name": "Warm",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "daily_budget": "17206"
+      }
+    ],
+    "daily_total_minor": 45000,
+    "all_effectively_active": true
+  },
+  "stopped_reason": "Público Bruno regra de evento rejeitada2654/1713151; conjunto conteúdo POST_ENGAGEMENT rejeitado100/2490408. Nenhuma ativação. Novo formulário sem prova de ingestão.",
+  "final_at": "2026-10-05T23:13:32.525569-03:00",
+  "distribution_model_readback": {
+    "observed_at": "2026-10-05T23:14:22.850417-03:00",
+    "campaign_id": "120234703907860526",
+    "campaign_objective": "LINK_CLICKS",
+    "adsets": [
+      {
+        "id": "120234703907890526",
+        "name": "Instagram Post",
+        "campaign_id": "120234703907860526",
+        "status": "ACTIVE",
+        "effective_status": "ACTIVE",
+        "optimization_goal": "VISIT_INSTAGRAM_PROFILE",
+        "billing_event": "IMPRESSIONS",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "custom_audiences": [
+            {
+              "id": "120234703896720526",
+              "name": "Semelhante (BR, 1%) - Instagram Automatic Audience"
+            }
+          ],
+          "genders": [
+            0
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "home",
+              "recent"
+            ]
+          },
+          "publisher_platforms": [
+            "instagram"
+          ]
+        },
+        "destination_type": "UNDEFINED"
+      }
+    ]
+  },
+  "capture_budget_final_readback": {
+    "id": "120253413819760526",
+    "status": "PAUSED",
+    "effective_status": "PAUSED",
+    "daily_budget": "32000"
+  },
+  "profile_model_validation": {
+    "params": {
+      "name": "Contabilidade financeira | Bruno conteúdo | IG-only | 2026-10-05",
+      "campaign_id": "120253414251620526",
+      "status": "PAUSED",
+      "billing_event": "IMPRESSIONS",
+      "optimization_goal": "VISIT_INSTAGRAM_PROFILE",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "instagram"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels"
+        ]
+      },
+      "execution_options": [
+        "validate_only"
+      ]
+    },
+    "result": {
+      "error": {
+        "code": 100,
+        "error_subcode": 2490408,
+        "message": "Invalid parameter",
+        "error_user_title": "A meta de desempenho não está disponível",
+        "error_user_msg": "Você não pode usar a meta de desempenho selecionada com seu objetivo da campanha. Selecione outra meta ou edite sua campanha."
+      }
+    },
+    "at": "2026-10-05T23:15:00.030182-03:00"
+  }
+}

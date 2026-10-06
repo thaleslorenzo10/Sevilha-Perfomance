@@ -1,0 +1,56 @@
+{
+  "account_instagram_accounts": {
+    "data": [
+      {
+        "id": "17841401496577850",
+        "username": "sevilhaperformance",
+        "name": "Sevilha Performance | Consultoria e Mentoria Contábeis"
+      },
+      {
+        "id": "17841446823336862",
+        "username": "brunosilvestreconsultor",
+        "name": "Bruno Silvestre | Consultor para contabilidades"
+      }
+    ]
+  },
+  "managed_pages": {
+    "data": [
+      {
+        "id": "131476997004991",
+        "name": "Sevilha Performance",
+        "tasks": [
+          "CREATE_CONTENT",
+          "MODERATE",
+          "MESSAGING",
+          "ADVERTISE",
+          "ANALYZE",
+          "MANAGE_LEADS",
+          "VIEW_MONETIZATION_INSIGHTS"
+        ]
+      },
+      {
+        "id": "106292094924513",
+        "name": "Bruno Silvestre Consultor",
+        "tasks": [
+          "CREATE_CONTENT",
+          "MODERATE",
+          "MESSAGING",
+          "ADVERTISE",
+          "ANALYZE",
+          "MANAGE_LEADS",
+          "VIEW_MONETIZATION_INSIGHTS"
+        ]
+      }
+    ]
+  },
+  "sevilha_identity": {
+    "id": "131476997004991",
+    "name": "Sevilha Performance",
+    "instagram_business_account": {
+      "id": "17841401496577850"
+    },
+    "connected_instagram_account": {
+      "id": "17841401496577850"
+    }
+  }
+}

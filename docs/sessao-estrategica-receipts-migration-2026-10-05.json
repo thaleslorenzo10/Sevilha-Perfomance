@@ -1,0 +1,14 @@
+{
+  "project_ref": "hojcntkggnwrvbvmcwxe",
+  "table": "public.sevilha_leads",
+  "metadata_confirmed": true,
+  "integracoes_before": null,
+  "mode": "apply",
+  "mutation_attempt": "STARTED_NO_RETRY",
+  "integracoes_after": "jsonb",
+  "verified": true,
+  "postgrest_readback": {
+    "http": 200,
+    "rest_schema_verified": true
+  }
+}

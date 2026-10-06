@@ -1,0 +1,263 @@
+{
+  "updated_at_utc": "2026-10-06T01:30:57.785755+00:00",
+  "scope": "Sessão Estratégica only; remote GET only; no writes in this audit",
+  "goals": {
+    "monthly_mql_range": [
+      80,
+      90
+    ],
+    "weekly_mql_range": [
+      18.461538461538463,
+      20.76923076923077
+    ],
+    "monthly_sessions": 30,
+    "weekly_sessions": 6.923076923076923,
+    "session_definition": "commercial goal; booked vs attended not specified by user, keep separate",
+    "monthly_total_budget_brl": 14000,
+    "total_cost_per_mql_brl_range": [
+      155.55555555555554,
+      175.0
+    ],
+    "total_cost_per_session_brl": 466.6666666666667,
+    "conditional_sessions_per_mql_rate_range": [
+      0.3333333333333333,
+      0.375
+    ],
+    "attendance_rate_formula": "attended/booked",
+    "booking_rate_formula": "booked/MQL",
+    "missing_agenda_data": "unavailable, never zero"
+  },
+  "budget": {
+    "future_daily_brl": {
+      "meta_acquisition": 320,
+      "bruno_ig_content": 40,
+      "google_generic": 70,
+      "google_brand": 20
+    },
+    "combined_daily_brl": 450,
+    "nominal_31day_month_brl": 13896.0,
+    "hard_cap": false,
+    "google_status": "PAUSED; planned 90/day not counted as active spend",
+    "pacing": "remaining total SE monthly balance / remaining days; re-read live budgets and spend before writes",
+    "current_verified_daily_brl": {
+      "meta_capture": 450,
+      "bruno_ig_content": 0,
+      "google": 0
+    },
+    "planned_transition_daily_brl": {
+      "meta_capture": 410,
+      "bruno_ig_content": 40,
+      "google": 0
+    },
+    "planned_transition_executed": false,
+    "state_source": "bruno-distribuicao-execucao-2026-10-05.json runtime_boundary: remote_mutations_this_stage=0, no_budget_change=true, no_new_distribution_campaign=true",
+    "mtd_capture_spend": {
+      "brl": 2112.22,
+      "period_start": "2026-10-01",
+      "period_end": "2026-10-05",
+      "source": "bruno-distribuicao-preflight-2026-10-05.json mtd_campaign_spend; bruno-distribuicao-2026-10-05.md",
+      "source_file_recorded_at_utc": "2026-10-06T01:31:31.836671+00:00",
+      "timestamp_type": "source file mtime; exact API observation timestamp absent",
+      "previous_preflight_brl": 1961.61,
+      "remaining_capture_only_monthly_balance_brl": 11887.78,
+      "scope_note": "old distribution spend438.18 separate pending budget scope decision; account5884.59 includes other offers"
+    }
+  },
+  "ranking_concepts": [
+    "AD21",
+    "AD16",
+    "IA",
+    "AD29",
+    "Vicente"
+  ],
+  "utm_audit": {
+    "canonical_url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+    "paused_ads_readback": [
+      {
+        "id": "120253413820680526",
+        "name": "005 - Está consumido pela operação da contabilidade VICENTE",
+        "status": "PAUSED",
+        "adset_id": "120253413819880526",
+        "campaign_id": "120253413819760526",
+        "creative_id": "1092349323536897",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "audit": "canonical",
+        "source": "existing local API readback 2026-10-05"
+      },
+      {
+        "id": "120253413821600526",
+        "name": "005 - Está consumido pela operação da contabilidade VICENTE",
+        "status": "PAUSED",
+        "adset_id": "120253413820840526",
+        "campaign_id": "120253413819760526",
+        "creative_id": "916370071350428",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "audit": "canonical",
+        "source": "existing local API readback 2026-10-05"
+      },
+      {
+        "id": "120253413828210526",
+        "name": "AD21",
+        "status": "PAUSED",
+        "adset_id": "120253413819880526",
+        "campaign_id": "120253413819760526",
+        "creative_id": "4570363779911091",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "audit": "canonical",
+        "source": "existing local API readback 2026-10-05"
+      },
+      {
+        "id": "120253413828380526",
+        "name": "AD16",
+        "status": "PAUSED",
+        "adset_id": "120253413819880526",
+        "campaign_id": "120253413819760526",
+        "creative_id": "1717101952684519",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "audit": "canonical",
+        "source": "existing local API readback 2026-10-05"
+      },
+      {
+        "id": "120253413828420526",
+        "name": "AD - Vídeo - Como saber onde usar Inteligência — Cópia",
+        "status": "PAUSED",
+        "adset_id": "120253413819880526",
+        "campaign_id": "120253413819760526",
+        "creative_id": "4686119801612093",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "audit": "canonical",
+        "source": "existing local API readback 2026-10-05"
+      },
+      {
+        "id": "120253413828450526",
+        "name": "AD29",
+        "status": "PAUSED",
+        "adset_id": "120253413819880526",
+        "campaign_id": "120253413819760526",
+        "creative_id": "1142920355064404",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "audit": "canonical",
+        "source": "existing local API readback 2026-10-05"
+      },
+      {
+        "id": "120253413830170526",
+        "name": "AD21",
+        "status": "PAUSED",
+        "adset_id": "120253413820840526",
+        "campaign_id": "120253413819760526",
+        "creative_id": "1076595411869854",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "audit": "canonical",
+        "source": "existing local API readback 2026-10-05"
+      },
+      {
+        "id": "120253413830270526",
+        "name": "AD16",
+        "status": "PAUSED",
+        "adset_id": "120253413820840526",
+        "campaign_id": "120253413819760526",
+        "creative_id": "1174244444963304",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "audit": "canonical",
+        "source": "existing local API readback 2026-10-05"
+      },
+      {
+        "id": "120253413830380526",
+        "name": "AD - Vídeo - Como saber onde usar Inteligência — Cópia",
+        "status": "PAUSED",
+        "adset_id": "120253413820840526",
+        "campaign_id": "120253413819760526",
+        "creative_id": "1789799705606847",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "audit": "canonical",
+        "source": "existing local API readback 2026-10-05"
+      },
+      {
+        "id": "120253413830430526",
+        "name": "AD29",
+        "status": "PAUSED",
+        "adset_id": "120253413820840526",
+        "campaign_id": "120253413819760526",
+        "creative_id": "2210652646166743",
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+        "audit": "canonical",
+        "source": "existing local API readback 2026-10-05"
+      }
+    ],
+    "paused_ads_count": 10,
+    "canonical_count": 10,
+    "fresh_remote_status": "blocked by Meta code17/2446079 during campaign/adsets GET; no writes or repeated polling",
+    "active_ads_coverage": "not freshly verified; do not infer missing tags or declare full coverage",
+    "downstream_macro_substitution": "not freshly verified; literal macro in creative.url_tags expected, literal macro in persisted UTM invalid",
+    "native_form_attribution": "original export columns ad_id/adset_id/campaign_id; url_tags alone does not prove native-lead attribution",
+    "local_aggregation_limitation": "lib/planilha-leads.js extractForms emits names but drops original IDs; ranking recovered IDs from original export"
+  },
+  "naming_recommendations": [
+    {
+      "id": "120253413819760526",
+      "current": "[SE] [FORMS] [MAIOR INTENÇÃO] [IDENTIDADE] 2026-10-05",
+      "semantic_alias": "SE | Captação | Forms maior intenção | Frio | Identidades | 2026-10-05"
+    },
+    {
+      "id": "120253413819880526",
+      "current": "Contabilidade financeira | Sevilha | 2026-10-05",
+      "semantic_alias": "Frio | Contabilidade financeira | IG Sevilha"
+    },
+    {
+      "id": "120253413820840526",
+      "current": "Contabilidade financeira | Bruno | 2026-10-05",
+      "semantic_alias": "Frio | Contabilidade financeira | IG Bruno"
+    },
+    {
+      "id": "120235128444610526",
+      "current": "FORMS HOT campaign (exact current name unavailable in this readback)",
+      "semantic_alias": "SE | Captação | Forms | Quente"
+    },
+    {
+      "id": "120243440924150526",
+      "current": "HOT active adset (exact current name unavailable in this readback)",
+      "semantic_alias": "Quente | Engajamento/site | Captação"
+    }
+  ],
+  "naming_policy": "display aliases/proposed new campaign names only; no live renames; HOT/Bruno execution belongs to funnel owner",
+  "respondi_test": {
+    "status": "planned only; legacy LP remains paused",
+    "historical_url": "https://form.respondi.app/gvz4UKQr",
+    "url_source": "existing creative CTA payloads in meta execution journal; prior audit describes Respondi LP",
+    "live_form_status": "unverified; public web open unavailable",
+    "tracking_status": "unverified; external form does not inherit website Pixel/CAPI automatically",
+    "concepts": [
+      "AD21",
+      "AD16",
+      "IA",
+      "AD29",
+      "Vicente"
+    ],
+    "budget": "carve-out within future Meta acquisition 320/day, no additional spend or overlapping legacy activation",
+    "acceptance": [
+      "Read-only check external form fields, privacy and qualification 10+",
+      "Confirm UTM substitution and original ad identity persistence",
+      "Prove durable lead storage before redirects and shared event_id Pixel/CAPI on the external flow",
+      "Confirm CRM deduplication and source delivery, isolate messages in authorized test",
+      "Compare matched-period cost per unique MQL, booking and attendance separately"
+    ],
+    "analysis": "report unique lead/MQL counts and window; no invented sample sufficiency or statistical power; CPL alone cannot select winner"
+  },
+  "commercial_recovery": {
+    "funnel": [
+      "MQL",
+      "contacted",
+      "booked",
+      "attended"
+    ],
+    "metrics_if_crm_available": [
+      "deduplicated contact",
+      "first response time",
+      "loss reason"
+    ],
+    "automation_changes": false,
+    "messages_sent": false,
+    "bruno_agenda_hours_monthly_excluding_preparation": 22.5,
+    "required_bookings_for_30_attended": "30 / observed attendance rate; rate unavailable"
+  }
+}

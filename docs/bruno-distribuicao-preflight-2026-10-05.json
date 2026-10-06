@@ -1,0 +1,1877 @@
+{
+  "audiences": [
+    {
+      "id": "120242282962130526",
+      "name": "[MCAP0226] Leads 180D (Url e Evento)",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"Lead\"}]}},{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"operator\":\"or\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"mcap0126-obg\"}]},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"VISITORS_BY_URL\"}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120242282873610526",
+      "name": "[MCAP0226] Visitou captura 180D (Url e Evento)",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"and\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"operator\":\"or\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"mcap0126-b\"},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"mcap0126\"}]},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"VISITORS_BY_URL\"},{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"PageView\"}]}}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120242282805690526",
+      "name": "[IG] Seguidores",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":0,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"INSTAGRAM_PROFILE_FOLLOW\"}]}}]}}",
+      "retention_days": 0,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 3500,
+      "approximate_count_upper_bound": 4100
+    },
+    {
+      "id": "120242282795950526",
+      "name": "[IG] Envolvimento completo 180D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"and\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 300,
+        "description": "O público é muito pequeno para ser usado na criação da campanha."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 1000,
+      "approximate_count_upper_bound": 1000
+    },
+    {
+      "id": "120235128495180526",
+      "name": "IG - Envolvimento - 60D (Sevilha Perfomance)",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 60,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 40600,
+      "approximate_count_upper_bound": 47800
+    },
+    {
+      "id": "120235128483260526",
+      "name": "PageView - Site - 180D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"ALL_VISITORS\"}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120235128476740526",
+      "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 60,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 1000,
+      "approximate_count_upper_bound": 1000
+    },
+    {
+      "id": "120235128469700526",
+      "name": "IG - Envolvimento - 60D (Sevilha Educação)",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 60,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 1000,
+      "approximate_count_upper_bound": 1000
+    },
+    {
+      "id": "120234704197770526",
+      "name": "IG - Visitou Perfil - 60D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}",
+      "retention_days": 60,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 11100,
+      "approximate_count_upper_bound": 13100
+    },
+    {
+      "id": "120230135360680526",
+      "name": "Semelhante (BR, 1%) - Seguidores",
+      "subtype": "LOOKALIKE",
+      "retention_days": 0,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 1300000,
+      "approximate_count_upper_bound": 1600000
+    },
+    {
+      "id": "120230135347250526",
+      "name": "Semelhante (BR, 1%) - Leads contabilidade - Geral",
+      "subtype": "LOOKALIKE",
+      "retention_days": 0,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 1200000,
+      "approximate_count_upper_bound": 1400000
+    },
+    {
+      "id": "120227591567640526",
+      "name": "Instagram - 180D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 94100,
+      "approximate_count_upper_bound": 110700
+    },
+    {
+      "id": "120227591567210526",
+      "name": "Instagram - 180D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 87000,
+      "approximate_count_upper_bound": 102400
+    },
+    {
+      "id": "120227591567200526",
+      "name": "Instagram - 180D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 94400,
+      "approximate_count_upper_bound": 111100
+    },
+    {
+      "id": "120227591567190526",
+      "name": "Instagram - 180D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 93700,
+      "approximate_count_upper_bound": 110200
+    },
+    {
+      "id": "120227591566850526",
+      "name": "Instagram - 180D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 94100,
+      "approximate_count_upper_bound": 110700
+    },
+    {
+      "id": "120227591566820526",
+      "name": "Instagram - 180D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 93900,
+      "approximate_count_upper_bound": 110400
+    },
+    {
+      "id": "120227591566580526",
+      "name": "Instagram - 180D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 94000,
+      "approximate_count_upper_bound": 110600
+    },
+    {
+      "id": "120227591566570526",
+      "name": "Instagram - 180D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 94000,
+      "approximate_count_upper_bound": 110600
+    },
+    {
+      "id": "120222098279680526",
+      "name": "Leads contabilidade - Geral",
+      "subtype": "CUSTOM",
+      "retention_days": 0,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 1000,
+      "approximate_count_upper_bound": 1000
+    },
+    {
+      "id": "120222096029020526",
+      "name": "Seguidores",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20700,
+      "approximate_count_upper_bound": 24300
+    },
+    {
+      "id": "120222095713590526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20700,
+      "approximate_count_upper_bound": 24300
+    },
+    {
+      "id": "120222095713560526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 22600,
+      "approximate_count_upper_bound": 26600
+    },
+    {
+      "id": "120222095713550526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 22600,
+      "approximate_count_upper_bound": 26600
+    },
+    {
+      "id": "120222095713510526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 22600,
+      "approximate_count_upper_bound": 26600
+    },
+    {
+      "id": "120222095713500526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 22600,
+      "approximate_count_upper_bound": 26600
+    },
+    {
+      "id": "120222095713490526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 22600,
+      "approximate_count_upper_bound": 26600
+    },
+    {
+      "id": "120222095713480526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 15100,
+      "approximate_count_upper_bound": 17700
+    },
+    {
+      "id": "120222095713470526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 13600,
+      "approximate_count_upper_bound": 16000
+    },
+    {
+      "id": "120222095713460526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 22600,
+      "approximate_count_upper_bound": 26600
+    },
+    {
+      "id": "120222095713450526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 22600,
+      "approximate_count_upper_bound": 26600
+    },
+    {
+      "id": "120222095713440526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20800,
+      "approximate_count_upper_bound": 24400
+    },
+    {
+      "id": "120222095713520526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 15100,
+      "approximate_count_upper_bound": 17700
+    },
+    {
+      "id": "120222095713430526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 13500,
+      "approximate_count_upper_bound": 15800
+    },
+    {
+      "id": "120222095713220526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 12900,
+      "approximate_count_upper_bound": 15200
+    },
+    {
+      "id": "120222095713190526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 13600,
+      "approximate_count_upper_bound": 16000
+    },
+    {
+      "id": "120222095713180526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}",
+      "retention_days": 365,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 14000,
+      "approximate_count_upper_bound": 16400
+    },
+    {
+      "id": "120219836722960526",
+      "name": "[SITE] [OFERTA] Página Oferta REC - 007D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"operator\":\"or\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\"},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\\/\"}]},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"VISITORS_BY_URL\"}]}}",
+      "retention_days": 7,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219836722900526",
+      "name": "[SITE] [OFERTA] Página Oferta REC - 015D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"operator\":\"or\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\"},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\\/\"}]},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"VISITORS_BY_URL\"}]}}",
+      "retention_days": 15,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219836722840526",
+      "name": "[SITE] [OFERTA] Página Oferta REC - 030D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"operator\":\"or\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\"},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\\/\"}]},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"VISITORS_BY_URL\"}]}}",
+      "retention_days": 30,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219836722830526",
+      "name": "[SITE] [OFERTA] Página Oferta REC - 045D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":3888000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"operator\":\"or\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\"},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\\/\"}]},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"VISITORS_BY_URL\"}]}}",
+      "retention_days": 45,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219836722810526",
+      "name": "[SITE] [OFERTA] Página Oferta REC - 060D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"operator\":\"or\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\\/\"},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\"}]},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"VISITORS_BY_URL\"}]}}",
+      "retention_days": 60,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219836722800526",
+      "name": "[SITE] [OFERTA] Página Oferta REC - 090D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"operator\":\"or\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\"},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\\/\"}]},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"VISITORS_BY_URL\"}]}}",
+      "retention_days": 90,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219836722430526",
+      "name": "[SITE] [OFERTA] Página Oferta REC - 180D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":657178423444244}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"operator\":\"or\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\\/\"},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\\/ofertas\\/reuniao-estrategica-para-contadores\"}]},{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"VISITORS_BY_URL\"}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219361635580526",
+      "name": "[EVENTO] - Lead - 090D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"Lead\"}]}}]}}",
+      "retention_days": 90,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 90 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219361635560526",
+      "name": "[EVENTO] - Lead - 180D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"Lead\"}]}}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 180 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219361601690526",
+      "name": "[EVENTO] - Lead - 007D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"Lead\"}]}}]}}",
+      "retention_days": 7,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 7 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219361601680526",
+      "name": "[EVENTO] - Lead - 015D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"Lead\"}]}}]}}",
+      "retention_days": 15,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 15 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219361601540526",
+      "name": "[EVENTO] - Lead - 030D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"Lead\"}]}}]}}",
+      "retention_days": 30,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 30 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219361601420526",
+      "name": "[EVENTO] - Lead - 045D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":3888000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"Lead\"}]}}]}}",
+      "retention_days": 45,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 45 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219361601410526",
+      "name": "[EVENTO] - Lead - 060D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"Lead\"}]}}]}}",
+      "retention_days": 60,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 60 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219348178940526",
+      "name": "[IG] Novos Seguidores SVL",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":0,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"INSTAGRAM_PROFILE_FOLLOW\"}]}}]}}",
+      "retention_days": 0,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 3600,
+      "approximate_count_upper_bound": 4200
+    },
+    {
+      "id": "120219347657200526",
+      "name": "[IG] Envolvimento Instagram FR - 007D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}",
+      "retention_days": 7,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 5000,
+      "approximate_count_upper_bound": 5900
+    },
+    {
+      "id": "120219347657190526",
+      "name": "[IG] Envolvimento Instagram FR - 015D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}",
+      "retention_days": 15,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 9000,
+      "approximate_count_upper_bound": 10600
+    },
+    {
+      "id": "120219347656900526",
+      "name": "[IG] Envolvimento Instagram FR - 030D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}",
+      "retention_days": 30,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 18700,
+      "approximate_count_upper_bound": 22000
+    },
+    {
+      "id": "120219347655870526",
+      "name": "[IG] Envolvimento Instagram FR - 060D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}",
+      "retention_days": 60,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 42700,
+      "approximate_count_upper_bound": 50300
+    },
+    {
+      "id": "120219347655860526",
+      "name": "[IG] Envolvimento Instagram FR - 090D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}",
+      "retention_days": 90,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 50600,
+      "approximate_count_upper_bound": 59600
+    },
+    {
+      "id": "120219346902930526",
+      "name": "[IG] Envolvimento Instagram QT - 007D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_engaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}",
+      "retention_days": 7,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 4700,
+      "approximate_count_upper_bound": 5500
+    },
+    {
+      "id": "120219346902900526",
+      "name": "[IG] Envolvimento Instagram QT - 015D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_engaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}",
+      "retention_days": 15,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 8500,
+      "approximate_count_upper_bound": 10000
+    },
+    {
+      "id": "120219346902910526",
+      "name": "[IG] Envolvimento Instagram QT - 030D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_engaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}",
+      "retention_days": 30,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 17400,
+      "approximate_count_upper_bound": 20400
+    },
+    {
+      "id": "120219346902020526",
+      "name": "[IG] Envolvimento Instagram QT - 060D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_engaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}",
+      "retention_days": 60,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 36800,
+      "approximate_count_upper_bound": 43300
+    },
+    {
+      "id": "120219346902010526",
+      "name": "[IG] Envolvimento Instagram QT - 090D",
+      "subtype": "IG_BUSINESS",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_engaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}",
+      "retention_days": 90,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 47500,
+      "approximate_count_upper_bound": 55900
+    },
+    {
+      "id": "120219034633870526",
+      "name": "[SITE] - Acessou site - 180D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"ALL_VISITORS\"}]}}",
+      "retention_days": 180,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 200,
+        "description": "Normal"
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219034632680526",
+      "name": "[SITE] - Acessou site - 090D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"ALL_VISITORS\"}]}}",
+      "retention_days": 90,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 90 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219034630480526",
+      "name": "[SITE] - Acessou site - 060D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"ALL_VISITORS\"}]}}",
+      "retention_days": 60,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 60 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219034628630526",
+      "name": "[SITE] - Acessou site - 030D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"ALL_VISITORS\"}]}}",
+      "retention_days": 30,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 30 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219034627270526",
+      "name": "[SITE] - Acessou site - 015D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"ALL_VISITORS\"}]}}",
+      "retention_days": 15,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 15 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    },
+    {
+      "id": "120219034626410526",
+      "name": "[SITE] - Acessou site - 007D",
+      "subtype": "WEBSITE",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"pixel\",\"id\":652377120643645}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"url\",\"operator\":\"i_contains\",\"value\":\"\"}]},\"template\":\"ALL_VISITORS\"}]}}",
+      "retention_days": 7,
+      "delivery_status": {
+        "code": 200,
+        "description": "Esse público está pronto para uso."
+      },
+      "operation_status": {
+        "code": 422,
+        "description": "Não podemos criar o público porque seu Pixel da Meta não apresentou qualquer atividade nos últimos 7 dias."
+      },
+      "approximate_count_lower_bound": 20,
+      "approximate_count_upper_bound": 20
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "120253413819760526",
+      "name": "[SE] [FORMS] [MAIOR INTENÇÃO] [IDENTIDADE] 2026-10-05",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "36000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120253330191810526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Bruno Novo Setembro",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "13235",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120253257675140526",
+      "name": "[24/09/26] [AULA] [VIRADA LOTE] [COLD] - 4 Estáticos",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "25000",
+      "objective": "OUTCOME_SALES"
+    },
+    {
+      "id": "120253257675000526",
+      "name": "[24/09/26] [AULA] [VIRADA LOTE] [HOT] - 4 Estáticos",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "25000",
+      "objective": "OUTCOME_SALES"
+    },
+    {
+      "id": "120253144969620526",
+      "name": "[17/09/26] [AULA] [VENDAS] [COLD] [FASE01] - 3 Estáticos",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "10000",
+      "objective": "OUTCOME_SALES"
+    },
+    {
+      "id": "120253135403420526",
+      "name": "[04/09/26] [CAFÉ COM SEVILHA] COLD + HOT — Cópia",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "11800",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120253114415160526",
+      "name": "[04/09/26] [CAFÉ COM SEVILHA] COLD + HOT",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "11800",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120252954941370526",
+      "name": "[04/09/26] [CAFÉ COM SEVILHA] COLD + HOT",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "11800",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120252795560930526",
+      "name": "[25/08] [SE] [PÁGINA NOVA] [LEAD-QL] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "9000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120252795398510526",
+      "name": "[25/08] [SE] [PÁGINA NOVA] [LEAD-QL] [HOT] [FASE01] - Melhores Ads",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "13000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120252417782330526",
+      "name": "[SE] [LEAD-QL] [COLD] [FASE01] - Teste de Públicos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "5090",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120252417557270526",
+      "name": "[SE] [LEAD-QL] [HOT] [FASE01] - Melhores Ads",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "9000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120252417323380526",
+      "name": "[SE] [LEAD-QL] [HOT] [FASE01] - Fábrica de Criativos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "3000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120252309825010526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Segunda leva de Banners",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "5000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120252309137770526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Teste de Banners",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "5000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120248783889010526",
+      "name": "[SE] [LEAD] [HOT] [FASE01] - Fábrica de Criativos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "3000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120248779747120526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Fábrica de Criativos",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "14559",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120246733871520526",
+      "name": "[CP] [CAPTAÇÃO] [COLD] [V1] - Teste de Página — Cópia",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120246733871510526",
+      "name": "[CP] [CAPTAÇÃO] [HOT] [V1] - Teste de Página — Cópia",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120244904117740526",
+      "name": "[CP] [CAPTAÇÃO] [HOT] [V1] - Teste de Página",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120244878534830526",
+      "name": "[CP] [CAPTAÇÃO] [COLD] [V1] - Teste de Página",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120244151307930526",
+      "name": "[SE] [LEAD] [HOT] [FASE01] - Melhores Ads",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "1500",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120244151200240526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Melhores Ads",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "3000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120244151189900526",
+      "name": "[SE] [FORMS] [LEAD] [HOT] [FASE01] - Melhores Ads",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "3000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120242287224490526",
+      "name": "MCAP0226_CAPTACAO_QUENTE_AUTO_ESCALA",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120242050211520526",
+      "name": "MCAP0226_CAPTACAO_AUTO_ADV_TESTE_DE_CRIATIVO",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "50000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120240157588290526",
+      "name": "[SE] [FORMS] [LEAD] [HOT] [FASE01] - Teste de Públicos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120235128444610526",
+      "name": "[SE] [FORMS] [LEAD] [HOT] [FASE01] - Teste de Ads",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120234941844500526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Teste de Públicos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120234703907860526",
+      "name": "[DISTRIBUIÇÃO] [C1] [COLD]: Aumentar a produtividade é uma...",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "3010",
+      "objective": "LINK_CLICKS"
+    },
+    {
+      "id": "120234703900140526",
+      "name": "[DISTRIBUIÇÃO] [C1] [COLD]: Todas as empresas, com exceção...",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "3010",
+      "objective": "LINK_CLICKS"
+    },
+    {
+      "id": "120234703876770526",
+      "name": "[DISTRIBUIÇÃO] [C1] [COLD]: Para os contadores que lidam...",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "3010",
+      "objective": "LINK_CLICKS"
+    },
+    {
+      "id": "120234522798290526",
+      "name": "[SE] [LEAD] [COLD] [FASE01] - Teste de Públicos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120234185139480526",
+      "name": "[SE] [LEAD] [HOT] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120234185139460526",
+      "name": "[SESSÃO ESTRATEGICA] [LEAD] [COLD] [RH]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120234185139450526",
+      "name": "[SE] [LEAD] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120231653183780526",
+      "name": "[SESSÃO ESTRATEGICA] [LEAD] [COLD] [RH]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120230135232220526",
+      "name": "[SE] [LEAD] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120227701575500526",
+      "name": "[IMERSÃO:RH] [CAPTAÇÃO] [LEAD] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "7500",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120227524218990526",
+      "name": "[IMERSÃO:RH] [CAPTAÇÃO] [LEAD] [HOT] [FASE02]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "7500",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120227295139230526",
+      "name": "[IMERSÃO:RH] [CAPTAÇÃO] [LEAD] [HOT] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120227295139190526",
+      "name": "[IMERSÃO:RH] [CAPTAÇÃO] [LEAD] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "7500",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120227271812240526",
+      "name": "[IMERSÃO:RH] [CAPTAÇÃO] [LEAD] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "5000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120227088595510526",
+      "name": "[IMERSÃO:RH] [CAPTAÇÃO] [LEAD] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "15000",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120227088227340526",
+      "name": "[IMERSÃO:RH] [CAPTAÇÃO] [LEAD] [HOT] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120222095208120526",
+      "name": "[SE] [LEAD] [HOT] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120221958922790526",
+      "name": "[SE] [LEAD] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "6600",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120220525532480526",
+      "name": "Campanha 03 Lead Advantage+ V02 - iniciada 1703202515h27 - Respondi — Cópia",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120219885618700526",
+      "name": "Campanha 03 Lead Advantage+ V02 - iniciada 1703202515h27 - Respondi",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120219582759680526",
+      "name": "Campanha 03 Lead Advantage+ V02 - pausa 1403202509h52",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120219210655150526",
+      "name": "Campanha 02 Desire",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_TRAFFIC"
+    },
+    {
+      "id": "120219208937990526",
+      "name": "Campanha 01 Awareness",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_AWARENESS"
+    },
+    {
+      "id": "120218022885800526",
+      "name": "Sessão Estratégica | Gestão de Processos Contábeis - V02 - LIGADA EM 22022025 - desligada em 06032025",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120217502407710526",
+      "name": "Sessão Estratégica | Gestão de Processos Contábeis - DESLIGADA EM 21022025",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    }
+  ],
+  "hot_adsets": [],
+  "bruno_media": {
+    "data": [
+      {
+        "id": "17910884640537456",
+        "caption": "Entregar no prazo e com qualidade é obrigação da operação. Não é o resultado final da liderança.\nO líder operacional precisa garantir a entrega, mas também precisa olhar para produtividade, capacidade, retrabalho, custo e desempenho da equipe.\nPorque existe uma diferença enorme entre entregar e entregar com eficiência.\nSe a única meta do líder é cumprir prazo, ele pode fazer isso aumentando equipe, acumulando horas extras, convivendo com retrabalho e consumindo mais recursos do que deveria.\nA entrega acontece.\nMas o resultado piora.\nLiderança operacional precisa impactar positivamente o resultado do escritório.\nÉ isso que diferencia quem apenas acompanha a operação de quem, de fato, lidera.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/Dd6fYcsOfjV/",
+        "timestamp": "2026-09-30T13:56:11+0000"
+      },
+      {
+        "id": "17977204748918220",
+        "caption": "Seu escritório automatiza, contrata tecnologia, treina o time e ajusta processos.\n\nMas qual resultado você espera capturar com cada uma dessas ações?\n\nSe a automação vai economizar tempo, quanto tempo?\nSe o treinamento vai melhorar a operação, qual indicador precisa mudar?\n\nSem um resultado esperado, você até promove melhorias — mas dificilmente consegue transformar essas melhorias em performance.\n\nPrimeiro defina o resultado. Depois escolha a melhoria.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/Dd1sffWiY3a/",
+        "timestamp": "2026-09-28T17:14:58+0000"
+      },
+      {
+        "id": "18115610558043965",
+        "caption": "“Estamos sobrecarregados.”\n\nTodo dono de escritório já ouviu essa frase. E quase sempre a resposta é a mesma: contratar mais uma pessoa.\n\nSó que a sobrecarga raramente é falta de gente. É falta de gestão operacional.\n\nNinguém sabe quanto tempo leva cada entrega. Ninguém sabe o que cada pessoa precisa entregar amanhã. As prioridades mudam conforme o cliente grita mais alto. E o prazo vira surpresa todo mês.\n\nNesse cenário, qualquer equipe vai se sentir sobrecarregada. Com 10 pessoas ou com 20.\n\nAntes de contratar, organize a operação.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DdtqySRunlo/",
+        "timestamp": "2026-09-25T14:26:01+0000"
+      },
+      {
+        "id": "18127703149772334",
+        "caption": "Você tem gente demais ou falta capacidade na sua operação?\n\nEssa é uma dúvida recorrente nos escritórios contábeis.\n\nO problema é que, sem medir tempo, capacidade e produtividade, a resposta fica baseada em percepção.\n\nE percepção contra percepção não é gestão.\n\nAntes de aumentar sua estrutura, entenda quanto sua operação realmente consegue produzir com as pessoas que já tem.\n\nGestão orientada pelo tempo transforma feeling em decisão.\n\n#GestãoContábil #GestãoOperacional #Contabilidade #Produtividade",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DdoV0aqOYxH/",
+        "timestamp": "2026-09-23T12:47:49+0000"
+      },
+      {
+        "id": "17897991504600036",
+        "caption": "Hoje o dia é de vocês, contadores.\n\nDe quem carrega a responsabilidade de tantas empresas nas costas e raramente recebe o reconhecimento que merece. De quem cumpre prazo, resolve problema e segura as pontas, mesmo quando ninguém está vendo.\n\nTenho o privilégio de conviver com contadores todos os dias, e sigo admirando a seriedade e o compromisso de vocês.\n\nObrigado por tudo que vocês fazem. Parabéns pelo seu dia!\n\nAbraço.\n\n#DiaDoContador",
+        "media_type": "CAROUSEL_ALBUM",
+        "media_product_type": "FEED",
+        "permalink": "https://www.instagram.com/p/DdmAN0fjsgn/",
+        "timestamp": "2026-09-22T14:58:09+0000"
+      },
+      {
+        "id": "18107972162591879",
+        "caption": "Você sabe quanto seu cliente paga.\nMas sabe quanto ele custa para sua operação?\n\nDois clientes com o mesmo honorário podem gerar resultados completamente diferentes.\n\nUm é organizado, respeita processos e consome pouca energia da equipe.\nO outro gera retrabalho, urgências, interrupções e horas que quase nunca entram na conta.\n\nPor isso, conhecer a carteira exige dois olhares: representatividade financeira + impacto operacional.\n\nSem essa visão, você pode estar chamando de “bom cliente” alguém que, na prática, está consumindo sua margem.\n\nHonorário mostra receita. Impacto operacional ajuda a entender resultado.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DdkHPwHKQ2X/",
+        "timestamp": "2026-09-21T21:22:15+0000"
+      },
+      {
+        "id": "18164960611472673",
+        "caption": "Reforma Tributária. Inteligência Artificial. E uma terceira mudança que pode ser ainda mais importante.\n\nA necessidade do cliente mudou.\n\nRegularidade fiscal, cumprimento de obrigações e processamento continuam fundamentais. Mas cada vez mais isso é premissa.\n\nO cliente espera que o contador o ajude a entender melhor o negócio, tomar decisões e enfrentar um ambiente cada vez mais complexo.\n\nE aqui está o ponto: Reforma Tributária e IA não diminuem essa necessidade. Elas aumentam.\n\nA tecnologia pode transformar profundamente o processamento. A Reforma vai exigir adaptação. Mas nenhuma das duas, sozinha, constrói relevância junto ao cliente.\n\nA pergunta estratégica para o escritório contábil passa a ser:\n\n“Como eu uso tudo isso para me tornar mais relevante para o meu cliente?”\n\nPorque talvez a maior transformação da contabilidade não esteja apenas naquilo que o escritório faz.\n\nEstá naquilo que o cliente passou a esperar dele.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DdbcrBLuhis/",
+        "timestamp": "2026-09-18T12:36:41+0000"
+      },
+      {
+        "id": "18131974417737199",
+        "caption": "Ter meta não significa ter gestão.\n\nO que conecta a meta ao resultado é a capacidade de acompanhar a operação e corrigir os desvios ao longo do caminho.\n\nNa prática, isso exige ritmos gerenciais diferentes:\n\nDiariamente, entender o que está acontecendo.\nSemanalmente, validar a entrega e corrigir desvios.\nMensalmente, consolidar os dados e ajustar o direcionamento.\n\nPorque esperar o final do mês para descobrir que a meta não foi atingida não é gestão. É constatação.\n\nMeta aponta o destino. Processo organiza o caminho. Ritmo gerencial garante que você não descubra tarde demais que saiu da rota.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DdXbiTRuihl/",
+        "timestamp": "2026-09-16T23:08:48+0000"
+      },
+      {
+        "id": "18010156115762714",
+        "caption": "Sucesso do Cliente precisa aparecer no resultado do escritório. Ponto.\n\nNão basta ter mais reuniões, mais acompanhamento, mais mensagens e mais gente envolvida no atendimento.\n\nSe a sua estratégia de CS funciona, ela precisa gerar consequências reais:\n📈 maior ticket médio\n⏳ maior lifetime value\n📉 menor churn\n🤝 mais indicações\n💰 e, no fim, mais resultado.\n\nSe você aumentou o custo para atender o cliente, mas não melhorou retenção, receita ou indicação, talvez você tenha melhorado a operação ou a comunicação — mas ainda não construiu uma estratégia de Sucesso do Cliente.\n\nSucesso do Cliente também precisa ser sucesso para o negócio.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DdSBQwHiqow/",
+        "timestamp": "2026-09-14T20:43:22+0000"
+      },
+      {
+        "id": "18047865866603707",
+        "caption": "Hoje, enquanto preparava o almoço, pensei em uma coisa simples: preparação não muda necessariamente o resultado final. Muda o esforço para chegar até ele.\n\nNa contabilidade é igual.\n\nSeu escritório pode fechar a folha, o fiscal e a contabilidade todo mês. Mas, sem planejamento da operação, provavelmente faz isso gastando mais tempo, energia e dinheiro do que deveria.\n\nOrganizar antes, distribuir melhor as atividades, antecipar gargalos e preparar a operação reduz improviso, erro e retrabalho.\n\nEficiência não é só entregar. É entregar bem, com menos desperdício.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DdKD4MjCyMM/",
+        "timestamp": "2026-09-11T18:33:11+0000"
+      },
+      {
+        "id": "17906752467513284",
+        "caption": "Seu escritório tem meta ou só obrigação?\n\nEntregar folha, impostos, balancetes e obrigações no prazo é fundamental. Mas isso não deveria ser a meta do escritório. É a premissa da operação.\n\nMeta é definir onde o negócio precisa chegar: crescer 15% mantendo rentabilidade, aumentar margem, reduzir o peso do custo de pessoal, melhorar a composição da carteira ou aumentar a capacidade operacional.\n\nE existe um segundo problema: não basta a meta existir na cabeça do dono. Ela precisa ser desdobrada para os departamentos e chegar à operação.\n\nQuando isso não acontece, o escritório trabalha muito, entrega muito, mas não necessariamente avança.\n\nMeta orienta esforço. Premissa sustenta a operação.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DdEmSHmuH7U/",
+        "timestamp": "2026-09-09T15:37:43+0000"
+      },
+      {
+        "id": "17980794318087222",
+        "caption": "Três forças estão pressionando a operação dos escritórios contábeis ao mesmo tempo:\n\nReforma Tributária. Inteligência Artificial. Novas exigências dos clientes.\n\nO cliente precisa de mais apoio — e está disposto a pagar mais quando percebe valor em novas entregas e soluções.\n\nMas existe um ponto importante: não adianta criar novas entregas se a operação não estiver preparada para sustentá-las.\n\nO mercado está mudando. E essa mudança vai exigir cada vez mais gestão, organização e capacidade operacional dos escritórios contábeis.\n\nSua operação está preparada para esse novo cenário?",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/Dc_d9wCOZiX/",
+        "timestamp": "2026-09-07T15:48:16+0000"
+      },
+      {
+        "id": "17905680582506589",
+        "caption": "A qualidade técnica continua sendo indispensável.\nMas ela deixou de ser suficiente.\n\nO desafio dos escritórios contábeis está cada vez mais na capacidade de gestão.\n\nTer clareza sobre resultado.\nSaber onde quer chegar.\nTransformar estratégia em ações.\nGerenciar pessoas, operação, comercial e capacidade de crescimento.\n\nUm escritório pode ser tecnicamente excelente e, ainda assim, perder margem, crescer de forma desorganizada e depender demais dos sócios.\n\nA técnica é premissa. Gestão é o que transforma competência em resultado.\n\nEssa, para mim, é uma das discussões mais importantes para os próximos anos da contabilidade.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/Dc3nrVCulyL/",
+        "timestamp": "2026-09-04T14:40:32+0000"
+      },
+      {
+        "id": "18041389706817197",
+        "caption": "Não basta definir onde o escritório quer chegar.\n\nSe você diz que quer proximidade com o cliente, mas reconhece apenas desempenho técnico, existe uma incoerência.\n\nSe quer reduzir custos, mas bonifica volume de entregas sem considerar produtividade, existe outra.\n\nMeta, indicador, reconhecimento, responsabilidades e rotina precisam apontar para o mesmo lugar.\n\nEstratégia não é aquilo que está escrito no planejamento.\nÉ aquilo que a operação é orientada a executar todos os dias.\n\nEsse corte é bom porque reforça exatamente o território que queremos ocupar: conexão entre estratégia e operação, e não apenas “gestão por metas”.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DczOPNCiI5q/",
+        "timestamp": "2026-09-02T21:40:46+0000"
+      },
+      {
+        "id": "18064762343773798",
+        "caption": "☕ Vem aí o Café com a Sevilha.\n\nNo dia 06 de outubro, vamos abrir as portas da Sevilha, em São Paulo, para um encontro presencial entre donos e sócios de escritórios contábeis.\n\nA proposta é simples: uma mesa pequena para conversas grandes.\n\nEu, Vicente Sevilha e Rodrigo Pires vamos passar o dia discutindo estratégia, processos e pessoas, com profundidade, troca de experiências e muita prática de quem vive a gestão de escritórios contábeis todos os dias.\n\nNão será uma palestra. Será um encontro para conversar sobre os desafios reais de quem está construindo e gerindo uma contabilidade.\n\n📅 06 de outubro\n📍 Sede da Sevilha Contabilidade — São Paulo\n🎯 Para donos e sócios de escritórios contábeis\n\nAs vagas serão limitadas justamente para preservar a proximidade e a qualidade da conversa.\n\nSe fizer sentido para você participar comente EU QUERO!",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DcuBE_XKz07/",
+        "timestamp": "2026-08-31T21:09:31+0000"
+      },
+      {
+        "id": "18437617864132949",
+        "caption": "O mercado contábil já mudou. E o seu escritório?\n\nIA, automação, reforma tributária e novos modelos de serviço estão transformando o mercado.\n\nMas existe uma mudança ainda mais importante: a que precisa acontecer dentro da empresa contábil.\n\nEstratégia clara.\nMaturidade gerencial.\nUma operação preparada para executar e absorver as mudanças.\n\nPorque tecnologia nenhuma compensa um escritório sem direção.\n\nE quando essa estrutura interna não existe, os sinais começam a aparecer: margem pressionada, dificuldade para crescer, problemas para reter pessoas e uma operação cada vez mais dependente do dono.\n\nA transformação externa já começou.\n\nA pergunta agora é se a gestão do seu escritório está preparada para ela.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DclV_M5Or5J/",
+        "timestamp": "2026-08-28T12:19:42+0000"
+      },
+      {
+        "id": "17864705421662375",
+        "caption": "Tem escritório contábil que chama de gestão aquilo que, na prática, é só reação.\n\nO cliente demanda demais.\nA equipe reclama de sobrecarga.\nUma entrega atrasa.\nO líder entra e resolve.\n\nE no dia seguinte tudo começa de novo.\n\nQuando existe acompanhamento da operação, você começa a enxergar o desvio antes de enxergar apenas o problema.\n\nDescobre qual cliente consome capacidade demais, onde existe retrabalho, por que a agenda não foi cumprida e onde a operação está perdendo produtividade.\n\nGestão não é chegar mais rápido para apagar o incêndio.\nÉ criar estrutura para corrigir a rota antes que ele aconteça.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DchUtk1uuAj/",
+        "timestamp": "2026-08-26T22:52:51+0000"
+      },
+      {
+        "id": "17912044212259957",
+        "caption": "Ter meta não é gestão.\n\nVocê pode definir que quer reduzir o tempo de fechamento do Fiscal, aumentar a produtividade no DP ou fechar mais balancetes no Contábil.\n\nA questão é: a sua rotina de gestão está aproximando a operação dessas metas?\n\nO acompanhamento diário identifica os desvios.\nO semanal transforma problemas em ações.\nE o mensal mostra se essas ações estão realmente gerando resultado.\n\nMeta aponta a direção. Rotina de gestão faz o escritório chegar lá.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/Dcb5ZZSCPJw/",
+        "timestamp": "2026-08-24T20:16:55+0000"
+      },
+      {
+        "id": "17874534099555029",
+        "caption": "Quer melhorar a gestão do seu escritório contábil?\n\nCriamos a Comunidade Sevilha Performance para compartilhar, toda semana, conteúdos práticos sobre estratégia, gestão de pessoas, processos e performance.\n\nParticipação gratuita.\n\n👉 Entre para a comunidade pelo link na bio.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DcOWgNMu2Lf/",
+        "timestamp": "2026-08-19T14:03:16+0000"
+      },
+      {
+        "id": "18229231756320071",
+        "caption": "**Seu cliente quer solução. Não quer saber o que você faz.**\n\nO empresário não contratou uma contabilidade porque quer aprender contabilidade.\n\nEle quer **segurança, clareza, menos problemas e melhores decisões.**\n\nQuando você leva o carro ao mecânico, você não quer uma aula de mecânica. Quer o carro funcionando.\n\nNa contabilidade é a mesma coisa.\n\nQuanto mais o cliente precisa entender do seu processo para perceber valor, mais você corre o risco de transformar conhecimento técnico em commodity.\n\n**Valor não está em mostrar o quanto o seu trabalho é complexo.\nEstá em fazer o cliente perceber o resultado que você gera.**\n\nPare de vender o que você faz.\n\n**Comece a vender o problema que você resolve.**",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DcJvLSQiINM/",
+        "timestamp": "2026-08-17T19:00:40+0000"
+      },
+      {
+        "id": "18618675976039352",
+        "caption": "A contabilidade está virando commodity. E isso muda tudo.\n\nTecnologia, automação e IA estão tornando a entrega operacional cada vez mais parecida entre os escritórios.\n\nSe todos entregam a mesma coisa, do mesmo jeito, o cliente passa a escolher por preço.\n\nE competir por preço é uma corrida perigosa.\n\nO caminho é outro: gerar novos valores para o cliente.\n\nRelacionamento. Proximidade. Informação. Análise. Gestão. Capacidade de transformar dados contábeis em decisões melhores.\n\nO futuro da contabilidade não está apenas em fazer melhor o que todo mundo já faz.\n\nEstá em entregar aquilo que o cliente percebe, valoriza e está disposto a pagar mais para receber.\n\nSe o seu escritório ainda vende apenas entrega operacional, talvez o problema não seja a concorrência.\n\nTalvez seja o valor que você ainda não criou.\n\n#Contabilidade #GestãoContábil #MercadoContábil #EmpresasContábeis #Gestão Performance",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DcBVrD5OqxT/",
+        "timestamp": "2026-08-14T12:43:28+0000"
+      },
+      {
+        "id": "18179064382424430",
+        "caption": "A maior transformação do mercado contábil não está na tecnologia.\n\nTambém não está na Reforma Tributária.\n\nEstá na **forma como o cliente escolhe, percebe e valoriza aquilo que consome.**\n\nCada vez mais, as decisões caminham para dois extremos:\n\n**Preço ou experiência.**\n\nOu você constrói uma operação extremamente eficiente para competir por preço, ou constrói uma entrega capaz de gerar uma experiência que justifique pagar mais.\n\nO problema está em ficar no meio.\n\nCobrar mais sem gerar percepção de valor.\nOu cobrar menos sem ter eficiência operacional para sustentar margem.\n\nA discussão, portanto, não é apenas sobre quanto custa a sua contabilidade.\n\nÉ sobre **por que o cliente deveria escolher você.**\n\nE essa resposta precisa estar muito clara.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/Db8r4Xpu8eJ/",
+        "timestamp": "2026-08-12T17:21:11+0000"
+      },
+      {
+        "id": "18166097086457073",
+        "caption": "SEU ESCRITÓRIO PRECISA MESMO CONTRATAR?\n\nAntes de abrir uma nova vaga, existe uma pergunta mais importante:\n\nQuanto da capacidade que você já paga está realmente sendo utilizada?\n\nMuitos escritórios contratam porque o time está sobrecarregado.\n\nMas sensação de sobrecarga não significa, necessariamente, falta de capacidade.\n\nPode significar retrabalho, processos ruins, distribuição inadequada das atividades, excesso de urgências e, principalmente, falta de gestão sobre o tempo.\n\nQuando você não conhece a capacidade produtiva da sua operação, contratação vira resposta para um problema que você ainda nem diagnosticou.\n\nCrescer com eficiência começa por entender quanto a sua estrutura atual ainda consegue absorver.",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/Db3AlyOOAzl/",
+        "timestamp": "2026-08-10T12:26:19+0000"
+      },
+      {
+        "id": "18112965083055095",
+        "caption": "Existe um erro que está custando caro para muitos escritórios de contabilidade.\n\nEles investem em tecnologia.\nTreinam a equipe.\nMelhoram processos.\nOrganizam a operação.\n\nE, mesmo assim, a margem continua baixa.\n\nO problema não está na falta de melhoria.\n\nEstá na falta de uma gestão orientada para resultado.\n\nEnquanto a margem for apenas uma consequência do trabalho realizado — e não uma meta acompanhada, discutida e cobrada — o escritório continuará trabalhando mais sem ganhar proporcionalmente mais.\n\nMelhorar a operação é importante.\n\nMas melhorar a operação sem impactar o resultado financeiro é apenas fazer melhor o que já não está gerando o lucro esperado.\n\nA pergunta é simples:\n\n**Sua contabilidade mede eficiência... ou mede resultado?**\n\n#Contabilidade #GestãoContábil #Margem #Performance #EficiênciaOperacional EmpresárioContábil Gestão Liderança Produtividade BrunoSilvestre",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/DbvfA1mO5mN/",
+        "timestamp": "2026-08-07T14:18:51+0000"
+      },
+      {
+        "id": "18112416193757408",
+        "caption": "Mais de 500 escritórios de contabilidade depois, uma conclusão ficou muito clara para mim:\n\nO maior problema da maioria deles não é falta de pessoas.\nNão é falta de processos.\nE nem de tecnologia.\n\nO que realmente impede o crescimento é a ausência de maturidade gerencial.\n\nEnquanto a gestão continuar apagando incêndios, tomando decisões pela sensação e sem olhar para indicadores, metas e rotina de acompanhamento, qualquer melhoria será apenas pontual.\n\nFerramentas ajudam.\nProcessos organizam.\nPessoas executam.\n\nMas é a gestão que transforma tudo isso em resultado.\n\nNo fim, empresas não crescem pela quantidade de esforço. Crescem pela qualidade da gestão.\n\nE você, olhando para o seu escritório hoje: o maior desafio está na operação… ou na forma como ela é gerida?\n\n#Contabilidade #GestãoContábil #GestãoEmpresarial #Indicadores #Liderança Processos Tecnologia Performance SevilhaPerformance",
+        "media_type": "VIDEO",
+        "media_product_type": "REELS",
+        "permalink": "https://www.instagram.com/reel/Dbp_rGJuDxS/",
+        "timestamp": "2026-08-05T11:15:09+0000"
+      }
+    ]
+  },
+  "bruno_page": {
+    "id": "106292094924513",
+    "name": "Bruno Silvestre Consultor",
+    "instagram_business_account": {
+      "id": "17841446823336862"
+    },
+    "connected_instagram_account": {
+      "id": "17841446823336862"
+    }
+  },
+  "mtd_account_spend": {
+    "data": [
+      {
+        "spend": "5884.59",
+        "date_start": "2026-10-01",
+        "date_stop": "2026-10-05"
+      }
+    ],
+    "paging": {
+      "cursors": {
+        "before": "MAZDZD",
+        "after": "MAZDZD"
+      }
+    }
+  },
+  "mtd_campaign_spend": [
+    {
+      "campaign_id": "120234703876770526",
+      "campaign_name": "[DISTRIBUIÇÃO] [C1] [COLD]: Para os contadores que lidam...",
+      "spend": "146.45",
+      "date_start": "2026-10-01",
+      "date_stop": "2026-10-05"
+    },
+    {
+      "campaign_id": "120234703900140526",
+      "campaign_name": "[DISTRIBUIÇÃO] [C1] [COLD]: Todas as empresas, com exceção...",
+      "spend": "143.67",
+      "date_start": "2026-10-01",
+      "date_stop": "2026-10-05"
+    },
+    {
+      "campaign_id": "120234703907860526",
+      "campaign_name": "[DISTRIBUIÇÃO] [C1] [COLD]: Aumentar a produtividade é uma...",
+      "spend": "148.06",
+      "date_start": "2026-10-01",
+      "date_stop": "2026-10-05"
+    },
+    {
+      "campaign_id": "120235128444610526",
+      "campaign_name": "[SE] [FORMS] [LEAD] [HOT] [FASE01] - Teste de Ads",
+      "spend": "569.37",
+      "date_start": "2026-10-01",
+      "date_stop": "2026-10-05"
+    },
+    {
+      "campaign_id": "120248779747120526",
+      "campaign_name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Fábrica de Criativos",
+      "spend": "501.37",
+      "date_start": "2026-10-01",
+      "date_stop": "2026-10-05"
+    },
+    {
+      "campaign_id": "120252795398510526",
+      "campaign_name": "[25/08] [SE] [PÁGINA NOVA] [LEAD-QL] [HOT] [FASE01] - Melhores Ads",
+      "spend": "533.26",
+      "date_start": "2026-10-01",
+      "date_stop": "2026-10-05"
+    },
+    {
+      "campaign_id": "120253135403420526",
+      "campaign_name": "[04/09/26] [CAFÉ COM SEVILHA] COLD + HOT — Cópia",
+      "spend": "734.28",
+      "date_start": "2026-10-01",
+      "date_stop": "2026-10-05"
+    },
+    {
+      "campaign_id": "120253144969620526",
+      "campaign_name": "[17/09/26] [AULA] [VENDAS] [COLD] [FASE01] - 3 Estáticos",
+      "spend": "481.06",
+      "date_start": "2026-10-01",
+      "date_stop": "2026-10-05"
+    },
+    {
+      "campaign_id": "120253257675000526",
+      "campaign_name": "[24/09/26] [AULA] [VIRADA LOTE] [HOT] - 4 Estáticos",
+      "spend": "939.47",
+      "date_start": "2026-10-01",
+      "date_stop": "2026-10-05"
+    },
+    {
+      "campaign_id": "120253257675140526",
+      "campaign_name": "[24/09/26] [AULA] [VIRADA LOTE] [COLD] - 4 Estáticos",
+      "spend": "1179.38",
+      "date_start": "2026-10-01",
+      "date_stop": "2026-10-05"
+    },
+    {
+      "campaign_id": "120253330191810526",
+      "campaign_name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Bruno Novo Setembro",
+      "spend": "508.22",
+      "date_start": "2026-10-01",
+      "date_stop": "2026-10-05"
+    }
+  ],
+  "hot_adsets_unavailable": "GET requests rate limited code17/2446079; empty list is not absence"
+}

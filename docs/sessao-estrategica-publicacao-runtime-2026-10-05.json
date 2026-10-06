@@ -1,0 +1,554 @@
+{
+  "project": "prj_POvAf5LHu471jwcKljqgOSAS1pdd",
+  "team": "team_QFKNlEWIaRADsF4B2Ci6eaE7",
+  "publication_created": false,
+  "block": "auto-review rejected api/meta.js upload; no retry",
+  "files": [
+    {
+      "file": "Bruno.jpeg",
+      "sha": "e30a666755bfbc31d042c8988d37c79848030d1c",
+      "size": 15389
+    },
+    {
+      "file": "Rodrigo.jpeg",
+      "sha": "6ecf0955892e7fc6b63fc5ececfe8e05269ee2f7",
+      "size": 31608
+    },
+    {
+      "file": "Vicente.jpeg",
+      "sha": "2762b27a1a256ccb13ef9b1443369e7802c41e4b",
+      "size": 21214
+    },
+    {
+      "file": "api/ab.js",
+      "sha": "6e7a128d4dddd812a984c8d65da6e278c5e9deaa",
+      "size": 5094
+    },
+    {
+      "file": "api/briefing-aula.js",
+      "sha": "464ea0ea259f3e4be2e08e059a99929856f5f9c5",
+      "size": 833
+    },
+    {
+      "file": "api/compor.py",
+      "sha": "a19a6d27843b34e08de1eeaaec79fdb80e606c9a",
+      "size": 11086
+    },
+    {
+      "file": "api/eventos-qualificados.js",
+      "sha": "9d7388a5f853f04e2352447108e5550514ea99ae",
+      "size": 14693
+    },
+    {
+      "file": "api/leads.js",
+      "sha": "a1eb5124877f5b90dd386aea9ebf82650734eba3",
+      "size": 32268
+    },
+    {
+      "file": "api/meta.js",
+      "sha": "583490144192beb75cebba195b1ffc5b1e79c55f",
+      "size": 9602
+    },
+    {
+      "file": "api/rd-stats.js",
+      "sha": "71acf4a017467fed8713159d11288542a802964a",
+      "size": 8925
+    },
+    {
+      "file": "api/respondi.js",
+      "sha": "221ad80bde33d8391fe0f5ac6dd3ae2d4891c07f",
+      "size": 11899
+    },
+    {
+      "file": "api/resumo-png.js",
+      "sha": "d35b35f3c7f0d0204bbbe2b27dc3d0db51ef130c",
+      "size": 10572
+    },
+    {
+      "file": "api/resumo-txt.js",
+      "sha": "1547d1a8e7fd8c2f08ae3581fdacf9ee6e39535e",
+      "size": 1032
+    },
+    {
+      "file": "api/sheet-leads.js",
+      "sha": "412533c717cfe0271a3924559c2911d775c9d57e",
+      "size": 8039
+    },
+    {
+      "file": "api/stats.js",
+      "sha": "b8c3f838625e0f6485e42bddc8c7eed2a9291662",
+      "size": 6386
+    },
+    {
+      "file": "assets/admin-sidebar.js",
+      "sha": "089d249050cc11df558c9ea3f8dfb24385da53c4",
+      "size": 1965
+    },
+    {
+      "file": "assets/cafe-socios.webp",
+      "sha": "95fbd702b2ecad15ca222da37b25104adbd92444",
+      "size": 152772
+    },
+    {
+      "file": "assets/css/admin-audit.css",
+      "sha": "a77d633790f1433de83c5691c0bbdb24c854d5c2",
+      "size": 5550
+    },
+    {
+      "file": "assets/css/admin-dashboard.css",
+      "sha": "0fec6ed64ba2f61723da06785d437d2b2e4bf6f8",
+      "size": 40966
+    },
+    {
+      "file": "assets/css/admin-sidebar.css",
+      "sha": "ed80bd225dd7de4f49ca6e4c632e5c6b915ed83a",
+      "size": 3090
+    },
+    {
+      "file": "assets/css/lm-ds.css",
+      "sha": "88b84b15bf882d01e140dc09e65fa815ccd284f9",
+      "size": 13302
+    },
+    {
+      "file": "assets/fonts/figtree-OFL.txt",
+      "sha": "88bbf84a7d92cec20ef825044c295be9e34bfebd",
+      "size": 4389
+    },
+    {
+      "file": "assets/fonts/figtree.woff2",
+      "sha": "57fd1acf8d9651d9c38c0d4af7b78bc399be0652",
+      "size": 20156
+    },
+    {
+      "file": "assets/form-steps.js",
+      "sha": "3b96b9950a1c9da24852503d41dfd3a07651630a",
+      "size": 17159
+    },
+    {
+      "file": "assets/js/dash/ab.js",
+      "sha": "707ed2c7f706419fa1d26f0348b33a5673268d25",
+      "size": 1499
+    },
+    {
+      "file": "assets/js/dash/api.js",
+      "sha": "4d0c06bca15cb7e5d1eb1abc5e5c7b4c52ce68d6",
+      "size": 2007
+    },
+    {
+      "file": "assets/js/dash/aquisicao-se.js",
+      "sha": "86f569a3964d9bc8f5a5c20de2a2c0a1c228d226",
+      "size": 10952
+    },
+    {
+      "file": "assets/js/dash/aula.js",
+      "sha": "e43efafa0ffcd727f5aa88b023e1e1208a5f40a7",
+      "size": 7082
+    },
+    {
+      "file": "assets/js/dash/cruzamento.js",
+      "sha": "a96ce93b2869b93ef7bd7e5ef2594de192690375",
+      "size": 4963
+    },
+    {
+      "file": "assets/js/dash/executivo.js",
+      "sha": "2e0c38ea39dd244d72560e57ba291e92163587b3",
+      "size": 4236
+    },
+    {
+      "file": "assets/js/dash/formato.js",
+      "sha": "8b4c02fc22aa8663d04f6d020aad3e1f600c6e40",
+      "size": 1656
+    },
+    {
+      "file": "assets/js/dash/formatos.js",
+      "sha": "b2c0b55e86712b5b919f8d7754b91696c9d6f03f",
+      "size": 1778
+    },
+    {
+      "file": "assets/js/dash/geral.js",
+      "sha": "2e71d88c885d2a2e829f747a4e38f7be20769e17",
+      "size": 3120
+    },
+    {
+      "file": "assets/js/dash/graficos.js",
+      "sha": "a4a99b38b292fa929abed4ed61b86f677613955e",
+      "size": 6241
+    },
+    {
+      "file": "assets/js/dash/grupo.js",
+      "sha": "0365c9cda099e959f2116f37ebf0efeb0de42a4e",
+      "size": 6651
+    },
+    {
+      "file": "assets/js/dash/main.js",
+      "sha": "b0e244aea33b46b59ae8511589a55d1a834105f6",
+      "size": 7556
+    },
+    {
+      "file": "assets/js/dash/origem.js",
+      "sha": "9586c28d33a46bdbe58b2b9dea7d2748d824d2f4",
+      "size": 2828
+    },
+    {
+      "file": "assets/js/dash/tabelas.js",
+      "sha": "57fe68abf3f8ab16044146b27fac9b57db4fef0a",
+      "size": 6473
+    },
+    {
+      "file": "assets/logo-sevilha-performance.png",
+      "sha": "eb3cf951a7ada1234901c616324c1c377bd6d680",
+      "size": 55449
+    },
+    {
+      "file": "assets/logo-sevilha.svg",
+      "sha": "6bcd3726fc8f73ca7b47db0ee5ef68227ea9d4f0",
+      "size": 1101
+    },
+    {
+      "file": "assets/lorenzo-horizontal.svg",
+      "sha": "95cdc3ead5884f7100398005e631cc2e716884d7",
+      "size": 4511
+    },
+    {
+      "file": "assets/og-aula.png",
+      "sha": "671dd4fde6af619f622cb2e326321a56966e459e",
+      "size": 43632
+    },
+    {
+      "file": "assets/og-cafe.png",
+      "sha": "f95bbbbf0a4f2e106be819911da771afcb311bbb",
+      "size": 531407
+    },
+    {
+      "file": "assets/og-mentoria.png",
+      "sha": "aa3572f7fc10318db189ca39491701a6611a442d",
+      "size": 68848
+    },
+    {
+      "file": "assets/tracking.js",
+      "sha": "781dcd4f174f93724d8bdec5ef62a8f1cc4b50dd",
+      "size": 26848
+    },
+    {
+      "file": "aula-gestao-operacional/aula.css",
+      "sha": "9d0d11aee7dcef58fd555d0c6b11f02a5f82799c",
+      "size": 12661
+    },
+    {
+      "file": "aula-gestao-operacional/aula.js",
+      "sha": "4dd80c696b7aba8fea72cc8ddb69384e82434ded",
+      "size": 3373
+    },
+    {
+      "file": "aula-gestao-operacional/index.html",
+      "sha": "23a15fdda550d2d02b2bc289dc63c8ddd5978486",
+      "size": 20006
+    },
+    {
+      "file": "aula-gestao-operacional/obrigado/index.html",
+      "sha": "96f4f6cdc59747eb7cc254f80bc27634bdfcbefb",
+      "size": 2644
+    },
+    {
+      "file": "briefing-aula/briefing.css",
+      "sha": "0f69b18cf81f546c2c557a4ed9e717c75c98e91e",
+      "size": 4811
+    },
+    {
+      "file": "briefing-aula/briefing.js",
+      "sha": "29af3acc6582785c618fb4e505780f28ae98a0f5",
+      "size": 5725
+    },
+    {
+      "file": "briefing-aula/index.html",
+      "sha": "6abd7d2cd583bdad935d2e33514a6f85a4bfbad0",
+      "size": 9439
+    },
+    {
+      "file": "cafe-com-sevilha/cafe.css",
+      "sha": "1aa8b8ff05b9acc386b1c5c5e39b6d4df15f980b",
+      "size": 14195
+    },
+    {
+      "file": "cafe-com-sevilha/index.html",
+      "sha": "4295f5aa6b35d50e3e96e8689527bbfb8861dd8b",
+      "size": 16233
+    },
+    {
+      "file": "criativos/sessao-estrategica/compor.py",
+      "sha": "412eb4caa1b9a3bd69f0f52bfcd93b993191a106",
+      "size": 16616
+    },
+    {
+      "file": "criativos/sessao-estrategica/fonts/Anton-Regular.ttf",
+      "sha": "052032168cd9f8ec4a5a514b3a887fb514d82907",
+      "size": 170812
+    },
+    {
+      "file": "criativos/sessao-estrategica/fonts/Inter-var.ttf",
+      "sha": "97d4f3722d62c6cc5340bf6220ada3d64ca367b1",
+      "size": 876576
+    },
+    {
+      "file": "criativos/sessao-estrategica/fonts/Poppins-Bold.ttf",
+      "sha": "45e4d582cbb4dab2bbad3f624fad9ae567c66547",
+      "size": 155996
+    },
+    {
+      "file": "criativos/sessao-estrategica/fonts/Poppins-Medium.ttf",
+      "sha": "e837165aedb031ea74872c5983a3217d1c190a1a",
+      "size": 158576
+    },
+    {
+      "file": "criativos/sessao-estrategica/fonts/Poppins-SemiBold.ttf",
+      "sha": "622ca6ccbe2f22c5611dffa016b745bd26be154c",
+      "size": 157312
+    },
+    {
+      "file": "criativos/sessao-estrategica/formatos.py",
+      "sha": "62fe3ba91ccad938aef6567f255c0d19d17b099a",
+      "size": 14480
+    },
+    {
+      "file": "criativos/sessao-estrategica/marca/logo-marca.png",
+      "sha": "5340de673002e91b20ffbf43d918a9e06cc66123",
+      "size": 27867
+    },
+    {
+      "file": "criativos/sessao-estrategica/oferta.py",
+      "sha": "57ab7275a39cfb637223488c75c5bdc7fee1948e",
+      "size": 10974
+    },
+    {
+      "file": "criativos/sessao-estrategica/prompts/plates/conceito-1-mentor.txt",
+      "sha": "a359ff887cdd8bdd530812e016ee93009a740158",
+      "size": 950
+    },
+    {
+      "file": "criativos/sessao-estrategica/prompts/plates/conceito-10-mentor-916.txt",
+      "sha": "21b392b00d6f8a894c8b606ef75087484381e94e",
+      "size": 747
+    },
+    {
+      "file": "criativos/sessao-estrategica/prompts/plates/conceito-2-ampulheta.txt",
+      "sha": "da73dacfcdeb952498f93bc01640725abbe5d400",
+      "size": 768
+    },
+    {
+      "file": "criativos/sessao-estrategica/prompts/plates/conceito-3-mockup.txt",
+      "sha": "447d313b0bf6a7c6dede7a13f7da7c9992957e51",
+      "size": 614
+    },
+    {
+      "file": "criativos/sessao-estrategica/prompts/plates/conceito-4-pilha.txt",
+      "sha": "02a30ea69ffd008031640508f7a9d59a4629bae6",
+      "size": 755
+    },
+    {
+      "file": "criativos/sessao-estrategica/prompts/plates/conceito-5-cadeira.txt",
+      "sha": "8bcba4c36786aaf18d36a015f30d27a50edce66f",
+      "size": 736
+    },
+    {
+      "file": "criativos/sessao-estrategica/prompts/plates/conceito-6-margem.txt",
+      "sha": "3f7f48e55c8236fefa1a8c44e06b7553c3eb4e52",
+      "size": 922
+    },
+    {
+      "file": "criativos/sessao-estrategica/prompts/plates/conceito-7-gargalo.txt",
+      "sha": "e9fb727a09c7e83ad35d478f9d2c5e05164e91b8",
+      "size": 863
+    },
+    {
+      "file": "criativos/sessao-estrategica/prompts/plates/conceito-8-padrao.txt",
+      "sha": "dcb8496d639ed86553ee7c20f15d41777cdf7916",
+      "size": 876
+    },
+    {
+      "file": "criativos/sessao-estrategica/prompts/plates/conceito-9-escala.txt",
+      "sha": "0273933e2452ab524ad512e1827ac2a131f5ab33",
+      "size": 781
+    },
+    {
+      "file": "dashboard.html",
+      "sha": "486aeb705e8f1874640a8dafbf90eb13c5ba7e51",
+      "size": 15473
+    },
+    {
+      "file": "index.html",
+      "sha": "ba137993c64d3b096442c218ecd0397df6cfc878",
+      "size": 45970
+    },
+    {
+      "file": "lib/briefing-aula.js",
+      "sha": "ecceffc498feec6940a83f416588080154a0f507",
+      "size": 4772
+    },
+    {
+      "file": "lib/capi.js",
+      "sha": "c4aa1ac79ce78b7a5696ec994dc117b9bb36d2f0",
+      "size": 6783
+    },
+    {
+      "file": "lib/crm-eventos.js",
+      "sha": "bc1e87fa746013058ebb98d746576606be7498a4",
+      "size": 23293
+    },
+    {
+      "file": "lib/eventos-enviados.js",
+      "sha": "bc15ba4ccf5aec282cd2f4872f31806f7173ac5d",
+      "size": 2504
+    },
+    {
+      "file": "lib/fuso.js",
+      "sha": "11f5dbde2eb11574bf95f66ff9f2448f5eeedbbc",
+      "size": 1911
+    },
+    {
+      "file": "lib/geo.js",
+      "sha": "b8c7c4f17e40e31e343e33b2dc36784c11bca4e2",
+      "size": 5649
+    },
+    {
+      "file": "lib/google-ads.js",
+      "sha": "ea608cd42373e50049060925edbd25860dc5c060",
+      "size": 5560
+    },
+    {
+      "file": "lib/kiwify.js",
+      "sha": "a7968e964d8179832bf4660279fab8674a95e616",
+      "size": 8963
+    },
+    {
+      "file": "lib/leads-fontes.js",
+      "sha": "f29552902b5178d2063d5ac66e222608c3e8addf",
+      "size": 5912
+    },
+    {
+      "file": "lib/leads-unificados.js",
+      "sha": "31623468d2df8bbcb4b236f8927f0d40faf7069f",
+      "size": 16151
+    },
+    {
+      "file": "lib/meta.js",
+      "sha": "a924b2b97c44ce7025888073e96cedb2b2c7bab9",
+      "size": 8077
+    },
+    {
+      "file": "lib/pageviews.js",
+      "sha": "dd928a8a5d1c233f31a4d91f986b1f33e146f639",
+      "size": 7235
+    },
+    {
+      "file": "lib/planilha-leads.js",
+      "sha": "4677abb5d51b317b2a24bbf5d15dd959b44a615e",
+      "size": 9909
+    },
+    {
+      "file": "lib/porte.js",
+      "sha": "cf60ca9bfb45f73cb6818ce53a30498cbca84cc1",
+      "size": 2703
+    },
+    {
+      "file": "lib/posicionamento.js",
+      "sha": "4dd9e587ce9ba3ee3d9eb4e647ee28f9533459a7",
+      "size": 2088
+    },
+    {
+      "file": "lib/rd-webhook.js",
+      "sha": "c1c505ba86ab52180584c30d5a1e418b38c88c06",
+      "size": 6412
+    },
+    {
+      "file": "lib/resumo.js",
+      "sha": "c82b57349f6d401023ad88dde45fc5e57b91184d",
+      "size": 15145
+    },
+    {
+      "file": "lib/sessao-estrategica.js",
+      "sha": "cc9517009c468a89dd9f5966e8ccf3cf8fb13960",
+      "size": 12449
+    },
+    {
+      "file": "lib/sheets-write.js",
+      "sha": "a7ab76c63f721b0684db6d221db556bf5248c78e",
+      "size": 6204
+    },
+    {
+      "file": "lib/sheets.js",
+      "sha": "78a63d02e23a1004fa828382ad37767ca8264d53",
+      "size": 18625
+    },
+    {
+      "file": "lib/stats-aula.js",
+      "sha": "ae7d195544c9fe74541b2d84910e617ebf5016bb",
+      "size": 1552
+    },
+    {
+      "file": "lib/supabase.js",
+      "sha": "b4b38191b7dad6516e1dfdaf20e2b7939d61e3e0",
+      "size": 4018
+    },
+    {
+      "file": "lib/texto.js",
+      "sha": "8ab17b54e437c9f2c82da07db85682ca1c937f54",
+      "size": 577
+    },
+    {
+      "file": "logo.png",
+      "sha": "9fafdb7e8d6d320a36b7473c37ce1bc72b7899c8",
+      "size": 17366
+    },
+    {
+      "file": "mentoria-2/index.html",
+      "sha": "9c69da1e9ed0b4d5f92f255583631f744c32ec28",
+      "size": 37708
+    },
+    {
+      "file": "mentoria/index.html",
+      "sha": "a284a25dfcf014ee75202b32ef97d4172621203e",
+      "size": 39755
+    },
+    {
+      "file": "package-lock.json",
+      "sha": "5ff30e00fbbe014172bd5b4e7fe9ecdd9d61fa18",
+      "size": 53270
+    },
+    {
+      "file": "package.json",
+      "sha": "630eebe8538da2e6869c6239d43a162112f99489",
+      "size": 419
+    },
+    {
+      "file": "pre-inscricao-2/index.html",
+      "sha": "9aed745e2e00c53bc52ee3b40162bf4466c87143",
+      "size": 70252
+    },
+    {
+      "file": "pre-inscricao-3/index.html",
+      "sha": "6ea4ca3b76a297f40b45317f48e0e552d3d7b48b",
+      "size": 71259
+    },
+    {
+      "file": "requirements.txt",
+      "sha": "87b9013e2e002cfba7190140b2dc97e378b7cdc5",
+      "size": 15
+    },
+    {
+      "file": "vercel.json",
+      "sha": "36dee1fe39a0163a49f755c1483618a4e7eddc1e",
+      "size": 6022
+    }
+  ],
+  "excluded": [
+    ".env*",
+    "docs",
+    "scripts",
+    "tests",
+    "sql",
+    "internal configurations",
+    "non-runtime creative assets"
+  ],
+  "source_branch": "codex/se-captacao-google-20261005",
+  "source_head": "c0bd66c"
+}

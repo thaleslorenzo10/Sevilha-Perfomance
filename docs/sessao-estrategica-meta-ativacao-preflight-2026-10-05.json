@@ -1,0 +1,4773 @@
+{
+  "observed_at": "2026-10-05T23:03:12.144150-03:00",
+  "account_id": "1676714556216146",
+  "authorization": "Publicação e ativação autorizadas pelo usuário; preservada condição de ingestão e transição de orçamento",
+  "remote_mutations": 0,
+  "account": {
+    "id": "act_1676714556216146",
+    "currency": "BRL",
+    "timezone_name": "America/Sao_Paulo",
+    "account_status": 9,
+    "disable_reason": 0
+  },
+  "preflight_status": "reads_available_creation_blocked",
+  "audiences_count": 68,
+  "audiences_next_page": false,
+  "bruno_audiences": [],
+  "ig_rule_sources": [
+    {
+      "id": "120242282805690526",
+      "name": "[IG] Seguidores",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":0,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"INSTAGRAM_PROFILE_FOLLOW\"}]}}]}}"
+    },
+    {
+      "id": "120242282795950526",
+      "name": "[IG] Envolvimento completo 180D",
+      "rule": "{\"inclusions\":{\"operator\":\"and\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}"
+    },
+    {
+      "id": "120235128495180526",
+      "name": "IG - Envolvimento - 60D (Sevilha Perfomance)",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120235128476740526",
+      "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120235128469700526",
+      "name": "IG - Envolvimento - 60D (Sevilha Educação)",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120234704197770526",
+      "name": "IG - Visitou Perfil - 60D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}"
+    },
+    {
+      "id": "120227591567640526",
+      "name": "Instagram - 180D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120227591567210526",
+      "name": "Instagram - 180D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120227591567200526",
+      "name": "Instagram - 180D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120227591567190526",
+      "name": "Instagram - 180D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120227591566850526",
+      "name": "Instagram - 180D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120227591566820526",
+      "name": "Instagram - 180D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120227591566580526",
+      "name": "Instagram - 180D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120227591566570526",
+      "name": "Instagram - 180D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":15552000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222096029020526",
+      "name": "Seguidores",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713590526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713560526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713550526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713510526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713500526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713490526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713480526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713470526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713460526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713450526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713440526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713520526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713430526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713220526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713190526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120222095713180526",
+      "name": "[COMBOPERFIL] Envolvimento - 365D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1673288572749915}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":1918031921585024}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":542042905888973}],\"retention_seconds\":31536000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}}]}}"
+    },
+    {
+      "id": "120219348178940526",
+      "name": "[IG] Novos Seguidores SVL",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":0,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"INSTAGRAM_PROFILE_FOLLOW\"}]}}]}}"
+    },
+    {
+      "id": "120219347657200526",
+      "name": "[IG] Envolvimento Instagram FR - 007D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}"
+    },
+    {
+      "id": "120219347657190526",
+      "name": "[IG] Envolvimento Instagram FR - 015D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}"
+    },
+    {
+      "id": "120219347656900526",
+      "name": "[IG] Envolvimento Instagram FR - 030D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}"
+    },
+    {
+      "id": "120219347655870526",
+      "name": "[IG] Envolvimento Instagram FR - 060D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}"
+    },
+    {
+      "id": "120219347655860526",
+      "name": "[IG] Envolvimento Instagram FR - 090D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_all\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_visit\"}]}}]}}"
+    },
+    {
+      "id": "120219346902930526",
+      "name": "[IG] Envolvimento Instagram QT - 007D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_engaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":604800,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}"
+    },
+    {
+      "id": "120219346902900526",
+      "name": "[IG] Envolvimento Instagram QT - 015D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_engaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":1296000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}"
+    },
+    {
+      "id": "120219346902910526",
+      "name": "[IG] Envolvimento Instagram QT - 030D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_engaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":2592000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}"
+    },
+    {
+      "id": "120219346902020526",
+      "name": "[IG] Envolvimento Instagram QT - 060D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_engaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":5184000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}"
+    },
+    {
+      "id": "120219346902010526",
+      "name": "[IG] Envolvimento Instagram QT - 090D",
+      "rule": "{\"inclusions\":{\"operator\":\"or\",\"rules\":[{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_engaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_user_messaged\"}]}},{\"event_sources\":[{\"type\":\"ig_business\",\"id\":796790857080110}],\"retention_seconds\":7776000,\"filter\":{\"operator\":\"and\",\"filters\":[{\"field\":\"event\",\"operator\":\"eq\",\"value\":\"ig_business_profile_ad_saved\"}]}}]}}"
+    }
+  ],
+  "bruno_identity": {
+    "id": "17841446823336862",
+    "ig_id": 47014896777,
+    "username": "brunosilvestreconsultor"
+  },
+  "campaigns_has_more": false,
+  "campaigns": [
+    {
+      "id": "120253413819760526",
+      "name": "[SE] [FORMS] [MAIOR INTENÇÃO] [IDENTIDADE] 2026-10-05",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "36000",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120253330191810526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Bruno Novo Setembro",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "13235",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120252795560930526",
+      "name": "[25/08] [SE] [PÁGINA NOVA] [LEAD-QL] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "9000",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120252795398510526",
+      "name": "[25/08] [SE] [PÁGINA NOVA] [LEAD-QL] [HOT] [FASE01] - Melhores Ads",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "13000",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120252417782330526",
+      "name": "[SE] [LEAD-QL] [COLD] [FASE01] - Teste de Públicos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "5090",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120252417557270526",
+      "name": "[SE] [LEAD-QL] [HOT] [FASE01] - Melhores Ads",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "9000",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120252417323380526",
+      "name": "[SE] [LEAD-QL] [HOT] [FASE01] - Fábrica de Criativos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "3000",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120252309825010526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Segunda leva de Banners",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "5000",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120252309137770526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Teste de Banners",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "5000",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120248783889010526",
+      "name": "[SE] [LEAD] [HOT] [FASE01] - Fábrica de Criativos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "3000",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120248779747120526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Fábrica de Criativos",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "14559",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120244151307930526",
+      "name": "[SE] [LEAD] [HOT] [FASE01] - Melhores Ads",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "1500",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120244151200240526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Melhores Ads",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "3000",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120244151189900526",
+      "name": "[SE] [FORMS] [LEAD] [HOT] [FASE01] - Melhores Ads",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "3000",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120240157588290526",
+      "name": "[SE] [FORMS] [LEAD] [HOT] [FASE01] - Teste de Públicos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120235128444610526",
+      "name": "[SE] [FORMS] [LEAD] [HOT] [FASE01] - Teste de Ads",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120234941844500526",
+      "name": "[SE] [FORMS] [LEAD] [COLD] [FASE01] - Teste de Públicos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120234703907860526",
+      "name": "[DISTRIBUIÇÃO] [C1] [COLD]: Aumentar a produtividade é uma...",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "objective": "LINK_CLICKS",
+      "daily_budget": "3010",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120234703900140526",
+      "name": "[DISTRIBUIÇÃO] [C1] [COLD]: Todas as empresas, com exceção...",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "objective": "LINK_CLICKS",
+      "daily_budget": "3010",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120234703876770526",
+      "name": "[DISTRIBUIÇÃO] [C1] [COLD]: Para os contadores que lidam...",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "objective": "LINK_CLICKS",
+      "daily_budget": "3010",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    },
+    {
+      "id": "120234522798290526",
+      "name": "[SE] [LEAD] [COLD] [FASE01] - Teste de Públicos",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120234185139480526",
+      "name": "[SE] [LEAD] [HOT] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120234185139450526",
+      "name": "[SE] [LEAD] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120230135232220526",
+      "name": "[SE] [LEAD] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120222095208120526",
+      "name": "[SE] [LEAD] [HOT] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS"
+    },
+    {
+      "id": "120221958922790526",
+      "name": "[SE] [LEAD] [COLD] [FASE01]",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "objective": "OUTCOME_LEADS",
+      "daily_budget": "6600",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP"
+    }
+  ],
+  "adsets_has_more": true,
+  "adsets": [
+    {
+      "id": "120253413820840526",
+      "campaign_id": "120253413819760526",
+      "name": "Contabilidade financeira | Bruno | 2026-10-05",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "instagram"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels"
+        ]
+      },
+      "optimization_goal": "QUALITY_LEAD",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120253413819880526",
+      "campaign_id": "120253413819760526",
+      "name": "Contabilidade financeira | Sevilha | 2026-10-05",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "instagram"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels"
+        ]
+      },
+      "optimization_goal": "QUALITY_LEAD",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120253330191850526",
+      "campaign_id": "120253330191810526",
+      "name": "Contabilidade financeira (negócios e finanças)",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "QUALITY_LEAD",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120252795561450526",
+      "campaign_id": "120252795560930526",
+      "name": "Contabilidade (negócios e finanças)",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003138589139",
+                "name": "Contabilidade (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "LeadQualificado",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120252795398450526",
+      "campaign_id": "120252795398510526",
+      "name": "Warm",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713430526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "LeadQualificado",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120252418177620526",
+      "campaign_id": "120252417782330526",
+      "name": "[ADV+] Mix Lookalike",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "age_range": [
+          25,
+          60
+        ],
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "custom_audiences": [
+          {
+            "id": "120230135347250526",
+            "name": "Semelhante (BR, 1%) - Leads contabilidade - Geral"
+          },
+          {
+            "id": "120230135360680526",
+            "name": "Semelhante (BR, 1%) - Seguidores"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "LeadQualificado",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120252417783070526",
+      "campaign_id": "120252417782330526",
+      "name": "Contabilidade (negócios e finanças)",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003138589139",
+                "name": "Contabilidade (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "LeadQualificado",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120252417783050526",
+      "campaign_id": "120252417782330526",
+      "name": "Contabilidade financeira (negócios e finanças)",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "LeadQualificado",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120252417783030526",
+      "campaign_id": "120252417782330526",
+      "name": "Contador",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "work_employers": [
+              {
+                "id": "110927205602254",
+                "name": "Contador"
+              }
+            ],
+            "work_positions": [
+              {
+                "id": "101563666593555",
+                "name": "Analista Fiscal / Tributário"
+              },
+              {
+                "id": "113171825383590",
+                "name": "Contabilista"
+              },
+              {
+                "id": "137885909578558",
+                "name": "Contador Administrativo"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "LeadQualificado",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120252417557260526",
+      "campaign_id": "120252417557270526",
+      "name": "Warm",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713430526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "LeadQualificado",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120252417323360526",
+      "campaign_id": "120252417323380526",
+      "name": "Warm",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713430526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "LeadQualificado",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120252317454640526",
+      "campaign_id": "120252309137770526",
+      "name": "[ADV+] Contabilidade financeira (negócios e finanças) — Cópia",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "age_range": [
+          25,
+          60
+        ],
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 1
+        }
+      },
+      "optimization_goal": "QUALITY_LEAD",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120252317441550526",
+      "campaign_id": "120252309825010526",
+      "name": "[ADV+] Contabilidade financeira (negócios e finanças)",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "age_range": [
+          25,
+          60
+        ],
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 1
+        }
+      },
+      "optimization_goal": "QUALITY_LEAD",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120252309825000526",
+      "campaign_id": "120252309825010526",
+      "name": "Contabilidade financeira (negócios e finanças)",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "QUALITY_LEAD",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120252309137680526",
+      "campaign_id": "120252309137770526",
+      "name": "Contabilidade financeira (negócios e finanças)",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "QUALITY_LEAD",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120248783889020526",
+      "campaign_id": "120248783889010526",
+      "name": "Warm",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713430526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120248779747210526",
+      "campaign_id": "120248779747120526",
+      "name": "Contabilidade financeira (negócios e finanças)",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "QUALITY_LEAD",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120244151307910526",
+      "campaign_id": "120244151307930526",
+      "name": "Warm",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713430526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120244151204400526",
+      "campaign_id": "120244151200240526",
+      "name": "Contabilidade financeira (negócios e finanças)",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "LEAD_GENERATION",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120244151200200526",
+      "campaign_id": "120244151200240526",
+      "name": "Contador",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "education_majors": [
+              {
+                "id": "110927205602254",
+                "name": "Contador"
+              }
+            ],
+            "work_positions": [
+              {
+                "id": "339651256100614",
+                "name": "Contador"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "LEAD_GENERATION",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120244151189880526",
+      "campaign_id": "120244151189900526",
+      "name": "Warm",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "LEAD_GENERATION",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120243440946270526",
+      "campaign_id": "120234522798290526",
+      "name": "Contador - Sem Melhores",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "1500",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "work_employers": [
+              {
+                "id": "110927205602254",
+                "name": "Contador"
+              }
+            ],
+            "work_positions": [
+              {
+                "id": "101563666593555",
+                "name": "Analista Fiscal / Tributário"
+              },
+              {
+                "id": "113171825383590",
+                "name": "Contabilista"
+              },
+              {
+                "id": "137885909578558",
+                "name": "Contador Administrativo"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120243440946250526",
+      "campaign_id": "120234522798290526",
+      "name": "Contabilidade financeira (negócios e finanças) - Sem Melhores",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "1500",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120243440924150526",
+      "campaign_id": "120235128444610526",
+      "name": "Warm",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "17206",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "LEAD_GENERATION",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120243440887850526",
+      "campaign_id": "120234941844500526",
+      "name": "Contabilidade financeira (negócios e finanças)  - Sem Melhores",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "2545",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "LEAD_GENERATION",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120240157588310526",
+      "campaign_id": "120240157588290526",
+      "name": "Warm",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "2000",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "custom_audiences": [
+          {
+            "id": "120227591567640526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "LEAD_GENERATION",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120235128444600526",
+      "campaign_id": "120235128444610526",
+      "name": "Warm",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "1000",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120227591567210526",
+            "name": "Instagram - 180D"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          },
+          {
+            "id": "120235128469700526",
+            "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+          },
+          {
+            "id": "120235128476740526",
+            "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+          },
+          {
+            "id": "120235128483260526",
+            "name": "PageView - Site - 180D"
+          },
+          {
+            "id": "120235128495180526",
+            "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_optimization": "none",
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "LEAD_GENERATION",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120234941844300526",
+      "campaign_id": "120234941844500526",
+      "name": "Contabilidade financeira (negócios e finanças)",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "2545",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_optimization": "expansion_all",
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_RELAXED",
+          "AN_RELAXED"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        }
+      },
+      "optimization_goal": "LEAD_GENERATION",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "page_id": "131476997004991",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "ON_AD"
+    },
+    {
+      "id": "120234704052560526",
+      "campaign_id": "120234522798290526",
+      "name": "Contador",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "1500",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "work_employers": [
+              {
+                "id": "110927205602254",
+                "name": "Contador"
+              }
+            ],
+            "work_positions": [
+              {
+                "id": "101563666593555",
+                "name": "Analista Fiscal / Tributário"
+              },
+              {
+                "id": "113171825383590",
+                "name": "Contabilista"
+              },
+              {
+                "id": "137885909578558",
+                "name": "Contador Administrativo"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120234703907890526",
+      "campaign_id": "120234703907860526",
+      "name": "Instagram Post",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "custom_audiences": [
+          {
+            "id": "120234703896720526",
+            "name": "Semelhante (BR, 1%) - Instagram Automatic Audience"
+          }
+        ],
+        "genders": [
+          0
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "publisher_platforms": [
+          "instagram"
+        ]
+      },
+      "optimization_goal": "VISIT_INSTAGRAM_PROFILE",
+      "billing_event": "IMPRESSIONS",
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120234703900190526",
+      "campaign_id": "120234703900140526",
+      "name": "Instagram Post",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 18,
+        "custom_audiences": [
+          {
+            "id": "120234703896720526",
+            "name": "Semelhante (BR, 1%) - Instagram Automatic Audience"
+          }
+        ],
+        "genders": [
+          0
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "publisher_platforms": [
+          "instagram"
+        ]
+      },
+      "optimization_goal": "VISIT_INSTAGRAM_PROFILE",
+      "billing_event": "IMPRESSIONS",
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120234703876840526",
+      "campaign_id": "120234703876770526",
+      "name": "Instagram Post",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "targeting": {
+        "age_max": 65,
+        "age_min": 25,
+        "age_range": [
+          30,
+          65
+        ],
+        "flexible_spec": [
+          {
+            "work_positions": [
+              {
+                "id": "110927205602254",
+                "name": "Contador"
+              },
+              {
+                "id": "137885909578558",
+                "name": "Contador Administrativo"
+              },
+              {
+                "id": "339651256100614",
+                "name": "Contador"
+              }
+            ]
+          }
+        ],
+        "genders": [
+          0
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "targeting_automation": {
+          "advantage_audience": 1
+        },
+        "publisher_platforms": [
+          "instagram"
+        ]
+      },
+      "optimization_goal": "VISIT_INSTAGRAM_PROFILE",
+      "billing_event": "IMPRESSIONS",
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120234522820150526",
+      "campaign_id": "120234522798290526",
+      "name": "Contabilidade financeira (negócios e finanças)",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "1500",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003389795312",
+                "name": "Contabilidade financeira (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120234522798400526",
+      "campaign_id": "120234522798290526",
+      "name": "Contabilidade (negócios e finanças)",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "6000",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          }
+        ],
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6003138589139",
+                "name": "Contabilidade (negócios e finanças)"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120234185139870526",
+      "campaign_id": "120234185139480526",
+      "name": "Warm",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "6000",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "Lead mql",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120234185139610526",
+      "campaign_id": "120234185139450526",
+      "name": "LAL 1% LEAD",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "3000",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          }
+        ],
+        "custom_audiences": [
+          {
+            "id": "120230135347250526",
+            "name": "Semelhante (BR, 1%) - Leads contabilidade - Geral"
+          },
+          {
+            "id": "120230135360680526",
+            "name": "Semelhante (BR, 1%) - Seguidores"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "Lead mql",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120234185139590526",
+      "campaign_id": "120234185139480526",
+      "name": "Warm",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "6000",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "Lead mql",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120234185139440526",
+      "campaign_id": "120234185139450526",
+      "name": "LAL 1% LEAD",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "3000",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          }
+        ],
+        "custom_audiences": [
+          {
+            "id": "120230135347250526",
+            "name": "Semelhante (BR, 1%) - Leads contabilidade - Geral"
+          },
+          {
+            "id": "120230135360680526",
+            "name": "Semelhante (BR, 1%) - Seguidores"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "Lead mql",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120230135232280526",
+      "campaign_id": "120230135232220526",
+      "name": "LAL 1% LEAD",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "3000",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          }
+        ],
+        "custom_audiences": [
+          {
+            "id": "120230135347250526",
+            "name": "Semelhante (BR, 1%) - Leads contabilidade - Geral"
+          },
+          {
+            "id": "120230135360680526",
+            "name": "Semelhante (BR, 1%) - Seguidores"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120230135232210526",
+      "campaign_id": "120230135232220526",
+      "name": "LAL 1% LEAD",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "3000",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "excluded_custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          }
+        ],
+        "custom_audiences": [
+          {
+            "id": "120230135347250526",
+            "name": "Semelhante (BR, 1%) - Leads contabilidade - Geral"
+          },
+          {
+            "id": "120230135360680526",
+            "name": "Semelhante (BR, 1%) - Seguidores"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120226566390280526",
+      "campaign_id": "120222095208120526",
+      "name": "Warm",
+      "status": "PAUSED",
+      "effective_status": "PAUSED",
+      "daily_budget": "6000",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120222095208110526",
+      "campaign_id": "120222095208120526",
+      "name": "Warm",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "daily_budget": "15000",
+      "lifetime_budget": "0",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "custom_audiences": [
+          {
+            "id": "120219034633870526",
+            "name": "[SITE] - Acessou site - 180D"
+          },
+          {
+            "id": "120219348178940526",
+            "name": "[IG] Novos Seguidores SVL"
+          },
+          {
+            "id": "120222095713430526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222095713590526",
+            "name": "[COMBOPERFIL] Envolvimento - 365D"
+          },
+          {
+            "id": "120222096029020526",
+            "name": "Seguidores"
+          },
+          {
+            "id": "120222098279680526",
+            "name": "Leads contabilidade - Geral"
+          },
+          {
+            "id": "120234704197770526",
+            "name": "IG - Visitou Perfil - 60D"
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_relaxation_types": {
+          "lookalike": 0,
+          "custom_audience": 0
+        },
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "bid_strategy": "LOWEST_COST_WITHOUT_CAP",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120221958922850526",
+      "campaign_id": "120221958922790526",
+      "name": "Empresa com 11 + funcionais",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "flexible_spec": [
+          {
+            "behaviors": [
+              {
+                "id": "6273108107383",
+                "name": "New Active Business (< 24 months)"
+              }
+            ],
+            "industries": [
+              {
+                "id": "6377134779583",
+                "name": "Company size: 11-100 employees"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD",
+          "AN_STANDARD"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram",
+          "audience_network",
+          "messenger"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ],
+        "messenger_positions": [
+          "messenger_home",
+          "story"
+        ],
+        "audience_network_positions": [
+          "classic",
+          "rewarded_video"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120221958922830526",
+      "campaign_id": "120221958922790526",
+      "name": "Contador - empresas novas 12/24 meses",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "flexible_spec": [
+          {
+            "behaviors": [
+              {
+                "id": "6273108107383",
+                "name": "New Active Business (< 24 months)"
+              },
+              {
+                "id": "6273196847983",
+                "name": "New Active Business (< 12 months)"
+              }
+            ],
+            "industries": [
+              {
+                "id": "6377134779583",
+                "name": "Company size: 11-100 employees"
+              }
+            ],
+            "work_positions": [
+              {
+                "id": "339651256100614",
+                "name": "Contador"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    },
+    {
+      "id": "120221958922820526",
+      "campaign_id": "120221958922790526",
+      "name": "Pequenas e médias empresas (negócios e finanças), Proprietários de pequenas empresas",
+      "status": "ACTIVE",
+      "effective_status": "CAMPAIGN_PAUSED",
+      "targeting": {
+        "age_max": 60,
+        "age_min": 25,
+        "flexible_spec": [
+          {
+            "interests": [
+              {
+                "id": "6002884511422",
+                "name": "Pequena empresa (negócios e finanças)"
+              },
+              {
+                "id": "6003136069408",
+                "name": "Pequenas e médias empresas (negócios e finanças)"
+              }
+            ],
+            "behaviors": [
+              {
+                "id": "6002714898572",
+                "name": "Small business owners"
+              }
+            ],
+            "education_majors": [
+              {
+                "id": "110927205602254",
+                "name": "Contador"
+              }
+            ]
+          }
+        ],
+        "geo_locations": {
+          "countries": [
+            "BR"
+          ],
+          "location_types": [
+            "home",
+            "recent"
+          ]
+        },
+        "wireless_carrier": [
+          "Wifi"
+        ],
+        "brand_safety_content_filter_levels": [
+          "FACEBOOK_STANDARD"
+        ],
+        "targeting_automation": {
+          "advantage_audience": 0
+        },
+        "publisher_platforms": [
+          "facebook",
+          "instagram"
+        ],
+        "facebook_positions": [
+          "feed",
+          "right_hand_column",
+          "video_feeds",
+          "instream_video",
+          "marketplace",
+          "story",
+          "search",
+          "facebook_reels",
+          "facebook_reels_overlay",
+          "profile_feed"
+        ],
+        "instagram_positions": [
+          "stream",
+          "story",
+          "explore",
+          "reels",
+          "profile_feed"
+        ],
+        "device_platforms": [
+          "mobile",
+          "desktop"
+        ]
+      },
+      "optimization_goal": "OFFSITE_CONVERSIONS",
+      "billing_event": "IMPRESSIONS",
+      "promoted_object": {
+        "pixel_id": "657178423444244",
+        "custom_event_type": "OTHER",
+        "custom_event_str": "EndForm",
+        "smart_pse_enabled": false
+      },
+      "destination_type": "UNDEFINED"
+    }
+  ]
+}

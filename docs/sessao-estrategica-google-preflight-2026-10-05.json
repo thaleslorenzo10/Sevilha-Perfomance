@@ -1,0 +1,431 @@
+{
+  "schema_version": 1,
+  "run_id": "sevilha-google-preflight-20261005",
+  "retrieved_at": "2026-10-06T01:08:02.498448+00:00",
+  "status": "created_paused_activation_pending",
+  "mutations_performed": true,
+  "source": "Google Ads REST v24 + repository PRODUCT.md + official Google policy",
+  "account": {
+    "customer_id": "1316487378",
+    "name": "Sevilha Performance",
+    "manager_id": "3844411205",
+    "currency": "BRL",
+    "time_zone": "America/Sao_Paulo",
+    "status": "ENABLED",
+    "auto_tagging_enabled": true,
+    "conversion_tracking_id": "18496635417",
+    "ownership_performance_verified": true,
+    "read_access_verified": true,
+    "write_access_verified": true,
+    "billing_setup_status": "NOT_CONFIGURED",
+    "billing_setup_count": 0,
+    "billing_url": "https://ads.google.com/aw/billing/summary?ocid=1316487378",
+    "old_customer_id_not_mutated": "3520396158"
+  },
+  "keyword_planner": {
+    "location": "Brasil geoTargetConstants/2076",
+    "language": "Portuguese languageConstants/1014",
+    "network": "GOOGLE_SEARCH",
+    "metrics": [
+      {
+        "keyword": "gestão de escritório contábil",
+        "metrics_available": true,
+        "average_monthly_searches": 10,
+        "competition": "HIGH",
+        "competition_index": 86,
+        "top_of_page_low_brl": 2.641907,
+        "top_of_page_high_brl": 5.483444,
+        "window": "2025-09 through 2026-08"
+      },
+      {
+        "keyword": "consultoria para escritório contábil",
+        "metrics_available": false,
+        "average_monthly_searches": null,
+        "competition": null,
+        "competition_index": null,
+        "top_of_page_low_brl": null,
+        "top_of_page_high_brl": null,
+        "window": null
+      },
+      {
+        "keyword": "consultoria gestão contabilidade",
+        "metrics_available": false,
+        "average_monthly_searches": null,
+        "competition": null,
+        "competition_index": null,
+        "top_of_page_low_brl": null,
+        "top_of_page_high_brl": null,
+        "window": null
+      }
+    ],
+    "forecast": null,
+    "interpretation": "Demanda estreita insuficiente para prometer consumir R$2800/mês; duas seeds sem métricas não equivalem a volume zero. Top-of-page bid ranges não são CPC garantido. Reserva é teto, não compromisso de gasto."
+  },
+  "blockers": [
+    {
+      "id": "billing",
+      "detail": "New account has no billing_setup. User must configure client payment/billing; no other client payment profile or card was reused."
+    },
+    {
+      "id": "measurement",
+      "detail": "SE Lead and SE MQL created and labels confirmed, but landing-page production tag/firing/readback pending coordinator. Lead after persistence; MQL helper10+; UTMs and auto-tagging retained."
+    },
+    {
+      "id": "sitelinks",
+      "detail": "Four assets created, API validateOnly accepted distinct fragment URLs. Real anchors/site production readback pending coordinator; API schema validation is not policy approval."
+    },
+    {
+      "id": "ad_strength_policy",
+      "detail": "Both RSA adStrength=PENDING, approvalStatus=UNKNOWN, reviewStatus=REVIEW_IN_PROGRESS. Re-read when reviewed; iterate toward EXCELLENT before completed launch. If pending tomorrow, follow up then."
+    }
+  ],
+  "campaign_draft": {
+    "name": "[SE][SEARCH][CAPTACAO] Sessao Estrategica 20261005",
+    "initial_status": "PAUSED",
+    "channel": "SEARCH",
+    "monthly_reserve_brl": 2800,
+    "average_daily_budget_brl": 70,
+    "daily_amount_micros": "70000000",
+    "monthly_daily_times_30_4_brl": 2128,
+    "portfolio_monthly_ceiling_brl": 14000,
+    "meta_monthly_reserve_brl": 11200,
+    "budget_shared": false,
+    "bidding_proposal": "MAXIMIZE_CLICKS / TARGET_SPEND with CPC ceiling R$5.50. Controlled initial test; not forecasted CPC or MQL.",
+    "location": "Brazil, presence only",
+    "language_id": 1014,
+    "network_settings": {
+      "google_search": true,
+      "search_partners": false,
+      "display": false
+    },
+    "contains_eu_political_advertising": "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING",
+    "ad_groups": [
+      {
+        "name": "Consultoria Contábil",
+        "keywords": [
+          {
+            "text": "consultoria para escritório contábil",
+            "match_type": "EXACT"
+          },
+          {
+            "text": "consultoria para escritório contábil",
+            "match_type": "PHRASE"
+          },
+          {
+            "text": "consultoria gestão contabilidade",
+            "match_type": "EXACT"
+          },
+          {
+            "text": "consultoria gestão contabilidade",
+            "match_type": "PHRASE"
+          }
+        ],
+        "headlines": [
+          "Consultoria Para Contabilidade",
+          "Consultoria Contábil",
+          "Para Escritórios Contábeis",
+          "Sessão Estratégica Grátis",
+          "45 Minutos Com Bruno",
+          "Sevilha Performance",
+          "Para Donos e Sócios",
+          "Seu Escritório Cresceu?",
+          "Entenda Onde a Margem Vaza",
+          "Diagnóstico Individual",
+          "Gestão Sem Centralizar",
+          "Processos e Produtividade",
+          "Online e Sem Compromisso",
+          "Contabilidade Com 10+ Pessoas",
+          "Agende Seu Diagnóstico"
+        ],
+        "descriptions": [
+          "Consultoria para escritórios contábeis. Agende 45 minutos gratuitos com Bruno Silvestre.",
+          "Dono ou sócio com 10+ colaboradores? Entenda seus gargalos de processos, margem e time.",
+          "O escritório cresceu e você virou gargalo? Receba um diagnóstico individual, sem custo.",
+          "Converse online com Bruno. Identifique prioridades de gestão e decida os próximos passos."
+        ],
+        "ad_name": "RSA SE Consultoria Contábil",
+        "final_url": "https://sevilha-perfomance.vercel.app/mentoria",
+        "final_url_suffix": "utm_source=google_search&utm_medium=Consultoria+Cont%C3%A1bil&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BCAPTACAO%5D+Sessao+Estrategica+20261005&utm_content=RSA+SE+Consultoria+Cont%C3%A1bil&utm_term={keyword}",
+        "pinning": false,
+        "id": "201013499939",
+        "ad_id": "827045240077",
+        "ad_strength": "PENDING",
+        "policy": {
+          "reviewStatus": "REVIEW_IN_PROGRESS",
+          "approvalStatus": "UNKNOWN"
+        },
+        "status": "ENABLED under PAUSED campaign"
+      },
+      {
+        "name": "Gestão Escritório Contábil",
+        "keywords": [
+          {
+            "text": "gestão de escritório contábil",
+            "match_type": "EXACT"
+          },
+          {
+            "text": "gestão de escritório contábil",
+            "match_type": "PHRASE"
+          }
+        ],
+        "headlines": [
+          "Gestão de Escritório Contábil",
+          "Gestão Para Contabilidades",
+          "Estruture Seu Escritório",
+          "Sessão Estratégica Grátis",
+          "45 Minutos Com Bruno",
+          "Sevilha Performance",
+          "Para Donos e Sócios",
+          "Seu Escritório Cresceu?",
+          "Entenda Onde a Margem Vaza",
+          "Diagnóstico Individual",
+          "Gestão Sem Centralizar",
+          "Processos e Produtividade",
+          "Online e Sem Compromisso",
+          "Contabilidade Com 10+ Pessoas",
+          "Agende Seu Diagnóstico"
+        ],
+        "descriptions": [
+          "Gestão de escritório contábil com foco em processos, time e margem. Diagnóstico gratuito.",
+          "Para donos e sócios de contabilidades com 10+ colaboradores. Sessão online de 45 minutos.",
+          "Delega e a tarefa volta? Descubra onde a gestão trava em uma conversa com Bruno Silvestre.",
+          "Mapeie prioridades para seu escritório. Sessão individual, gratuita e sem compromisso."
+        ],
+        "ad_name": "RSA SE Gestão Escritório Contábil",
+        "final_url": "https://sevilha-perfomance.vercel.app/mentoria",
+        "final_url_suffix": "utm_source=google_search&utm_medium=Gest%C3%A3o+Escrit%C3%B3rio+Cont%C3%A1bil&utm_campaign=%5BSE%5D%5BSEARCH%5D%5BCAPTACAO%5D+Sessao+Estrategica+20261005&utm_content=RSA+SE+Gest%C3%A3o+Escrit%C3%B3rio+Cont%C3%A1bil&utm_term={keyword}",
+        "pinning": false,
+        "id": "198041965102",
+        "ad_id": "827126547833",
+        "ad_strength": "PENDING",
+        "policy": {
+          "reviewStatus": "REVIEW_IN_PROGRESS",
+          "approvalStatus": "UNKNOWN"
+        },
+        "status": "ENABLED under PAUSED campaign"
+      }
+    ],
+    "negative_keywords": [],
+    "negative_keyword_reason": "No SE search-term report; no candidate negatives fabricated.",
+    "callouts": [
+      "45 Minutos Sem Custo",
+      "Online e Ao Vivo",
+      "Diagnóstico Individual",
+      "Sem Compromisso",
+      "Para Donos e Sócios"
+    ],
+    "id": "24328953730",
+    "budget_id": "15919750457",
+    "cpc_ceiling_micros": 5500000,
+    "assets_created": [
+      {
+        "id": "427964900513",
+        "field_type": "SITELINK",
+        "association_status": "ENABLED",
+        "text": "Como Funciona a Sessao",
+        "final_urls": [
+          "https://sevilha-perfomance.vercel.app/mentoria#como-funciona"
+        ]
+      },
+      {
+        "id": "427964900525",
+        "field_type": "SITELINK",
+        "association_status": "ENABLED",
+        "text": "Para Quem e a Sessao",
+        "final_urls": [
+          "https://sevilha-perfomance.vercel.app/mentoria#para-quem"
+        ]
+      },
+      {
+        "id": "428061396628",
+        "field_type": "SITELINK",
+        "association_status": "ENABLED",
+        "text": "Agendar Diagnostico",
+        "final_urls": [
+          "https://sevilha-perfomance.vercel.app/mentoria#agendar"
+        ]
+      },
+      {
+        "id": "428151679191",
+        "field_type": "SITELINK",
+        "association_status": "ENABLED",
+        "text": "Conheca Bruno Silvestre",
+        "final_urls": [
+          "https://sevilha-perfomance.vercel.app/mentoria#bruno-silvestre"
+        ]
+      },
+      {
+        "id": "427964900534",
+        "field_type": "CALLOUT",
+        "association_status": "ENABLED",
+        "text": "45 Minutos Sem Custo",
+        "final_urls": []
+      },
+      {
+        "id": "427964900558",
+        "field_type": "CALLOUT",
+        "association_status": "ENABLED",
+        "text": "Sem Compromisso",
+        "final_urls": []
+      },
+      {
+        "id": "427964906702",
+        "field_type": "CALLOUT",
+        "association_status": "ENABLED",
+        "text": "Online e Ao Vivo",
+        "final_urls": []
+      },
+      {
+        "id": "428061396643",
+        "field_type": "CALLOUT",
+        "association_status": "ENABLED",
+        "text": "Diagnóstico Individual",
+        "final_urls": []
+      },
+      {
+        "id": "428061396652",
+        "field_type": "CALLOUT",
+        "association_status": "ENABLED",
+        "text": "Para Donos e Sócios",
+        "final_urls": []
+      }
+    ],
+    "budget_split": {
+      "generic_daily": 70,
+      "brand_daily": 20,
+      "total_daily": 90,
+      "brand_campaign_id": "24317774874",
+      "brand_document": "sessao-estrategica-google-marca-2026-10-05.json"
+    }
+  },
+  "publication_sequence": [
+    "Publish and verify LP Google tag + same eligibility10+ MQL helper +4real anchors.",
+    "User configures billing/payment on new account1316487378. No card/profile from another customer.",
+    "Re-read RSA adStrength and policy summary, iterate until EXCELLENT and approved, preserve PAUSED meanwhile.",
+    "Coordinator rechecks portfolio monthly ceiling14000 and grants activation checkpoint after pending prerequisites fulfilled.",
+    "Activate only after measurement/billing/assets proven; remote readback effective serving status and cost.",
+    "Measure cost per MQL from persisted UTMs/profile, report Google and Meta separately."
+  ],
+  "rollback": "Pause campaign24328953730 only. Already PAUSED; no permanent deletion or cross-client changes.",
+  "sources": [
+    {
+      "url": "https://support.google.com/adspolicy/answer/1054210?hl=en",
+      "retrieved": "2026-10-05",
+      "supports": "Sitelinks devem representar conteúdo real/relevante; texto único e domínio compatível. A página não confirma tratamento de fragmentos como destinos distintos."
+    },
+    {
+      "url": "https://developers.google.com/google-ads/api/docs/keyword-planning/generate-historical-metrics",
+      "retrieved": "2026-10-05",
+      "supports": "Métricas históricas por país/idioma/rede; sem forecast inventado."
+    },
+    {
+      "url": "https://developers.google.com/google-ads/api/docs/campaigns/create-campaigns",
+      "retrieved": "2026-10-05",
+      "supports": "Criação de Search com orçamento/status/rede/bidding/EU declaration."
+    },
+    {
+      "url": "https://developers.google.com/google-ads/api/docs/campaigns/budgets/overview",
+      "retrieved": "2026-10-05",
+      "supports": "Daily average times30.4; conferir caso orçamento alterado no mês."
+    },
+    {
+      "url": "https://developers.google.com/google-ads/api/docs/account-management/create-account",
+      "retrieved": "2026-10-05",
+      "supports": "New client account under manager with currency and time zone."
+    }
+  ],
+  "previous_account_preflight": {
+    "recent_window": "LAST_30_DAYS as queried 2026-10-05",
+    "recent_cost_brl": 0,
+    "recent_clicks": 0,
+    "recent_conversions": 0,
+    "recent_changes_20260906_20261005": 0,
+    "existing_nonremoved_campaigns": 5,
+    "historical_ad_count": 10,
+    "historical_performance_destinations": 0,
+    "account_labels": 0,
+    "account_defaults_include_unrelated_conversion_goals": true,
+    "search_terms_se": "unavailable: no historical SE campaign found",
+    "existing_website_conversions": [
+      {
+        "id": "991686617",
+        "name": "Enviar formulário de lead",
+        "type": "WEBPAGE",
+        "category": "SUBMIT_LEAD_FORM",
+        "primary_for_goal": true,
+        "send_to_ids": [
+          "AW-578998674/00Z0CNnf79gDEJKji5QC"
+        ]
+      },
+      {
+        "id": "992816065",
+        "name": "Contato",
+        "type": "WEBPAGE",
+        "category": "CONTACT",
+        "primary_for_goal": true,
+        "send_to_ids": [
+          "AW-578998674/oF61CMHXtNkDEJKji5QC"
+        ]
+      },
+      {
+        "id": "6881703509",
+        "name": "checkout last link",
+        "type": "WEBPAGE",
+        "category": "PURCHASE",
+        "primary_for_goal": true,
+        "send_to_ids": [
+          "AW-578998674/5k7uCNXsudEZEJKji5QC"
+        ]
+      }
+    ],
+    "customer_id": "3520396158",
+    "used_only_for_readonly_identification_and_keyword_planner": true
+  },
+  "conversions": [
+    {
+      "id": "7823726107",
+      "name": "SE Lead",
+      "category": "SUBMIT_LEAD_FORM",
+      "type": "WEBPAGE",
+      "primary_for_goal": false,
+      "send_to": "AW-18496635417/3aj1CJus0pIdEJmE8fNE"
+    },
+    {
+      "id": "7823726110",
+      "name": "SE MQL",
+      "category": "SUBMIT_LEAD_FORM",
+      "type": "WEBPAGE",
+      "primary_for_goal": true,
+      "send_to": "AW-18496635417/Yza4CJ6s0pIdEJmE8fNE"
+    }
+  ],
+  "mql_definition": "Existing eligibility helper: 10+ collaborators. No new cargo gate introduced.",
+  "remote_verification": {
+    "campaign_status": "PAUSED",
+    "primary_status": "PAUSED",
+    "primary_status_reasons": [
+      "CAMPAIGN_PAUSED",
+      "BIDDING_STRATEGY_LEARNING"
+    ],
+    "search_only": true,
+    "presence_only": true,
+    "budget_brl_daily": 90,
+    "cpc_ceiling_brl": 5.5,
+    "keywords": 6,
+    "rsa": 2,
+    "sitelinks": 4,
+    "callouts": 5,
+    "ad_group_suffixes_verified": true,
+    "ads_no_pinning_verified": true,
+    "new_account_cost_brl_today": 0,
+    "new_account_impressions_today": 0,
+    "new_account_clicks_today": 0,
+    "mql_primary_lead_secondary_verified": true,
+    "conversion_goal": "SUBMIT_LEAD_FORM/WEBSITE biddable; SE MQL is the only primary conversion",
+    "validate_only_conversion_result": "passed",
+    "validate_only_campaign_result": "passed",
+    "creation_readback": "passed",
+    "billing_configured": false
+  },
+  "publication_status": "blocked_auto_review_vercel_preview"
+}
