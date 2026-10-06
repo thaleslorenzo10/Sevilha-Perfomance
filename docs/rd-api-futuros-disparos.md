@@ -1,6 +1,6 @@
 # RD Marketing: conexão por API e futuros disparos
 
-Verificação documental: 06/10/2026. Este documento prepara a conexão; não comprova OAuth conectado nem executa disparos.
+Conexão OAuth confirmada em 06/10/2026 às 16h49 (Brasília), após consentimento real da conta Sevilha Performance. As consultas autenticadas de segmentações, fluxos e emails retornaram HTTP 200. Na fase posterior, os lembretes foram enviados/agendados pela interface RD; estados e pendências estão em [Lembretes da aula de 06/10/2026](lembretes-aula-2026-10-06.md).
 
 ## O que a API permite
 
@@ -22,7 +22,7 @@ As estatísticas de emails estão em `GET /platform/analytics/emails`, para Pro/
 ## Uso para próximos envios
 
 - Criar no RD um fluxo específico com conteúdo, remetente, UTMs, prazo e supressões revisados antes de ativar. Cada lote/evento precisa ter janela válida; um fluxo com oferta vencida não pode receber novos contatos.
-- Antes de inserir: segmentar contatos permitidos, excluir compradores confirmados e descadastrados/suprimidos, deduplicar por email e reservar o par campanha/contato. Aceite da API não prova entrega: reconciliar histórico do fluxo e métricas antes de retentar.
+- Antes de inserir: nos lembretes da aula, incluir somente compradores confirmados; em campanhas de aquisição, excluir quem já comprou a oferta. Em ambos os casos, excluir descadastrados/suprimidos, deduplicar por email e reservar o par campanha/contato. Aceite da API não prova entrega: reconciliar histórico do fluxo e métricas antes de retentar.
 - Usar os limites do plano observado: inserção Light/Basic 1 requisição/hora; Pro 10/hora; Advanced 100/hora. Não comprar upgrade para remover esse limite sem decisão específica. [Limites](https://developers.rdstation.com/reference/limite-de-requisicoes-da-api).
 - Para campanhas avulsas criadas com novo HTML, manter a publicação pela interface RD enquanto não houver um endpoint oficial de escrita confirmado. A API de campanhas do **CRM** registra atribuição de negociações e não dispara Email Marketing. [Campanhas CRM](https://developers.rdstation.com/reference/crm-v2-create-campaign).
 
@@ -30,7 +30,9 @@ As estatísticas de emails estão em `GET /platform/analytics/emails`, para Pro/
 
 Campos vazios preparados em `.env.example`: `RD_MARKETING_CLIENT_ID`, `RD_MARKETING_CLIENT_SECRET`, `RD_MARKETING_REDIRECT_URI`, `RD_MARKETING_REFRESH_TOKEN`. São exclusivos deste cliente/produto. O orquestrador deve preencher o armazenamento privado pelo fluxo autorizado, sem solicitar segredo no chat.
 
-Pendente de execução/verificação: aplicativo privado, callback, consentimento OAuth, teste GET autenticado e escolha/configuração do fluxo de futuros envios. Nenhum envio ou inserção de contato foi executado nesta investigação.
+Aplicativo privado conectado: **Sevilha — Lembretes de Aulas**, ID **44350**. Credenciais e tokens permanecem exclusivamente no `.env.local` privado. O aplicativo **Sevilha N8n**, ID **31795**, não sofreu alterações.
+
+Concluídos: criação do aplicativo separado, callback local, consentimento OAuth real e consultas GET autenticadas de segmentações, fluxos e emails (HTTP 200). A audiência da turma de 06/10 foi sincronizada e os lembretes foram enviados/agendados em etapa posterior, registrada em [Lembretes da aula de 06/10/2026](lembretes-aula-2026-10-06.md). Pendente para próximas turmas: configuração de fluxo reutilizável e integração de novos compradores. O script OAuth faz somente autenticação e consultas; não insere contatos nem envia emails.
 
 ## Ferramenta local pronta
 
@@ -46,4 +48,4 @@ python3 scripts/rd-marketing-oauth.py verify
 
 `verify` renova o token e faz três consultas GET: segmentações, emails e fluxos. O console mostra apenas status e contagem da primeira página; campos fora do formato esperado aparecem como `null`, sem presumir base vazia. A validação não insere contatos nem envia email. O consentimento deve ser conferido na conta Sevilha antes de continuar.
 
-O self-check não usa rede: cobre callback válida/inválida/duplicada, leitura de variáveis, persistência e permissão 600 com mocks, e resposta GET simulada. Conexão real só pode ser declarada depois de `login`/`verify` autenticados.
+O self-check não usa rede: cobre callback válida/inválida/duplicada, leitura de variáveis, persistência e permissão 600 com mocks, resposta GET simulada e contagens de recursos. Emails usam `items` no formato `{total, items}`; segmentações e fluxos usam suas próprias chaves. Conexão real só pode ser declarada depois de `login`/`verify` autenticados.

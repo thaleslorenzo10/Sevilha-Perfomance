@@ -1,0 +1,42 @@
+[
+  {
+    "key": "agora",
+    "name": "Lembrete inicial",
+    "subject": "É hoje: sua Aula de Gestão Operacional às 19h30",
+    "scheduled_at": null,
+    "html": "<!doctype html>\n<html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>É hoje: sua Aula de Gestão Operacional às 19h30</title></head><body>\n<p>Olá!</p>\n<p>Hoje, às 19h30 (horário de Brasília), temos nossa Aula de Gestão Operacional.</p>\n<p>Reserve esse horário e deixe suas anotações e dúvidas à mão.</p>\n<p>Até mais tarde!</p>\n<p><a href=\"https://meet.google.com/wbh-hehw-sao?utm_source=rd_station&amp;utm_medium=email&amp;utm_campaign=aula-gestao-operacional-2026-10-06&amp;utm_content=agora\">Acessar a aula no Google Meet</a></p>\n<p>Equipe Sevilha Performance</p>\n<p><a href=\"*||UNSUBSCRIBE_LINK||*\">Descadastrar-se destes e-mails</a></p>\n</body></html>",
+    "text": "Olá!\n\nHoje, às 19h30 (horário de Brasília), temos nossa Aula de Gestão Operacional.\n\nReserve esse horário e deixe suas anotações e dúvidas à mão.\n\nAté mais tarde!\n\nAcessar a aula no Google Meet:\nhttps://meet.google.com/wbh-hehw-sao?utm_source=rd_station&utm_medium=email&utm_campaign=aula-gestao-operacional-2026-10-06&utm_content=agora\n\nEquipe Sevilha Performance\n\nDescadastrar-se destes e-mails: *||UNSUBSCRIBE_LINK||*"
+  },
+  {
+    "key": "falta-1-hora",
+    "name": "Falta 1 hora",
+    "subject": "Falta 1 hora para sua Aula de Gestão Operacional",
+    "scheduled_at": "2026-10-06T18:30:00-03:00",
+    "html": "<!doctype html>\n<html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Falta 1 hora para sua Aula de Gestão Operacional</title></head><body>\n<p>Olá!</p>\n<p>Falta 1 hora para nossa Aula de Gestão Operacional. Começamos às 19h30 (horário de Brasília).</p>\n<p>Prepare suas anotações e deixe o link de acesso à mão.</p>\n<p>Nos vemos daqui a pouco!</p>\n<p><a href=\"https://meet.google.com/wbh-hehw-sao?utm_source=rd_station&amp;utm_medium=email&amp;utm_campaign=aula-gestao-operacional-2026-10-06&amp;utm_content=falta-1-hora\">Acessar a aula no Google Meet</a></p>\n<p>Equipe Sevilha Performance</p>\n<p><a href=\"*||UNSUBSCRIBE_LINK||*\">Descadastrar-se destes e-mails</a></p>\n</body></html>",
+    "text": "Olá!\n\nFalta 1 hora para nossa Aula de Gestão Operacional. Começamos às 19h30 (horário de Brasília).\n\nPrepare suas anotações e deixe o link de acesso à mão.\n\nNos vemos daqui a pouco!\n\nAcessar a aula no Google Meet:\nhttps://meet.google.com/wbh-hehw-sao?utm_source=rd_station&utm_medium=email&utm_campaign=aula-gestao-operacional-2026-10-06&utm_content=falta-1-hora\n\nEquipe Sevilha Performance\n\nDescadastrar-se destes e-mails: *||UNSUBSCRIBE_LINK||*"
+  },
+  {
+    "key": "faltam-15-minutos",
+    "name": "Faltam 15 minutos",
+    "subject": "Começamos em 15 minutos: acesse sua aula",
+    "scheduled_at": "2026-10-06T19:15:00-03:00",
+    "html": "<!doctype html>\n<html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Começamos em 15 minutos: acesse sua aula</title></head><body>\n<p>Olá!</p>\n<p>Nossa Aula de Gestão Operacional começa em 15 minutos, às 19h30 (horário de Brasília).</p>\n<p>Pegue uma água e prepare suas anotações. Estamos esperando você!</p>\n<p><a href=\"https://meet.google.com/wbh-hehw-sao?utm_source=rd_station&amp;utm_medium=email&amp;utm_campaign=aula-gestao-operacional-2026-10-06&amp;utm_content=faltam-15-minutos\">Acessar a aula no Google Meet</a></p>\n<p>Equipe Sevilha Performance</p>\n<p><a href=\"*||UNSUBSCRIBE_LINK||*\">Descadastrar-se destes e-mails</a></p>\n</body></html>",
+    "text": "Olá!\n\nNossa Aula de Gestão Operacional começa em 15 minutos, às 19h30 (horário de Brasília).\n\nPegue uma água e prepare suas anotações. Estamos esperando você!\n\nAcessar a aula no Google Meet:\nhttps://meet.google.com/wbh-hehw-sao?utm_source=rd_station&utm_medium=email&utm_campaign=aula-gestao-operacional-2026-10-06&utm_content=faltam-15-minutos\n\nEquipe Sevilha Performance\n\nDescadastrar-se destes e-mails: *||UNSUBSCRIBE_LINK||*"
+  },
+  {
+    "key": "ao-vivo",
+    "name": "Estamos ao vivo",
+    "subject": "Estamos ao vivo: entre na Aula de Gestão Operacional",
+    "scheduled_at": "2026-10-06T19:30:00-03:00",
+    "html": "<!doctype html>\n<html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Estamos ao vivo: entre na Aula de Gestão Operacional</title></head><body>\n<p>Olá!</p>\n<p>Estamos ao vivo! Nossa Aula de Gestão Operacional está começando.</p>\n<p>Entre agora para acompanhar desde o início.</p>\n<p><a href=\"https://meet.google.com/wbh-hehw-sao?utm_source=rd_station&amp;utm_medium=email&amp;utm_campaign=aula-gestao-operacional-2026-10-06&amp;utm_content=ao-vivo\">Acessar a aula no Google Meet</a></p>\n<p>Equipe Sevilha Performance</p>\n<p><a href=\"*||UNSUBSCRIBE_LINK||*\">Descadastrar-se destes e-mails</a></p>\n</body></html>",
+    "text": "Olá!\n\nEstamos ao vivo! Nossa Aula de Gestão Operacional está começando.\n\nEntre agora para acompanhar desde o início.\n\nAcessar a aula no Google Meet:\nhttps://meet.google.com/wbh-hehw-sao?utm_source=rd_station&utm_medium=email&utm_campaign=aula-gestao-operacional-2026-10-06&utm_content=ao-vivo\n\nEquipe Sevilha Performance\n\nDescadastrar-se destes e-mails: *||UNSUBSCRIBE_LINK||*"
+  },
+  {
+    "key": "aula-em-andamento",
+    "name": "Aula em andamento",
+    "subject": "Sua Aula de Gestão Operacional já começou",
+    "scheduled_at": "2026-10-06T19:45:00-03:00",
+    "html": "<!doctype html>\n<html lang=\"pt-BR\"><head><meta charset=\"utf-8\"><title>Sua Aula de Gestão Operacional já começou</title></head><body>\n<p>Olá!</p>\n<p>Nossa Aula de Gestão Operacional já começou.</p>\n<p>Se você ainda não entrou, venha acompanhar com a gente. Ainda dá tempo de participar!</p>\n<p><a href=\"https://meet.google.com/wbh-hehw-sao?utm_source=rd_station&amp;utm_medium=email&amp;utm_campaign=aula-gestao-operacional-2026-10-06&amp;utm_content=aula-em-andamento\">Acessar a aula no Google Meet</a></p>\n<p>Equipe Sevilha Performance</p>\n<p><a href=\"*||UNSUBSCRIBE_LINK||*\">Descadastrar-se destes e-mails</a></p>\n</body></html>",
+    "text": "Olá!\n\nNossa Aula de Gestão Operacional já começou.\n\nSe você ainda não entrou, venha acompanhar com a gente. Ainda dá tempo de participar!\n\nAcessar a aula no Google Meet:\nhttps://meet.google.com/wbh-hehw-sao?utm_source=rd_station&utm_medium=email&utm_campaign=aula-gestao-operacional-2026-10-06&utm_content=aula-em-andamento\n\nEquipe Sevilha Performance\n\nDescadastrar-se destes e-mails: *||UNSUBSCRIBE_LINK||*"
+  }
+]

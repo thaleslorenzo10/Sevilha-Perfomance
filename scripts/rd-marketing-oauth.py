@@ -173,7 +173,7 @@ def login(config):
 def verify(token):
     for resource in ("segmentations", "emails", "workflows"):
         result = request("/platform/" + resource, token=token)
-        items = result.get(resource)
+        items = result.get("items" if resource == "emails" else resource)
         count = len(items) if isinstance(items, list) else None
         print(json.dumps({"resource": resource, "http_status": 200,
                           "first_page_count": count}))
@@ -206,8 +206,12 @@ def self_check():
         def __exit__(self, *_args):
             return False
         def read(self):
-            return b'{"emails":[]}'
-    assert request("/platform/emails", opener=lambda *_a, **_k: MockResponse()) == {"emails": []}
+            return b'{"total":2,"items":[{},{}]}'
+    assert request("/platform/emails", opener=lambda *_a, **_k: MockResponse()) == {"total": 2, "items": [{}, {}]}
+    responses = ({"segmentations": [{}]}, {"total": 9, "items": [{}, {}]}, {"workflows": []})
+    with patch(__name__ + ".request", side_effect=responses), patch("builtins.print") as output:
+        verify("mock-token")
+        assert [json.loads(call.args[0])["first_page_count"] for call in output.call_args_list] == [1, 2, 0]
     print("self-check: passou; nenhuma rede, token real ou disparo")
 
 
