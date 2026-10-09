@@ -61,4 +61,17 @@ const csv = D.csvDe([{ nome: '=HYPERLINK("x")', spend: 1.5 }], ['nome', 'spend']
 assert.ok(csv.includes('"\'=HYPERLINK(""x"")"'), 'fórmula prefixada com apóstrofo e aspas escapadas');
 assert.ok(csv.includes('"1,5"'), 'número seguro passa intacto, com vírgula decimal');
 
+// O funil SE inclui os visitantes do formulario direto junto com as duas LPs.
+ctx.document = { getElementById: () => null };
+const funis = {};
+Object.assign(D, { setK() {}, graficoLeadsDia() {}, graficoCusto() {}, tabela() {}, renderFunil: (id, valores) => { funis[id] = valores; } });
+vm.runInContext(readFileSync(path.join(__dirname, '../assets/js/dash/geral.js'), 'utf8'), ctx);
+D.renderGeral({
+  meta: { conta: { spend: 0 }, grupos: {}, serie: [], campanhas: [] },
+  leads: { por_dia: [], por_campanha: [], por_pagina: [], por_grupo: { SE: { leads: 1, mql: 1 }, CAFE: {}, CP: {} } },
+  stats: { paginas: [{ pagina: '/mentoria', visitantes: 5 }, { pagina: '/formulario-consultoria', visitantes: 7 }, { pagina: '/', visitantes: 100 }] },
+  rd: null,
+});
+assert.equal(funis.funilSE[0].valor, 12, 'visitantes SE incluem origem direta, sem contar Clube');
+
 console.log('✓ dash cruzamento');

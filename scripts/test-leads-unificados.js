@@ -67,4 +67,9 @@ const q = U.unificar({ forms: [], respondi: [], supabase: [supabase[1]] }, '2026
 assert.equal(q.por_campanha[0].campanha, U.ETIQUETA_QUEBRADA);
 assert.equal(q.por_campanha[0].grupo, 'SE', 'sem campanha legível, a página /mentoria-2 diz o grupo');
 assert.equal(q.por_fonte[0].fonte, U.ETIQUETA_QUEBRADA);
+const direto = U.unificar({ supabase: [{ ...supabase[0], pagina: '/formulario-consultoria', utm_campaign: '' }] }, '2026-09-12', '2026-09-12');
+assert.equal(direto.por_grupo.SE.leads, 1, 'formulario direto sem UTM continua Sessao Estrategica');
+assert.equal(direto.por_grupo.CP.leads, 0);
+assert.equal(direto.por_pagina[0].pagina, '/formulario-consultoria');
+assert.equal(direto.total.mql, 1);
 console.log('✓ leads-unificados');

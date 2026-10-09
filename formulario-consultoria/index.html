@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sessão Estratégica gratuita para escritórios de contabilidade com mais de 10 colaboradores: 45 minutos de diagnóstico individual de onde a margem vaza e do que trava o crescimento." />
+  <title>Sessão Estratégica — Sevilha Performance</title>
+  <link rel="canonical" href="https://sevilha-perfomance.vercel.app/formulario-consultoria" />
+  <link rel="icon" href="/assets/logo-sevilha.svg" type="image/svg+xml" />
+
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Sessão Estratégica — diagnóstico gratuito do seu escritório contábil" />
+  <meta property="og:description" content="Para escritórios com mais de 10 colaboradores: 45 minutos de diagnóstico individual de onde a margem vaza e do que travou o crescimento. Sem custo e sem compromisso." />
+  <meta property="og:image"       content="https://sevilha-perfomance.vercel.app/assets/og-mentoria.png" />
+  <meta property="og:url"         content="https://sevilha-perfomance.vercel.app/formulario-consultoria" />
+  <meta property="og:locale"      content="pt_BR" />
+  <meta name="twitter:card"       content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+
+  <!-- Queue Pixel events before loading its script; exclude internal visits. -->
+  <script>
+  !function(f,b,e,n){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[]}(window,document,'script');
+
+  (function () {
+    var interno = /[?&]sp_interno=1(&|$)/.test(window.location.search);
+    try {
+      interno = interno || localStorage.getItem('_sp_interno') === '1';
+    } catch { /* Storage may be unavailable in private browsing. */ }
+    if (interno) return;
+
+    fbq('init', '657178423444244');
+    fbq('track', 'PageView');
+
+    var carregado = false;
+    function carrega() {
+      if (carregado) return;
+      carregado = true;
+      var t = document.createElement('script');
+      t.async = true;
+      t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      document.head.appendChild(t);
+    }
+    var teto = setTimeout(carrega, 1500);
+    window.addEventListener('load', function () { clearTimeout(teto); carrega(); }, { once: true });
+  })();
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=657178423444244&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <script src="/assets/tracking.js?v=6" defer></script>
+  <script src="/assets/form-steps.js?v=3" defer></script>
+
+  <link rel="stylesheet" href="/assets/consultoria-form.css?v=1" />
+  <link rel="stylesheet" href="/assets/consultoria-standalone.css?v=1" />
+</head>
+<body>
+<main class="consultoria-overlay consultoria-standalone" id="modal-overlay" data-standalone aria-labelledby="modal-title" aria-describedby="modal-sub">
+  <div class="modal" tabindex="-1">
+    <aside class="consultoria-brand" aria-label="Sevilha Performance">
+      <div class="consultoria-logo">
+        <img src="/assets/logo-sevilha.svg" alt="" width="36" height="44" />
+        <span>Sevilha<small>Performance</small></span>
+      </div>
+      <h1>Sessão Estratégica</h1>
+      <p>Uma conversa sobre o próximo passo do seu escritório.</p>
+      <p><strong>45 minutos · Gratuita · Online</strong></p>
+      <figure class="consultoria-photo">
+        <img src="/Bruno.jpeg" alt="Bruno Silvestre" width="281" height="358" loading="lazy" decoding="async" />
+        <figcaption><strong>Bruno Silvestre</strong>Sevilha Performance</figcaption>
+      </figure>
+    </aside>
+    <div id="form-wrapper">
+      <div class="modal-head">
+        <span class="passo-rotulo" id="passo-rotulo" aria-live="polite">Pergunta 1 de 6</span>
+        <progress class="consultoria-progress" id="form-progress" value="1" max="6" aria-label="Progresso das perguntas"></progress>
+        <h2 id="modal-title" tabindex="-1">Quantos colaboradores tem o seu escritório?</h2>
+        <p class="modal-sub" id="modal-sub">Conte com todos que fazem parte da operação.</p>
+      </div>
+      <form id="sessao-form" data-standalone onsubmit="submitForm(event)" novalidate>
+        <div class="modal-body">
+          <div id="passo-1" data-field="colaboradores">
+            <fieldset class="grupo" id="grupo-porte">
+              <legend class="consultoria-sr-only">Quantos colaboradores tem o escritório?</legend>
+              <div class="opcoes">
+              <input type="radio" id="colab-1" name="colaboradores" value="De 0 a 4" />
+              <label for="colab-1">0 a 4</label>
+              <input type="radio" id="colab-2" name="colaboradores" value="De 5 a 9" />
+              <label for="colab-2">5 a 9</label>
+              <input type="radio" id="colab-3" name="colaboradores" value="De 10 a 19" />
+              <label for="colab-3">10 a 19</label>
+              <input type="radio" id="colab-4" name="colaboradores" value="De 20 a 29" />
+              <label for="colab-4">20 a 29</label>
+              <input type="radio" id="colab-5" name="colaboradores" value="De 30 a 49" />
+              <label for="colab-5">30 a 49</label>
+              <input type="radio" id="colab-6" name="colaboradores" value="Mais de 50" />
+              <label for="colab-6">Mais de 50</label>
+
+              </div>
+            </fieldset>
+            <div class="route" id="route-porte">
+              <strong>Seu escritório tem menos de 10 colaboradores.</strong>
+              A Sessão Estratégica é desenhada para equipes maiores. Você pode continuar a inscrição ou conhecer o Clube da Performance.
+              <div class="route-acoes">
+                <a href="/campanha" id="clube-link">Conhecer o Clube da Performance</a>
+                <a href="#" id="route-continuar" class="secundario">Continuar minha inscrição</a>
+              </div>
+            </div>
+          </div>
+          <div id="passo-2" data-field="cargo" hidden>
+            <fieldset class="grupo" id="grupo-cargo">
+              <legend class="consultoria-sr-only">Qual a sua posição no escritório?</legend>
+              <div class="opcoes">
+              <input type="radio" id="cargo-1" name="cargo" value="Dono/Sócio" />
+              <label for="cargo-1" class="larga">Dono ou sócio</label>
+              <input type="radio" id="cargo-2" name="cargo" value="Cargo Gerencial" />
+              <label for="cargo-2" class="larga">Cargo gerencial (líder, gerente, coordenador…)</label>
+              <input type="radio" id="cargo-3" name="cargo" value="Cargo Operacional" />
+              <label for="cargo-3" class="larga">Cargo operacional (assistente, analista…)</label>
+
+              </div>
+            </fieldset>
+            <div class="route" id="route-cargo">
+              <strong>Convide quem decide para participar.</strong>
+              Você pode se inscrever. A presença do dono ou sócio ajuda a transformar o diagnóstico em decisão.
+            </div>
+          </div>
+          <div id="passo-3" data-field="escritorio" hidden>
+            <div class="form-group">
+              <label for="f-escritorio" class="consultoria-sr-only">Nome do escritório (opcional)</label>
+              <input type="text" id="f-escritorio" name="escritorio" maxlength="200" placeholder="Nome do escritório" autocomplete="organization" aria-describedby="modal-sub step-error" />
+            </div>
+          </div>
+          <div id="passo-4" data-field="nome" hidden>
+            <div class="form-group">
+              <label for="f-name" class="consultoria-sr-only">Nome completo</label>
+              <input type="text" id="f-name" name="nome" maxlength="200" placeholder="Seu nome completo" required autocomplete="name" aria-describedby="modal-sub step-error" />
+            </div>
+          </div>
+          <div id="passo-5" data-field="email" hidden>
+            <div class="form-group">
+              <label for="f-email" class="consultoria-sr-only">E-mail</label>
+              <input type="email" id="f-email" name="email" maxlength="254" placeholder="voce@escritorio.com.br" required autocomplete="email" inputmode="email" aria-describedby="modal-sub step-error" />
+            </div>
+          </div>
+          <div id="passo-6" data-field="telefone" hidden>
+            <div class="form-group">
+              <label for="f-phone" class="consultoria-sr-only">WhatsApp com DDD</label>
+              <input type="tel" id="f-phone" name="telefone" placeholder="(11) 99999-9999" required autocomplete="tel-national" inputmode="tel" aria-describedby="modal-sub step-error" />
+            </div>
+          </div>
+          <p id="step-error" class="consultoria-step-error" role="alert" hidden></p>
+          <div class="form-error" id="form-error" role="alert" tabindex="-1">
+            <strong>Não conseguimos confirmar sua inscrição.</strong>
+            Suas respostas continuam aqui. Tente enviar novamente.
+          </div>
+          <!-- Campos ocultos de tracking — o name= de cada um é contrato com /api/leads -->
+        <input type="hidden" name="utm_source"   />
+        <input type="hidden" name="utm_medium"   />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_term"     />
+        <input type="hidden" name="utm_content"  />
+        <input type="hidden" name="fbclid"       />
+        <input type="hidden" name="gclid"        />
+        <input type="hidden" name="ttclid"       />
+        <input type="hidden" name="msclkid"      />
+        <input type="hidden" name="fbp"          />
+        <input type="hidden" name="fbc"          />
+        <input type="hidden" name="external_id"  />
+        <input type="hidden" name="event_id"     />
+        <input type="hidden" name="page_url"     />
+        <input type="hidden" name="user_agent"   />
+        <input type="hidden" name="pagina" value="/formulario-consultoria" />
+        </div>
+        <div class="modal-foot" id="modal-foot">
+          <div class="consultoria-actions">
+            <button type="button" class="voltar" id="voltar-passo-1" hidden>← Voltar</button>
+            <button type="button" id="avancar-passo" class="btn">Continuar</button>
+            <button type="submit" id="submit-btn" class="btn" hidden>Solicitar minha sessão</button>
+          </div>
+          <p class="form-privacy">Sem spam. Seus dados são usados para o agendamento da sessão.</p>
+        </div>
+      </form>
+    </div>
+    <div class="form-success" id="form-success" tabindex="-1" role="status" hidden>
+      <h2>Solicitação recebida.</h2>
+      <p class="modal-sub">Seu cadastro foi salvo. Continue no WhatsApp para combinar o melhor horário para sua Sessão Estratégica.</p>
+      <a href="#" id="wa-link" class="btn btn-full">Agendar pelo WhatsApp</a>
+    </div>
+  </div>
+</main>
+</body>
+</html>

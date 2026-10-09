@@ -28,7 +28,7 @@ const { EVENTOS_ACEITOS } = require('../lib/pageviews');
 
 const RAIZ = path.join(__dirname, '..');
 
-const PAGINAS = ['mentoria/index.html', 'mentoria-2/index.html'];
+const PAGINAS = ['mentoria/index.html', 'mentoria-2/index.html', 'formulario-consultoria/index.html'];
 
 /** Ids que o assets/form-steps.js procura por getElementById. */
 const IDS_OBRIGATORIOS = [
@@ -81,6 +81,7 @@ function valoresDeRadio(html, nome) {
 for (const pagina of PAGINAS) {
   console.log(`\n${pagina}`);
   const html = ler(pagina);
+  const standalone = pagina === 'formulario-consultoria/index.html';
 
   const semId = IDS_OBRIGATORIOS.filter(id => !html.includes(`id="${id}"`));
   ok(semId.length === 0, 'todos os ids que o form-steps.js usa existem',
@@ -95,14 +96,14 @@ for (const pagina of PAGINAS) {
   const chips  = [...html.matchAll(/class="chip porte-chip" data-porte="([^"]+)"/g)].map(m => m[1]);
   const radios = valoresDeRadio(html, 'colaboradores');
 
-  ok(chips.length > 0, 'a página tem atalhos de porte no topo');
+  ok(standalone ? chips.length === 0 : chips.length > 0, 'atalhos de porte existem apenas nas landing pages');
   ok(radios.length > 0, 'o modal tem o grupo de rádio de porte');
 
   const orfaos = chips.filter(c => !radios.includes(c));
   ok(orfaos.length === 0, 'todo atalho do topo casa com um rádio do modal',
      orfaos.length ? `sem rádio correspondente: ${orfaos.join(' | ')}` : '');
 
-  ok(chips.length === radios.length,
+  ok(standalone || chips.length === radios.length,
      'atalhos e rádios oferecem as mesmas faixas',
      `atalhos: ${chips.length}, rádios: ${radios.length}`);
 
@@ -117,6 +118,15 @@ for (const pagina of PAGINAS) {
   ok(/id="sessao-form"[^>]*novalidate/.test(html), 'validação ocorre por etapa sem campos invisíveis');
   ok(html.includes('/assets/consultoria-form.css?v='), 'carrega o estilo compartilhado');
   ok(!html.includes('id="err-wa"'), 'falha não libera saída para WhatsApp antes de salvar');
+  if (standalone) {
+    ok(/id="modal-overlay" data-standalone/.test(html), 'página direta declara o modo standalone');
+    ok(/id="sessao-form" data-standalone/.test(html), 'tracking reconhece formulário direto');
+    ok(!html.includes('role="dialog"') && !html.includes('aria-modal') && !html.includes('modal-close'),
+       'página direta não tem diálogo nem controle de fechar');
+    ok(html.includes('name="pagina" value="/formulario-consultoria"'), 'origem direta é preservada no envio');
+    ok(html.includes('/assets/consultoria-standalone.css?v='), 'carrega o estilo de página inteira');
+    ok(html.includes("fbq('init', '657178423444244')"), 'página direta mantém o Pixel da marca');
+  }
 
   /* Nenhum rádio pode ser `required`: no passo 2 eles estão em container
      escondido, e um obrigatório invisível é envio travado sem mensagem. */
@@ -164,6 +174,8 @@ console.log('\nporte: página × lib/porte.js');
   ok(JSON.stringify(faixas) === JSON.stringify(outras),
      'as duas variantes oferecem exatamente as mesmas faixas',
      `v1: ${faixas.join('|')}\n      v2: ${outras.join('|')}`);
+  ok(JSON.stringify(faixas) === JSON.stringify(valoresDeRadio(ler(PAGINAS[2]), 'colaboradores')),
+     'formulário direto oferece as mesmas faixas das landing pages');
 }
 
 /* ── 3. Eventos novos aceitos pelo endpoint ───────────────────────────── */

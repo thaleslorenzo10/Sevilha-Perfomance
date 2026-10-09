@@ -16,6 +16,7 @@
   const overlay = document.getElementById('modal-overlay');
   const form = document.getElementById('sessao-form');
   if (!overlay || !form) return;
+  const standalone = overlay.hasAttribute('data-standalone');
   const passos = CAMPOS.map((_campo, i) => document.getElementById('passo-' + (i + 1)));
   const avancar = document.getElementById('avancar-passo');
   const voltar = document.getElementById('voltar-passo-1');
@@ -85,9 +86,9 @@
   }
 
   window.openModal = function (passo) {
-    lastFocus = document.activeElement;
+    if (!standalone) lastFocus = document.activeElement;
     overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    if (!standalone) document.body.style.overflow = 'hidden';
     const sucesso = document.getElementById('form-success');
     if (!sucesso.hidden) { sucesso.focus(); return; }
     if (passo === 2) irParaPasso(2, false);
@@ -95,7 +96,7 @@
   };
 
   window.closeModal = function () {
-    if (!overlay.classList.contains('open')) return;
+    if (standalone || !overlay.classList.contains('open')) return;
     overlay.classList.remove('open');
     document.body.style.overflow = '';
     if (lastFocus && lastFocus.focus) lastFocus.focus();
@@ -106,7 +107,7 @@
   });
   overlay.addEventListener('click', e => { if (e.target === overlay) window.closeModal(); });
   document.addEventListener('keydown', e => {
-    if (!overlay.classList.contains('open')) return;
+    if (standalone || !overlay.classList.contains('open')) return;
     if (e.key === 'Escape') { window.closeModal(); return; }
     if (e.key !== 'Tab') return;
     const f = Array.from(overlay.querySelectorAll('a[href], button:not([disabled]), input, select, textarea'))
@@ -205,4 +206,5 @@
   };
 
   irParaPasso(1, false);
+  if (standalone) window.openModal();
 })();

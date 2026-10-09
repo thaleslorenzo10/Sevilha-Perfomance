@@ -1,7 +1,7 @@
 'use strict';
 /* Aba Visão geral. */
 (function (D) {
-  const PAGINAS_SE = ['/mentoria', '/mentoria-2'];
+  const PAGINAS_SE = ['/mentoria', '/mentoria-2', '/formulario-consultoria'];
 
   /** Linhas cruzadas por campanha (opcionalmente só de um grupo). Usada por várias abas. */
   D.linhasCampanha = (d, grupo = null) => D.cruzar(

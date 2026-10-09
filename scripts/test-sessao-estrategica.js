@@ -28,10 +28,14 @@ assert.strictEqual(linha.length, COLUNAS.length, 'linha e cabeçalho precisam te
 assert.strictEqual(linha[COLUNAS.indexOf('telefone')], '(31) 98888-7777', 'telefone vai como texto, sem reformatar');
 assert.strictEqual(linha[COLUNAS.indexOf('pagina')], '/mentoria');
 
-assert.deepStrictEqual(paginasQueGravam(), ['/mentoria', '/mentoria-2'],
-  'as duas páginas da oferta gravam na planilha');
+assert.deepStrictEqual(paginasQueGravam(), ['/mentoria', '/mentoria-2', '/formulario-consultoria'],
+  'as tres paginas da oferta gravam na planilha');
+process.env.LEADS_SHEET_WRITE_PAGES = ' /mentoria-2, /mentoria ';
+assert.ok(paginasQueGravam().includes('/formulario-consultoria'), 'allowlist legado tambem inclui formulario direto');
 process.env.LEADS_SHEET_WRITE_PAGES = '/mentoria, /outra';
-assert.deepStrictEqual(paginasQueGravam(), ['/mentoria', '/outra'], 'a lista aceita mais de uma página');
+assert.deepStrictEqual(paginasQueGravam(), ['/mentoria', '/outra', '/formulario-consultoria'], 'lista custom preserva paginas anteriores e inclui origem autorizada');
+process.env.LEADS_SHEET_WRITE_PAGES = '/formulario-consultoria, /outra';
+assert.deepStrictEqual(paginasQueGravam(), ['/formulario-consultoria', '/outra'], 'nao duplica pagina ja configurada');
 delete process.env.LEADS_SHEET_WRITE_PAGES;
 
 assert.strictEqual(
@@ -48,6 +52,7 @@ const LEADS = [
   { created_at: '2026-08-20T14:00:00Z', pagina: '/mentoria-2', cargo: 'Dono/Sócio',      colaboradores: 'De 10 a 19', utm_source: 'facebook', utm_campaign: 'c1' },
   { created_at: '2026-08-21T09:00:00Z', pagina: '/mentoria-2', cargo: 'Cargo Gerencial', colaboradores: 'De 5 a 9',   utm_source: 'google',   utm_campaign: 'c2' },
   { created_at: '2026-08-21T11:00:00Z', pagina: '/mentoria',   cargo: '',                colaboradores: '',           utm_source: '',         utm_campaign: '' },
+  { created_at: '2026-08-21T12:00:00Z', pagina: '/formulario-consultoria', cargo: 'Dono/Sócio', colaboradores: 'De 20 a 29', utm_source: 'instagram', utm_campaign: 'c3' },
 ];
 
 process.env.SUPABASE_URL = 'https://exemplo.supabase.co';
@@ -61,7 +66,9 @@ global.fetch = async (url) => {
 };
 
 // Servido por /api/stats?modo=sessao-estrategica; o teste chama a lib direto.
+process.env.SESSAO_ESTRATEGICA_PAGINAS = '/mentoria, /mentoria-2';
 const { responder: handler } = require('../lib/sessao-estrategica');
+delete process.env.SESSAO_ESTRATEGICA_PAGINAS;
 
 function resFalso() {
   const r = { statusCode: null, corpo: null, headers: {} };
@@ -79,14 +86,14 @@ function resFalso() {
   assert.strictEqual(res.statusCode, 200, 'responde 200 com Supabase configurado');
   const d = res.corpo;
 
-  assert.strictEqual(d.total, 4);
-  assert.strictEqual(d.porte.maior, 2, 'De 20 a 29 e De 10 a 19 contam como 10+');
+  assert.strictEqual(d.total, 5);
+  assert.strictEqual(d.porte.maior, 3, 'De 20 a 29 e De 10 a 19 contam como 10+');
   assert.strictEqual(d.porte.menor, 1, 'De 5 a 9 conta como menos de 10');
   assert.strictEqual(d.porte.indefinido, 1, 'sem resposta fica indefinido');
 
   assert.deepStrictEqual(d.por_dia, [
     { dia: '2026-08-20', total: 2 },
-    { dia: '2026-08-21', total: 2 },
+    { dia: '2026-08-21', total: 3 },
   ]);
 
   assert.strictEqual(d.por_fonte[0].chave, 'facebook', 'ranking sai do maior para o menor');
@@ -98,10 +105,12 @@ function resFalso() {
   const urlLeads = chamadas.find(u => u.includes(TABELAS.leads));
   assert.ok(urlLeads.includes('pagina=in.'), 'filtra pelas páginas da oferta');
   assert.ok(decodeURIComponent(urlLeads).includes('"/mentoria","/mentoria-2"'), 'as duas variantes entram no filtro');
+  assert.ok(decodeURIComponent(urlLeads).includes('"/formulario-consultoria"'), 'formulario direto entra no filtro de leads');
 
   // O A/B precisa do recorte por página, senão não há como comparar layouts.
   assert.strictEqual(d.por_pagina['/mentoria'].leads, 2);
   assert.strictEqual(d.por_pagina['/mentoria-2'].leads, 2);
+  assert.strictEqual(d.por_pagina['/formulario-consultoria'].leads, 1);
   assert.ok(urlLeads.includes('created_at=gte.2026-08-20T00:00:00'), 'aplica a data inicial');
   assert.ok(urlLeads.includes('created_at=lte.2026-08-21T23:59:59'), 'aplica a data final');
 

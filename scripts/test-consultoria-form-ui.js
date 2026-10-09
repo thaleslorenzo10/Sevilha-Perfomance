@@ -29,7 +29,12 @@ function populateFields(html, nodes, form) {
 function createPage(page) {
   const html = fs.readFileSync(path.join(__dirname, '..', page, 'index.html'), 'utf8');
   const nodes = {}, events = [], requests = [];
-  const document = { body: { style: {} }, activeElement: null, addEventListener() {} };
+  const documentHandlers = {};
+  const document = {
+    body: { style: {} }, activeElement: null,
+    addEventListener(k, fn) { documentHandlers[k] = fn; },
+    trigger(k, event) { documentHandlers[k]?.(event); },
+  };
   function node(id) {
     const handlers = {}, classes = new Set(), attributes = {};
     return {
@@ -40,6 +45,7 @@ function createPage(page) {
       },
       setAttribute(k, v) { attributes[k] = v; },
       getAttribute(k) { return attributes[k]; },
+      hasAttribute(k) { return k in attributes; },
       removeAttribute(k) { delete attributes[k]; },
       focus() { document.activeElement = this; },
       addEventListener(k, fn) { handlers[k] = fn; },
@@ -50,6 +56,7 @@ function createPage(page) {
   for (const match of html.matchAll(/<[^>]*\bid="([^"]+)"[^>]*>/g)) {
     nodes[match[1]] = node(match[1]);
     nodes[match[1]].hidden = /\bhidden\b/.test(match[0]);
+    if (/\bdata-standalone\b/.test(match[0])) nodes[match[1]].setAttribute('data-standalone', '');
   }
   const form = nodes['sessao-form'];
   populateFields(html, nodes, form);
@@ -164,8 +171,34 @@ function checkRetry(p) {
   assert.ok(p.events.every(([name, value]) => name === 'passo_2' && value === undefined), 'progress events contain no contact information');
 }
 
-for (const page of ['mentoria', 'mentoria-2']) {
+function checkPageMode(p, standalone) {
+  assert.equal(p.nodes['modal-overlay'].classList.contains('open'), standalone);
+  if (standalone) {
+    assert.equal(p.document.activeElement, p.nodes['modal-title'], 'direct page opens focused on question');
+    assert.notEqual(p.document.body.style.overflow, 'hidden', 'direct page scroll remains natural');
+    assert.equal(p.nodes['sessao-form'].hasAttribute('data-standalone'), true);
+    p.window.closeModal();
+    p.document.trigger('keydown', { key: 'Escape' });
+    assert.equal(p.nodes['modal-overlay'].classList.contains('open'), true, 'direct form cannot be closed');
+    p.nodes['submit-btn'].focus();
+    let prevented = false;
+    p.document.trigger('keydown', { key: 'Tab', preventDefault() { prevented = true; } });
+    assert.equal(prevented, false, 'direct page does not trap Tab');
+  } else {
+    p.window.openModal();
+    assert.equal(p.document.body.style.overflow, 'hidden', 'landing keeps modal scroll lock');
+    p.nodes['submit-btn'].focus();
+    let prevented = false;
+    p.document.trigger('keydown', { key: 'Tab', preventDefault() { prevented = true; } });
+    assert.equal(prevented, true, 'landing keeps modal focus trap');
+    p.document.trigger('keydown', { key: 'Escape' });
+    assert.equal(p.nodes['modal-overlay'].classList.contains('open'), false, 'landing keeps Escape close');
+  }
+}
+
+for (const page of ['mentoria', 'mentoria-2', 'formulario-consultoria']) {
   const p = navigation(page);
+  checkPageMode(p, page === 'formulario-consultoria');
   assert.equal(p.form.elements.nome.maxLength, 200);
   assert.equal(p.form.elements.email.maxLength, 254);
   assert.equal(p.form.elements.escritorio.maxLength, 200);
@@ -174,4 +207,4 @@ for (const page of ['mentoria', 'mentoria-2']) {
   checkReopen(p);
   checkRetry(p);
 }
-process.stdout.write('Consultoria UI: seis etapas, Enter, validacao, baixo porte, voltar/reabrir, retry e sucesso passaram.\n');
+process.stdout.write('Consultoria UI: tres paginas, seis etapas, Enter, validacao, voltar, retry, sucesso e modos modal/direto passaram.\n');

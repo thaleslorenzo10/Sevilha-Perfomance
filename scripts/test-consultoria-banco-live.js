@@ -7,12 +7,18 @@ const assert = require('node:assert/strict');
 
 const origin = 'https://hojcntkggnwrvbvmcwxe.supabase.co';
 const table = '/rest/v1/sevilha_leads';
+const testPage = process.env.CONSULTORIA_TEST_PAGE || '/mentoria';
 const eventId = `TESTE_consultoria_${crypto.randomUUID().replaceAll('-', '')}`;
 const networkFetch = global.fetch;
 let phase = 'preflight';
 let cleanupAllowed = false;
 let blockedRequests = 0;
 const calls = [];
+
+function validatePage(page) {
+  assert.equal(['/mentoria', '/mentoria-2', '/formulario-consultoria'].includes(page), true);
+  return page;
+}
 
 function allowedRequest(url, options = {}) {
   const target = new URL(url);
@@ -48,7 +54,7 @@ async function database(query, options = {}) {
   return body;
 }
 
-const filter = `event_id=eq.${eventId}&pagina=eq./mentoria`;
+const filter = `event_id=eq.${eventId}&pagina=eq.${encodeURIComponent(testPage)}`;
 const read = () => database(`${filter}&select=id,integracoes`);
 
 async function submit(handler, payload) {
@@ -80,7 +86,7 @@ async function compareAndSwap(states) {
 
 async function verify(handler) {
   const payload = {
-    pagina: '/mentoria', event_id: eventId, nome: 'TESTE AUTOMATIZADO CONSULTORIA - REMOVER',
+    pagina: testPage, event_id: eventId, nome: 'TESTE AUTOMATIZADO CONSULTORIA - REMOVER',
     email: `${eventId.toLowerCase()}@example.invalid`, telefone: '5511000000000',
     cargo: 'Dono/Sócio', colaboradores: 'De 0 a 4', escritorio: 'TESTE SEM INTEGRACOES EXTERNAS',
   };
@@ -103,11 +109,13 @@ async function verify(handler) {
 }
 
 function selfCheck() {
+  assert.throws(() => validatePage('/other'), assert.AssertionError);
+  for (const page of ['/mentoria', '/mentoria-2', '/formulario-consultoria']) assert.equal(validatePage(page), page);
   assert.equal(allowedRequest('https://crm.rdstation.com/api/v1/deals', { method: 'POST', body: '{}' }), false);
   assert.equal(allowedRequest(`${origin}${table}`, { method: 'DELETE' }), false);
   assert.equal(allowedRequest(`${origin}${table}`, { method: 'POST', body: JSON.stringify({ event_id: 'other' }) }), false);
   assert.equal(allowedRequest(`${origin}${table}?${filter}`), true);
-  process.stdout.write('Self-check passed: external writes and other event IDs denied.\n');
+  process.stdout.write('Self-check passed: invalid page, external writes and other event IDs denied.\n');
 }
 
 async function cleanup() {
@@ -122,6 +130,7 @@ async function cleanup() {
 }
 
 async function main() {
+  validatePage(testPage);
   if (process.argv.includes('--self-check')) return selfCheck();
   assert.equal(process.argv.includes('--execute'), true);
   const shared = parseEnv(fs.readFileSync('/home/codex/.claude/credenciais/supabase.env', 'utf8'));
@@ -140,7 +149,7 @@ async function main() {
     await cleanup();
     global.fetch = networkFetch;
   }
-  process.stdout.write(`${JSON.stringify({ event_id: eventId, http_calls: calls })}\n`);
+  process.stdout.write(`${JSON.stringify({ event_id: eventId, pagina: testPage, http_calls: calls })}\n`);
 }
 
 main().catch(() => {

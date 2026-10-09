@@ -25,6 +25,7 @@ var SP_CONFIG = {
 
 (function () {
   'use strict';
+  const PAGINAS_CONSULTORIA = ['/mentoria', '/mentoria-2', '/formulario-consultoria'];
 
   /* ── Helpers ─────────────────────────────────────────── */
   function log() {
@@ -188,7 +189,7 @@ var SP_CONFIG = {
     var eventIdEl = form.querySelector('[name="event_id"]');
     if (eventIdEl && !eventIdEl.value) {
       const page = window.location.pathname.replace(/\/$/, '');
-      const consultoria = ['/mentoria', '/mentoria-2'].indexOf(page) !== -1;
+      const consultoria = PAGINAS_CONSULTORIA.indexOf(page) !== -1;
       try {
         eventIdEl.value = (consultoria && sessionStorage.getItem('sp_form_event_id')) || generateEventId();
         if (consultoria) sessionStorage.setItem('sp_form_event_id', eventIdEl.value);
@@ -314,7 +315,7 @@ var SP_CONFIG = {
     })
     .catch(function (err) {
       log('form error after retries', err);
-      if (typeof onError === 'function' || ['/mentoria', '/mentoria-2'].indexOf(data.pagina) !== -1) {
+      if (typeof onError === 'function' || PAGINAS_CONSULTORIA.indexOf(data.pagina) !== -1) {
         // Sem persistencia confirmada, nao dispara conversao.
         if (typeof onError === 'function') onError(err);
         return;
@@ -329,9 +330,8 @@ var SP_CONFIG = {
   // Ao mudar esta lista, subir o ?v= da tag <script> nas páginas. Este arquivo
   // é servido com must-revalidate, mas quem visitou antes disso ainda carrega a
   // versão immutable de um ano — e um beacon congelado não registra a página nova.
-  var PAGEVIEW_BEACON_PAGES = ['/mentoria', '/mentoria-2'];
   var PAGINA_ATUAL = window.location.pathname.replace(/\/$/, '') || '/';
-  var INSTRUMENTADA = PAGEVIEW_BEACON_PAGES.indexOf(PAGINA_ATUAL) !== -1;
+  var INSTRUMENTADA = PAGINAS_CONSULTORIA.indexOf(PAGINA_ATUAL) !== -1;
 
   // Um par evento+valor por carregamento; visitante permite contar pessoas.
   var jaFoi = {};
@@ -431,6 +431,7 @@ var SP_CONFIG = {
 
     /* O modal pode abrir por qualquer caminho; observar a classe pega todos. */
     var overlay = document.getElementById('modal-overlay');
+    if (form.hasAttribute('data-standalone')) marcar('form_open');
     var estavaAberto = false;
     if (overlay && window.MutationObserver) {
       // O observador entrega as mudanças em LOTE. Ler só o estado atual no fim

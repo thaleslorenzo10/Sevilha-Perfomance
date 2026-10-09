@@ -40,7 +40,9 @@ function database(url, method, body) {
     rows.set(body.event_id, structuredClone(body));
     return reply(201, [structuredClone(body)]);
   }
-  const current = rows.get(id);
+  const candidate = rows.get(id);
+  const paginas = url.searchParams.get('pagina')?.slice(4, -1).split(',');
+  const current = candidate && (!paginas || paginas.includes(candidate.pagina)) ? candidate : undefined;
   if (method === 'PATCH') {
     const compare = url.searchParams.get('integracoes');
     const before = compare === 'is.null' ? null : JSON.parse(compare.slice(3));
@@ -104,14 +106,20 @@ async function submit(body) {
 }
 const contar = (host, method = 'POST') => calls.filter(c => c.host === host && c.method === method).length;
 
-async function sucesso() {
+async function sucesso(pagina = '/mentoria') {
   reset();
-  const r = await submit(lead());
+  const input = lead({ pagina, page_url: 'https://sevilhaperformance.com.br' + pagina });
+  const r = await submit(input);
   assert.equal(r.code, 200); assert.equal(r.body.ok, true);
   assert.ok(Object.values(r.body.integracoes).every(s => ['salvo', 'enviado'].includes(s)));
   assert.equal(rows.size, 1); assert.equal(deals.size, 1); assert.equal(contar('sheets.googleapis.com'), 1);
   assert.deepEqual(contact.deal_ids, ['deal1']);
   const event = calls.find(c => c.host === 'graph.facebook.com').body.data[0];
+  assert.equal(rows.get(input.event_id).pagina, pagina);
+  assert.equal(calls.find(c => c.host === 'sheets.googleapis.com' && c.method === 'POST').body.values[0][1], pagina);
+  assert.equal(calls.find(c => c.host === 'api.rd.services').body.payload.conversion_identifier, 'sessao-estrategica-consultoria');
+  assert.equal(deals.get('deal1').deal_stage_id, 'stage-SE-test');
+  assert.equal(event.custom_data.content_name, pagina); assert.equal(event.event_source_url, input.page_url);
   assert.equal(event.event_id, lead().event_id); assert.equal(event.custom_data.utm_source, '{{placement}}');
   assert.equal(event.user_data.em[0], crypto.createHash('sha256').update('contato@test.invalid').digest('hex'));
   assert.equal(event.user_data.ph[0], crypto.createHash('sha256').update('5511988887777').digest('hex'));
@@ -126,7 +134,7 @@ async function sucesso() {
 }
 
 async function validacao() {
-  for (const pagina of ['/mentoria', '/mentoria-2']) {
+  for (const pagina of ['/mentoria', '/mentoria-2', '/formulario-consultoria']) {
     for (const bad of [{ nome: '' }, { nome: 'a'.repeat(201) }, { email: 'x' }, { email: 'a'.repeat(250) + '@test.invalid' }, { escritorio: 'a'.repeat(201) }, { telefone: '123' }, { cargo: 'x' }, { colaboradores: '' }, { event_id: 'email@test' }, { utm_source: ['x'] }]) {
       reset(); const r = await submit(lead({ pagina, ...bad }));
       assert.equal(r.code, 400); assert.equal(calls.length, 0);
@@ -199,7 +207,7 @@ async function recuperarExecucao() {
 }
 
 async function configuracaoCRM() {
-  for (const pagina of ['/mentoria', '/mentoria-2']) {
+  for (const pagina of ['/mentoria', '/mentoria-2', '/formulario-consultoria']) {
     reset(); delete process.env.RD_CRM_STAGE_ID_SE;
     const r = await submit(lead({ pagina }));
     assert.equal(r.body.ok, true); assert.equal(r.body.integracoes.rd_crm, 'nao_configurado');
@@ -221,15 +229,19 @@ function storage() {
 }
 
 function browser(localStorage, sessionStorage, state) {
-  const posts = []; const pixels = [];
+  const posts = []; const pixels = []; const beacons = [];
+  const pagina = state.pagina || '/mentoria';
   const window = {
-    location: { pathname: '/mentoria', href: 'https://test.invalid/mentoria', search: '', origin: 'https://test.invalid' },
+    location: { pathname: pagina, href: 'https://test.invalid' + pagina, search: '', origin: 'https://test.invalid' },
     addEventListener() {}, fbq: (...args) => pixels.push(args),
   };
-  const document = { cookie: '', title: 'Sessao Estrategica', referrer: '', getElementById: () => null, querySelectorAll: () => [] };
+  const standaloneForm = { elements: [], hasAttribute: () => true, addEventListener() {} };
+  const document = { cookie: '', title: 'Sessao Estrategica', referrer: '',
+    getElementById: id => state.standalone && id === 'sessao-form' ? standaloneForm : null, querySelectorAll: () => [] };
   const context = {
     window, document, localStorage, sessionStorage, URLSearchParams, console,
-    navigator: { userAgent: 'browser-test', sendBeacon: () => true }, fbq: window.fbq,
+    Blob: class { constructor(parts) { this.source = parts.join(''); } },
+    navigator: { userAgent: 'browser-test', sendBeacon: (url, body) => { beacons.push({ url, body: JSON.parse(body.source) }); return true; } }, fbq: window.fbq,
     FormData: class { constructor(form) { return Object.entries(form.fields).map(([key, field]) => [key, field.value]); } },
     setTimeout: fn => queueMicrotask(fn),
     fetch: async (url, options) => {
@@ -240,25 +252,31 @@ function browser(localStorage, sessionStorage, state) {
   };
   vm.runInNewContext(fs.readFileSync('assets/tracking.js', 'utf8'), context);
   const form = {
-    fields: Object.fromEntries(Object.entries(lead({ event_id: '' })).map(([k, value]) => [k, { value }])),
+    fields: Object.fromEntries(Object.entries(lead({ event_id: '', pagina })).map(([k, value]) => [k, { value }])),
     querySelector(selector) {
       if (selector.startsWith('button')) return null;
       return this.fields[selector.match(/name="([^"]+)/)?.[1]] || null;
     },
   };
-  return { window, form, posts, pixels };
+  return { window, form, posts, pixels, beacons };
 }
 
-async function tracking() {
+async function tracking(pagina = '/mentoria') {
   const local = storage(); const session = storage();
-  const state = { code: 503, payload: { ok: false } };
+  const state = { code: 503, payload: { ok: false }, pagina, standalone: pagina === '/formulario-consultoria' };
   let b = browser(local, session, state); let failures = 0; let successes = 0;
+  assert.equal(b.beacons.length, state.standalone ? 3 : 2, 'visita, visitante distinto e formulario direto aberto registrados');
+  if (state.standalone) assert.equal(b.beacons.at(-1).body.evento, 'form_open');
+  assert.ok(b.beacons.every(c => c.url === '/api/pageview' && c.body.pagina === pagina));
+  b.window.SP_marcar('passo_2');
+  assert.equal(b.beacons.at(-1).body.evento, 'passo_2');
   const send = current => current.window.SP_handleSubmit({ preventDefault() {} }, current.form, () => successes++, () => failures++);
   const flush = () => new Promise(resolve => setTimeout(resolve, 5));
   send(b); await flush();
   assert.equal(successes, 0); assert.equal(failures, 1);
   assert.equal(b.pixels.filter(p => p[1] === 'Lead').length, 0);
   const id = b.posts[0].event_id;
+  assert.ok(b.posts.every(p => p.pagina === pagina));
   assert.ok(b.posts.every(p => p.event_id === id), 'retries preservam event_id');
   send(b); await flush();
   assert.equal(JSON.parse(local.getItem('sp_pending_leads')).length, 1, 'fila nao duplica submissao');
@@ -284,6 +302,7 @@ async function tracking() {
 }
 
 (async () => {
-  await sucesso(); await validacao(); await retentativas(); await concorrencia(); await recuperarExecucao(); await configuracaoCRM(); await tracking();
+  for (const pagina of ['/mentoria', '/mentoria-2', '/formulario-consultoria']) { await sucesso(pagina); await tracking(pagina); }
+  await validacao(); await retentativas(); await concorrencia(); await recuperarExecucao(); await configuracaoCRM();
   console.log('consultoria: persistencia, validacao, recibos, retentativas, concorrencia, CAPI e browser tracking offline passaram');
 })().catch(e => { console.error(e); process.exitCode = 1; });

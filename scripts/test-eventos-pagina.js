@@ -13,7 +13,7 @@
 process.env.SUPABASE_URL = 'https://exemplo.supabase.co';
 process.env.SUPABASE_SERVICE_KEY = 'chave';
 
-const { tratarBeacon } = require('../lib/pageviews');
+const { tratarBeacon, paginasComBeacon } = require('../lib/pageviews');
 
 let falhas = 0;
 function ok(cond, msg, extra) {
@@ -43,6 +43,21 @@ const REQ = body => ({
 });
 
 (async () => {
+  process.env.PAGEVIEW_BEACON_PAGES = ' /mentoria-2, /mentoria ';
+  ok(paginasComBeacon().includes('/formulario-consultoria'), 'env legado aceita nova origem');
+  process.env.PAGEVIEW_BEACON_PAGES = '/mentoria';
+  ok(paginasComBeacon().join(',') === '/mentoria,/formulario-consultoria', 'config custom preserva origem existente e inclui formulario direto');
+  process.env.PAGEVIEW_BEACON_PAGES = '/outra, /formulario-consultoria';
+  ok(paginasComBeacon().join(',') === '/outra,/formulario-consultoria', 'origem direta existente nao e duplicada');
+  delete process.env.PAGEVIEW_BEACON_PAGES;
+  chamadas = [];
+  let direto = fakeRes();
+  await tratarBeacon(REQ({ pagina: '/formulario-consultoria', evento: 'pageview', visitante: 'u_direto' }), direto);
+  ok(direto.statusCode === 201 && chamadas[0].body.pagina === '/formulario-consultoria', 'evento da origem direta grava pagina correta');
+  chamadas = [];
+  direto = fakeRes();
+  await tratarBeacon(REQ({ pagina: '/formulario-consultoria', query: 'utm_source=google_search&utm_medium=consultoria&utm_campaign=SE&utm_content=AD01&gclid=click1' }), direto);
+  ok(direto.statusCode === 201 && chamadas[0].body.utm_source === 'google_search' && chamadas[0].body.gclid === 'click1', 'visita direta preserva UTMs e click ID');
   console.log('— evento vai para a tabela certa —');
   chamadas = [];
   let res = fakeRes();
