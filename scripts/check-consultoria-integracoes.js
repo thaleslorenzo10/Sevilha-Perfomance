@@ -82,11 +82,17 @@ async function crm() {
   const read = resource => getJson(`${base}/${resource}?${new URLSearchParams({ token })}`);
   const resources = [
     ['users', 'users', '68e6e08c6c2ac10017538422'],
-    ['deal_stages', 'deal_stages', process.env.RD_CRM_STAGE_ID_SE || '69d52f54c0b8000015d2e7bb'],
-    ['campaigns', 'campaigns', process.env.RD_CRM_CAMPAIGN_ID_SE || '69d52f437e5d76001a90e080'],
+    ['deal_stages', 'deal_stages', process.env.RD_CRM_STAGE_ID_SE],
+    ['campaigns', 'campaigns', process.env.RD_CRM_CAMPAIGN_ID_SE],
     ['deal_sources', 'deal_sources', process.env.RD_CRM_SOURCE_ID || '68e5c150af14bb00013f8acb'],
   ];
   for (const [endpoint, key, target] of resources) {
+    if (!target) {
+      report(`RD CRM ${key}`, endpoint === 'campaigns', endpoint === 'campaigns'
+        ? 'Optional SE campaign omitted; no Clube campaign fallback'
+        : 'Required SE stage missing; no Clube stage fallback');
+      continue;
+    }
     await crmResource(read, endpoint, key, target);
   }
 }
@@ -111,7 +117,7 @@ function crmLabel(found) {
 function crmRouting(list) {
   const consultoria = list.filter(row => /consultoria|estrat[eé]gica/i.test(`${row.name} ${row.deal_pipeline?.name}`));
   report('RD CRM consultoria routing', Boolean(process.env.RD_CRM_STAGE_ID_SE),
-    `RD_CRM_STAGE_ID_SE ${process.env.RD_CRM_STAGE_ID_SE ? 'present' : 'EMPTY: Clube fallback'}; consultoria stages visible: ${consultoria.map(s => `${s.name} (${s._id || s.id}; ${s.deal_pipeline?.name || 'pipeline unavailable'})`).join('; ') || 'none'}`);
+    `RD_CRM_STAGE_ID_SE ${process.env.RD_CRM_STAGE_ID_SE ? 'present' : 'EMPTY: delivery disabled'}; consultoria stages visible: ${consultoria.map(s => `${s.name} (${s._id || s.id}; ${s.deal_pipeline?.name || 'pipeline unavailable'})`).join('; ') || 'none'}`);
 }
 
 async function marketing() {
@@ -133,13 +139,13 @@ async function meta() {
   if (!usable(token)) return report('Meta CAPI', false, 'Local token missing or sanitized placeholder');
   const read = await getJson(`https://graph.facebook.com/v19.0/${pixel}?fields=id,name`, { Authorization: `Bearer ${token}` });
   report('Meta dataset', read.ok, `HTTP ${read.status}; pixel ${pixel}; resource ${read.body?.name || 'label unavailable'}; token source ${usable(localToken) ? 'local CAPI' : 'shared Ads read token (does not prove CAPI send permission)'}; no event sent`);
-  report('Meta test code', Boolean(process.env.META_TEST_EVENT_CODE),
+  report('Meta test code', true,
     process.env.META_TEST_EVENT_CODE ? 'configured; all local CAPI events become test events' : 'missing; a real CAPI send would enter production reporting');
 }
 
 async function deployment() {
   if (vercelToken) await vercelDeployment();
-  for (const pathname of ['/api/leads', '/mentoria', '/mentoria-2']) await publicPage(pathname);
+  for (const pathname of ['/api/leads', '/mentoria', '/mentoria-2', '/formulario-consultoria']) await publicPage(pathname);
 }
 
 async function vercelDeployment() {

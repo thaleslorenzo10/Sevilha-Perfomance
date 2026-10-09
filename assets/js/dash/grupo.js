@@ -10,7 +10,7 @@
     <div class="kpi-group-label">${NOME[g]} — período</div>
     <div class="kpi-card blue"><div class="kpi-label">Investido</div><div class="kpi-value" id="${g}-spend"></div></div>
     <div class="kpi-card green"><div class="kpi-label">Leads</div><div class="kpi-value" id="${g}-leads"></div><div class="kpi-sub" id="${g}-leads-sub"></div></div>
-    <div class="kpi-card purple"><div class="kpi-label">MQL (10+)</div><div class="kpi-value" id="${g}-mql"></div><div class="kpi-sub" id="${g}-mql-sub"></div></div>
+    <div class="kpi-card purple"><div class="kpi-label">${g === 'SE' ? 'MQL (>10 na consultoria)' : 'MQL (10+)'}</div><div class="kpi-value" id="${g}-mql"></div><div class="kpi-sub" id="${g}-mql-sub"></div></div>
     <div class="kpi-card green"><div class="kpi-label">CPL</div><div class="kpi-value" id="${g}-cpl"></div></div>
     <div class="kpi-card purple"><div class="kpi-label">CPMQL</div><div class="kpi-value" id="${g}-cpmql"></div></div>
     <div class="kpi-card teal"><div class="kpi-label">Deals</div><div class="kpi-value" id="${g}-deals"></div><div class="kpi-sub" id="${g}-deals-sub"></div></div>

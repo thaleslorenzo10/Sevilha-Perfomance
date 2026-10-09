@@ -37,7 +37,7 @@
   }
 
   function orientarPerfil() {
-    const fora = ['De 0 a 4', 'De 5 a 9'].includes(valorDe('colaboradores'));
+    const fora = ['De 0 a 4', 'De 5 a 9', 'De 5 a 10'].includes(valorDe('colaboradores'));
     document.getElementById('route-porte').classList.toggle('on', fora);
     document.getElementById('route-cargo').classList.toggle('on', valorDe('cargo') === 'Cargo Operacional');
   }
@@ -143,7 +143,7 @@
         alvo.checked = true;
         alvo.dispatchEvent(new Event('change', { bubbles: true }));
       }
-      window.openModal(['De 0 a 4', 'De 5 a 9'].includes(valor) ? 1 : 2);
+      window.openModal(['De 0 a 4', 'De 5 a 9', 'De 5 a 10'].includes(valor) ? 1 : 2);
       marcar('cta_chip', valor);
     });
   });

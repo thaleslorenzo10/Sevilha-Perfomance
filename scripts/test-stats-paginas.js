@@ -5,7 +5,7 @@
  * Confere a comparação por página de /api/stats, sem rede real.
  *
  *   • toda página do banco entra, mesmo sem estar em nenhuma lista fixa
- *   • qualificado usa a regra de porte (10+), não a contagem crua
+ *   • consultoria qualificada usa >10; outras ofertas preservam 10+
  *   • página sem acesso registrado devolve conversão null, não 0 —
  *     zero por cento e "não dá para saber" são respostas diferentes
  *
@@ -24,7 +24,10 @@ const VIEWS = [
 const LEADS = [
   { pagina: '/mentoria',   colaboradores: 'De 20 a 29' },  // qualifica
   { pagina: '/mentoria',   colaboradores: 'De 5 a 9'   },  // não
-  { pagina: '/mentoria-2', colaboradores: 'De 10 a 19' },  // qualifica
+  { pagina: '/mentoria-2', colaboradores: 'De 10 a 19' },  // corte >10 indefinido
+  { pagina: '/formulario-consultoria', colaboradores: 'de_11_a_19', cargo: 'operacional' },
+  { pagina: '/formulario-consultoria', colaboradores: 'de_5_a_10', cargo: 'socio' },
+  { pagina: '/', colaboradores: '10' }, // outras ofertas preservam >=10
   { pagina: '/pagina-sem-beacon', colaboradores: 'Mais de 50' }, // sem acesso contado
 ];
 
@@ -79,8 +82,11 @@ function checarPaginas(por) {
   assert.strictEqual(por['/mentoria'].conversion_rate, 66.67);
   assert.strictEqual(por['/mentoria'].qualification_rate, 50);
 
-  assert.strictEqual(por['/mentoria-2'].leads_qualificados, 1);
+  assert.strictEqual(por['/mentoria-2'].leads_qualificados, 0, '10-19 historico nao comprova >10');
   assert.strictEqual(por['/mentoria-2'].conversion_rate, 50);
+  assert.strictEqual(por['/formulario-consultoria'].leads, 2);
+  assert.strictEqual(por['/formulario-consultoria'].leads_qualificados, 1, '11-19 operacional qualifica; 5-10 socio nao');
+  assert.strictEqual(por['/'].leads_qualificados, 1, 'Clube preserva corte historico 10+');
 
   assert.strictEqual(por['/pagina-sem-beacon'].visits, 0);
   assert.strictEqual(por['/pagina-sem-beacon'].conversion_rate, null,

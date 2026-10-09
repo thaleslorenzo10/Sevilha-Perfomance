@@ -35,7 +35,7 @@
       const deals = rd ? D.linhasCampanha(d, g).reduce((s, r) => s + r.deals, 0) : null;
       D.renderFunil('funil' + g, [
         { rotulo: 'Visitantes', valor: g === 'SE' ? visitantesSE : null },
-        { rotulo: 'Leads', valor: pg.leads }, { rotulo: 'MQL (10+)', valor: pg.mql }, { rotulo: 'Deals', valor: deals },
+        { rotulo: 'Leads', valor: pg.leads }, { rotulo: g === 'SE' ? 'MQL (>10 na consultoria)' : 'MQL (10+)', valor: pg.mql }, { rotulo: 'Deals', valor: deals },
       ]);
     }
     D.renderPaginas(stats, leads);

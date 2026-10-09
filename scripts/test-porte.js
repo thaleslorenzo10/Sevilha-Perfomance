@@ -9,7 +9,7 @@
  * na base real estão todos cobertos, com a contagem de cada um no comentário.
  */
 
-const { classificarPorte, PORTE_MAIOR, PORTE_MENOR, PORTE_INDEF } = require('../lib/porte');
+const { classificarPorte, classificarPorteConsultoria, ehQualificadoConsultoria, PORTE_MAIOR, PORTE_MENOR, PORTE_INDEF } = require('../lib/porte');
 
 let falhas = 0;
 function ok(cond, msg, extra) {
@@ -76,6 +76,18 @@ console.log('\n— o corte é o limite inferior da faixa —');
 esperar('De 9 a 12',  PORTE_INDEF, 'cruza o corte');
 esperar('Mais de 9',  PORTE_MENOR, '9 ainda é menor que 10');
 esperar('Mais de 10', PORTE_MAIOR);
+
+for (const [entrada, esperado] of [
+  ['10', PORTE_MENOR], ['11', PORTE_MAIOR], ['De 5 a 10', PORTE_MENOR],
+  ['De 11 a 19', PORTE_MAIOR], ['De 10 a 19', PORTE_INDEF], ['Mais de 10', PORTE_MAIOR],
+  ['Mais de 9', PORTE_INDEF], ['De 19 a 11', PORTE_INDEF], ['Até 10', PORTE_MENOR],
+  ['Até 11', PORTE_INDEF], ['de_11_a_19', PORTE_MAIOR], ['', PORTE_INDEF],
+  ['menos de 10 ou mais de 20', PORTE_INDEF], ['De 11 a 19 ou de 0 a 4', PORTE_INDEF],
+  ['mais de 10e-3', PORTE_INDEF], ['De 11 a 19 colaboradores', PORTE_MAIOR],
+]) {
+  ok(classificarPorteConsultoria(entrada) === esperado, `consultoria ${entrada}: ${esperado}`);
+  ok(ehQualificadoConsultoria(entrada) === (esperado === PORTE_MAIOR), `qualificacao consultoria ${entrada}`);
+}
 
 console.log(falhas ? `\n${falhas} falha(s)` : '\ntudo verde');
 process.exit(falhas ? 1 : 0);

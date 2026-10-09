@@ -23,7 +23,7 @@
 const fs   = require('fs');
 const path = require('path');
 
-const { classificarPorte, PORTE_MAIOR, PORTE_MENOR } = require('../lib/porte');
+const { classificarPorteConsultoria: classificarPorte, PORTE_MAIOR, PORTE_MENOR } = require('../lib/porte');
 const { EVENTOS_ACEITOS } = require('../lib/pageviews');
 
 const RAIZ = path.join(__dirname, '..');
@@ -49,7 +49,7 @@ const CAMPOS_CONTRATO = [
 ];
 
 /** Fora do porte na página — precisa bater com o que o lib/porte.js pensa. */
-const FORA_DO_PORTE = ['De 0 a 4', 'De 5 a 9'];
+const FORA_DO_PORTE = ['De 0 a 4', 'De 5 a 10'];
 
 let falhas = 0;
 

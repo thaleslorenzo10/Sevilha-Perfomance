@@ -52,7 +52,7 @@ const LEADS = [
   { created_at: '2026-08-20T14:00:00Z', pagina: '/mentoria-2', cargo: 'Dono/Sócio',      colaboradores: 'De 10 a 19', utm_source: 'facebook', utm_campaign: 'c1' },
   { created_at: '2026-08-21T09:00:00Z', pagina: '/mentoria-2', cargo: 'Cargo Gerencial', colaboradores: 'De 5 a 9',   utm_source: 'google',   utm_campaign: 'c2' },
   { created_at: '2026-08-21T11:00:00Z', pagina: '/mentoria',   cargo: '',                colaboradores: '',           utm_source: '',         utm_campaign: '' },
-  { created_at: '2026-08-21T12:00:00Z', pagina: '/formulario-consultoria', cargo: 'Dono/Sócio', colaboradores: 'De 20 a 29', utm_source: 'instagram', utm_campaign: 'c3' },
+  { created_at: '2026-08-21T12:00:00Z', pagina: '/formulario-consultoria', cargo: 'Operacional', colaboradores: 'De 11 a 19', utm_source: 'instagram', utm_campaign: 'c3' },
 ];
 
 process.env.SUPABASE_URL = 'https://exemplo.supabase.co';
@@ -87,9 +87,9 @@ function resFalso() {
   const d = res.corpo;
 
   assert.strictEqual(d.total, 5);
-  assert.strictEqual(d.porte.maior, 3, 'De 20 a 29 e De 10 a 19 contam como 10+');
-  assert.strictEqual(d.porte.menor, 1, 'De 5 a 9 conta como menos de 10');
-  assert.strictEqual(d.porte.indefinido, 1, 'sem resposta fica indefinido');
+  assert.strictEqual(d.porte.maior, 2, '20-29 e 11-19 confirmam >10 mesmo com cargo operacional');
+  assert.strictEqual(d.porte.menor, 1, 'De 5 a 9 nao qualifica');
+  assert.strictEqual(d.porte.indefinido, 2, 'sem resposta e faixa historica 10-19 ficam indefinidos');
 
   assert.deepStrictEqual(d.por_dia, [
     { dia: '2026-08-20', total: 2 },

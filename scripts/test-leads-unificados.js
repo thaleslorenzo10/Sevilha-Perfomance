@@ -27,7 +27,7 @@ const r = U.unificar({ forms, respondi, supabase }, '2026-09-10', '2026-09-13');
 // telefone 11999990000 aparece no lead 10 (e-mail c@x.com) e no 11 (só telefone): lead 11 é repetição.
 // antigo@x.com veio em agosto pelo FORMS e reapareceu pelo Café no dia 11: repetição, não conta.
 assert.equal(r.total.leads, 4, 'a, b, c, d');
-assert.equal(r.total.mql, 3, 'a (10-19), c (10-19), d (30-49)');
+assert.equal(r.total.mql, 2, 'a (10-19 historico), d (30-49); consultoria 10-19 nao prova >10');
 assert.equal(r.periodo.fuso, '-03:00');
 
 const dia12 = r.por_dia.find(d => d.dia === '2026-09-12');
@@ -47,11 +47,11 @@ assert.ok(!r.por_campanha.find(c => c.campanha === U.ETIQUETA_QUEBRADA), 'o lead
 
 const conj = r.por_conjunto.find(c => c.conjunto === 'HOT');
 assert.equal(conj.leads, 2, 'HOT junta FORMS (adset_name) e Supabase (utm_medium)');
-assert.equal(r.por_anuncio.find(a => a.anuncio === 'AD 09').mql, 1);
+assert.equal(r.por_anuncio.find(a => a.anuncio === 'AD 09').mql, 0);
 assert.equal(r.por_fonte.find(f => f.fonte === 'instagram:stories').leads, 1);
 assert.equal(r.por_fonte.find(f => f.fonte === 'instagram:geral').leads, 1, 'coluna platform "ig" do export');
 assert.equal(r.por_pagina.find(p => p.pagina === '/mentoria').leads, 1);
-assert.deepEqual(r.porte, { MAIOR_10: 3, MENOR_10: 1, INDEFINIDO: 0 });
+assert.deepEqual(r.porte, { MAIOR_10: 2, MENOR_10: 1, INDEFINIDO: 1 });
 assert.equal(r.qualificacao.cargo['Dono / Sócio'], 2);
 assert.equal(r.qualificacao.colaboradores['De 10 a 19'], 2, 'faixa do export e slug do site viram o mesmo rótulo');
 assert.equal(r.qualificacao.colaboradores['de_10_a_19'], undefined);
@@ -71,5 +71,12 @@ const direto = U.unificar({ supabase: [{ ...supabase[0], pagina: '/formulario-co
 assert.equal(direto.por_grupo.SE.leads, 1, 'formulario direto sem UTM continua Sessao Estrategica');
 assert.equal(direto.por_grupo.CP.leads, 0);
 assert.equal(direto.por_pagina[0].pagina, '/formulario-consultoria');
-assert.equal(direto.total.mql, 1);
+assert.equal(direto.total.mql, 0, 'faixa historica 10-19 nao confirma >10');
+for (const pagina of ['/mentoria', '/mentoria-2', '/formulario-consultoria']) {
+  for (const [colaboradores, mql] of [['de_5_a_10', 0], ['de_11_a_19', 1], ['10', 0], ['11', 1]]) {
+    const consultoria = U.unificar({ supabase: [{ ...supabase[0], pagina, colaboradores, cargo: 'operacional' }] }, '2026-09-12', '2026-09-12');
+    assert.equal(consultoria.total.mql, mql, `${pagina} ${colaboradores}: cargo operacional nao altera corte >10`);
+    assert.equal(consultoria.por_grupo.SE.leads, 1);
+  }
+}
 console.log('✓ leads-unificados');

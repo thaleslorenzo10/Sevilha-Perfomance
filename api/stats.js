@@ -12,7 +12,8 @@
 const { TABELAS, lerTudo } = require('../lib/supabase');
 const { inicioDoDia, fimDoDia } = require('../lib/fuso');
 const { responder: responderSessaoEstrategica } = require('../lib/sessao-estrategica');
-const { ehQualificado } = require('../lib/porte');
+const { ehQualificado, ehQualificadoConsultoria } = require('../lib/porte');
+const { ehConsultoria } = require('../lib/lead-integracoes');
 
 const PAGES = ['/', '/pre-inscricao-2', '/pre-inscricao-3'];
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -65,9 +66,9 @@ module.exports = async function handler(req, res) {
     const visits = countBy(viewsData, 'pagina');
     const leads  = countBy(leadsData, 'pagina');
     const visitantesPor = contarVisitantes(eventosData);
-    // Qualificado = 10+ colaboradores, a mesma regra que dispara o
-    // LeadQualificado no Meta (lib/porte.js).
-    const qualificados = countBy(leadsData.filter(l => ehQualificado(l.colaboradores)), 'pagina');
+    // Consultoria usa >10, sem requisito de cargo; outras ofertas mantem 10+.
+    const qualificados = countBy(leadsData.filter(l => ehConsultoria(l.pagina)
+      ? ehQualificadoConsultoria(l.colaboradores) : ehQualificado(l.colaboradores)), 'pagina');
 
     return res.status(200).json(montarResposta({ visits, leads, qualificados, visitantesPor }));
 

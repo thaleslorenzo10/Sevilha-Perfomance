@@ -6,7 +6,7 @@
  * 2. Grava a linha na planilha (páginas com formulário próprio)
  * 3. Envia para RD Station Marketing e para o RD Station CRM
  * 4. Envia Lead para a Meta Conversions API (CAPI) — e LeadQualificado quando
- *    o escritório tem 10 ou mais colaboradores
+ *    consultoria tem acima de 10 colaboradores; outras ofertas mantêm a regra existente
  *
  */
 
@@ -17,7 +17,7 @@ const crypto = require('crypto');
 // Normalização, hash e envio ao CAPI moram em lib/capi.js — o mesmo caminho que
 // o webhook do Respondi usa, para os dois eventos hasharem igual.
 const { enviarEvento, montarUserData, eventIdPorContato } = require('../lib/capi');
-const { ehQualificado } = require('../lib/porte');
+const { ehQualificado, ehQualificadoConsultoria } = require('../lib/porte');
 const { localizarPorIp } = require('../lib/geo');
 const registroDeEventos = require('../lib/eventos-enviados');
 const { gravarLead } = require('../lib/sheets-write');
@@ -189,15 +189,15 @@ function integracoesConsultoria(req, { ip, eventTime, referrer }) {
     rd_marketing: sendToRDMarketing, rd_crm: sendToRDCRM,
     capi: data => meta(data, 'Lead', data.event_id),
     qualificacao: async data => {
-      if (!ehQualificado(data.colaboradores)) return { status: 'nao_aplicavel' };
+      if (!ehQualificadoConsultoria(data.colaboradores)) return { status: 'nao_aplicavel' };
       const eventId = eventIdPorContato('sessao-estrategica', data.email);
       const enviados = await registroDeEventos.jaEnviados([eventId], { signal: AbortSignal.timeout(8000) });
-      if (enviados.has(eventId)) return { status: 'enviado' };
+      if (enviados.has(eventId)) return { status: 'enviado', event_id: eventId };
       const r = await meta(data, EVENTO_QUALIFICADO, eventId);
       if (r.status === 'enviado') await registroDeEventos.marcarEnviados([
         { event_id: eventId, evento: EVENTO_QUALIFICADO, fonte: `api-leads:${data.pagina}` },
       ], { signal: AbortSignal.timeout(8000) });
-      return r;
+      return { ...r, ...(r.status === 'enviado' ? { event_id: eventId } : {}) };
     },
   };
 }

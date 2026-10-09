@@ -34,7 +34,7 @@
     charts[id] = new Chart(el.getContext('2d'), {
       type: 'bar',
       data: { labels: dias.map(D.diaCurto), datasets: [
-        { type: 'bar', label: 'MQL (10+)', data: mql, backgroundColor: c.s1, stack: 'leads', borderRadius: 3 },
+        { type: 'bar', label: 'MQL', data: mql, backgroundColor: c.s1, stack: 'leads', borderRadius: 3 },
         { type: 'bar', label: 'Demais leads', data: outros, backgroundColor: c.s3, stack: 'leads', borderRadius: 3 },
         { type: 'line', label: 'Investido', data: spend, yAxisID: 'y1', borderColor: c.s2, backgroundColor: 'transparent', borderWidth: 2, tension: .3, pointRadius: 0 },
       ] },
@@ -73,7 +73,7 @@
       data: { labels: top.map(r => corta(r.nome, 28)), datasets: [
         { label: 'Meta reporta', data: top.map(r => r.meta_reporta), backgroundColor: c.s2 },
         { label: 'Leads reais', data: top.map(r => r.leads), backgroundColor: c.s1 },
-        { label: 'MQL (10+)', data: top.map(r => r.mql), backgroundColor: c.s4 },
+        { label: 'MQL', data: top.map(r => r.mql), backgroundColor: c.s4 },
       ] },
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: legenda(c), tooltip: tooltip(c) },
         scales: { x: { grid: { display: false }, ticks: { color: c.ink, font: { size: 10 }, maxRotation: 0 } }, y: eixoY(c) } },

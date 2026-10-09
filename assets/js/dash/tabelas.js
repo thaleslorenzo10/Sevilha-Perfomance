@@ -12,7 +12,7 @@
     campanha:     { titulo: 'Campanha',     fmt: r => D.esc(r.campanha || '') },
     spend:        { titulo: 'Gasto',        fmt: r => D.fmtR(r.spend), num: true },
     leads:        { titulo: 'Leads',        fmt: r => D.fmtN(r.leads), num: true },
-    mql:          { titulo: 'MQL (10+)',    fmt: r => D.fmtN(r.mql), num: true },
+    mql:          { titulo: 'MQL',          fmt: r => D.fmtN(r.mql), num: true },
     mql_pct:      { titulo: '% MQL',        fmt: r => D.orDash(r.mql_pct, D.fmtP), num: true },
     cpl:          { titulo: 'CPL',          fmt: r => D.orDash(r.cpl, D.fmtR), num: true },
     cpmql:        { titulo: 'CPMQL',        fmt: r => (r.cpmql === null ? '—' : `<span class="${D.faixaCusto(r.cpmql)}">${D.fmtR(r.cpmql)}</span>`), num: true },

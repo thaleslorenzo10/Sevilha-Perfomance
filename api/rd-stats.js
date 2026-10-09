@@ -18,6 +18,7 @@
 
 const CRM = 'https://crm.rdstation.com/api/v1';
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const FIXTURE_CONSULTORIA = /^\[SE\] TEST_consultoria_[a-f0-9-]{36}$/;
 
 // Funis acompanhados. O id é o que aparece na URL do funil no RD.
 const FUNIS = {
@@ -46,7 +47,8 @@ async function fetchDeals(token, pipelineId, periodoQS, maxPaginas = 15) {
               + `&limit=200&page=${page}${periodoQS}`;
     const json = await getJSON(url);
     const lote = json.deals || [];
-    deals.push(...lote);
+    // Fixtures sem contato testam o contrato do CRM; nao sao oportunidades reais.
+    deals.push(...lote.filter(d => !FIXTURE_CONSULTORIA.test(d.name || '')));
     if (lote.length < 200) break;
   }
   return deals;

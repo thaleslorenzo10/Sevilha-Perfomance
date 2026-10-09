@@ -216,6 +216,14 @@ var SP_CONFIG = {
     }
   };
 
+  function fireQualifiedLead(receipt) {
+    if (!receipt.perfil_qualificado || !receipt.qualified_event_id || !window.fbq) return;
+    const key = 'sp_qualified_pixel_' + receipt.qualified_event_id;
+    try { if (localStorage.getItem(key)) return; } catch {}
+    fbq('trackCustom', 'LeadQualificado', { content_name: document.title }, { eventID: receipt.qualified_event_id });
+    try { localStorage.setItem(key, '1'); } catch {}
+  }
+
   /* ── Retry com backoff + localStorage fallback ─────── */
   var PENDING_KEY = 'sp_pending_leads';
 
@@ -272,8 +280,9 @@ var SP_CONFIG = {
       var list = JSON.parse(localStorage.getItem(PENDING_KEY) || '[]');
       if (!list.length) return;
       log('retrying', list.length, 'pending lead(s)');
-      list.forEach(function(data) { postLead(data).then(function () {
+      list.forEach(function(data) { postLead(data).then(function (receipt) {
         window.SP_fireLeadEvents(data.event_id, data);
+        fireQualifiedLead(receipt);
         if (sessionStorage.getItem('sp_form_event_id') === data.event_id) sessionStorage.removeItem('sp_form_event_id');
       }).catch(function(){}); });
     } catch(e) {}
@@ -310,6 +319,7 @@ var SP_CONFIG = {
     .then(function (res) {
       log('form submitted', res.ok);
       window.SP_fireLeadEvents(eventId, data);
+      fireQualifiedLead(res);
       try { sessionStorage.removeItem('sp_form_event_id'); } catch {}
       onSuccess();
     })

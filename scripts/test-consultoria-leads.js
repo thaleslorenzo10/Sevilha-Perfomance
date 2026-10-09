@@ -94,7 +94,7 @@ global.fetch = async (raw, options = {}) => {
 
 const lead = overrides => ({
   nome: 'Pessoa Teste', email: 'contato@test.invalid', telefone: '(11) 98888-7777',
-  colaboradores: 'De 10 a 19', cargo: 'Dono/Sócio', escritorio: '', pagina: '/mentoria', event_id: 'ev_teste_12345',
+  colaboradores: 'De 11 a 19', cargo: 'Dono/Sócio', escritorio: '', pagina: '/mentoria', event_id: 'ev_teste_12345',
   fbp: 'fb.1.123.456', fbclid: 'click-test', external_id: 'browser-test',
   utm_source: '{{placement}}', utm_medium: '{{adset.name}}', utm_campaign: '{{campaign.name}}', utm_content: '{{ad.name}}',
   page_url: 'https://sevilhaperformance.com.br/mentoria', ...overrides,
@@ -115,6 +115,7 @@ async function sucesso(pagina = '/mentoria') {
   assert.equal(rows.size, 1); assert.equal(deals.size, 1); assert.equal(contar('sheets.googleapis.com'), 1);
   assert.deepEqual(contact.deal_ids, ['deal1']);
   const event = calls.find(c => c.host === 'graph.facebook.com').body.data[0];
+  assert.ok(calls.filter(c => c.host === 'graph.facebook.com').every(c => c.path === '/v24.0/657178423444244/events'), 'CAPI fixa v24 sem depender de migracao automatica');
   assert.equal(rows.get(input.event_id).pagina, pagina);
   assert.equal(calls.find(c => c.host === 'sheets.googleapis.com' && c.method === 'POST').body.values[0][1], pagina);
   assert.equal(calls.find(c => c.host === 'api.rd.services').body.payload.conversion_identifier, 'sessao-estrategica-consultoria');
@@ -125,6 +126,8 @@ async function sucesso(pagina = '/mentoria') {
   assert.equal(event.user_data.ph[0], crypto.createHash('sha256').update('5511988887777').digest('hex'));
   assert.equal(event.user_data.fbp, lead().fbp); assert.ok(event.user_data.fbc.endsWith('.click-test'));
   const receipts = JSON.stringify(rows.get(lead().event_id).integracoes);
+  const qualified = calls.find(c => c.host === 'graph.facebook.com' && c.body.data[0].event_name === 'LeadQualificado').body.data[0];
+  assert.equal(r.body.qualified_event_id, qualified.event_id, 'receipt exposes exact CAPI id for browser dedup');
   assert.ok(!/secret-test|contato@|98888|Pessoa|https:/.test(receipts));
   assert.ok(!JSON.stringify(r.body).includes('contato@'));
   await submit(lead({ pagina: '/mentoria-2' }));
@@ -144,6 +147,7 @@ async function validacao() {
     assert.equal(r.code, 503); assert.equal(r.body.ok, false); assert.equal(contar('api.rd.services'), 0);
     reset(); const low = await submit(lead({ pagina, colaboradores: 'De 0 a 4', cargo: 'Cargo Operacional' }));
     assert.equal(low.body.ok, true); assert.equal(low.body.lead_qualificado, false);
+    assert.equal(low.body.perfil_qualificado, false); assert.equal(low.body.qualified_event_id, undefined);
     assert.equal(contar('graph.facebook.com'), 1);
     assert.ok(deals.get('deal1').name.startsWith('[SE]'));
   }
@@ -151,6 +155,12 @@ async function validacao() {
   reset(); assert.equal((await submit(lead({ nome: 'a'.repeat(25000) }))).code, 413);
   reset(); const op = await submit(lead({ cargo: 'Cargo Operacional' }));
   assert.equal(op.body.lead_qualificado, true, 'scoring atual usa somente porte');
+  for (const colaboradores of ['De 5 a 10', 'De 10 a 19']) {
+    reset(); const r = await submit(lead({ colaboradores }));
+    assert.equal(r.body.ok, true); assert.equal(r.body.lead_qualificado, false);
+    assert.equal(r.body.qualified_event_id, undefined);
+    assert.equal(contar('graph.facebook.com'), 1, 'inclusive10 ou faixa antiga ambigua envia apenas Lead');
+  }
 }
 
 async function retentativas() {
@@ -171,11 +181,14 @@ async function retentativas() {
   assert.equal(contar('sheets.googleapis.com'), 1); assert.equal(deals.size, 0);
   reset(); faults.capiZero = true; r = await submit(lead());
   assert.equal(r.body.integracoes.capi, 'falhou'); assert.equal(r.body.lead_qualificado, false);
+  assert.equal(r.body.perfil_qualificado, true, 'perfil persiste mesmo sem confirmacao Meta');
+  assert.ok(r.body.qualified_event_id, 'Pixel independente recebe mesmo id quando CAPI falha');
 }
 
 async function concorrencia() {
   reset(); const results = await Promise.all([submit(lead()), submit(lead()), submit(lead())]);
-  assert.ok(results.every(r => r.body.ok)); assert.equal(rows.size, 1); assert.equal(deals.size, 1);
+  assert.ok(results.every(r => r.body.ok)); assert.deepEqual([rows.size, deals.size], [1, 1]);
+  assert.ok(results.every(r => r.body.perfil_qualificado && r.body.qualified_event_id), 'claim concorrente nao impede pixel qualificado');
   assert.equal(contar('sheets.googleapis.com'), 1); assert.equal(contar('api.rd.services'), 1); assert.equal(contar('graph.facebook.com'), 2);
   reset(); delete process.env.RD_MARKETING_TOKEN;
   const r = await submit(lead()); assert.equal(r.body.integracoes.rd_marketing, 'nao_configurado');
@@ -287,10 +300,14 @@ async function tracking(pagina = '/mentoria') {
   assert.equal(JSON.parse(local.getItem('sp_pending_leads')).length, 1);
   state.code = 200; state.payload = { ok: false }; send(b); await flush();
   assert.equal(successes, 0, 'HTTP 200 ok:false nao produz sucesso');
-  state.payload = { ok: true, integracoes: { banco: 'salvo', capi: 'enviado' } };
+  state.payload = { ok: true, perfil_qualificado: true, lead_qualificado: true, qualified_event_id: 'qualified-test-id', integracoes: { banco: 'salvo', capi: 'enviado' } };
   send(b); await flush(); send(b); await flush();
   assert.equal(successes, 2); assert.equal(b.pixels.filter(p => p[1] === 'Lead').length, 1);
   assert.equal(b.pixels.find(p => p[1] === 'Lead')[3].eventID, id);
+  const qualified = b.pixels.filter(p => p[1] === 'LeadQualificado');
+  assert.equal(qualified.length, 1, 'qualified browser retries deduplicated');
+  assert.equal(qualified[0][0], 'trackCustom');
+  assert.equal(qualified[0][3].eventID, 'qualified-test-id');
   assert.equal(JSON.parse(local.getItem('sp_pending_leads')).length, 0);
   state.payload = { ok: true, integracoes: { banco: 'salvo', rd_crm: 'falhou' } };
   send(b); await flush(); assert.equal(JSON.parse(local.getItem('sp_pending_leads')).length, 1);
@@ -301,8 +318,23 @@ async function tracking(pagina = '/mentoria') {
   assert.equal(JSON.parse(local.getItem('sp_pending_leads')).length, 0);
 }
 
+async function pixelQualificadoIndependente() {
+  for (const status of ['falhou', 'incerto', 'nao_configurado', 'processando']) {
+    const state = { code: 200, payload: { ok: true, perfil_qualificado: true,
+      lead_qualificado: false, qualified_event_id: 'qualified-' + status,
+      integracoes: { banco: 'salvo', qualificacao: status } } };
+    const b = browser(storage(), storage(), state);
+    b.window.SP_handleSubmit({ preventDefault() {} }, b.form, () => {}, () => {});
+    await new Promise(resolve => setTimeout(resolve, 5));
+    const pixel = b.pixels.find(p => p[1] === 'LeadQualificado');
+    assert.ok(pixel, 'pixel independente quando CAPI ' + status);
+    assert.equal(pixel[3].eventID, state.payload.qualified_event_id);
+  }
+}
+
 (async () => {
   for (const pagina of ['/mentoria', '/mentoria-2', '/formulario-consultoria']) { await sucesso(pagina); await tracking(pagina); }
+  await pixelQualificadoIndependente();
   await validacao(); await retentativas(); await concorrencia(); await recuperarExecucao(); await configuracaoCRM();
   console.log('consultoria: persistencia, validacao, recibos, retentativas, concorrencia, CAPI e browser tracking offline passaram');
 })().catch(e => { console.error(e); process.exitCode = 1; });
