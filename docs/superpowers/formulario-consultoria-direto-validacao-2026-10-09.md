@@ -42,3 +42,17 @@ Credenciais locais de Sheets/conversoes Marketing/CAPI continuam pendentes.
 Configuracao presente em producao nao comprova entrega real nos destinos.
 Nao alterar campanhas nem gerar evento Meta de producao para teste sintetico.
 Envios ambiguos exigem readback antes de repetir, conforme entrega anterior.
+
+## Producão conferida
+
+- Publicado do checkout limpo `58c9f66`; build remoto Node24/Python3.12 passou.
+- Deploy `dpl_He9NEd9tv8iQZHymGQ8SM3q19NQu`: GET autenticado confirmou READY/production e alias publico.
+- Link publico: https://sevilha-perfomance.vercel.app/formulario-consultoria, HTTP200.
+- Agent-browser em producao: desktop/mobile renderizados, seis etapas,
+  voltar/sucesso e UTMs/event ID conferidos com submissao simulada; axe zero violacoes.
+- Endpoint publicado recusou payload incompleto com HTTP400/dados_invalidos,
+  sem gravar lead ou acionar destinos. Submissao real externa nao executada.
+- `/mentoria` e `/mentoria-2`: modais abrem por CTA visivel, seis etapas e assets v6/v3 corretos.
+- URL imutavel do deploy redireciona ao SSO Vercel; aberta via agent-browser,
+  pediu login. Nao declarar verificacao do formulario nessa URL protegida.
+  Dominio publico foi a superficie de verificacao real de producao.
