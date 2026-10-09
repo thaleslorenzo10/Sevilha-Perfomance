@@ -31,6 +31,22 @@ Pixel LeadQualificado usa ID deterministico do CAPI apos persistencia, independe
 - Dashboard local renderizou com APIs reais de producao (leituras); aba SE mostra MQL (>10 na consultoria), sem overflow nas duas larguras. As contagens dessas leituras precedem o novo deploy.
 - Probe autenticado temporario de runtime usado apenas para leituras e Meta test-only. O ramo de teste CRM escrito depois NAO foi publicado nem executado em producao; endpoint removido do worktree de publicacao antes do deploy final.
 
+## Publicacao e verificacao final
+
+- Codigo publicado: commit 77e090f, a partir de worktree limpo contendo somente esta tarefa.
+- Vercel: dpl_C365UmaLSrDv6Y9SHqJTR3F42HtH, leitura autenticada HTTP 200, READY, target production e projeto correto.
+- Formulario publico: https://sevilha-perfomance.vercel.app/formulario-consultoria.
+- Dashboard: https://sevilha-perfomance.vercel.app/dashboard#se.
+- Hashes dos assets tracking.js, form-steps.js e dash/grupo.js publicados iguais aos arquivos locais. Ambas as landing pages responderam HTTP 200 com novas faixas e tracking v7.
+- Endpoint temporario /api/consultoria-preflight respondeu HTTP 404 apos publicacao; deploy final sem probe nem sua variavel temporaria.
+- Recibo da submissao real relido: banco salvo; CRM, Sheets, RD Marketing, CAPI e qualificacao enviados; execucao livre.
+- agent-browser no dominio publico: formulario desktop/mobile, fluxo de seis etapas interceptado, UTMs e IDs Pixel preservados; validacao real de payload incompleto HTTP 400, sem criar lead externo.
+- Landing pages abertas e CTAs conferidos no navegador; dashboard com APIs reais, Dados atualizados, aba SE e MQL (>10 na consultoria), sem overflow desktop/mobile.
+- Formulario publico: axe zero violacoes/incomplete, console e page errors vazios, logo e retrato carregados. Screenshots de formulario e dashboard inspecionados nas duas larguras.
+- URL imutavel do deploy protegida por SSO; a validacao de navegador ocorreu no alias publico de producao, nao em preview protegido.
+- Gates finais: lint exit 0 (733 avisos na raiz e dois no Next, baseline preservado); Biome exit 0 (cinco avisos existentes); 16 suites offline, build Next e typecheck exit 0. Gitleaks staged --redact sem segredos; git diff --check limpo.
+- Aceitacao Meta pela API nao comprova qualidade de correspondencia, aprendizado ou desempenho de campanha.
+
 ## Pendencia de limpeza
 
 Um teste isolado de criacao CRM confirmou HTTP 200, sem contatos, e-mail ou telefone:
