@@ -266,6 +266,9 @@
     }
   ],
   "functions": {
+    "api/leads.js": {
+      "maxDuration": 300
+    },
     "api/compor.py": {
       "includeFiles": "criativos/sessao-estrategica/**",
       "maxDuration": 30

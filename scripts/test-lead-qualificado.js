@@ -73,7 +73,7 @@ function req(body) {
     method: 'POST',
     headers: { 'user-agent': 'teste', referer: 'https://exemplo/mentoria' },
     socket: {},
-    body: { nome: 'Fulano', email: 'f@x.com', telefone: '31999998888', pagina: '/mentoria', ...body },
+    body: { nome: 'Fulano', email: 'f@x.com', telefone: '31999998888', pagina: '/pre-inscricao', ...body },
   };
 }
 
@@ -95,7 +95,7 @@ function limpar() { eventos.length = 0; travados.length = 0; }
     'prefixo próprio, para não colidir com o event_id do Respondi');
   assert.strictEqual(q.customData.colaboradores, 'De 20 a 29');
   assert.strictEqual(travados.length, 1, 'grava na trava depois do Meta aceitar');
-  assert.strictEqual(travados[0].fonte, 'api-leads:/mentoria');
+  assert.strictEqual(travados[0].fonte, 'api-leads:/pre-inscricao');
 
   /* Menos de 10 → não dispara */
   limpar();

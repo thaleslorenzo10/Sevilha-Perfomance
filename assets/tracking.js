@@ -169,18 +169,15 @@ var SP_CONFIG = {
       if (el) el.value = sessionStorage.getItem(k) || '';
     });
 
-    // Meta Pixel cookies
     var fbpEl = form.querySelector('[name="fbp"]');
     if (fbpEl) fbpEl.value = getOrCreateFbp();
 
     var fbcEl = form.querySelector('[name="fbc"]');
     if (fbcEl) fbcEl.value = getCookie('_fbc');
 
-    // Identificadores
     var extIdEl = form.querySelector('[name="external_id"]');
     if (extIdEl) extIdEl.value = getOrCreateExtId();
 
-    // Contexto da página
     var pageUrlEl = form.querySelector('[name="page_url"]');
     if (pageUrlEl) pageUrlEl.value = window.location.href;
 
@@ -189,27 +186,31 @@ var SP_CONFIG = {
 
     // Event ID para deduplicação Browser ↔ CAPI
     var eventIdEl = form.querySelector('[name="event_id"]');
-    if (eventIdEl && !eventIdEl.value) eventIdEl.value = generateEventId();
+    if (eventIdEl && !eventIdEl.value) {
+      const page = window.location.pathname.replace(/\/$/, '');
+      const consultoria = ['/mentoria', '/mentoria-2'].indexOf(page) !== -1;
+      try {
+        eventIdEl.value = (consultoria && sessionStorage.getItem('sp_form_event_id')) || generateEventId();
+        if (consultoria) sessionStorage.setItem('sp_form_event_id', eventIdEl.value);
+      } catch { eventIdEl.value = generateEventId(); }
+    }
 
     log('hidden fields populated');
   };
 
   /* ── Dispara eventos de conversão ────────────────────── */
   window.SP_fireLeadEvents = function (eventId, formData) {
+    try { if (localStorage.getItem('sp_lead_pixel_' + eventId)) return; } catch {}
     // Meta Pixel Lead
     if (window.fbq) {
-      // Não adianta chamar fbq('init', ...) aqui com e-mail e telefone: o Meta
-      // só aceita correspondência avançada no código base do Pixel, e um
-      // segundo init do mesmo id é descartado com "Duplicate Pixel ID"
-      // (verificado no navegador). Quem carrega esses dados é o evento do CAPI,
-      // que sai com o mesmo event_id e é deduplicado contra este.
-
+      // Contatos hasheados seguem pelo CAPI com o mesmo event_id.
       fbq('track', 'Lead', {
         content_name: document.title,
         content_category: 'pre-inscricao',
         value: 0,
         currency: 'BRL',
       }, { eventID: eventId });
+      try { localStorage.setItem('sp_lead_pixel_' + eventId, '1'); } catch {}
       log('Meta Lead fired', eventId);
     }
   };
@@ -219,10 +220,18 @@ var SP_CONFIG = {
 
   function savePending(data) {
     try {
-      var list = JSON.parse(localStorage.getItem(PENDING_KEY) || '[]');
+      let list = JSON.parse(localStorage.getItem(PENDING_KEY) || '[]');
+      list = list.filter(function (item) { return item.event_id !== data.event_id; });
       list.push(data);
       localStorage.setItem(PENDING_KEY, JSON.stringify(list));
     } catch(e) {}
+  }
+
+  function removePending(id) {
+    try {
+      const list = JSON.parse(localStorage.getItem(PENDING_KEY) || '[]');
+      localStorage.setItem(PENDING_KEY, JSON.stringify(list.filter(function (item) { return item.event_id !== id; })));
+    } catch {}
   }
 
   function postLead(data, attempt) {
@@ -231,17 +240,26 @@ var SP_CONFIG = {
       method:  'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body:    JSON.stringify(data),
-    }).then(function(res) {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      return res;
+    }).then(async function(res) {
+      const payload = await res.json();
+      if (!res.ok || payload.ok !== true) {
+        const error = new Error('HTTP ' + res.status);
+        error.retry = res.status >= 500 || (res.ok && payload.ok !== true);
+        if (!error.retry) removePending(data.event_id);
+        throw error;
+      }
+      removePending(data.event_id);
+      const states = Object.values(payload.integracoes || {});
+      if (states.some(function (status) { return ['pendente', 'falhou', 'nao_configurado'].indexOf(status) !== -1; })) savePending(data);
+      return payload;
     }).catch(function(err) {
-      if (attempt < 3) {
+      if (err.retry !== false && attempt < 3) {
         log('retry', attempt, err.message);
         return new Promise(function(resolve) {
           setTimeout(function() { resolve(postLead(data, attempt + 1)); }, attempt * 1500);
         });
       }
-      savePending(data);
+      if (err.retry !== false) savePending(data);
       log('saved to localStorage after', attempt, 'attempts');
       throw err;
     });
@@ -253,18 +271,15 @@ var SP_CONFIG = {
       var list = JSON.parse(localStorage.getItem(PENDING_KEY) || '[]');
       if (!list.length) return;
       log('retrying', list.length, 'pending lead(s)');
-      localStorage.removeItem(PENDING_KEY);
-      list.forEach(function(data) { postLead(data).catch(function(){}); });
+      list.forEach(function(data) { postLead(data).then(function () {
+        window.SP_fireLeadEvents(data.event_id, data);
+        if (sessionStorage.getItem('sp_form_event_id') === data.event_id) sessionStorage.removeItem('sp_form_event_id');
+      }).catch(function(){}); });
     } catch(e) {}
   })();
 
   /* ── Handler de submit unificado ─────────────────────── */
-  /**
-   * `onError` é opcional. Página que passa um handler assume a responsabilidade
-   * de mostrar a falha ao visitante; sem ele o comportamento continua o de
-   * antes — segue para o sucesso mesmo com o POST falhando —, para não deixar
-   * as landing pages antigas sem nenhuma saída na tela.
-   */
+  // Paginas antigas sem onError preservam a saida anterior.
   window.SP_handleSubmit = function (e, form, onSuccess, onError) {
     e.preventDefault();
 
@@ -275,13 +290,11 @@ var SP_CONFIG = {
     window.SP_populateHiddenFields(form);
 
     var data      = Object.fromEntries(new FormData(form));
-    var eventId   = data.event_id || generateEventId();
+    var eventId   = data.event_id || form._spEventId || generateEventId();
+    form._spEventId = eventId;
     data.event_id = eventId;
 
-    // Rede de segurança: manda tudo que o CAPI usa mesmo na página que não tem
-    // o campo oculto correspondente. Sem isto, incluir um parâmetro novo no
-    // evento obriga a editar todas as landing pages — e a que ficar para trás
-    // manda evento pior sem avisar ninguém.
+    // Paginas antigas tambem enviam o contexto completo ao CAPI.
     data.fbp         = data.fbp         || getCookie('_fbp') || getOrCreateFbp();
     data.fbc         = data.fbc         || getCookie('_fbc');
     data.external_id = data.external_id || getOrCreateExtId();
@@ -290,20 +303,20 @@ var SP_CONFIG = {
     data.pagina      = data.pagina      || (window.location.pathname.replace(/\/$/, '') || '/');
     data.referrer    = firstReferrer();
 
-    log('submitting to', SP_CONFIG.FORM_ENDPOINT, data);
+    log('submitting to', SP_CONFIG.FORM_ENDPOINT);
 
     postLead(data)
     .then(function (res) {
-      log('form submitted', res.status);
+      log('form submitted', res.ok);
       window.SP_fireLeadEvents(eventId, data);
+      try { sessionStorage.removeItem('sp_form_event_id'); } catch {}
       onSuccess();
     })
     .catch(function (err) {
       log('form error after retries', err);
-      if (typeof onError === 'function') {
-        // O lead ficou no localStorage e será reenviado no próximo carregamento.
-        // Não dispara conversão: não houve lead salvo para converter.
-        onError(err);
+      if (typeof onError === 'function' || ['/mentoria', '/mentoria-2'].indexOf(data.pagina) !== -1) {
+        // Sem persistencia confirmada, nao dispara conversao.
+        if (typeof onError === 'function') onError(err);
         return;
       }
       // Sem handler de erro: mantém o comportamento antigo — não bloqueia o usuário.
@@ -312,11 +325,7 @@ var SP_CONFIG = {
     });
   };
 
-  /* ── Páginas instrumentadas ───────────────────────────
-     As páginas do teste A/B recebem a visita no redirect /campanha. As que
-     ficam fora do rodízio são acessadas direto pelo anúncio e precisam
-     registrar a própria visita, senão não há denominador para a conversão.
-     A lista curta evita contar a mesma visita duas vezes. */
+  /* ── Paginas que registram a propria visita ─────────── */
   // Ao mudar esta lista, subir o ?v= da tag <script> nas páginas. Este arquivo
   // é servido com must-revalidate, mas quem visitou antes disso ainda carrega a
   // versão immutable de um ano — e um beacon congelado não registra a página nova.
@@ -324,17 +333,7 @@ var SP_CONFIG = {
   var PAGINA_ATUAL = window.location.pathname.replace(/\/$/, '') || '/';
   var INSTRUMENTADA = PAGEVIEW_BEACON_PAGES.indexOf(PAGINA_ATUAL) !== -1;
 
-  /* ── Micro-evento ─────────────────────────────────────────────────────
-     Cada par evento+valor conta uma vez por carregamento. Sem isso, rolagem
-     e blur repetido enchem a tabela e distorcem qualquer contagem.
-
-     Mora aqui, e não dentro do funil, porque o beacon de visita também usa:
-     a visita precisa de um evento com `visitante` para o relatório poder
-     contar PESSOA distinta em vez de carregamento. Sem isso, recarregar a
-     página inflava o denominador da conversão.
-
-     `window.SP_marcar` expõe a função para o formulário de dois passos
-     (assets/form-steps.js) registrar os próprios degraus. */
+  // Um par evento+valor por carregamento; visitante permite contar pessoas.
   var jaFoi = {};
 
   function marcar(evento, valor) {

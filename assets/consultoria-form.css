@@ -1,0 +1,97 @@
+.consultoria-overlay { padding: 24px; background: rgba(10, 24, 22, .78); }
+.consultoria-overlay .modal {
+  display: grid; grid-template-columns: 300px minmax(0, 1fr);
+  max-width: 1060px; min-height: 0; height: min(650px, calc(100dvh - 48px)); max-height: calc(100dvh - 48px);
+  border-radius: 8px; background: #fff; color: #182b2b; letter-spacing: 0;
+}
+.consultoria-overlay [hidden] { display: none !important; }
+.consultoria-brand {
+  display: flex; flex-direction: column; padding: 32px; background: #eef4f0;
+  border-right: 1px solid #d6e1dc; overflow: auto;
+}
+.consultoria-logo { display: flex; align-items: center; gap: 12px; font-size: 18px; font-weight: 700; }
+.consultoria-logo img { width: 36px; height: 44px; object-fit: contain; }
+.consultoria-logo span { line-height: 1.2; }
+.consultoria-logo small { display: block; font-size: 13px; font-weight: 500; }
+.consultoria-brand h2 { margin: 32px 0 12px; font-size: 25px; line-height: 1.3; }
+.consultoria-brand p { font-size: 14px; line-height: 1.6; color: #435b50; }
+.consultoria-photo { margin-top: auto; padding-top: 24px; }
+.consultoria-photo img {
+  display: block; width: 100%; height: 230px; object-fit: cover; object-position: center 25%;
+  border-radius: 4px;
+}
+.consultoria-photo figcaption { margin-top: 10px; font-size: 13px; color: #435b50; }
+.consultoria-photo strong { display: block; color: #182b2b; }
+.consultoria-overlay #form-wrapper { min-width: 0; }
+.consultoria-overlay .modal-head { padding: 54px 48px 18px; }
+.consultoria-overlay .passo-rotulo { letter-spacing: 0; font-size: 12px; color: #34634c; }
+.consultoria-overlay #modal-title { margin: 22px 0 12px; font-size: 29px; line-height: 1.3; outline: none; }
+.consultoria-overlay .modal-sub { margin-bottom: 0; font-size: 15px; line-height: 1.6; color: #53625b; }
+.consultoria-overlay .modal-body { padding: 6px 48px 24px; }
+.consultoria-overlay .modal-foot {
+  padding: 20px 48px 28px; background: #fff; border-color: #e3e9e5;
+}
+.consultoria-overlay .modal-close { top: 8px; right: 8px; color: #43534c; border-radius: 4px; }
+.consultoria-progress { display: block; width: 100%; height: 4px; margin-top: 12px; accent-color: #397251; }
+.consultoria-progress::-webkit-progress-bar { background: #e3e9e5; border-radius: 0; }
+.consultoria-progress::-webkit-progress-value { background: #397251; }
+.consultoria-progress::-moz-progress-bar { background: #397251; }
+.consultoria-overlay .grupo { margin: 0; padding: 0; min-width: 0; }
+.consultoria-overlay .opcoes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.consultoria-overlay #grupo-cargo .opcoes { grid-template-columns: minmax(0, 1fr); }
+.consultoria-overlay .opcoes input {
+  clip: rect(0, 0, 0, 0); clip-path: inset(50%); overflow: hidden; pointer-events: none;
+}
+.consultoria-overlay .opcoes label {
+  min-height: 60px; padding: 15px 18px; border-radius: 4px; border: 1px solid #ced9d1;
+  font-size: 16px; font-weight: 500; color: #243c30; background: #fff; line-height: 1.4;
+}
+.consultoria-overlay .opcoes input:checked + label { background: #eef6ef; color: #224930; border: 2px solid #397251; padding: 14px 17px; }
+.consultoria-overlay .opcoes label:hover { border-color: #397251; }
+.consultoria-overlay .opcoes input:focus-visible + label { outline-color: #397251; }
+.consultoria-overlay .form-group { margin: 12px 0 0; }
+.consultoria-overlay .form-group input {
+  width: 100%; min-height: 60px; padding: 16px; border-radius: 4px;
+  font-size: 18px; border: 1px solid #b6c9bc; background: #fff; color: #182b2b;
+}
+.consultoria-overlay input:focus-visible { outline: 2px solid #397251; outline-offset: 2px; }
+.consultoria-overlay .route { margin: 18px 0 0; padding: 14px; border-radius: 4px; font-size: 13px; line-height: 1.6; }
+.consultoria-overlay .route-acoes { gap: 8px; margin-top: 10px; }
+.consultoria-overlay .route-acoes a { padding: 6px 10px; border-radius: 4px; font-size: 12px; }
+.consultoria-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.consultoria-actions .btn {
+  min-height: 48px; padding: 13px 24px; border-radius: 4px; margin-left: auto;
+  background: #34704a; color: #fff; font-size: 15px; letter-spacing: 0;
+}
+.consultoria-actions .btn:hover { background: #285a3a; }
+.consultoria-actions .voltar { margin: 0; min-height: 48px; padding: 10px 0; color: #374f41; font-size: 14px; }
+.consultoria-overlay .form-privacy { margin-top: 16px; color: #53625b; font-size: 12px; text-align: left; line-height: 1.6; }
+.consultoria-overlay .form-error { margin: 16px 0 0; border-radius: 4px; line-height: 1.6; }
+.consultoria-step-error { margin-top: 16px; color: #9b2929; font-size: 14px; line-height: 1.5; }
+.consultoria-overlay .form-success { padding: 80px 48px; text-align: left; min-width: 0; outline: none; }
+.consultoria-overlay .form-success h2 { font-size: 28px; line-height: 1.3; }
+.consultoria-overlay .form-success .btn { margin-top: 24px; border-radius: 4px; }
+.consultoria-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+@media (max-width: 760px) {
+  .consultoria-overlay { padding: 12px; }
+  .consultoria-overlay .modal {
+    display: flex; height: auto; min-height: 0; max-height: calc(100dvh - 24px); width: 100%; max-width: 520px;
+  }
+  .consultoria-brand { padding: 18px 22px; flex: none; border-right: 0; border-bottom: 1px solid #d6e1dc; }
+  .consultoria-logo { font-size: 16px; }
+  .consultoria-logo img { width: 27px; height: 33px; }
+  .consultoria-logo small { font-size: 11px; }
+  .consultoria-brand h2, .consultoria-brand > p, .consultoria-photo { display: none; }
+  .consultoria-overlay .modal-head { padding: 22px 22px 14px; }
+  .consultoria-overlay #modal-title { font-size: 24px; margin-top: 18px; }
+  .consultoria-overlay .modal-sub { font-size: 14px; }
+  .consultoria-overlay .modal-body { padding: 4px 22px 20px; }
+  .consultoria-overlay .modal-foot { padding: 16px 22px 20px; }
+  .consultoria-overlay .opcoes { gap: 10px; }
+  .consultoria-overlay .opcoes label { min-height: 54px; font-size: 15px; }
+  .consultoria-actions .btn { padding: 13px 17px; }
+  .consultoria-overlay .form-success { padding: 40px 22px; }
+}

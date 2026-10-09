@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Sevilha Performance — contrato do formulário de dois passos
+ * Sevilha Performance — contrato do formulário de seis perguntas
  *
  *   node scripts/test-form-passos.js
  *
@@ -35,8 +35,9 @@ const IDS_OBRIGATORIOS = [
   'modal-overlay', 'form-wrapper', 'sessao-form', 'modal-foot',
   'passo-1', 'passo-2', 'passo-rotulo', 'modal-title', 'modal-sub',
   'route-porte', 'clube-link', 'route-continuar', 'route-cargo', 'grupo-cargo',
-  'form-error', 'err-wa', 'form-success', 'wa-link', 'submit-btn',
-  'voltar-passo-1', 'f-name', 'f-phone',
+  'form-error', 'form-success', 'wa-link', 'submit-btn', 'avancar-passo',
+  'voltar-passo-1', 'f-name', 'f-phone', 'form-progress', 'step-error',
+  'passo-3', 'passo-4', 'passo-5', 'passo-6',
 ];
 
 /** `name=` que o /api/leads lê do corpo. Mudar aqui quebra a integração. */
@@ -108,11 +109,14 @@ for (const pagina of PAGINAS) {
   const cargos = valoresDeRadio(html, 'cargo');
   ok(cargos.length === 3, 'o grupo de cargo tem as três posições', `achou ${cargos.length}`);
 
-  /* O passo 2 começa escondido e o rodapé com o botão de enviar também: com o
-     botão na tela no passo 1, o navegador tenta validar campo obrigatório
-     escondido e trava o envio sem conseguir mostrar onde. */
-  ok(/<div id="passo-2" hidden>/.test(html), 'o passo 2 começa escondido');
-  ok(/id="modal-foot" hidden>/.test(html), 'o rodapé com o botão de enviar começa escondido');
+  const etapas = [...html.matchAll(/<div id="passo-(\d)" data-field="([^"]+)"([^>]*)>/g)];
+  ok(etapas.map(m => m[2]).join(',') === 'colaboradores,cargo,escritorio,nome,email,telefone',
+     'as seis perguntas estão na ordem aprovada');
+  ok(etapas.slice(1).every(m => /\bhidden\b/.test(m[3])), 'apenas a primeira pergunta começa visível');
+  ok(/id="submit-btn"[^>]*hidden/.test(html), 'o envio começa escondido');
+  ok(/id="sessao-form"[^>]*novalidate/.test(html), 'validação ocorre por etapa sem campos invisíveis');
+  ok(html.includes('/assets/consultoria-form.css?v='), 'carrega o estilo compartilhado');
+  ok(!html.includes('id="err-wa"'), 'falha não libera saída para WhatsApp antes de salvar');
 
   /* Nenhum rádio pode ser `required`: no passo 2 eles estão em container
      escondido, e um obrigatório invisível é envio travado sem mensagem. */
@@ -187,7 +191,7 @@ console.log('\neventos do funil');
 }
 
 console.log(falhas === 0
-  ? '\nOK — contrato do formulário de dois passos íntegro.'
+  ? '\nOK — contrato do formulário de seis perguntas íntegro.'
   : `\n${falhas} falha(s).`);
 
 process.exit(falhas === 0 ? 0 : 1);
