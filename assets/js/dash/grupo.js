@@ -25,9 +25,9 @@
     const { meta, leads } = d;
     if (g === 'CP' && meta.grupos.CP.spend === 0) return '⏸️ Campanhas [CP] sem investimento no período (pausadas). O funil do CRM continua recebendo deals de outras origens.';
     if (g === 'CAFE') {
-      const cafe = leads && leads.por_pagina.filter(p => String(p.pagina).startsWith('rd:'));
-      if (!leads || !cafe.length) return '☕ Leads reais do Café dependem do webhook do RD Marketing (Integrações → Webhooks → Conversão). Sem ele, só o número que o Meta reporta aparece.';
-      return `☕ Leads reais do Café chegam pelo webhook do RD Marketing (${cafe.map(p => D.esc(p.pagina.slice(3))).join(', ')}). Leads anteriores à ativação do webhook não entram.`;
+      const cafe = leads && leads.por_pagina.filter(p => (String(p.pagina).startsWith('rd:') || String(p.pagina).includes('cafe-com-sevilha')));
+      if (!leads || !cafe.length) return '☕ Sem leads reais do Café disponíveis neste período. O número atribuído pelo Meta é uma medida separada.';
+      return `☕ Todas as edições no período. Fontes de leads reais: ${cafe.map(p => D.esc(p.pagina)).join(', ')}. Para a nova edição, abra Café · 11/11.`;
     }
     return '';
   }

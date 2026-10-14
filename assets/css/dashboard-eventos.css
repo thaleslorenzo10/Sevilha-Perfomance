@@ -1,0 +1,4 @@
+/* A edição possui seu próprio resumo; totais da operação não entram nela. */
+.evento-ativo #resumoGlobal,
+.evento-ativo #alertas,
+.evento-ativo #errorBanner { display: none; }

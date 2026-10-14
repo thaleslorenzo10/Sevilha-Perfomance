@@ -8,7 +8,7 @@
  * Graph API. O access token fica só no servidor (env META_ACCESS_TOKEN).
  *
  * Devolve:
- *   totais da conta, por grupo ([CP]/[SE]/[CAFÉ]/OUTROS), por formato
+ *   totais da conta, por grupo ([CP]/[SE]/[CAFÉ]/[AULA]/OUTROS), por formato
  *   (FORMS/LP), lista de campanhas, conjuntos de anúncios, anúncios,
  *   posicionamentos e a série diária.
  */
@@ -117,8 +117,8 @@ async function montarMeta(since, until) {
 
     // ── Agregados ────────────────────────────────────────────────────────
     const conta    = emptyBucket();
-    const grupos   = { CP: emptyBucket(), SE: emptyBucket(), CAFE: emptyBucket(), OUTROS: emptyBucket() };
-    // Formato só faz sentido dentro das campanhas de captação ([CP]/[SE]/[CAFÉ]).
+    const grupos   = { CP: emptyBucket(), SE: emptyBucket(), CAFE: emptyBucket(), AULA: emptyBucket(), OUTROS: emptyBucket() };
+    // Formato só faz sentido dentro das campanhas dos produtos ([CP]/[SE]/[CAFÉ]/[AULA]).
     const formatos = { FORMS: emptyBucket(), LP: emptyBucket() };
 
     for (const r of rows) {
@@ -142,6 +142,7 @@ async function montarMeta(since, until) {
       CP:    { spend: 0, leads: 0 },
       SE:    { spend: 0, leads: 0 },
       CAFE:  { spend: 0, leads: 0 },
+      AULA:  { spend: 0, leads: 0 },
       FORMS: { spend: 0, leads: 0 },
       LP:    { spend: 0, leads: 0 },
     });
@@ -176,6 +177,7 @@ async function montarMeta(since, until) {
         CP:    { spend: round2(d.CP.spend),    leads: d.CP.leads },
         SE:    { spend: round2(d.SE.spend),    leads: d.SE.leads },
         CAFE:  { spend: round2(d.CAFE.spend),  leads: d.CAFE.leads },
+        AULA:  { spend: round2(d.AULA.spend),  leads: d.AULA.leads },
         FORMS: { spend: round2(d.FORMS.spend), leads: d.FORMS.leads },
         LP:    { spend: round2(d.LP.spend),    leads: d.LP.leads },
       }));
@@ -187,6 +189,7 @@ async function montarMeta(since, until) {
         CP:     withDerived(grupos.CP),
         SE:     withDerived(grupos.SE),
         CAFE:   withDerived(grupos.CAFE),
+        AULA:   withDerived(grupos.AULA),
         OUTROS: withDerived(grupos.OUTROS),
       },
       formatos: {

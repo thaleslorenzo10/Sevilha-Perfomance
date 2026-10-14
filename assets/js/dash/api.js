@@ -7,13 +7,25 @@
     if (!r.ok) throw new Error(j.error || `${url} → HTTP ${r.status}`);
     return j;
   }
+  const metaCache = new Map();
+  D.buscarMeta = function (since, until) {
+    const chave = `${since}|${until}`;
+    const salvo = metaCache.get(chave);
+    if (salvo && Date.now() - salvo.em < 45000) return salvo.promise;
+    const promise = getJSON(`/api/meta?since=${since}&until=${until}`);
+    metaCache.set(chave, { em: Date.now(), promise });
+    promise.catch(() => metaCache.delete(chave));
+    if (metaCache.size > 20) metaCache.delete(metaCache.keys().next().value);
+    return promise;
+  };
+  D.buscarEventos = (since, until) => getJSON(`/api/stats?modo=eventos&since=${since}&until=${until}`);
   const opcional = (p, rotulo) => p.catch(e => { console.warn(`${rotulo}:`, e.message); return null; });
 
   /** O Meta é obrigatório; as outras fontes degradam para null e o painel avisa. */
   D.carregarTudo = async function (since, until) {
     const qs = `since=${since}&until=${until}`;
     const [meta, leads, rd, stats] = await Promise.all([
-      getJSON(`/api/meta?${qs}`),
+      D.buscarMeta(since, until),
       opcional(getJSON(`/api/leads-unificados?${qs}`), 'leads unificados'),
       opcional(getJSON(`/api/rd-stats?from=${since}&to=${until}`), 'rd'),
       opcional(getJSON(`/api/stats?${qs}`), 'stats'),
@@ -25,7 +37,7 @@
   D.carregarResumo = async function (since, until) {
     const qs = `since=${since}&until=${until}`;
     const [meta, leads, rd] = await Promise.all([
-      opcional(getJSON(`/api/meta?${qs}`), 'meta anterior'),
+      opcional(D.buscarMeta(since, until), 'meta anterior'),
       opcional(getJSON(`/api/leads-unificados?${qs}`), 'leads anterior'),
       opcional(getJSON(`/api/rd-stats?from=${since}&to=${until}`), 'rd anterior'),
     ]);

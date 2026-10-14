@@ -11,7 +11,7 @@
 
   D.renderGeral = function (d) {
     const { meta, leads, stats, rd } = d;
-    const capt = ['SE', 'CAFE', 'CP'].reduce((s, g) => s + (meta.grupos[g] ? meta.grupos[g].spend : 0), 0);
+    const capt = ['SE', 'CAFE', 'CP', 'AULA'].reduce((s, g) => s + (meta.grupos[g] ? meta.grupos[g].spend : 0), 0);
     D.setK('g-spend', D.fmtR(meta.conta.spend));
     D.setK('g-spend-capt', D.fmtR(capt));
     D.setK('g-ctr', D.orDash(meta.conta.ctr, D.fmtP));

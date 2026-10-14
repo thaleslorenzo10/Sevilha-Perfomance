@@ -2,6 +2,7 @@
 /* Estado, período, abas, tema e o ciclo carregar → render → auto-refresh. */
 (function (D) {
   const estado = { since: '', until: '', preset: 'last_30d', dados: null, anterior: null, anteriorChave: null, timer: null };
+  let carregamento = 0;
   const p2 = n => String(n).padStart(2, '0');
   // Datas sempre em horário local: toISOString() é UTC e, depois das 21h, "hoje" já seria amanhã.
   const isoLocal = d => `${d.getFullYear()}-${p2(d.getMonth() + 1)}-${p2(d.getDate())}`;
@@ -37,6 +38,7 @@
     });
     document.querySelectorAll('.tab-panel').forEach(pn => pn.classList.toggle('active', pn.id === 'tab-' + nome));
     if (location.hash !== '#' + nome) history.replaceState(null, '', '#' + nome);
+    D.abrirEvento(nome);
     D.redimensionarGraficos();
   };
 
@@ -77,19 +79,22 @@
   }
 
   async function carregar() {
-    const btn = document.getElementById('btnRefresh');
+    D.periodoEventos(estado.since, estado.until);
+    const versao = ++carregamento, btn = document.getElementById('btnRefresh');
     btn.disabled = true; status('loading', 'Carregando…'); D.banner('errorBanner', '');
     try {
       const [dados, { anterior, chaveAnt }] = await Promise.all([
         D.carregarTudo(estado.since, estado.until),
         buscarAnterior(estado.since, estado.until),
       ]);
+      if (versao !== carregamento) return;
       estado.dados = dados; estado.anterior = anterior; estado.anteriorChave = chaveAnt;
       render();
       marcarAtualizado(dados);
     } catch (e) {
+      if (versao !== carregamento) return;
       console.error(e);
-      status('error', 'Erro ao carregar');
+      status('error', 'Visão geral: Meta indisponível');
       D.banner('errorBanner', `⚠️ <strong>Erro ao carregar o Meta Ads:</strong> ${D.esc(e.message)}`);
     }
     btn.disabled = false;

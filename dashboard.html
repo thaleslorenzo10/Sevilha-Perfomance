@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/assets/css/admin-sidebar.css?v=dash-2">
 <link rel="stylesheet" href="/assets/css/lm-ds.css?v=lm-ds-2">
 <script src="/assets/admin-sidebar.js?v=dash-2" defer></script>
+<link rel="stylesheet" href="/assets/css/dashboard-eventos.css?v=eventos-1">
 </head>
 <body class="admin-dashboard admin-side-layout">
 <aside class="lm-menu" data-admin-sidebar aria-label="Navegação principal"><div class="lm-menu-brand"><img class="lm-menu-client-logo" src="/assets/logo-sevilha-performance.png" alt="Sevilha Performance" width="640" height="291"><button class="admin-menu-toggle lm-menu-toggle" type="button" aria-expanded="false" aria-controls="admin-sidebar-menu">Abrir menu</button></div><div class="lm-menu-content"><div class="lm-menu-client"><small>Marketing e resultados</small><span class="lm-menu-logo"><img src="/assets/lorenzo-horizontal.svg" alt="Lorenzo Media" width="526" height="61"></span></div><nav id="admin-sidebar-menu" class="admin-sidebar-menu lm-menu-nav" aria-label="Áreas do painel">
@@ -18,7 +19,9 @@
   <button class="tab-btn active lm-menu-item" data-tab="geral" aria-current="page"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span><strong>Visão geral</strong><small>Resultados da operação</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
   <button class="tab-btn lm-menu-item" data-tab="formatos"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15V9m6 9V6m6 8v-4m6-5v14"/></svg><span><strong>Formatos de campanha</strong><small>Formulário × landing page</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
   <button class="tab-btn lm-menu-item" data-tab="se"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m2 4a5 5 0 0 1 2 4v2"/></svg><span><strong>Sessão Estratégica</strong><small>[SE]</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
-  <button class="tab-btn lm-menu-item" data-tab="cafe"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m2 4a5 5 0 0 1 2 4v2"/></svg><span><strong>Café com Sevilha</strong><small>[CAFÉ]</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+  <button class="tab-btn lm-menu-item" data-tab="aula-2026-10-27"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m2 4a5 5 0 0 1 2 4v2"/></svg><span><strong>Aula paga · 27/10</strong><small>Gestão Operacional · 2026</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+  <button class="tab-btn lm-menu-item" data-tab="cafe-2026-11-11"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m2 4a5 5 0 0 1 2 4v2"/></svg><span><strong>Café · 11/11</strong><small>Café com Sevilha · 2026</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+  <button class="tab-btn lm-menu-item" data-tab="cafe"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m2 4a5 5 0 0 1 2 4v2"/></svg><span><strong>Café — todas as edições</strong><small>Todas as edições no período</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
   <button class="tab-btn lm-menu-item" data-tab="cp"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3m2-16a3 3 0 0 1 0 6m2 4a5 5 0 0 1 2 4v2"/></svg><span><strong>Clube da Performance</strong><small>[CP]</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
   <button class="tab-btn lm-menu-item" data-tab="origem"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15V9m6 9V6m6 8v-4m6-5v14"/></svg><span><strong>Origem</strong><small>Campanha, público, anúncio, fonte</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
   <button class="tab-btn lm-menu-item" data-tab="ab"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15V9m6 9V6m6 8v-4m6-5v14"/></svg><span><strong>Comparativo A/B</strong><small>Páginas de captura</small></span><svg class="lm-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
@@ -67,7 +70,7 @@
 
 <div class="banner banner-error" id="errorBanner"></div>
 
-<section class="exec-grid" aria-label="Resumo executivo">
+<section id="resumoGlobal" class="exec-grid" aria-label="Resumo executivo">
   <div class="kpi-card"><div class="kpi-label">Investido</div><div class="kpi-value skeleton kpi-skel" id="ex-spend"></div><div class="kpi-sub" id="ex-spend-sub"></div></div>
   <div class="kpi-card"><div class="kpi-label">Leads</div><div class="kpi-value skeleton kpi-skel" id="ex-leads"></div><div class="kpi-sub" id="ex-leads-sub"></div></div>
   <div class="kpi-card"><div class="kpi-label">MQL</div><div class="kpi-value skeleton kpi-skel" id="ex-mql"></div><div class="kpi-sub" id="ex-mql-sub"></div></div>
@@ -83,7 +86,7 @@
   <div class="kpi-groups"><div class="kpi-group">
     <div class="kpi-group-label">Meta Ads — investimento e entrega</div>
     <div class="kpi-card blue"><div class="kpi-label">Investido total</div><div class="kpi-value skeleton kpi-skel" id="g-spend"></div></div>
-    <div class="kpi-card blue"><div class="kpi-label">Investido em captação</div><div class="kpi-value skeleton kpi-skel" id="g-spend-capt"></div><div class="kpi-sub">[SE] + [CAFÉ] + [CP]</div></div>
+    <div class="kpi-card blue"><div class="kpi-label">Investido em captação</div><div class="kpi-value skeleton kpi-skel" id="g-spend-capt"></div><div class="kpi-sub">[SE] + [CAFÉ] + [CP] + [AULA]</div></div>
     <div class="kpi-card"><div class="kpi-label">CTR</div><div class="kpi-value skeleton kpi-skel" id="g-ctr"></div></div>
     <div class="kpi-card orange"><div class="kpi-label">CPM</div><div class="kpi-value skeleton kpi-skel" id="g-cpm"></div></div>
   </div></div>
@@ -118,23 +121,26 @@
 
 <div class="tab-panel" id="tab-formatos"><div class="container" id="painelFormatos"></div></div>
 <div class="tab-panel" id="tab-se"><div class="container" id="painelSE"></div></div>
-<div class="tab-panel" id="tab-cafe"><div class="container" id="painelCAFE"></div></div>
+<div class="tab-panel" id="tab-cafe"><div class="container"><p class="nota-fonte">Histórico Café: agregado de todas as edições dentro do período selecionado.</p><div id="painelCAFE"></div></div></div>
 <div class="tab-panel" id="tab-cp"><div class="container" id="painelCP"></div></div>
 <div class="tab-panel" id="tab-origem"><div class="container" id="painelOrigem"></div></div>
 <div class="tab-panel" id="tab-ab"><div class="container" id="painelAb"></div></div>
+<div class="tab-panel" id="tab-aula-2026-10-27"><div class="container" id="painel-aula-2026-10-27" aria-live="polite"></div></div>
+<div class="tab-panel" id="tab-cafe-2026-11-11"><div class="container" id="painel-cafe-2026-11-11" aria-live="polite"></div></div>
 </main>
 
 <script src="/assets/js/dash/formato.js?v=dash-2"></script>
 <script src="/assets/js/dash/cruzamento.js?v=dash-2"></script>
-<script src="/assets/js/dash/api.js?v=dash-2"></script>
+<script src="/assets/js/dash/api.js?v=eventos-1"></script>
 <script src="/assets/js/dash/graficos.js?v=dash-3"></script>
 <script src="/assets/js/dash/tabelas.js?v=dash-3"></script>
 <script src="/assets/js/dash/executivo.js?v=dash-2"></script>
-<script src="/assets/js/dash/geral.js?v=dash-3"></script>
+<script src="/assets/js/dash/geral.js?v=eventos-1"></script>
 <script src="/assets/js/dash/formatos.js?v=dash-2"></script>
-<script src="/assets/js/dash/grupo.js?v=dash-3"></script>
+<script src="/assets/js/dash/grupo.js?v=eventos-1"></script>
 <script src="/assets/js/dash/origem.js?v=dash-2"></script>
 <script src="/assets/js/dash/ab.js?v=dash-2"></script>
-<script src="/assets/js/dash/main.js?v=dash-2"></script>
+<script src="/assets/js/dash/eventos.js?v=eventos-1"></script>
+<script src="/assets/js/dash/main.js?v=eventos-1"></script>
 </body>
 </html>
