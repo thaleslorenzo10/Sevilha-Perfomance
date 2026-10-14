@@ -44,7 +44,6 @@ const registro = require('../lib/eventos-enviados');
 const { ehLeadDeTeste } = require('../lib/planilha-leads');
 
 const EVENTO = 'LeadQualificado';
-
 /**
  * O CAPI recusa evento com mais de 7 dias. Como a varredura é diária, a janela
  * existe para não gastar chamada com lead antigo — e, na primeira execução,
@@ -219,6 +218,7 @@ module.exports = async function handler(req, res) {
   // a 12 funções e o projeto está em 11). Autenticação própria: o segredo do
   // cron não vai numa configuração feita dentro de ferramenta de terceiro.
   const caminho = String(req.url || '');
+  if (req.method === 'POST' && (caminho.includes('kiwify-webhook') || caminho.includes('fonte=kiwify'))) return require('../lib/kiwify').tratarKiwify(req, res);
   if (req.method === 'POST' && (caminho.includes('crm-webhook') || caminho.includes('fonte=crm'))) {
     const { tratarWebhook } = require('../lib/crm-eventos');
     return tratarWebhook(req, res);

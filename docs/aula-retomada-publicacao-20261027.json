@@ -1,0 +1,53 @@
+{
+  "before": "dpl_Gq9xSL9XA6LHKVSMTwZVDAQGTidc",
+  "unchanged": 355,
+  "changed": [
+    "api/eventos-qualificados.js",
+    "api/leads.js",
+    "assets/tracking.js",
+    "lib/lead-integracoes.js",
+    "vercel.json"
+  ],
+  "added": [
+    "lib/aula-leads.js",
+    "lib/kiwify.js",
+    "aula-gestao-operacional/form-steps.js",
+    "aula-gestao-operacional/aula.css",
+    "aula-gestao-operacional/aula.js",
+    "aula-gestao-operacional/index.html",
+    "aula-gestao-operacional/obrigado/index.html"
+  ],
+  "files": 367,
+  "sha256": {
+    "api/eventos-qualificados.js": "544aa8e47112ad43debbdf0c0c7f9cfd2187c9d19c7786f44f0a7f4d8d590ad8",
+    "api/leads.js": "cc13604bfbf5de315a50d08bfaf317ad596ec2c21e6157a3b4649605c7b1d8fe",
+    "assets/tracking.js": "febf56100902c418074c9fecd66f487b893137ff90883a6ea78e308e0e802511",
+    "lib/lead-integracoes.js": "4183da1fcf27064de867bc2e0443b71f6d6e8bec8e92ed2f7a2bf005942390ab",
+    "vercel.json": "63befb2294ef0a245e6e3121cf74a0ba4e7636afe495ce15e18c64ac3003b39b",
+    "lib/aula-leads.js": "2798cc3eeae50767dfc36b923402f1df58c579076d126ef195a97058ccec523b",
+    "lib/kiwify.js": "5aa2c15b209966357002136cd0bf1d5ca6215ebd1ca0f6f176d3a576a6a44948",
+    "aula-gestao-operacional/form-steps.js": "dfb99d243e690870fd862ba1703d4ceb74ef9618baf4dd40cdcf3cb2dc11e97a",
+    "aula-gestao-operacional/aula.css": "74b49c0425418b67d40a1022c08febbc82d52fbfe494d4f6a416c5f28324381b",
+    "aula-gestao-operacional/aula.js": "c01857ae5b0158af060da0b5b2a6d83a2a266d25d5b99a84a4f855b5c74f59b3",
+    "aula-gestao-operacional/index.html": "e82e56b01500a76fb4cdeeceef31e72d61a46e14eb5acfc98110e95aa8c29f0a",
+    "aula-gestao-operacional/obrigado/index.html": "199a46e78dbe0fd377851f5d5c2ca80e1ee3d36dbb77972860ba90cfabccdd49"
+  },
+  "deployment": {
+    "id": "dpl_GXonqds9YqrGoARA4rbLQGnuEW6K",
+    "url": "sevilha-perfomance-4fwn8horb-tplorenzo45-6512s-projects.vercel.app",
+    "target": "production"
+  },
+  "public_verification": {
+    "http": 200,
+    "exact_html_match": true,
+    "date": "2026-10-27",
+    "time": "19:30",
+    "price_brl": 27,
+    "checkout_http": 200,
+    "axe_violations": 0,
+    "desktop_mobile": true,
+    "no_overflow": true,
+    "no_broken_images": true,
+    "final_assets_exact_match": true
+  }
+}

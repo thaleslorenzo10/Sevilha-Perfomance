@@ -1,0 +1,3001 @@
+{
+  "created_at": "2026-10-14T04:37:54.250588+00:00",
+  "account": {
+    "id": "act_1676714556216146",
+    "name": "Sevilha Perfomance - PVLG 1857 - ATIVA",
+    "currency": "BRL",
+    "timezone_name": "America/Sao_Paulo",
+    "account_status": 1
+  },
+  "scope": "Aula Gestão Operacional27/10/2026 19h30 Brasília; R$200/dia total somente para aula",
+  "owner": "Codex coordinator",
+  "objective": "PURCHASE pixel657178423444244",
+  "campaigns": [
+    {
+      "before": {
+        "id": "120253257675000526",
+        "name": "[24/09/26] [AULA] [VIRADA LOTE] [HOT] - 4 Estáticos",
+        "status": "PAUSED",
+        "daily_budget": "8000",
+        "objective": "OUTCOME_SALES"
+      },
+      "after": {
+        "daily_budget": "10000",
+        "status": "PAUSED"
+      }
+    },
+    {
+      "before": {
+        "id": "120253257675140526",
+        "name": "[24/09/26] [AULA] [VIRADA LOTE] [COLD] - 4 Estáticos",
+        "status": "PAUSED",
+        "daily_budget": "6000",
+        "objective": "OUTCOME_SALES"
+      },
+      "after": {
+        "daily_budget": "10000",
+        "status": "PAUSED"
+      }
+    }
+  ],
+  "adsets": [
+    {
+      "before": {
+        "id": "120253257680250526",
+        "name": "[HOT] Brasil · Compras · Aula 06/10",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "start_time": "2026-09-24T18:50:23-0300",
+        "end_time": "2026-10-06T16:00:00-0300",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "custom_audiences": [
+            {
+              "id": "120219034626410526",
+              "name": "[SITE] - Acessou site - 007D"
+            },
+            {
+              "id": "120219034627270526",
+              "name": "[SITE] - Acessou site - 015D"
+            },
+            {
+              "id": "120219034628630526",
+              "name": "[SITE] - Acessou site - 030D"
+            },
+            {
+              "id": "120219034630480526",
+              "name": "[SITE] - Acessou site - 060D"
+            },
+            {
+              "id": "120219034632680526",
+              "name": "[SITE] - Acessou site - 090D"
+            },
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219361601410526",
+              "name": "[EVENTO] - Lead - 060D"
+            },
+            {
+              "id": "120219361601420526",
+              "name": "[EVENTO] - Lead - 045D"
+            },
+            {
+              "id": "120219361601540526",
+              "name": "[EVENTO] - Lead - 030D"
+            },
+            {
+              "id": "120219361601680526",
+              "name": "[EVENTO] - Lead - 015D"
+            },
+            {
+              "id": "120219361601690526",
+              "name": "[EVENTO] - Lead - 007D"
+            },
+            {
+              "id": "120219361635560526",
+              "name": "[EVENTO] - Lead - 180D"
+            },
+            {
+              "id": "120219361635580526",
+              "name": "[EVENTO] - Lead - 090D"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282795950526",
+              "name": "[IG] Envolvimento completo 180D"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS"
+      },
+      "after": {
+        "status": "ACTIVE",
+        "end_time": "2026-10-27T17:30:00-03:00",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "custom_audiences": [
+            {
+              "id": "120219034633870526"
+            },
+            {
+              "id": "120219346902010526"
+            },
+            {
+              "id": "120219346902020526"
+            },
+            {
+              "id": "120219346902900526"
+            },
+            {
+              "id": "120219346902910526"
+            },
+            {
+              "id": "120219346902930526"
+            },
+            {
+              "id": "120219347655860526"
+            },
+            {
+              "id": "120219347655870526"
+            },
+            {
+              "id": "120219347656900526"
+            },
+            {
+              "id": "120219347657190526"
+            },
+            {
+              "id": "120219347657200526"
+            },
+            {
+              "id": "120219348178940526"
+            },
+            {
+              "id": "120219836722430526"
+            },
+            {
+              "id": "120219836722800526"
+            },
+            {
+              "id": "120219836722810526"
+            },
+            {
+              "id": "120219836722830526"
+            },
+            {
+              "id": "120219836722840526"
+            },
+            {
+              "id": "120219836722900526"
+            },
+            {
+              "id": "120219836722960526"
+            },
+            {
+              "id": "120222095713180526"
+            },
+            {
+              "id": "120222095713190526"
+            },
+            {
+              "id": "120222095713220526"
+            },
+            {
+              "id": "120222095713430526"
+            },
+            {
+              "id": "120222095713440526"
+            },
+            {
+              "id": "120222095713450526"
+            },
+            {
+              "id": "120222095713460526"
+            },
+            {
+              "id": "120222095713470526"
+            },
+            {
+              "id": "120222095713480526"
+            },
+            {
+              "id": "120222095713490526"
+            },
+            {
+              "id": "120222095713500526"
+            },
+            {
+              "id": "120222095713510526"
+            },
+            {
+              "id": "120222095713520526"
+            },
+            {
+              "id": "120222095713550526"
+            },
+            {
+              "id": "120222095713560526"
+            },
+            {
+              "id": "120222095713590526"
+            },
+            {
+              "id": "120222096029020526"
+            },
+            {
+              "id": "120222098279680526"
+            },
+            {
+              "id": "120227591566570526"
+            },
+            {
+              "id": "120227591566580526"
+            },
+            {
+              "id": "120227591566820526"
+            },
+            {
+              "id": "120227591566850526"
+            },
+            {
+              "id": "120227591567190526"
+            },
+            {
+              "id": "120227591567200526"
+            },
+            {
+              "id": "120227591567210526"
+            },
+            {
+              "id": "120227591567640526"
+            },
+            {
+              "id": "120234704197770526"
+            },
+            {
+              "id": "120235128469700526"
+            },
+            {
+              "id": "120235128476740526"
+            },
+            {
+              "id": "120235128483260526"
+            },
+            {
+              "id": "120235128495180526"
+            },
+            {
+              "id": "120242282805690526"
+            },
+            {
+              "id": "120242282873610526"
+            },
+            {
+              "id": "120242282962130526"
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_relaxation_types": {
+            "lookalike": 0,
+            "custom_audience": 0
+          },
+          "targeting_automation": {
+            "advantage_audience": 0
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        }
+      }
+    },
+    {
+      "before": {
+        "id": "120253257680570526",
+        "name": "[COLD] Brasil · Compras · Aula 06/10",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "start_time": "2026-09-24T18:50:25-0300",
+        "end_time": "2026-10-06T16:00:00-0300",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034626410526",
+              "name": "[SITE] - Acessou site - 007D"
+            },
+            {
+              "id": "120219034627270526",
+              "name": "[SITE] - Acessou site - 015D"
+            },
+            {
+              "id": "120219034628630526",
+              "name": "[SITE] - Acessou site - 030D"
+            },
+            {
+              "id": "120219034630480526",
+              "name": "[SITE] - Acessou site - 060D"
+            },
+            {
+              "id": "120219034632680526",
+              "name": "[SITE] - Acessou site - 090D"
+            },
+            {
+              "id": "120219034633870526",
+              "name": "[SITE] - Acessou site - 180D"
+            },
+            {
+              "id": "120219346902010526",
+              "name": "[IG] Envolvimento Instagram QT - 090D"
+            },
+            {
+              "id": "120219346902020526",
+              "name": "[IG] Envolvimento Instagram QT - 060D"
+            },
+            {
+              "id": "120219346902900526",
+              "name": "[IG] Envolvimento Instagram QT - 015D"
+            },
+            {
+              "id": "120219346902910526",
+              "name": "[IG] Envolvimento Instagram QT - 030D"
+            },
+            {
+              "id": "120219346902930526",
+              "name": "[IG] Envolvimento Instagram QT - 007D"
+            },
+            {
+              "id": "120219347655860526",
+              "name": "[IG] Envolvimento Instagram FR - 090D"
+            },
+            {
+              "id": "120219347655870526",
+              "name": "[IG] Envolvimento Instagram FR - 060D"
+            },
+            {
+              "id": "120219347656900526",
+              "name": "[IG] Envolvimento Instagram FR - 030D"
+            },
+            {
+              "id": "120219347657190526",
+              "name": "[IG] Envolvimento Instagram FR - 015D"
+            },
+            {
+              "id": "120219347657200526",
+              "name": "[IG] Envolvimento Instagram FR - 007D"
+            },
+            {
+              "id": "120219348178940526",
+              "name": "[IG] Novos Seguidores SVL"
+            },
+            {
+              "id": "120219361601410526",
+              "name": "[EVENTO] - Lead - 060D"
+            },
+            {
+              "id": "120219361601420526",
+              "name": "[EVENTO] - Lead - 045D"
+            },
+            {
+              "id": "120219361601540526",
+              "name": "[EVENTO] - Lead - 030D"
+            },
+            {
+              "id": "120219361601680526",
+              "name": "[EVENTO] - Lead - 015D"
+            },
+            {
+              "id": "120219361601690526",
+              "name": "[EVENTO] - Lead - 007D"
+            },
+            {
+              "id": "120219361635560526",
+              "name": "[EVENTO] - Lead - 180D"
+            },
+            {
+              "id": "120219361635580526",
+              "name": "[EVENTO] - Lead - 090D"
+            },
+            {
+              "id": "120219836722430526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 180D"
+            },
+            {
+              "id": "120219836722800526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 090D"
+            },
+            {
+              "id": "120219836722810526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 060D"
+            },
+            {
+              "id": "120219836722830526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 045D"
+            },
+            {
+              "id": "120219836722840526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 030D"
+            },
+            {
+              "id": "120219836722900526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 015D"
+            },
+            {
+              "id": "120219836722960526",
+              "name": "[SITE] [OFERTA] Página Oferta REC - 007D"
+            },
+            {
+              "id": "120222095713180526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713190526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713220526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713430526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713440526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713450526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713460526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713470526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713480526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713490526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713500526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713510526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713520526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713550526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713560526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222095713590526",
+              "name": "[COMBOPERFIL] Envolvimento - 365D"
+            },
+            {
+              "id": "120222096029020526",
+              "name": "Seguidores"
+            },
+            {
+              "id": "120222098279680526",
+              "name": "Leads contabilidade - Geral"
+            },
+            {
+              "id": "120227591566570526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566580526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566820526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591566850526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567190526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567200526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567210526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120227591567640526",
+              "name": "Instagram - 180D"
+            },
+            {
+              "id": "120234704197770526",
+              "name": "IG - Visitou Perfil - 60D"
+            },
+            {
+              "id": "120235128469700526",
+              "name": "IG - Envolvimento - 60D (Sevilha Educação)"
+            },
+            {
+              "id": "120235128476740526",
+              "name": "IG - Envolvimento - 60D (Sevilha Contabilidade)"
+            },
+            {
+              "id": "120235128483260526",
+              "name": "PageView - Site - 180D"
+            },
+            {
+              "id": "120235128495180526",
+              "name": "IG - Envolvimento - 60D (Sevilha Perfomance)"
+            },
+            {
+              "id": "120242282795950526",
+              "name": "[IG] Envolvimento completo 180D"
+            },
+            {
+              "id": "120242282805690526",
+              "name": "[IG] Seguidores"
+            },
+            {
+              "id": "120242282873610526",
+              "name": "[MCAP0226] Visitou captura 180D (Url e Evento)"
+            },
+            {
+              "id": "120242282962130526",
+              "name": "[MCAP0226] Leads 180D (Url e Evento)"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003138589139",
+                  "name": "Contabilidade (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_automation": {
+            "advantage_audience": 1
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        },
+        "promoted_object": {
+          "pixel_id": "657178423444244",
+          "custom_event_type": "PURCHASE",
+          "smart_pse_enabled": false
+        },
+        "optimization_goal": "OFFSITE_CONVERSIONS",
+        "billing_event": "IMPRESSIONS"
+      },
+      "after": {
+        "status": "ACTIVE",
+        "end_time": "2026-10-27T17:30:00-03:00",
+        "targeting": {
+          "age_max": 65,
+          "age_min": 18,
+          "excluded_custom_audiences": [
+            {
+              "id": "120219034633870526"
+            },
+            {
+              "id": "120219346902010526"
+            },
+            {
+              "id": "120219346902020526"
+            },
+            {
+              "id": "120219346902900526"
+            },
+            {
+              "id": "120219346902910526"
+            },
+            {
+              "id": "120219346902930526"
+            },
+            {
+              "id": "120219347655860526"
+            },
+            {
+              "id": "120219347655870526"
+            },
+            {
+              "id": "120219347656900526"
+            },
+            {
+              "id": "120219347657190526"
+            },
+            {
+              "id": "120219347657200526"
+            },
+            {
+              "id": "120219348178940526"
+            },
+            {
+              "id": "120219836722430526"
+            },
+            {
+              "id": "120219836722800526"
+            },
+            {
+              "id": "120219836722810526"
+            },
+            {
+              "id": "120219836722830526"
+            },
+            {
+              "id": "120219836722840526"
+            },
+            {
+              "id": "120219836722900526"
+            },
+            {
+              "id": "120219836722960526"
+            },
+            {
+              "id": "120222095713180526"
+            },
+            {
+              "id": "120222095713190526"
+            },
+            {
+              "id": "120222095713220526"
+            },
+            {
+              "id": "120222095713430526"
+            },
+            {
+              "id": "120222095713440526"
+            },
+            {
+              "id": "120222095713450526"
+            },
+            {
+              "id": "120222095713460526"
+            },
+            {
+              "id": "120222095713470526"
+            },
+            {
+              "id": "120222095713480526"
+            },
+            {
+              "id": "120222095713490526"
+            },
+            {
+              "id": "120222095713500526"
+            },
+            {
+              "id": "120222095713510526"
+            },
+            {
+              "id": "120222095713520526"
+            },
+            {
+              "id": "120222095713550526"
+            },
+            {
+              "id": "120222095713560526"
+            },
+            {
+              "id": "120222095713590526"
+            },
+            {
+              "id": "120222096029020526"
+            },
+            {
+              "id": "120222098279680526"
+            },
+            {
+              "id": "120227591566570526"
+            },
+            {
+              "id": "120227591566580526"
+            },
+            {
+              "id": "120227591566820526"
+            },
+            {
+              "id": "120227591566850526"
+            },
+            {
+              "id": "120227591567190526"
+            },
+            {
+              "id": "120227591567200526"
+            },
+            {
+              "id": "120227591567210526"
+            },
+            {
+              "id": "120227591567640526"
+            },
+            {
+              "id": "120234704197770526"
+            },
+            {
+              "id": "120235128469700526"
+            },
+            {
+              "id": "120235128476740526"
+            },
+            {
+              "id": "120235128483260526"
+            },
+            {
+              "id": "120235128495180526"
+            },
+            {
+              "id": "120242282805690526"
+            },
+            {
+              "id": "120242282873610526"
+            },
+            {
+              "id": "120242282962130526"
+            }
+          ],
+          "flexible_spec": [
+            {
+              "interests": [
+                {
+                  "id": "6003138589139",
+                  "name": "Contabilidade (negócios e finanças)"
+                }
+              ]
+            }
+          ],
+          "geo_locations": {
+            "countries": [
+              "BR"
+            ],
+            "location_types": [
+              "frequently_in",
+              "home"
+            ]
+          },
+          "targeting_automation": {
+            "advantage_audience": 1
+          },
+          "publisher_platforms": [
+            "facebook",
+            "instagram"
+          ],
+          "facebook_positions": [
+            "feed",
+            "marketplace",
+            "story",
+            "facebook_reels",
+            "profile_feed"
+          ],
+          "instagram_positions": [
+            "stream",
+            "story",
+            "explore",
+            "reels",
+            "profile_feed"
+          ]
+        }
+      }
+    }
+  ],
+  "ads": [
+    {
+      "before": {
+        "id": "120253273655030526",
+        "name": "[AULA][BRUNO][HOT] V04 - Gestão Operacional",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680250526",
+        "creative": {
+          "id": "28386321654322870",
+          "name": "[AULA][BRUNO] V04 - Tecnologia com eficiência 2026-09-25-5a99c7c94cf442c99d940b60faa3ffb4 2026-09-25-4c021fc44af3ea82721fcd18329c8b93",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "924386293729627",
+              "title": "Eficiência operacional na contabilidade",
+              "message": "Tecnologia sozinha não organiza a operação do escritório contábil. O resultado aparece quando processos, equipe e indicadores trabalham juntos. Na Aula de Gestão Operacional, Bruno mostra como transformar a estrutura que você já tem em uma rotina mais eficiente, com menos retrabalho e mais clareza. Ao vivo em 6 de outubro, às 19h30. Conheça a aula e garanta sua vaga.",
+              "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQLEGd5FiTE8SxycVGmStP1MmInLto3ia4HxEPvnkyEDZEM6ZtkRXieKsmJHHzlUrVuprE4gxMbTftj_YOl4G1Iinxv2jnvaP7zQqBAtajvw34GYp8DXfgh_79uGoo2BJQOvWZpSCDMkW8WYY6qBaEfB",
+              "image_hash": "9577ed9a0ad0ee25962f63d9906856a1"
+            }
+          },
+          "video_id": "1101504685748900"
+        }
+      },
+      "campaign_id": "120253257675000526"
+    },
+    {
+      "before": {
+        "id": "120253272649370526",
+        "name": "[AULA][BRUNO][HOT] V03 - Gestão Operacional",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680250526",
+        "creative": {
+          "id": "1787115765641701",
+          "name": "[AULA][BRUNO] V03 - Do caos à performance 2026-09-25-c7258c2e83d4e9d785c22a2fb4c56fa1",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "1764313131353001",
+              "title": "Aula de Gestão Operacional · 6/10",
+              "message": "Seu escritório cresceu, mas a operação continua reativa? Na Aula de Gestão Operacional, Bruno apresenta cinco passos para diagnosticar processos, organizar rotinas, acompanhar indicadores e melhorar a capacidade do time. Uma aula ao vivo para donos de escritórios contábeis com equipe estruturada. Dia 6 de outubro, às 19h30. Veja os detalhes e inscreva-se.",
+              "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQJvLiMgtcFEGvjYIRmhwi0Voxz7YgNVkrUWKoS6u3vrPGdOBF3IYsulr7M73Q_kWuyLn1DydX171vSgh5--R3Ff6Kqnz85piwRnPOoLNii4f6MX6nWk8T8R0cZYJPx2pqtwVy-uHupTe00OKPspCzyi",
+              "image_hash": "508324d340104d4d9422a35e606e32a5"
+            }
+          },
+          "video_id": "1101257952406060"
+        }
+      },
+      "campaign_id": "120253257675000526",
+      "creative": {
+        "name": "[AULA27OUT2026] [AULA][BRUNO][HOT] V03 - Gestão Operacional",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "video_data": {
+            "video_id": "1764313131353001",
+            "title": "Aula de Gestão Operacional · 27/10",
+            "message": "Seu escritório cresceu, mas a operação continua reativa? Na Aula de Gestão Operacional, Bruno apresenta cinco passos para diagnosticar processos, organizar rotinas, acompanhar indicadores e melhorar a capacidade do time. Uma aula ao vivo para donos de escritórios contábeis com equipe estruturada. Dia 27 de outubro, às 19h30 (horário de Brasília). Veja os detalhes e inscreva-se.",
+            "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            },
+            "image_hash": "508324d340104d4d9422a35e606e32a5"
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      }
+    },
+    {
+      "before": {
+        "id": "120253272649050526",
+        "name": "[AULA][BRUNO][HOT] V02 - Gestão Operacional",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680250526",
+        "creative": {
+          "id": "1656758119142556",
+          "name": "[AULA][BRUNO] V02 - Três primeiros passos 2026-09-25-d562c2d452cc78b1d7a8e1296d31e2a5",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "1832385324597949",
+              "title": "Aula de Gestão Operacional · 6/10",
+              "message": "Como começar a organizar a operação de um escritório contábil? Bruno resume três passos: classificar clientes, mapear as entregas e definir o tempo de cada atividade. Na Aula de Gestão Operacional, ele abre o método completo em cinco etapas, com aplicação prática. Ao vivo em 6 de outubro, às 19h30. Conheça a aula e garanta sua vaga.",
+              "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQKrkKluXlHScWYPKgr_4kikpGPEQTvSizcJgVVQm-RwApejQKqMCpnTbeYOWs57YkcviZe09KUcV_4htPx351DkxzrfJkBqxwiiCcLXfo9vWn0iK_9WuAhco5fGw_P9ERGRZMBXu2LLaFxo03QkcfkE",
+              "image_hash": "231e1cf2859d6b73a382eff4c567bb86"
+            }
+          },
+          "video_id": "1121367950404625"
+        }
+      },
+      "campaign_id": "120253257675000526",
+      "creative": {
+        "name": "[AULA27OUT2026] [AULA][BRUNO][HOT] V02 - Gestão Operacional",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "video_data": {
+            "video_id": "1832385324597949",
+            "title": "Aula de Gestão Operacional · 27/10",
+            "message": "Como começar a organizar a operação de um escritório contábil? Bruno resume três passos: classificar clientes, mapear as entregas e definir o tempo de cada atividade. Na Aula de Gestão Operacional, ele abre o método completo em cinco etapas, com aplicação prática. Ao vivo em 27 de outubro, às 19h30 (horário de Brasília). Conheça a aula e garanta sua vaga.",
+            "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            },
+            "image_hash": "231e1cf2859d6b73a382eff4c567bb86"
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      }
+    },
+    {
+      "before": {
+        "id": "120253272648630526",
+        "name": "[AULA][BRUNO][HOT] V01 - Gestão Operacional",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680250526",
+        "creative": {
+          "id": "1439318908265279",
+          "name": "[AULA][BRUNO] V01 - Contratar não resolve 2026-09-25-b1e980cac462940fbb057fbcc0c1d24f",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "1125774123354622",
+              "title": "Aula de Gestão Operacional · 6/10",
+              "message": "Contratar mais gente e continuar sobrecarregado? O problema pode estar na forma como o escritório distribui as entregas. Na Aula de Gestão Operacional, Bruno mostra como classificar clientes, medir o tempo das atividades e enxergar a capacidade do time. Aula ao vivo em 6 de outubro, às 19h30. Veja a programação e garanta sua vaga.",
+              "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQLi3VPyoW79c_HTrxJi5fKo0K6aRHXUvFwaTFMOkWYEbWMO5RNWWpqiIDqXImp0xIEFl4N5SqD_4mj7VKD6ylGS1RVbGDAUlTwXduxnzLhlKxozwCUVrJnxz9OCik6Ezc8Z_jzab5rQltNbzcmjp7r1",
+              "image_hash": "fa8b8fdfcb18971f38c3e6613ba7dff8"
+            }
+          },
+          "video_id": "1094557149892095"
+        }
+      },
+      "campaign_id": "120253257675000526"
+    },
+    {
+      "before": {
+        "id": "120253257681700526",
+        "name": "[AULA][VIRADA][HOT] AD01 - Lote atual",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680250526",
+        "creative": {
+          "id": "1801608364516153",
+          "name": "[AULA][VIRADA] AD01 - Lote atual 2026-09-24-525cc9e1f6ae79b685933b74d825bba2",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "link_data": {
+              "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "message": "O Lote 1 da Aula de Gestão Operacional ainda está aberto.\n\nSe você dirige um escritório contábil com 10+ colaboradores e quer enxergar onde a operação perde margem, conheça o método aplicado pela Sevilha.\n\nAula ao vivo em 6 de outubro, às 19h30. Inscrição no lote atual: R$ 27. Garanta sua vaga antes da virada.",
+              "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+              "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "image_hash": "4a5a88dc4094e956fea0a04c070c02e9",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              }
+            }
+          },
+          "image_url": "https://scontent-gru1-1.xx.fbcdn.net/v/t45.1600-4/799829724_122187899930829464_5075868299681980834_n.png?stp=dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=ff4730&_nc_ohc=qfK4TVt7_LUQ7kNvwGQxCvI&_nc_oc=AdopozAcd7vptUQzwc9mtPWoz17widHuiObzGgdum5mSDTSmAE9ag9VDlu69lCyC3qwqRrd4345BCC1if7cSGzro&_nc_zt=1&_nc_ht=scontent-gru1-1.xx&edm=ANIILHsEAAAA&_nc_gid=Ih6EFIllJortvPzZ9_EFdA&_nc_tpa=Q5bMBQK9DJu6o1JFYwIUOada78os2bD-ifH3a06HVnSsPpctDEiH_Nr1axunhvvjlEMJKMs8dZwjq8L6aA&oh=00_AQOPTsRJCgu52vKO2S3J_4vYAbWfZY8lt2iF5qtUCZ1Xiw&oe=6AD4F411"
+        }
+      },
+      "campaign_id": "120253257675000526"
+    },
+    {
+      "before": {
+        "id": "120253257682480526",
+        "name": "[AULA][VIRADA][HOT] AD04 - Bruno",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680250526",
+        "creative": {
+          "id": "1737669217529750",
+          "name": "[AULA][VIRADA] AD04 - Bruno 2026-09-24-0055c75731240634a1f7ab2fd64ec26d",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "link_data": {
+              "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "message": "O lote muda. O método fica.\n\nBruno Silvestre vai mostrar, em uma aula ao vivo, como a Sevilha organiza a gestão operacional de escritórios contábeis: carteira, tempo, capacidade e margem.\n\nDia 6 de outubro, às 19h30. O valor atual do Lote 1 é R$ 27. Inscreva-se enquanto este lote está disponível.",
+              "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+              "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "image_hash": "acb8ffde903dc6e7343a3dc6468897d4",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              }
+            }
+          },
+          "image_url": "https://scontent-gru2-2.xx.fbcdn.net/v/t45.1600-4/795622841_122187900002829464_5830594196650589277_n.png?stp=dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=ff4730&_nc_ohc=RjXoALZ34qIQ7kNvwGBdLv9&_nc_oc=AdqwDRm4_vbyEJvHAuhC_DT62u_0kBrOJx63bnnytLEpsxdo39Vpm4O6Aeyb6OsO9jlVT6dTz2QTppWFbqhVbamR&_nc_zt=1&_nc_ht=scontent-gru2-2.xx&edm=ANIILHsEAAAA&_nc_gid=Ih6EFIllJortvPzZ9_EFdA&_nc_tpa=Q5bMBQL2HITJlPOEyS0ecQwQF-UFw2hNo-9BOKZxGUhiuuQbEzk26wdsgR36J8MyjLZWzYK8wAcAdk3AAw&oh=00_AQOM3Ai4VBue89IXdyWJ0iqlC5P9rOD1lqdaEliCHso4yg&oe=6AD4D721"
+        }
+      },
+      "campaign_id": "120253257675000526"
+    },
+    {
+      "before": {
+        "id": "120253257682260526",
+        "name": "[AULA][VIRADA][HOT] AD03 - Método",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680250526",
+        "creative": {
+          "id": "1404629681080128",
+          "name": "[AULA][VIRADA] AD03 - Método 2026-09-24-533ad014247e37edd94c01878d7fee1e",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "link_data": {
+              "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "message": "Contratar mais gente ou trocar de sistema não resolve, por si só, uma operação sem números.\n\nNa Aula de Gestão Operacional, a Sevilha mostra seu método para mapear a carteira, identificar gargalos e acompanhar a margem por cliente em escritórios contábeis com 10+ colaboradores.\n\n6 de outubro, às 19h30. O Lote 1 está em R$ 27. Garanta sua vaga antes da virada.",
+              "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+              "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "image_hash": "5127932c1100c4662bef606f9124b730",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              }
+            }
+          },
+          "image_url": "https://scontent-gru1-2.xx.fbcdn.net/v/t45.1600-4/796707078_122187899984829464_531653957997381215_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=ff4730&_nc_ohc=NMaQsfzJFvoQ7kNvwE6Pvtr&_nc_oc=Adq-jjfs78yx4o6dfzDSXHX4A5GlOGLlD7URn53DvzwzBVbURbnsC_Ksy-rGrYsiYT6ceowMGfCJacUUJgAU80cB&_nc_zt=1&_nc_ht=scontent-gru1-2.xx&edm=ANIILHsEAAAA&_nc_gid=Ih6EFIllJortvPzZ9_EFdA&_nc_tpa=Q5bMBQK55-O3GfRoBG_WB3ujMiNpfZRbX2RT61cN5kVAs81tN-Pdh6PyUfdzcrx5-lJzGwvxVTgkyGFv9A&oh=00_AQMtnWLPBDUiEM2yNE1vNrli998odgFv874mIte8yddzAA&oe=6AD4E489"
+        }
+      },
+      "campaign_id": "120253257675000526"
+    },
+    {
+      "before": {
+        "id": "120253257681850526",
+        "name": "[AULA][VIRADA][HOT] AD02 - Preço atual",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680250526",
+        "creative": {
+          "id": "1743087310128881",
+          "name": "[AULA][VIRADA] AD02 - Preço atual 2026-09-24-f8f3d12c0365b48d03617cda114b2490",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "link_data": {
+              "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "message": "O valor do lote atual é R$ 27.\n\nNa Aula de Gestão Operacional, você vai ver como analisar a carteira, medir o tempo das atividades e entender a capacidade real do time. Um caminho para tomar decisões com números no seu escritório contábil.\n\nAo vivo em 6 de outubro, às 19h30. Entre enquanto o Lote 1 está disponível.",
+              "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+              "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "image_hash": "ee59ab47ba4525493bdd35f2747833b1",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              }
+            }
+          },
+          "image_url": "https://scontent-gru2-1.xx.fbcdn.net/v/t45.1600-4/795342038_122187899966829464_1495014211748048956_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=ff4730&_nc_ohc=5sC0eIfd6_4Q7kNvwHa0-TE&_nc_oc=Adoo3We8rQxCmap64csZUFiD_7K2DbW-eneROjl-eu0fQN288UdnEcr8M2GKSDJFq9WP9LicYw8giarKqIHf7JfQ&_nc_zt=1&_nc_ht=scontent-gru2-1.xx&edm=ANIILHsEAAAA&_nc_gid=Ih6EFIllJortvPzZ9_EFdA&_nc_tpa=Q5bMBQINPiKfgUhiqFR51xY5YlVs4NgQNlQVDX8BzotOdrBXuXjFR-MmKYdL3rxriKuMmblrQI68M_1egg&oh=00_AQNIbjvnN6CI-0AiVU6w7WYE_ZVsbk6Rx09fpGj-lrMHpg&oe=6AD4C9C4"
+        }
+      },
+      "campaign_id": "120253257675000526"
+    },
+    {
+      "before": {
+        "id": "120253273655260526",
+        "name": "[AULA][BRUNO][COLD] V04 - Gestão Operacional",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680570526",
+        "creative": {
+          "id": "28386321654322870",
+          "name": "[AULA][BRUNO] V04 - Tecnologia com eficiência 2026-09-25-5a99c7c94cf442c99d940b60faa3ffb4 2026-09-25-4c021fc44af3ea82721fcd18329c8b93",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "924386293729627",
+              "title": "Eficiência operacional na contabilidade",
+              "message": "Tecnologia sozinha não organiza a operação do escritório contábil. O resultado aparece quando processos, equipe e indicadores trabalham juntos. Na Aula de Gestão Operacional, Bruno mostra como transformar a estrutura que você já tem em uma rotina mais eficiente, com menos retrabalho e mais clareza. Ao vivo em 6 de outubro, às 19h30. Conheça a aula e garanta sua vaga.",
+              "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQL9LCCAUaZe8Tf73kUYGJT-aMsJTXQQ0bFvGp35H5YYgQY5JDAYMbMc7ypZq_55k-P09Xp-P6pN6z-X6tPooJRCfidhqoKTwFJOTV9ABnBE4nFjaCD99HVC9Gq0bHq6yZGUUqmItWkgoP77i8RqxEjB",
+              "image_hash": "9577ed9a0ad0ee25962f63d9906856a1"
+            }
+          },
+          "video_id": "1101504685748900"
+        }
+      },
+      "campaign_id": "120253257675140526"
+    },
+    {
+      "before": {
+        "id": "120253272650360526",
+        "name": "[AULA][BRUNO][COLD] V02 - Gestão Operacional",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680570526",
+        "creative": {
+          "id": "1656758119142556",
+          "name": "[AULA][BRUNO] V02 - Três primeiros passos 2026-09-25-d562c2d452cc78b1d7a8e1296d31e2a5",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "1832385324597949",
+              "title": "Aula de Gestão Operacional · 6/10",
+              "message": "Como começar a organizar a operação de um escritório contábil? Bruno resume três passos: classificar clientes, mapear as entregas e definir o tempo de cada atividade. Na Aula de Gestão Operacional, ele abre o método completo em cinco etapas, com aplicação prática. Ao vivo em 6 de outubro, às 19h30. Conheça a aula e garanta sua vaga.",
+              "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQIJvq6tAH4SBQwv1iVQ59mrfFOdYjyA0vNNFADExbbUY64kMCXLok1NkGN_y6WwVLbbecmHtMEdJ0zSCA6LPtlvBWk71dw1XunG_plVQmttRtw39xuWvfgRqy1ZYQQTvbePbzow1mKmGuSeA9TRtHum",
+              "image_hash": "231e1cf2859d6b73a382eff4c567bb86"
+            }
+          },
+          "video_id": "1121367950404625"
+        }
+      },
+      "campaign_id": "120253257675140526",
+      "creative": {
+        "name": "[AULA27OUT2026] [AULA][BRUNO][COLD] V02 - Gestão Operacional",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "video_data": {
+            "video_id": "1832385324597949",
+            "title": "Aula de Gestão Operacional · 27/10",
+            "message": "Como começar a organizar a operação de um escritório contábil? Bruno resume três passos: classificar clientes, mapear as entregas e definir o tempo de cada atividade. Na Aula de Gestão Operacional, ele abre o método completo em cinco etapas, com aplicação prática. Ao vivo em 27 de outubro, às 19h30 (horário de Brasília). Conheça a aula e garanta sua vaga.",
+            "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            },
+            "image_hash": "231e1cf2859d6b73a382eff4c567bb86"
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      }
+    },
+    {
+      "before": {
+        "id": "120253272649980526",
+        "name": "[AULA][BRUNO][COLD] V01 - Gestão Operacional",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680570526",
+        "creative": {
+          "id": "1439318908265279",
+          "name": "[AULA][BRUNO] V01 - Contratar não resolve 2026-09-25-b1e980cac462940fbb057fbcc0c1d24f",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "1125774123354622",
+              "title": "Aula de Gestão Operacional · 6/10",
+              "message": "Contratar mais gente e continuar sobrecarregado? O problema pode estar na forma como o escritório distribui as entregas. Na Aula de Gestão Operacional, Bruno mostra como classificar clientes, medir o tempo das atividades e enxergar a capacidade do time. Aula ao vivo em 6 de outubro, às 19h30. Veja a programação e garanta sua vaga.",
+              "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQJRmr9HjToHq_aLvu-sn90YIiIoLlF5TOZpLw_P3ba1vw-HkOWMrjZZyYJ5G4FRxoDZfYwrmibLBaxNmyx-txrUU2pKCz9m4hIJlWiOTxnYTVK2MJUbYKTI5Wp2JN0fPvmqfaZ0sCnsUPBPZakVsDJD",
+              "image_hash": "fa8b8fdfcb18971f38c3e6613ba7dff8"
+            }
+          },
+          "video_id": "1094557149892095"
+        }
+      },
+      "campaign_id": "120253257675140526"
+    },
+    {
+      "before": {
+        "id": "120253272650840526",
+        "name": "[AULA][BRUNO][COLD] V03 - Gestão Operacional",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680570526",
+        "creative": {
+          "id": "1787115765641701",
+          "name": "[AULA][BRUNO] V03 - Do caos à performance 2026-09-25-c7258c2e83d4e9d785c22a2fb4c56fa1",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "video_data": {
+              "video_id": "1764313131353001",
+              "title": "Aula de Gestão Operacional · 6/10",
+              "message": "Seu escritório cresceu, mas a operação continua reativa? Na Aula de Gestão Operacional, Bruno apresenta cinco passos para diagnosticar processos, organizar rotinas, acompanhar indicadores e melhorar a capacidade do time. Uma aula ao vivo para donos de escritórios contábeis com equipe estruturada. Dia 6 de outubro, às 19h30. Veja os detalhes e inscreva-se.",
+              "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              },
+              "image_url": "https://www.facebook.com/ads/image/?d=AQKQm2o24rXWmP5UEyG-yC5nLI3Iw7yFRq8r5MkDk7EnWMh2UOXHdAVkNQV0STv8eM0jcSds1P51Jyxlisb-E9xhmvNhAcJqCrZOHOWKR-hfPa1BUDLgliNh6evuMMaA2af2ERmqKFyMIjIr7Udiyukf",
+              "image_hash": "508324d340104d4d9422a35e606e32a5"
+            }
+          },
+          "video_id": "1101257952406060"
+        }
+      },
+      "campaign_id": "120253257675140526",
+      "creative": {
+        "name": "[AULA27OUT2026] [AULA][BRUNO][COLD] V03 - Gestão Operacional",
+        "object_story_spec": {
+          "page_id": "131476997004991",
+          "instagram_user_id": "17841401496577850",
+          "video_data": {
+            "video_id": "1764313131353001",
+            "title": "Aula de Gestão Operacional · 27/10",
+            "message": "Seu escritório cresceu, mas a operação continua reativa? Na Aula de Gestão Operacional, Bruno apresenta cinco passos para diagnosticar processos, organizar rotinas, acompanhar indicadores e melhorar a capacidade do time. Uma aula ao vivo para donos de escritórios contábeis com equipe estruturada. Dia 27 de outubro, às 19h30 (horário de Brasília). Veja os detalhes e inscreva-se.",
+            "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+            "call_to_action": {
+              "type": "LEARN_MORE",
+              "value": {
+                "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+              }
+            },
+            "image_hash": "508324d340104d4d9422a35e606e32a5"
+          }
+        },
+        "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+      }
+    },
+    {
+      "before": {
+        "id": "120253257682540526",
+        "name": "[AULA][VIRADA][COLD] AD01 - Lote atual",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680570526",
+        "creative": {
+          "id": "1801608364516153",
+          "name": "[AULA][VIRADA] AD01 - Lote atual 2026-09-24-525cc9e1f6ae79b685933b74d825bba2",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "link_data": {
+              "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "message": "O Lote 1 da Aula de Gestão Operacional ainda está aberto.\n\nSe você dirige um escritório contábil com 10+ colaboradores e quer enxergar onde a operação perde margem, conheça o método aplicado pela Sevilha.\n\nAula ao vivo em 6 de outubro, às 19h30. Inscrição no lote atual: R$ 27. Garanta sua vaga antes da virada.",
+              "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+              "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "image_hash": "4a5a88dc4094e956fea0a04c070c02e9",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              }
+            }
+          },
+          "image_url": "https://scontent-gru1-1.xx.fbcdn.net/v/t45.1600-4/799829724_122187899930829464_5075868299681980834_n.png?stp=dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=ff4730&_nc_ohc=qfK4TVt7_LUQ7kNvwGQxCvI&_nc_oc=AdopozAcd7vptUQzwc9mtPWoz17widHuiObzGgdum5mSDTSmAE9ag9VDlu69lCyC3qwqRrd4345BCC1if7cSGzro&_nc_zt=1&_nc_ht=scontent-gru1-1.xx&edm=ANIILHsEAAAA&_nc_gid=MCiTAWlPGoVeydh2RUWaFA&_nc_tpa=Q5bMBQLmws5rv7pDoPqBuxoNnOZxCq_PBr0PNMKn87ofv2-f12Tfk0_xHW9E9EFTec_puUGBweq5MPQz_A&oh=00_AQMUqs2x5ThQz2ExzfxNOVk-ka0qEqMMda67HaN-xfNU2Q&oe=6AD4F411"
+        }
+      },
+      "campaign_id": "120253257675140526"
+    },
+    {
+      "before": {
+        "id": "120253257683080526",
+        "name": "[AULA][VIRADA][COLD] AD04 - Bruno",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680570526",
+        "creative": {
+          "id": "1737669217529750",
+          "name": "[AULA][VIRADA] AD04 - Bruno 2026-09-24-0055c75731240634a1f7ab2fd64ec26d",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "link_data": {
+              "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "message": "O lote muda. O método fica.\n\nBruno Silvestre vai mostrar, em uma aula ao vivo, como a Sevilha organiza a gestão operacional de escritórios contábeis: carteira, tempo, capacidade e margem.\n\nDia 6 de outubro, às 19h30. O valor atual do Lote 1 é R$ 27. Inscreva-se enquanto este lote está disponível.",
+              "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+              "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "image_hash": "acb8ffde903dc6e7343a3dc6468897d4",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              }
+            }
+          },
+          "image_url": "https://scontent-gru2-2.xx.fbcdn.net/v/t45.1600-4/795622841_122187900002829464_5830594196650589277_n.png?stp=dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=ff4730&_nc_ohc=RjXoALZ34qIQ7kNvwGBdLv9&_nc_oc=AdqwDRm4_vbyEJvHAuhC_DT62u_0kBrOJx63bnnytLEpsxdo39Vpm4O6Aeyb6OsO9jlVT6dTz2QTppWFbqhVbamR&_nc_zt=1&_nc_ht=scontent-gru2-2.xx&edm=ANIILHsEAAAA&_nc_gid=MCiTAWlPGoVeydh2RUWaFA&_nc_tpa=Q5bMBQI74AGY56Ce50tj62X5qgJYkGl5-NJLhOQvNVDNosDLXRlyt_Z1Tnu2nEZFUSGsk1vYxqRDoBnxpA&oh=00_AQPwPXYBdcA9IgdEnOkxvSyQcf_HwVqrV_aQ8fG6ds7itw&oe=6AD4D721"
+        }
+      },
+      "campaign_id": "120253257675140526"
+    },
+    {
+      "before": {
+        "id": "120253257682730526",
+        "name": "[AULA][VIRADA][COLD] AD02 - Preço atual",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680570526",
+        "creative": {
+          "id": "1743087310128881",
+          "name": "[AULA][VIRADA] AD02 - Preço atual 2026-09-24-f8f3d12c0365b48d03617cda114b2490",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "link_data": {
+              "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "message": "O valor do lote atual é R$ 27.\n\nNa Aula de Gestão Operacional, você vai ver como analisar a carteira, medir o tempo das atividades e entender a capacidade real do time. Um caminho para tomar decisões com números no seu escritório contábil.\n\nAo vivo em 6 de outubro, às 19h30. Entre enquanto o Lote 1 está disponível.",
+              "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+              "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "image_hash": "ee59ab47ba4525493bdd35f2747833b1",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              }
+            }
+          },
+          "image_url": "https://scontent-gru2-1.xx.fbcdn.net/v/t45.1600-4/795342038_122187899966829464_1495014211748048956_n.png?stp=dst-jpg_tt6&_nc_cat=111&ccb=1-7&_nc_sid=ff4730&_nc_ohc=5sC0eIfd6_4Q7kNvwHa0-TE&_nc_oc=Adoo3We8rQxCmap64csZUFiD_7K2DbW-eneROjl-eu0fQN288UdnEcr8M2GKSDJFq9WP9LicYw8giarKqIHf7JfQ&_nc_zt=1&_nc_ht=scontent-gru2-1.xx&edm=ANIILHsEAAAA&_nc_gid=MCiTAWlPGoVeydh2RUWaFA&_nc_tpa=Q5bMBQJnk_vhEhbABbMh8TeIFwiDtYLSAnUJtIU5gYq2M3xVY3k4ZfVVmUWa2edJ2o6bm_qw_53wU0CIGg&oh=00_AQMDShBFgYwSJmhFq77Z-5_gWXDfjtDTsoqKEWKbOrwP3A&oe=6AD4C9C4"
+        }
+      },
+      "campaign_id": "120253257675140526"
+    },
+    {
+      "before": {
+        "id": "120253257682810526",
+        "name": "[AULA][VIRADA][COLD] AD03 - Método",
+        "status": "ACTIVE",
+        "effective_status": "CAMPAIGN_PAUSED",
+        "adset_id": "120253257680570526",
+        "creative": {
+          "id": "1404629681080128",
+          "name": "[AULA][VIRADA] AD03 - Método 2026-09-24-533ad014247e37edd94c01878d7fee1e",
+          "object_story_spec": {
+            "page_id": "131476997004991",
+            "instagram_user_id": "17841401496577850",
+            "link_data": {
+              "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "message": "Contratar mais gente ou trocar de sistema não resolve, por si só, uma operação sem números.\n\nNa Aula de Gestão Operacional, a Sevilha mostra seu método para mapear a carteira, identificar gargalos e acompanhar a margem por cliente em escritórios contábeis com 10+ colaboradores.\n\n6 de outubro, às 19h30. O Lote 1 está em R$ 27. Garanta sua vaga antes da virada.",
+              "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+              "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+              "image_hash": "5127932c1100c4662bef606f9124b730",
+              "call_to_action": {
+                "type": "LEARN_MORE",
+                "value": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                }
+              }
+            }
+          },
+          "image_url": "https://scontent-gru1-2.xx.fbcdn.net/v/t45.1600-4/796707078_122187899984829464_531653957997381215_n.png?stp=dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=ff4730&_nc_ohc=NMaQsfzJFvoQ7kNvwE6Pvtr&_nc_oc=Adq-jjfs78yx4o6dfzDSXHX4A5GlOGLlD7URn53DvzwzBVbURbnsC_Ksy-rGrYsiYT6ceowMGfCJacUUJgAU80cB&_nc_zt=1&_nc_ht=scontent-gru1-2.xx&edm=ANIILHsEAAAA&_nc_gid=MCiTAWlPGoVeydh2RUWaFA&_nc_tpa=Q5bMBQLA4OffrsY682xreRkFrl-QmzJe6emtOHuPurhnDUhTWMLk4GyHZXY8FJ73G0OyD0NrGhI7Tvu7vg&oh=00_AQMe_pwKvi61kcxbkEKS2YsAjT_RnqmJoVoyHeDoNlOmiA&oe=6AD4E489"
+        }
+      },
+      "campaign_id": "120253257675140526"
+    }
+  ],
+  "removed_audiences": [
+    {
+      "adset": "120253257680250526",
+      "field": "custom_audiences",
+      "excluded": [
+        {
+          "id": "120219034626410526",
+          "name": "[SITE] - Acessou site - 007D"
+        },
+        {
+          "id": "120219034627270526",
+          "name": "[SITE] - Acessou site - 015D"
+        },
+        {
+          "id": "120219034628630526",
+          "name": "[SITE] - Acessou site - 030D"
+        },
+        {
+          "id": "120219034630480526",
+          "name": "[SITE] - Acessou site - 060D"
+        },
+        {
+          "id": "120219034632680526",
+          "name": "[SITE] - Acessou site - 090D"
+        },
+        {
+          "id": "120219361601410526",
+          "name": "[EVENTO] - Lead - 060D"
+        },
+        {
+          "id": "120219361601420526",
+          "name": "[EVENTO] - Lead - 045D"
+        },
+        {
+          "id": "120219361601540526",
+          "name": "[EVENTO] - Lead - 030D"
+        },
+        {
+          "id": "120219361601680526",
+          "name": "[EVENTO] - Lead - 015D"
+        },
+        {
+          "id": "120219361601690526",
+          "name": "[EVENTO] - Lead - 007D"
+        },
+        {
+          "id": "120219361635560526",
+          "name": "[EVENTO] - Lead - 180D"
+        },
+        {
+          "id": "120219361635580526",
+          "name": "[EVENTO] - Lead - 090D"
+        },
+        {
+          "id": "120242282795950526",
+          "name": "[IG] Envolvimento completo 180D"
+        }
+      ]
+    },
+    {
+      "adset": "120253257680570526",
+      "field": "excluded_custom_audiences",
+      "excluded": [
+        {
+          "id": "120219034626410526",
+          "name": "[SITE] - Acessou site - 007D"
+        },
+        {
+          "id": "120219034627270526",
+          "name": "[SITE] - Acessou site - 015D"
+        },
+        {
+          "id": "120219034628630526",
+          "name": "[SITE] - Acessou site - 030D"
+        },
+        {
+          "id": "120219034630480526",
+          "name": "[SITE] - Acessou site - 060D"
+        },
+        {
+          "id": "120219034632680526",
+          "name": "[SITE] - Acessou site - 090D"
+        },
+        {
+          "id": "120219361601410526",
+          "name": "[EVENTO] - Lead - 060D"
+        },
+        {
+          "id": "120219361601420526",
+          "name": "[EVENTO] - Lead - 045D"
+        },
+        {
+          "id": "120219361601540526",
+          "name": "[EVENTO] - Lead - 030D"
+        },
+        {
+          "id": "120219361601680526",
+          "name": "[EVENTO] - Lead - 015D"
+        },
+        {
+          "id": "120219361601690526",
+          "name": "[EVENTO] - Lead - 007D"
+        },
+        {
+          "id": "120219361635560526",
+          "name": "[EVENTO] - Lead - 180D"
+        },
+        {
+          "id": "120219361635580526",
+          "name": "[EVENTO] - Lead - 090D"
+        },
+        {
+          "id": "120242282795950526",
+          "name": "[IG] Envolvimento completo 180D"
+        }
+      ]
+    }
+  ],
+  "media_review": {
+    "approved_video_ids": [
+      "1832385324597949",
+      "1764313131353001"
+    ],
+    "status": "verified",
+    "method": "Downloaded original Graph video source, visually inspected contact sheets across entire31s clips, local faster-whisper small int8 Portuguese transcription. No old dates or old prices in either transcript or inspected visuals.",
+    "transcripts": {
+      "02": [
+        {
+          "start": 0.0,
+          "end": 5.0,
+          "text": " Se eu quisesse organizar a Operação do Escritório de Contabilidade eu seguiria cinco passos."
+        },
+        {
+          "start": 5.0,
+          "end": 11.0,
+          "text": " Classificaria os clientes, mapearia as entregas, definiria tempo para cada entrega operacional,"
+        },
+        {
+          "start": 11.0,
+          "end": 17.0,
+          "text": " ajustaria uma agenda para cada operador e faria um ciclo de acompanhamento diário semanal imensal"
+        },
+        {
+          "start": 17.0,
+          "end": 20.0,
+          "text": " para garantir as entregas operacionais no tempo que a gente estabeleceu."
+        },
+        {
+          "start": 20.0,
+          "end": 26.0,
+          "text": " Se isso faz sentido para você, vou fazer uma aula de duas horas explicando passo a passo"
+        },
+        {
+          "start": 26.0,
+          "end": 29.0,
+          "text": " como você constrói cada uma dessas etapas para o seu escritório."
+        },
+        {
+          "start": 29.0,
+          "end": 31.0,
+          "text": " Clica e vem! Um abraço!"
+        }
+      ],
+      "03": [
+        {
+          "start": 0.0,
+          "end": 5.92,
+          "text": " O seu time não tá sobrecarregado, na verdade, você tá sem gestão operacional aí no seu"
+        },
+        {
+          "start": 5.92,
+          "end": 10.72,
+          "text": " escritório de contabilidade. Pois é, aí ajudou a mais de 500 empresas contábeis"
+        },
+        {
+          "start": 10.72,
+          "end": 15.24,
+          "text": " a sair de um status de sensação de sobrecarga para a time de alta performance. E eu vou"
+        },
+        {
+          "start": 15.24,
+          "end": 19.28,
+          "text": " te contar como a gente fez isso numa aula em que a gente vai trazer os 5 passos para"
+        },
+        {
+          "start": 19.28,
+          "end": 23.68,
+          "text": " que você saia de uma operação sobrecarregada para uma operação eficiente. Essa aula"
+        },
+        {
+          "start": 23.68,
+          "end": 28.080000000000002,
+          "text": " é ao vivo e vai ser comigo, é só você clicar aqui e se inscrever, você não"
+        },
+        {
+          "start": 28.080000000000002,
+          "end": 31.240000000000002,
+          "text": " vai se arrepender. Bem, a gente se encontra lá. Um abraço!"
+        }
+      ]
+    },
+    "sha256": {
+      "02": "2edd5d695c37d849b0bf4c7b12facc1eb396275ffcdf842450d90833690edc96",
+      "03": "6fb7ec31f70d9be40f47a0dcecfcb811e567b4471116cf3db3e175d229231970"
+    },
+    "limitations": "ASR can mistranscribe words; date absence corroborated by subtitle/visual review."
+  },
+  "success_measure": "Budget20000BRL minor units, corrected date and URL/UTMs, campaigns ACTIVE, no old-date ad active",
+  "verification_window": "Immediately after mutation; delivery/review status is separate",
+  "rollback": "Pause both campaigns; original budgets, end times, targeting and creative IDs are in before snapshots. Do not restore outdated ads ACTIVE.",
+  "historical_insights": {
+    "120253257675140526": [
+      {
+        "ad_id": "120253257682540526",
+        "ad_name": "[AULA][VIRADA][COLD] AD01 - Lote atual",
+        "spend": "3.83",
+        "impressions": "55",
+        "clicks": "1",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "2"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "2"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "2"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "2"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "2"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253257682730526",
+        "ad_name": "[AULA][VIRADA][COLD] AD02 - Preço atual",
+        "spend": "135.28",
+        "impressions": "1964",
+        "clicks": "29",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "16"
+          },
+          {
+            "action_type": "post_reaction",
+            "value": "2"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "11"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "11"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "18"
+          },
+          {
+            "action_type": "post_interaction_gross",
+            "value": "2"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "18"
+          },
+          {
+            "action_type": "post_interaction_net",
+            "value": "2"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_like",
+            "value": "2"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253257682810526",
+        "ad_name": "[AULA][VIRADA][COLD] AD03 - Método",
+        "spend": "1.35",
+        "impressions": "19",
+        "clicks": "0",
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253257683080526",
+        "ad_name": "[AULA][VIRADA][COLD] AD04 - Bruno",
+        "spend": "3.91",
+        "impressions": "69",
+        "clicks": "0",
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253272649980526",
+        "ad_name": "[AULA][BRUNO][COLD] V01 - Gestão Operacional",
+        "spend": "21.01",
+        "impressions": "344",
+        "clicks": "5",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "3"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "2"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "2"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "87"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "87"
+          },
+          {
+            "action_type": "video_view",
+            "value": "84"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253272650360526",
+        "ad_name": "[AULA][BRUNO][COLD] V02 - Gestão Operacional",
+        "spend": "1771.34",
+        "impressions": "25812",
+        "clicks": "417",
+        "actions": [
+          {
+            "action_type": "web_in_store_purchase",
+            "value": "22"
+          },
+          {
+            "action_type": "omni_purchase",
+            "value": "22"
+          },
+          {
+            "action_type": "link_click",
+            "value": "331"
+          },
+          {
+            "action_type": "initiate_checkout",
+            "value": "31"
+          },
+          {
+            "action_type": "offsite_purchase_add_20_s_calls",
+            "value": "22"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "22"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_initiate_checkout",
+            "value": "31"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_custom",
+            "value": "24"
+          },
+          {
+            "action_type": "offsite_initiate_checkout_add_20_s_calls",
+            "value": "31"
+          },
+          {
+            "action_type": "post_reaction",
+            "value": "111"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "294"
+          },
+          {
+            "action_type": "onsite_web_lead",
+            "value": "104"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "294"
+          },
+          {
+            "action_type": "onsite_conversion.total_messaging_connection",
+            "value": "1"
+          },
+          {
+            "action_type": "onsite_conversion.post_unlike",
+            "value": "7"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "7698"
+          },
+          {
+            "action_type": "post_interaction_gross",
+            "value": "219"
+          },
+          {
+            "action_type": "onsite_web_app_purchase",
+            "value": "22"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "7698"
+          },
+          {
+            "action_type": "purchase",
+            "value": "22"
+          },
+          {
+            "action_type": "post_interaction_net",
+            "value": "227"
+          },
+          {
+            "action_type": "onsite_conversion.messaging_first_reply",
+            "value": "1"
+          },
+          {
+            "action_type": "post",
+            "value": "72"
+          },
+          {
+            "action_type": "onsite_conversion.post_unsave",
+            "value": "1"
+          },
+          {
+            "action_type": "onsite_conversion.post_save",
+            "value": "36"
+          },
+          {
+            "action_type": "web_app_in_store_purchase",
+            "value": "22"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_save",
+            "value": "35"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_like",
+            "value": "104"
+          },
+          {
+            "action_type": "onsite_web_initiate_checkout",
+            "value": "31"
+          },
+          {
+            "action_type": "omni_initiated_checkout",
+            "value": "31"
+          },
+          {
+            "action_type": "lead",
+            "value": "104"
+          },
+          {
+            "action_type": "onsite_web_purchase",
+            "value": "22"
+          },
+          {
+            "action_type": "onsite_conversion.messaging_conversation_started_7d",
+            "value": "1"
+          },
+          {
+            "action_type": "custom_event_actions_add_20_s_calls",
+            "value": "24"
+          },
+          {
+            "action_type": "video_view",
+            "value": "7148"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_lead",
+            "value": "104"
+          },
+          {
+            "action_type": "offsite_lead_add_20_s_calls",
+            "value": "104"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253272650840526",
+        "ad_name": "[AULA][BRUNO][COLD] V03 - Gestão Operacional",
+        "spend": "19.38",
+        "impressions": "300",
+        "clicks": "4",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "4"
+          },
+          {
+            "action_type": "post_reaction",
+            "value": "1"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "3"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "3"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "74"
+          },
+          {
+            "action_type": "post_interaction_gross",
+            "value": "2"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "74"
+          },
+          {
+            "action_type": "post_interaction_net",
+            "value": "2"
+          },
+          {
+            "action_type": "post",
+            "value": "1"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_like",
+            "value": "1"
+          },
+          {
+            "action_type": "video_view",
+            "value": "68"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253273655260526",
+        "ad_name": "[AULA][BRUNO][COLD] V04 - Gestão Operacional",
+        "spend": "55.94",
+        "impressions": "710",
+        "clicks": "8",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "7"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "7"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "7"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "216"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "216"
+          },
+          {
+            "action_type": "video_view",
+            "value": "209"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      }
+    ],
+    "120253257675000526": [
+      {
+        "ad_id": "120253257681700526",
+        "ad_name": "[AULA][VIRADA][HOT] AD01 - Lote atual",
+        "spend": "8.33",
+        "impressions": "111",
+        "clicks": "0",
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253257681850526",
+        "ad_name": "[AULA][VIRADA][HOT] AD02 - Preço atual",
+        "spend": "251.84",
+        "impressions": "3284",
+        "clicks": "61",
+        "actions": [
+          {
+            "action_type": "web_in_store_purchase",
+            "value": "5"
+          },
+          {
+            "action_type": "omni_purchase",
+            "value": "5"
+          },
+          {
+            "action_type": "link_click",
+            "value": "39"
+          },
+          {
+            "action_type": "initiate_checkout",
+            "value": "6"
+          },
+          {
+            "action_type": "offsite_purchase_add_20_s_calls",
+            "value": "5"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "5"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_initiate_checkout",
+            "value": "6"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_custom",
+            "value": "4"
+          },
+          {
+            "action_type": "offsite_initiate_checkout_add_20_s_calls",
+            "value": "6"
+          },
+          {
+            "action_type": "post_reaction",
+            "value": "10"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "31"
+          },
+          {
+            "action_type": "onsite_web_lead",
+            "value": "16"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "31"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "55"
+          },
+          {
+            "action_type": "post_interaction_gross",
+            "value": "16"
+          },
+          {
+            "action_type": "comment",
+            "value": "1"
+          },
+          {
+            "action_type": "onsite_web_app_purchase",
+            "value": "5"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "55"
+          },
+          {
+            "action_type": "purchase",
+            "value": "5"
+          },
+          {
+            "action_type": "post_interaction_net",
+            "value": "16"
+          },
+          {
+            "action_type": "post",
+            "value": "3"
+          },
+          {
+            "action_type": "onsite_conversion.post_save",
+            "value": "2"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_comment",
+            "value": "1"
+          },
+          {
+            "action_type": "web_app_in_store_purchase",
+            "value": "5"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_save",
+            "value": "2"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_like",
+            "value": "10"
+          },
+          {
+            "action_type": "onsite_web_initiate_checkout",
+            "value": "6"
+          },
+          {
+            "action_type": "omni_initiated_checkout",
+            "value": "6"
+          },
+          {
+            "action_type": "lead",
+            "value": "16"
+          },
+          {
+            "action_type": "onsite_web_purchase",
+            "value": "5"
+          },
+          {
+            "action_type": "custom_event_actions_add_20_s_calls",
+            "value": "4"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_lead",
+            "value": "16"
+          },
+          {
+            "action_type": "offsite_lead_add_20_s_calls",
+            "value": "16"
+          },
+          {
+            "action_type": "offsite_conversion.custom.1819649455855852",
+            "value": "1"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253257682260526",
+        "ad_name": "[AULA][VIRADA][HOT] AD03 - Método",
+        "spend": "2.87",
+        "impressions": "56",
+        "clicks": "0",
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253257682480526",
+        "ad_name": "[AULA][VIRADA][HOT] AD04 - Bruno",
+        "spend": "16.83",
+        "impressions": "176",
+        "clicks": "2",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "1"
+          },
+          {
+            "action_type": "post_reaction",
+            "value": "1"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "1"
+          },
+          {
+            "action_type": "onsite_web_lead",
+            "value": "1"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "1"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "2"
+          },
+          {
+            "action_type": "post_interaction_gross",
+            "value": "1"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "2"
+          },
+          {
+            "action_type": "post_interaction_net",
+            "value": "1"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_like",
+            "value": "1"
+          },
+          {
+            "action_type": "lead",
+            "value": "1"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_lead",
+            "value": "1"
+          },
+          {
+            "action_type": "offsite_lead_add_20_s_calls",
+            "value": "1"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253272648630526",
+        "ad_name": "[AULA][BRUNO][HOT] V01 - Gestão Operacional",
+        "spend": "36.5",
+        "impressions": "404",
+        "clicks": "3",
+        "actions": [
+          {
+            "action_type": "link_click",
+            "value": "2"
+          },
+          {
+            "action_type": "post_reaction",
+            "value": "1"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "2"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "2"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "90"
+          },
+          {
+            "action_type": "post_interaction_gross",
+            "value": "2"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "90"
+          },
+          {
+            "action_type": "post_interaction_net",
+            "value": "2"
+          },
+          {
+            "action_type": "onsite_conversion.post_save",
+            "value": "1"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_save",
+            "value": "1"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_like",
+            "value": "1"
+          },
+          {
+            "action_type": "video_view",
+            "value": "86"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253272649050526",
+        "ad_name": "[AULA][BRUNO][HOT] V02 - Gestão Operacional",
+        "spend": "1132.21",
+        "impressions": "11107",
+        "clicks": "284",
+        "actions": [
+          {
+            "action_type": "web_in_store_purchase",
+            "value": "13"
+          },
+          {
+            "action_type": "omni_purchase",
+            "value": "13"
+          },
+          {
+            "action_type": "link_click",
+            "value": "235"
+          },
+          {
+            "action_type": "initiate_checkout",
+            "value": "20"
+          },
+          {
+            "action_type": "offsite_purchase_add_20_s_calls",
+            "value": "13"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "13"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_initiate_checkout",
+            "value": "20"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_custom",
+            "value": "13"
+          },
+          {
+            "action_type": "offsite_initiate_checkout_add_20_s_calls",
+            "value": "20"
+          },
+          {
+            "action_type": "post_reaction",
+            "value": "107"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "216"
+          },
+          {
+            "action_type": "onsite_web_lead",
+            "value": "63"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "216"
+          },
+          {
+            "action_type": "onsite_conversion.post_unlike",
+            "value": "1"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "3574"
+          },
+          {
+            "action_type": "post_interaction_gross",
+            "value": "177"
+          },
+          {
+            "action_type": "onsite_web_app_purchase",
+            "value": "13"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "3574"
+          },
+          {
+            "action_type": "purchase",
+            "value": "13"
+          },
+          {
+            "action_type": "post_interaction_net",
+            "value": "180"
+          },
+          {
+            "action_type": "post",
+            "value": "41"
+          },
+          {
+            "action_type": "onsite_conversion.post_unsave",
+            "value": "2"
+          },
+          {
+            "action_type": "onsite_conversion.post_save",
+            "value": "29"
+          },
+          {
+            "action_type": "web_app_in_store_purchase",
+            "value": "13"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_save",
+            "value": "27"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_like",
+            "value": "106"
+          },
+          {
+            "action_type": "onsite_web_initiate_checkout",
+            "value": "20"
+          },
+          {
+            "action_type": "omni_initiated_checkout",
+            "value": "20"
+          },
+          {
+            "action_type": "lead",
+            "value": "63"
+          },
+          {
+            "action_type": "onsite_web_purchase",
+            "value": "13"
+          },
+          {
+            "action_type": "custom_event_actions_add_20_s_calls",
+            "value": "13"
+          },
+          {
+            "action_type": "video_view",
+            "value": "3162"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_lead",
+            "value": "63"
+          },
+          {
+            "action_type": "offsite_lead_add_20_s_calls",
+            "value": "63"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253272649370526",
+        "ad_name": "[AULA][BRUNO][HOT] V03 - Gestão Operacional",
+        "spend": "101.88",
+        "impressions": "1073",
+        "clicks": "20",
+        "actions": [
+          {
+            "action_type": "web_in_store_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "omni_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "link_click",
+            "value": "19"
+          },
+          {
+            "action_type": "initiate_checkout",
+            "value": "2"
+          },
+          {
+            "action_type": "offsite_purchase_add_20_s_calls",
+            "value": "1"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_initiate_checkout",
+            "value": "2"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_custom",
+            "value": "1"
+          },
+          {
+            "action_type": "offsite_initiate_checkout_add_20_s_calls",
+            "value": "2"
+          },
+          {
+            "action_type": "post_reaction",
+            "value": "5"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "18"
+          },
+          {
+            "action_type": "onsite_web_lead",
+            "value": "10"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "18"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "231"
+          },
+          {
+            "action_type": "post_interaction_gross",
+            "value": "5"
+          },
+          {
+            "action_type": "onsite_web_app_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "231"
+          },
+          {
+            "action_type": "purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "post_interaction_net",
+            "value": "5"
+          },
+          {
+            "action_type": "web_app_in_store_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_like",
+            "value": "5"
+          },
+          {
+            "action_type": "onsite_web_initiate_checkout",
+            "value": "2"
+          },
+          {
+            "action_type": "omni_initiated_checkout",
+            "value": "2"
+          },
+          {
+            "action_type": "lead",
+            "value": "10"
+          },
+          {
+            "action_type": "onsite_web_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "custom_event_actions_add_20_s_calls",
+            "value": "1"
+          },
+          {
+            "action_type": "video_view",
+            "value": "207"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_lead",
+            "value": "10"
+          },
+          {
+            "action_type": "offsite_lead_add_20_s_calls",
+            "value": "10"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      },
+      {
+        "ad_id": "120253273655030526",
+        "ad_name": "[AULA][BRUNO][HOT] V04 - Gestão Operacional",
+        "spend": "134.72",
+        "impressions": "1217",
+        "clicks": "22",
+        "actions": [
+          {
+            "action_type": "web_in_store_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "omni_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "link_click",
+            "value": "20"
+          },
+          {
+            "action_type": "initiate_checkout",
+            "value": "1"
+          },
+          {
+            "action_type": "offsite_purchase_add_20_s_calls",
+            "value": "1"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_initiate_checkout",
+            "value": "1"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_custom",
+            "value": "1"
+          },
+          {
+            "action_type": "offsite_initiate_checkout_add_20_s_calls",
+            "value": "1"
+          },
+          {
+            "action_type": "post_reaction",
+            "value": "5"
+          },
+          {
+            "action_type": "landing_page_view",
+            "value": "18"
+          },
+          {
+            "action_type": "onsite_web_lead",
+            "value": "4"
+          },
+          {
+            "action_type": "omni_landing_page_view",
+            "value": "18"
+          },
+          {
+            "action_type": "post_engagement",
+            "value": "350"
+          },
+          {
+            "action_type": "post_interaction_gross",
+            "value": "6"
+          },
+          {
+            "action_type": "onsite_web_app_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "page_engagement",
+            "value": "350"
+          },
+          {
+            "action_type": "purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "post_interaction_net",
+            "value": "6"
+          },
+          {
+            "action_type": "onsite_conversion.post_save",
+            "value": "1"
+          },
+          {
+            "action_type": "web_app_in_store_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_save",
+            "value": "1"
+          },
+          {
+            "action_type": "onsite_conversion.post_net_like",
+            "value": "5"
+          },
+          {
+            "action_type": "onsite_web_initiate_checkout",
+            "value": "1"
+          },
+          {
+            "action_type": "omni_initiated_checkout",
+            "value": "1"
+          },
+          {
+            "action_type": "lead",
+            "value": "4"
+          },
+          {
+            "action_type": "onsite_web_purchase",
+            "value": "1"
+          },
+          {
+            "action_type": "custom_event_actions_add_20_s_calls",
+            "value": "1"
+          },
+          {
+            "action_type": "video_view",
+            "value": "324"
+          },
+          {
+            "action_type": "offsite_conversion.fb_pixel_lead",
+            "value": "4"
+          },
+          {
+            "action_type": "offsite_lead_add_20_s_calls",
+            "value": "4"
+          }
+        ],
+        "date_start": "2026-09-20",
+        "date_stop": "2026-10-13"
+      }
+    ]
+  }
+}

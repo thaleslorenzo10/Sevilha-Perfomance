@@ -98,8 +98,6 @@ async function saveToSupabase(data) {
   }
 }
 
-
-
 // Oferta propria usa prefixo deterministico compartilhado com a trava de qualificacao.
 
 const EVENTO_QUALIFICADO = 'LeadQualificado';
@@ -216,6 +214,7 @@ module.exports = async function handler(req, res) {
   if (req.method !== 'POST')   return res.status(405).json({ error: 'Method not allowed' });
 
   const body = req.body || {};
+  if (body.pagina === '/aula-gestao-operacional') return require('../lib/aula-leads').tratarAula(req, res);
   if (typeof body !== 'object' || Array.isArray(body)) return res.status(400).json({ ok: false, error: 'dados_invalidos' });
   if (ehConsultoria(body.pagina) && JSON.stringify(body).length > 24000) return res.status(413).json({ ok: false, error: 'dados_invalidos' });
   if (ehConsultoria(body.pagina)) {

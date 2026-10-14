@@ -1,0 +1,499 @@
+{
+  "verified_at": "2026-10-14T04:53:29.733256+00:00",
+  "campaigns": [
+    {
+      "id": "120253257675000526",
+      "name": "[24/09/26] [AULA] [VIRADA LOTE] [HOT] - 4 Estáticos",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "10000",
+      "adsets": {
+        "data": [
+          {
+            "id": "120253257680250526",
+            "status": "ACTIVE",
+            "effective_status": "ACTIVE",
+            "end_time": "2026-10-27T17:30:00-0300"
+          }
+        ],
+        "paging": {
+          "cursors": {
+            "before": "QVFIVEZA4RkFEOHRpbGc2d1lKdHJ2bFpGQ04zNHc1akY5MnpCVEgwSF9pZAmFScVcxdFFZAVXJBcUtFU0NfQTBiNkFCZAHpZAaDRTRkUtZAHdDWmpxaFpPTGZAmUEt3",
+            "after": "QVFIVEZA4RkFEOHRpbGc2d1lKdHJ2bFpGQ04zNHc1akY5MnpCVEgwSF9pZAmFScVcxdFFZAVXJBcUtFU0NfQTBiNkFCZAHpZAaDRTRkUtZAHdDWmpxaFpPTGZAmUEt3"
+          }
+        }
+      },
+      "ads": {
+        "data": [
+          {
+            "id": "120253272649050526",
+            "name": "[AULA][BRUNO][HOT] V02 - Gestão Operacional",
+            "status": "ACTIVE",
+            "effective_status": "ACTIVE",
+            "creative": {
+              "id": "2559912567770470",
+              "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "video_data": {
+                  "video_id": "1832385324597949",
+                  "title": "Aula de Gestão Operacional · 27/10",
+                  "message": "Como começar a organizar a operação de um escritório contábil? Bruno resume três passos: classificar clientes, mapear as entregas e definir o tempo de cada atividade. Na Aula de Gestão Operacional, ele abre o método completo em cinco etapas, com aplicação prática. Ao vivo em 27 de outubro, às 19h30 (horário de Brasília). Conheça a aula e garanta sua vaga.",
+                  "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+                    }
+                  },
+                  "image_url": "https://www.facebook.com/ads/image/?d=AQLYv_8CataLKJDRDvAFV7uU15_uDZjIBAqH3pzkUHHqqCnyidxN6vx1E47XzKunYaBMC8LNitYFohU6OP2WwXBdfbTLC0fObkBH53U9WVYDyBY-YYLLgy3eCWFJ0RkMuD_zbnKNpGK2kKn8Q8dMp6Kl",
+                  "image_hash": "231e1cf2859d6b73a382eff4c567bb86"
+                }
+              }
+            }
+          },
+          {
+            "id": "120253272649370526",
+            "name": "[AULA][BRUNO][HOT] V03 - Gestão Operacional",
+            "status": "ACTIVE",
+            "effective_status": "ACTIVE",
+            "creative": {
+              "id": "1084470937632256",
+              "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "video_data": {
+                  "video_id": "1764313131353001",
+                  "title": "Aula de Gestão Operacional · 27/10",
+                  "message": "Seu escritório cresceu, mas a operação continua reativa? Na Aula de Gestão Operacional, Bruno apresenta cinco passos para diagnosticar processos, organizar rotinas, acompanhar indicadores e melhorar a capacidade do time. Uma aula ao vivo para donos de escritórios contábeis com equipe estruturada. Dia 27 de outubro, às 19h30 (horário de Brasília). Veja os detalhes e inscreva-se.",
+                  "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+                    }
+                  },
+                  "image_url": "https://www.facebook.com/ads/image/?d=AQI51mdxwsHBnpMKSJpWFgZZSNu3d2Mqb2gB96Efosl18bQ12fwr7dHoK8EYMgZzQxZjnHESOj_Azsel4PQp8JopYVenvWrgN4YYNS-bxFtp5qt2YbMddweUEfDVxW9PlYrc1j6BtHREfx-NwXLbwsCG",
+                  "image_hash": "508324d340104d4d9422a35e606e32a5"
+                }
+              }
+            }
+          },
+          {
+            "id": "120253273655030526",
+            "name": "[AULA][BRUNO][HOT] V04 - Gestão Operacional",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "28386321654322870",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "video_data": {
+                  "video_id": "924386293729627",
+                  "title": "Eficiência operacional na contabilidade",
+                  "message": "Tecnologia sozinha não organiza a operação do escritório contábil. O resultado aparece quando processos, equipe e indicadores trabalham juntos. Na Aula de Gestão Operacional, Bruno mostra como transformar a estrutura que você já tem em uma rotina mais eficiente, com menos retrabalho e mais clareza. Ao vivo em 6 de outubro, às 19h30. Conheça a aula e garanta sua vaga.",
+                  "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  },
+                  "image_url": "https://www.facebook.com/ads/image/?d=AQL0ecMCY2uEwNtnk0knM1jJRqAXKNGLfdfBUvSQ7p6ehqAquQ0Wo-Xc8srEP0E0dHEo4K_LaGklnHzCu1EN5shIb5LaFsV5rDaRI9ReHLiLTpGNeYlhThMxWIRIDXQAa2CLOudewoNKXHvGDuDZz9uA",
+                  "image_hash": "9577ed9a0ad0ee25962f63d9906856a1"
+                }
+              }
+            }
+          },
+          {
+            "id": "120253272648630526",
+            "name": "[AULA][BRUNO][HOT] V01 - Gestão Operacional",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "1439318908265279",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "video_data": {
+                  "video_id": "1125774123354622",
+                  "title": "Aula de Gestão Operacional · 6/10",
+                  "message": "Contratar mais gente e continuar sobrecarregado? O problema pode estar na forma como o escritório distribui as entregas. Na Aula de Gestão Operacional, Bruno mostra como classificar clientes, medir o tempo das atividades e enxergar a capacidade do time. Aula ao vivo em 6 de outubro, às 19h30. Veja a programação e garanta sua vaga.",
+                  "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  },
+                  "image_url": "https://www.facebook.com/ads/image/?d=AQKglOawz1g6KXcwvzb8OcYydXfkeHoDOwsLnOAb937NidmpbJ2mc7DiSMKeypJJSvPCJv5CilsgV7ieiuLongfnQGzvgIPfqlMRG6C3SI6NfqFLSjCBPCHbYtm_aXkwPgpDbzUG3lqzpiz8kIxFtv9g",
+                  "image_hash": "fa8b8fdfcb18971f38c3e6613ba7dff8"
+                }
+              }
+            }
+          },
+          {
+            "id": "120253257681700526",
+            "name": "[AULA][VIRADA][HOT] AD01 - Lote atual",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "1801608364516153",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "link_data": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+                  "message": "O Lote 1 da Aula de Gestão Operacional ainda está aberto.\n\nSe você dirige um escritório contábil com 10+ colaboradores e quer enxergar onde a operação perde margem, conheça o método aplicado pela Sevilha.\n\nAula ao vivo em 6 de outubro, às 19h30. Inscrição no lote atual: R$ 27. Garanta sua vaga antes da virada.",
+                  "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+                  "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "image_hash": "4a5a88dc4094e956fea0a04c070c02e9",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "120253257682480526",
+            "name": "[AULA][VIRADA][HOT] AD04 - Bruno",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "1737669217529750",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "link_data": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+                  "message": "O lote muda. O método fica.\n\nBruno Silvestre vai mostrar, em uma aula ao vivo, como a Sevilha organiza a gestão operacional de escritórios contábeis: carteira, tempo, capacidade e margem.\n\nDia 6 de outubro, às 19h30. O valor atual do Lote 1 é R$ 27. Inscreva-se enquanto este lote está disponível.",
+                  "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+                  "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "image_hash": "acb8ffde903dc6e7343a3dc6468897d4",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "120253257682260526",
+            "name": "[AULA][VIRADA][HOT] AD03 - Método",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "1404629681080128",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "link_data": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+                  "message": "Contratar mais gente ou trocar de sistema não resolve, por si só, uma operação sem números.\n\nNa Aula de Gestão Operacional, a Sevilha mostra seu método para mapear a carteira, identificar gargalos e acompanhar a margem por cliente em escritórios contábeis com 10+ colaboradores.\n\n6 de outubro, às 19h30. O Lote 1 está em R$ 27. Garanta sua vaga antes da virada.",
+                  "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+                  "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "image_hash": "5127932c1100c4662bef606f9124b730",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "120253257681850526",
+            "name": "[AULA][VIRADA][HOT] AD02 - Preço atual",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "1743087310128881",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "link_data": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+                  "message": "O valor do lote atual é R$ 27.\n\nNa Aula de Gestão Operacional, você vai ver como analisar a carteira, medir o tempo das atividades e entender a capacidade real do time. Um caminho para tomar decisões com números no seu escritório contábil.\n\nAo vivo em 6 de outubro, às 19h30. Entre enquanto o Lote 1 está disponível.",
+                  "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+                  "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "image_hash": "ee59ab47ba4525493bdd35f2747833b1",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "paging": {
+          "cursors": {
+            "before": "QVFIVFRYUllETW80VGNYOEp3eDYyUHJaV1dzS3NpTU5nV3hCR2NQR1BfVXVKRkViYkJibTRrOUxLaE1LSmdZAUDNvcDdIZATF1d1lYdnE1Ykdmb0ctZAG95Rl93",
+            "after": "QVFIVFk5Q01RNXZAxN094QmIwRVo5UDdUS193RThFVHFPa29CenlWSnBnYXhMdm5UaVNVTTV6b18weDRDTjhkdG5zOE5sZAGRvb2RGdlJneDVqc0ltR2VfeVJB"
+          }
+        }
+      }
+    },
+    {
+      "id": "120253257675140526",
+      "name": "[24/09/26] [AULA] [VIRADA LOTE] [COLD] - 4 Estáticos",
+      "status": "ACTIVE",
+      "effective_status": "ACTIVE",
+      "daily_budget": "10000",
+      "adsets": {
+        "data": [
+          {
+            "id": "120253257680570526",
+            "status": "ACTIVE",
+            "effective_status": "ACTIVE",
+            "end_time": "2026-10-27T17:30:00-0300"
+          }
+        ],
+        "paging": {
+          "cursors": {
+            "before": "QVFIVDgxZA193X2JtYThyMEgxMGdDOEtoa1pBY3F5TjhTUHU5X1N5LU5LejZAKaUxTeEl4R1dVZA2taZA0V1SG1lTXNkMW80VHdNdUZAhUHJtWm9ES0ZA4cGloZA0ln",
+            "after": "QVFIVDgxZA193X2JtYThyMEgxMGdDOEtoa1pBY3F5TjhTUHU5X1N5LU5LejZAKaUxTeEl4R1dVZA2taZA0V1SG1lTXNkMW80VHdNdUZAhUHJtWm9ES0ZA4cGloZA0ln"
+          }
+        }
+      },
+      "ads": {
+        "data": [
+          {
+            "id": "120253272650360526",
+            "name": "[AULA][BRUNO][COLD] V02 - Gestão Operacional",
+            "status": "ACTIVE",
+            "effective_status": "ACTIVE",
+            "creative": {
+              "id": "1808312620185707",
+              "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "video_data": {
+                  "video_id": "1832385324597949",
+                  "title": "Aula de Gestão Operacional · 27/10",
+                  "message": "Como começar a organizar a operação de um escritório contábil? Bruno resume três passos: classificar clientes, mapear as entregas e definir o tempo de cada atividade. Na Aula de Gestão Operacional, ele abre o método completo em cinco etapas, com aplicação prática. Ao vivo em 27 de outubro, às 19h30 (horário de Brasília). Conheça a aula e garanta sua vaga.",
+                  "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+                    }
+                  },
+                  "image_url": "https://www.facebook.com/ads/image/?d=AQKUMdcDp09Amm7Y49va4jzOXgnSRMPQ9SfxrOcyMMzcY24G6xJUcHPvOg9f6ioTIryo9XeOnaOW4wGoN6pVsns4EnVtarQ92jPPSIYYOjBWLVMR42tiEyiDlbJ6LgLQGjWeJjnDAdEadoG0riwv4t0k",
+                  "image_hash": "231e1cf2859d6b73a382eff4c567bb86"
+                }
+              }
+            }
+          },
+          {
+            "id": "120253272650840526",
+            "name": "[AULA][BRUNO][COLD] V03 - Gestão Operacional",
+            "status": "ACTIVE",
+            "effective_status": "PENDING_REVIEW",
+            "creative": {
+              "id": "970562378808074",
+              "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "video_data": {
+                  "video_id": "1764313131353001",
+                  "title": "Aula de Gestão Operacional · 27/10",
+                  "message": "Seu escritório cresceu, mas a operação continua reativa? Na Aula de Gestão Operacional, Bruno apresenta cinco passos para diagnosticar processos, organizar rotinas, acompanhar indicadores e melhorar a capacidade do time. Uma aula ao vivo para donos de escritórios contábeis com equipe estruturada. Dia 27 de outubro, às 19h30 (horário de Brasília). Veja os detalhes e inscreva-se.",
+                  "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/"
+                    }
+                  },
+                  "image_url": "https://www.facebook.com/ads/image/?d=AQLQjmyb_6uUaBPtuUCrOJyJgwvNayBuO1X8BO-D4uTm2XNLWROd3bK0hLN_rJHFjqfO-zG4e0DGBfQbdpBfg_rB7HCpcyL3z5sXnoqZbHtGSx6NN83yqcllvBr2IrE-uQzqqXIm8it_tBTfwxPkbPi3",
+                  "image_hash": "508324d340104d4d9422a35e606e32a5"
+                }
+              }
+            }
+          },
+          {
+            "id": "120253272649980526",
+            "name": "[AULA][BRUNO][COLD] V01 - Gestão Operacional",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "1439318908265279",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "video_data": {
+                  "video_id": "1125774123354622",
+                  "title": "Aula de Gestão Operacional · 6/10",
+                  "message": "Contratar mais gente e continuar sobrecarregado? O problema pode estar na forma como o escritório distribui as entregas. Na Aula de Gestão Operacional, Bruno mostra como classificar clientes, medir o tempo das atividades e enxergar a capacidade do time. Aula ao vivo em 6 de outubro, às 19h30. Veja a programação e garanta sua vaga.",
+                  "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  },
+                  "image_url": "https://www.facebook.com/ads/image/?d=AQIztap6zvBgnlufcvV79Uy5TNjFSo4QoNxCOfOd3LWcIK2X72SX00u-V7Iq3QUkgruVCyd9v79ScjTMaxOCewFhribv7eukHEnGZ2eOXhQDKGlAQOH3gtqogGYcwFuhjc89jBm4IDk9ifigv013RU_S",
+                  "image_hash": "fa8b8fdfcb18971f38c3e6613ba7dff8"
+                }
+              }
+            }
+          },
+          {
+            "id": "120253273655260526",
+            "name": "[AULA][BRUNO][COLD] V04 - Gestão Operacional",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "28386321654322870",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "video_data": {
+                  "video_id": "924386293729627",
+                  "title": "Eficiência operacional na contabilidade",
+                  "message": "Tecnologia sozinha não organiza a operação do escritório contábil. O resultado aparece quando processos, equipe e indicadores trabalham juntos. Na Aula de Gestão Operacional, Bruno mostra como transformar a estrutura que você já tem em uma rotina mais eficiente, com menos retrabalho e mais clareza. Ao vivo em 6 de outubro, às 19h30. Conheça a aula e garanta sua vaga.",
+                  "link_description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  },
+                  "image_url": "https://www.facebook.com/ads/image/?d=AQKsdUMBNGb_O9GSt66RgKdh4S0_68Yol4MOr9iUez8lt5rL14Lt-NCfj-DN4HbzjI2ha8fS-gsV4V6zLxDKTRg-0VkdBiHknd3bdCDCreFqehxBYLqw6N2fk_58FCmxyH1xXeuKygNeK0iIcQOIRcfV",
+                  "image_hash": "9577ed9a0ad0ee25962f63d9906856a1"
+                }
+              }
+            }
+          },
+          {
+            "id": "120253257682810526",
+            "name": "[AULA][VIRADA][COLD] AD03 - Método",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "1404629681080128",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "link_data": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+                  "message": "Contratar mais gente ou trocar de sistema não resolve, por si só, uma operação sem números.\n\nNa Aula de Gestão Operacional, a Sevilha mostra seu método para mapear a carteira, identificar gargalos e acompanhar a margem por cliente em escritórios contábeis com 10+ colaboradores.\n\n6 de outubro, às 19h30. O Lote 1 está em R$ 27. Garanta sua vaga antes da virada.",
+                  "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+                  "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "image_hash": "5127932c1100c4662bef606f9124b730",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "120253257683080526",
+            "name": "[AULA][VIRADA][COLD] AD04 - Bruno",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "1737669217529750",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "link_data": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+                  "message": "O lote muda. O método fica.\n\nBruno Silvestre vai mostrar, em uma aula ao vivo, como a Sevilha organiza a gestão operacional de escritórios contábeis: carteira, tempo, capacidade e margem.\n\nDia 6 de outubro, às 19h30. O valor atual do Lote 1 é R$ 27. Inscreva-se enquanto este lote está disponível.",
+                  "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+                  "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "image_hash": "acb8ffde903dc6e7343a3dc6468897d4",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "120253257682540526",
+            "name": "[AULA][VIRADA][COLD] AD01 - Lote atual",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "1801608364516153",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "link_data": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+                  "message": "O Lote 1 da Aula de Gestão Operacional ainda está aberto.\n\nSe você dirige um escritório contábil com 10+ colaboradores e quer enxergar onde a operação perde margem, conheça o método aplicado pela Sevilha.\n\nAula ao vivo em 6 de outubro, às 19h30. Inscrição no lote atual: R$ 27. Garanta sua vaga antes da virada.",
+                  "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+                  "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "image_hash": "4a5a88dc4094e956fea0a04c070c02e9",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "id": "120253257682730526",
+            "name": "[AULA][VIRADA][COLD] AD02 - Preço atual",
+            "status": "PAUSED",
+            "effective_status": "PAUSED",
+            "creative": {
+              "id": "1743087310128881",
+              "object_story_spec": {
+                "page_id": "131476997004991",
+                "instagram_user_id": "17841401496577850",
+                "link_data": {
+                  "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+                  "message": "O valor do lote atual é R$ 27.\n\nNa Aula de Gestão Operacional, você vai ver como analisar a carteira, medir o tempo das atividades e entender a capacidade real do time. Um caminho para tomar decisões com números no seu escritório contábil.\n\nAo vivo em 6 de outubro, às 19h30. Entre enquanto o Lote 1 está disponível.",
+                  "name": "Aula ao vivo · 6/10 às 19h30 · R$ 27",
+                  "description": "Para donos de escritórios contábeis com 10+ colaboradores",
+                  "image_hash": "ee59ab47ba4525493bdd35f2747833b1",
+                  "call_to_action": {
+                    "type": "LEARN_MORE",
+                    "value": {
+                      "link": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional?utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "paging": {
+          "cursors": {
+            "before": "QVFIVHkzS1ZABcDdpX29BOHhPb0J4Um1Qa2w3enFGT2lGTW5UWTR5TzZARd2tZAdEU0N1FINEE0MThyTWk2MUtXUjQtbzMwMHFZAOUxUUVUydEVwcDl1cWZAZAUUV3",
+            "after": "QVFIVEY5NUM3QUlHS2RrWFdoX1YzUklycmtBSGUwVS1ZAckIwZAmJBd1RXQms5OUxLOVB6T3VPaWstd1p0R3dkX1FLZAHp4dEZAlY3h1eS1hSXh3NXVjOFhBU1ZAn"
+          }
+        }
+      }
+    }
+  ]
+}

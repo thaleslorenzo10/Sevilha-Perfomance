@@ -341,7 +341,7 @@ var SP_CONFIG = {
   // é servido com must-revalidate, mas quem visitou antes disso ainda carrega a
   // versão immutable de um ano — e um beacon congelado não registra a página nova.
   var PAGINA_ATUAL = window.location.pathname.replace(/\/$/, '') || '/';
-  var INSTRUMENTADA = PAGINAS_CONSULTORIA.indexOf(PAGINA_ATUAL) !== -1;
+  var INSTRUMENTADA = PAGINAS_CONSULTORIA.indexOf(PAGINA_ATUAL) !== -1 || PAGINA_ATUAL === '/aula-gestao-operacional';
 
   // Um par evento+valor por carregamento; visitante permite contar pessoas.
   var jaFoi = {};
