@@ -73,3 +73,7 @@ A campanha anterior iniciou mídia em17/09, com R$37,03 antes de18/09. Janela da
 | Líquido menos mídia | -R$2.996,53 | -R$1.502,56 | -R$2.999,61 |
 
 Adesão por compradores únicos:20,0% /32,1% /19,5%. Receita/mídia:0,49x /0,74x /0,62x. Sem reembolsos nos registros consultados. Em comparação com a véspera anterior:17,5% menos investimento,24,2% mais receita de produtos e14,4% menor custo por inscrição. Atual ainda parcial. Google sem gasto retornado nas contas consultadas.
+
+### Versão final entregue
+
+Deploy `dpl_FGwabzoDq4fU9Xdid8xqFizGfHvx` READY, alias de produção confirmado. Cache do módulo de eventos atualizado em dashboard.html; hash do arquivo e preservação dos outros 377 arquivos de origem conferidos. API retorna os dois produtos e zero erros de fonte; webhook sem assinatura continua401. Agent-browser na sessão `sevilha-order-bump-prod-final`, filtro90dias: cabeçalho17/09, investimento anterior R$6.483,66, módulo atualizado, sem overflow ou erros de página. Sessão encerrada após conferência. O comparativo entregue usa o corte financeiro das17h42 registrado acima.
