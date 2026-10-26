@@ -54,3 +54,22 @@ Evidência privada e manifesto/SQL do lote em `/tmp/sevilha-order-bump-20261026/
 - Meta consultada às17h34: edição atual R$4.310,60; anterior até05/10 R$5.229,88; anterior completa R$6.483,66. Google das duas contas Sevilha retornou ausência de gasto no período.
 - Validação com agent-browser em produção, sessão `sevilha-order-bump-prod`, desktop1440 e celular390: compras/receitas exibidas, ausência de overflow nos cartões e console sem erros. Navegação para edição anterior com filtro90dias confere edição completa. Favicon404 preexistente observado; APIs e assets da alteração retornaram200.
 - Os registros de gravação continuam com data de criação aproximada até eventual webhook de aprovação real. Líquido não implica liberação bancária. Não foram reenviados eventos históricos. Evidências privadas em `release/` sob o diretório já registrado.
+
+### Conferência final — 17h42 de Brasília
+
+A campanha anterior iniciou mídia em17/09, com R$37,03 antes de18/09. Janela da edição ajustada para17/09–06/10, para painel e comparativo incluírem o investimento integral. Deploy final `dpl_E2z3xuq1zy6PvmyGFLsTTecRBreF`, READY e alias confirmado; duas alterações sobre a publicação anterior, zero mudanças alheias. APIs e hashes conferidos novamente.
+
+| Indicador | Anterior até05/10 | Atual até26/10 17h42 | Anterior completa06/10 |
+|---|---:|---:|---:|
+| Investimento Meta | R$5.229,88 | R$4.315,96 | R$6.483,66 |
+| Leads / MQL | 73 /40 | 76 /41 | 104 /54 |
+| Inscrições / pessoas | 56 /55 | 54 /53 | 88 /87 |
+| Gravações / pessoas | 11 /11 | 18 /17 | 17 /17 |
+| Receita base conjunta | R$2.579,00 | R$3.204,00 | R$4.025,00 |
+| Cobrado com acréscimos | R$2.579,00 | R$3.243,81 | R$4.043,97 |
+| Líquido Kiwify | R$2.233,35 | R$2.813,40 | R$3.484,05 |
+| Custo por inscrição | R$93,39 | R$79,93 | R$73,68 |
+| Receita por inscrição | R$46,05 | R$59,33 | R$45,74 |
+| Líquido menos mídia | -R$2.996,53 | -R$1.502,56 | -R$2.999,61 |
+
+Adesão por compradores únicos:20,0% /32,1% /19,5%. Receita/mídia:0,49x /0,74x /0,62x. Sem reembolsos nos registros consultados. Em comparação com a véspera anterior:17,5% menos investimento,24,2% mais receita de produtos e14,4% menor custo por inscrição. Atual ainda parcial. Google sem gasto retornado nas contas consultadas.
