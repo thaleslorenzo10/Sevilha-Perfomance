@@ -88,9 +88,10 @@ test('compra paga usa identificadores do lead, persiste Purchase e deduplicacao'
   const writes = [];
   global.fetch = async (url, options = {}) => {
     if (options.method) writes.push({ url, body: JSON.parse(options.body) });
+    if (url.includes('rpc/sevilha_registrar_compra_kiwify')) return { ok: true, json: async () => JSON.parse(options.body).registro };
     return { ok: true, json: async () => url.includes('sevilha_leads') ? [{ id: 42, fbp: 'fb.1.1.123', user_agent: 'real-browser', page_url: 'https://example.invalid/aula' }] : [] };
   };
-  const body = { webhook_event_type: 'order_approved', order_status: 'paid', order_id: 'order-offline', charge_amount: 2700, Customer: { email: 'offline@example.invalid', full_name: 'Offline' }, TrackingParameters: { sck: 'test_aula_20261027' } };
+  const body = { webhook_event_type: 'order_approved', order_status: 'paid', order_id: 'order-offline', approved_date: '2026-10-26 10:00', Product: { product_name: 'Aula Gestão Operacional' }, charge_amount: 2700, Customer: { email: 'offline@example.invalid', full_name: 'Offline' }, TrackingParameters: { sck: 'test_aula_20261027' } };
   const sig = crypto.createHmac('sha1', 'offline').update(JSON.stringify(body)).digest('hex');
   const r = res(); await tratarKiwify({ body, url: `/api/kiwify-webhook?signature=${sig}` }, r);
   assert.equal(r.code, 200); assert.equal(events.length, before + 1);

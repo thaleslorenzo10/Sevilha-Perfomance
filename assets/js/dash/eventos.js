@@ -2,13 +2,14 @@
 /* Edições com janela própria. Falhas de uma fonte não apagam as demais. */
 (function (D) {
   const EDICOES = {
-    'aula-2026-10-27': { nome: 'Aula paga — Gestão Operacional', data: '2026-10-27', grupo: 'AULA' },
-    'cafe-2026-11-11': { nome: 'Café com Sevilha', data: '2026-11-11', grupo: 'CAFE' },
+    'aula-2026-10-27': { nome: 'Aula paga — Gestão Operacional', data: '2026-10-27', inicio: '2026-10-14', grupo: 'AULA' },
+    'cafe-2026-11-11': { nome: 'Café com Sevilha', data: '2026-11-11', inicio: '2026-10-14', grupo: 'CAFE' },
+    'aula-2026-10-06': { nome: 'Aula paga — Gestão Operacional', data: '2026-10-06', inicio: '2026-09-18', grupo: 'AULA' },
   };
   let ativa = '', since = '', until = '', versao = 0, pedido = null;
   const valor = (n, fmt = D.fmtN) => n == null ? 'n/d' : fmt(n);
   const card = (titulo, n, fmt) => `<div class="kpi-card"><div class="kpi-label">${titulo}</div><div class="kpi-value">${valor(n, fmt)}</div></div>`;
-  const cabecalho = id => `<div class="section"><h2>${EDICOES[id].nome} · ${D.fmtDia(EDICOES[id].data)}</h2><p class="nota-fonte">Separação por período de captação desde 14/10/2026. Somente dados desta edição e deste evento.</p></div>`;
+  const cabecalho = id => `<div class="section"><h2>${EDICOES[id].nome} · ${D.fmtDia(EDICOES[id].data)}</h2><p class="nota-fonte">Captação de ${D.fmtDia(EDICOES[id].inicio)} a ${D.fmtDia(EDICOES[id].data)}. O filtro global pode limitar esta janela. Somente dados desta edição e deste evento.</p></div>`;
   const painel = id => document.getElementById('painel-' + id);
 
   D.filtrarMetaEvento = function (meta, grupo) {
@@ -28,10 +29,19 @@
     return `<div class="section"><div class="section-title">Campanhas desta edição</div><div class="table-wrap"><table><thead><tr><th>Campanha</th><th class="num">Investimento</th><th class="num">Leads reais</th><th class="num">MQL</th><th class="num">Meta reporta</th></tr></thead><tbody>${corpo || '<tr><td colspan="5" class="vazio">Sem campanhas disponíveis no período desta edição</td></tr>'}</tbody></table></div></div>`;
   }
 
-  function compras(evento) {
+  function compras(evento, spend) {
     if (evento.id.startsWith('cafe')) return '<p class="nota-fonte">Vendas e receita: n/d — o Café não possui fonte própria de vendas. Deals gerais do CRM não representam vendas deste evento.</p>';
     const c = evento.compras;
-    return `<div class="kpi-groups"><div class="kpi-group"><div class="kpi-group-label">Compras da aula — Kiwify</div>${card('Compras aprovadas', c?.pagas)}${card('Receita aprovada', c?.receita, D.fmtR)}${card('Compras reembolsadas', c?.reembolsadas)}${card('Valor reembolsado', c?.valor_reembolsado, D.fmtR)}</div></div><p class="nota-fonte">Receita aprovada e reembolsos são apresentados separadamente; não representam lucro.</p>`;
+    const a = c?.aula, g = c?.gravacao, t = c?.combinado;
+    const razao = (n, d) => n == null || d == null || d <= 0 ? null : n / d;
+    const percentual = n => (n * 100).toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%';
+    const grupo = (titulo, conteudo, classe = '') => `<div class="kpi-group ${classe}"><div class="kpi-group-label">${titulo}</div>${conteudo}</div>`;
+    return '<div class="kpi-groups">'
+      + grupo('Aula ao vivo — inscrições', card('Inscrições pagas', a?.pagas ?? c?.pagas) + card('Receita da aula', a?.receita, D.fmtR) + card('Inscrições reembolsadas', a?.reembolsadas ?? c?.reembolsadas) + card('Valor reembolsado da aula', a?.valor_reembolsado, D.fmtR))
+      + grupo('Gravação — order bump', card('Gravações pagas', g?.pagas) + card('Receita da gravação', g?.receita, D.fmtR) + card('Gravações reembolsadas', g?.reembolsadas) + card('Valor reembolsado da gravação', g?.valor_reembolsado, D.fmtR) + card('Adesão à gravação', t?.adesao, percentual))
+      + grupo('Aula + gravação — resultado combinado', card('Receita total dos produtos', t?.receita, D.fmtR) + card('Total cobrado com acréscimos', t?.cobrado, D.fmtR) + card('Valor líquido Kiwify', t?.liquido, D.fmtR) + card('Receita por inscrição', t?.ticket_medio, D.fmtR) + card('Custo médio por inscrição', razao(spend, a?.pagas), D.fmtR) + card('Receita / mídia', razao(t?.receita, spend), n => n.toFixed(2).replace('.', ',') + 'x'), 'kpi-group-combinado')
+      + '</div><p class="nota-fonte">A gravação acrescenta receita e não uma nova inscrição. Receita dos produtos exclui acréscimos de parcelamento; valor líquido é após descontos da Kiwify, antes da mídia e demais custos. Adesão = compradores da gravação também inscritos ÷ compradores da aula no período. Custo médio e receita/mídia usam o investimento Meta da mesma janela e não comprovam atribuição individual. Não representam lucro.</p>'
+      + (c?.datas_aproximadas ? '<p class="nota-fonte">Datas de pagamento de parte do histórico foram aproximadas pela criação do pedido no CSV da Kiwify. A data de aprovação exata não estava no arquivo.</p>' : '');
   }
 
   function avisos(evento, erroMeta) {
@@ -45,13 +55,13 @@
   D.markupEvento = function (evento, meta, erroMeta) {
     const periodo = evento.periodo;
     const titulo = cabecalho(evento.id);
-    if (!periodo) return titulo + '<div class="section"><p>Sem interseção entre o filtro selecionado e a captação desta edição. Selecione um período entre 14/10/2026 e a data do evento.</p></div>';
+    if (!periodo) return titulo + `<div class="section"><p>Sem interseção entre o filtro selecionado e a captação desta edição. Selecione um período entre ${D.fmtDia(EDICOES[evento.id].inicio)} e ${D.fmtDia(EDICOES[evento.id].data)}.</p></div>`;
     const total = evento.leads?.total, spend = meta?.total?.spend;
     const cpl = spend == null || !total ? null : D.razao(spend, total.leads);
     return titulo + `<p class="nota-fonte">Período efetivo: ${D.fmtDia(periodo.since)} a ${D.fmtDia(periodo.until)}.</p>` + avisos(evento, erroMeta)
       + `<div class="kpi-groups"><div class="kpi-group"><div class="kpi-group-label">Resultados desta edição</div>${card('Investimento', spend, D.fmtR)}${card('Leads reais', total?.leads)}${card('MQL (10+)', total?.mql)}${card('CPL real', cpl, D.fmtR)}${card('Leads atribuídos pelo Meta', meta?.total?.leads)}</div></div>`
       + '<p class="nota-fonte">Leads reais: pessoas únicas nesta edição. A atribuição do Meta é uma medida separada; não é somada aos leads reais.</p>'
-      + compras(evento) + tabela(evento, meta);
+      + compras(evento, spend) + tabela(evento, meta);
   };
 
   async function carregar() {

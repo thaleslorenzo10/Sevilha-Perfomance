@@ -45,7 +45,7 @@ test('edição cruza somente suas campanhas e distingue atribuição, compras e 
   assert.equal(filtrado.serie[0].spend, 120);
   const html = D.markupEvento(evento, filtrado, false);
   assert.match(html, /R\$ 40,00/);
-  assert.match(html, /Compras aprovadas/);
+  assert.match(html, /Inscrições pagas/);
   assert.match(html, /Valor reembolsado/);
   assert.match(html, /14\/10\/2026 a 20\/10\/2026/);
   assert.doesNotMatch(html, /\[CAFÉ\] Outra/);

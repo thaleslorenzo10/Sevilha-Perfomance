@@ -17,10 +17,11 @@ assert.equal(aula.por_grupo.AULA.leads, 1);
 const cafe = unificar({ supabase: registros }, '2026-10-14', '2026-11-11', { ...opcoes, grupo: 'CAFE', fimEdicao: '2026-11-11' });
 assert.equal(cafe.total.leads, 1, 'mesmo contato pode participar de ofertas diferentes');
 assert.equal(unificar({ supabase: registros }, '2026-10-15', '2026-10-15', opcoes).total.leads, 0, 'subperíodo preserva dedupe da edição');
-const compra = { order_id: 'a', status: 'paid', valor_centavos: 1990, pago_em: '2026-10-14T03:00:00Z' };
-assert.deepEqual(agregarCompras([compra, compra, { ...compra, order_id: 'b', status: 'refunded', valor_centavos: 1000 },
+const compra = { order_id: 'a', status: 'paid', valor_centavos: 1990, pago_em: '2026-10-14T03:00:00Z', payload: { Product: { product_name: 'Aula Gestão Operacional' } } };
+const agregado = agregarCompras([compra, compra, { ...compra, order_id: 'b', status: 'refunded', valor_centavos: 1000 },
   { ...compra, order_id: 'fora', pago_em: '2026-10-14T02:59:59Z' }], '2026-10-14', '2026-10-27'),
-{ pagas: 1, reembolsadas: 1, receita: 19.9, valor_reembolsado: 10 });
+  esperado = { pagas: 1, reembolsadas: 1, receita: 19.9, valor_reembolsado: 10 };
+for (const [k, v] of Object.entries(esperado)) assert.equal(agregado[k], v);
 assert.equal(agregarCompras([compra, { ...compra, status: 'refunded', updated_at: '2026-10-15' }], '2026-10-14', '2026-10-27').pagas, 0);
 assert.equal(dataValida('2026-02-30'), false);
 assert.equal(dataValida('2026-13-01'), false);
@@ -33,13 +34,15 @@ async function testarFontes() {
     leads: async (since, until, escopo) => { chamadas++; return unificar({ supabase: registros }, since, until, escopo); },
     compras: async () => agregarCompras([compra], '2026-10-14', '2026-10-27'),
   };
-  const fora = await montarEventos('2026-09-01', '2026-09-30', fontes);
+  const fora = await montarEventos('2026-08-01', '2026-08-31', fontes);
   assert.equal(chamadas, 0);
   assert.equal(fora.eventos[0].periodo, null);
   assert.equal(fora.eventos[0].leads.total.leads, 0);
   const dentro = await montarEventos('2026-10-01', '2026-11-30', fontes);
   assert.deepEqual(dentro.eventos[0].periodo, { since: '2026-10-14', until: '2026-10-27' });
   assert.equal(dentro.eventos[1].compras, null);
+  assert.equal(dentro.eventos[2].id, 'aula-2026-10-06');
+  assert.deepEqual(dentro.eventos[2].periodo, { since: '2026-10-01', until: '2026-10-06' });
   const falha = await montarEventos('2026-10-14', '2026-10-14', {
     leads: async () => ({ fontes: [{ nome: 'FORMS', erro: 'offline' }] }),
     compras: async () => { throw new Error('offline'); },
