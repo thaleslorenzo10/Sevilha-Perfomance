@@ -32,7 +32,7 @@ def data(valor):
 
 def edicao(quando):
     dia = quando.date().isoformat()
-    if '2026-09-18' <= dia <= '2026-10-06':
+    if '2026-09-17' <= dia <= '2026-10-06':
         return 'aula-2026-10-06'
     if '2026-10-14' <= dia <= '2026-10-27':
         return 'aula-2026-10-27'

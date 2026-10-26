@@ -15,7 +15,7 @@ html = D.markupEvento({ ...evento, compras: null }, null, true);
 assert.ok(!html.includes('NaN') && !html.includes('Infinity'));
 assert.ok(html.includes('n/d'));
 html = D.markupEvento({ ...evento, id: 'aula-2026-10-06', periodo: { since: '2026-09-18', until: '2026-10-06' } }, null, false);
-assert.ok(html.includes('2026-09-18'));
+assert.ok(html.includes('2026-09-17'));
 html = D.markupEvento({ ...evento, id: 'cafe-2026-11-11', compras: null }, null, false);
 assert.ok(html.includes('não possui fonte própria de vendas'));
 const pagina = fs.readFileSync('dashboard.html', 'utf8');

@@ -4,7 +4,7 @@
   const EDICOES = {
     'aula-2026-10-27': { nome: 'Aula paga — Gestão Operacional', data: '2026-10-27', inicio: '2026-10-14', grupo: 'AULA' },
     'cafe-2026-11-11': { nome: 'Café com Sevilha', data: '2026-11-11', inicio: '2026-10-14', grupo: 'CAFE' },
-    'aula-2026-10-06': { nome: 'Aula paga — Gestão Operacional', data: '2026-10-06', inicio: '2026-09-18', grupo: 'AULA' },
+    'aula-2026-10-06': { nome: 'Aula paga — Gestão Operacional', data: '2026-10-06', inicio: '2026-09-17', grupo: 'AULA' },
   };
   let ativa = '', since = '', until = '', versao = 0, pedido = null;
   const valor = (n, fmt = D.fmtN) => n == null ? 'n/d' : fmt(n);

@@ -4,7 +4,7 @@
 
 **Arquitetura:** reutilizar `sevilha_compras_aula` com classificação pelo produto do payload, conservar os IDs existentes e deduplicar importação/webhook pela referência original Kiwify (`payload.order_ref`). Dados pessoais e CSV ficam fora do Git. Receitas de produto (sem juros), valor cobrado e líquido têm significados separados.
 
-**Premissas:** edições 06/10/2026 (18/09–06/10) e 27/10/2026 (14/10–27/10), Brasília. CSV sem data de aprovação: usar criação como aproximação explicitamente marcada; atualização pode ocorrer dias depois. Gravação custa R$97 e não é nova inscrição. Testes, desconhecidos e Clube não entram na Aula. Histórico importado não dispara CAPI/CRM. Publicação aguarda autorização aplicável, com resultado local pronto e validado.
+**Premissas:** edições 06/10/2026 (17/09–06/10) e 27/10/2026 (14/10–27/10), Brasília. CSV sem data de aprovação: usar criação como aproximação explicitamente marcada; atualização pode ocorrer dias depois. Gravação custa R$97 e não é nova inscrição. Testes, desconhecidos e Clube não entram na Aula. Histórico importado não dispara CAPI/CRM. Publicação aguarda autorização aplicável, com resultado local pronto e validado.
 
 ## Tarefas e propriedade
 
@@ -28,3 +28,5 @@ Implementação e validações concluídas pelo coordenador; subagentes sem ferr
 ## Conclusão autorizada
 
 Publicação autorizada pelo usuário, deploy READY e alias verificados. Sete arquivos publicados sem alterações alheias.35 gravações importadas, readback e dashboard de produção confirmados; CAPI/CRM históricos não reenviados. Detalhes no registro operacional.
+
+Ajuste final: campanha anterior já gastou R$37,03 em17/09; início da edição no painel passou a17/09 para incluir todo o investimento antes da primeira compra.
