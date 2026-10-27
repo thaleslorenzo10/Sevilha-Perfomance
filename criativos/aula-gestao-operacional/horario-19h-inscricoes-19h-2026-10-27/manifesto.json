@@ -55,5 +55,6 @@
     "operation": "../../../docs/operacoes/aula-reabertura27-2026-10-27.md",
     "price_47_ads_status": "PAUSED",
     "generic_last_day_ads_status": "ACTIVE"
-  }
+  },
+  "additional_ads_manifest": "../melhores-27-2026-10-27/manifesto.json"
 }

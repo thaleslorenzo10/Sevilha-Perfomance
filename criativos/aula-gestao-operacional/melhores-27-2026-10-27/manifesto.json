@@ -1,0 +1,141 @@
+{
+  "date": "2026-10-27",
+  "timezone": "America/Sao_Paulo",
+  "price_centavos": 2700,
+  "recording_optional_centavos": 9700,
+  "event_start": "2026-10-27T19:00:00-03:00",
+  "enrollment_end": "2026-10-27T19:00:00-03:00",
+  "account": "act_1676714556216146",
+  "campaign": "120253647076340526",
+  "adsets": {
+    "HOT": "120253647083560526",
+    "COLD": "120253647099740526"
+  },
+  "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+  "destination": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional/",
+  "ads": [
+    {
+      "key": "calendario02",
+      "temps": [
+        "HOT"
+      ],
+      "file": "calendario-02-19h.png",
+      "title": "É hoje às 19h | Aula por R$ 27",
+      "message": "Reserve o horário: hoje, 27/10, às 19h (Brasília). Participe da Aula de Gestão Operacional da Sevilha e acompanhe o método apresentado ao vivo. Ingresso por R$ 27. Inscrições até 19h. Gravação opcional por R$ 97, vendida separadamente."
+    },
+    {
+      "key": "margem04",
+      "temps": [
+        "HOT"
+      ],
+      "file": "margem-04-19h.png",
+      "title": "Do processo à margem | Aula por R$ 27",
+      "message": "Do processo à margem: conheça o método de Gestão Operacional da Sevilha para escritórios contábeis. A aula é hoje, 27/10, às 19h (Brasília). Ingresso por R$ 27. Inscrições até 19h. Gravação opcional por R$ 97, vendida separadamente."
+    },
+    {
+      "key": "brunoV02",
+      "temps": [
+        "HOT",
+        "COLD"
+      ],
+      "title": "Aula de Gestão Operacional | Hoje às 19h | R$ 27",
+      "message": "Como começar a organizar a operação de um escritório contábil? Bruno apresenta os passos para classificar clientes, mapear entregas e definir o tempo de cada atividade. Hoje, 27/10, às 19h (Brasília), ele abre o método completo ao vivo. Ingresso por R$ 27. Inscrições até 19h. Gravação opcional por R$ 97, vendida separadamente."
+    }
+  ],
+  "status": "publicado_dois_genericos_active_quatro_novos_processamento_revisao",
+  "historical_evidence": [
+    {
+      "date": "2026-10-06",
+      "ad_id": "120253272649050526",
+      "ad_name": "[AULA][BRUNO][HOT] V02 - Gestão Operacional",
+      "spend": "87.08",
+      "meta_attributed_purchases": 3,
+      "cpa": 29.03
+    },
+    {
+      "date": "2026-10-06",
+      "ad_id": "120253272650360526",
+      "ad_name": "[AULA][BRUNO][COLD] V02 - Gestão Operacional",
+      "spend": "84.06",
+      "meta_attributed_purchases": 2,
+      "cpa": 42.03
+    },
+    {
+      "date": "2026-10-06",
+      "ad_id": "120253422699620526",
+      "ad_name": "[AULA][AULA_HOJE] 01 |HOT|20261006",
+      "spend": "418.8",
+      "meta_attributed_purchases": 13,
+      "cpa": 32.22
+    },
+    {
+      "date": "2026-10-06",
+      "ad_id": "120253422700110526",
+      "ad_name": "[AULA][AULA_HOJE] 02 |HOT|20261006",
+      "spend": "43.3",
+      "meta_attributed_purchases": 2,
+      "cpa": 21.65
+    },
+    {
+      "date": "2026-10-06",
+      "ad_id": "120253422701050526",
+      "ad_name": "[AULA][AULA_HOJE] 04 |HOT|20261006",
+      "spend": "51.64",
+      "meta_attributed_purchases": 2,
+      "cpa": 25.82
+    }
+  ],
+  "media_verification": {
+    "method": "Artes02/04editadas por imagegen, mantendo layout; 19h e27/10 conferidos visualmente. VideoV02 baixado eSHAigual ao arquivo integralmente revisado em14/10, sem data/preco antigos.",
+    "video_id": "1832385324597949",
+    "video_sha256": "2edd5d695c37d849b0bf4c7b12facc1eb396275ffcdf842450d90833690edc96",
+    "image_sha256": {
+      "margem-04-19h.png": "fbca1d80a999c345de7dd40ea2376f592ff176ed77f8ff5c47de22c86ef55a55",
+      "calendario-02-19h.png": "97438338cd48babffc10c031b9e8b5ef8fe0ece3d85d1e7d2c133238e03f268a"
+    }
+  },
+  "configured_at": "2026-10-27T18:20:15.117605+00:00",
+  "remote_ads": [
+    {
+      "id": "120253730936720526",
+      "name": "[AULA_OUT26] [VENDAS] [HOT] [FECHAMENTO] - R$27 | calendario02",
+      "status": "ACTIVE",
+      "effective_status": "PENDING_REVIEW",
+      "adset_id": "120253647083560526",
+      "creative": {
+        "id": "4363141140486959"
+      }
+    },
+    {
+      "id": "120253730943550526",
+      "name": "[AULA_OUT26] [VENDAS] [HOT] [FECHAMENTO] - R$27 | margem04",
+      "status": "ACTIVE",
+      "effective_status": "PENDING_REVIEW",
+      "adset_id": "120253647083560526",
+      "creative": {
+        "id": "1413893520813234"
+      }
+    },
+    {
+      "id": "120253730962370526",
+      "name": "[AULA_OUT26] [VENDAS] [HOT] [FECHAMENTO] - R$27 | brunoV02",
+      "status": "ACTIVE",
+      "effective_status": "IN_PROCESS",
+      "adset_id": "120253647083560526",
+      "creative": {
+        "id": "2328567171252255"
+      }
+    },
+    {
+      "id": "120253730968570526",
+      "name": "[AULA_OUT26] [VENDAS] [COLD] [FECHAMENTO] - R$27 | brunoV02",
+      "status": "ACTIVE",
+      "effective_status": "IN_PROCESS",
+      "adset_id": "120253647099740526",
+      "creative": {
+        "id": "2328567171252255"
+      }
+    }
+  ],
+  "rollback": "Pausar somente os quatro novos IDs em remote_ads. Preservar dois genericos; nao reativar anuncios47 ou campanhas historicas."
+}
