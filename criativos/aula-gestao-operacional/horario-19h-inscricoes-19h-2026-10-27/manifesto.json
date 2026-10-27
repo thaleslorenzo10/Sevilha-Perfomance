@@ -39,13 +39,21 @@
   "end": "2026-10-27T19:00:00-03:00",
   "destination": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional",
   "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
-  "status": "oito_anuncios_atualizados_dois_ativos_seis_agendados",
+  "status": "dois_genericos_ativos_seis_47_pausados_rollback27",
   "checks": [
-    "Os três anúncios com R$47 só ativam após07h e página/checkout47; a peça sem preço permanece ativa após revisão.",
+    "Historico: anuncios R$47 ativaram apos07h; os seis foram pausados no retorno a R$27. Dois genericos sem preco continuam ativos ate19h.",
     "Preservar verba e públicos existentes.",
     "Não tratar gravação como inclusa no ingresso."
   ],
   "checkout_47_verificado": "https://pay.kiwify.com.br/ldRFvBr",
   "event_start": "2026-10-27T19:00:00-03:00",
-  "supersedes": "../horario-19h-2026-10-27/manifesto.json"
+  "supersedes": "../horario-19h-2026-10-27/manifesto.json",
+  "pricing_override": {
+    "price_centavos": 2700,
+    "checkout": "https://pay.kiwify.com.br/cGv131E",
+    "reason": "Retorno autorizado pelo usuario diante de CPA R$100,06 no corte de 27/10 as 14h12 Brasilia.",
+    "operation": "../../../docs/operacoes/aula-reabertura27-2026-10-27.md",
+    "price_47_ads_status": "PAUSED",
+    "generic_last_day_ads_status": "ACTIVE"
+  }
 }
