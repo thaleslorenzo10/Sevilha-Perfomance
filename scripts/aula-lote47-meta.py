@@ -18,7 +18,7 @@ SETS = {'HOT': '120253647083560526', 'COLD': '120253647099740526'}
 LANDING = 'https://sevilha-perfomance.vercel.app/aula-gestao-operacional/'
 UTM = 'utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}'
 START = datetime.fromisoformat('2026-10-27T10:00:00+00:00')
-END = datetime.fromisoformat('2026-10-27T20:30:00+00:00')
+END = datetime.fromisoformat('2026-10-27T22:00:00+00:00')
 STATE = Path(os.environ.get('SEVILHA_LOTE47_STATE', '/home/codex/.local/state/sevilha/aula-lote47-20261027'))
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -103,7 +103,7 @@ def prepare(manifest):
         payload = {'name': '[AULA_OUT26] Lote47 ' + key, 'url_tags': UTM,
                    'object_story_spec': {'page_id': '131476997004991', 'instagram_user_id': '17841401496577850',
                        'link_data': {'link': LANDING, 'message': item['message'], 'name': item['title'],
-                           'description': '27/10 · 19h30 Brasília · Inscrições até17h30', 'image_hash': image_hash,
+                           'description': '27/10 · 19h Brasília · Inscrições até19h', 'image_hash': image_hash,
                            'call_to_action': {'type': 'SIGN_UP', 'value': {'link': LANDING}}}}}
         creative_id = create_once(state, 'creative:' + key, 'adcreatives', payload)
         actual = api(creative_id, {'fields': 'id,url_tags,object_story_spec'})

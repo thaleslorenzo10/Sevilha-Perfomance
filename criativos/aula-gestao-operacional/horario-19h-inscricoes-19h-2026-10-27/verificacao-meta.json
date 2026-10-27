@@ -1,0 +1,79 @@
+{
+  "event_start": "2026-10-27T19:00:00-03:00",
+  "enrollment_end": "2026-10-27T19:00:00-03:00",
+  "lote47_start": "2026-10-27T07:00:00-03:00",
+  "campaign_id": "120253647076340526",
+  "budget_changes": 0,
+  "lifetime_total_brl": 2000,
+  "ads_updated": [
+    {
+      "id": "120253719759750526",
+      "name": "[AULA_OUT26] [VENDAS] [HOT] [FECHAMENTO] - R$47 | hoje",
+      "creative_id": "1351435373586160",
+      "status": "PAUSED"
+    },
+    {
+      "id": "120253719759810526",
+      "name": "[AULA_OUT26] [VENDAS] [COLD] [FECHAMENTO] - R$47 | hoje",
+      "creative_id": "1351435373586160",
+      "status": "PAUSED"
+    },
+    {
+      "id": "120253719760380526",
+      "name": "[AULA_OUT26] [VENDAS] [HOT] [FECHAMENTO] - R$47 | operacao",
+      "creative_id": "1661216378753805",
+      "status": "PAUSED"
+    },
+    {
+      "id": "120253719760510526",
+      "name": "[AULA_OUT26] [VENDAS] [COLD] [FECHAMENTO] - R$47 | operacao",
+      "creative_id": "1661216378753805",
+      "status": "PAUSED"
+    },
+    {
+      "id": "120253719760850526",
+      "name": "[AULA_OUT26] [VENDAS] [HOT] [FECHAMENTO] - R$47 | metodo",
+      "creative_id": "1979811376029961",
+      "status": "PAUSED"
+    },
+    {
+      "id": "120253719760890526",
+      "name": "[AULA_OUT26] [VENDAS] [COLD] [FECHAMENTO] - R$47 | metodo",
+      "creative_id": "1979811376029961",
+      "status": "PAUSED"
+    },
+    {
+      "id": "120253647129140526",
+      "name": "[AULA][É HOJE][HOT] 01 · 27/10/2026",
+      "creative_id": "1775736370394466",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "120253647138130526",
+      "name": "[AULA][É HOJE][COLD] 01 · 27/10/2026",
+      "creative_id": "1775736370394466",
+      "status": "ACTIVE"
+    }
+  ],
+  "last_day_readback": [
+    {
+      "id": "120253647129140526",
+      "name": "[AULA][É HOJE][HOT] 01 · 27/10/2026",
+      "status": "ACTIVE",
+      "effective_status": "IN_PROCESS",
+      "creative": {
+        "id": "1775736370394466"
+      }
+    },
+    {
+      "id": "120253647138130526",
+      "name": "[AULA][É HOJE][COLD] 01 · 27/10/2026",
+      "status": "ACTIVE",
+      "effective_status": "IN_PROCESS",
+      "creative": {
+        "id": "1775736370394466"
+      }
+    }
+  ],
+  "activation_note": "ACTIVE é configuração; consultar effective_status para processamento/análise."
+}

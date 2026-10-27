@@ -8,7 +8,7 @@ import subprocess
 
 STATE = Path(os.environ.get('SEVILHA_LOTE47_STATE', '/home/codex/.local/state/sevilha/aula-lote47-20261027'))
 START = datetime.fromisoformat('2026-10-27T10:00:00+00:00')
-END = datetime.fromisoformat('2026-10-27T20:30:00+00:00')
+END = datetime.fromisoformat('2026-10-27T22:00:00+00:00')
 TAG = '# SEVILHA_AULA_LOTE47_20261027'
 
 

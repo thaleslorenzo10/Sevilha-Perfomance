@@ -1,0 +1,51 @@
+{
+  "ads": [
+    {
+      "key": "hoje",
+      "file": "01-hoje-19h.png",
+      "title": "É hoje: Aula Gestão Operacional | R$ 47",
+      "message": "A aula é hoje. Bruno Silvestre abre o método de gestão operacional da Sevilha, etapa por etapa, para escritórios contábeis.\n\nHoje, 27/10, às 19h (Brasília). Inscrições até 19h. Ingresso da aula: R$ 47. Gravação opcional por R$ 97 à parte.\n\nInscreva-se para participar ao vivo.",
+      "activation": "2026-10-27T07:00:00-03:00",
+      "activation_not_before": "2026-10-27T07:00:00-03:00"
+    },
+    {
+      "key": "operacao",
+      "file": "02-operacao-19h.png",
+      "title": "Coloque a operação em pauta | R$ 47",
+      "message": "Prazos, retrabalho e correria fazem parte das conversas do seu escritório? Na Aula Gestão Operacional, conheça o método da Sevilha para mapear entregas, tempos e capacidade do time.\n\nHoje, 27/10, às 19h (Brasília). Inscrições até 19h. Ingresso da aula: R$ 47. Gravação opcional por R$ 97 à parte.\n\nParticipe ao vivo com Bruno Silvestre.",
+      "activation": "2026-10-27T07:00:00-03:00",
+      "activation_not_before": "2026-10-27T07:00:00-03:00"
+    },
+    {
+      "key": "metodo",
+      "file": "03-metodo-19h.png",
+      "title": "Método aberto e 5 planilhas | R$ 47",
+      "message": "2h10 de aula ao vivo, método aberto etapa por etapa e as 5 planilhas usadas pela Sevilha em projetos com escritórios contábeis. Com Bruno Silvestre.\n\nHoje, 27/10, às 19h (Brasília). Inscrições até 19h. Ingresso da aula: R$ 47. Gravação opcional por R$ 97 à parte.\n\nConheça o método e leve as planilhas para aplicar na sua operação.",
+      "activation": "2026-10-27T07:00:00-03:00",
+      "activation_not_before": "2026-10-27T07:00:00-03:00"
+    },
+    {
+      "key": "ultimo-dia",
+      "file": "ultimo-dia-19h.png",
+      "title": "A aula é hoje às 19h | Gestão Operacional",
+      "message": "É hoje, 27/10, às 19h (horário de Brasília). Bruno Silvestre abre o método de gestão operacional da Sevilha para escritórios contábeis. Inscrições até 19h. Participe ao vivo. A gravação é opcional e vendida separadamente.",
+      "activation": "agora",
+      "activation_not_before": "2026-10-27T00:00:00-03:00"
+    }
+  ],
+  "date": "2026-10-27",
+  "timezone": "America/Sao_Paulo",
+  "activation_not_before": "2026-10-27T07:00:00-03:00",
+  "end": "2026-10-27T19:00:00-03:00",
+  "destination": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional",
+  "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+  "status": "oito_anuncios_atualizados_dois_ativos_seis_agendados",
+  "checks": [
+    "Os três anúncios com R$47 só ativam após07h e página/checkout47; a peça sem preço permanece ativa após revisão.",
+    "Preservar verba e públicos existentes.",
+    "Não tratar gravação como inclusa no ingresso."
+  ],
+  "checkout_47_verificado": "https://pay.kiwify.com.br/ldRFvBr",
+  "event_start": "2026-10-27T19:00:00-03:00",
+  "supersedes": "../horario-19h-2026-10-27/manifesto.json"
+}

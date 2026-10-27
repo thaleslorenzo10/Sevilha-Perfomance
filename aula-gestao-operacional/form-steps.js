@@ -36,7 +36,7 @@
   'use strict';
   /* Destino do agendamento — trocar o número aqui se mudar o atendimento. */
   var WHATSAPP_URL = 'https://wa.me/5531999491532?text=' +
-    encodeURIComponent('Olá! Preciso de ajuda para me inscrever na Aula de Gestão Operacional de 27/10/2026 às 19h30.');
+    encodeURIComponent('Olá! Preciso de ajuda para me inscrever na Aula de Gestão Operacional de 27/10/2026 às 19h.');
   /* Oferta para quem está abaixo do porte. /campanha é a entrada do rodízio do
      Clube da Performance — ver api/ab.js. Não é `/` para a visita entrar no
      teste A/B daquela oferta como qualquer outra. */

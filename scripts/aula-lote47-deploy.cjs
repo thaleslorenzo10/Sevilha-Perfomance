@@ -10,7 +10,7 @@ const target = 'aula-gestao-operacional/index.html';
 const alias = 'sevilha-perfomance.vercel.app';
 const project = { projectId: 'prj_POvAf5LHu471jwcKljqgOSAS1pdd', orgId: 'team_QFKNlEWIaRADsF4B2Ci6eaE7', name: 'sevilha-perfomance' };
 const now = Date.now();
-assert(now >= Date.parse('2026-10-27T10:00:00Z') && now < Date.parse('2026-10-27T20:30:00Z'), 'Fora da janela autorizada.');
+assert(now >= Date.parse('2026-10-27T10:00:00Z') && now < Date.parse('2026-10-27T22:00:00Z'), 'Fora da janela autorizada.');
 assert(process.argv[2] === '--apply', 'Exige --apply');
 const approval = JSON.parse(fs.readFileSync(path.join(state, 'checkout-approved.json')));
 assert(approval.price_centavos === 4700 && /^https:\/\/pay\.kiwify\.com\.br\/[A-Za-z0-9]+$/.test(approval.checkout_url));
@@ -77,7 +77,7 @@ async function main() {
     const settings = Object.fromEntries(Object.entries(base.projectSettings || {}).filter(([key]) => ['buildCommand', 'devCommand', 'framework', 'installCommand', 'outputDirectory', 'nodeVersion'].includes(key)));
     evidence = { state: 'creating', base: base.id, expected_hash: digest(html), files };
     save('deployment', evidence);
-    assert(Date.now() < Date.parse('2026-10-27T20:30:00Z'), 'Inscrições encerradas; não publicar.');
+    assert(Date.now() < Date.parse('2026-10-27T22:00:00Z'), 'Inscrições encerradas; não publicar.');
     assert.equal((await api('/v13/deployments/' + alias)).id, base.id, 'Produção alterada durante preparo; revisar.');
     deployment = await api('/v13/deployments', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ...config, name: project.name, project: project.projectId, target: 'production', files: sourceFiles, projectSettings: settings, meta: { purpose: 'aula-lote47-20261027', sourceDeployment: base.id } }) });
     evidence.id = deployment.id;

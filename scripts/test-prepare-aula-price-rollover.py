@@ -33,8 +33,16 @@ class PriceRolloverTest(unittest.TestCase):
         self.assertIn('precoCentavos: 4700', result)
         self.assertIn(f"checkoutUrl: '{self.url}'", result)
         self.assertEqual(result.count('data-preco>R$ 47'), 3)
-        self.assertIn("encerramento: '2026-10-27T17:30:00-03:00'", result)
+        self.assertIn("encerramento: '2026-10-27T19:00:00-03:00'", result)
         self.assertEqual(result, rollover.prepare_html(result, self.url, 4700, self.cutoff))
+
+    def test_extended_window_at_1830_and_closed_at_19(self):
+        extended = datetime.fromisoformat('2026-10-27T18:30:00-03:00')
+        result = rollover.prepare_html(self.source, self.url, 4700, extended)
+        self.assertIn("precoCentavos: 4700", result)
+        with self.assertRaisesRegex(ValueError, 'encerradas'):
+            rollover.prepare_html(self.source, self.url, 4700,
+                                  datetime.fromisoformat('2026-10-27T19:00:00-03:00'))
 
     def test_rejects_closed_enrollment_and_partial_source(self):
         with self.assertRaisesRegex(ValueError, 'encerradas'):

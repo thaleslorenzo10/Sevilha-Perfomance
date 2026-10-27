@@ -15,10 +15,10 @@ spec.loader.exec_module(module)
 class GuardTest(unittest.TestCase):
     def test_date_limits(self):
         self.assertEqual(module.START.hour, 10)
-        self.assertEqual(module.END.hour, 20)
-        self.assertEqual(module.END.minute, 30)
+        self.assertEqual(module.END.hour, 22)
+        self.assertEqual(module.END.minute, 0)
         self.assertEqual(module.START.astimezone(timezone.utc).day, 27)
-        for stamp in ['2026-10-27T09:59:59+00:00', '2026-10-27T20:30:00+00:00', '2027-10-27T10:00:00+00:00']:
+        for stamp in ['2026-10-27T09:59:59+00:00', '2026-10-27T22:00:00+00:00', '2027-10-27T10:00:00+00:00']:
             class Clock:
                 @staticmethod
                 def now(tz):

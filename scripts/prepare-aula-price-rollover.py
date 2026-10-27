@@ -7,7 +7,7 @@ import re
 from urllib.parse import urlparse
 
 CUTOFF = datetime.fromisoformat('2026-10-27T07:00:00-03:00')
-CLOSE = datetime.fromisoformat('2026-10-27T17:30:00-03:00')
+CLOSE = datetime.fromisoformat('2026-10-27T19:00:00-03:00')
 SOURCE = Path(__file__).resolve().parents[1] / 'aula-gestao-operacional/index.html'
 
 
@@ -32,7 +32,7 @@ def prepare_html(html, checkout_url, verified_price_centavos, now):
         return html
     if (html.count('R$ 27') != 5 or html.count('precoCentavos: 2700') != 1
             or html.count("nome: 'Lote 1'") != 1
-            or "encerramento: '2026-10-27T17:30:00-03:00'" not in html):
+            or "encerramento: '2026-10-27T19:00:00-03:00'" not in html):
         raise ValueError('Fonte mudou; conferir configuração e todos os preços.')
     html, replacements = re.subn(
         r"checkoutUrl: 'https://pay\.kiwify\.com\.br/[A-Za-z0-9]+'[^\n]*",
