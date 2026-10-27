@@ -96,3 +96,11 @@ Fluxo: `aula-lote47-run.py` → checker atual do checkout → `aula-lote47-deplo
 Revisão independente corrigiu identidade da gravação no gate (oferta6m8nUav, nome exato/duplicado produto+oferta, BRL9700), concorrência com flock e janela longa de drift antes do POST. Doze testes offline passaram (4gerador+3checker+5guard), sintaxe Python/Node e lint direcionado conferidos. Nenhuma compra/formulário de teste ou mensagem externa enviada. Página de produção permanece27 até oferta válida e horário autorizado.
 
 Verificação final de qualidade: `npm run check:toolkit` exit0, sem erros,770avisos na raiz e2 no pacote aninhado. Lint direcionado do novo deploy:0erros/0avisos. Sem build canônico na raiz estática.
+
+## Oferta recebida e agenda liberada — 27/10, 00h30 Brasília
+
+O usuário forneceu https://pay.kiwify.com.br/ldRFvBr. Verificação no navegador confirmou produto principal f1e55370-b1d3-11f1-8d3b-5d78e00f2487, BRL, oferta ativa, preço4700 em checkout/carrinho/localização e gravação específica6m8nUav por9700. Nenhuma compra realizada. `checkout-approved.json` privado preenchido e lido de volta; agenda liberada para27/10 às07hBRT (10hUTC), sem publicação antecipada.
+
+PATH do cron corrigido para incluir /home/codex/.local/node/node24/bin, onde estão Node e agent-browser. Verificador do runtime imutável passou também sob ambiente mínimo equivalente ao cron. Hashes das cinco fontes revisadas conferidos com os arquivos agendados. Runner executado antes do corte e não publicou nem ativou. Serviço cron ativo e linha identificada presente, demais agendas preservadas.
+
+HTML real de produção consultado ainda27 e compatível com o gerador. Simulação local do corte07h usando esse HTML mostrou47 nos três preços, novo checkout e encerramento17h30 preservado. Preview conferido no agent-browser, sessão sevilha-lote47-preview, desktop1280 e celular390; screenshots lidos, sem overflow ou erros de página. Não foi enviado formulário. Servidor de preview e sessão encerrados. Produção permanece27 até a execução futura; conclusão da publicação e entrega dos anúncios só pode ser afirmada após07h com recibos.

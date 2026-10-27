@@ -25,10 +25,11 @@
   "end": "2026-10-27T17:30:00-03:00",
   "destination": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional",
   "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
-  "status": "assets_validados_publicacao_pendente",
+  "status": "anuncios_criados_pausados_ativacao_agendada",
   "checks": [
     "Ativar somente após checkout e landing efetivamente cobrando R$ 47.",
     "Preservar verba e públicos existentes.",
     "Não tratar gravação como inclusa no ingresso."
-  ]
+  ],
+  "checkout_47_verificado": "https://pay.kiwify.com.br/ldRFvBr"
 }
