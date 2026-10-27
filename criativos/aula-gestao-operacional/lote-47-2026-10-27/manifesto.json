@@ -1,0 +1,34 @@
+{
+  "ads": [
+    {
+      "key": "hoje",
+      "file": "01-hoje.png",
+      "title": "É hoje: Aula Gestão Operacional | R$ 47",
+      "message": "A aula é hoje. Bruno Silvestre abre o método de gestão operacional da Sevilha, etapa por etapa, para escritórios contábeis.\n\nHoje, 27/10, às 19h30 (Brasília). Inscrições até 17h30. Ingresso da aula: R$ 47. Gravação opcional por R$ 97 à parte.\n\nInscreva-se para participar ao vivo."
+    },
+    {
+      "key": "operacao",
+      "file": "02-operacao.png",
+      "title": "Coloque a operação em pauta | R$ 47",
+      "message": "Prazos, retrabalho e correria fazem parte das conversas do seu escritório? Na Aula Gestão Operacional, conheça o método da Sevilha para mapear entregas, tempos e capacidade do time.\n\nHoje, 27/10, às 19h30 (Brasília). Inscrições até 17h30. Ingresso da aula: R$ 47. Gravação opcional por R$ 97 à parte.\n\nParticipe ao vivo com Bruno Silvestre."
+    },
+    {
+      "key": "metodo",
+      "file": "03-metodo.png",
+      "title": "Método aberto e 5 planilhas | R$ 47",
+      "message": "2h10 de aula ao vivo, método aberto etapa por etapa e as 5 planilhas usadas pela Sevilha em projetos com escritórios contábeis. Com Bruno Silvestre.\n\nHoje, 27/10, às 19h30 (Brasília). Inscrições até 17h30. Ingresso da aula: R$ 47. Gravação opcional por R$ 97 à parte.\n\nConheça o método e leve as planilhas para aplicar na sua operação."
+    }
+  ],
+  "date": "2026-10-27",
+  "timezone": "America/Sao_Paulo",
+  "activation_not_before": "2026-10-27T07:00:00-03:00",
+  "end": "2026-10-27T17:30:00-03:00",
+  "destination": "https://sevilha-perfomance.vercel.app/aula-gestao-operacional",
+  "url_tags": "utm_source={{placement}}&utm_medium={{adset.name}}&utm_campaign={{campaign.name}}&utm_content={{ad.name}}",
+  "status": "assets_validados_publicacao_pendente",
+  "checks": [
+    "Ativar somente após checkout e landing efetivamente cobrando R$ 47.",
+    "Preservar verba e públicos existentes.",
+    "Não tratar gravação como inclusa no ingresso."
+  ]
+}

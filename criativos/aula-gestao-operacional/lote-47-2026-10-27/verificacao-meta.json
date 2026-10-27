@@ -1,0 +1,88 @@
+{
+  "at": "2026-10-27T03:10:09.308160+00:00",
+  "campaign": {
+    "id": "120253647076340526",
+    "name": "[21/10/26] [AULA] [É HOJE] [27/10]",
+    "status": "ACTIVE",
+    "effective_status": "ACTIVE",
+    "spend_cap": "200000"
+  },
+  "adsets": {
+    "HOT": {
+      "id": "120253647083560526",
+      "lifetime_budget": "100000",
+      "start_time": "2026-10-27T00:00:00-0300",
+      "end_time": "2026-10-27T17:30:00-0300"
+    },
+    "COLD": {
+      "id": "120253647099740526",
+      "lifetime_budget": "100000",
+      "start_time": "2026-10-27T00:00:00-0300",
+      "end_time": "2026-10-27T17:30:00-0300"
+    }
+  },
+  "ads": [
+    {
+      "id": "120253719759750526",
+      "name": "[AULA_OUT26] [VENDAS] [HOT] [FECHAMENTO] - R$47 | hoje",
+      "status": "PAUSED",
+      "effective_status": "IN_PROCESS",
+      "adset_id": "120253647083560526",
+      "creative": {
+        "id": "1636261051201041"
+      }
+    },
+    {
+      "id": "120253719759810526",
+      "name": "[AULA_OUT26] [VENDAS] [COLD] [FECHAMENTO] - R$47 | hoje",
+      "status": "PAUSED",
+      "effective_status": "IN_PROCESS",
+      "adset_id": "120253647099740526",
+      "creative": {
+        "id": "1636261051201041"
+      }
+    },
+    {
+      "id": "120253719760380526",
+      "name": "[AULA_OUT26] [VENDAS] [HOT] [FECHAMENTO] - R$47 | operacao",
+      "status": "PAUSED",
+      "effective_status": "IN_PROCESS",
+      "adset_id": "120253647083560526",
+      "creative": {
+        "id": "1821053232268028"
+      }
+    },
+    {
+      "id": "120253719760510526",
+      "name": "[AULA_OUT26] [VENDAS] [COLD] [FECHAMENTO] - R$47 | operacao",
+      "status": "PAUSED",
+      "effective_status": "IN_PROCESS",
+      "adset_id": "120253647099740526",
+      "creative": {
+        "id": "1821053232268028"
+      }
+    },
+    {
+      "id": "120253719760850526",
+      "name": "[AULA_OUT26] [VENDAS] [HOT] [FECHAMENTO] - R$47 | metodo",
+      "status": "PAUSED",
+      "effective_status": "IN_PROCESS",
+      "adset_id": "120253647083560526",
+      "creative": {
+        "id": "1641035274044407"
+      }
+    },
+    {
+      "id": "120253719760890526",
+      "name": "[AULA_OUT26] [VENDAS] [COLD] [FECHAMENTO] - R$47 | metodo",
+      "status": "PAUSED",
+      "effective_status": "IN_PROCESS",
+      "adset_id": "120253647099740526",
+      "creative": {
+        "id": "1641035274044407"
+      }
+    }
+  ],
+  "budget_changes": 0,
+  "activation": "PAUSED; agenda condicionada ao checkout47 e pagina47; nenhum preco alterado."
+}

@@ -1,0 +1,30 @@
+{
+  "generation": "image_gen integrado; 3 chamadas, sem API alternativa",
+  "reference": "../urgencia-2026-10-27/hoje-01.png",
+  "visual_review": "As três imagens abertas com view_image e lidas integralmente. Preço R$47, data27/10, hora19h30 e fim17h30 corretos, contraste legível, sem conteúdo cortado. Arte02 informa horário de Brasília sob19h30. Arte03: 2h10 e5planilhas confirmados na landing.",
+  "claims": "Sem resultado garantido, sem assentos inventados, sem desconto, sem gravação inclusa.",
+  "formats": "Portrait; usar formato original sem cortar para stories. Não foram produzidas adaptações9:16.",
+  "files": [
+    {
+      "file": "01-hoje.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1536305,
+      "sha256": "adc142afcf40f03214c0dffad0d549bbc008eb03b1b4e22ad784ecfc86c47d50"
+    },
+    {
+      "file": "02-operacao.png",
+      "width": 1092,
+      "height": 1440,
+      "bytes": 1582287,
+      "sha256": "14774cd5aa70317977c8a872d8151afac48a535faf889be9541e718010196446"
+    },
+    {
+      "file": "03-metodo.png",
+      "width": 1122,
+      "height": 1402,
+      "bytes": 1582918,
+      "sha256": "0b5380db6fc4a50d932f21e82829154d7d14da01ba498f266175cba259404710"
+    }
+  ]
+}
