@@ -25,3 +25,5 @@ Uma simulação com HTML real de produção confirmou que a virada para R$47 pre
 Treze testes passaram: cinco do gerador, cinco do guard e três do checkout. Sintaxe Node/Python e lint direcionado passaram; `npm run check:toolkit` terminou com exit0 e avisos anteriores. Agent-browser local e produção, desktop e celular390: screenshots lidos, sem overflow ou erros de página; confirmação e mensagem de suporte às19h conferidas, sem enviar formulário ou pagamento. Os dois checkouts não exibem 19h30 no corpo nem na capa genérica. Sessões e servidores de preview encerrados.
 
 Não foram enviados e-mails ou mensagens, nem alterada reunião Zoom. Evidência privada em `/tmp/sevilha-horario19-20261027/`.
+
+Readback final: os dois anúncios sem preço retornaram status ACTIVE e effective_status ACTIVE. Os seis de R$47 continuam PAUSED, com os criativos definitivos e ativação às7h. Campanha, públicos e verba conferidos novamente sem alteração adicional.
