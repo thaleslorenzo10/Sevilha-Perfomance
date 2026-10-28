@@ -100,10 +100,10 @@ async function montarMeta(since, until) {
       .map(r => linha(r, r.campaign_name, { id: r.campaign_id, ...classifyCampaign(r.campaign_name) }))
       .sort(porGasto);
     const conjuntos = adsetRows
-      .map(r => linha(r, r.adset_name, { id: r.adset_id, campanha: r.campaign_name, ...classifyCampaign(r.campaign_name) }))
+      .map(r => linha(r, r.adset_name, { id: r.adset_id, campaign_id: r.campaign_id, campanha: r.campaign_name, ...classifyCampaign(r.campaign_name) }))
       .sort(porGasto);
     const anuncios = adRows
-      .map(r => linha(r, r.ad_name, { id: r.ad_id, conjunto: r.adset_name, campanha: r.campaign_name, grupo: classifyCampaign(r.campaign_name).grupo }))
+      .map(r => linha(r, r.ad_name, { id: r.ad_id, campaign_id: r.campaign_id, conjunto: r.adset_name, campanha: r.campaign_name, grupo: classifyCampaign(r.campaign_name).grupo }))
       .sort(porGasto);
 
     // ── Posicionamento ───────────────────────────────────────────────────
@@ -201,6 +201,8 @@ async function montarMeta(since, until) {
       anuncios,
       posicionamentos,
       serie,
+      // Mantém a identidade para o painel recortar dias por funil sem usar nomes.
+      serie_campanhas: dailyRows.map(r => ({ campaign_id: r.campaign_id, date_start: r.date_start, spend: round2(parseFloat(r.spend || 0)), leads: extractLeads(r) })),
       degradado,
       gerado_em: new Date().toISOString(),
     };

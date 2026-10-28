@@ -1,23 +1,21 @@
 'use strict';
 /* Estado, período, abas, tema e o ciclo carregar → render → auto-refresh. */
 (function (D) {
-  const estado = { since: '', until: '', preset: 'last_30d', dados: null, anterior: null, anteriorChave: null, timer: null };
+  const estado = { since: '', until: '', preset: 'this_month', dados: null, anterior: null, anteriorChave: null, timer: null };
   let carregamento = 0;
-  const p2 = n => String(n).padStart(2, '0');
-  // Datas sempre em horário local: toISOString() é UTC e, depois das 21h, "hoje" já seria amanhã.
-  const isoLocal = d => `${d.getFullYear()}-${p2(d.getMonth() + 1)}-${p2(d.getDate())}`;
-  const hoje = () => isoLocal(new Date());
-  const diasAtras = n => { const d = new Date(); d.setDate(d.getDate() - n); return isoLocal(d); };
-
+  // Os recortes são dias civis de Brasília, independentemente do navegador.
+  const hoje = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Sao_Paulo', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+  const deslocar = (dia, n) => { const d = new Date(dia + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
   function intervalo(preset) {
+    const fim = hoje(), inicio = fim.slice(0, 7) + '-01';
     switch (preset) {
-      case 'today': return [hoje(), hoje()];
-      case 'last_7d': return [diasAtras(6), hoje()];
-      case 'last_14d': return [diasAtras(13), hoje()];
-      case 'last_90d': return [diasAtras(89), hoje()];
-      case 'this_month': { const d = new Date(); d.setDate(1); return [isoLocal(d), hoje()]; }
-      case 'last_month': { const ini = new Date(); ini.setDate(1); ini.setMonth(ini.getMonth() - 1); const fim = new Date(); fim.setDate(0); return [isoLocal(ini), isoLocal(fim)]; }
-      default: return [diasAtras(29), hoje()];
+      case 'today': return [fim, fim];
+      case 'last_7d': return [deslocar(fim, -6), fim];
+      case 'last_14d': return [deslocar(fim, -13), fim];
+      case 'last_90d': return [deslocar(fim, -89), fim];
+      case 'this_month': return [inicio, fim];
+      case 'last_month': { const anterior = deslocar(inicio, -1); return [anterior.slice(0, 7) + '-01', anterior]; }
+      default: return [deslocar(fim, -29), fim];
     }
   }
   const ROTULO = { today: 'Hoje', last_7d: 'Últimos 7 dias', last_14d: 'Últimos 14 dias', last_30d: 'Últimos 30 dias', last_90d: 'Últimos 90 dias', this_month: 'Este mês', last_month: 'Mês anterior' };
@@ -39,6 +37,7 @@
     document.querySelectorAll('.tab-panel').forEach(pn => pn.classList.toggle('active', pn.id === 'tab-' + nome));
     if (location.hash !== '#' + nome) history.replaceState(null, '', '#' + nome);
     D.abrirEvento(nome);
+    D.abrirOperacao(nome);
     D.redimensionarGraficos();
   };
 
@@ -79,6 +78,7 @@
   }
 
   async function carregar() {
+    D.periodoOperacao(estado.since, estado.until);
     D.periodoEventos(estado.since, estado.until);
     const versao = ++carregamento, btn = document.getElementById('btnRefresh');
     btn.disabled = true; status('loading', 'Carregando…'); D.banner('errorBanner', '');
@@ -122,10 +122,11 @@
       if (!s || !u || s > u) { alert('Informe um intervalo válido (início ≤ fim).'); return; }
       aplicarPeriodo('custom', s, u);
     });
-    document.querySelectorAll('.tab-btn').forEach(b => b.addEventListener('click', () => D.abrirAba(b.dataset.tab)));
+    document.addEventListener('click', e => { const b = e.target.closest('[data-tab]'); if (b) D.abrirAba(b.dataset.tab); });
+    window.addEventListener('hashchange', () => { const tab = location.hash.slice(1); if (document.getElementById('tab-' + tab)) D.abrirAba(tab); });
     document.addEventListener('click', e => { const b = e.target.closest('[data-csv]'); if (b) D.baixarCsv(b.dataset.csv, `${b.dataset.csv}-${estado.since}-${estado.until}.csv`); });
     const aba = location.hash.replace('#', '');
     if (aba && document.getElementById('tab-' + aba)) D.abrirAba(aba);
-    const [s, u] = intervalo('last_30d'); aplicarPeriodo('last_30d', s, u);
+    const [s, u] = intervalo('this_month'); aplicarPeriodo('this_month', s, u);
   });
 })(window.SPD = window.SPD || {});

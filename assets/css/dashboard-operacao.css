@@ -1,0 +1,33 @@
+/* Estrutura Ambiental: identidade Lorenzo, marca do cliente, visão geral e funis. */
+.op-nav-label { margin: var(--space-7) var(--space-5) var(--space-3); color: var(--lm-blue-200); font-size: var(--type-caption-size); font-weight: var(--fw-bold); letter-spacing: var(--type-caption-ls); text-transform: uppercase; }
+.op-scoped #resumoGlobal, .op-scoped #alertas, .op-scoped #errorBanner { display: none; }
+.op-launch .filter-bar { display: none; }
+.op-heading { display: flex; flex-wrap: wrap; align-items: start; justify-content: space-between; gap: var(--space-6); margin-bottom: var(--space-8); }
+.op-heading h2 { margin: 0; color: var(--text-display); font-size: var(--type-h2-size); letter-spacing: var(--type-h2-ls); }
+.op-eyebrow { color: var(--text-link); font-size: var(--type-label-size); font-weight: var(--fw-bold); letter-spacing: var(--type-caption-ls); text-transform: uppercase; margin: 0 0 var(--space-4); }
+.op-description { margin: var(--space-4) 0 0; color: var(--text-muted); max-width: 72ch; line-height: var(--type-body-lh); }
+.op-period { border: 1px solid var(--border-hairline); border-radius: var(--radius-pill); padding: var(--space-4) var(--space-6); color: var(--text-muted); background: var(--surface-card); font-size: var(--type-label-size); }
+.op-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--grid-gap); margin-bottom: var(--space-8); }
+.op-funnel { background: var(--surface-card); border: 1px solid var(--border-hairline); border-radius: var(--radius-xl); padding: var(--card-padding-lg); box-shadow: var(--shadow-card); min-width: 0; }
+.op-funnel h3 { margin: 0 0 var(--space-4); color: var(--text-display); font-size: var(--type-h3-size); }
+.op-funnel .op-description { font-size: var(--type-body-sm-size); }
+.op-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); margin: var(--space-8) 0; }
+.op-metrics dt { color: var(--text-muted); font-size: var(--type-label-size); }
+.op-metrics dd { margin: var(--space-4) 0 0; font-size: var(--type-metric-sm-size); font-weight: var(--fw-bold); color: var(--text-display); overflow-wrap: anywhere; }
+.op-link { display: inline-flex; align-items: center; justify-content: center; min-height: var(--tap-target); padding: var(--space-4) var(--space-6); border-radius: var(--radius-sm); border: 1px solid var(--border-hairline); background: var(--surface-accent-soft); color: var(--text-link); font: inherit; font-weight: var(--fw-semibold); cursor: pointer; text-decoration: none; }
+.op-link:hover { border-color: var(--border-field-focus); }
+.op-link:focus-visible { outline: var(--focus-w) solid var(--border-field-focus); outline-offset: var(--focus-offset); }
+.op-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--grid-gap); margin-bottom: var(--space-8); }
+.op-kpis .kpi-card { min-width: 0; }
+.op-kpis .kpi-value { font-size: var(--type-metric-size); overflow-wrap: anywhere; }
+.op-health { display: flex; flex-wrap: wrap; gap: var(--space-4); list-style: none; padding: 0; margin: var(--space-6) 0; }
+.op-health li { padding: var(--space-4) var(--space-5); border: 1px solid var(--border-hairline); border-radius: var(--radius-sm); color: var(--text-muted); font-size: var(--type-label-size); }
+.op-health li[data-ok="false"] { color: var(--status-warning-text); background: var(--lm-warning-bg); }
+.op-table-note { margin-top: var(--space-5); color: var(--text-muted); font-size: var(--type-body-sm-size); line-height: var(--type-body-lh); }
+@media (max-width: 1000px) { .op-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .op-grid { grid-template-columns: minmax(0, 1fr); } .op-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } .op-heading h2 { font-size: var(--type-h3-size); } .op-funnel { padding: var(--card-padding); } .op-kpis .kpi-value { font-size: var(--type-metric-sm-size); } }
+.op-section-nav { display: flex; gap: var(--space-4); flex-wrap: wrap; margin: var(--space-8) 0; }
+.op-section-nav a { color: var(--text-link); font-size: var(--type-body-sm-size); border: 1px solid var(--border-hairline); border-radius: var(--radius-pill); padding: var(--space-4) var(--space-6); text-decoration: none; background: var(--surface-card); min-height: var(--tap-target); display: inline-flex; align-items: center; }
+.op-section-nav a:focus-visible { outline: var(--focus-w) solid var(--border-field-focus); outline-offset: var(--focus-offset); }
+.op-trend { width: 100%; min-height: 100px; display: block; }
+.op-grid > .section { margin-bottom: 0; min-width: 0; }

@@ -30,6 +30,7 @@ module.exports = async function handler(req, res) {
   // query, o relatório certo continua respondendo em vez de devolver o do A/B.
   const url  = new URL(req.url, 'http://localhost');
   const modo = url.searchParams.get('modo');
+  if (modo === 'operacao') return require('../lib/sevilha-operacao').responder(req, res);
   if (modo === 'eventos') return require('../lib/eventos-dashboard').responder(req, res);
   if (modo === 'sessao-estrategica' || url.pathname.includes('sessao-estrategica')) {
     return responderSessaoEstrategica(req, res);
