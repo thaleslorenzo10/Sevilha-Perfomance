@@ -37,3 +37,12 @@ origin/main é anterior à versão pública. Hashes de todos os demais arquivos
 serão conferidos. Fontes sem detalhe específico por funil permanecem
 indisponíveis; a organização e o inventário seguem o modelo, sem afirmar
 paridade de todas as interações com o Ambiental.
+
+## Produção conferida
+
+- Código revisado:3b168fc. Previewdpl_2eRzSeuxdXDgTFLERXVvsuh29ajT compilou; navegação restrita por SSO Vercel.
+- Publicação real:dpl_EQ5RVoNAaR4m2SmvWGdwPqv7zdrh, alias público atualizado. Os12 arquivos de aplicação esperados foram confirmados por hash; zero arquivos alheios alterados.
+- Navegador público1440×900 e390×844: Aula27/10, navegação dos perpétuos, dados carregados, sem overflow/erro JS; APIs observadas200. Imagens finais lidas.
+- Central/runtime:8655072. Cinco funis salvos,10 snapshots novos coletados somente para Sevilha, demais clientes e comunicação preservados por comparação integral.
+- Simulação de28/10 às09h gerou uma mensagem com quatro funis atuais; Aula06/10 omitida. Nenhum envio de teste foi executado.
+- Coleta central/resumo usa corte até o dia anterior; o dashboard público pode incluir o dia corrente e exibe seu período. Não comparar valores sem conferir essas datas.
